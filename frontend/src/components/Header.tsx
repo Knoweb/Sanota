@@ -6,20 +6,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "Industries", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Products & Systems", href: "#" },
-  { name: "Projects", href: "#" },
-  { name: "About", href: "#" },
-  { name: "Insights", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Industries", href: "#industries" },
+  { name: "Services", href: "#services" },
+  { name: "Products & Systems", href: "#products" },
+  { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
+  { name: "Insights", href: "#insights" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#CCE0FF]/95 backdrop-blur-md border-b border-slate-200">
+    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#7B9DD4]/95 to-[#9FBEE6]/95 backdrop-blur-md border-b border-slate-300">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <div className="flex items-center shrink-0">
@@ -69,7 +69,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="xl:hidden bg-[#CCE0FF] border-b border-slate-200 shadow-xl">
+        <div className="xl:hidden bg-gradient-to-r from-[#7B9DD4] to-[#9FBEE6] border-b border-slate-300 shadow-xl">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <Link
