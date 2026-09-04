@@ -19,7 +19,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#7B9DD4]/95 to-[#9FBEE6]/95 backdrop-blur-md border-b border-slate-300">
+    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#7B9DD4]/95 to-[#9FBEE6]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.8)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <div className="flex items-center shrink-0">
@@ -69,7 +69,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="xl:hidden bg-gradient-to-r from-[#7B9DD4] to-[#9FBEE6] border-b border-slate-300 shadow-xl">
+        <div className="xl:hidden bg-gradient-to-r from-[#7B9DD4] to-[#9FBEE6] shadow-[0_20px_40px_-10px_rgba(5,11,20,0.8)]">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <Link
