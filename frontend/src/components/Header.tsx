@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Industries", href: "#" },
@@ -18,42 +19,49 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0B1220]/90 backdrop-blur-md border-b border-[#1e293b]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold tracking-wider text-white">
-              SANOTA
+    <header className="fixed top-0 w-full z-50 bg-[#CCE0FF]/95 backdrop-blur-md border-b border-slate-200">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-24">
+          <div className="flex items-center shrink-0">
+            <Link href="/" className="flex items-center mr-6 hover:opacity-80 transition-opacity">
+              <Image 
+                src="/lg.png" 
+                alt="Sanota Logo" 
+                width={180} 
+                height={54} 
+                className="object-contain h-12 w-auto" 
+                priority
+              />
             </Link>
           </div>
           
-          <nav className="hidden md:flex space-x-6 lg:space-x-8">
+          <nav className="hidden xl:flex space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                className="text-[14px] font-bold text-slate-800 hover:text-[#2E5EAA] transition-colors uppercase tracking-wider whitespace-nowrap"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden xl:flex items-center ml-6 shrink-0">
             <Link
               href="#"
-              className="inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20"
+              className="inline-flex items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider shadow-lg whitespace-nowrap"
             >
               Request a Consultation
             </Link>
           </div>
 
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center xl:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-white"
+              className="text-slate-800 hover:text-[#2E5EAA]"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
@@ -61,20 +69,20 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0B1220] border-b border-[#1e293b]">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="xl:hidden bg-[#CCE0FF] border-b border-slate-200 shadow-xl">
+          <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-[#131C2E] transition-colors"
+                className="block px-3 py-3 rounded-md text-[15px] font-bold text-slate-800 hover:text-[#2E5EAA] hover:bg-slate-200/50 transition-colors uppercase tracking-wider"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="#"
-              className="block mt-4 text-center px-4 py-2 border border-transparent text-base font-medium rounded text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643]"
+              className="block mt-6 text-center px-4 py-4 border border-transparent text-[15px] font-bold rounded-md text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] uppercase tracking-wider"
             >
               Request a Consultation
             </Link>
