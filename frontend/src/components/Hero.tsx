@@ -23,8 +23,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-32 overflow-hidden bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative min-h-[85vh] pt-6 pb-12 lg:pt-10 lg:pb-16 overflow-hidden bg-transparent">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           <motion.div
@@ -38,43 +38,43 @@ export default function Hero() {
               <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Engineering • Automation • IoT • Software • Implementation • Support</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-white mb-5 leading-[1.15]">
               One Challenge. <br className="hidden lg:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">One Integrated Engineering Solution.</span>
             </h1>
 
-            <div className="text-lg text-slate-300 mb-10 max-w-2xl leading-relaxed space-y-4">
+            <div className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed space-y-4">
               <p>Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team.</p>
               <p>Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward.</p>
             </div>
             
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
               <Link
                 href="/tell-us-your-challenge"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[15px] font-bold rounded text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group"
+                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group"
               >
                 Tell Us Your Challenge
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/media"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[15px] font-bold rounded text-white hover:bg-[#2E5EAA]/10 transition-colors group"
+                className="inline-flex justify-center items-center px-6 py-3 border border-[#2E5EAA] text-[14px] font-bold rounded text-white hover:bg-[#2E5EAA]/10 transition-colors group"
               >
                 See Sanota in Action
-                <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform text-[#2E5EAA]" />
+                <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform text-[#2E5EAA]" />
               </Link>
             </div>
 
             {/* Chat Prompt */}
-            <div className="p-5 rounded-lg bg-[#131C2E]/60 border border-slate-800/80 max-w-xl backdrop-blur-sm">
-              <h3 className="text-white font-bold mb-2">Not sure where to begin?</h3>
-              <p className="text-slate-400 text-sm mb-4">
+            <div className="p-4 rounded-lg bg-[#131C2E]/60 border border-slate-800/80 max-w-xl backdrop-blur-sm">
+              <h3 className="text-white font-bold text-sm mb-1.5">Not sure where to begin?</h3>
+              <p className="text-slate-400 text-xs mb-3">
                 Tell us what is not working—or what you want to achieve. We will help direct your enquiry to the appropriate engineering team.
               </p>
-              <button className="text-sm font-bold text-[#E8B84B] hover:text-[#d4a643] flex items-center transition-colors">
+              <Link href="/tell-us-your-challenge" className="text-xs font-bold text-[#E8B84B] hover:text-[#d4a643] flex items-center transition-colors">
                 Start Guided Chat
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </button>
+                <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
             </div>
           </motion.div>
           
@@ -84,7 +84,7 @@ export default function Hero() {
             <div className="absolute top-4 -right-4 bottom-4 -left-4 border border-[#E8B84B]/40 rounded-[2.5rem] -z-10 transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
             <div className="absolute -top-4 right-4 -bottom-4 left-4 border border-[#2E5EAA]/40 rounded-[2.5rem] -z-10 transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
             
-            <div className="relative h-[500px] lg:h-[650px] rounded-3xl overflow-hidden border-2 border-slate-800 shadow-2xl flex items-center justify-center bg-[#0B1220] z-10">
+            <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(5,11,20,0.3)] flex items-center justify-center bg-[#0B1220] z-10 border-2 border-slate-800">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImageIndex}

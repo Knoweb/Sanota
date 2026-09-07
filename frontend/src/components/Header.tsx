@@ -19,28 +19,28 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#7B9DD4]/95 to-[#9FBEE6]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.8)]">
+    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-200/95 via-[#2E5EAA]/80 to-[#050B14]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#2E5EAA]/20">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center shrink-0">
             <Link href="/" className="flex items-center mr-6 hover:opacity-80 transition-opacity">
-              <Image 
-                src="/lg.png" 
-                alt="Sanota Logo" 
-                width={180} 
-                height={54} 
-                className="object-contain h-12 w-auto" 
+              <Image
+                src="/lg.png"
+                alt="Sanota Logo"
+                width={150}
+                height={45}
+                className="object-contain h-10 w-auto"
                 priority
               />
             </Link>
           </div>
-          
+
           <nav className="hidden xl:flex space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-[14px] font-bold text-slate-800 hover:text-[#2E5EAA] transition-colors uppercase tracking-wider whitespace-nowrap"
+                className="text-[13px] font-bold text-slate-300 hover:text-[#E8B84B] transition-colors uppercase tracking-wider whitespace-nowrap"
               >
                 {link.name}
               </Link>
@@ -59,7 +59,7 @@ export default function Header() {
           <div className="flex items-center xl:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-800 hover:text-[#2E5EAA]"
+              className="text-slate-300 hover:text-[#E8B84B]"
             >
               {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
@@ -69,13 +69,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="xl:hidden bg-gradient-to-r from-[#7B9DD4] to-[#9FBEE6] shadow-[0_20px_40px_-10px_rgba(5,11,20,0.8)]">
+        <div className="xl:hidden bg-[#0B1220] border-b border-slate-800 shadow-[0_20px_40px_-10px_rgba(5,11,20,0.8)]">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-3 rounded-md text-[15px] font-bold text-slate-800 hover:text-[#2E5EAA] hover:bg-slate-200/50 transition-colors uppercase tracking-wider"
+                className="block px-3 py-3 rounded-md text-[14px] font-bold text-slate-300 hover:text-[#E8B84B] hover:bg-[#131C2E] transition-colors uppercase tracking-wider"
               >
                 {link.name}
               </Link>
