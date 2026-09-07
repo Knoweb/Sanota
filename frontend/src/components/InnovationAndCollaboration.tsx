@@ -15,7 +15,7 @@ export default function InnovationAndCollaboration() {
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
-            Innovation and Collaboration
+            Innovation and Partnerships
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -45,10 +45,10 @@ export default function InnovationAndCollaboration() {
               className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl text-center flex flex-col items-center hover:border-[#E8B84B]/50 transition-colors"
            >
               <div className="w-16 h-16 bg-[#0B1220] rounded-full flex items-center justify-center mb-6 border border-slate-700">
-                 <GraduationCap className="w-8 h-8 text-[#E8B84B]" />
+                 <Code2 className="w-8 h-8 text-[#E8B84B]" />
               </div>
-              <h4 className="text-white font-bold text-lg mb-3">State Universities</h4>
-              <p className="text-slate-400 text-sm">Collaborative research and development programs with leading academic institutions to pioneer new methodologies.</p>
+              <h4 className="text-white font-bold text-lg mb-3">R&D and Custom Solutions</h4>
+              <p className="text-slate-400 text-sm">Pushing the boundaries of what is possible in industrial engineering.</p>
            </motion.div>
 
            <motion.div 
@@ -59,10 +59,10 @@ export default function InnovationAndCollaboration() {
               className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl text-center flex flex-col items-center hover:border-[#2E5EAA]/50 transition-colors mt-0 md:mt-8"
            >
               <div className="w-16 h-16 bg-[#0B1220] rounded-full flex items-center justify-center mb-6 border border-slate-700">
-                 <Users className="w-8 h-8 text-[#2E5EAA]" />
+                 <GraduationCap className="w-8 h-8 text-[#2E5EAA]" />
               </div>
-              <h4 className="text-white font-bold text-lg mb-3">Research Groups</h4>
-              <p className="text-slate-400 text-sm">Joint ventures with specialized research groups focusing on applied engineering, materials, and process optimization.</p>
+              <h4 className="text-white font-bold text-lg mb-3">University Partnerships</h4>
+              <p className="text-slate-400 text-sm">Collaborating with academic institutions to test new theories and develop technical talent.</p>
            </motion.div>
 
            <motion.div 
@@ -73,10 +73,10 @@ export default function InnovationAndCollaboration() {
               className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl text-center flex flex-col items-center hover:border-[#E8B84B]/50 transition-colors mt-0 md:mt-16"
            >
               <div className="w-16 h-16 bg-[#0B1220] rounded-full flex items-center justify-center mb-6 border border-slate-700">
-                 <Code2 className="w-8 h-8 text-[#E8B84B]" />
+                 <Users className="w-8 h-8 text-[#E8B84B]" />
               </div>
               <h4 className="text-white font-bold text-lg mb-3">Technology Partners</h4>
-              <p className="text-slate-400 text-sm">Strategic partnerships with local and international technology providers to integrate cutting-edge components.</p>
+              <p className="text-slate-400 text-sm">Working with global hardware and software providers to build robust systems.</p>
            </motion.div>
         </div>
 

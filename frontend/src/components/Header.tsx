@@ -6,13 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "Industries", href: "#industries" },
-  { name: "Services", href: "#services" },
-  { name: "Products & Systems", href: "#products" },
-  { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
-  { name: "Insights", href: "#insights" },
-  { name: "Contact", href: "#contact" },
+  { name: "Industries", href: "/industries" },
+  { name: "Services", href: "/services" },
+  { name: "Products & Systems", href: "/products" },
+  { name: "Media", href: "/media" },
+  { name: "About", href: "/about" },
+  { name: "Insights", href: "/insights" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -49,10 +49,10 @@ export default function Header() {
 
           <div className="hidden xl:flex items-center ml-6 shrink-0">
             <Link
-              href="#"
+              href="/tell-us-your-challenge"
               className="inline-flex items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider shadow-lg whitespace-nowrap"
             >
-              Request a Consultation
+              Tell Us Your Challenge
             </Link>
           </div>
 
@@ -81,10 +81,10 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="#"
+              href="/tell-us-your-challenge"
               className="block mt-6 text-center px-4 py-4 border border-transparent text-[15px] font-bold rounded-md text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] uppercase tracking-wider"
             >
-              Request a Consultation
+              Tell Us Your Challenge
             </Link>
           </div>
         </div>

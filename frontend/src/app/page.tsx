@@ -1,15 +1,17 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import WhatSanotaDoes from "@/components/WhatSanotaDoes";
+import CorporateProof from "@/components/CorporateProof";
+import VisitorPathways from "@/components/VisitorPathways";
+import SolutionNavigator from "@/components/SolutionNavigator";
+import IntegratedSolutionCapability from "@/components/IntegratedSolutionCapability";
+import CompletedWork from "@/components/CompletedWork";
 import IndustriesWeSupport from "@/components/IndustriesWeSupport";
 import ProductsAndSystems from "@/components/ProductsAndSystems";
-import WhyWorkWithSanota from "@/components/WhyWorkWithSanota";
-import FeaturedProjects from "@/components/FeaturedProjects";
 import HowSanotaWorks from "@/components/HowSanotaWorks";
-import ProjectExecution from "@/components/ProjectExecution";
+import WhyWorkWithSanota from "@/components/WhyWorkWithSanota";
 import AMCAndLifecycle from "@/components/AMCAndLifecycle";
 import SanotaAndKnoweb from "@/components/SanotaAndKnoweb";
-import CorporateProof from "@/components/CorporateProof";
+import MediaSection from "@/components/MediaSection";
 import InnovationAndCollaboration from "@/components/InnovationAndCollaboration";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -20,16 +22,18 @@ export default function Home() {
       <Header />
       <main className="flex-grow pt-24">
         <Hero />
-        <WhatSanotaDoes />
+        <CorporateProof />
+        <VisitorPathways />
+        <SolutionNavigator />
+        <IntegratedSolutionCapability />
+        <CompletedWork />
         <IndustriesWeSupport />
         <ProductsAndSystems />
-        <WhyWorkWithSanota />
-        <FeaturedProjects />
         <HowSanotaWorks />
-        <ProjectExecution />
+        <WhyWorkWithSanota />
         <AMCAndLifecycle />
         <SanotaAndKnoweb />
-        <CorporateProof />
+        <MediaSection />
         <InnovationAndCollaboration />
         <FinalCTA />
       </main>

@@ -5,19 +5,10 @@ import { Wrench, Shield, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 const amcScope = [
-  "Asset inspection and condition assessment",
-  "Preventive-maintenance planning",
-  "Scheduled mechanical and electrical servicing",
-  "PLC, HMI, drive and control-system support",
-  "Sensor and instrument checks",
-  "Calibration and functional testing",
-  "Breakdown diagnosis and corrective support",
-  "Control-program and system backups",
-  "Spare-parts planning",
-  "Maintenance and asset-health reports",
-  "Safety and performance observations",
-  "Retrofit and upgrade recommendations",
-  "Operator and maintenance-team training"
+  "Annual Maintenance Contracts (AMC)",
+  "Preventive & Predictive Maintenance",
+  "Component Repair & Replacement",
+  "System Modernization & Upgrades"
 ];
 
 export default function AMCAndLifecycle() {
@@ -35,27 +26,18 @@ export default function AMCAndLifecycle() {
             >
               <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">AMC and Lifecycle Support</h2>
               <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
-                Keep Your Systems <span className="text-[#2E5EAA]">Operating Reliably</span>
+                Industrial systems require <span className="text-[#2E5EAA]">continuous maintenance</span> to perform at peak capacity.
               </h3>
               <p className="text-slate-400 mb-6 leading-relaxed">
-                Sanota provides Annual Maintenance Contracts and technical support for machinery, automation and integrated systems developed by Sanota.
-              </p>
-              <p className="text-slate-400 mb-8 leading-relaxed">
-                We can also take responsibility for eligible third-party machinery and systems following an initial technical assessment.
+                Sanota provides ongoing support for machinery, automation and integrated systems developed by our team, as well as eligible third-party industrial systems.
               </p>
               
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
                 <Link
-                  href="#"
-                  className="inline-flex justify-center items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider text-center"
+                  href="/services"
+                  className="inline-flex justify-center items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider text-center"
                 >
-                  Request an AMC Assessment
-                </Link>
-                <Link
-                  href="#"
-                  className="inline-flex justify-center items-center px-7 py-3 border border-slate-700 hover:border-[#2E5EAA] text-[14px] font-bold rounded-full text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10 transition-colors uppercase tracking-wider text-center"
-                >
-                  Explore Maintenance Services
+                  Learn About AMC Support
                 </Link>
               </div>
               

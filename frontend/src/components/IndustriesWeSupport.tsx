@@ -7,50 +7,49 @@ import { ArrowRight, Box, Leaf, CupSoda, Coffee, Cpu, BatteryCharging, Recycle, 
 
 const industries = [
   {
-    id: "manufacturing",
-    title: "Manufacturing & Industrial Automation",
-    description: "Custom machinery, production automation, testing systems, machine monitoring, process integration and modernization of existing industrial equipment.",
-    link: "#",
-    linkText: "Explore Manufacturing Solutions",
-    image: "/ind_manufacturing_1788515164504.jpg",
-    icon: Box,
-  },
-  {
     id: "agriculture",
-    title: "Smart Agriculture & Agri-Technology",
-    description: "Greenhouse systems, irrigation, fertigation, hydroponics, aquaponics, environmental control and intelligent crop-monitoring solutions.",
-    link: "#",
-    linkText: "Explore Smart Agriculture",
+    title: "Agriculture & Plantations",
+    description: "Greenhouse systems, irrigation, withering systems, environmental control and intelligent crop-monitoring solutions.",
+    link: "/industries",
+    linkText: "Explore Agriculture Solutions",
     image: "/ind_agri_1788515181352.jpg",
     icon: Leaf,
   },
   {
     id: "food",
-    title: "Food & Beverage Processing",
-    description: "Processing equipment and integrated systems supporting washing, preparation, drying, preservation, cooking, handling, packaging and value addition.",
-    link: "#",
-    linkText: "Explore Food-Processing Solutions",
+    title: "Food & Beverage",
+    description: "Processing equipment and integrated systems supporting preparation, preservation, packaging and value addition.",
+    link: "/industries",
+    linkText: "Explore Food & Beverage",
     image: "/ind_food_1788515232491.jpg",
     icon: CupSoda,
   },
   {
-    id: "tea",
-    title: "Tea Industry Solutions",
-    description: "Tea-processing machinery, withering systems, dryers, rollers, environmental control, factory modernization and digital plantation-management solutions.",
-    link: "#",
-    linkText: "Explore Tea Industry Solutions",
-    image: "/ind_tea_1788515252795.jpg",
-    icon: Coffee,
+    id: "manufacturing",
+    title: "Manufacturing",
+    description: "Custom machinery, production automation, testing systems, machine monitoring and process integration.",
+    link: "/industries",
+    linkText: "Explore Manufacturing",
+    image: "/ind_manufacturing_1788515164504.jpg",
+    icon: Box,
+  },
+  {
+    id: "apparel",
+    title: "Apparel & Textiles",
+    description: "Automation, handling systems, and resource efficiency solutions tailored for the apparel manufacturing sector.",
+    link: "/industries",
+    linkText: "Explore Apparel Solutions",
+    image: "/ind_tea_1788515252795.jpg", // Reusing tea image as placeholder
+    icon: Activity,
   },
 ];
 
 const additionalIndustries = [
-  { name: "Logistics, warehousing and material handling", icon: TruckIcon },
-  { name: "Energy and resource efficiency", icon: BatteryCharging },
-  { name: "Environmental and waste management", icon: Recycle },
-  { name: "Infrastructure and smart facilities", icon: Building },
-  { name: "Healthcare and biomedical engineering", icon: Activity },
-  { name: "Research, innovation and custom product development", icon: FlaskConical },
+  { name: "FMCG", icon: Box },
+  { name: "Healthcare & Pharmaceuticals", icon: FlaskConical },
+  { name: "Packaging & Logistics", icon: TruckIcon },
+  { name: "Construction & Building Materials", icon: Building },
+  { name: "Research & Custom Engineering", icon: Cpu },
 ];
 
 function TruckIcon(props: any) {
@@ -156,10 +155,10 @@ export default function IndustriesWeSupport() {
               <p className="text-slate-400">Sanota also provides engineering and technology solutions for:</p>
             </div>
             <Link
-              href="#"
+              href="/industries"
               className="mt-6 md:mt-0 inline-flex items-center px-6 py-3 border border-slate-700 hover:border-[#2E5EAA] text-[13px] font-bold rounded-full text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10 transition-colors uppercase tracking-wider whitespace-nowrap"
             >
-              View All Industries
+              View Industry Solutions
             </Link>
           </div>
 

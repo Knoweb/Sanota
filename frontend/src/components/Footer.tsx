@@ -31,10 +31,17 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6 tracking-wider uppercase text-sm">Navigation</h4>
             <ul className="space-y-4">
-              {['Industries', 'Services', 'Products & Systems', 'Projects', 'About', 'Insights'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-slate-400 hover:text-[#E8B84B] text-sm transition-colors">
-                    {item}
+              {[
+                { name: 'Industries', href: '/industries' },
+                { name: 'Services', href: '/services' },
+                { name: 'Products & Systems', href: '/products' },
+                { name: 'Media', href: '/media' },
+                { name: 'About', href: '/about' },
+                { name: 'Contact', href: '/contact' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-slate-400 hover:text-[#E8B84B] text-sm transition-colors">
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -68,11 +75,22 @@ export default function Footer() {
           
         </div>
 
+        {/* Brand Line */}
+        <div className="pt-12 pb-8 text-center border-t border-slate-800">
+          <h2 className="text-3xl md:text-5xl font-black text-white/10 uppercase tracking-[0.2em]">
+            Engineered for Performance.
+          </h2>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-slate-500 text-xs">
             © {currentYear} Sanota (Pvt) Ltd. All rights reserved.
           </p>
+          <div className="flex space-x-6 text-slate-500 text-xs">
+            <Link href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+          </div>
           <p className="text-slate-500 text-xs flex items-center">
             Built by: <a href="https://knoweb.com" target="_blank" rel="noopener noreferrer" className="ml-1 text-slate-400 hover:text-white font-semibold transition-colors">Knoweb</a>
           </p>

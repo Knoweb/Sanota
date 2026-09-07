@@ -7,38 +7,38 @@ import { MessageSquare, Search, PenTool, Wrench, PlayCircle, TrendingUp } from "
 const steps = [
   {
     num: "1",
-    title: "Discuss",
-    desc: "Tell us about the operational challenge, technical requirement, product idea or improvement opportunity.",
+    title: "The Requirement",
+    desc: "You define the operational challenge, production bottleneck or new capability required.",
     icon: MessageSquare,
   },
   {
     num: "2",
-    title: "Assess",
-    desc: "Our team studies the process, machinery, operating environment, limitations and expected outcomes.",
+    title: "Initial Assessment",
+    desc: "Our engineers evaluate the site, operational constraints, technical requirements and available resources.",
     icon: Search,
   },
   {
     num: "3",
-    title: "Design",
-    desc: "We develop the engineering concept, system architecture, scope and implementation approach.",
+    title: "System Design",
+    desc: "We engineer a coordinated solution involving mechanical, electrical, software and automation components.",
     icon: PenTool,
   },
   {
     num: "4",
-    title: "Build & Integrate",
-    desc: "Mechanical, electrical, automation and digital components are developed and brought together as one solution.",
+    title: "Development & Fabrication",
+    desc: "The system is built, programmed and tested at our engineering facilities.",
     icon: Wrench,
   },
   {
     num: "5",
-    title: "Install & Commission",
-    desc: "The system is installed, integrated, tested and commissioned against the agreed operating requirements.",
+    title: "Installation & Commissioning",
+    desc: "Our team deploys the solution on-site, integrating it with your existing operations.",
     icon: PlayCircle,
   },
   {
     num: "6",
-    title: "Support & Improve",
-    desc: "We provide training, maintenance, AMC support, upgrades and further performance improvement as the customer's requirements evolve.",
+    title: "Handover & Support",
+    desc: "We provide training, documentation, and ongoing maintenance to ensure reliable operation.",
     icon: TrendingUp,
   }
 ];
@@ -68,10 +68,9 @@ export default function HowSanotaWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase"
+            className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4"
           >
-            A Clear Path from <br className="sm:hidden" />
-            <span className="text-[#2E5EAA]">Requirement to Results</span>
+            Because we handle the complete engineering process, working with Sanota follows a clear structure.
           </motion.h3>
         </div>
 
@@ -79,7 +78,7 @@ export default function HowSanotaWorks() {
           {/* Central connecting line for desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#E8B84B]/10 via-[#2E5EAA]/30 to-[#E8B84B]/10 -translate-x-1/2" />
 
-          <div className="space-y-12 md:space-y-0 relative">
+          <div className="space-y-12 md:space-y-0 relative pb-12">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 0;
               return (
@@ -122,20 +121,6 @@ export default function HowSanotaWorks() {
             })}
           </div>
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-20"
-        >
-          <Link
-            href="#"
-            className="inline-flex items-center px-8 py-4 border border-transparent text-[15px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider shadow-lg shadow-[#E8B84B]/20"
-          >
-            Start a Discussion
-          </Link>
-        </motion.div>
 
       </div>
     </section>

@@ -6,33 +6,23 @@ import Link from "next/link";
 
 const reasons = [
   {
-    title: "Integrated Expertise",
-    description: "Mechanical engineering, electrical and electronic systems, industrial automation, IoT and software are combined through one connected delivery approach.",
+    title: "Engineering First",
+    description: "We are not just integrators; we design and build core mechanical and electrical systems.",
     icon: Layers,
   },
   {
-    title: "Practical Engineering",
-    description: "Every solution is developed around actual operating conditions, implementation requirements, available resources and long-term usability.",
+    title: "Practical Automation",
+    description: "We focus on robust, scalable automation that makes operational sense, not unnecessary complexity.",
     icon: Target,
   },
   {
-    title: "Custom Development",
-    description: "When a suitable standard solution is unavailable, Sanota can design and develop machinery, products and systems around the customer's specific requirement.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Modernization Before Replacement",
-    description: "We assess whether existing machinery can be restored, retrofitted or automated before recommending unnecessary replacement.",
-    icon: Repeat,
-  },
-  {
-    title: "End-to-End Project Delivery",
-    description: "Sanota can manage engineering design, procurement, fabrication, software development, assembly, installation, system integration, testing, commissioning and handover.",
+    title: "Single Point of Responsibility",
+    description: "One team handling mechanics, electronics, and software, eliminating vendor friction.",
     icon: Settings,
   },
   {
-    title: "Lifecycle Support",
-    description: "Our responsibility can continue after commissioning through preventive maintenance, Annual Maintenance Contracts, technical support, training, upgrades and performance improvement.",
+    title: "Long-Term Support",
+    description: "We maintain what we build, offering continuous service, spares and system upgrades.",
     icon: ShieldCheck,
   }
 ];
@@ -47,37 +37,27 @@ export default function WhyWorkWithSanota() {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-4xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
-            Why Work With Sanota
+            Why Sanota
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6"
+            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight"
           >
-            One Partner. <br className="sm:hidden" />
-            <span className="text-[#2E5EAA]">Connected Engineering Capability.</span>
+            A Practical Approach to Engineering
           </motion.h3>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400"
-          >
-            Sanota goes beyond supplying individual machines or isolated technologies. We work with customers to understand the complete operational requirement and develop a coordinated solution.
-          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {reasons.map((reason, idx) => (
             <motion.div
               key={idx}
@@ -105,8 +85,8 @@ export default function WhyWorkWithSanota() {
           className="text-center"
         >
           <Link
-            href="#"
-            className="inline-flex items-center px-8 py-4 border border-[#2E5EAA] text-[15px] font-bold rounded-full text-white bg-[#2E5EAA]/10 hover:bg-[#2E5EAA] transition-colors uppercase tracking-wider"
+            href="/about"
+            className="inline-flex items-center px-8 py-4 border border-transparent hover:border-[#E8B84B]/50 text-[15px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider"
           >
             Learn More About Sanota
           </Link>

@@ -20,20 +20,28 @@ export default function FinalCTA() {
            viewport={{ once: true }}
         >
           <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-8">
-            Tell Us About Your <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#2E5EAA]">Operational Challenge</span>
+            Ready to discuss <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#2E5EAA]">your requirement?</span>
           </h2>
           
           <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Our team is ready to discuss how mechanical engineering, automation, and digital technology can be combined to solve your specific requirements.
+            Contact Sanota to explore engineering solutions for your operations.
           </p>
 
-          <Link
-            href="#"
-            className="inline-flex items-center px-10 py-5 border border-transparent text-lg font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 uppercase tracking-widest shadow-[0_0_30px_rgba(232,184,75,0.3)]"
-          >
-            Start a Discussion <ArrowRight className="ml-3 w-6 h-6" />
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <Link
+              href="/tell-us-your-challenge"
+              className="inline-flex items-center px-10 py-5 border border-transparent text-lg font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 uppercase tracking-widest shadow-[0_0_30px_rgba(232,184,75,0.3)]"
+            >
+              Tell Us Your Challenge <ArrowRight className="ml-3 w-6 h-6" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-10 py-5 border border-slate-700 text-lg font-bold rounded-lg text-white hover:bg-slate-800 transition-all uppercase tracking-widest"
+            >
+              General Contact Info
+            </Link>
+          </div>
         </motion.div>
 
       </div>
