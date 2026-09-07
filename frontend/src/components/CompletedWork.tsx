@@ -16,7 +16,7 @@ const projects = [
   },
   {
     title: "Food Processing Automation",
-    image: "/hero_food_1788507611101.jpg",
+    image: "/hero_food.jpg",
   },
   {
     title: "Factory Automation & Production Lines",

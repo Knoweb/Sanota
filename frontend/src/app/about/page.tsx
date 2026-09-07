@@ -15,8 +15,13 @@ export default function AboutPage() {
       <main className="flex-grow pt-24">
         
         {/* Hero Section */}
-        <section className="relative py-24 bg-[#050B14] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#131C2E]/50 to-transparent" />
+        <section className="relative py-32 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/about_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/70" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
