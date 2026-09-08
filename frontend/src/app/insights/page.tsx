@@ -241,7 +241,7 @@ export default function InsightsPage() {
         Remove 'hidden' class to make this page publicly visible.
         ================================================================
       */}
-      <main className="flex-grow pt-24 hidden">
+      <main className="flex-grow pt-24">
         
         {/* Hero Section */}
         <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
