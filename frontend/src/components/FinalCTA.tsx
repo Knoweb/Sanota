@@ -24,20 +24,20 @@ export default function FinalCTA() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#2E5EAA]">your requirement?</span>
           </h2>
           
-          <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[19px] text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
             Contact Sanota to explore engineering solutions for your operations.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Link
               href="/tell-us-your-challenge"
-              className="inline-flex items-center px-10 py-5 border border-transparent text-lg font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 uppercase tracking-widest shadow-[0_0_30px_rgba(232,184,75,0.3)]"
+              className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
             >
-              Tell Us Your Challenge <ArrowRight className="ml-3 w-6 h-6" />
+              Tell Us Your Challenge <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-10 py-5 border border-slate-700 text-lg font-bold rounded-lg text-white hover:bg-slate-800 transition-all uppercase tracking-widest"
+              className="inline-flex justify-center items-center px-10 py-4 border border-slate-700 text-[15px] font-bold rounded-lg text-white hover:bg-slate-800 transition-all w-full sm:w-auto"
             >
               General Contact Info
             </Link>

@@ -15,7 +15,7 @@ export default function InnovationAndCollaboration() {
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
-            Innovation and Partnerships
+            Innovation and Collaboration
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export default function InnovationAndCollaboration() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400"
+            className="text-[17px] text-slate-400 leading-relaxed"
           >
             Sanota actively collaborates with state universities, research groups and specialized technology partners in Sri Lanka and abroad to strengthen our engineering capability and develop new solutions.
           </motion.p>
@@ -48,7 +48,7 @@ export default function InnovationAndCollaboration() {
                  <Code2 className="w-8 h-8 text-[#E8B84B]" />
               </div>
               <h4 className="text-white font-bold text-lg mb-3">R&D and Custom Solutions</h4>
-              <p className="text-slate-400 text-sm">Pushing the boundaries of what is possible in industrial engineering.</p>
+              <p className="text-slate-400 text-[14.5px] leading-relaxed">Pushing the boundaries of what is possible in industrial engineering.</p>
            </motion.div>
 
            <motion.div 
@@ -62,7 +62,7 @@ export default function InnovationAndCollaboration() {
                  <GraduationCap className="w-8 h-8 text-[#2E5EAA]" />
               </div>
               <h4 className="text-white font-bold text-lg mb-3">University Partnerships</h4>
-              <p className="text-slate-400 text-sm">Collaborating with academic institutions to test new theories and develop technical talent.</p>
+              <p className="text-slate-400 text-[14.5px] leading-relaxed">Collaborating with academic institutions to test new theories and develop technical talent.</p>
            </motion.div>
 
            <motion.div 
@@ -76,7 +76,7 @@ export default function InnovationAndCollaboration() {
                  <Users className="w-8 h-8 text-[#E8B84B]" />
               </div>
               <h4 className="text-white font-bold text-lg mb-3">Technology Partners</h4>
-              <p className="text-slate-400 text-sm">Working with global hardware and software providers to build robust systems.</p>
+              <p className="text-slate-400 text-[14.5px] leading-relaxed">Working with global hardware and software providers to build robust systems.</p>
            </motion.div>
         </div>
 

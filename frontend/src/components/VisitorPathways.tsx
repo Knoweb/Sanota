@@ -22,16 +22,31 @@ export default function VisitorPathways() {
             
             <div className="relative z-10 mb-12">
               <h2 className="text-3xl font-black text-white mb-4">I Need to Solve a Problem</h2>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                Tell us your challenge. We will assess the requirement and propose an engineering solution.
-              </p>
+              <div className="text-slate-400 text-[15px] leading-relaxed max-w-lg space-y-4 mb-6">
+                <p>You do not need to arrive with a completed technical specification.</p>
+                <p>Tell us about the present situation, what is not working and what you need to achieve.</p>
+                <p>Sanota will help identify the appropriate combination of engineering, automation, digital technology and technical support.</p>
+              </div>
+              <p className="text-slate-300 font-bold mb-3">We can help when you need to:</p>
+              <ul className="text-slate-400 text-sm space-y-2 list-disc pl-5">
+                <li>Improve a production process</li>
+                <li>Automate a manual operation</li>
+                <li>Modernize an existing machine</li>
+                <li>Develop custom machinery</li>
+                <li>Introduce monitoring or tracking</li>
+                <li>Connect equipment with IoT or software</li>
+                <li>Develop a new product or prototype</li>
+                <li>Build a processing or production system</li>
+                <li>Arrange maintenance or an AMC</li>
+                <li>Understand where to begin</li>
+              </ul>
             </div>
             
             <Link
               href="/tell-us-your-challenge"
-              className="relative z-10 inline-flex items-center px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors group-hover:shadow-[0_0_20px_rgba(232,184,75,0.3)]"
+              className="relative z-10 mt-auto inline-flex items-center px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors group-hover:shadow-[0_0_20px_rgba(232,184,75,0.3)]"
             >
-              Describe Your Challenge
+              Tell Us Your Challenge
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -49,16 +64,27 @@ export default function VisitorPathways() {
             
             <div className="relative z-10 mb-12">
               <h2 className="text-3xl font-black text-white mb-4">I Want to Explore Sanota</h2>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                View our completed projects, media and engineering capabilities.
-              </p>
+              <div className="text-slate-400 text-[15px] leading-relaxed max-w-lg mb-6">
+                <p>Discover the machinery, systems, products and integrated solutions Sanota has developed across industries.</p>
+              </div>
+              <p className="text-slate-300 font-bold mb-3">Explore:</p>
+              <ul className="text-slate-400 text-sm space-y-2 list-disc pl-5">
+                <li>Completed work</li>
+                <li>Project stories</li>
+                <li>Machinery demonstrations</li>
+                <li>Products and systems</li>
+                <li>Videos</li>
+                <li>Photo gallery</li>
+                <li>Innovation and partnerships</li>
+                <li>News and activities</li>
+              </ul>
             </div>
             
             <Link
               href="/media"
-              className="relative z-10 inline-flex items-center px-6 py-3 bg-[#2E5EAA] hover:bg-[#254d8c] text-white font-bold rounded-lg transition-colors group-hover:shadow-[0_0_20px_rgba(46,94,170,0.3)]"
+              className="relative z-10 mt-auto inline-flex items-center px-6 py-3 bg-[#2E5EAA] hover:bg-[#254d8c] text-white font-bold rounded-lg transition-colors group-hover:shadow-[0_0_20px_rgba(46,94,170,0.3)]"
             >
-              View Projects and Media
+              See Sanota in Action
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

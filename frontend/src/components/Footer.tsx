@@ -37,10 +37,11 @@ export default function Footer() {
                 { name: 'Products & Systems', href: '/products' },
                 { name: 'Media', href: '/media' },
                 { name: 'About', href: '/about' },
+                { name: 'Insights', href: '/insights' },
                 { name: 'Contact', href: '/contact' }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-slate-400 hover:text-[#E8B84B] text-sm transition-colors">
+                  <Link href={item.href} className="text-slate-400 hover:text-[#E8B84B] text-[15px] transition-colors">
                     {item.name}
                   </Link>
                 </li>

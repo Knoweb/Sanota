@@ -3,77 +3,55 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Box, Leaf, CupSoda, Coffee, Cpu, BatteryCharging, Recycle, Building, Activity, FlaskConical } from "lucide-react";
+import { ArrowRight, Box, Leaf, CupSoda, Coffee, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const industries = [
   {
-    id: "agriculture",
-    title: "Agriculture & Plantations",
-    description: "Greenhouse systems, irrigation, withering systems, environmental control and intelligent crop-monitoring solutions.",
+    id: "manufacturing",
+    title: "Manufacturing & Industrial Automation",
+    description: "Custom machinery, production automation, testing systems, connected monitoring and modernization of industrial equipment.",
     link: "/industries",
-    linkText: "Explore Agriculture Solutions",
+    linkText: "Explore Manufacturing Solutions",
+    image: "/ind_manufacturing_1788515164504.jpg",
+    icon: Box,
+  },
+  {
+    id: "agriculture",
+    title: "Smart Agriculture & Agri-Technology",
+    description: "Greenhouses, irrigation, fertigation, controlled cultivation, environmental automation and crop-monitoring systems.",
+    link: "/industries",
+    linkText: "Explore Smart Agriculture",
     image: "/ind_agri_1788515181352.jpg",
     icon: Leaf,
   },
   {
     id: "food",
-    title: "Food & Beverage",
-    description: "Processing equipment and integrated systems supporting preparation, preservation, packaging and value addition.",
+    title: "Food & Beverage Processing",
+    description: "Equipment and integrated systems for preparation, drying, preservation, cooking, handling and packaging.",
     link: "/industries",
-    linkText: "Explore Food & Beverage",
+    linkText: "Explore Food-Processing Solutions",
     image: "/ind_food_1788515232491.jpg",
     icon: CupSoda,
   },
   {
-    id: "manufacturing",
-    title: "Manufacturing",
-    description: "Custom machinery, production automation, testing systems, machine monitoring and process integration.",
+    id: "tea",
+    title: "Tea Industry Solutions",
+    description: "Tea-processing machinery, withering systems, dryers, environmental control, factory modernization and digital platforms.",
     link: "/industries",
-    linkText: "Explore Manufacturing",
-    image: "/ind_manufacturing_1788515164504.jpg",
-    icon: Box,
-  },
-  {
-    id: "apparel",
-    title: "Apparel & Textiles",
-    description: "Automation, handling systems, and resource efficiency solutions tailored for the apparel manufacturing sector.",
-    link: "/industries",
-    linkText: "Explore Apparel Solutions",
-    image: "/ind_tea_1788515252795.jpg", // Reusing tea image as placeholder
-    icon: Activity,
+    linkText: "Explore Tea Industry Solutions",
+    image: "/ind_tea_1788515252795.jpg",
+    icon: Coffee,
   },
 ];
 
 const additionalIndustries = [
-  { name: "FMCG", icon: Box },
-  { name: "Healthcare & Pharmaceuticals", icon: FlaskConical },
-  { name: "Packaging & Logistics", icon: TruckIcon },
-  { name: "Construction & Building Materials", icon: Building },
-  { name: "Research & Custom Engineering", icon: Cpu },
+  "Logistics, Warehousing & Material Handling",
+  "Energy & Resource Efficiency",
+  "Environmental & Waste Solutions",
+  "Infrastructure & Smart Facilities",
+  "Healthcare & Biomedical Engineering",
+  "Research, Innovation & Custom Product Development",
 ];
-
-function TruckIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M10 17h4V5H2v12h3" />
-      <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5" />
-      <path d="M14 17h1" />
-      <circle cx="7.5" cy="17.5" r="2.5" />
-      <circle cx="17.5" cy="17.5" r="2.5" />
-    </svg>
-  );
-}
 
 export default function IndustriesWeSupport() {
   return (
@@ -95,9 +73,9 @@ export default function IndustriesWeSupport() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-6 max-w-3xl text-lg text-slate-400"
+            className="mt-6 max-w-3xl text-[17px] text-slate-400 leading-relaxed"
           >
-            Sanota supports organizations across diverse industries by helping them improve productivity, process control, reliability, operational visibility, resource efficiency and long-term performance.
+            Sanota helps organizations improve productivity, reliability, process control, operational visibility, resource efficiency and long-term system performance.
           </motion.p>
         </div>
 
@@ -125,7 +103,7 @@ export default function IndustriesWeSupport() {
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow relative -mt-8 z-10">
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#2E5EAA] transition-colors">{ind.title}</h3>
+                <h3 className="text-[22px] font-bold text-white mb-4 group-hover:text-[#2E5EAA] transition-colors">{ind.title}</h3>
                 <p className="text-slate-400 mb-8 flex-grow leading-relaxed">
                   {ind.description}
                 </p>
@@ -149,27 +127,27 @@ export default function IndustriesWeSupport() {
         >
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#2E5EAA]/10 to-transparent pointer-events-none" />
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 gap-6">
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">Additional Industries</h3>
-              <p className="text-slate-400">Sanota also provides engineering and technology solutions for:</p>
             </div>
             <Link
               href="/industries"
-              className="mt-6 md:mt-0 inline-flex items-center px-6 py-3 border border-slate-700 hover:border-[#2E5EAA] text-[13px] font-bold rounded-full text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10 transition-colors uppercase tracking-wider whitespace-nowrap"
+              className="inline-flex items-center px-6 py-3 border border-slate-700 hover:border-[#2E5EAA] text-[13px] font-bold rounded-lg text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10 transition-colors uppercase tracking-wider whitespace-nowrap"
             >
-              View Industry Solutions
+              View All Industries
+              <ChevronRight className="ml-2 w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalIndustries.map((ind, idx) => (
-              <div key={idx} className="flex items-center p-4 rounded-xl bg-[#0B1220]/50 border border-slate-800/50 hover:border-[#E8B84B]/30 transition-colors">
-                <ind.icon className="w-5 h-5 text-[#E8B84B] mr-4 shrink-0" />
-                <span className="text-sm text-slate-300 font-medium">{ind.name}</span>
-              </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+            {additionalIndustries.map((industry, idx) => (
+              <li key={idx} className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0 mt-0.5" />
+                <span className="text-[15px] text-slate-300">{industry}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </motion.div>
 
       </div>
