@@ -68,7 +68,7 @@ export default function HowSanotaWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4"
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4"
           >
             Because we handle the complete engineering process, working with Sanota follows a clear structure.
           </motion.h3>
@@ -107,7 +107,7 @@ export default function HowSanotaWorks() {
                           0{step.num}
                         </div>
                         
-                        <h4 className="text-xl font-bold text-white mb-3 flex items-center md:inline-flex">
+                        <h4 className="text-lg font-bold text-white mb-3 flex items-center md:inline-flex">
                           <span className="text-[#2E5EAA] mr-3 md:hidden">0{step.num}.</span>
                           {step.title}
                         </h4>
@@ -129,7 +129,7 @@ export default function HowSanotaWorks() {
             >
               <Link
                 href="/about"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[15px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
+                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[14px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
               >
                 View Development Process
               </Link>

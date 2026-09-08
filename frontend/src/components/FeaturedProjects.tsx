@@ -56,7 +56,7 @@ export default function FeaturedProjects() {
             className="max-w-2xl"
           >
             <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">Featured Projects</h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase mb-6">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase mb-6">
               Engineering <span className="text-[#2E5EAA]">in Action</span>
             </h3>
             <p className="text-lg text-slate-400">

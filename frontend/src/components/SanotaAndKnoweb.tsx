@@ -26,11 +26,11 @@ export default function SanotaAndKnoweb() {
               <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3 flex items-center">
                 <LinkIcon className="w-4 h-4 mr-2" /> Sanota & Knoweb
               </h2>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-6 leading-tight">
                 Building digital capabilities <span className="text-[#2E5EAA]">alongside engineering.</span>
               </h3>
               
-              <div className="space-y-6 text-[17px] text-slate-400 leading-relaxed mb-10">
+              <div className="space-y-6 text-[15.5px] text-slate-400 leading-relaxed mb-10">
                 <p>
                   Knoweb is our dedicated software and digital platform team. While Sanota handles mechanics and automation, Knoweb builds the ERPs, dashboards, tracking systems and custom software needed to bring industrial data to life.
                 </p>
@@ -40,7 +40,7 @@ export default function SanotaAndKnoweb() {
                 href="https://knoweb.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#E8B84B] text-[15px] font-bold rounded-lg text-[#E8B84B] hover:bg-[#E8B84B] hover:text-[#0B1220] transition-colors group"
+                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#E8B84B] text-[14px] font-bold rounded-lg text-[#E8B84B] hover:bg-[#E8B84B] hover:text-[#0B1220] transition-colors group"
               >
                 Learn More About Knoweb
                 <ExternalLink className="ml-2 w-4 h-4" />

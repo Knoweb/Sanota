@@ -42,7 +42,7 @@ export default function WhatSanotaDoes() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight"
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-6 leading-tight"
           >
             From Operational Challenge to <br className="hidden sm:block" />
             <span className="text-[#2E5EAA]">Engineered Solution</span>
@@ -84,7 +84,7 @@ export default function WhatSanotaDoes() {
         >
           <Link
             href="#"
-            className="inline-flex items-center px-8 py-4 border border-[#2E5EAA] text-[15px] font-bold rounded-full text-white bg-[#2E5EAA]/10 hover:bg-[#2E5EAA] transition-colors uppercase tracking-wider"
+            className="inline-flex items-center px-8 py-4 border border-[#2E5EAA] text-[14px] font-bold rounded-full text-white bg-[#2E5EAA]/10 hover:bg-[#2E5EAA] transition-colors uppercase tracking-wider"
           >
             Explore Our Services
           </Link>

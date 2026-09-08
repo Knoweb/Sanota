@@ -82,7 +82,7 @@ export default function Header() {
             ))}
             <Link
               href="/tell-us-your-challenge"
-              className="block mt-6 text-center px-4 py-4 border border-transparent text-[15px] font-bold rounded-md text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] uppercase tracking-wider"
+              className="block mt-6 text-center px-4 py-4 border border-transparent text-[14px] font-bold rounded-md text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] uppercase tracking-wider"
             >
               Tell Us Your Challenge
             </Link>

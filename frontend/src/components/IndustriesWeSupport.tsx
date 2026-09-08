@@ -63,7 +63,7 @@ export default function IndustriesWeSupport() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase"
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase"
           >
             Engineering Support <br />
             <span className="text-[#2E5EAA]">Across Industries</span>
@@ -73,7 +73,7 @@ export default function IndustriesWeSupport() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-6 max-w-3xl text-[17px] text-slate-400 leading-relaxed"
+            className="mt-6 max-w-3xl text-[15.5px] text-slate-400 leading-relaxed"
           >
             Sanota helps organizations improve productivity, reliability, process control, operational visibility, resource efficiency and long-term system performance.
           </motion.p>
@@ -144,7 +144,7 @@ export default function IndustriesWeSupport() {
             {additionalIndustries.map((industry, idx) => (
               <li key={idx} className="flex items-start">
                 <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0 mt-0.5" />
-                <span className="text-[15px] text-slate-300">{industry}</span>
+                <span className="text-[14px] text-slate-300">{industry}</span>
               </li>
             ))}
           </ul>

@@ -41,7 +41,7 @@ export default function Footer() {
                 { name: 'Contact', href: '/contact' }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-slate-400 hover:text-[#E8B84B] text-[15px] transition-colors">
+                  <Link href={item.href} className="text-slate-400 hover:text-[#E8B84B] text-[14px] transition-colors">
                     {item.name}
                   </Link>
                 </li>

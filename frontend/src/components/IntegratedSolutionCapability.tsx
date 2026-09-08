@@ -54,11 +54,11 @@ export default function IntegratedSolutionCapability() {
             viewport={{ once: true }}
             className="xl:col-span-5 sticky top-24"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
               More Than One Technology. <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">One Connected Solution.</span>
             </h2>
-            <div className="text-[17px] text-slate-300 mb-8 leading-relaxed space-y-5">
+            <div className="text-[15.5px] text-slate-300 mb-8 leading-relaxed space-y-5">
               <p>Industrial problems rarely belong to a single technical discipline.</p>
               <p>A production issue may require mechanical changes, electrical controls, automation, sensors, software, installation and ongoing maintenance. Sanota brings these capabilities together through one coordinated solution.</p>
             </div>
@@ -73,7 +73,7 @@ export default function IntegratedSolutionCapability() {
 
             <Link
               href="/services"
-              className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group w-full sm:w-auto"
+              className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group w-full sm:w-auto"
             >
               Explore Our Services
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

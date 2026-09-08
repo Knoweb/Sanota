@@ -33,7 +33,7 @@ export default function ProjectExecution() {
             viewport={{ once: true }}
           >
             <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">Project Execution</h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-6">
               From Approved Design to an <span className="text-[#2E5EAA]">Operating System</span>
             </h3>
             <p className="text-lg text-slate-400 mb-6">
@@ -58,7 +58,7 @@ export default function ProjectExecution() {
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#2E5EAA]/10 to-transparent rounded-full blur-2xl -z-10" />
             
-            <h4 className="text-xl font-bold text-white mb-8">Depending on the project, our scope can include:</h4>
+            <h4 className="text-lg font-bold text-white mb-8">Depending on the project, our scope can include:</h4>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
               {executionScope.map((item, idx) => (

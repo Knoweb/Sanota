@@ -56,10 +56,10 @@ export default function CompletedWork() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
               See Sanota in Action
             </h2>
-            <p className="text-[17px] text-slate-400 leading-relaxed">
+            <p className="text-[15.5px] text-slate-400 leading-relaxed">
               Explore how Sanota combines engineering and technology to solve real operational requirements across industries.
             </p>
           </motion.div>

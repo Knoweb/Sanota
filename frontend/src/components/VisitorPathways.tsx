@@ -22,7 +22,7 @@ export default function VisitorPathways() {
             
             <div className="relative z-10 mb-12">
               <h2 className="text-3xl font-black text-white mb-4">I Need to Solve a Problem</h2>
-              <div className="text-slate-400 text-[15px] leading-relaxed max-w-lg space-y-4 mb-6">
+              <div className="text-slate-400 text-[14px] leading-relaxed max-w-lg space-y-4 mb-6">
                 <p>You do not need to arrive with a completed technical specification.</p>
                 <p>Tell us about the present situation, what is not working and what you need to achieve.</p>
                 <p>Sanota will help identify the appropriate combination of engineering, automation, digital technology and technical support.</p>
@@ -64,7 +64,7 @@ export default function VisitorPathways() {
             
             <div className="relative z-10 mb-12">
               <h2 className="text-3xl font-black text-white mb-4">I Want to Explore Sanota</h2>
-              <div className="text-slate-400 text-[15px] leading-relaxed max-w-lg mb-6">
+              <div className="text-slate-400 text-[14px] leading-relaxed max-w-lg mb-6">
                 <p>Discover the machinery, systems, products and integrated solutions Sanota has developed across industries.</p>
               </div>
               <p className="text-slate-300 font-bold mb-3">Explore:</p>

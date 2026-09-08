@@ -26,23 +26,23 @@ export default function AMCAndLifecycle() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-6">
                 Industrial systems require <span className="text-[#2E5EAA]">continuous maintenance</span> to perform at peak capacity.
               </h2>
-              <p className="text-[17px] text-slate-400 mb-8 leading-relaxed">
+              <p className="text-[15.5px] text-slate-400 mb-8 leading-relaxed">
                 Sanota provides ongoing support for machinery, automation and integrated systems developed by our team, as well as eligible third-party industrial systems.
               </p>
               
               <div className="flex items-center space-x-4 p-5 bg-[#0B1220]/50 rounded-xl border border-slate-800/80 mb-10">
                 <Shield className="w-10 h-10 text-[#2E5EAA] shrink-0" />
-                <p className="text-[14.5px] text-slate-300 leading-relaxed">
+                <p className="text-[13.5px] text-slate-300 leading-relaxed">
                   AMC scope, service frequency and response arrangements are developed according to the equipment, operating environment and criticality of your assets.
                 </p>
               </div>
 
               <Link
                 href="/services"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group w-fit"
+                className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group w-fit"
               >
                 Learn About AMC Support
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -66,7 +66,7 @@ export default function AMCAndLifecycle() {
                 {amcScope.map((item, idx) => (
                   <div key={idx} className="flex items-start group">
                     <CheckCircle2 className="w-5 h-5 text-slate-600 mr-4 shrink-0 mt-0.5 group-hover:text-[#E8B84B] transition-colors" />
-                    <span className="text-slate-300 text-[15px] leading-relaxed">{item}</span>
+                    <span className="text-slate-300 text-[14px] leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>

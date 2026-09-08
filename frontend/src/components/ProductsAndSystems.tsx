@@ -30,10 +30,10 @@ export default function ProductsAndSystems() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-6">
                 Custom engineering and standardized products for industrial use.
               </h2>
-              <p className="text-[17px] text-slate-400 mb-10 leading-relaxed">
+              <p className="text-[15.5px] text-slate-400 mb-10 leading-relaxed">
                 Sanota develops standard, configurable and custom-engineered products and systems for specific industrial and operational applications.
               </p>
               <Link
@@ -62,7 +62,7 @@ export default function ProductsAndSystems() {
                   <div className="w-12 h-12 shrink-0 rounded-xl bg-[#0B1220] border border-[#1e293b] flex items-center justify-center group-hover:border-[#E8B84B] group-hover:shadow-[0_0_15px_rgba(232,184,75,0.2)] transition-all duration-300 z-10">
                     <product.icon className="w-6 h-6 text-slate-300 group-hover:text-[#E8B84B] transition-colors duration-300" />
                   </div>
-                  <h4 className="text-[15px] font-bold text-white group-hover:text-[#E8B84B] transition-colors z-10 leading-tight">
+                  <h4 className="text-[14px] font-bold text-white group-hover:text-[#E8B84B] transition-colors z-10 leading-tight">
                     {product.title}
                   </h4>
                 </motion.div>

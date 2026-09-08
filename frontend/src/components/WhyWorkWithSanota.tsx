@@ -51,7 +51,7 @@ export default function WhyWorkWithSanota() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight"
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"
           >
             A Practical Approach to Engineering
           </motion.h3>
@@ -71,7 +71,7 @@ export default function WhyWorkWithSanota() {
                 <reason.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors" />
               </div>
               <h4 className="text-[18px] font-bold text-white mb-4 group-hover:text-[#E8B84B] transition-colors">{reason.title}</h4>
-              <p className="text-slate-400 leading-relaxed text-[14.5px] flex-grow">
+              <p className="text-slate-400 leading-relaxed text-[13.5px] flex-grow">
                 {reason.description}
               </p>
             </motion.div>
@@ -86,7 +86,7 @@ export default function WhyWorkWithSanota() {
         >
           <Link
             href="/about"
-            className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group"
+            className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group"
           >
             Learn More About Sanota
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

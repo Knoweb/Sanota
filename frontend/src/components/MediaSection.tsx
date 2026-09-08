@@ -26,7 +26,7 @@ export default function MediaSection() {
             className="max-w-2xl"
           >
             <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">Media</h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Keep up with Sanota's projects, news and <span className="text-[#2E5EAA]">technical capabilities.</span>
             </h3>
           </motion.div>
@@ -37,7 +37,7 @@ export default function MediaSection() {
           >
              <Link
                href="/media"
-               className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[15px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
+               className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[14px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
              >
                Visit the Media Center
                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export default function MediaSection() {
                 <cat.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-white transition-colors duration-300" />
               </div>
               <h4 className="text-[18px] font-bold text-white mb-3 group-hover:text-[#E8B84B] transition-colors">{cat.title}</h4>
-              <p className="text-[14.5px] text-slate-400 mb-8 leading-relaxed flex-grow">
+              <p className="text-[13.5px] text-slate-400 mb-8 leading-relaxed flex-grow">
                 {cat.desc}
               </p>
               <Link 
