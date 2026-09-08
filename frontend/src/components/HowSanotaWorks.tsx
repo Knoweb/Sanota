@@ -7,38 +7,38 @@ import { MessageSquare, Search, PenTool, Wrench, PlayCircle, TrendingUp } from "
 const steps = [
   {
     num: "1",
-    title: "The Requirement",
-    desc: "You define the operational challenge, production bottleneck or new capability required.",
+    title: "Understand",
+    desc: "We listen to the customer and understand the operation, challenge and expected result.",
     icon: MessageSquare,
   },
   {
     num: "2",
-    title: "Initial Assessment",
-    desc: "Our engineers evaluate the site, operational constraints, technical requirements and available resources.",
+    title: "Assess",
+    desc: "We study the process, machinery, site conditions, limitations and available opportunities.",
     icon: Search,
   },
   {
     num: "3",
-    title: "System Design",
-    desc: "We engineer a coordinated solution involving mechanical, electrical, software and automation components.",
+    title: "Design",
+    desc: "We develop the engineering concept, system architecture and implementation approach.",
     icon: PenTool,
   },
   {
     num: "4",
-    title: "Development & Fabrication",
-    desc: "The system is built, programmed and tested at our engineering facilities.",
+    title: "Integrate",
+    desc: "We coordinate mechanical, electrical, automation, IoT and software components.",
     icon: Wrench,
   },
   {
     num: "5",
-    title: "Installation & Commissioning",
-    desc: "Our team deploys the solution on-site, integrating it with your existing operations.",
+    title: "Implement",
+    desc: "We build, install, test, commission and hand over the completed solution.",
     icon: PlayCircle,
   },
   {
     num: "6",
-    title: "Handover & Support",
-    desc: "We provide training, documentation, and ongoing maintenance to ensure reliable operation.",
+    title: "Support",
+    desc: "We provide training, maintenance, AMC, upgrades and continuing performance improvement.",
     icon: TrendingUp,
   }
 ];
@@ -70,7 +70,7 @@ export default function HowSanotaWorks() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4"
           >
-            Because we handle the complete engineering process, working with Sanota follows a clear structure.
+            From Requirement to Working Solution
           </motion.h3>
         </div>
 
@@ -111,7 +111,7 @@ export default function HowSanotaWorks() {
                           <span className="text-[#2E5EAA] mr-3 md:hidden">0{step.num}.</span>
                           {step.title}
                         </h4>
-                        <p className="text-slate-400 text-sm leading-relaxed">
+                        <p className="text-[14.5px] text-slate-400 leading-relaxed">
                           {step.desc}
                         </p>
                       </div>
@@ -128,10 +128,10 @@ export default function HowSanotaWorks() {
               className="text-center pt-8"
             >
               <Link
-                href="/about"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[14px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
+                href="/contact"
+                className="inline-flex justify-center items-center px-8 py-3.5 border border-[#2E5EAA] text-[15px] font-bold rounded-lg text-white hover:bg-[#2E5EAA]/10 transition-colors group"
               >
-                View Development Process
+                Start a Discussion
               </Link>
             </motion.div>
           </div>

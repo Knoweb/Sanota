@@ -6,24 +6,34 @@ import Link from "next/link";
 
 const reasons = [
   {
-    title: "Engineering First",
-    description: "We do not just assemble components. We engineer solutions from the ground up, starting with mechanical design and extending through electrical and software integration.",
+    title: "Integrated In-House Capability",
+    description: "The resources required for engineering, automation, IoT, software and implementation are coordinated within the Sanota solution environment.",
     icon: Layers,
   },
   {
-    title: "Integrated Responsibility",
-    description: "When multiple contractors are involved, resolving system issues becomes complicated. Sanota takes complete responsibility for the entire engineered solution.",
-    icon: Settings,
-  },
-  {
-    title: "Practical Automation",
-    description: "We implement technology where it provides a measurable operational benefit, avoiding unnecessary complexity in favour of robust, reliable systems.",
+    title: "Practical Engineering",
+    description: "Solutions are developed around real operating conditions, customer priorities and implementation requirements.",
     icon: Target,
   },
   {
-    title: "Long-Term Support",
-    description: "Industrial systems must operate reliably for years. We support our installations with maintenance, technical support, training and component replacement.",
+    title: "Custom Development",
+    description: "We can develop solutions for requirements that cannot be adequately addressed by standard products.",
+    icon: Settings,
+  },
+  {
+    title: "Modernization Expertise",
+    description: "Existing machinery and systems can often be restored, upgraded and connected before replacement becomes necessary.",
+    icon: Repeat,
+  },
+  {
+    title: "End-to-End Delivery",
+    description: "Sanota can remain involved from assessment and design through commissioning and lifecycle support.",
     icon: ShieldCheck,
+  },
+  {
+    title: "Multi-Industry Understanding",
+    description: "Experience across different industries allows relevant technologies and ideas to be adapted to new operational environments.",
+    icon: Lightbulb,
   }
 ];
 
@@ -44,7 +54,7 @@ export default function WhyWorkWithSanota() {
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
-            Why Work With Sanota
+            Why Sanota
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -53,11 +63,11 @@ export default function WhyWorkWithSanota() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"
           >
-            A Practical Approach to Engineering
+            One Accountable Engineering Partner
           </motion.h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {reasons.map((reason, idx) => (
             <motion.div
               key={idx}
@@ -71,7 +81,7 @@ export default function WhyWorkWithSanota() {
                 <reason.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors" />
               </div>
               <h4 className="text-[18px] font-bold text-white mb-4 group-hover:text-[#E8B84B] transition-colors">{reason.title}</h4>
-              <p className="text-slate-400 leading-relaxed text-[13.5px] flex-grow">
+              <p className="text-slate-400 leading-relaxed text-[14px] flex-grow">
                 {reason.description}
               </p>
             </motion.div>
@@ -88,7 +98,7 @@ export default function WhyWorkWithSanota() {
             href="/about"
             className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group"
           >
-            Learn More About Sanota
+            About Sanota
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

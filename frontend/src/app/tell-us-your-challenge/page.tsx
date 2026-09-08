@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 const steps = [
   { id: 1, title: "The Core Requirement" },
