@@ -410,30 +410,173 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        {/* Integrated Service Model */}
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Integrated Service Model</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">One Requirement May Use Several Sanota Services</h3>
+              <p className="text-slate-400 text-lg max-w-2xl mx-auto">A client does not need to decide which technical departments should be involved. Sanota first studies the requirement and then identifies the appropriate combination of services.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+              {[
+                { title: "Modernizing an Existing Machine", steps: ["Consultation and assessment", "Mechanical and electrical redesign", "Automation and control upgrade", "IoT monitoring", "Installation and commissioning", "AMC and lifecycle support"], color: "from-blue-600 to-cyan-500" },
+                { title: "Developing a New Product", steps: ["Requirement definition", "Engineering and product design", "Prototype development", "Electronics and software integration", "Testing and improvement", "Production-development support"], color: "from-emerald-500 to-teal-500" },
+                { title: "Automating an Industrial Process", steps: ["Process analysis", "Automation design", "Machinery and controls integration", "Dashboard or software development", "Installation and commissioning", "Training and ongoing support"], color: "from-purple-600 to-pink-500" },
+              ].map((example, idx) => (
+                <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="bg-[#131C2E]/50 border border-slate-800 rounded-2xl p-7 hover:border-slate-700 transition-colors">
+                  <div className={`w-10 h-1 rounded-full bg-gradient-to-r ${example.color} mb-5`} />
+                  <h4 className="text-white font-bold text-lg mb-6 leading-snug">{example.title}</h4>
+                  <div className="space-y-3">
+                    {example.steps.map((step, sIdx) => (
+                      <div key={sIdx} className="flex items-start">
+                        <span className="text-xs font-black mr-3 mt-0.5 text-slate-500 shrink-0">{String(sIdx + 1).padStart(2, '0')}</span>
+                        <p className="text-slate-400 text-sm leading-relaxed">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link href="/tell-us-your-challenge" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
+                Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* How to Engage */}
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How to Engage Sanota</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Start With the Operational Need</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+              {[
+                { n: "1", title: "Tell Us the Challenge", desc: "Explain what is not working, what needs improvement or what you want to develop." },
+                { n: "2", title: "Initial Technical Review", desc: "Sanota reviews the requirement and identifies the relevant capabilities and specialists." },
+                { n: "3", title: "Consultation or Assessment", desc: "The next step may include a discussion, document review, site visit or technical inspection." },
+                { n: "4", title: "Recommended Approach", desc: "Sanota defines the proposed solution pathway, scope and implementation requirements." },
+                { n: "5", title: "Design and Delivery", desc: "Following agreement, the solution moves through design, development, integration, implementation and commissioning." },
+                { n: "6", title: "Continued Support", desc: "Training, maintenance, AMC and future modernization support can be provided where required." },
+              ].map((step, idx) => (
+                <motion.div key={idx} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.07 }} className="flex bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E]/80 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/20 flex items-center justify-center mr-5 flex-shrink-0">
+                    <span className="text-[#E8B84B] font-black text-sm">{step.n}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold mb-2">{step.title}</h4>
+                    <p className="text-slate-400 text-sm leading-relaxed">{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <div className="bg-[#2E5EAA]/10 border border-[#2E5EAA]/20 rounded-2xl p-6 text-center">
+              <p className="text-slate-300 leading-relaxed">
+                <span className="font-bold text-white">You do not need to prepare a complete technical specification before contacting Sanota.</span> Begin with the problem or desired outcome.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Industries Supported */}
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Industries Supported</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Services Shaped Around Different Operating Environments</h3>
+                <p className="text-slate-400 text-lg leading-relaxed mb-8">Sanota's services can support requirements across a wide range of industries. The final solution is developed around the client's actual operating environment, technical requirements and business priorities.</p>
+                <Link href="/industries" className="inline-flex items-center px-7 py-3.5 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
+                  Explore Industries <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {["Manufacturing and industrial automation", "Smart agriculture and agri-technology", "Food and beverage processing", "Tea", "Logistics, warehousing and material handling", "Energy and resource efficiency", "Environmental and waste management", "Infrastructure and smart facilities", "Healthcare and biomedical engineering", "Research, innovation and product development"].map((industry, idx) => (
+                  <div key={idx} className="flex items-center bg-[#131C2E]/60 border border-slate-800 rounded-xl px-4 py-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 shrink-0" />
+                    <span className="text-slate-300 text-sm">{industry}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sanota + Knoweb */}
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Sanota + Knoweb</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Engineering Strengthened by Software and Digital Capability</h3>
+            <div className="space-y-5 text-slate-400 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+              <p>Through its collaboration with Knoweb, Sanota can integrate engineering solutions with software, cloud platforms, IoT applications, web and mobile systems, dashboards and enterprise technologies.</p>
+              <p>This relationship allows clients to access engineering and digital capability through one coordinated solution environment.</p>
+              <p>Sanota remains responsible for understanding and coordinating the overall engineering requirement, while Knoweb contributes specialized IT and software capability where required.</p>
+            </div>
+            <Link href="#automation-iot" className="inline-flex items-center px-7 py-3.5 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
+              Explore IoT & Digital Integration <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Why Work With Sanota */}
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Why Work With Sanota?</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-white">Practical Capability Across the Complete Solution Lifecycle</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {["Multi-disciplinary engineering and technology capability", "Solutions designed around real operational requirements", "Experience supporting different industries in Sri Lanka", "Custom machinery, product and system development", "Integration of engineering, automation, IoT and software", "Modernization of existing machinery and systems", "Project execution from design to commissioning", "AMC support for Sanota-built and eligible third-party systems", "Training and long-term technical assistance", "One coordinated point of responsibility"].map((point, idx) => (
+                <motion.div key={idx} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.04 }} className="flex items-start bg-[#0B1220]/60 border border-slate-800 rounded-xl px-5 py-4">
+                  <div className="w-2 h-2 rounded-full bg-[#E8B84B] mt-1.5 mr-3 shrink-0" />
+                  <p className="text-slate-300 text-sm leading-relaxed">{point}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Completed Work */}
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Completed Work</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">See How Sanota Applies These Services</h3>
+            <div className="space-y-4 text-slate-400 text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+              <p>Explore examples of machinery development, industrial automation, smart agriculture, IoT integration, process improvement, modernization and technical support.</p>
+              <p>Each project story demonstrates the challenge, the services brought together and the resulting working solution.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/media" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
+                View Completed Work <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link href="/media" className="px-8 py-4 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+                Visit the Media Centre
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="py-24 bg-[#131C2E] border-t border-slate-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Start With the Challenge. <br className="hidden md:block" />
-              <span className="text-[#E8B84B]">We Will Help Define the Solution.</span>
+              What Challenge Can We Help You Solve?
             </h2>
             <p className="text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
-              From machinery and automation to IoT, software, implementation and lifecycle support, Sanota brings the necessary capabilities together around your requirement.
+              Tell us what is not working, what needs improvement or what you want to develop. Sanota will review the requirement and guide you towards the appropriate engineering, automation, digital, implementation or maintenance solution.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/tell-us-your-challenge"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center"
-              >
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
                 Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link
-                href="/products"
-                className="px-8 py-4 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center"
-              >
-                Explore Products & Systems
+              <Link href="/contact" className="px-8 py-4 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+                Contact Sanota
               </Link>
             </div>
+            <p className="text-slate-500 text-sm italic">From operational challenge to integrated engineering solution.</p>
           </div>
         </section>
 

@@ -38,12 +38,12 @@ export default function Hero() {
               <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Integrated Engineering Solutions</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold tracking-tight text-white mb-5 leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-white mb-5 leading-[1.15]">
               One Challenge. <br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">One Integrated Engineering Solution.</span>
             </h1>
 
-            <div className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed space-y-4">
+            <div className="text-md text-slate-300 mb-8 max-w-2xl leading-relaxed space-y-4">
               <p>Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team.</p>
               <p>Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward.</p>
             </div>
