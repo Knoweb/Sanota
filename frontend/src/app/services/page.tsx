@@ -343,7 +343,7 @@ export default function ServicesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.05 * (idx % 4) }}
-                  className="bg-[#131C2E]/50 border border-slate-800 rounded-3xl p-8 md:p-10 hover:border-slate-700 transition-colors"
+                  className="glowing-card bg-[#131C2E]/50 border border-slate-800 rounded-3xl p-8 md:p-10 hover:border-slate-700 transition-colors"
                 >
                   <div className="flex flex-col lg:flex-row gap-10">
                     
@@ -462,7 +462,7 @@ export default function ServicesPage() {
                 { n: "5", title: "Design and Delivery", desc: "Following agreement, the solution moves through design, development, integration, implementation and commissioning." },
                 { n: "6", title: "Continued Support", desc: "Training, maintenance, AMC and future modernization support can be provided where required." },
               ].map((step, idx) => (
-                <motion.div key={idx} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.07 }} className="flex bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E]/80 transition-colors">
+                <motion.div key={idx} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.07 }} className="glowing-card flex bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E]/80 transition-colors">
                   <div className="w-10 h-10 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/20 flex items-center justify-center mr-5 flex-shrink-0">
                     <span className="text-[#E8B84B] font-black text-sm">{step.n}</span>
                   </div>

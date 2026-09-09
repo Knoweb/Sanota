@@ -100,7 +100,7 @@ export default function HowSanotaWorks() {
 
                     {/* Content Card */}
                     <div className={`md:w-1/2 pl-20 md:px-12 w-full ${isEven ? 'md:text-left' : 'md:text-right'}`}>
-                      <div className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-[#2E5EAA]/50 transition-colors relative group">
+                      <div className="glowing-card bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-[#2E5EAA]/50 transition-colors relative group">
                         <div className={`absolute top-1/2 -translate-y-1/2 w-0 h-0 border-y-8 border-y-transparent ${isEven ? 'left-[-8px] border-r-8 border-r-slate-800' : 'right-[-8px] border-l-8 border-l-slate-800'} hidden md:block group-hover:${isEven ? 'border-r-[#2E5EAA]/50' : 'border-l-[#2E5EAA]/50'} transition-colors`} />
                         
                         <div className={`text-[#E8B84B] font-black text-5xl absolute opacity-10 top-4 ${isEven ? 'right-6' : 'left-6'} pointer-events-none`}>

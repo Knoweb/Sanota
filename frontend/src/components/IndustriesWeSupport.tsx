@@ -123,7 +123,7 @@ export default function IndustriesWeSupport() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 rounded-3xl p-10 md:p-12 relative overflow-hidden"
+          className="glowing-card bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 rounded-3xl p-10 md:p-12 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#2E5EAA]/10 to-transparent pointer-events-none" />
           

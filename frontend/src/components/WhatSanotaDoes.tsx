@@ -66,7 +66,7 @@ export default function WhatSanotaDoes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl text-center flex flex-col items-center hover:border-[#E8B84B]/50 hover:bg-[#131C2E] transition-all group"
+              className="glowing-card bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl text-center flex flex-col items-center hover:border-[#E8B84B]/50 hover:bg-[#131C2E] transition-all group"
             >
               <div className="w-16 h-16 bg-[#0B1220] rounded-2xl flex items-center justify-center mb-6 border border-slate-700 group-hover:border-[#E8B84B] transition-colors shadow-lg">
                  <service.icon className="w-8 h-8 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors" />

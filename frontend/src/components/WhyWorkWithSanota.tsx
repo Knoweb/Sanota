@@ -75,7 +75,7 @@ export default function WhyWorkWithSanota() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl hover:bg-[#131C2E]/80 hover:border-[#E8B84B]/30 transition-all duration-300 group flex flex-col h-full"
+              className="glowing-card bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl hover:bg-[#131C2E]/80 hover:border-[#E8B84B]/30 transition-all duration-300 group flex flex-col h-full"
             >
               <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B] transition-colors">
                 <reason.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors" />

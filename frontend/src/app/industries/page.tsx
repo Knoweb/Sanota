@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -17,6 +18,7 @@ const operationalUnderstanding = [
 const priorityIndustries = [
   {
     title: "Manufacturing & Industrial Automation",
+    shortTitle: "Manufacturing",
     subtitle: "Modernize, Automate and Improve Production",
     desc: "Sanota helps manufacturers improve production, equipment reliability, safety and process control through custom machinery, industrial automation, connected monitoring and modernization of existing assets.",
     icon: Factory,
@@ -30,6 +32,7 @@ const priorityIndustries = [
   },
   {
     title: "Smart Agriculture & Agri-Technology",
+    shortTitle: "Smart Agriculture",
     subtitle: "Engineering Smarter and More Resource-Efficient Agriculture",
     desc: "Sanota develops controlled-agriculture, automation and monitoring systems that help growers manage water, nutrients, climate and crop conditions with greater precision.",
     icon: Sprout,
@@ -43,6 +46,7 @@ const priorityIndustries = [
   },
   {
     title: "Food & Beverage Processing",
+    shortTitle: "Food & Beverage",
     subtitle: "Turn Raw Materials into Consistent, Market-Ready Products",
     desc: "Sanota designs food-processing equipment and integrated systems that support better hygiene, process control, preservation, throughput and value addition.",
     icon: Coffee,
@@ -56,6 +60,7 @@ const priorityIndustries = [
   },
   {
     title: "Tea Industry Solutions",
+    shortTitle: "Tea Industry",
     subtitle: "Modern Engineering for Sri Lanka’s Tea Value Chain",
     desc: "Sanota supports tea factories, estates, smallholders and specialty producers with processing machinery, automation, environmental control, digital monitoring and lifecycle support.",
     icon: Leaf,
@@ -151,6 +156,8 @@ const partnerTypes = [
 ];
 
 export default function IndustriesPage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
@@ -233,7 +240,7 @@ export default function IndustriesPage() {
                   ))}
                 </div>
               </div>
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col justify-center h-full">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col justify-center h-full">
                 <p className="text-white text-2xl font-bold leading-relaxed">
                   We then combine the appropriate engineering and technology capabilities to develop a practical and scalable solution.
                 </p>
@@ -242,49 +249,90 @@ export default function IndustriesPage() {
           </div>
         </section>
 
-        {/* 3. Priority Industries */}
-        <section id="industries" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Priority Industries</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white">Core Sectors We Serve</h3>
-            </div>
-            
-            <div className="space-y-12">
-              {priorityIndustries.map((industry, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl overflow-hidden flex flex-col lg:flex-row group">
-                  <div className="lg:w-2/5 relative min-h-[300px] lg:min-h-full">
-                    {/* Placeholder for the image or illustration */}
-                    <div className="absolute inset-0 bg-[#0B1220] border-r border-slate-800" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <industry.icon className="w-32 h-32 text-slate-800/50 group-hover:text-[#2E5EAA]/30 transition-colors" />
-                    </div>
-                  </div>
-                  <div className="lg:w-3/5 p-8 sm:p-12">
-                    <div className="flex items-center mb-4">
-                      <industry.icon className="w-8 h-8 text-[#E8B84B] mr-4" />
-                      <h4 className="text-2xl sm:text-3xl font-bold text-white">{industry.title}</h4>
-                    </div>
-                    <p className="text-[#2E5EAA] font-bold text-lg mb-4">{industry.subtitle}</p>
-                    <p className="text-slate-300 leading-relaxed mb-8">{industry.desc}</p>
-                    
-                    <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Our support can include:</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-                      {industry.points.map((point, pIdx) => (
-                        <div key={pIdx} className="flex items-start">
-                          <CheckCircle2 className="w-4 h-4 text-[#E8B84B] mr-2 shrink-0 mt-0.5" />
-                          <span className="text-slate-400 text-sm leading-relaxed">{point}</span>
-                        </div>
-                      ))}
-                    </div>
+        {/* 3. Priority Industries (Interactive) */}
+        <section id="industries" className="relative py-24 min-h-[90vh] flex items-center overflow-hidden bg-[#050B14]">
+          {/* Background Images with AnimatePresence */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 0.7, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: `url(${priorityIndustries[activeIndex].bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          </AnimatePresence>
+          
+          {/* Dark gradient overlay to make text readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050B14] via-[#050B14]/80 to-[#050B14]/40 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-[#050B14]/30 z-0" />
 
-                    <Link href="#" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-lg transition-colors text-sm">
-                      {industry.buttonText} <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
+            
+            {/* Left Column: Titles */}
+            <div className="lg:w-1/3 flex flex-col space-y-8">
+              {priorityIndustries.map((ind, idx) => (
+                <button 
+                  key={idx} 
+                  onClick={() => setActiveIndex(idx)}
+                  className={`text-left text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-widest transition-all duration-300 border-l-4 pl-6 py-2
+                    ${idx === activeIndex 
+                      ? 'text-white border-[#E8B84B] translate-x-2' 
+                      : 'text-slate-600 border-transparent hover:text-slate-400'}`}
+                >
+                  {ind.shortTitle}
+                </button>
               ))}
             </div>
+
+            {/* Right Column: Content */}
+            <div className="lg:w-2/3 border-l border-white/10 pl-8 lg:pl-16 py-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="flex items-center mb-4">
+                    {(() => {
+                      const Icon = priorityIndustries[activeIndex].icon;
+                      return <Icon className="w-8 h-8 text-[#E8B84B] mr-4" />;
+                    })()}
+                    <h3 className="text-2xl sm:text-4xl font-bold text-white leading-tight">
+                      {priorityIndustries[activeIndex].title}
+                    </h3>
+                  </div>
+                  <p className="text-[#2E5EAA] font-bold text-lg mb-6 tracking-wide">
+                    {priorityIndustries[activeIndex].subtitle}
+                  </p>
+                  <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-2xl">
+                    {priorityIndustries[activeIndex].desc}
+                  </p>
+                  
+                  <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Our support can include:</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10 max-w-3xl">
+                    {priorityIndustries[activeIndex].points.map((pt, i) => (
+                      <div key={i} className="flex items-start">
+                        <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0" />
+                        <span className="text-slate-300 font-medium">{pt}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Link href="#" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors text-sm shadow-lg shadow-[#E8B84B]/20">
+                    {priorityIndustries[activeIndex].buttonText} <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            
           </div>
         </section>
 
@@ -298,7 +346,7 @@ export default function IndustriesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {additionalIndustries.map((ind, idx) => (
-                <div key={idx} className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
+                <div key={idx} className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
                   <div className="w-14 h-14 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
                     <ind.icon className="w-7 h-7 text-[#E8B84B]" />
                   </div>
@@ -327,7 +375,7 @@ export default function IndustriesPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {engineeringJourney.map((step, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 relative group hover:-translate-y-1 transition-transform">
+                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 relative group hover:-translate-y-1 transition-transform">
                   <div className="absolute top-6 right-6 text-slate-800 font-black text-4xl opacity-50 group-hover:text-slate-700 transition-colors">0{idx + 1}</div>
                   <step.icon className="w-8 h-8 text-[#E8B84B] mb-6 relative z-10" />
                   <h4 className="text-lg font-bold text-white mb-3 relative z-10">{step.title}</h4>
@@ -348,7 +396,7 @@ export default function IndustriesPage() {
         <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1 bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 sm:p-12">
+              <div className="glowing-card order-2 lg:order-1 bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 sm:p-12">
                 <p className="text-white text-xl font-bold leading-relaxed mb-8">
                   This combination helps customers move from isolated machinery and manual records toward more connected and visible operations.
                 </p>
@@ -386,7 +434,7 @@ export default function IndustriesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               
               {/* Modernization */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col">
                 <RefreshCw className="w-10 h-10 text-[#E8B84B] mb-6" />
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Modernization Across Industries</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Improve Existing Operations Before Unnecessary Replacement</h3>
@@ -415,7 +463,7 @@ export default function IndustriesPage() {
               </div>
 
               {/* AMC */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col">
                 <ShieldCheck className="w-10 h-10 text-[#E8B84B] mb-6" />
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">AMC and Industry Lifecycle Support</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Keep Critical Systems Operating Reliably</h3>

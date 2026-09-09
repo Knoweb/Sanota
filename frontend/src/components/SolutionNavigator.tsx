@@ -85,13 +85,13 @@ export default function SolutionNavigator() {
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
                 className="flex"
               >
-                <div className="flex flex-col p-8 rounded-2xl bg-[#0B1220] border border-slate-800 hover:border-[#E8B84B]/50 transition-all duration-300 group w-full relative">
+                <div className="glowing-card flex flex-col p-8 rounded-2xl bg-[#0B1220] border border-slate-800 hover:border-[#E8B84B]/50 transition-all duration-300 group w-full relative">
                   <div className="w-14 h-14 rounded-xl bg-[#131C2E] flex items-center justify-center mb-6 border border-slate-800">
                     <Icon className="w-7 h-7 text-[#E8B84B]" />
                   </div>

@@ -180,7 +180,7 @@ export default function AboutPage() {
                   ))}
                 </div>
                 
-                <div className="bg-[#131C2E]/60 border border-slate-800 rounded-xl p-6">
+                <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-xl p-6">
                   <p className="text-slate-300 italic text-sm leading-relaxed">
                     This integrated capability allows Sanota to take responsibility for more than an individual machine or isolated technology. We consider how the complete system must operate, how it will be implemented and how it can be supported over the long term.
                   </p>
@@ -227,7 +227,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {customerChallenges.map((challenge, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 flex items-start group hover:border-[#E8B84B]/50 transition-colors">
+                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 flex items-start group hover:border-[#E8B84B]/50 transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-[#2E5EAA] mr-4 shrink-0 mt-1" />
                   <p className="text-slate-300 font-medium group-hover:text-white transition-colors">{challenge}</p>
                 </div>
@@ -296,7 +296,7 @@ export default function AboutPage() {
                   ))}
                 </div>
 
-                <div className="bg-[#131C2E]/40 border border-slate-800 rounded-xl p-6 mb-8">
+                <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-xl p-6 mb-8">
                   <p className="text-slate-300 text-sm leading-relaxed mb-4 font-medium">
                     Through these activities, Sanota contributes to local engineering development, industrial productivity, technology adoption, value addition and import-substitution opportunities.
                   </p>
@@ -345,7 +345,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
               
               {/* Sanota and Knoweb */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Sanota and Knoweb</h2>
                 <h3 className="text-3xl font-bold text-white mb-6">Engineering Connected by Digital Technology</h3>
                 <p className="text-slate-300 text-lg leading-relaxed mb-8">
@@ -375,7 +375,7 @@ export default function AboutPage() {
               </div>
 
               {/* Innovation and Collaboration */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Innovation and Collaboration</h2>
                 <h3 className="text-3xl font-bold text-white mb-6">Turning Ideas into Practical Solutions</h3>
                 <p className="text-slate-300 text-lg leading-relaxed mb-8">
@@ -427,7 +427,7 @@ export default function AboutPage() {
               </div>
 
               {/* Mission */}
-              <div className="bg-[#0B1220]/80 backdrop-blur-sm border border-slate-700 rounded-3xl p-10">
+              <div className="glowing-card bg-[#0B1220]/80 backdrop-blur-sm border border-slate-700 rounded-3xl p-10">
                 <Compass className="w-12 h-12 text-[#2E5EAA] mb-6" />
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Our Mission</h2>
                 <p className="text-white text-xl font-bold leading-relaxed mb-8">

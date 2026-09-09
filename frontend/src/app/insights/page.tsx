@@ -332,7 +332,7 @@ export default function InsightsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {insightCategories.map((cat, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
+                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
                   <div className="flex items-center mb-6">
                     <div className="w-14 h-14 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mr-5 shrink-0">
                       <cat.icon className="w-7 h-7 text-[#E8B84B]" />
@@ -341,7 +341,7 @@ export default function InsightsPage() {
                   </div>
                   <p className="text-slate-300 text-lg leading-relaxed mb-6">{cat.desc}</p>
                   
-                  <div className="bg-[#0B1220]/60 border border-slate-800/60 rounded-xl p-6 mb-8 flex-grow">
+                  <div className="glowing-card bg-[#0B1220]/60 border border-slate-800/60 rounded-xl p-6 mb-8 flex-grow">
                     <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Topics may include:</p>
                     <div className="space-y-3">
                       {cat.topics.map((topic, tIdx) => (
@@ -372,7 +372,7 @@ export default function InsightsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredInsights.map((insight, idx) => (
-                <div key={idx} className="bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8 hover:bg-[#131C2E] transition-colors flex flex-col group">
+                <div key={idx} className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8 hover:bg-[#131C2E] transition-colors flex flex-col group">
                   <span className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-3 block">{insight.category}</span>
                   <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[#E8B84B] transition-colors">{insight.title}</h4>
                   <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{insight.summary}</p>
@@ -433,7 +433,7 @@ export default function InsightsPage() {
               <h3 className="text-3xl md:text-4xl font-bold text-white">Individual Article Structure</h3>
             </div>
             
-            <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
+            <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
               <h4 className="text-2xl font-bold text-white mb-2">[Article Title]</h4>
               <p className="text-slate-500 text-sm mb-8 border-b border-slate-700 pb-6">
                 Category: [Insight category] <span className="mx-2">•</span> Published: [Publication date] <span className="mx-2">•</span> Reading time: [Estimated time]
@@ -475,7 +475,7 @@ export default function InsightsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
               {/* Insights by Industry */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Insights by Industry</h2>
                 <h3 className="text-2xl font-bold text-white mb-4">Knowledge Relevant to Your Operating Environment</h3>
                 <p className="text-slate-400 mb-8">Explore insights developed for:</p>
@@ -493,7 +493,7 @@ export default function InsightsPage() {
               </div>
 
               {/* Technical Guides */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Technical Guides</h2>
                 <h3 className="text-2xl font-bold text-white mb-4">Practical Guides and Checklists</h3>
                 <p className="text-slate-400 mb-8">Sanota can provide downloadable resources to help organizations prepare for engineering and technology projects. Suggested guides include:</p>
@@ -568,7 +568,7 @@ export default function InsightsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
               {/* Practical Experience */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Knowledge from Practical Experience</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Insights Informed by Real Operating Requirements</h3>
                 <p className="text-slate-400 mb-8">Sanota’s insight content should be developed using practical engineering experience, project learning and relevant industry knowledge. Every article should aim to:</p>
@@ -588,7 +588,7 @@ export default function InsightsPage() {
               </div>
 
               {/* Disclaimer */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col justify-center">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-10 flex flex-col justify-center">
                 <AlertTriangle className="w-10 h-10 text-[#E8B84B] mb-6" />
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Content Disclaimer</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Important Information</h3>
@@ -617,7 +617,7 @@ export default function InsightsPage() {
               Receive selected engineering insights, project stories, product developments and company updates from Sanota.
             </p>
             
-            <form className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 sm:p-12 text-left">
+            <form className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 sm:p-12 text-left">
               <div className="mb-6">
                 <input 
                   type="email" 

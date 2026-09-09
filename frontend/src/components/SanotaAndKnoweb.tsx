@@ -67,7 +67,7 @@ export default function SanotaAndKnoweb() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#0B1220]/80 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl"
+              className="glowing-card bg-[#0B1220]/80 backdrop-blur-sm border border-slate-800 p-8 rounded-3xl"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
                 {capabilities.map((item, idx) => (

@@ -184,7 +184,7 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Telephone */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
                   <Phone className="w-6 h-6 text-[#E8B84B]" />
                 </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
               </div>
 
               {/* Email */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
                   <Mail className="w-6 h-6 text-[#E8B84B]" />
                 </div>
@@ -216,7 +216,7 @@ export default function ContactPage() {
               </div>
 
               {/* Office Address */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8 flex flex-col">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-8 flex flex-col">
                 <div className="w-12 h-12 rounded-xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
                   <MapPin className="w-6 h-6 text-[#E8B84B]" />
                 </div>
@@ -304,7 +304,7 @@ export default function ContactPage() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="bg-[#131C2E]/60 border border-green-500/50 rounded-2xl p-12 text-center"
+                      className="glowing-card bg-[#131C2E]/60 border border-green-500/50 rounded-2xl p-12 text-center"
                     >
                       <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                         <CheckCircle2 className="w-10 h-10 text-green-500" />
@@ -329,7 +329,7 @@ export default function ContactPage() {
                       initial={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onSubmit={handleSubmit} 
-                      className="bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-8 sm:p-10"
+                      className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-3xl p-8 sm:p-10"
                     >
                       {/* Your Details */}
                       <h4 className="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-4">Your Details</h4>
@@ -474,7 +474,7 @@ export default function ContactPage() {
               <div className="space-y-8">
                 
                 {/* Request a Call Form */}
-                <div id="request-call" className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
+                <div id="request-call" className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
                   <h3 className="text-xl font-bold text-white mb-4">Ask the Sanota Team to Contact You</h3>
                   <p className="text-slate-400 text-sm mb-6">Provide your details and preferred contact time, and a representative will contact you to discuss the requirement.</p>
                   
@@ -500,7 +500,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* What Happens Next */}
-                <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
+                <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
                   <h3 className="text-xl font-bold text-white mb-2">What Happens Next?</h3>
                   <p className="text-slate-400 text-sm mb-6">A Clear Route from Enquiry to Action</p>
                   
@@ -520,7 +520,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Location */}
-                <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
+                <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8">
                   <h3 className="text-xl font-bold text-white mb-4">Visit Sanota</h3>
                   <div className="bg-[#0B1220] h-48 rounded-xl border border-slate-700 mb-6 flex items-center justify-center">
                     <MapPin className="w-8 h-8 text-slate-600" />

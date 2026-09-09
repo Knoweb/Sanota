@@ -33,7 +33,7 @@ export default function CorporateProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col p-6 rounded-2xl bg-[#131C2E] border border-slate-800 hover:border-[#E8B84B]/30 transition-colors"
+              className="glowing-card flex flex-col p-6 rounded-2xl bg-[#131C2E] border border-slate-800 hover:border-[#E8B84B]/30 transition-colors"
             >
               <h3 className="text-lg font-black text-[#E8B84B] mb-3">{point.title}</h3>
               <p className="text-sm font-medium text-slate-300 leading-relaxed">{point.description}</p>

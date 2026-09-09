@@ -179,7 +179,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              <h3 className="text-xl font-bold text-white mb-6">Specific Details</h3>
              
              {data.coreRequirements.includes("modernize") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Modernize or Repair a Machine</h4>
                  
                  <div className="space-y-2">
@@ -212,7 +212,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("automate") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Automate a Process</h4>
                  
                  <div className="space-y-2">
@@ -245,7 +245,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("new_machine") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Develop a New Machine</h4>
                  <div className="space-y-2">
                    <label className="text-white font-semibold">What should the machine do?</label>
@@ -269,7 +269,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("complete_system") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Develop a Complete System</h4>
                  <div className="space-y-2">
                    <label className="text-white font-semibold">What type of system or facility is required?</label>
@@ -292,7 +292,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("iot") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Introduce IoT or Digital Monitoring</h4>
                  <div className="space-y-2">
                    <label className="text-white font-semibold block mb-2">What would you like to monitor or control?</label>
@@ -324,7 +324,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("product") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Develop a Product or Prototype</h4>
                  <div className="space-y-2">
                    <label className="text-white font-semibold">Briefly describe the idea or product requirement.</label>
@@ -344,7 +344,7 @@ export function Step2({ data, updateData, showErrors }: StepProps) {
              )}
 
              {data.coreRequirements.includes("amc") && (
-               <div className="space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
+               <div className="glowing-card space-y-6 bg-[#0B1220]/50 p-6 rounded-xl border border-slate-800/50">
                  <h4 className="text-[#E8B84B] font-bold uppercase tracking-wider text-sm mb-4">Regarding: Arrange AMC or Maintenance Support</h4>
                  
                  <div className="space-y-2">

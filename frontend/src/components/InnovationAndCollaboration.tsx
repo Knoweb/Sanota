@@ -56,7 +56,7 @@ export default function InnovationAndCollaboration() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 sm:p-10 rounded-3xl"
+              className="glowing-card bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 sm:p-10 rounded-3xl"
             >
               <h4 className="text-xl font-bold text-white mb-8">Our collaborative capabilities include:</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">

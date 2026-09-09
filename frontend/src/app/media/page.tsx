@@ -219,7 +219,7 @@ export default function MediaPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mediaNavigation.map((nav, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
+                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
                   <div className="w-14 h-14 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
                     <nav.icon className="w-7 h-7 text-[#E8B84B]" />
                   </div>
@@ -245,7 +245,7 @@ export default function MediaPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {featuredWork.map((work, idx) => (
-                <div key={idx} className="bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E] transition-colors">
+                <div key={idx} className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E] transition-colors">
                   <div className="flex items-center mb-4">
                     <work.icon className="w-6 h-6 text-[#E8B84B] mr-3" />
                     <h4 className="text-lg font-bold text-white">{work.title}</h4>
@@ -278,7 +278,7 @@ export default function MediaPage() {
                   Where client confidentiality applies, project information may be presented without identifying the client or disclosing sensitive technical details.
                 </p>
               </div>
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6">
                 <p className="text-white font-bold mb-4">Each project entry should identify:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {projectCriteria.map((item, idx) => (
@@ -332,7 +332,7 @@ export default function MediaPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {projectStoryStructure.map((story, idx) => (
-                <div key={idx} className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-[#E8B84B]/50 transition-colors">
+                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-[#E8B84B]/50 transition-colors">
                   <div className="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl text-white pointer-events-none group-hover:scale-110 transition-transform">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
@@ -424,7 +424,7 @@ export default function MediaPage() {
                   View All News & Activities <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
                 <p className="text-white font-bold mb-6">Updates may include:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
                   {newsUpdates.map((update, idx) => (
@@ -466,7 +466,7 @@ export default function MediaPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* By Industry */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Browse By Industry</h2>
                 <h3 className="text-2xl font-bold text-white mb-8">Explore Work Relevant to Your Sector</h3>
                 <div className="space-y-3 mb-10">
@@ -483,7 +483,7 @@ export default function MediaPage() {
               </div>
 
               {/* By Capability */}
-              <div className="bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Browse By Capability</h2>
                 <h3 className="text-2xl font-bold text-white mb-8">Explore How Sanota Delivers Solutions</h3>
                 <div className="space-y-3 mb-10">
@@ -553,7 +553,7 @@ export default function MediaPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
               {/* Discuss Similar Requirement */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
                 <p className="text-slate-400 leading-relaxed mb-6">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
@@ -576,7 +576,7 @@ export default function MediaPage() {
               </div>
 
               {/* Media Enquiries */}
-              <div className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
+              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
                 <MessageSquare className="w-10 h-10 text-[#E8B84B] mb-6" />
                 <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
                 <h3 className="text-2xl font-bold text-white mb-6">Media, Partnership or Publication Enquiry</h3>

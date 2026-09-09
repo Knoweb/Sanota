@@ -57,7 +57,7 @@ export default function FinalCTA() {
           </div>
 
           {/* Alternative Enquiry Options */}
-          <div className="bg-[#0B1220]/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 max-w-4xl mx-auto text-left">
+          <div className="glowing-card bg-[#0B1220]/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 max-w-4xl mx-auto text-left">
             <h4 className="text-white font-bold mb-6 text-center text-lg">Alternative Enquiry Options</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {options.map((opt, idx) => (

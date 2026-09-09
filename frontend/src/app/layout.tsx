@@ -13,12 +13,16 @@ export const metadata: Metadata = {
 };
 
 import AnimatedBackground from "@/components/AnimatedBackground";
+import AmbientGlow from "@/components/AmbientGlow";
+import GlobalGlow from "@/components/GlobalGlow";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col relative text-slate-300">
         <AnimatedBackground />
+        <AmbientGlow />
+        <GlobalGlow />
         {children}
       </body>
     </html>

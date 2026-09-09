@@ -54,7 +54,7 @@ export default function ProjectExecution() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#131C2E]/50 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 sm:p-10 relative overflow-hidden"
+            className="glowing-card bg-[#131C2E]/50 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 sm:p-10 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#2E5EAA]/10 to-transparent rounded-full blur-2xl -z-10" />
             

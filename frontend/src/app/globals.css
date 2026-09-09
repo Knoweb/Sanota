@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+
+/* Glowing Card Utilities */
+.glowing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.glowing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(232, 184, 75, 0.12),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowing-card:hover::before {
+  opacity: 1;
+}
+
+.glowing-card > * {
+  position: relative;
+  z-index: 10;
+}

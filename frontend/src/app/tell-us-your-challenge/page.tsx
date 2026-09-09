@@ -153,7 +153,7 @@ export default function ChallengePage() {
                   key="success"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 md:p-16 text-center"
+                  className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 md:p-16 text-center"
                 >
                   <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8">
                     <CheckCircle2 className="w-12 h-12 text-green-500" />
@@ -195,7 +195,7 @@ export default function ChallengePage() {
                   </div>
 
                   {/* Form Card */}
-                  <div className="bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-8">
+                  <div className="glowing-card bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-8">
                     
                     {currentStep === 1 && <Step1 data={formData} updateData={updateData} showErrors={showErrors} />}
                     {currentStep === 2 && <Step2 data={formData} updateData={updateData} showErrors={showErrors} />}

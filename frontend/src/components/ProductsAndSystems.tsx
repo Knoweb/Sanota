@@ -83,7 +83,7 @@ export default function ProductsAndSystems() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="group relative bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-6 rounded-2xl hover:border-[#E8B84B]/50 transition-colors duration-300 flex flex-col h-full"
+                  className="glowing-card group relative bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-6 rounded-2xl hover:border-[#E8B84B]/50 transition-colors duration-300 flex flex-col h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/0 to-[#2E5EAA]/0 group-hover:from-[#E8B84B]/5 group-hover:to-[#2E5EAA]/5 rounded-2xl transition-all duration-500" />
                   

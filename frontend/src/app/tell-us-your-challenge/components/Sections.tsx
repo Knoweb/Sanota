@@ -35,7 +35,7 @@ export function WhatHappensNext() {
         
         <div className="space-y-6">
           {steps.map((step, idx) => (
-            <div key={idx} className="flex bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E]/80 transition-colors">
+            <div key={idx} className="glowing-card flex bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E]/80 transition-colors">
               <div className="mr-6 flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-[#E8B84B]/10 flex items-center justify-center border border-[#E8B84B]/20">
                   <CheckCircle2 className="w-5 h-5 text-[#E8B84B]" />
