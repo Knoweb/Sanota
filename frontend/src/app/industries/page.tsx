@@ -152,12 +152,18 @@ const partnerTypes = [
 
 export default function IndustriesPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
         {/* 1. Page Hero */}
-        <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style={{ backgroundImage: "url('/industries_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -208,7 +214,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 2. Industry-Focused Engineering */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -237,7 +243,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 3. Priority Industries */}
-        <section id="industries" className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section id="industries" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Priority Industries</h2>
@@ -283,7 +289,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 4. Additional Industries */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Additional Industries</h2>
@@ -309,7 +315,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 5. How Sanota Helps Industries */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
@@ -339,7 +345,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 6. Engineering and Digital Technology Together */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1 bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-8 sm:p-12">
@@ -375,7 +381,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 7 & 8. Modernization & AMC */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               
@@ -443,7 +449,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 9. A Partner for Established and Emerging Industries */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -470,7 +476,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 10. Call to Action */}
-        <section className="py-32 bg-[#050B14] relative overflow-hidden border-t border-slate-800">
+        <section className="py-32 bg-[#050B14] relative overflow-hidden border-t border-slate-800 bg-transparent">
           <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/50 to-transparent pointer-events-none" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Take Action</h2>

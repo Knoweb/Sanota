@@ -237,12 +237,12 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
 
         {/* Hero Section */}
-        <section className="relative py-32 overflow-hidden border-b border-slate-800">
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/services_hero_bg.jpg')" }}
@@ -314,7 +314,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50">
+        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">More Than a Single Service</h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
@@ -327,7 +327,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Services List */}
-        <section id="services-list" className="py-24 bg-[#050B14]">
+        <section id="services-list" className="py-24 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <div className="text-center mb-16">
@@ -411,7 +411,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Integrated Service Model */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Integrated Service Model</h2>
@@ -447,7 +447,7 @@ export default function ServicesPage() {
         </section>
 
         {/* How to Engage */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How to Engage Sanota</h2>
@@ -482,7 +482,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Industries Supported */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -506,7 +506,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Sanota + Knoweb</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Engineering Strengthened by Software and Digital Capability</h3>
@@ -522,7 +522,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Why Work With Sanota */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Why Work With Sanota?</h2>
@@ -540,7 +540,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Completed Work */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Completed Work</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">See How Sanota Applies These Services</h3>
@@ -560,7 +560,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
               What Challenge Can We Help You Solve?

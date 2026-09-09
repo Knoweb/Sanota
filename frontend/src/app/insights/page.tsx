@@ -231,7 +231,7 @@ const practicalExperience = [
 
 export default function InsightsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
       
       {/* 
@@ -241,10 +241,16 @@ export default function InsightsPage() {
         Remove 'hidden' class to make this page publicly visible.
         ================================================================
       */}
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style={{ backgroundImage: "url('/insights_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -301,7 +307,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50">
+        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Turning Technical Knowledge into Practical Understanding</h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
@@ -317,7 +323,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Insight Categories */}
-        <section id="categories" className="py-24 bg-[#050B14]">
+        <section id="categories" className="py-24 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Insight Categories</h2>
@@ -357,7 +363,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Featured Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Insights</h2>
@@ -380,7 +386,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Latest Insights */}
-        <section id="latest" className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section id="latest" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div>
@@ -420,7 +426,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Individual Article Structure */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Template</h2>
@@ -464,7 +470,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Insights by Industry & Technical Guides */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
@@ -512,7 +518,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Engineering Questions & Knoweb Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               
@@ -557,7 +563,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Knowledge & Disclaimer */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
@@ -602,7 +608,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Receive New Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Mail className="w-12 h-12 text-[#E8B84B] mx-auto mb-6" />
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Receive New Insights</h2>
@@ -653,7 +659,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Need Help & Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               

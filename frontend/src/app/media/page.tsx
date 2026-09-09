@@ -118,12 +118,18 @@ const publicationPrinciples = [
 
 export default function MediaPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style={{ backgroundImage: "url('/media_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -189,7 +195,7 @@ export default function MediaPage() {
         </section>
 
         {/* Media Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50">
+        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">See What Sanota Does</h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
@@ -205,7 +211,7 @@ export default function MediaPage() {
         </section>
 
         {/* Media Navigation */}
-        <section className="py-24 bg-[#050B14]">
+        <section className="py-24 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Navigation</h2>
@@ -229,7 +235,7 @@ export default function MediaPage() {
         </section>
 
         {/* Featured Work */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
@@ -261,7 +267,7 @@ export default function MediaPage() {
         </section>
 
         {/* Completed Work */}
-        <section id="completed-work" className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section id="completed-work" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
               <div>
@@ -316,7 +322,7 @@ export default function MediaPage() {
         </section>
 
         {/* Project Stories */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Project Stories</h2>
@@ -380,7 +386,7 @@ export default function MediaPage() {
         </div>
 
         {/* Photo Gallery */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
@@ -407,7 +413,7 @@ export default function MediaPage() {
         </section>
 
         {/* News & Activities */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -434,7 +440,7 @@ export default function MediaPage() {
         </section>
 
         {/* Featured Video Section */}
-        <section id="videos" className="py-24 bg-[#050B14] border-t border-slate-800/50 relative overflow-hidden">
+        <section id="videos" className="py-24 bg-[#050B14] border-t border-slate-800/50 relative overflow-hidden bg-transparent">
           <div className="absolute inset-0 bg-[#0B1220] mix-blend-overlay opacity-50" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div className="w-16 h-16 rounded-full bg-[#E8B84B]/20 flex items-center justify-center mx-auto mb-6">
@@ -456,7 +462,7 @@ export default function MediaPage() {
         </section>
 
         {/* Browse Sections */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* By Industry */}
@@ -497,7 +503,7 @@ export default function MediaPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -521,7 +527,7 @@ export default function MediaPage() {
         </section>
 
         {/* Publication Principles */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Publication Principles</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-10">Authentic Work. Clear Information. Responsible Publication.</h3>
@@ -542,7 +548,7 @@ export default function MediaPage() {
         </section>
 
         {/* Contact Grids */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
@@ -590,7 +596,7 @@ export default function MediaPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
               See What Sanota Has Done. <br className="hidden md:block" />

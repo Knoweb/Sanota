@@ -95,15 +95,18 @@ const atAGlance = [
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
         {/* 1. Page Hero */}
-        <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
-          {/* Subtle background pattern/gradient */}
-          <div className="absolute inset-0 bg-[#050B14] z-0" />
-          <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#131C2E]/30 to-transparent z-0" />
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style={{ backgroundImage: "url('/about_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
@@ -155,7 +158,7 @@ export default function AboutPage() {
         </section>
 
         {/* 2 & 3. Who We Are & Our Story */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
               
@@ -212,7 +215,7 @@ export default function AboutPage() {
         </section>
 
         {/* 4. What We Do */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">What We Do</h2>
@@ -246,7 +249,7 @@ export default function AboutPage() {
         </section>
 
         {/* 5. Our Integrated Capabilities */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Our Integrated Capabilities</h2>
@@ -271,7 +274,7 @@ export default function AboutPage() {
         </section>
 
         {/* 6 & 7. Supporting Industries & Engineering Approach */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
               
@@ -337,7 +340,7 @@ export default function AboutPage() {
         </section>
 
         {/* 8 & 9. Sanota and Knoweb & Innovation */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
               
@@ -407,7 +410,7 @@ export default function AboutPage() {
         </section>
 
         {/* 10 & 11. Vision & Mission */}
-        <section className="py-24 bg-gradient-to-br from-[#0B1220] to-[#131C2E] border-t border-slate-800/50">
+        <section className="py-24 from-[#0B1220] to-[#131C2E] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
@@ -446,7 +449,7 @@ export default function AboutPage() {
         </section>
 
         {/* 12. What Guides Our Work */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">What Guides Our Work</h2>
@@ -468,7 +471,7 @@ export default function AboutPage() {
         </section>
 
         {/* 13. Why Organizations Work With Sanota */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-[#0B1220] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">The Sanota Advantage</h2>
@@ -490,7 +493,7 @@ export default function AboutPage() {
         </section>
 
         {/* 14. Sanota at a Glance */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Key Facts</h2>
@@ -509,7 +512,7 @@ export default function AboutPage() {
         </section>
 
         {/* 15. Closing Call to Action */}
-        <section className="py-32 bg-[#050B14] relative overflow-hidden">
+        <section className="py-32 bg-[#050B14] relative overflow-hidden bg-transparent">
           <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/50 to-transparent pointer-events-none" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">

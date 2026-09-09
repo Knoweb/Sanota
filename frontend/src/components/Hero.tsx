@@ -104,12 +104,12 @@ export default function Hero() {
                     src={images[currentImageIndex]}
                     alt="Industrial Automation"
                     fill
-                    className="object-cover opacity-70"
+                    className="object-cover opacity-100"
                     priority
                   />
                 </motion.div>
               </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/20 to-transparent opacity-90" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0B1220] to-transparent opacity-90" />
 
               <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
                 <div className="flex items-center space-x-3 mb-5">

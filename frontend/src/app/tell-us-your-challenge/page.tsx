@@ -107,13 +107,13 @@ export default function ChallengePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
       
       <main className="flex-grow">
         
         {/* HERO SECTION */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#131C2E] to-[#050B14] border-b border-slate-800">
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#131C2E] to-[#050B14] border-b border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Tell Us Your Challenge</h1>
             <p className="text-xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
@@ -144,7 +144,7 @@ export default function ChallengePage() {
         </section>
 
         {/* GUIDED ENQUIRY FORM */}
-        <section id="form-container" className="py-20 px-4 sm:px-6 lg:px-8">
+        <section id="form-container" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
           <div className="max-w-4xl mx-auto">
             
             <AnimatePresence mode="wait">

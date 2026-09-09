@@ -347,12 +347,18 @@ const industries = [
 
 export default function ProductsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden border-b border-slate-800">
+        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style={{ backgroundImage: "url('/products_hero_bg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -418,7 +424,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50">
+        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">From Individual Equipment to Complete Integrated Solutions</h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
@@ -451,7 +457,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Categories */}
-        <section id="categories" className="py-24 bg-[#050B14]">
+        <section id="categories" className="py-24 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Product and System Categories</h2>
@@ -518,7 +524,7 @@ export default function ProductsPage() {
         </section>
 
         {/* How Sanota Classifies an Offering */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Classifies an Offering</h2>
@@ -549,7 +555,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Selected Solution Areas */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Selected Solution Areas</h2>
@@ -570,7 +576,7 @@ export default function ProductsPage() {
         </section>
 
         {/* New Systems and Existing Equipment */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -598,7 +604,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1">
@@ -626,7 +632,7 @@ export default function ProductsPage() {
         </section>
 
         {/* How a Solution is Developed */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How a Solution is Developed</h2>
@@ -662,7 +668,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Support After Implementation */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -691,7 +697,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Industries Served */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Industries Served</h2>
@@ -713,7 +719,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Completed Work */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Completed Work</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">See Sanota Products and Systems in Operation</h3>
@@ -739,7 +745,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Find the Right Solution */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50">
+        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Find the Right Solution</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Not Sure Which Product or System You Need?</h3>
@@ -764,7 +770,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800">
+        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
               What Do You Need to Build, Improve, Automate or Connect?
