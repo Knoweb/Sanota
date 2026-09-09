@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AmbientGlow() {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
       {/* Blue/Cyan Glow */}
       <motion.div
         animate={{

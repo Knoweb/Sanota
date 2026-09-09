@@ -128,18 +128,18 @@ export default function ContactPage() {
         </section>
 
         {/* ── Technical Enquiry Callout ── */}
-        <section className="py-14 bg-[#E8B84B]">
+        <section className="py-14 bg-[#131C2E] border-y border-[#E8B84B]/20">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="lg:w-2/3">
-                <h3 className="text-2xl md:text-3xl font-black text-[#0B1220] mb-4">Have a Technical or Operational Challenge?</h3>
-                <p className="text-[#0B1220]/80 text-lg font-medium leading-relaxed mb-4">
-                  For engineering requirements, the fastest way to provide necessary information is through the guided <strong>Tell Us Your Challenge</strong> form. It helps you explain:
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-4">Have a Technical or Operational Challenge?</h3>
+                <p className="text-slate-300 text-lg font-medium leading-relaxed mb-4">
+                  For engineering requirements, the fastest way to provide necessary information is through the guided <strong className="text-[#E8B84B]">Tell Us Your Challenge</strong> form. It helps you explain:
                 </p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-[#0B1220] font-semibold">
+                <div className="flex flex-wrap gap-x-6 gap-y-2 text-slate-200 font-semibold">
                   {["What is happening now", "What is not working", "What you want to improve or develop"].map((item, i) => (
                     <span key={i} className="flex items-center">
-                      <CheckCircle2 className="w-4 h-4 mr-2 shrink-0" /> {item}
+                      <CheckCircle2 className="w-4 h-4 mr-2 shrink-0 text-[#E8B84B]" /> {item}
                     </span>
                   ))}
                 </div>
@@ -147,7 +147,7 @@ export default function ContactPage() {
               <div className="shrink-0">
                 <Link
                   href="/tell-us-your-challenge"
-                  className="inline-flex items-center px-8 py-4 bg-[#0B1220] hover:bg-slate-900 text-white font-black rounded-xl transition-all duration-300 whitespace-nowrap group"
+                  className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 whitespace-nowrap group shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5"
                 >
                   Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
