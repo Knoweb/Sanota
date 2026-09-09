@@ -77,27 +77,46 @@ export default function MediaSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-center">
-          {mediaCategories.map((cat, idx) => (
-            <motion.div 
+        {/* Top row: 3 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
+          {mediaCategories.slice(0, 3).map((cat, idx) => (
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`group relative bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-[#2E5EAA]/50 transition-colors duration-300 flex flex-col h-full ${idx === 3 ? 'lg:col-start-2' : ''} ${idx === 4 ? 'lg:col-start-3' : ''}`}
+              className="group relative bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-[#2E5EAA]/50 transition-colors duration-300 flex flex-col h-full"
             >
               <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#2E5EAA] group-hover:shadow-[0_0_15px_rgba(46,94,170,0.2)] transition-all duration-300">
                 <cat.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-white transition-colors duration-300" />
               </div>
               <h4 className="text-[18px] font-bold text-white mb-3 group-hover:text-[#E8B84B] transition-colors">{cat.title}</h4>
-              <p className="text-[13.5px] text-slate-400 mb-8 leading-relaxed flex-grow">
-                {cat.desc}
-              </p>
-              <Link 
-                href={cat.linkHref}
-                className="inline-flex items-center text-[#E8B84B] font-semibold hover:text-white transition-colors text-[13px] uppercase tracking-wide w-fit mt-auto"
-              >
+              <p className="text-[13.5px] text-slate-400 mb-8 leading-relaxed flex-grow">{cat.desc}</p>
+              <Link href={cat.linkHref} className="inline-flex items-center text-[#E8B84B] font-semibold hover:text-white transition-colors text-[13px] uppercase tracking-wide w-fit mt-auto">
+                {cat.linkText} <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom row: 2 centered cards */}
+        <div className="flex flex-col sm:flex-row justify-center gap-6 lg:gap-8">
+          {mediaCategories.slice(3).map((cat, idx) => (
+            <motion.div
+              key={idx + 3}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (idx + 3) * 0.1 }}
+              className="group relative bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-[#2E5EAA]/50 transition-colors duration-300 flex flex-col h-full w-full lg:max-w-[calc(33.333%-1rem)]"
+            >
+              <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#2E5EAA] group-hover:shadow-[0_0_15px_rgba(46,94,170,0.2)] transition-all duration-300">
+                <cat.icon className="w-7 h-7 text-[#2E5EAA] group-hover:text-white transition-colors duration-300" />
+              </div>
+              <h4 className="text-[18px] font-bold text-white mb-3 group-hover:text-[#E8B84B] transition-colors">{cat.title}</h4>
+              <p className="text-[13.5px] text-slate-400 mb-8 leading-relaxed flex-grow">{cat.desc}</p>
+              <Link href={cat.linkHref} className="inline-flex items-center text-[#E8B84B] font-semibold hover:text-white transition-colors text-[13px] uppercase tracking-wide w-fit mt-auto">
                 {cat.linkText} <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>

@@ -151,6 +151,7 @@ export default function VisitorPathways() {
           </div>
           
         </div>
+      </div>
     </section>
   );
 }
