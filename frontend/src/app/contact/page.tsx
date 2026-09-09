@@ -20,15 +20,13 @@ const contactOptions = [
 
 const directContact = {
   telephone: [
-    { label: "Main office", value: "+94 11 123 4567" },
-    { label: "Technical enquiries", value: "+94 77 123 4567" },
-    { label: "AMC and maintenance", value: "+94 77 987 6543" },
+    { label: "Main office & Technical enquiries", value: "+94 740 70 99 89" },
   ],
   email: [
-    { label: "General enquiries", value: "info@sanota.com" },
-    { label: "Engineering and project enquiries", value: "engineering@sanota.com" },
-    { label: "AMC and maintenance", value: "support@sanota.com" },
-    { label: "Partnership and media enquiries", value: "partners@sanota.com" },
+    { label: "General enquiries", value: "info@sanotaglobal.com" },
+    { label: "Engineering and project enquiries", value: "engineering@sanotaglobal.com" },
+    { label: "AMC and maintenance", value: "support@sanotaglobal.com" },
+    { label: "Partnership and media enquiries", value: "partners@sanotaglobal.com" },
   ],
 };
 
@@ -261,8 +259,8 @@ export default function ContactPage() {
                 <h4 className="text-xl font-black text-white mb-6">Office Address</h4>
                 <p className="text-slate-300 leading-relaxed mb-4 font-medium">
                   Sanota (Pvt) Ltd<br />
-                  69, Panagoda<br />
-                  Homagama, Sri Lanka
+                  No 16, Wewelwala Road<br />
+                  Bataganwila, Galle.
                 </p>
                 <div className="mb-8">
                   <span className="block text-slate-500 text-xs font-black uppercase tracking-widest mb-1">Business Hours</span>
@@ -307,7 +305,7 @@ export default function ContactPage() {
                   <button className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black rounded-xl transition-colors">
                     Submit Urgent Technical Enquiry
                   </button>
-                  <a href="tel:+94771234567" className="px-6 py-3 bg-transparent hover:bg-red-900/30 border border-red-500/40 text-white font-black rounded-xl transition-colors flex items-center justify-center">
+                  <a href="tel:+94740709989" className="px-6 py-3 bg-transparent hover:bg-red-900/30 border border-red-500/40 text-white font-black rounded-xl transition-colors flex items-center justify-center">
                     Call Technical Support <Phone className="w-4 h-4 ml-2" />
                   </a>
                 </div>
@@ -567,11 +565,19 @@ export default function ContactPage() {
                 {/* Visit Sanota */}
                 <div className="bg-[#131C2E] border border-slate-800 rounded-3xl p-8">
                   <h3 className="text-xl font-black text-white mb-6">Visit Sanota</h3>
-                  <div className="bg-[#050B14] h-44 rounded-2xl border border-slate-700/60 mb-6 flex items-center justify-center">
-                    <MapPin className="w-8 h-8 text-slate-600" />
-                    <span className="text-slate-600 font-bold ml-2">Map Preview</span>
+                  <div className="bg-[#050B14] h-44 rounded-2xl border border-slate-700/60 mb-6 overflow-hidden relative group">
+                    <iframe 
+                      src="https://maps.google.com/maps?q=No%2016,%20Wewelwala%20Road,%20Bataganwila,%20Galle&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                      width="100%" 
+                      height="100%" 
+                      style={{ border: 0 }} 
+                      allowFullScreen 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    ></iframe>
                   </div>
-                  <p className="text-slate-300 text-sm mb-2 font-medium">Sanota (Pvt) Ltd<br />69, Panagoda, Homagama</p>
+                  <p className="text-slate-300 text-sm mb-2 font-medium">Sanota (Pvt) Ltd<br />No 16, Wewelwala Road, Bataganwila, Galle.</p>
                   <p className="text-slate-500 text-xs italic mb-6">Visits should be arranged in advance.</p>
                   <div className="space-y-3">
                     <button className="w-full py-3 bg-[#050B14] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl transition-colors text-sm">
