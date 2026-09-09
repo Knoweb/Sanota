@@ -221,30 +221,51 @@ export default function IndustriesPage() {
         </section>
 
         {/* 2. Industry-Focused Engineering */}
-        <section className="py-24 bg-[#0B1220] bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Industry-Focused Engineering</h2>
-                <h3 className="text-3xl font-bold text-white mb-6 leading-tight">Solutions Developed Around How Your Industry Operates</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
+        <section className="relative py-24 bg-[#0B1220] overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/40 to-transparent opacity-50 pointer-events-none" />
+          
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+              
+              <div className="lg:col-span-7">
+                <div className="inline-block px-5 py-2 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-8">
+                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-xs">Industry-Focused Engineering</h2>
+                </div>
+                <h3 className="text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">Solutions Developed Around How Your Industry Operates</h3>
+                <p className="text-slate-300 text-xl leading-relaxed mb-8">
                   Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another.
                 </p>
-                <p className="text-slate-400 font-bold mb-6">Sanota begins by understanding the customer’s operation, including:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
+                <div className="h-px w-24 bg-gradient-to-r from-[#E8B84B] to-transparent mb-8" />
+                <p className="text-white text-lg font-semibold mb-8">Sanota begins by understanding your operation, including:</p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 mb-8">
                   {operationalUnderstanding.map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mt-2 mr-3 shrink-0" />
-                      <span className="text-slate-400 text-sm leading-relaxed">{item}</span>
+                    <div key={idx} className="flex items-center group">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#131C2E] border border-slate-700 group-hover:border-[#E8B84B] transition-colors shrink-0 mr-4 shadow-sm shadow-black/50">
+                        <div className="w-2 h-2 rounded-full bg-[#E8B84B] group-hover:scale-150 transition-transform" />
+                      </div>
+                      <span className="text-slate-300 text-base font-medium group-hover:text-white transition-colors leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 flex flex-col justify-center h-full">
-                <p className="text-white text-2xl font-bold leading-relaxed">
-                  We then combine the appropriate engineering and technology capabilities to develop a practical and scalable solution.
-                </p>
+
+              <div className="lg:col-span-5 h-full min-h-[400px]">
+                <div className="glowing-card relative h-full bg-gradient-to-br from-[#131C2E] to-[#0B1220] border border-slate-700/50 rounded-3xl p-12 lg:p-16 flex flex-col justify-center overflow-hidden group hover:border-[#E8B84B]/40 transition-colors shadow-2xl">
+                  {/* Decorative Quote Icon */}
+                  <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] text-white group-hover:text-[#E8B84B] transition-colors duration-500 transform group-hover:scale-110">
+                    <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+                  
+                  <p className="text-white text-3xl lg:text-4xl font-medium leading-relaxed relative z-10">
+                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold">practical and scalable solution.</span>
+                  </p>
+                </div>
               </div>
+
             </div>
           </div>
         </section>
