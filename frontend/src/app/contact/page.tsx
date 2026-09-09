@@ -9,6 +9,7 @@ import {
   ArrowRight, Phone, Mail, MapPin, CheckCircle2, AlertTriangle,
   Send, Upload, Info, MessageSquare, Briefcase, Cog, Globe, PhoneCall
 } from "lucide-react";
+import ContactBackground from "@/components/ContactBackground";
 
 const contactOptions = [
   { title: "Engineering & Project Enquiries", desc: "Contact us about machinery, automation, new systems, engineering design, product development, modernization or integrated project requirements.", button: "Submit an Engineering Enquiry", icon: Cog },
@@ -50,7 +51,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen relative bg-transparent">
+      <ContactBackground />
       <Header />
       <main className="flex-grow">
 
@@ -126,7 +128,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Technical Enquiry Callout ── */}
-        <section className="py-14 bg-[#131C2E] border-y border-[#E8B84B]/20">
+        <section className="py-14 bg-transparent border-y border-[#E8B84B]/20 backdrop-blur-sm relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="lg:w-2/3">
@@ -155,7 +157,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Contact Options ── */}
-        <section className="py-24 bg-[#0B1220] border-b border-slate-800/60">
+        <section className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Contact Options</p>
@@ -211,7 +213,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Direct Contact Info ── */}
-        <section className="py-24 bg-[#050B14] border-b border-slate-800/60">
+        <section className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Direct Contact</p>
@@ -280,7 +282,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Urgent Enquiries ── */}
-        <section className="py-16 bg-[#0D0608] border-b border-red-900/40">
+        <section className="py-16 bg-red-950/20 backdrop-blur-md border-b border-red-900/40 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-10 items-start">
               <div className="w-16 h-16 rounded-full bg-red-900/30 border border-red-500/40 flex items-center justify-center shrink-0">
@@ -323,7 +325,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Contact Form + Sidebar ── */}
-        <section id="contact-form" className="py-24 bg-[#0B1220] border-b border-slate-800/60">
+        <section id="contact-form" className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-16">
 
@@ -595,7 +597,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Social / Connect ── */}
-        <section className="py-20 bg-[#050B14] border-b border-slate-800/60">
+        <section className="py-20 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Connect With Sanota</p>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Follow Our Work</h2>
@@ -616,7 +618,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Final CTA ── */}
-        <section className="py-24 bg-[#0B1220]">
+        <section className="py-24 bg-transparent relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
               Start With the <span className="text-[#E8B84B]">Requirement</span>
