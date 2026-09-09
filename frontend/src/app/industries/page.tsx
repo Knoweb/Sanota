@@ -251,8 +251,8 @@ export default function IndustriesPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 h-full min-h-[400px]">
-                <div className="glowing-card relative h-full bg-gradient-to-br from-[#131C2E] to-[#0B1220] border border-slate-700/50 rounded-3xl p-12 lg:p-16 flex flex-col justify-center overflow-hidden group hover:border-[#E8B84B]/40 transition-colors shadow-2xl">
+              <div className="lg:col-span-5 flex items-center justify-center">
+                <div className="glowing-card relative w-full bg-gradient-to-br from-[#131C2E] to-[#0B1220] border border-slate-700/50 rounded-3xl p-8 lg:p-10 flex flex-col justify-center overflow-hidden group hover:border-[#E8B84B]/40 transition-colors shadow-2xl">
                   {/* Decorative Quote Icon */}
                   <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] text-white group-hover:text-[#E8B84B] transition-colors duration-500 transform group-hover:scale-110">
                     <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor">
@@ -260,7 +260,7 @@ export default function IndustriesPage() {
                     </svg>
                   </div>
                   
-                  <p className="text-white text-3xl lg:text-4xl font-medium leading-relaxed relative z-10">
+                  <p className="text-white text-2xl lg:text-3xl font-medium leading-relaxed relative z-10">
                     We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold">practical and scalable solution.</span>
                   </p>
                 </div>
