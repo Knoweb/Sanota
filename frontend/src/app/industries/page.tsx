@@ -301,6 +301,7 @@ export default function IndustriesPage() {
                 <button 
                   key={idx} 
                   onClick={() => setActiveIndex(idx)}
+                  onMouseEnter={() => setActiveIndex(idx)}
                   className={`text-left text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-widest transition-all duration-300 border-l-4 pl-6 py-2
                     ${idx === activeIndex 
                       ? 'text-white border-[#E8B84B] translate-x-2' 
