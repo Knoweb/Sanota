@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_challenge_modernization_details",
+  "info": {
+    "displayName": "modernizationDetails"
+  },
+  "options": {},
+  "attributes": {
+    "mod_machineType": {
+      "type": "string"
+    },
+    "mod_problem": {
+      "type": "string"
+    },
+    "mod_isOperating": {
+      "type": "string"
+    }
+  }
+}

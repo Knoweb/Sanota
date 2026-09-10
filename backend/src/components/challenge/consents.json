@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_challenge_consents",
+  "info": {
+    "displayName": "consents",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "consentAccurate": {
+      "type": "boolean"
+    },
+    "consentNoObligation": {
+      "type": "boolean"
+    }
+  }
+}

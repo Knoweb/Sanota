@@ -62,4 +62,6 @@ export interface ChallengeFormData {
   // Step 5
   consentAccurate: boolean;
   consentNoObligation: boolean;
+
+  supportingFiles?: File[];
 }

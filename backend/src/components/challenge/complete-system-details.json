@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_challenge_complete_system_details",
+  "info": {
+    "displayName": "completeSystemDetails"
+  },
+  "options": {},
+  "attributes": {
+    "sys_type": {
+      "type": "string"
+    },
+    "sys_capabilities": {
+      "type": "json"
+    }
+  }
+}

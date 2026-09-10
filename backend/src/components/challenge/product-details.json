@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_challenge_product_details",
+  "info": {
+    "displayName": "productDetails"
+  },
+  "options": {},
+  "attributes": {
+    "prod_description": {
+      "type": "text"
+    },
+    "prod_stage": {
+      "type": "string"
+    }
+  }
+}

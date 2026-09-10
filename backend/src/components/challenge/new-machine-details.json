@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_challenge_new_machine_details",
+  "info": {
+    "displayName": "newMachineDetails"
+  },
+  "options": {},
+  "attributes": {
+    "new_whatShouldItDo": {
+      "type": "string"
+    },
+    "new_material": {
+      "type": "string"
+    },
+    "new_hasConcept": {
+      "type": "string"
+    }
+  }
+}

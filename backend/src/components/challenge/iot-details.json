@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_challenge_iot_details",
+  "info": {
+    "displayName": "iotDetails"
+  },
+  "options": {},
+  "attributes": {
+    "iot_whatToMonitor": {
+      "type": "json"
+    },
+    "iot_howToAccess": {
+      "type": "json"
+    }
+  }
+}

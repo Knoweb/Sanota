@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "challenge_enquiries",
+  "info": {
+    "singularName": "challenge-enquiry",
+    "pluralName": "challenge-enquiries",
+    "displayName": "Challenge Enquiry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "referenceNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "enquiryStatus": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "reviewing",
+        "contacted",
+        "closed"
+      ],
+      "default": "submitted"
+    },
+    "coreRequirements": {
+      "type": "json"
+    },
+    "currentSituation": {
+      "type": "text",
+      "required": true
+    },
+    "desiredOutcome": {
+      "type": "text",
+      "required": true
+    },
+    "industry": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "urgency": {
+      "type": "string"
+    },
+    "priorityFlag": {
+      "type": "boolean"
+    },
+    "priorityReasons": {
+      "type": "json"
+    },
+    "internalRouting": {
+      "type": "json"
+    },
+    "supportingFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "equipmentDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.equipment-details"
+    },
+    "contactDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.contact-details"
+    },
+    "consents": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.consents"
+    },
+    "modernizationDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.modernization-details"
+    },
+    "automationDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.automation-details"
+    },
+    "newMachineDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.new-machine-details"
+    },
+    "completeSystemDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.complete-system-details"
+    },
+    "iotDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.iot-details"
+    },
+    "productDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.product-details"
+    },
+    "amcDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "challenge.amc-details"
+    }
+  }
+}

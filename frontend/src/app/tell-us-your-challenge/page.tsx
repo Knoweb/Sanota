@@ -10,6 +10,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2, Save } from "lucide-react";
 import { ChallengeFormData } from "./types";
 import { Step1, Step2, Step3, Step4, Step5 } from "./components/FormSteps";
 import { WhatHappensNext, AlternativeContact, FinalCTA } from "./components/Sections";
+import { submitChallengeEnquiry } from "@/lib/api";
 
 const initialData: ChallengeFormData = {
   coreRequirements: [],
@@ -56,7 +57,8 @@ export default function ChallengePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [enquiryRef, setEnquiryRef] = useState("");
   const [showErrors, setShowErrors] = useState(false);
-  const [connectionError, setConnectionError] = useState(false);
+  const [connectionError, setConnectionError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateData = (fields: Partial<ChallengeFormData>) => {
     setFormData(prev => ({ ...prev, ...fields }));
@@ -92,18 +94,27 @@ export default function ChallengePage() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isStepValid()) {
       setShowErrors(true);
       return;
     }
     
-    // Mock connection error occasionally or just proceed. For now we will succeed.
-    // If backend fails, we would setConnectionError(true);
-    setConnectionError(false);
-    setEnquiryRef(`SNT-${Math.floor(1000 + Math.random() * 9000)}-${new Date().getFullYear()}`);
-    setIsSubmitted(true);
-    window.scrollTo({ top: document.getElementById('form-container')?.offsetTop || 0 - 100, behavior: 'smooth' });
+    setConnectionError("");
+    setIsSubmitting(true);
+    
+    try {
+      const result = await submitChallengeEnquiry(formData);
+      if (result.success) {
+        setEnquiryRef(result.referenceNumber);
+        setIsSubmitted(true);
+        window.scrollTo({ top: document.getElementById('form-container')?.offsetTop || 0 - 100, behavior: 'smooth' });
+      }
+    } catch (err: any) {
+      setConnectionError(err.message || 'Your enquiry could not be submitted because of a connection problem. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -228,10 +239,10 @@ export default function ChallengePage() {
                           </button>
                           <button 
                             onClick={handleSubmit}
-                            disabled={!isStepValid()}
+                            disabled={!isStepValid() || isSubmitting}
                             className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           >
-                            Submit My Challenge <CheckCircle2 className="w-5 h-5 ml-2" />
+                            {isSubmitting ? 'Submitting...' : 'Submit My Challenge'} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
                           </button>
                         </>
                       ) : (
@@ -245,6 +256,11 @@ export default function ChallengePage() {
                       )}
                     </div>
                   </div>
+                  {connectionError && (
+                    <div className="mt-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm text-center">
+                      {connectionError}
+                    </div>
+                  )}
 
                 </motion.div>
               )}

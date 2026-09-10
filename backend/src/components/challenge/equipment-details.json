@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_challenge_equipment_details",
+  "info": {
+    "displayName": "equipmentDetails",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "eq_makeModel": {
+      "type": "string"
+    },
+    "eq_supplierInfo": {
+      "type": "string"
+    },
+    "eq_estimatedQuantity": {
+      "type": "string"
+    }
+  }
+}

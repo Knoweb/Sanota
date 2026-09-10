@@ -411,13 +411,33 @@ export function Step3({ data, updateData }: StepProps) {
 
       <div className="space-y-8">
         <div className="border-2 border-dashed border-slate-700 hover:border-[#E8B84B] rounded-2xl p-10 text-center transition-colors bg-[#0B1220]/50 cursor-pointer" onClick={() => fileInputRef.current?.click()}>
-          <input type="file" ref={fileInputRef} className="hidden" multiple />
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            className="hidden" 
+            multiple 
+            accept=".jpg,.jpeg,.png,.pdf,.docx,.xlsx,.mp4"
+            onChange={(e) => {
+              if (e.target.files) {
+                updateData({ supportingFiles: Array.from(e.target.files) });
+              }
+            }}
+          />
           <UploadCloud className="w-12 h-12 text-[#2E5EAA] mx-auto mb-4" />
           <button type="button" className="px-6 py-2 bg-[#131C2E] border border-slate-700 hover:border-[#E8B84B] text-white rounded-lg font-semibold mb-4 transition-colors">
-            Add Files
+            {data.supportingFiles && data.supportingFiles.length > 0 ? `${data.supportingFiles.length} File(s) Selected` : 'Add Files'}
           </button>
           <p className="text-slate-400 text-sm mb-2">You may upload photographs, videos, drawings, equipment information, reports or other documents that will help our team understand the requirement.</p>
           <p className="text-slate-500 text-xs">Accepted file types: JPG, PNG, PDF, DOCX, XLSX and MP4.</p>
+          {data.supportingFiles && data.supportingFiles.length > 0 && (
+            <div className="mt-4 text-left inline-block max-w-sm">
+              <ul className="text-sm text-slate-300 list-disc list-inside">
+                {data.supportingFiles.map((f, i) => (
+                  <li key={i} className="truncate">{f.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-sm text-slate-300">

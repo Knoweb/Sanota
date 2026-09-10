@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_challenge_contact_details",
+  "info": {
+    "displayName": "contactDetails",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "preferredContactMethod": {
+      "type": "string"
+    },
+    "preferredContactTime": {
+      "type": "string"
+    }
+  }
+}

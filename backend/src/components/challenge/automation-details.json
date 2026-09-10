@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_challenge_automation_details",
+  "info": {
+    "displayName": "automationDetails"
+  },
+  "options": {},
+  "attributes": {
+    "auto_process": {
+      "type": "string"
+    },
+    "auto_currentState": {
+      "type": "string"
+    },
+    "auto_expectedImprovement": {
+      "type": "string"
+    }
+  }
+}

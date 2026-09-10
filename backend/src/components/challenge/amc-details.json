@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_challenge_amc_details",
+  "info": {
+    "displayName": "amcDetails"
+  },
+  "options": {},
+  "attributes": {
+    "amc_whatRequiresSupport": {
+      "type": "json"
+    },
+    "amc_whoDeveloped": {
+      "type": "string"
+    },
+    "amc_preferredArrangement": {
+      "type": "string"
+    }
+  }
+}
