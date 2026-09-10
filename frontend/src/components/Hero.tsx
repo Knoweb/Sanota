@@ -85,12 +85,17 @@ export default function Hero() {
           </motion.div>
 
           <div className="lg:col-span-5 relative group">
-            {/* Decorative Offset Shapes */}
-            <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-tr from-[#E8B84B]/30 to-[#2E5EAA]/30 rounded-[2.5rem] blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
-            <div className="absolute top-4 -right-4 bottom-4 -left-4 border border-[#E8B84B]/40 rounded-[2.5rem] -z-10 transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
-            <div className="absolute -top-4 right-4 -bottom-4 left-4 border border-[#2E5EAA]/40 rounded-[2.5rem] -z-10 transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
+            {/* Ambient Background Glow behind image */}
+            <div className="absolute -inset-2 lg:-inset-4 bg-[#E8B84B]/20 rounded-[2.5rem] blur-xl opacity-60 animate-pulse -z-10" />
 
-            <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(5,11,20,0.3)] flex items-center justify-center bg-[#0B1220] z-10 border-2 border-slate-800">
+            <motion.div 
+              animate={{ 
+                boxShadow: ["0 0 10px rgba(232,184,75,0.2)", "0 0 30px rgba(232,184,75,0.8)", "0 0 10px rgba(232,184,75,0.2)"],
+                borderColor: ["rgba(232,184,75,0.3)", "rgba(232,184,75,1)", "rgba(232,184,75,0.3)"]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden flex items-center justify-center bg-[#0B1220] z-10 border-2"
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImageIndex}
@@ -131,7 +136,7 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
         </div>
