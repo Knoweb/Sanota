@@ -11,56 +11,72 @@ const options = [
     description: "Restore machinery, replace outdated controls, improve safety and extend operating life.",
     linkText: "Request a Modernization Assessment",
     href: "/tell-us-your-challenge",
-    icon: Settings
+    icon: Settings,
+    bgImage: "/nav/nav_modernize.jpg",
+    color: "#E8B84B" // Gold
   },
   {
     name: "Automate a Process",
     description: "Introduce PLC, HMI, sensor, drive and control technologies to improve consistency and reduce manual intervention.",
     linkText: "Explore Industrial Automation",
     href: "/services",
-    icon: Zap
+    icon: Zap,
+    bgImage: "/nav/nav_automate.jpg",
+    color: "#06b6d4" // Cyan
   },
   {
     name: "Develop a Machine",
     description: "Design and build machinery or equipment around a specific production, processing or testing requirement.",
     linkText: "Explore Custom Machinery Development",
     href: "/services",
-    icon: Cpu
+    icon: Cpu,
+    bgImage: "/nav/nav_develop_machine.jpg",
+    color: "#10b981" // Emerald
   },
   {
     name: "Monitor an operation",
     description: "Connect machines, assets and environments with sensors, IoT, dashboards, alerts and reporting.",
     linkText: "Explore IoT & Digital Integration",
     href: "/services",
-    icon: Network
+    icon: Network,
+    bgImage: "/nav/nav_monitor.jpg",
+    color: "#3b82f6" // Blue
   },
   {
     name: "Build a Complete System",
     description: "Develop and integrate machinery, controls, software, utilities and operational processes as one solution.",
     linkText: "Explore Project Execution",
     href: "/services",
-    icon: Building2
+    icon: Building2,
+    bgImage: "/nav/nav_build_system.jpg",
+    color: "#8b5cf6" // Violet
   },
   {
     name: "Develop a Product",
     description: "Turn a technical requirement, concept or research idea into a prototype or practical product.",
     linkText: "Explore Product Development",
     href: "/services",
-    icon: PackageSearch
+    icon: PackageSearch,
+    bgImage: "/nav/nav_develop_product.jpg",
+    color: "#ec4899" // Pink
   },
   {
     name: "Maintain Critical Assets",
     description: "Protect machinery, automation and integrated systems through preventive maintenance, technical support and AMCs.",
     linkText: "Request an AMC Assessment",
     href: "/tell-us-your-challenge",
-    icon: Wrench
+    icon: Wrench,
+    bgImage: "/nav/nav_maintain.jpg",
+    color: "#f97316" // Orange
   },
   {
     name: "I Am Not Sure Yet",
     description: "Explain the situation in your own words. Our team will help identify the most appropriate starting point.",
     linkText: "Request a Technical Consultation",
     href: "/tell-us-your-challenge",
-    icon: Link2
+    icon: Link2,
+    bgImage: "/nav/nav_unsure.jpg",
+    color: "#14b8a6" // Teal
   },
 ];
 
@@ -121,7 +137,7 @@ export default function SolutionNavigator() {
                 onMouseEnter={() => setActiveIdx(idx)}
               >
                 <div
-                  className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 group w-full cursor-default
+                  className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 group w-full cursor-default overflow-hidden
                     ${isActive
                       ? "bg-[#0F1928] border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
                       : "bg-[#0B1220] border-slate-800 hover:border-[#E8B84B]/30"
@@ -131,7 +147,10 @@ export default function SolutionNavigator() {
                   {isActive && (
                     <motion.div
                       layoutId="activeBorder"
-                      className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent rounded-full"
+                      className="absolute top-0 left-6 right-6 h-[2px] rounded-full z-20"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${option.color}, transparent)`
+                      }}
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
                       exit={{ opacity: 0, scaleX: 0 }}
@@ -139,27 +158,38 @@ export default function SolutionNavigator() {
                     />
                   )}
 
+                  {/* Background Image */}
+                  <div className={`absolute inset-0 z-0 transition-all duration-700 ${isActive ? 'opacity-70 scale-105' : 'opacity-30 group-hover:opacity-50 scale-100'}`}>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/60 via-[#0B1220]/40 to-[#0B1220]/90 z-10" />
+                    <img
+                      src={option.bgImage}
+                      alt={option.name}
+                      className="w-full h-full object-cover mix-blend-lighten"
+                    />
+                  </div>
+
                   <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 border transition-all duration-500
-                      ${isActive
-                        ? "bg-[#E8B84B]/15 border-[#E8B84B]/40"
-                        : "bg-[#131C2E] border-slate-800"
-                      }`}
+                    className="relative z-20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 border transition-all duration-500"
+                    style={{
+                      backgroundColor: isActive ? `${option.color}26` : `${option.color}0D`,
+                      borderColor: isActive ? `${option.color}66` : `${option.color}26`
+                    }}
                   >
                     <Icon
-                      className={`w-7 h-7 transition-colors duration-500 ${isActive ? "text-[#E8B84B]" : "text-slate-500"}`}
+                      className="w-7 h-7 transition-colors duration-500"
+                      style={{ color: isActive ? option.color : `${option.color}99` }}
                     />
                   </div>
 
                   <h3
-                    className={`font-bold text-[18px] leading-snug mb-3 transition-colors duration-500
+                    className={`relative z-20 font-bold text-[18px] leading-snug mb-3 transition-colors duration-500
                       ${isActive ? "text-white" : "text-slate-300"}`}
                   >
                     {option.name}
                   </h3>
 
                   <p
-                    className={`text-sm leading-relaxed mb-8 flex-grow transition-colors duration-500
+                    className={`relative z-20 text-sm leading-relaxed mb-8 flex-grow transition-colors duration-500
                       ${isActive ? "text-slate-300" : "text-slate-500"}`}
                   >
                     {option.description}
@@ -167,8 +197,8 @@ export default function SolutionNavigator() {
 
                   <Link
                     href={option.href}
-                    className={`text-[13px] font-bold flex items-center transition-all duration-300 w-fit group-hover:translate-x-1
-                      ${isActive ? "text-[#E8B84B] hover:text-white" : "text-slate-600 hover:text-[#E8B84B]"}`}
+                    className="text-[13px] font-bold flex items-center transition-all duration-300 w-fit group-hover:translate-x-1"
+                    style={{ color: isActive ? option.color : `${option.color}b3` }}
                   >
                     {option.linkText}
                     <ArrowRight className="ml-1.5 w-4 h-4" />

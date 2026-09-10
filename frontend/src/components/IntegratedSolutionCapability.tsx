@@ -8,38 +8,50 @@ const capabilities = [
   { 
     name: "Mechanical Engineering", 
     description: "Machinery, mechanisms, structures, processing equipment and special-purpose systems.",
-    icon: Wrench 
+    icon: Wrench,
+    bgImage: "/cap/cap_mechanical.jpg",
+    color: "#E8B84B"
   },
   { 
-    name: "Electrical & Electronic Engineering", 
-    description: "Control panels, electrical systems, embedded electronics, instruments and device integration.",
-    icon: Cpu 
+    name: "Electrical Engineering", 
+    description: "Control panels, electrical systems, embedded electronics, and device integration.",
+    icon: Cpu,
+    bgImage: "/cap/cap_electrical.jpg",
+    color: "#06b6d4"
   },
   { 
     name: "Automation & Control", 
-    description: "PLCs, HMIs, sensors, actuators, motor controls, drives, servo systems and industrial safety functions.",
-    icon: Activity 
+    description: "PLCs, HMIs, sensors, actuators, motor controls, and servo systems.",
+    icon: Activity,
+    bgImage: "/cap/cap_automation.jpg",
+    color: "#10b981"
   },
   { 
     name: "IoT & Software", 
-    description: "Connected monitoring, cloud platforms, dashboards, mobile applications, alerts, tracking and reporting.",
-    icon: Network 
+    description: "Connected monitoring, cloud platforms, dashboards, alerts, and reporting.",
+    icon: Network,
+    bgImage: "/cap/cap_iot.jpg",
+    color: "#3b82f6"
   },
   { 
-    name: "Fabrication & Implementation", 
-    description: "Procurement, fabrication, assembly, installation, integration, testing and commissioning.",
-    icon: PenTool 
+    name: "Fabrication & Assembly", 
+    description: "Procurement, fabrication, assembly, installation, and commissioning.",
+    icon: PenTool,
+    bgImage: "/cap/cap_fabrication.jpg",
+    color: "#ec4899"
   },
   { 
-    name: "AMC & Lifecycle Support", 
-    description: "Preventive maintenance, breakdown support, system health reviews, training, upgrades and continuous improvement.",
-    icon: LifeBuoy 
+    name: "Lifecycle Support", 
+    description: "Preventive maintenance, breakdown support, training, and continuous upgrades.",
+    icon: LifeBuoy,
+    bgImage: "/cap/cap_amc.jpg",
+    color: "#f97316"
   },
 ];
 
 export default function IntegratedSolutionCapability() {
   return (
-    <section className="relative py-24 bg-[#0B1220] overflow-hidden">
+    <section className="relative py-12 lg:py-16 bg-[#0B1220] overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-[#E8B84B]/5 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-[#2E5EAA]/10 blur-[100px] pointer-events-none" />
@@ -52,7 +64,7 @@ export default function IntegratedSolutionCapability() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="xl:col-span-5 sticky top-24"
+            className="xl:col-span-6 sticky top-24 xl:pr-6"
           >
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
               More Than One Technology. <br/>
@@ -85,23 +97,57 @@ export default function IntegratedSolutionCapability() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="xl:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6"
+            className="xl:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10 justify-items-center"
           >
             {capabilities.map((cap, idx) => {
               const Icon = cap.icon;
               return (
-                <div 
+                <motion.div 
                   key={idx}
-                  className="flex flex-col p-6 rounded-2xl bg-[#131C2E] border border-slate-800/80 hover:border-[#E8B84B]/40 transition-colors group"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: idx * 0.4
+                  }}
+                  className="relative flex flex-col items-center text-center p-6 sm:p-8 rounded-full aspect-square w-full max-w-[280px] sm:max-w-[310px] bg-[#131C2E] border border-slate-800 transition-all duration-500 group overflow-hidden justify-center shadow-2xl mx-auto"
+                  style={{ '--card-color': cap.color } as React.CSSProperties}
+                  onMouseEnter={(e: any) => {
+                    e.currentTarget.style.borderColor = cap.color;
+                  }}
+                  onMouseLeave={(e: any) => {
+                    e.currentTarget.style.borderColor = '#1e293b'; // slate-800
+                  }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#0B1220] flex items-center justify-center mb-5 border border-slate-800 group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6 text-[#E8B84B]" />
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0 transition-all duration-700 opacity-40 group-hover:opacity-70 group-hover:scale-110">
+                    <div 
+                      className="absolute inset-0 z-10" 
+                      style={{ background: `linear-gradient(to bottom, rgba(11, 18, 32, 0.6), ${cap.color}33, rgba(11, 18, 32, 0.9))` }}
+                    />
+                    <img
+                      src={cap.bgImage}
+                      alt={cap.name}
+                      className="w-full h-full object-cover mix-blend-lighten"
+                    />
                   </div>
-                  <h3 className="font-bold text-white text-[16px] mb-2">{cap.name}</h3>
-                  <p className="text-slate-400 text-[14px] leading-relaxed">
+
+                  <div 
+                    className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full backdrop-blur-md flex items-center justify-center mb-4 border transition-all duration-500 shadow-lg shrink-0 group-hover:scale-110"
+                    style={{ backgroundColor: `${cap.color}1A`, borderColor: `${cap.color}40` }}
+                  >
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 transition-colors" style={{ color: cap.color }} />
+                  </div>
+                  <h3 
+                    className="relative z-10 font-black text-white text-[16px] sm:text-[18px] mb-2 transition-colors duration-300 px-3 leading-tight group-hover:!text-[var(--card-color)]"
+                  >
+                    {cap.name}
+                  </h3>
+                  <p className="relative z-10 text-slate-300 text-[13px] sm:text-[14px] leading-relaxed group-hover:text-white transition-colors duration-300 px-4 line-clamp-4">
                     {cap.description}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
           </motion.div>

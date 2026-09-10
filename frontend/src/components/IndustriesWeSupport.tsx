@@ -55,7 +55,7 @@ const additionalIndustries = [
 
 export default function IndustriesWeSupport() {
   return (
-    <section id="industries" className="relative py-24 bg-transparent overflow-hidden">
+    <section id="industries" className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="mb-20">

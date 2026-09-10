@@ -23,7 +23,9 @@ const proofPoints = [
 
 export default function CorporateProof() {
   return (
-    <section className="relative py-16 bg-[#0B1220] border-t border-b border-slate-800/50">
+    <section className="relative pt-12 pb-16 bg-[#0B1220] border-t border-slate-800/60 shadow-[0_-15px_40px_-5px_rgba(0,0,0,0.5)]">
+      {/* Inner top glow to soften the border while keeping it distinct */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#131C2E]/30 to-transparent pointer-events-none z-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {proofPoints.map((point, idx) => (
