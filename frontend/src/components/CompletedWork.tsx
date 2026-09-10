@@ -91,7 +91,7 @@ export default function CompletedWork() {
           <motion.div
             className="flex gap-6 lg:gap-8 w-max"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
           >
             {[...projects, ...projects].map((project, idx) => (
               <div

@@ -11,89 +11,73 @@ const steps = [
     title: "UNDERSTAND",
     desc: "We listen to the customer and understand the operation, challenge and expected result.",
     icon: MessageSquare,
+    color: "#3B82F6", // Blue
   },
   {
     num: "02",
     title: "ASSESS",
     desc: "We study the process, machinery, site conditions, limitations and available opportunities.",
     icon: Search,
+    color: "#10B981", // Emerald
   },
   {
     num: "03",
     title: "DESIGN",
     desc: "We develop the engineering concept, system architecture and implementation approach.",
     icon: PenTool,
+    color: "#F59E0B", // Amber
   },
   {
     num: "04",
     title: "INTEGRATE",
     desc: "We coordinate mechanical, electrical, automation, IoT and software components.",
     icon: Wrench,
+    color: "#E8B84B", // Sanota Gold
   },
   {
     num: "05",
     title: "IMPLEMENT",
     desc: "We build, install, test, commission and hand over the completed solution.",
     icon: PlayCircle,
+    color: "#EF4444", // Red
   },
   {
     num: "06",
     title: "SUPPORT",
     desc: "We provide training, maintenance, AMC, upgrades and continuing performance improvement.",
     icon: TrendingUp,
+    color: "#8B5CF6", // Violet
   },
 ];
 
 export default function HowSanotaWorks() {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [glowingStep, setGlowingStep] = useState<number>(0);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 2200);
+      setActiveStep((prev) => {
+        const next = (prev + 1) % steps.length;
+        // The particle takes ~600ms to travel, so we delay the glow until it arrives.
+        setTimeout(() => setGlowingStep(next), 600);
+        return next;
+      });
+    }, 2800);
     return () => clearInterval(timer);
   }, [paused]);
 
+  const handleMouseEnter = (idx: number) => {
+    setPaused(true);
+    setActiveStep(idx);
+    setGlowingStep(idx);
+  };
+
   return (
-    <section className="relative overflow-hidden border-t border-slate-800/60 min-h-screen flex flex-col justify-center">
-
-      {/* CSS Animated gradient background */}
-      <div className="absolute inset-0 z-0" style={{ background: "#000013", overflow: "hidden" }}>
-        <div
-          style={{
-            position: "absolute",
-            inset: "-50%",
-            background: `
-              radial-gradient(ellipse 80% 60% at 20% 40%, #000066 0%, transparent 60%),
-              radial-gradient(ellipse 60% 80% at 80% 60%, #0a0a3e 0%, transparent 60%),
-              radial-gradient(ellipse 100% 50% at 50% 100%, #525f68 0%, transparent 50%)
-            `,
-            animation: "shaderFlow 8s ease-in-out infinite alternate",
-          }}
-        />
-        {/* Nabtura-style curved wave shapes */}
-        <svg className="absolute bottom-0 left-0 w-full opacity-10" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <path fill="#E8B84B" fillOpacity="0.3" d="M0,192L120,186.7C240,181,480,171,720,181.3C960,192,1200,224,1320,240L1440,256L1440,320L0,320Z" />
-          <path fill="#2E5EAA" fillOpacity="0.2" d="M0,256L120,240C240,224,480,192,720,186.7C960,181,1200,203,1320,213.3L1440,224L1440,320L0,320Z" />
-        </svg>
-        <div className="absolute inset-0 bg-[#000013]/20" />
-      </div>
-
-      <style>{`
-        @keyframes shaderFlow {
-          0%   { transform: translate(0%, 0%) rotate(0deg) scale(1); }
-          50%  { transform: translate(5%, -3%) rotate(-3deg) scale(1.1); }
-          100% { transform: translate(3%, -5%) rotate(-5deg) scale(1); }
-        }
-        @keyframes lineGrow {
-          from { width: 0%; }
-          to   { width: 100%; }
-        }
-      `}</style>
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 py-20 w-full">
+    <section className="relative overflow-hidden border-t border-slate-800/60 py-12 lg:py-16 bg-transparent">
+      
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 w-full">
 
         {/* Header */}
         <div className="text-center mb-16 lg:mb-24">
@@ -116,26 +100,47 @@ export default function HowSanotaWorks() {
           </motion.h2>
         </div>
 
-        {/* Nabtura-style Horizontal Timeline */}
+        {/* Timeline */}
         <div className="relative">
 
+          {/* SVG Definitions for Colorful Gradient Icons */}
+          <svg width="0" height="0" className="absolute">
+            <defs>
+              {steps.map((step, idx) => (
+                <linearGradient key={`grad-${idx}`} id={`icon-grad-${idx}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor={step.color} />
+                </linearGradient>
+              ))}
+            </defs>
+          </svg>
+
           {/* Connecting line behind circles */}
-          <div className="hidden lg:block absolute top-[52px] left-0 right-0 h-[2px] z-0">
+          <div className="hidden lg:block absolute top-[40px] left-[8.33%] right-[8.33%] h-[2px] z-0 rounded-full bg-slate-800/30">
+            {/* The Track */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/50 to-transparent" />
+            
+            {/* Energy Particle (Shooting Star) */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              style={{ transformOrigin: "left" }}
-              className="h-full bg-gradient-to-r from-transparent via-[#E8B84B]/60 to-transparent"
+              animate={{
+                left: `${(activeStep / (steps.length - 1)) * 100}%`,
+              }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute top-1/2 -translate-y-1/2 h-[4px] w-20 rounded-full z-10 blur-[1px]"
+              style={{ 
+                transform: 'translateX(-50%)',
+                background: `linear-gradient(90deg, transparent, ${steps[activeStep].color}, transparent)`,
+                boxShadow: `0 0 20px 4px ${steps[activeStep].color}80`
+              }}
             />
           </div>
 
           {/* Steps */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-0 relative z-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-4 relative z-10">
             {steps.map((step, idx) => {
               const Icon = step.icon;
-              const isActive = activeStep === idx;
+              const isGlowing = glowingStep === idx;
+              
               return (
                 <motion.div
                   key={idx}
@@ -144,54 +149,51 @@ export default function HowSanotaWorks() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
                   className="flex flex-col items-center cursor-pointer"
-                  onMouseEnter={() => { setPaused(true); setActiveStep(idx); }}
+                  onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={() => setPaused(false)}
                 >
                   {/* Circle Node */}
                   <div
-                    className={`w-[110px] h-[110px] rounded-full border-2 flex items-center justify-center mb-6 transition-all duration-500 relative
-                      ${isActive
-                        ? "border-[#E8B84B] bg-[#E8B84B]/10 shadow-[0_0_50px_rgba(232,184,75,0.4)] scale-110"
-                        : "border-slate-600 bg-[#050B20]/80 scale-100"
-                      }`}
+                    className={`w-[80px] h-[80px] rounded-full border-2 flex items-center justify-center mb-5 transition-all duration-500 relative`}
+                    style={{
+                      borderColor: isGlowing ? step.color : `${step.color}33`,
+                      background: isGlowing 
+                        ? `radial-gradient(circle at center, ${step.color}25 0%, rgba(11,18,32,0.9) 100%)` 
+                        : 'rgba(11,18,32,0.8)',
+                      boxShadow: isGlowing ? `0 0 40px ${step.color}60, inset 0 0 15px ${step.color}30` : 'none',
+                      transform: isGlowing ? 'scale(1.15)' : 'scale(1)',
+                    }}
                   >
                     {/* Pulsing ring when active */}
-                    {isActive && (
+                    {isGlowing && (
                       <motion.div
                         key={`ring-${idx}`}
-                        className="absolute inset-0 rounded-full border border-[#E8B84B]/40"
+                        className="absolute inset-0 rounded-full border"
+                        style={{ borderColor: `${step.color}80` }}
                         initial={{ scale: 1, opacity: 0.8 }}
                         animate={{ scale: 1.6, opacity: 0 }}
                         transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
                       />
                     )}
-                    {/* Step number inside */}
-                    <span className={`absolute top-4 text-xs font-black tracking-widest transition-colors duration-300 ${isActive ? "text-[#E8B84B]" : "text-slate-600"}`}>
-                      {step.num}
-                    </span>
+                    
+                    {/* Colorful Gradient Icon */}
                     <Icon
-                      className={`w-12 h-12 transition-all duration-500 ${isActive ? "text-[#E8B84B] scale-110" : "text-slate-400"}`}
+                      className={`w-8 h-8 transition-all duration-500 ${isGlowing ? "scale-110 drop-shadow-lg" : "opacity-60"}`}
+                      stroke={isGlowing ? `url(#icon-grad-${idx})` : '#94a3b8'}
+                      strokeWidth={isGlowing ? 2.5 : 2}
                     />
                   </div>
 
                   {/* Label */}
-                  <p className={`text-sm font-black tracking-[0.2em] uppercase mb-3 transition-colors duration-300 ${isActive ? "text-[#E8B84B]" : "text-slate-400"}`}>
+                  <p 
+                    className="text-[13px] font-black tracking-[0.15em] uppercase mb-2 transition-colors duration-300 text-center"
+                    style={{ 
+                      color: isGlowing ? step.color : '#64748b',
+                      textShadow: isGlowing ? `0 0 10px ${step.color}60` : 'none'
+                    }}
+                  >
                     {step.title}
                   </p>
-
-                  {/* Description — shows on hover */}
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      opacity: isActive ? 1 : 0,
-                      maxHeight: isActive ? 120 : 0,
-                      marginTop: isActive ? 8 : 0,
-                    }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden text-center px-1"
-                  >
-                    <p className="text-sm text-slate-300 leading-relaxed">{step.desc}</p>
-                  </motion.div>
                 </motion.div>
               );
             })}
