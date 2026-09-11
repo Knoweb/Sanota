@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,6 +10,7 @@ import {
   Send, Upload, Info, MessageSquare, Briefcase, Cog, Globe, PhoneCall
 } from "lucide-react";
 import ContactBackground from "@/components/ContactBackground";
+import { submitContactEnquiry, submitCallRequest, ContactFormData, CallRequestData } from "@/lib/api";
 
 const contactOptions = [
   { title: "Engineering & Project Enquiries", desc: "Contact us about machinery, automation, new systems, engineering design, product development, modernization or integrated project requirements.", button: "Submit an Engineering Enquiry", icon: Cog },
@@ -42,12 +43,72 @@ const whatHappensNext = [
 const inputClass = "w-full bg-[#050B14] border border-slate-700/60 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-[#E8B84B]/60 focus:bg-[#0A1525] transition-all duration-200 text-sm";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    company: "",
+    jobTitle: "",
+    country: "Sri Lanka",
+    email: "",
+    phone: "",
+    enquiryType: "",
+    subject: "",
+    message: "",
+    consentAccurate: false,
+    consentNoObligation: false,
+  });
+  
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [connectionError, setConnectionError] = useState('');
+  const [enquiryRef, setEnquiryRef] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const updateData = (fields: Partial<ContactFormData>) => setFormData(prev => ({ ...prev, ...fields }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formStatus === 'submitting') return;
     setFormStatus('submitting');
-    setTimeout(() => setFormStatus('success'), 1500);
+    setConnectionError('');
+    try {
+      const result = await submitContactEnquiry(formData);
+      if (result.success) {
+        setEnquiryRef(result.referenceNumber);
+        setFormStatus('success');
+      }
+    } catch(err: any) {
+      setConnectionError(err.message || 'Your enquiry could not be submitted because of a connection problem. Please try again.');
+      setFormStatus('error');
+    }
+  };
+
+  const [callData, setCallData] = useState<CallRequestData>({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    reason: "",
+  });
+  const [callStatus, setCallStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [callError, setCallError] = useState('');
+  const [callRef, setCallRef] = useState('');
+
+  const updateCallData = (fields: Partial<CallRequestData>) => setCallData(prev => ({ ...prev, ...fields }));
+
+  const handleCallSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (callStatus === 'submitting') return;
+    setCallStatus('submitting');
+    setCallError('');
+    try {
+      const result = await submitCallRequest(callData);
+      if (result.success) {
+        setCallRef(result.referenceNumber);
+        setCallStatus('success');
+      }
+    } catch(err: any) {
+      setCallError(err.message || 'Your request could not be submitted because of a connection problem. Please try again.');
+      setCallStatus('error');
+    }
   };
 
   return (
@@ -349,7 +410,7 @@ export default function ContactPage() {
                       </div>
                       <h3 className="text-2xl font-black text-white mb-4">Thank You for Contacting Sanota</h3>
                       <p className="text-slate-300 text-lg mb-3">Your enquiry has been received successfully.</p>
-                      <p className="text-[#E8B84B] font-mono mb-8">Reference: ENQ-2023-0894</p>
+                      <p className="text-[#E8B84B] font-mono mb-8">Reference: {enquiryRef}</p>
                       <p className="text-slate-400 mb-8 max-w-lg mx-auto">
                         The Sanota team will review the information and direct it to the appropriate department. A representative will contact you using the details provided.
                       </p>
@@ -371,27 +432,27 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Full name <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Your full name" />
+                            <input required type="text" className={inputClass} placeholder="Your full name" value={formData.name} onChange={e => updateData({name: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Company or organization <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Your company" />
+                            <input required type="text" className={inputClass} placeholder="Your company" value={formData.company} onChange={e => updateData({company: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Job title</label>
-                            <input type="text" className={inputClass} placeholder="Your role" />
+                            <input type="text" className={inputClass} placeholder="Your role" value={formData.jobTitle} onChange={e => updateData({jobTitle: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Country</label>
-                            <input type="text" className={inputClass} defaultValue="Sri Lanka" />
+                            <input type="text" className={inputClass} value={formData.country} onChange={e => updateData({country: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Email address <span className="text-red-400">*</span></label>
-                            <input required type="email" className={inputClass} placeholder="you@company.com" />
+                            <input required type="email" className={inputClass} placeholder="you@company.com" value={formData.email} onChange={e => updateData({email: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Telephone number <span className="text-red-400">*</span></label>
-                            <input required type="tel" className={inputClass} placeholder="+94 77 000 0000" />
+                            <input required type="tel" className={inputClass} placeholder="+94 77 000 0000" value={formData.phone} onChange={e => updateData({phone: e.target.value})} />
                           </div>
                         </div>
                       </div>
@@ -402,7 +463,7 @@ export default function ContactPage() {
                         <div className="space-y-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Type of enquiry <span className="text-red-400">*</span></label>
-                            <select required className={inputClass + " appearance-none cursor-pointer"}>
+                            <select required className={inputClass + " appearance-none cursor-pointer"} value={formData.enquiryType} onChange={e => updateData({enquiryType: e.target.value})}>
                               <option value="">Select an option</option>
                               <option>Engineering or project requirement</option>
                               <option>Machinery or automation</option>
@@ -419,7 +480,7 @@ export default function ContactPage() {
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Subject <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Brief subject of your enquiry" />
+                            <input required type="text" className={inputClass} placeholder="Brief subject of your enquiry" value={formData.subject} onChange={e => updateData({subject: e.target.value})} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Your message <span className="text-red-400">*</span></label>
@@ -428,6 +489,7 @@ export default function ContactPage() {
                               rows={6}
                               className={inputClass + " resize-none"}
                               placeholder="Briefly explain what is happening, what you need or what you would like to discuss."
+                              value={formData.message} onChange={e => updateData({message: e.target.value})}
                             />
                           </div>
                         </div>
@@ -438,9 +500,21 @@ export default function ContactPage() {
                         <h4 className="text-lg font-black text-white mb-1 pb-4 border-b border-slate-700/60">Supporting Files</h4>
                         <div className="mt-6">
                           <p className="text-slate-400 text-sm mb-4">Attach photographs, videos, drawings, equipment details or other relevant documents.</p>
-                          <div className="border-2 border-dashed border-slate-700 rounded-2xl p-8 text-center hover:border-[#E8B84B]/50 transition-colors cursor-pointer bg-[#050B14]">
+                          <div className="border-2 border-dashed border-slate-700 rounded-2xl p-8 text-center hover:border-[#E8B84B]/50 transition-colors cursor-pointer bg-[#050B14]" onClick={() => fileInputRef.current?.click()}>
+                            <input 
+                              type="file" 
+                              ref={fileInputRef} 
+                              className="hidden" 
+                              multiple 
+                              accept=".jpg,.jpeg,.png,.pdf,.docx,.xlsx,.mp4"
+                              onChange={(e) => {
+                                if (e.target.files) {
+                                  updateData({ supportingFiles: Array.from(e.target.files) });
+                                }
+                              }}
+                            />
                             <Upload className="w-8 h-8 text-slate-500 mx-auto mb-3" />
-                            <p className="text-white font-bold mb-1">Click to Add Files</p>
+                            <p className="text-white font-bold mb-1">{formData.supportingFiles && formData.supportingFiles.length > 0 ? `${formData.supportingFiles.length} File(s) Selected` : 'Click to Add Files'}</p>
                             <p className="text-slate-500 text-xs">Maximum file size: 20MB</p>
                           </div>
                           <div className="flex items-start mt-4 bg-[#050B14] p-3 rounded-xl border border-slate-800">
@@ -459,7 +533,7 @@ export default function ContactPage() {
                             <div className="space-y-3">
                               {['Telephone call', 'Email', 'Online meeting', 'No preference'].map((opt, idx) => (
                                 <label key={idx} className="flex items-center space-x-3 cursor-pointer group">
-                                  <input type="radio" name="responseMethod" className="w-4 h-4 accent-[#E8B84B]" />
+                                  <input type="radio" name="responseMethod" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredResponseMethod === opt} onChange={e => updateData({preferredResponseMethod: e.target.value})} />
                                   <span className="text-slate-300 text-sm group-hover:text-white transition-colors">{opt}</span>
                                 </label>
                               ))}
@@ -470,7 +544,7 @@ export default function ContactPage() {
                             <div className="space-y-3">
                               {['Morning', 'Afternoon', 'Any time during business hours'].map((opt, idx) => (
                                 <label key={idx} className="flex items-center space-x-3 cursor-pointer group">
-                                  <input type="radio" name="contactTime" className="w-4 h-4 accent-[#E8B84B]" />
+                                  <input type="radio" name="contactTime" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredContactTime === opt} onChange={e => updateData({preferredContactTime: e.target.value})} />
                                   <span className="text-slate-300 text-sm group-hover:text-white transition-colors">{opt}</span>
                                 </label>
                               ))}
@@ -481,16 +555,21 @@ export default function ContactPage() {
 
                       {/* Consent */}
                       <div className="space-y-4 pt-2 border-t border-slate-800/60">
-                        {[
-                          "I confirm that the information submitted is accurate to the best of my knowledge and that I am authorized to share any attached material.",
-                          "I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution."
-                        ].map((text, idx) => (
-                          <label key={idx} className="flex items-start space-x-3 cursor-pointer group">
-                            <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" />
-                            <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">{text}</span>
-                          </label>
-                        ))}
+                        <label className="flex items-start space-x-3 cursor-pointer group">
+                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentAccurate} onChange={e => updateData({consentAccurate: e.target.checked})} />
+                          <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">I confirm that the information submitted is accurate to the best of my knowledge and that I am authorized to share any attached material.</span>
+                        </label>
+                        <label className="flex items-start space-x-3 cursor-pointer group">
+                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentNoObligation} onChange={e => updateData({consentNoObligation: e.target.checked})} />
+                          <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution.</span>
+                        </label>
                       </div>
+
+                      {formStatus === 'error' && (
+                        <div className="bg-red-900/20 border border-red-500/50 rounded-xl p-4 mt-4">
+                          <p className="text-red-400 text-sm">{connectionError}</p>
+                        </div>
+                      )}
 
                       <div className="flex flex-col sm:flex-row gap-4 items-center pt-2">
                         <button
@@ -501,7 +580,10 @@ export default function ContactPage() {
                           {formStatus === 'submitting' ? 'Submitting…' : 'Submit Enquiry'}
                           {formStatus !== 'submitting' && <Send className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />}
                         </button>
-                        <button type="reset" className="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-slate-800 text-slate-400 hover:text-white font-bold rounded-xl transition-colors">
+                        <button type="reset" onClick={() => {
+                          setFormData({ name: "", company: "", jobTitle: "", country: "Sri Lanka", email: "", phone: "", enquiryType: "", subject: "", message: "", consentAccurate: false, consentNoObligation: false });
+                          setFormStatus('idle');
+                        }} className="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-slate-800 text-slate-400 hover:text-white font-bold rounded-xl transition-colors">
                           Clear Form
                         </button>
                         <Link href="/privacy" className="sm:ml-auto text-sm text-[#E8B84B]/70 hover:text-[#E8B84B] transition-colors">
@@ -520,26 +602,37 @@ export default function ContactPage() {
                 <div id="request-call" className="bg-[#131C2E] border border-slate-800 rounded-3xl p-8">
                   <h3 className="text-xl font-black text-white mb-3">Ask Sanota to Contact You</h3>
                   <p className="text-slate-400 text-sm mb-6 leading-relaxed">Provide your details and a representative will contact you to discuss your requirement.</p>
-                  <form className="space-y-4">
-                    {[
-                      { placeholder: "Full name", type: "text" },
-                      { placeholder: "Company", type: "text" },
-                      { placeholder: "Telephone number", type: "tel" },
-                      { placeholder: "Email address", type: "email" },
-                    ].map((f, i) => (
-                      <input key={i} required type={f.type} placeholder={f.placeholder} className={inputClass} />
-                    ))}
-                    <select className={inputClass + " appearance-none cursor-pointer"}>
-                      <option value="">Preferred contact time</option>
-                      <option>Morning</option>
-                      <option>Afternoon</option>
-                      <option>Any time during business hours</option>
-                    </select>
-                    <input type="text" placeholder="Brief reason for the call" className={inputClass} />
-                    <button type="submit" className="w-full py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 text-sm shadow-lg shadow-[#E8B84B]/15 hover:-translate-y-0.5 mt-2">
-                      Request a Call
-                    </button>
-                  </form>
+                  
+                  {callStatus === 'success' ? (
+                    <div className="bg-green-900/20 border border-green-500/30 rounded-2xl p-6 text-center">
+                      <CheckCircle2 className="w-10 h-10 text-green-400 mx-auto mb-3" />
+                      <p className="text-white font-bold mb-1">Request Received</p>
+                      <p className="text-slate-400 text-sm mb-2">We will contact you shortly.</p>
+                      <p className="text-[#E8B84B] text-xs font-mono">Ref: {callRef}</p>
+                    </div>
+                  ) : (
+                    <form className="space-y-4" onSubmit={handleCallSubmit}>
+                      <input required type="text" placeholder="Full name" className={inputClass} value={callData.name} onChange={e => updateCallData({name: e.target.value})} />
+                      <input required type="text" placeholder="Company" className={inputClass} value={callData.company} onChange={e => updateCallData({company: e.target.value})} />
+                      <input required type="tel" placeholder="Telephone number" className={inputClass} value={callData.phone} onChange={e => updateCallData({phone: e.target.value})} />
+                      <input required type="email" placeholder="Email address" className={inputClass} value={callData.email} onChange={e => updateCallData({email: e.target.value})} />
+                      <select required className={inputClass + " appearance-none cursor-pointer"} value={callData.preferredContactTime} onChange={e => updateCallData({preferredContactTime: e.target.value})}>
+                        <option value="">Preferred contact time</option>
+                        <option>Morning</option>
+                        <option>Afternoon</option>
+                        <option>Any time during business hours</option>
+                      </select>
+                      <input type="text" placeholder="Brief reason for the call" className={inputClass} value={callData.reason} onChange={e => updateCallData({reason: e.target.value})} />
+                      
+                      {callStatus === 'error' && (
+                        <p className="text-red-400 text-xs mt-2">{callError}</p>
+                      )}
+
+                      <button disabled={callStatus === 'submitting'} type="submit" className="w-full py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 text-sm shadow-lg shadow-[#E8B84B]/15 hover:-translate-y-0.5 mt-2 disabled:opacity-60">
+                        {callStatus === 'submitting' ? 'Submitting...' : 'Request a Call'}
+                      </button>
+                    </form>
+                  )}
                 </div>
 
                 {/* What Happens Next */}

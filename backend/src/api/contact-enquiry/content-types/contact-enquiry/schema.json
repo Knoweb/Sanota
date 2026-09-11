@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_enquiries",
+  "info": {
+    "singularName": "contact-enquiry",
+    "pluralName": "contact-enquiries",
+    "displayName": "Contact Enquiry",
+    "description": "Submissions from the main Contact Sanota form"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "referenceNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "enquiryStatus": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "reviewing",
+        "contacted",
+        "closed"
+      ],
+      "default": "submitted"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "enquiryType": {
+      "type": "enumeration",
+      "enum": [
+        "Engineering or project requirement",
+        "Machinery or automation",
+        "IoT or software",
+        "Product development",
+        "Retrofit or modernization",
+        "AMC or maintenance",
+        "Training",
+        "Partnership or supplier enquiry",
+        "Media enquiry",
+        "General enquiry",
+        "Other"
+      ],
+      "required": true
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "preferredResponseMethod": {
+      "type": "enumeration",
+      "enum": [
+        "Telephone call",
+        "Email",
+        "Online meeting",
+        "No preference"
+      ]
+    },
+    "preferredContactTime": {
+      "type": "enumeration",
+      "enum": [
+        "Morning",
+        "Afternoon",
+        "Any time during business hours"
+      ]
+    },
+    "consentAccurate": {
+      "type": "boolean",
+      "required": true
+    },
+    "consentNoObligation": {
+      "type": "boolean",
+      "required": true
+    },
+    "supportingFiles": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "submittedAt": {
+      "type": "datetime"
+    }
+  }
+}

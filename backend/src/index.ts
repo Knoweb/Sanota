@@ -22,24 +22,30 @@ export default {
       });
 
       if (publicRole) {
-        const action = 'api::challenge-enquiry.challenge-enquiry.submit';
+        const actions = [
+          'api::challenge-enquiry.challenge-enquiry.submit',
+          'api::contact-enquiry.contact-enquiry.submit',
+          'api::call-request.call-request.submit'
+        ];
         
-        // Check if permission exists
-        const existingPermission = await strapi.db.query('plugin::users-permissions.permission').findOne({
-          where: {
-            role: publicRole.id,
-            action: action
-          }
-        });
-
-        if (!existingPermission) {
-          await strapi.db.query('plugin::users-permissions.permission').create({
-            data: {
-              action: action,
+        for (const action of actions) {
+          // Check if permission exists
+          const existingPermission = await strapi.db.query('plugin::users-permissions.permission').findOne({
+            where: {
               role: publicRole.id,
+              action: action
             }
           });
-          strapi.log.info('Granted Public permission to challenge-enquiry.submit');
+
+          if (!existingPermission) {
+            await strapi.db.query('plugin::users-permissions.permission').create({
+              data: {
+                action: action,
+                role: publicRole.id,
+              }
+            });
+            strapi.log.info(`Granted Public permission to ${action}`);
+          }
         }
       }
     } catch (err) {

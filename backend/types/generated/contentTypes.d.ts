@@ -443,6 +443,50 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCallRequestCallRequest extends Struct.CollectionTypeSchema {
+  collectionName: 'call_requests';
+  info: {
+    description: 'Submissions from the Request a Call sidebar';
+    displayName: 'Call Request';
+    pluralName: 'call-requests';
+    singularName: 'call-request';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    company: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    enquiryStatus: Schema.Attribute.Enumeration<
+      ['submitted', 'reviewing', 'contacted', 'closed']
+    > &
+      Schema.Attribute.DefaultTo<'submitted'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::call-request.call-request'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    preferredContactTime: Schema.Attribute.Enumeration<
+      ['Morning', 'Afternoon', 'Any time during business hours']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    reason: Schema.Attribute.String;
+    referenceNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    submittedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiChallengeEnquiryChallengeEnquiry
   extends Struct.CollectionTypeSchema {
   collectionName: 'challenge_enquiries';
@@ -520,6 +564,79 @@ export interface ApiChallengeEnquiryChallengeEnquiry
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     urgency: Schema.Attribute.String;
+  };
+}
+
+export interface ApiContactEnquiryContactEnquiry
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_enquiries';
+  info: {
+    description: 'Submissions from the main Contact Sanota form';
+    displayName: 'Contact Enquiry';
+    pluralName: 'contact-enquiries';
+    singularName: 'contact-enquiry';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    company: Schema.Attribute.String & Schema.Attribute.Required;
+    consentAccurate: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    consentNoObligation: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    enquiryStatus: Schema.Attribute.Enumeration<
+      ['submitted', 'reviewing', 'contacted', 'closed']
+    > &
+      Schema.Attribute.DefaultTo<'submitted'>;
+    enquiryType: Schema.Attribute.Enumeration<
+      [
+        'Engineering or project requirement',
+        'Machinery or automation',
+        'IoT or software',
+        'Product development',
+        'Retrofit or modernization',
+        'AMC or maintenance',
+        'Training',
+        'Partnership or supplier enquiry',
+        'Media enquiry',
+        'General enquiry',
+        'Other',
+      ]
+    > &
+      Schema.Attribute.Required;
+    jobTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-enquiry.contact-enquiry'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    preferredContactTime: Schema.Attribute.Enumeration<
+      ['Morning', 'Afternoon', 'Any time during business hours']
+    >;
+    preferredResponseMethod: Schema.Attribute.Enumeration<
+      ['Telephone call', 'Email', 'Online meeting', 'No preference']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    referenceNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    subject: Schema.Attribute.String & Schema.Attribute.Required;
+    submittedAt: Schema.Attribute.DateTime;
+    supportingFiles: Schema.Attribute.Media<
+      'images' | 'files' | 'videos',
+      true
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1034,7 +1151,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::call-request.call-request': ApiCallRequestCallRequest;
       'api::challenge-enquiry.challenge-enquiry': ApiChallengeEnquiryChallengeEnquiry;
+      'api::contact-enquiry.contact-enquiry': ApiContactEnquiryContactEnquiry;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

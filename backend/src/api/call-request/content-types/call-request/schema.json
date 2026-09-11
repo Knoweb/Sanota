@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "call_requests",
+  "info": {
+    "singularName": "call-request",
+    "pluralName": "call-requests",
+    "displayName": "Call Request",
+    "description": "Submissions from the Request a Call sidebar"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "referenceNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "enquiryStatus": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "reviewing",
+        "contacted",
+        "closed"
+      ],
+      "default": "submitted"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "preferredContactTime": {
+      "type": "enumeration",
+      "enum": [
+        "Morning",
+        "Afternoon",
+        "Any time during business hours"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "submittedAt": {
+      "type": "datetime"
+    }
+  }
+}

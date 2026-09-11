@@ -110,3 +110,99 @@ export async function submitChallengeEnquiry(data: ChallengeFormData): Promise<S
 
   return await response.json();
 }
+
+export interface ContactFormData {
+  name: string;
+  company: string;
+  jobTitle?: string;
+  country?: string;
+  email: string;
+  phone: string;
+  enquiryType: string;
+  subject: string;
+  message: string;
+  preferredResponseMethod?: string;
+  preferredContactTime?: string;
+  consentAccurate: boolean;
+  consentNoObligation: boolean;
+  supportingFiles?: File[];
+}
+
+export interface CallRequestData {
+  name: string;
+  company: string;
+  phone: string;
+  email: string;
+  preferredContactTime?: string;
+  reason?: string;
+}
+
+export async function submitContactEnquiry(data: ContactFormData): Promise<{ success: boolean; referenceNumber: string; message: string }> {
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/contact-enquiries/submit`;
+
+  const payload = {
+    name: data.name,
+    company: data.company,
+    jobTitle: data.jobTitle,
+    country: data.country,
+    email: data.email,
+    phone: data.phone,
+    enquiryType: data.enquiryType,
+    subject: data.subject,
+    message: data.message,
+    preferredResponseMethod: data.preferredResponseMethod,
+    preferredContactTime: data.preferredContactTime,
+    consentAccurate: data.consentAccurate,
+    consentNoObligation: data.consentNoObligation,
+  };
+
+  const formData = new FormData();
+  formData.append('data', JSON.stringify(payload));
+
+  if (data.supportingFiles && data.supportingFiles.length > 0) {
+    data.supportingFiles.forEach((file) => {
+      formData.append('files.supportingFiles', file);
+    });
+  }
+
+  const response = await fetch(url, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    let errorMsg = 'Your enquiry could not be submitted because of a connection problem. Please try again.';
+    try {
+      const errJson = await response.json();
+      if (errJson?.error?.message) {
+        errorMsg = errJson.error.message;
+      }
+    } catch(e) {}
+    throw new Error(errorMsg);
+  }
+
+  return await response.json();
+}
+
+export async function submitCallRequest(data: CallRequestData): Promise<{ success: boolean; referenceNumber: string; message: string }> {
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/call-requests/submit`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data }),
+  });
+
+  if (!response.ok) {
+    let errorMsg = 'Your request could not be submitted because of a connection problem. Please try again.';
+    try {
+      const errJson = await response.json();
+      if (errJson?.error?.message) {
+        errorMsg = errJson.error.message;
+      }
+    } catch(e) {}
+    throw new Error(errorMsg);
+  }
+
+  return await response.json();
+}
