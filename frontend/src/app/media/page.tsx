@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
+import MediaNavigationCarousel from "@/components/MediaNavigationCarousel";
 import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings } from "lucide-react";
 
 const mediaNavigation = [
@@ -15,12 +17,12 @@ const mediaNavigation = [
 ];
 
 const featuredWork = [
-  { title: "Industrial Machinery & Modernization", desc: "Custom machinery, control-system upgrades, automation retrofits and improvements to existing industrial equipment.", link: "Explore Industrial Projects", icon: Settings },
-  { title: "Smart Agriculture", desc: "Greenhouse, irrigation, fertigation, environmental monitoring and connected agricultural systems.", link: "Explore Smart Agriculture Projects", icon: Sprout },
-  { title: "Food, Beverage & Tea", desc: "Processing equipment, production systems, environmental controls and industry-specific automation.", link: "Explore Processing Projects", icon: Coffee },
-  { title: "IoT & Digital Integration", desc: "Connected machinery, sensors, dashboards, alerts, tracking systems and operational software.", link: "Explore IoT & Digital Projects", icon: Monitor },
-  { title: "Material Handling & Logistics", desc: "Conveyors, movement systems, automated guided solutions, tracking and customized handling equipment.", link: "Explore Logistics Projects", icon: Truck },
-  { title: "Energy, Environment & Facilities", desc: "Resource monitoring, environmental systems, waste-related solutions and connected facility technologies.", link: "Explore Energy & Environmental Projects", icon: Zap }
+  { title: "Industrial Machinery & Modernization", desc: "Custom machinery, control-system upgrades, automation retrofits and improvements to existing industrial equipment.", link: "Explore Industrial Projects", icon: Settings, image: "/featured_industrial_1789116846117.jpg" },
+  { title: "Smart Agriculture", desc: "Greenhouse, irrigation, fertigation, environmental monitoring and connected agricultural systems.", link: "Explore Smart Agriculture Projects", icon: Sprout, image: "/featured_agriculture_1789116860132.jpg" },
+  { title: "Food, Beverage & Tea", desc: "Processing equipment, production systems, environmental controls and industry-specific automation.", link: "Explore Processing Projects", icon: Coffee, image: "/featured_food_1789116878789.jpg" },
+  { title: "IoT & Digital Integration", desc: "Connected machinery, sensors, dashboards, alerts, tracking systems and operational software.", link: "Explore IoT & Digital Projects", icon: Monitor, image: "/featured_iot_1789116892994.jpg" },
+  { title: "Material Handling & Logistics", desc: "Conveyors, movement systems, automated guided solutions, tracking and customized handling equipment.", link: "Explore Logistics Projects", icon: Truck, image: "/featured_logistics_1789116908842.jpg" },
+  { title: "Energy, Environment & Facilities", desc: "Resource monitoring, environmental systems, waste-related solutions and connected facility technologies.", link: "Explore Energy & Environmental Projects", icon: Zap, image: "/featured_energy_1789116922913.jpg" }
 ];
 
 const projectCriteria = [
@@ -195,44 +197,57 @@ export default function MediaPage() {
         </section>
 
         {/* Media Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">See What Sanota Does</h2>
-            <p className="text-slate-400 text-lg leading-relaxed mb-6">
-              Engineering capabilities are best understood through practical application.
-            </p>
-            <p className="text-slate-400 text-lg leading-relaxed mb-6">
-              The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented.
-            </p>
-            <p className="text-slate-300 font-bold text-lg leading-relaxed">
-              Explore Sanota’s work by industry, solution or media type.
-            </p>
+        <section className="py-16 relative overflow-hidden bg-[#050B14]">
+          {/* Animated Middle Shade (Left to Right) */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center">
+            <motion.div 
+              className="absolute w-[800px] h-[300px] rounded-full blur-[80px]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(232,184,75,0.4) 50%, transparent 100%)'
+              }}
+              animate={{ x: ['-100vw', '100vw'] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+          
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                See What Sanota <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Does</span>
+              </h2>
+              
+              {/* Animated Divider */}
+              <motion.div 
+                className="h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent w-48 mx-auto mb-8"
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileInView={{ scaleX: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+
+              <p className="text-slate-300 text-lg md:text-xl font-medium leading-relaxed mb-6">
+                Engineering capabilities are best understood through practical application.
+              </p>
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+                The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented.
+              </p>
+              
+              <div className="inline-block px-6 py-2 rounded-full border border-slate-800 bg-[#0B1220] shadow-lg">
+                <p className="text-white font-bold text-sm tracking-wide">
+                  Explore Sanota’s work by industry, solution or media type.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Media Navigation */}
-        <section className="py-24 bg-[#050B14] bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Navigation</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white">What Would You Like to Explore?</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mediaNavigation.map((nav, idx) => (
-                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col">
-                  <div className="w-14 h-14 rounded-2xl bg-[#0B1220] border border-slate-700 flex items-center justify-center mb-6">
-                    <nav.icon className="w-7 h-7 text-[#E8B84B]" />
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-4">{nav.title}</h4>
-                  <p className="text-slate-400 leading-relaxed mb-8 flex-grow">{nav.desc}</p>
-                  <Link href="#" className="inline-flex items-center text-sm font-bold text-[#E8B84B] hover:text-[#d4a643] transition-colors mt-auto">
-                    {nav.button} <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Media Navigation Carousel */}
+        <MediaNavigationCarousel />
 
         {/* Featured Work */}
         <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
@@ -243,18 +258,33 @@ export default function MediaPage() {
               <p className="text-slate-400 text-lg max-w-3xl mx-auto">Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {featuredWork.map((work, idx) => (
-                <div key={idx} className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-2xl p-6 hover:bg-[#131C2E] transition-colors">
-                  <div className="flex items-center mb-4">
-                    <work.icon className="w-6 h-6 text-[#E8B84B] mr-3" />
-                    <h4 className="text-lg font-bold text-white">{work.title}</h4>
+                <Link key={idx} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block">
+                  {/* Background Image */}
+                  <Image 
+                    src={work.image} 
+                    alt={work.title} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#0B1220]/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                    <div className="w-12 h-12 rounded-xl bg-[#131C2E]/80 backdrop-blur-md border border-slate-700 flex items-center justify-center mb-4 group-hover:border-[#E8B84B] transition-colors duration-500">
+                      <work.icon className="w-6 h-6 text-[#E8B84B] group-hover:drop-shadow-[0_0_8px_rgba(232,184,75,0.8)] transition-all duration-500" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500">{work.title}</h4>
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-slate-200 transition-colors duration-500">{work.desc}</p>
+                    
+                    {/* Animated Link */}
+                    <div className="inline-flex items-center text-xs font-bold text-[#E8B84B] uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                      {work.link} <ArrowRight className="ml-2 w-4 h-4" />
+                    </div>
                   </div>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{work.desc}</p>
-                  <Link href="#" className="inline-flex items-center text-xs font-bold text-[#2E5EAA] hover:text-white uppercase tracking-wider transition-colors">
-                    {work.link} <ArrowRight className="ml-2 w-3 h-3" />
-                  </Link>
-                </div>
+                </Link>
               ))}
             </div>
 

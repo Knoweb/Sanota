@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FeaturedProjectCardCopy from "@/components/FeaturedProjectCardCopy";
+import VideosAndDemonstrations from "@/components/VideosAndDemonstrations";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 
 // Data Structures
 
@@ -909,6 +911,10 @@ export default function IndustriesPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Hidden Sections */}
+        <FeaturedProjectCardCopy />
+        <VideosAndDemonstrations />
 
       </main>
       <Footer />
