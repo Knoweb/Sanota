@@ -94,31 +94,29 @@ export default function ProductsAndSystems() {
 
               {/* Content Area */}
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <div className="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                <div className="transition-transform duration-500 ease-out">
 
                   {/* Floating Icon */}
                   <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center mb-4 group-hover:border-[#E8B84B]/50 group-hover:bg-[#E8B84B]/20 transition-all duration-500 shadow-lg">
                     <product.icon className="w-6 h-6 text-white group-hover:text-[#E8B84B] transition-colors duration-500" />
                   </div>
 
-                  <h4 className="text-[18px] font-bold text-white leading-tight mb-2">
+                  <h4 className="text-[18px] font-bold text-white leading-tight mb-3">
                     {product.title}
                   </h4>
 
-                  {/* Expanding Description */}
-                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out">
-                    <div className="overflow-hidden">
-                      <p className="text-[13px] text-slate-300 leading-relaxed mb-4 pt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        {product.desc}
-                      </p>
-                      <Link
-                        href="/products"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center text-[#E8B84B] text-[12px] font-bold uppercase tracking-wider hover:text-white transition-colors opacity-0 group-hover:opacity-100 duration-500 delay-200"
-                      >
-                        Explore Solution <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
+                  {/* Description and Link (Visible by Default) */}
+                  <div>
+                    <p className="text-[13px] text-slate-300 leading-relaxed mb-4">
+                      {product.desc}
+                    </p>
+                    <Link
+                      href="/products"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center text-[#E8B84B] text-[12px] font-bold uppercase tracking-wider hover:text-white transition-colors group/link"
+                    >
+                      Explore Solution <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
                 </div>

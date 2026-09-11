@@ -61,7 +61,7 @@ export default function HowSanotaWorks() {
       setActiveStep((prev) => {
         const next = (prev + 1) % steps.length;
         // The particle takes ~600ms to travel, so we delay the glow until it arrives.
-        setTimeout(() => setGlowingStep(next), 600);
+        setTimeout(() => setGlowingStep(next), 800);
         return next;
       });
     }, 2800);
@@ -76,7 +76,7 @@ export default function HowSanotaWorks() {
 
   return (
     <section className="relative overflow-hidden border-t border-slate-800/60 py-12 lg:py-16 bg-transparent">
-      
+
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 w-full">
 
         {/* Header */}
@@ -119,7 +119,7 @@ export default function HowSanotaWorks() {
           <div className="hidden lg:block absolute top-[40px] left-[8.33%] right-[8.33%] h-[2px] z-0 rounded-full bg-slate-800/30">
             {/* The Track */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/50 to-transparent" />
-            
+
             {/* Energy Particle (Shooting Star) */}
             <motion.div
               animate={{
@@ -127,7 +127,7 @@ export default function HowSanotaWorks() {
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute top-1/2 -translate-y-1/2 h-[4px] w-20 rounded-full z-10 blur-[1px]"
-              style={{ 
+              style={{
                 transform: 'translateX(-50%)',
                 background: `linear-gradient(90deg, transparent, ${steps[activeStep].color}, transparent)`,
                 boxShadow: `0 0 20px 4px ${steps[activeStep].color}80`
@@ -140,7 +140,7 @@ export default function HowSanotaWorks() {
             {steps.map((step, idx) => {
               const Icon = step.icon;
               const isGlowing = glowingStep === idx;
-              
+
               return (
                 <motion.div
                   key={idx}
@@ -157,8 +157,8 @@ export default function HowSanotaWorks() {
                     className={`w-[80px] h-[80px] rounded-full border-2 flex items-center justify-center mb-5 transition-all duration-500 relative`}
                     style={{
                       borderColor: isGlowing ? step.color : `${step.color}33`,
-                      background: isGlowing 
-                        ? `radial-gradient(circle at center, ${step.color}25 0%, rgba(11,18,32,0.9) 100%)` 
+                      background: isGlowing
+                        ? `radial-gradient(circle at center, ${step.color}25 0%, rgba(11,18,32,0.9) 100%)`
                         : 'rgba(11,18,32,0.8)',
                       boxShadow: isGlowing ? `0 0 40px ${step.color}60, inset 0 0 15px ${step.color}30` : 'none',
                       transform: isGlowing ? 'scale(1.15)' : 'scale(1)',
@@ -175,7 +175,7 @@ export default function HowSanotaWorks() {
                         transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
                       />
                     )}
-                    
+
                     {/* Colorful Gradient Icon */}
                     <Icon
                       className={`w-8 h-8 transition-all duration-500 ${isGlowing ? "scale-110 drop-shadow-lg" : "opacity-60"}`}
@@ -185,9 +185,9 @@ export default function HowSanotaWorks() {
                   </div>
 
                   {/* Label */}
-                  <p 
+                  <p
                     className="text-[13px] font-black tracking-[0.15em] uppercase mb-2 transition-colors duration-300 text-center"
-                    style={{ 
+                    style={{
                       color: isGlowing ? step.color : '#64748b',
                       textShadow: isGlowing ? `0 0 10px ${step.color}60` : 'none'
                     }}
