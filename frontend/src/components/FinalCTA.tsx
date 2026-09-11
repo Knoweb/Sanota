@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
 const options = [
@@ -15,7 +16,7 @@ const options = [
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="relative py-32 bg-[#050B14] overflow-hidden">
+    <section id="contact" className="relative pt-16 pb-24 bg-[#050B14] overflow-hidden">
       
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#131C2E]" />
@@ -57,15 +58,57 @@ export default function FinalCTA() {
           </div>
 
           {/* Alternative Enquiry Options */}
-          <div className="glowing-card bg-[#0B1220]/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 max-w-4xl mx-auto text-left">
-            <h4 className="text-white font-bold mb-6 text-center text-lg">Alternative Enquiry Options</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {options.map((opt, idx) => (
-                <Link key={idx} href="/contact" className="flex items-center text-slate-300 hover:text-[#E8B84B] transition-colors group">
-                  <ChevronRight className="w-4 h-4 text-[#2E5EAA] group-hover:text-[#E8B84B] mr-2 shrink-0 transition-colors" />
-                  <span className="text-[13.5px]">{opt}</span>
-                </Link>
-              ))}
+          <div className="mt-20 relative z-20">
+            {/* Animated Ambient Background for the bottom part */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: [0.3, 0.6, 0.3] 
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute inset-0 bg-gradient-to-r from-[#2E5EAA]/30 via-[#E8B84B]/10 to-[#2E5EAA]/30 blur-3xl rounded-[100px] -z-10"
+            />
+            
+            <div className="bg-[#0B1220]/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 sm:p-10 max-w-5xl mx-auto text-left shadow-[0_0_50px_rgba(46,94,170,0.15)] relative overflow-hidden">
+              
+              {/* Internal Background Image */}
+              <Image 
+                src="/images/products/industrial_machinery.jpg" 
+                alt="Engineering Background" 
+                fill 
+                className="object-cover opacity-20 mix-blend-overlay pointer-events-none"
+              />
+
+              {/* Shimmer effect line */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8B84B]/60 to-transparent opacity-70 z-10" />
+              
+              <h4 className="relative z-10 text-white font-bold mb-8 text-center text-[16px] tracking-widest uppercase flex items-center justify-center">
+                <span className="w-12 h-[1px] bg-slate-700 mr-4"></span>
+                Alternative Enquiry Options
+                <span className="w-12 h-[1px] bg-slate-700 ml-4"></span>
+              </h4>
+              
+              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                {options.map((opt, idx) => (
+                  <motion.div 
+                    key={idx}
+                    whileHover={{ scale: 1.03, y: -3 }}
+                    className="group"
+                  >
+                    <Link href="/contact" className="flex items-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 hover:bg-slate-800/90 hover:border-[#E8B84B]/60 transition-all duration-300 relative overflow-hidden shadow-lg">
+                      {/* Sweep hover effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
+                      
+                      <ChevronRight className="w-4 h-4 text-[#2E5EAA] group-hover:text-[#E8B84B] mr-3 shrink-0 transition-colors" />
+                      <span className="text-[13.5px] text-slate-300 group-hover:text-white transition-colors font-medium">{opt}</span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
