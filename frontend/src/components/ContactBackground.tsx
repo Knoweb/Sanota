@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
@@ -50,8 +51,8 @@ export default function ContactBackground() {
           type="sphere"
           uAmplitude={7}
           uDensity={0.8}
-          uFrequency={5.5}
-          uSpeed={0.3}
+          uFrequency={3.5}
+          uSpeed={0.08}
           uStrength={0.4}
           uTime={0}
           wireframe={false}

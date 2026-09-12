@@ -42,6 +42,24 @@ const whatHappensNext = [
 
 const inputClass = "w-full bg-[#050B14] border border-slate-700/60 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-[#E8B84B]/60 focus:bg-[#0A1525] transition-all duration-200 text-sm";
 
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+  </svg>
+);
+
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
+    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+  </svg>
+);
+
+const YoutubeIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
+    <path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.854c-1.62-.434-8.125-.434-8.125-.434s-6.505 0-8.125.434a2.6 2.6 0 0 0-1.838 1.854c-.434 1.637-.434 5.062-.434 5.062s0 3.425.434 5.062a2.6 2.6 0 0 0 1.838 1.854c1.62.434 8.125.434 8.125.434s6.505 0 8.125-.434a2.6 2.6 0 0 0 1.838-1.854c.434-1.637.434-5.062.434-5.062s0-3.425-.434-5.062zM9.545 15.568V8.432l6.455 3.568-6.455 3.568z" />
+  </svg>
+);
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -56,7 +74,7 @@ export default function ContactPage() {
     consentAccurate: false,
     consentNoObligation: false,
   });
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [connectionError, setConnectionError] = useState('');
@@ -75,7 +93,7 @@ export default function ContactPage() {
         setEnquiryRef(result.referenceNumber);
         setFormStatus('success');
       }
-    } catch(err: any) {
+    } catch (err: any) {
       setConnectionError(err.message || 'Your enquiry could not be submitted because of a connection problem. Please try again.');
       setFormStatus('error');
     }
@@ -105,7 +123,7 @@ export default function ContactPage() {
         setCallRef(result.referenceNumber);
         setCallStatus('success');
       }
-    } catch(err: any) {
+    } catch (err: any) {
       setCallError(err.message || 'Your request could not be submitted because of a connection problem. Please try again.');
       setCallStatus('error');
     }
@@ -189,31 +207,63 @@ export default function ContactPage() {
         </section>
 
         {/* ── Technical Enquiry Callout ── */}
-        <section className="py-14 bg-transparent border-y border-[#E8B84B]/20 backdrop-blur-sm relative z-10">
+        <section className="py-14 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div className="lg:w-2/3">
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-4">Have a Technical or Operational Challenge?</h3>
-                <p className="text-slate-300 text-lg font-medium leading-relaxed mb-4">
-                  For engineering requirements, the fastest way to provide necessary information is through the guided <strong className="text-[#E8B84B]">Tell Us Your Challenge</strong> form. It helps you explain:
-                </p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-slate-200 font-semibold">
-                  {["What is happening now", "What is not working", "What you want to improve or develop"].map((item, i) => (
-                    <span key={i} className="flex items-center">
-                      <CheckCircle2 className="w-4 h-4 mr-2 shrink-0 text-[#E8B84B]" /> {item}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative overflow-hidden rounded-[2rem] bg-[#131C2E]/60 border border-slate-700/50 backdrop-blur-xl shadow-2xl p-8 md:p-10 group"
+            >
+              {/* Animated Glow Background */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8B84B]/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+                <div className="lg:w-2/3">
+                  <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 mb-5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] animate-pulse shadow-[0_0_6px_#E8B84B]" />
+                    <span className="text-slate-300 text-[10px] font-bold tracking-[0.2em] uppercase">Guided Process</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight">Have a Technical or <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-amber-500">Operational Challenge?</span></h3>
+                  <p className="text-slate-300 text-[15px] leading-relaxed mb-6 max-w-2xl">
+                    For engineering requirements, the fastest way to provide necessary information is through the guided <strong className="text-white font-bold bg-white/5 px-2 py-0.5 rounded-md border border-white/10 mx-1">Tell Us Your Challenge</strong> form. It helps you accurately explain:
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    {["What is happening now", "What is not working", "What you want to improve"].map((item, i) => (
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 + 0.3 }}
+                        key={i}
+                        className="flex items-center bg-[#0A101A]/40 border border-slate-700/40 rounded-lg px-3.5 py-2.5 hover:border-[#E8B84B]/40 hover:bg-[#131C2E] transition-all duration-300 hover:-translate-y-0.5"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-[#E8B84B]/10 flex items-center justify-center mr-2.5 shrink-0">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#E8B84B]" />
+                        </div>
+                        <span className="text-slate-200 font-medium text-[13px]">{item}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="shrink-0 w-full lg:w-auto flex justify-start lg:justify-end">
+                  <Link
+                    href="/tell-us-your-challenge"
+                    className="relative group/btn overflow-hidden px-7 py-3.5 bg-gradient-to-r from-[#E8B84B] to-amber-500 text-[#0A101A] font-black rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(232,184,75,0.3)] flex items-center justify-center w-full sm:w-auto"
+                  >
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+                    <span className="relative z-10 flex items-center text-sm uppercase tracking-wider">
+                      Tell Us Your Challenge
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </span>
-                  ))}
+                  </Link>
                 </div>
               </div>
-              <div className="shrink-0">
-                <Link
-                  href="/tell-us-your-challenge"
-                  className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 whitespace-nowrap group shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5"
-                >
-                  Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -230,20 +280,34 @@ export default function ContactPage() {
               {contactOptions.slice(0, 3).map((opt, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="group bg-[#131C2E] border border-slate-800 rounded-2xl p-8 flex flex-col hover:border-[#E8B84B]/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(232,184,75,0.08)] transition-all duration-300"
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className="group relative bg-[#0A101A]/60 backdrop-blur-md border border-slate-700/50 rounded-3xl p-8 flex flex-col overflow-hidden transition-all duration-500 hover:border-[#E8B84B]/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#050B14] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/40 transition-colors">
-                    <opt.icon className="w-7 h-7 text-[#E8B84B]" />
+                  {/* Subtle Background Glow on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Animated Light Sweep */}
+                  <div className="absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-12" />
+
+                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#131C2E] to-[#050B14] border border-slate-700/50 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/50 group-hover:shadow-[0_0_20px_rgba(232,184,75,0.2)] transition-all duration-500 shadow-lg shrink-0">
+                    <opt.icon className="w-7 h-7 text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <h4 className="text-xl font-black text-white mb-3">{opt.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{opt.desc}</p>
-                  <a href="#contact-form" className="inline-flex items-center text-sm font-bold text-[#E8B84B] hover:text-white transition-colors mt-auto group/link">
-                    {opt.button} <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
+
+                  <h4 className="relative z-10 text-xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-amber-100 transition-all duration-300">{opt.title}</h4>
+
+                  <p className="relative z-10 text-slate-400 text-sm leading-relaxed mb-8 flex-grow group-hover:text-slate-300 transition-colors duration-300">{opt.desc}</p>
+
+                  <div className="relative z-10 mt-auto pt-6 border-t border-slate-700/50 group-hover:border-slate-600/50 transition-colors duration-300">
+                    <a href="#contact-form" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-slate-300 hover:text-[#E8B84B] transition-colors group/link w-full justify-between">
+                      {opt.button}
+                      <span className="w-8 h-8 rounded-full bg-[#E8B84B]/10 flex items-center justify-center group-hover/link:bg-[#E8B84B] group-hover/link:text-[#0A101A] transition-all duration-300 shrink-0">
+                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -253,20 +317,34 @@ export default function ContactPage() {
               {contactOptions.slice(3).map((opt, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: (idx + 3) * 0.1 }}
-                  className="group bg-[#131C2E] border border-slate-800 rounded-2xl p-8 flex flex-col hover:border-[#E8B84B]/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(232,184,75,0.08)] transition-all duration-300 w-full md:max-w-[calc(33.333%+0.75rem)]"
+                  transition={{ delay: (idx + 3) * 0.1, duration: 0.5 }}
+                  className="group relative bg-[#0A101A]/60 backdrop-blur-md border border-slate-700/50 rounded-3xl p-8 flex flex-col overflow-hidden transition-all duration-500 hover:border-[#E8B84B]/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] w-full md:max-w-[calc(33.333%+0.75rem)]"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#050B14] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/40 transition-colors">
-                    <opt.icon className="w-7 h-7 text-[#E8B84B]" />
+                  {/* Subtle Background Glow on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Animated Light Sweep */}
+                  <div className="absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-12" />
+
+                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#131C2E] to-[#050B14] border border-slate-700/50 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/50 group-hover:shadow-[0_0_20px_rgba(232,184,75,0.2)] transition-all duration-500 shadow-lg shrink-0">
+                    <opt.icon className="w-7 h-7 text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <h4 className="text-xl font-black text-white mb-3">{opt.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{opt.desc}</p>
-                  <a href="#contact-form" className="inline-flex items-center text-sm font-bold text-[#E8B84B] hover:text-white transition-colors mt-auto group/link">
-                    {opt.button} <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
+
+                  <h4 className="relative z-10 text-xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-amber-100 transition-all duration-300">{opt.title}</h4>
+
+                  <p className="relative z-10 text-slate-400 text-sm leading-relaxed mb-8 flex-grow group-hover:text-slate-300 transition-colors duration-300">{opt.desc}</p>
+
+                  <div className="relative z-10 mt-auto pt-6 border-t border-slate-700/50 group-hover:border-slate-600/50 transition-colors duration-300">
+                    <a href="#contact-form" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-slate-300 hover:text-[#E8B84B] transition-colors group/link w-full justify-between">
+                      {opt.button}
+                      <span className="w-8 h-8 rounded-full bg-[#E8B84B]/10 flex items-center justify-center group-hover/link:bg-[#E8B84B] group-hover/link:text-[#0A101A] transition-all duration-300 shrink-0">
+                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -281,60 +359,79 @@ export default function ContactPage() {
               <h2 className="text-3xl md:text-5xl font-black text-white">Contact Sanota Directly</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
               {/* Telephone */}
-              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl p-8 hover:border-[#E8B84B]/30 transition-colors group">
-                <div className="w-12 h-12 rounded-xl bg-[#050B14] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/40 transition-colors">
-                  <Phone className="w-6 h-6 text-[#E8B84B]" />
+              <div className="group relative pl-8 py-4 border-l-2 border-slate-800 hover:border-[#E8B84B] transition-all duration-500">
+                <div className="absolute -left-[2px] top-1/4 w-[2px] h-1/2 bg-gradient-to-b from-transparent via-[#E8B84B] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 shadow-[0_0_15px_#E8B84B]" />
+
+                <div className="flex items-center mb-8">
+                  <div className="w-14 h-14 rounded-full bg-[#131C2E] border border-slate-700 flex items-center justify-center mr-5 group-hover:bg-[#E8B84B]/10 group-hover:border-[#E8B84B]/40 transition-colors duration-500 shadow-xl">
+                    <Phone className="w-6 h-6 text-slate-400 group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
+                  </div>
+                  <h4 className="text-2xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-amber-100 transition-all duration-500">Telephone</h4>
                 </div>
-                <h4 className="text-xl font-black text-white mb-6">Telephone</h4>
-                <div className="space-y-5">
+
+                <div className="space-y-8">
                   {directContact.telephone.map((item, idx) => (
-                    <div key={idx}>
-                      <span className="block text-slate-500 text-xs font-black uppercase tracking-widest mb-1">{item.label}</span>
-                      <a href={`tel:${item.value.replace(/\s+/g, '')}`} className="text-slate-200 hover:text-[#E8B84B] transition-colors font-medium">{item.value}</a>
+                    <div key={idx} className="transform group-hover:translate-x-2 transition-transform duration-500" style={{ transitionDelay: `${idx * 100}ms` }}>
+                      <span className="block text-slate-500 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.label}</span>
+                      <a href={`tel:${item.value.replace(/\s+/g, '')}`} className="text-white text-lg hover:text-[#E8B84B] transition-colors font-semibold tracking-wide">{item.value}</a>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Email */}
-              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl p-8 hover:border-[#E8B84B]/30 transition-colors group">
-                <div className="w-12 h-12 rounded-xl bg-[#050B14] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/40 transition-colors">
-                  <Mail className="w-6 h-6 text-[#E8B84B]" />
+              <div className="group relative pl-8 py-4 border-l-2 border-slate-800 hover:border-[#E8B84B] transition-all duration-500">
+                <div className="absolute -left-[2px] top-1/4 w-[2px] h-1/2 bg-gradient-to-b from-transparent via-[#E8B84B] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 shadow-[0_0_15px_#E8B84B]" />
+
+                <div className="flex items-center mb-8">
+                  <div className="w-14 h-14 rounded-full bg-[#131C2E] border border-slate-700 flex items-center justify-center mr-5 group-hover:bg-[#E8B84B]/10 group-hover:border-[#E8B84B]/40 transition-colors duration-500 shadow-xl">
+                    <Mail className="w-6 h-6 text-slate-400 group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
+                  </div>
+                  <h4 className="text-2xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-amber-100 transition-all duration-500">Email</h4>
                 </div>
-                <h4 className="text-xl font-black text-white mb-6">Email</h4>
-                <div className="space-y-5">
+
+                <div className="space-y-8">
                   {directContact.email.map((item, idx) => (
-                    <div key={idx}>
-                      <span className="block text-slate-500 text-xs font-black uppercase tracking-widest mb-1">{item.label}</span>
-                      <a href={`mailto:${item.value}`} className="text-[#E8B84B] hover:text-white transition-colors break-all text-sm font-medium">{item.value}</a>
+                    <div key={idx} className="transform group-hover:translate-x-2 transition-transform duration-500" style={{ transitionDelay: `${idx * 100}ms` }}>
+                      <span className="block text-slate-500 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.label}</span>
+                      <a href={`mailto:${item.value}`} className="text-[#E8B84B] text-[15px] hover:text-amber-300 transition-colors font-semibold tracking-wide break-all">{item.value}</a>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Office */}
-              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl p-8 hover:border-[#E8B84B]/30 transition-colors group flex flex-col">
-                <div className="w-12 h-12 rounded-xl bg-[#050B14] border border-slate-700 flex items-center justify-center mb-6 group-hover:border-[#E8B84B]/40 transition-colors">
-                  <MapPin className="w-6 h-6 text-[#E8B84B]" />
+              {/* Office Address */}
+              <div className="group relative pl-8 py-4 border-l-2 border-slate-800 hover:border-[#E8B84B] transition-all duration-500 flex flex-col h-full">
+                <div className="absolute -left-[2px] top-1/4 w-[2px] h-1/2 bg-gradient-to-b from-transparent via-[#E8B84B] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 shadow-[0_0_15px_#E8B84B]" />
+
+                <div className="flex items-center mb-8">
+                  <div className="w-14 h-14 rounded-full bg-[#131C2E] border border-slate-700 flex items-center justify-center mr-5 group-hover:bg-[#E8B84B]/10 group-hover:border-[#E8B84B]/40 transition-colors duration-500 shadow-xl">
+                    <MapPin className="w-6 h-6 text-slate-400 group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
+                  </div>
+                  <h4 className="text-2xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-amber-100 transition-all duration-500">Office Address</h4>
                 </div>
-                <h4 className="text-xl font-black text-white mb-6">Office Address</h4>
-                <p className="text-slate-300 leading-relaxed mb-4 font-medium">
-                  Sanota (Pvt) Ltd<br />
-                  No 16, Wewelwala Road<br />
-                  Bataganwila, Galle.
-                </p>
-                <div className="mb-8">
-                  <span className="block text-slate-500 text-xs font-black uppercase tracking-widest mb-1">Business Hours</span>
-                  <p className="text-slate-300 font-medium">Mon–Fri: 8:30 AM – 5:30 PM</p>
+
+                <div className="transform group-hover:translate-x-2 transition-transform duration-500 mb-8">
+                  <p className="text-slate-200 text-[15px] leading-relaxed font-medium tracking-wide">
+                    Sanota (Pvt) Ltd<br />
+                    No 16, Wewelwala Road<br />
+                    Bataganwila, Galle.
+                  </p>
                 </div>
-                <div className="mt-auto space-y-3">
-                  <button className="w-full py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-colors text-sm">
+
+                <div className="transform group-hover:translate-x-2 transition-transform duration-500 delay-100 mb-10">
+                  <span className="block text-slate-500 text-[11px] font-bold uppercase tracking-widest mb-1.5">Business Hours</span>
+                  <p className="text-white text-[15px] font-semibold tracking-wide">Mon–Fri: 8:30 AM – 5:30 PM</p>
+                </div>
+
+                <div className="mt-auto flex flex-col sm:flex-row gap-3 transform group-hover:translate-x-2 transition-transform duration-500 delay-200">
+                  <button className="flex-1 py-3 px-4 bg-transparent border border-[#E8B84B]/50 hover:bg-[#E8B84B] hover:border-[#E8B84B] text-[#E8B84B] hover:text-[#0A101A] font-black rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     Get Directions
                   </button>
-                  <button className="w-full py-3 bg-[#050B14] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl transition-colors text-sm">
-                    Save Contact Details
+                  <button className="flex-1 py-3 px-4 bg-slate-800/50 hover:bg-slate-700 border border-slate-700 text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
+                    Save Details
                   </button>
                 </div>
               </div>
@@ -342,46 +439,83 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* ── Urgent Enquiries ── */}
-        <section className="py-16 bg-red-950/20 backdrop-blur-md border-b border-red-900/40 relative z-10">
+        {/* ── Urgent Enquiries (Priority Channel) ── */}
+        <section className="py-20 relative z-10 border-b border-slate-800/60">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row gap-10 items-start">
-              <div className="w-16 h-16 rounded-full bg-red-900/30 border border-red-500/40 flex items-center justify-center shrink-0">
-                <AlertTriangle className="w-8 h-8 text-red-400" />
-              </div>
-              <div className="flex-grow">
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-4">Is an Operational System Currently Affected?</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                  If your enquiry relates to a current machinery stoppage, production interruption or time-sensitive technical issue, clearly mark it as{" "}
-                  <strong className="text-white">Urgent Technical Support</strong>.
-                </p>
-                <p className="text-slate-400 font-semibold mb-4">Please provide:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-                  {["Your name and company", "A telephone number", "Site location", "Equipment or system involved", "Brief description of the issue", "Whether the equipment is currently operating", "Relevant photographs or error information"].map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 mr-3 shrink-0" />
-                      <span className="text-slate-300 text-sm">{item}</span>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#131C2E] border-2 border-emerald-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden group shadow-[0_0_40px_rgba(16,185,129,0.05)]"
+            >
+              {/* Subtle Emerald Background Accent */}
+              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-emerald-500/[0.04] to-transparent pointer-events-none" />
+
+              <div className="flex flex-col lg:flex-row gap-10 md:gap-14 items-start relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-[#050B14] border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(52,211,153,0.15)] group-hover:shadow-[0_0_40px_rgba(52,211,153,0.35)] transition-all duration-500 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-emerald-500/10 animate-pulse" />
+                  <AlertTriangle className="w-8 h-8 text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.9)] relative z-10" />
+                </div>
+
+                <div className="flex-grow">
+                  <p className="text-emerald-400 font-black text-[11px] uppercase tracking-[0.3em] mb-4 flex items-center">
+                    Priority Support Channel
+                  </p>
+
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-tight">
+                    Is an Operational System Currently Affected?
+                  </h3>
+
+                  <p className="text-slate-300 text-base leading-relaxed mb-8 max-w-4xl">
+                    If your enquiry relates to a current machinery stoppage, production interruption or time-sensitive technical issue, clearly mark it as{" "}
+                    <strong className="text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">Urgent Technical Support</strong>.
+                  </p>
+
+                  <div className="mb-10">
+                    <p className="text-slate-400 font-bold uppercase tracking-widest text-[11px] mb-5">
+                      Please have this information ready:
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8">
+                      {[
+                        "Your name and company",
+                        "A telephone number",
+                        "Site location",
+                        "Equipment or system involved",
+                        "Brief description of the issue",
+                        "Whether the equipment is currently operating",
+                        "Relevant photographs or error information"
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 mt-1.5 mr-3 shrink-0" />
+                          <span className="text-slate-300 text-sm">{item}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <button className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black rounded-xl transition-colors">
-                    Submit Urgent Technical Enquiry
-                  </button>
-                  <a href="tel:+94740709989" className="px-6 py-3 bg-transparent hover:bg-red-900/30 border border-red-500/40 text-white font-black rounded-xl transition-colors flex items-center justify-center">
-                    Call Technical Support <Phone className="w-4 h-4 ml-2" />
-                  </a>
-                </div>
-                <div className="bg-red-900/20 border border-red-500/25 rounded-xl p-5">
-                  <p className="text-red-300 text-sm leading-relaxed mb-2">
-                    <strong className="font-bold">Important notice:</strong> Urgent-enquiry submission does not guarantee immediate attendance or a specific response time.
-                  </p>
-                  <p className="text-red-300/80 text-sm leading-relaxed">
-                    For safety-related situations, follow your organization&apos;s approved safety, isolation and emergency procedures before seeking technical assistance.
-                  </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                    <button className="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-[#050B14] font-black rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.2)] flex items-center justify-center text-xs uppercase tracking-widest group">
+                      Submit Urgent Technical Enquiry
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <a href="tel:+94740709989" className="px-6 py-3.5 bg-[#050B14] hover:bg-[#0A101A] border border-emerald-500/30 hover:border-emerald-500/60 text-emerald-400 hover:text-emerald-300 font-black rounded-xl transition-all duration-300 flex items-center justify-center text-xs uppercase tracking-widest">
+                      Call Technical Support <Phone className="w-4 h-4 ml-3" />
+                    </a>
+                  </div>
+
+                  <div className="bg-[#050B14]/50 border-l-2 border-emerald-500/40 py-3.5 px-5 rounded-r-xl">
+                    <p className="text-slate-300 text-xs leading-relaxed mb-1.5 tracking-wide">
+                      <strong className="text-emerald-400 font-bold tracking-widest uppercase text-[10px] mr-2">Important notice:</strong> Urgent-enquiry submission does not guarantee immediate attendance or a specific response time.
+                    </p>
+                    <p className="text-slate-400 text-xs leading-relaxed tracking-wide">
+                      For safety-related situations, follow your organization&apos;s approved safety, isolation and emergency procedures before seeking technical assistance.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -432,27 +566,27 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Full name <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Your full name" value={formData.name} onChange={e => updateData({name: e.target.value})} />
+                            <input required type="text" className={inputClass} placeholder="Your full name" value={formData.name} onChange={e => updateData({ name: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Company or organization <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Your company" value={formData.company} onChange={e => updateData({company: e.target.value})} />
+                            <input required type="text" className={inputClass} placeholder="Your company" value={formData.company} onChange={e => updateData({ company: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Job title</label>
-                            <input type="text" className={inputClass} placeholder="Your role" value={formData.jobTitle} onChange={e => updateData({jobTitle: e.target.value})} />
+                            <input type="text" className={inputClass} placeholder="Your role" value={formData.jobTitle} onChange={e => updateData({ jobTitle: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Country</label>
-                            <input type="text" className={inputClass} value={formData.country} onChange={e => updateData({country: e.target.value})} />
+                            <input type="text" className={inputClass} value={formData.country} onChange={e => updateData({ country: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Email address <span className="text-red-400">*</span></label>
-                            <input required type="email" className={inputClass} placeholder="you@company.com" value={formData.email} onChange={e => updateData({email: e.target.value})} />
+                            <input required type="email" className={inputClass} placeholder="you@company.com" value={formData.email} onChange={e => updateData({ email: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Telephone number <span className="text-red-400">*</span></label>
-                            <input required type="tel" className={inputClass} placeholder="+94 77 000 0000" value={formData.phone} onChange={e => updateData({phone: e.target.value})} />
+                            <input required type="tel" className={inputClass} placeholder="+94 77 000 0000" value={formData.phone} onChange={e => updateData({ phone: e.target.value })} />
                           </div>
                         </div>
                       </div>
@@ -463,7 +597,7 @@ export default function ContactPage() {
                         <div className="space-y-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Type of enquiry <span className="text-red-400">*</span></label>
-                            <select required className={inputClass + " appearance-none cursor-pointer"} value={formData.enquiryType} onChange={e => updateData({enquiryType: e.target.value})}>
+                            <select required className={inputClass + " appearance-none cursor-pointer"} value={formData.enquiryType} onChange={e => updateData({ enquiryType: e.target.value })}>
                               <option value="">Select an option</option>
                               <option>Engineering or project requirement</option>
                               <option>Machinery or automation</option>
@@ -480,7 +614,7 @@ export default function ContactPage() {
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Subject <span className="text-red-400">*</span></label>
-                            <input required type="text" className={inputClass} placeholder="Brief subject of your enquiry" value={formData.subject} onChange={e => updateData({subject: e.target.value})} />
+                            <input required type="text" className={inputClass} placeholder="Brief subject of your enquiry" value={formData.subject} onChange={e => updateData({ subject: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-300">Your message <span className="text-red-400">*</span></label>
@@ -489,7 +623,7 @@ export default function ContactPage() {
                               rows={6}
                               className={inputClass + " resize-none"}
                               placeholder="Briefly explain what is happening, what you need or what you would like to discuss."
-                              value={formData.message} onChange={e => updateData({message: e.target.value})}
+                              value={formData.message} onChange={e => updateData({ message: e.target.value })}
                             />
                           </div>
                         </div>
@@ -501,11 +635,11 @@ export default function ContactPage() {
                         <div className="mt-6">
                           <p className="text-slate-400 text-sm mb-4">Attach photographs, videos, drawings, equipment details or other relevant documents.</p>
                           <div className="border-2 border-dashed border-slate-700 rounded-2xl p-8 text-center hover:border-[#E8B84B]/50 transition-colors cursor-pointer bg-[#050B14]" onClick={() => fileInputRef.current?.click()}>
-                            <input 
-                              type="file" 
-                              ref={fileInputRef} 
-                              className="hidden" 
-                              multiple 
+                            <input
+                              type="file"
+                              ref={fileInputRef}
+                              className="hidden"
+                              multiple
                               accept=".jpg,.jpeg,.png,.pdf,.docx,.xlsx,.mp4"
                               onChange={(e) => {
                                 if (e.target.files) {
@@ -533,7 +667,7 @@ export default function ContactPage() {
                             <div className="space-y-3">
                               {['Telephone call', 'Email', 'Online meeting', 'No preference'].map((opt, idx) => (
                                 <label key={idx} className="flex items-center space-x-3 cursor-pointer group">
-                                  <input type="radio" name="responseMethod" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredResponseMethod === opt} onChange={e => updateData({preferredResponseMethod: e.target.value})} />
+                                  <input type="radio" name="responseMethod" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredResponseMethod === opt} onChange={e => updateData({ preferredResponseMethod: e.target.value })} />
                                   <span className="text-slate-300 text-sm group-hover:text-white transition-colors">{opt}</span>
                                 </label>
                               ))}
@@ -544,7 +678,7 @@ export default function ContactPage() {
                             <div className="space-y-3">
                               {['Morning', 'Afternoon', 'Any time during business hours'].map((opt, idx) => (
                                 <label key={idx} className="flex items-center space-x-3 cursor-pointer group">
-                                  <input type="radio" name="contactTime" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredContactTime === opt} onChange={e => updateData({preferredContactTime: e.target.value})} />
+                                  <input type="radio" name="contactTime" className="w-4 h-4 accent-[#E8B84B]" value={opt} checked={formData.preferredContactTime === opt} onChange={e => updateData({ preferredContactTime: e.target.value })} />
                                   <span className="text-slate-300 text-sm group-hover:text-white transition-colors">{opt}</span>
                                 </label>
                               ))}
@@ -556,11 +690,11 @@ export default function ContactPage() {
                       {/* Consent */}
                       <div className="space-y-4 pt-2 border-t border-slate-800/60">
                         <label className="flex items-start space-x-3 cursor-pointer group">
-                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentAccurate} onChange={e => updateData({consentAccurate: e.target.checked})} />
+                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentAccurate} onChange={e => updateData({ consentAccurate: e.target.checked })} />
                           <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">I confirm that the information submitted is accurate to the best of my knowledge and that I am authorized to share any attached material.</span>
                         </label>
                         <label className="flex items-start space-x-3 cursor-pointer group">
-                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentNoObligation} onChange={e => updateData({consentNoObligation: e.target.checked})} />
+                          <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#E8B84B] shrink-0" checked={formData.consentNoObligation} onChange={e => updateData({ consentNoObligation: e.target.checked })} />
                           <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution.</span>
                         </label>
                       </div>
@@ -596,59 +730,98 @@ export default function ContactPage() {
               </div>
 
               {/* Sidebar */}
-              <div className="space-y-8">
+              <div className="space-y-6 lg:space-y-8 lg:pl-4">
 
                 {/* Request a Call */}
-                <div id="request-call" className="bg-[#131C2E] border border-slate-800 rounded-3xl p-8">
-                  <h3 className="text-xl font-black text-white mb-3">Ask Sanota to Contact You</h3>
-                  <p className="text-slate-400 text-sm mb-6 leading-relaxed">Provide your details and a representative will contact you to discuss your requirement.</p>
-                  
+                <div id="request-call" className="bg-gradient-to-b from-[#0A101A] to-[#050B14] border-t-2 border-[#E8B84B]/40 border-l border-r border-b border-slate-800/80 rounded-2xl p-7 relative overflow-hidden shadow-xl">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#E8B84B]/10 rounded-full blur-[40px] pointer-events-none" />
+
+                  <h3 className="text-xl font-black text-white mb-2 relative z-10 flex items-center">
+                    <Phone className="w-5 h-5 text-[#E8B84B] mr-2" />
+                    Request a Call Back
+                  </h3>
+                  <p className="text-slate-400 text-sm mb-6 leading-relaxed relative z-10 border-b border-slate-800/50 pb-5">Provide your details and a representative will contact you to discuss your requirement.</p>
+
                   {callStatus === 'success' ? (
-                    <div className="bg-green-900/20 border border-green-500/30 rounded-2xl p-6 text-center">
-                      <CheckCircle2 className="w-10 h-10 text-green-400 mx-auto mb-3" />
+                    <div className="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-6 text-center">
+                      <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
                       <p className="text-white font-bold mb-1">Request Received</p>
                       <p className="text-slate-400 text-sm mb-2">We will contact you shortly.</p>
-                      <p className="text-[#E8B84B] text-xs font-mono">Ref: {callRef}</p>
+                      <p className="text-emerald-400 text-xs font-mono tracking-wider">Ref: {callRef}</p>
                     </div>
                   ) : (
-                    <form className="space-y-4" onSubmit={handleCallSubmit}>
-                      <input required type="text" placeholder="Full name" className={inputClass} value={callData.name} onChange={e => updateCallData({name: e.target.value})} />
-                      <input required type="text" placeholder="Company" className={inputClass} value={callData.company} onChange={e => updateCallData({company: e.target.value})} />
-                      <input required type="tel" placeholder="Telephone number" className={inputClass} value={callData.phone} onChange={e => updateCallData({phone: e.target.value})} />
-                      <input required type="email" placeholder="Email address" className={inputClass} value={callData.email} onChange={e => updateCallData({email: e.target.value})} />
-                      <select required className={inputClass + " appearance-none cursor-pointer"} value={callData.preferredContactTime} onChange={e => updateCallData({preferredContactTime: e.target.value})}>
-                        <option value="">Preferred contact time</option>
-                        <option>Morning</option>
-                        <option>Afternoon</option>
+                    <form className="space-y-3.5 relative z-10" onSubmit={handleCallSubmit}>
+                      <input required type="text" placeholder="Full name" className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
+                      <input required type="text" placeholder="Company" className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
+                      <div className="grid grid-cols-2 gap-3">
+                        <input required type="tel" placeholder="Phone" className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
+                        <input required type="email" placeholder="Email" className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
+                      </div>
+                      <select required className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm appearance-none cursor-pointer" value={callData.preferredContactTime} onChange={e => updateCallData({ preferredContactTime: e.target.value })}>
+                        <option value="" className="text-slate-500">Preferred contact time</option>
+                        <option>Morning (8:30 AM - 12:00 PM)</option>
+                        <option>Afternoon (12:00 PM - 5:30 PM)</option>
                         <option>Any time during business hours</option>
                       </select>
-                      <input type="text" placeholder="Brief reason for the call" className={inputClass} value={callData.reason} onChange={e => updateCallData({reason: e.target.value})} />
-                      
+                      <input type="text" placeholder="Brief reason for the call" className="w-full bg-[#131C2E]/50 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.reason} onChange={e => updateCallData({ reason: e.target.value })} />
+
                       {callStatus === 'error' && (
-                        <p className="text-red-400 text-xs mt-2">{callError}</p>
+                        <p className="text-red-400 text-xs mt-2 bg-red-950/30 p-2 rounded-lg">{callError}</p>
                       )}
 
-                      <button disabled={callStatus === 'submitting'} type="submit" className="w-full py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 text-sm shadow-lg shadow-[#E8B84B]/15 hover:-translate-y-0.5 mt-2 disabled:opacity-60">
-                        {callStatus === 'submitting' ? 'Submitting...' : 'Request a Call'}
+                      <button disabled={callStatus === 'submitting'} type="submit" className="w-full py-3.5 bg-gradient-to-r from-[#E8B84B] to-[#d4a643] hover:from-[#f0c565] hover:to-[#E8B84B] text-[#0A101A] font-black rounded-xl transition-all duration-300 text-sm shadow-[0_0_15px_rgba(232,184,75,0.2)] hover:shadow-[0_0_25px_rgba(232,184,75,0.4)] mt-4 disabled:opacity-60 flex items-center justify-center group">
+                        {callStatus === 'submitting' ? 'Submitting...' : 'Request Call Back'}
+                        {callStatus !== 'submitting' && <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />}
                       </button>
                     </form>
                   )}
                 </div>
 
                 {/* What Happens Next */}
-                <div className="bg-[#131C2E] border border-slate-800 rounded-3xl p-8">
-                  <h3 className="text-xl font-black text-white mb-1">What Happens Next?</h3>
-                  <p className="text-slate-500 text-sm mb-8">A clear route from enquiry to action</p>
+                <div className="bg-[#050B14]/80 backdrop-blur-md border border-slate-700/50 rounded-2xl p-7">
+                  <h3 className="text-lg font-black text-white mb-1">What Happens Next?</h3>
+                  <p className="text-slate-500 text-xs mb-6 uppercase tracking-widest font-bold">A clear route to action</p>
                   <div className="relative">
-                    <div className="absolute left-[15px] top-0 bottom-0 w-px bg-slate-800" />
-                    <div className="space-y-6">
+                    {/* Animated vertical line */}
+                    <div className="absolute left-[15px] top-2 bottom-2 w-px bg-slate-800 overflow-hidden">
+                      <motion.div
+                        className="w-full h-[40%] bg-gradient-to-b from-transparent via-[#E8B84B] to-transparent"
+                        animate={{ y: ['-100%', '350%'] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      />
+                    </div>
+
+                    <div className="space-y-6 relative z-10">
                       {whatHappensNext.map((step, idx) => (
-                        <div key={idx} className="relative flex items-start gap-4">
-                          <div className="w-8 h-8 rounded-full bg-[#050B14] border-2 border-[#E8B84B] flex items-center justify-center shrink-0 z-10">
-                            <span className="text-[#E8B84B] text-xs font-black">{step.step}</span>
-                          </div>
-                          <div className="pt-1">
-                            <h4 className="text-white font-bold text-sm mb-1">{step.title}</h4>
+                        <div key={idx} className="flex items-start gap-4 group">
+                          <motion.div
+                            animate={{
+                              borderColor: ['#475569', '#E8B84B', '#475569', '#475569'],
+                              boxShadow: ['0 0 0 rgba(232,184,75,0)', '0 0 15px rgba(232,184,75,0.6)', '0 0 0 rgba(232,184,75,0)', '0 0 0 rgba(232,184,75,0)']
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              delay: idx * 0.75,
+                              times: [0, 0.1, 0.3, 1]
+                            }}
+                            className="w-8 h-8 rounded-full bg-[#0A101A] border border-slate-600 flex items-center justify-center shrink-0"
+                          >
+                            <motion.span
+                              animate={{ color: ['#94a3b8', '#E8B84B', '#94a3b8', '#94a3b8'] }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                delay: idx * 0.75,
+                                times: [0, 0.1, 0.3, 1]
+                              }}
+                              className="text-slate-400 text-xs font-black"
+                            >
+                              {step.step}
+                            </motion.span>
+                          </motion.div>
+                          <div className="pt-1.5">
+                            <h4 className="text-slate-200 font-bold text-sm mb-1">{step.title}</h4>
                             <p className="text-slate-400 text-xs leading-relaxed">{step.desc}</p>
                           </div>
                         </div>
@@ -658,29 +831,31 @@ export default function ContactPage() {
                 </div>
 
                 {/* Visit Sanota */}
-                <div className="bg-[#131C2E] border border-slate-800 rounded-3xl p-8">
-                  <h3 className="text-xl font-black text-white mb-6">Visit Sanota</h3>
-                  <div className="bg-[#050B14] h-44 rounded-2xl border border-slate-700/60 mb-6 overflow-hidden relative group">
-                    <iframe 
-                      src="https://maps.google.com/maps?q=No%2016,%20Wewelwala%20Road,%20Bataganwila,%20Galle&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-                      width="100%" 
-                      height="100%" 
-                      style={{ border: 0 }} 
-                      allowFullScreen 
-                      loading="lazy" 
+                <div className="bg-[#050B14]/80 backdrop-blur-md border border-slate-700/50 rounded-2xl p-7">
+                  <h3 className="text-lg font-black text-white mb-5 flex items-center">
+                    <MapPin className="w-5 h-5 text-slate-400 mr-2" />
+                    Visit Sanota
+                  </h3>
+                  <div className="bg-[#131C2E] h-40 rounded-xl border border-slate-700/60 mb-5 overflow-hidden relative group">
+                    <iframe
+                      src="https://maps.google.com/maps?q=No%2016,%20Wewelwala%20Road,%20Bataganwila,%20Galle&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      className="grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                     ></iframe>
                   </div>
-                  <p className="text-slate-300 text-sm mb-2 font-medium">Sanota (Pvt) Ltd<br />No 16, Wewelwala Road, Bataganwila, Galle.</p>
-                  <p className="text-slate-500 text-xs italic mb-6">Visits should be arranged in advance.</p>
+                  <p className="text-slate-300 text-sm mb-1 font-semibold tracking-wide">Sanota (Pvt) Ltd</p>
+                  <p className="text-slate-400 text-xs mb-5">No 16, Wewelwala Road,<br />Bataganwila, Galle.</p>
+
                   <div className="space-y-3">
-                    <button className="w-full py-3 bg-[#050B14] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl transition-colors text-sm">
-                      Open in Maps
-                    </button>
-                    <button className="w-full py-3 bg-transparent hover:bg-slate-800 border border-slate-700/50 text-slate-400 hover:text-white font-bold rounded-xl transition-colors text-sm">
-                      Request an Appointment
-                    </button>
+                    <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="w-full py-3 bg-[#131C2E] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl transition-colors text-xs flex items-center justify-center">
+                      Open in Google Maps
+                    </a>
+                    <p className="text-slate-500 text-[10px] uppercase tracking-wider text-center mt-3 pt-3 border-t border-slate-800">Visits should be arranged in advance</p>
                   </div>
                 </div>
 
@@ -690,44 +865,81 @@ export default function ContactPage() {
         </section>
 
         {/* ── Social / Connect ── */}
-        <section className="py-20 bg-transparent border-b border-slate-800/60 relative z-10">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-20 bg-transparent border-b border-slate-800/60 relative z-10 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#E8B84B]/[0.02] blur-[100px] rounded-full pointer-events-none" />
+
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Connect With Sanota</p>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Follow Our Work</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-5 tracking-tight">Follow Our Work</h2>
+            <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
               Stay connected for project stories, product developments, engineering videos and company news.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-              {['LinkedIn', 'Facebook', 'YouTube'].map((social, idx) => (
-                <a key={idx} href="#" className="px-8 py-4 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-2xl border border-slate-800 hover:border-[#E8B84B]/30 hover:-translate-y-0.5 transition-all duration-300">
-                  {social}
-                </a>
-              ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto mb-12">
+              {[
+                { name: 'LinkedIn', icon: LinkedinIcon, link: '#', hoverClass: 'hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]', iconColor: 'text-blue-400 group-hover:text-blue-300', glowColor: 'bg-blue-500' },
+                { name: 'Facebook', icon: FacebookIcon, link: '#', hoverClass: 'hover:border-blue-600/50 hover:shadow-[0_0_40px_rgba(37,99,235,0.15)]', iconColor: 'text-blue-500 group-hover:text-blue-400', glowColor: 'bg-blue-600' },
+                { name: 'YouTube', icon: YoutubeIcon, link: '#', hoverClass: 'hover:border-red-500/50 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)]', iconColor: 'text-red-500 group-hover:text-red-400', glowColor: 'bg-red-500' }
+              ].map((social, idx) => {
+                const Icon = social.icon;
+                return (
+                  <motion.a
+                    key={idx}
+                    href={social.link}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                    className={`bg-[#050B14]/80 backdrop-blur-md border border-slate-800/80 border-t-slate-700/60 rounded-3xl px-6 py-7 flex flex-col items-center justify-center transition-colors duration-300 group relative overflow-hidden ${social.hoverClass}`}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                    {/* Dynamic hover glow behind icon */}
+                    <div className={`absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 ${social.glowColor} rounded-full blur-[40px] opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+
+                    <div className="w-14 h-14 rounded-2xl bg-[#131C2E] border border-slate-700/50 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-lg relative z-10">
+                      <Icon className={`w-6 h-6 transition-colors duration-300 ${social.iconColor}`} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white relative z-10">{social.name}</h3>
+                  </motion.a>
+                );
+              })}
             </div>
-            <Link href="/media" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 group shadow-lg shadow-[#E8B84B]/15 hover:-translate-y-0.5">
-              Visit the Media Centre <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Link href="/media" className="inline-flex items-center px-8 py-4 bg-[#0A101A] hover:bg-[#131C2E] border border-slate-700 hover:border-[#E8B84B]/40 text-white font-black rounded-2xl transition-all duration-500 group shadow-xl hover:shadow-[0_0_30px_rgba(232,184,75,0.15)]">
+                <span className="text-[#E8B84B] mr-3 group-hover:text-[#f0c565] transition-colors">Visit the Media Centre</span>
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
         {/* ── Final CTA ── */}
-        <section className="py-24 bg-transparent relative z-10">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+        <section className="py-20 bg-transparent relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800/60 rounded-3xl p-10 md:p-14 shadow-2xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Start With the <span className="text-[#E8B84B]">Requirement</span>
             </h2>
-            <p className="text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-slate-400 text-sm md:text-base mb-10 leading-relaxed max-w-2xl mx-auto">
               Whether you need to solve a machinery problem, automate a process, develop a new system or arrange ongoing technical support — Sanota is ready to understand your requirement.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <Link href="/tell-us-your-challenge" className="px-10 py-5 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-xl shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-1 group">
-                Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+              <Link href="/tell-us-your-challenge" className="w-full sm:w-auto px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0A101A] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-[0_0_20px_rgba(232,184,75,0.15)] hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-0.5 group text-sm">
+                Tell Us Your Challenge <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
-              <a href="#contact-form" className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-black rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+              <a href="#contact-form" className="w-full sm:w-auto px-8 py-4 bg-[#050B14] hover:bg-[#0A101A] text-slate-300 hover:text-white font-black rounded-xl border border-slate-700/60 hover:border-slate-500/60 transition-all duration-300 flex items-center justify-center shadow-lg text-sm">
                 Contact Sanota
               </a>
             </div>
-            <p className="text-slate-600 text-sm italic">From operational challenge to integrated engineering solution.</p>
+            <p className="text-slate-600 text-xs italic tracking-wide">From operational challenge to integrated engineering solution.</p>
           </div>
         </section>
 

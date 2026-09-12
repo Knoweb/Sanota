@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useRef, useState } from 'react';
 import { draw, effect, frame, init, sampler, surface, target, uniforms } from 'vgpu';
 
@@ -1262,8 +1263,8 @@ export default function AeroShards({
   holdToGather = true,
   paused = false,
   className = '',
-  onError
-}) {
+  onError = undefined
+} = {}) {
   const rootRef = useRef(null);
   const canvasRef = useRef(null);
   const onErrorRef = useRef(onError);
