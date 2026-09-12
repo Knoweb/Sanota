@@ -1,12 +1,18 @@
 "use client";
-
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import MediaNavigationCarousel from "@/components/MediaNavigationCarousel";
-import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings } from "lucide-react";
+import CompletedWorkSection from "@/components/CompletedWorkSection";
+import DriftWall from "@/components/DriftWall";
+import NewsTagCloud from "@/components/NewsTagCloud";
+import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 
 const mediaNavigation = [
   { title: "Completed Work", desc: "View selected machinery, automation, IoT, modernization and integrated engineering projects delivered by Sanota.", button: "View Completed Work", icon: Briefcase },
@@ -25,19 +31,6 @@ const featuredWork = [
   { title: "Energy, Environment & Facilities", desc: "Resource monitoring, environmental systems, waste-related solutions and connected facility technologies.", link: "Explore Energy & Environmental Projects", icon: Zap, image: "/featured_energy_1789116922913.jpg" }
 ];
 
-const projectCriteria = [
-  "The industry or operating environment",
-  "The client’s requirement",
-  "The product, machinery or system involved",
-  "The services provided by Sanota",
-  "The technologies integrated",
-  "Sanota’s role in implementation",
-  "The operational outcome",
-  "Related photographs or videos"
-];
-
-const industryFilters = ["All Projects", "Manufacturing", "Agriculture", "Food & Beverage", "Tea", "Logistics", "Energy", "Environment", "Infrastructure", "Healthcare", "Research & Development"];
-const solutionFilters = ["Machinery", "Automation", "IoT", "Software", "Modernization", "Product Development", "Project Execution", "AMC"];
 
 const projectStoryStructure = [
   { title: "The Challenge", desc: "What was not working, what needed improvement or what the client wanted to develop." },
@@ -49,14 +42,14 @@ const projectStoryStructure = [
 ];
 
 const galleryCollections = [
-  { title: "Completed Projects", desc: "Machinery, systems and solutions operating in client environments." },
-  { title: "Products & Equipment", desc: "Custom-developed equipment, product details and system components." },
-  { title: "Workshop & Development", desc: "Design, fabrication, assembly, integration and testing activities." },
-  { title: "Installation & Commissioning", desc: "On-site implementation, testing and operational handover." },
-  { title: "Automation & Digital Technology", desc: "Control systems, sensors, dashboards, connected equipment and software interfaces." },
-  { title: "AMC & Technical Support", desc: "Inspection, maintenance, servicing and lifecycle-support activities." },
-  { title: "Events & Exhibitions", desc: "Industry exhibitions, demonstrations, partnerships and company participation." },
-  { title: "Team & Training", desc: "Technical teams, client training, capability development and internal activities." }
+  { title: "Completed Projects", desc: "Machinery, systems and solutions operating in client environments.", image: "/gallery/completed.jpg" },
+  { title: "Products & Equipment", desc: "Custom-developed equipment, product details and system components.", image: "/gallery/equipment.jpg" },
+  { title: "Workshop & Development", desc: "Design, fabrication, assembly, integration and testing activities.", image: "/gallery/workshop.jpg" },
+  { title: "Installation & Commissioning", desc: "On-site implementation, testing and operational handover.", image: "/gallery/installation.jpg" },
+  { title: "Automation & Digital Technology", desc: "Control systems, sensors, dashboards, connected equipment and software interfaces.", image: "/gallery/automation.jpg" },
+  { title: "AMC & Technical Support", desc: "Inspection, maintenance, servicing and lifecycle-support activities.", image: "/gallery/amc.jpg" },
+  { title: "Events & Exhibitions", desc: "Industry exhibitions, demonstrations, partnerships and company participation.", image: "/gallery/events.jpg" },
+  { title: "Team & Training", desc: "Technical teams, client training, capability development and internal activities.", image: "/gallery/team.jpg" }
 ];
 
 const newsUpdates = [
@@ -119,6 +112,8 @@ const publicationPrinciples = [
 ];
 
 export default function MediaPage() {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
@@ -198,10 +193,41 @@ export default function MediaPage() {
 
         {/* Media Introduction */}
         <section className="py-16 relative overflow-hidden bg-[#050B14]">
-          {/* Animated Middle Shade (Left to Right) */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center">
+          {/* AeroShards Background and Animated Middle Shade */}
+          <div className="absolute inset-0 overflow-hidden z-0">
+            <AeroShards
+              backgroundColor="#050B14"
+              shardColor="#1A1813"
+              accentColor="#E8B84B"
+              placement="full"
+              flow="stream"
+              material="pearl"
+              detail="balanced"
+              effect="none"
+              scale={1.2}
+              spread={1}
+              depth={1}
+              speed={1}
+              spin={1}
+              interaction="repel"
+              density={1.5}
+              shardSize={1.1}
+              stretch={1}
+              turbulence={1}
+              glow={0.6}
+              edgeSoftness={2}
+              bloom={0.4}
+              grain={0.05}
+              chromaticAberration={0.0075}
+              transitionDuration={1}
+              interactionRadius={1.5}
+              interactionStrength={0.5}
+              rippleIntensity={1}
+              holdToGather
+              paused={false}
+            />
             <motion.div 
-              className="absolute w-[800px] h-[300px] rounded-full blur-[80px]"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] rounded-full blur-[80px] pointer-events-none"
               style={{
                 background: 'linear-gradient(90deg, transparent 0%, rgba(232,184,75,0.4) 50%, transparent 100%)'
               }}
@@ -250,7 +276,7 @@ export default function MediaPage() {
         <MediaNavigationCarousel />
 
         {/* Featured Work */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
@@ -297,86 +323,59 @@ export default function MediaPage() {
         </section>
 
         {/* Completed Work */}
-        <section id="completed-work" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
-              <div>
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Completed Work</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Practical Solutions for Real Operating Environments</h3>
-                <p className="text-slate-400 text-lg leading-relaxed mb-6">The Completed Work collection presents selected Sanota projects across industries and technical disciplines.</p>
-                <p className="text-slate-500 italic text-sm leading-relaxed border-l-2 border-slate-800 pl-4">
-                  Where client confidentiality applies, project information may be presented without identifying the client or disclosing sensitive technical details.
-                </p>
-              </div>
-              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6">
-                <p className="text-white font-bold mb-4">Each project entry should identify:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {projectCriteria.map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <CheckCircle2 className="w-4 h-4 text-[#E8B84B] mt-0.5 mr-2 shrink-0" />
-                      <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Industry</h4>
-              <div className="flex flex-wrap gap-2">
-                {industryFilters.map((filter, idx) => (
-                  <button key={idx} className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${idx === 0 ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}>
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mb-12">
-              <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Solution</h4>
-              <div className="flex flex-wrap gap-2">
-                {solutionFilters.map((filter, idx) => (
-                  <button key={idx} className="px-4 py-2 rounded-full text-xs font-bold bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white transition-colors">
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Link href="#" className="inline-flex items-center px-8 py-4 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                Browse Completed Work <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CompletedWorkSection />
 
         {/* Project Stories */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-12 md:py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Project Stories</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">From Challenge to Working Solution</h3>
-              <p className="text-slate-400 text-lg max-w-3xl mx-auto">Project Stories provide a closer look at how Sanota approaches complex operational requirements.</p>
+            <div className="text-center mb-10">
+              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">Project Stories</h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">From Challenge to Working Solution</h3>
+              <p className="text-slate-400 text-base max-w-3xl mx-auto">Project Stories provide a closer look at how Sanota approaches complex operational requirements.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {projectStoryStructure.map((story, idx) => (
-                <div key={idx} className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-[#E8B84B]/50 transition-colors">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl text-white pointer-events-none group-hover:scale-110 transition-transform">
-                    {String(idx + 1).padStart(2, '0')}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+              {projectStoryStructure.map((story, idx) => {
+                const iconsList = [AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield];
+                const Icon = iconsList[idx];
+                
+                return (
+                  <div key={idx} className="group relative bg-[#131C2E]/40 border border-slate-800 rounded-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden min-h-[220px] flex flex-col items-center justify-center text-center cursor-default shadow-lg">
+                    
+                    {/* The sliding background fill */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FFF59D] to-[#FFD54F] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+
+                    {/* Content Wrapper */}
+                    <div className="relative z-10 p-6 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-1">
+                      
+                      {/* Icon container */}
+                      <div className="w-14 h-14 rounded-2xl bg-[#050B14] border border-[#E8B84B]/20 group-hover:border-transparent group-hover:bg-white/20 group-hover:backdrop-blur-md flex items-center justify-center mb-4 transition-all duration-700 rotate-3 group-hover:-rotate-6 group-hover:scale-110 shadow-[0_0_15px_rgba(232,184,75,0.1)] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
+                        <Icon className="w-6 h-6 text-[#E8B84B] group-hover:text-[#0B1220] transition-colors duration-700" />
+                      </div>
+                      
+                      {/* Title */}
+                      <h4 className="text-lg font-bold text-white group-hover:text-[#0B1220] transition-colors duration-700 mb-1">{story.title}</h4>
+                      
+                      {/* Animating description */}
+                      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full">
+                        <div className="overflow-hidden">
+                          <p className="text-slate-400 group-hover:text-[#0B1220]/80 transition-colors duration-700 pt-2 leading-relaxed text-xs opacity-0 group-hover:opacity-100 transform translate-y-3 group-hover:translate-y-0">
+                            {story.desc}
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-3 relative z-10">{story.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed relative z-10">{story.desc}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="#" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
-                Read Project Stories <ArrowRight className="ml-2 w-5 h-5" />
+              <Link href="#" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm">
+                Read Project Stories <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+              <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center text-sm">
                 Discuss a Similar Requirement
               </Link>
             </div>
@@ -416,7 +415,7 @@ export default function MediaPage() {
         </div>
 
         {/* Photo Gallery */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="py-16 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
@@ -424,26 +423,119 @@ export default function MediaPage() {
               <p className="text-slate-400 text-lg max-w-3xl mx-auto mb-10">The Sanota Photo Gallery provides a visual record of engineering work across project and company environments.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14">
               {galleryCollections.map((col, idx) => (
-                <div key={idx} className="bg-[#131C2E]/60 border border-slate-800 rounded-xl p-5 hover:bg-[#131C2E] transition-colors">
-                  <ImageIcon className="w-6 h-6 text-[#E8B84B] mb-4" />
-                  <h4 className="text-white font-bold text-sm mb-2">{col.title}</h4>
-                  <p className="text-slate-400 text-xs leading-relaxed">{col.desc}</p>
+                <div 
+                  key={idx} 
+                  className="group relative w-full h-[200px] sm:h-[240px] lg:h-[260px] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
+                  onClick={() => setIsGalleryOpen(true)}
+                >
+                  
+                  {/* Background Image */}
+                  {col.image && (
+                    <Image 
+                      src={col.image} 
+                      alt={col.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
+
+                  {/* Gradient Overlay for Readability (Always visible at bottom) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/40 to-transparent opacity-90" />
+                  
+                  {/* Hover Overlay (Darkens on hover) */}
+                  <div className="absolute inset-0 bg-[#0B1220]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm" />
+
+                  {/* Content (Visible at bottom by default, moves to center on hover) */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end group-hover:justify-center transition-all duration-500">
+                    <div className="transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
+                      <ImageIcon className="w-6 h-6 text-[#E8B84B] mb-3 group-hover:scale-125 transition-transform duration-500 origin-left group-hover:origin-center group-hover:mx-auto" />
+                      <h4 className="text-white font-bold text-lg mb-2 group-hover:text-center group-hover:text-[#E8B84B] transition-colors">{col.title}</h4>
+                    </div>
+                    
+                    {/* Description (Fades in on hover) */}
+                    <p className="text-slate-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100 group-hover:text-center">
+                      {col.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
 
             <div className="text-center">
-              <Link href="#" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
+              <button onClick={() => setIsGalleryOpen(true)} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
                 Open Photo Gallery <Camera className="ml-2 w-5 h-5" />
-              </Link>
+              </button>
             </div>
           </div>
         </section>
 
+        {/* Gallery Popup Modal */}
+        {isGalleryOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-12">
+            {/* Backdrop */}
+            <div 
+              className="absolute inset-0 bg-[#050B14]/90 backdrop-blur-md" 
+              onClick={() => setIsGalleryOpen(false)}
+            />
+            
+            {/* Modal Content */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-7xl h-full max-h-[800px] bg-[#03060a] border border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-slate-800 bg-[#0B1220] relative z-20">
+                <div className="flex items-center">
+                  <Camera className="w-6 h-6 text-[#E8B84B] mr-3" />
+                  <h3 className="text-xl font-bold text-white">Sanota Engineering Gallery</h3>
+                </div>
+                <button 
+                  onClick={() => setIsGalleryOpen(false)}
+                  className="w-10 h-10 rounded-full bg-[#131C2E] hover:bg-slate-700 flex items-center justify-center transition-colors group"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* DriftWall Container */}
+              <div className="relative flex-grow overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#E8B84B]/10 blur-[120px] rounded-full pointer-events-none" />
+                <DriftWall
+                  items={galleryCollections.map(c => ({ image: c.image || '', title: c.title }))}
+                  columns={5}
+                  tileWidth={240}
+                  tileHeight={160}
+                  gap={20}
+                  tilt={12}
+                  turn={-15}
+                  perspective={1000}
+                  depth={150}
+                  speed={35}
+                  direction="up"
+                  variance={0.4}
+                  parallax={0.2}
+                  lift={30}
+                  fade={0.5}
+                  dim={0.6}
+                  overlayColor="#050B14"
+                  radius={16}
+                  roll={0}
+                  pauseOnHover={true}
+                  grayscale={false}
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+
         {/* News & Activities */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="pt-12 pb-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -454,15 +546,17 @@ export default function MediaPage() {
                   View All News & Activities <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
-              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
-                <p className="text-white font-bold mb-6">Updates may include:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
-                  {newsUpdates.map((update, idx) => (
-                    <div key={idx} className="flex items-center">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 shrink-0" />
-                      <span className="text-slate-300 text-sm">{update}</span>
-                    </div>
-                  ))}
+              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-white font-bold">Updates may include:</p>
+                  <div className="flex space-x-1">
+                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
+                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
+                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
+                  </div>
+                </div>
+                <div className="min-h-[250px]">
+                  <NewsTagCloud items={newsUpdates} />
                 </div>
               </div>
             </div>
@@ -470,7 +564,7 @@ export default function MediaPage() {
         </section>
 
         {/* Featured Video Section */}
-        <section id="videos" className="py-24 bg-[#050B14] border-t border-slate-800/50 relative overflow-hidden bg-transparent">
+        <section id="videos" className="py-16 bg-[#050B14] border-t border-slate-800/50 relative overflow-hidden bg-transparent">
           <div className="absolute inset-0 bg-[#0B1220] mix-blend-overlay opacity-50" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div className="w-16 h-16 rounded-full bg-[#E8B84B]/20 flex items-center justify-center mx-auto mb-6">
@@ -492,141 +586,305 @@ export default function MediaPage() {
         </section>
 
         {/* Browse Sections */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* By Industry */}
-              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Browse By Industry</h2>
-                <h3 className="text-2xl font-bold text-white mb-8">Explore Work Relevant to Your Sector</h3>
-                <div className="space-y-3 mb-10">
-                  {browseIndustries.map((ind, idx) => (
-                    <div key={idx} className="flex items-center text-slate-300 text-sm hover:text-white transition-colors cursor-pointer">
-                      <ChevronRight className="w-4 h-4 text-[#2E5EAA] mr-2" />
-                      {ind}
-                    </div>
-                  ))}
+              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
+                <div className="relative h-56 w-full shrink-0 overflow-hidden">
+                  <Image src="/gallery/automation.jpg" alt="Browse By Industry" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
+                  <div className="absolute bottom-6 left-8 right-8 z-10">
+                    <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Industry</h2>
+                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">Explore Work Relevant to Your Sector</h3>
+                  </div>
                 </div>
-                <Link href="/industries" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                  Explore All Industries <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
+                <div className="p-8 flex flex-col flex-grow relative z-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 flex-grow">
+                    {browseIndustries.map((ind, idx) => (
+                      <Link href="#" key={idx} className="group/btn flex items-center p-3 bg-[#131C2E]/50 hover:bg-[#131C2E] border border-slate-800 hover:border-[#2E5EAA]/50 rounded-xl transition-all duration-300">
+                         <div className="w-8 h-8 shrink-0 rounded-lg bg-[#0B1220] group-hover/btn:bg-[#2E5EAA]/20 flex items-center justify-center mr-3 transition-colors duration-300">
+                           <ChevronRight className="w-4 h-4 text-[#2E5EAA] transition-transform duration-300 group-hover/btn:translate-x-1" />
+                         </div>
+                         <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{ind}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-auto border-t border-slate-800/80 pt-6">
+                    <Link href="/industries" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-[#2E5EAA] text-white font-bold rounded-lg border border-slate-700 hover:border-[#2E5EAA] transition-all duration-300 group/link">
+                      Explore All Industries <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
               </div>
 
               {/* By Capability */}
-              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-8">
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Browse By Capability</h2>
-                <h3 className="text-2xl font-bold text-white mb-8">Explore How Sanota Delivers Solutions</h3>
-                <div className="space-y-3 mb-10">
-                  {browseCapabilities.map((cap, idx) => (
-                    <div key={idx} className="flex items-center text-slate-300 text-sm hover:text-white transition-colors cursor-pointer">
-                      <ChevronRight className="w-4 h-4 text-[#E8B84B] mr-2" />
-                      {cap}
-                    </div>
-                  ))}
+              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8B84B]/5 blur-[80px] rounded-full pointer-events-none z-10" />
+                <div className="relative h-56 w-full shrink-0 overflow-hidden">
+                  <Image src="/gallery/workshop.jpg" alt="Browse By Capability" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
+                  <div className="absolute bottom-6 left-8 right-8 z-10">
+                    <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Capability</h2>
+                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">Explore How Sanota Delivers Solutions</h3>
+                  </div>
                 </div>
-                <Link href="/services" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                  Explore All Services <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
+                <div className="p-8 flex flex-col flex-grow relative z-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 flex-grow">
+                    {browseCapabilities.map((cap, idx) => (
+                      <Link href="#" key={idx} className="group/btn flex items-center p-3 bg-[#131C2E]/50 hover:bg-[#131C2E] border border-slate-800 hover:border-[#E8B84B]/50 rounded-xl transition-all duration-300">
+                         <div className="w-8 h-8 shrink-0 rounded-lg bg-[#0B1220] group-hover/btn:bg-[#E8B84B]/20 flex items-center justify-center mr-3 transition-colors duration-300">
+                           <ChevronRight className="w-4 h-4 text-[#E8B84B] transition-transform duration-300 group-hover/btn:translate-x-1" />
+                         </div>
+                         <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{cap}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-auto border-t border-slate-800/80 pt-6">
+                    <Link href="/services" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-[#E8B84B] text-white font-bold rounded-lg border border-slate-700 hover:border-[#E8B84B] hover:text-[#0B1220] transition-all duration-300 group/link">
+                      Explore All Services <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Sanota + Knoweb</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Engineering Connected by Digital Technology</h3>
-                <p className="text-slate-400 text-lg leading-relaxed mb-8">Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb.</p>
-                <Link href="#" className="inline-flex items-center px-7 py-3.5 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                  Explore IoT & Digital Projects <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
+        <section className="py-16 bg-[#050B14] relative overflow-hidden bg-transparent">
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+              <div className="lg:col-span-2">
+                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                  <h2 className="text-[#2E5EAA] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
+                    <Zap className="w-4 h-4 mr-2" /> Sanota + Knoweb
+                  </h2>
+                  <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Engineering Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digital Technology</span></h3>
+                  <p className="text-slate-400 text-lg leading-relaxed mb-8">Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb.</p>
+                  <Link href="#" className="group inline-flex items-center px-7 py-4 bg-gradient-to-r from-[#131C2E] to-[#0B1220] hover:from-[#2E5EAA] hover:to-[#1a4185] text-white font-bold rounded-xl border border-[#2E5EAA]/30 hover:border-[#2E5EAA] transition-all duration-500 shadow-[0_0_20px_rgba(46,94,170,0.15)] hover:shadow-[0_0_30px_rgba(46,94,170,0.4)]">
+                    Explore IoT & Digital Projects <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  </Link>
+                </motion.div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {knowebStories.map((story, idx) => (
-                  <div key={idx} className="flex items-center bg-[#131C2E]/60 border border-slate-800 rounded-xl px-4 py-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 shrink-0" />
-                    <span className="text-slate-300 text-sm">{story}</span>
-                  </div>
-                ))}
+              <div className="lg:col-span-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {knowebStories.map((story, idx) => (
+                    <motion.div 
+                      key={idx} 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1, duration: 0.5 }}
+                      whileHover={{ scale: 1.03, backgroundColor: "rgba(19, 28, 46, 0.9)" }}
+                      className="flex items-center bg-[#131C2E]/40 border border-[#2E5EAA]/20 hover:border-[#2E5EAA]/60 rounded-2xl px-5 py-4 cursor-default backdrop-blur-sm transition-all shadow-lg"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-[#2E5EAA]/20 flex items-center justify-center mr-4 shrink-0">
+                         <Monitor className="w-4 h-4 text-[#4C84E0]" />
+                      </div>
+                      <span className="text-slate-200 text-sm font-medium">{story}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Publication Principles */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Publication Principles</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-10">Authentic Work. Clear Information. Responsible Publication.</h3>
+        <section className="py-16 bg-[#0B1220] border-y border-slate-800/50 bg-transparent relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#E8B84B]/10 text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#E8B84B]/20">
+                  <Shield className="w-4 h-4 mr-2" /> Media Publication Principles
+                </h2>
+                <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                  Authentic Work. Clear Information.<br/><span className="text-slate-400">Responsible Publication.</span>
+                </h3>
+              </motion.div>
+            </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {publicationPrinciples.map((principle, idx) => (
-                <div key={idx} className="flex items-start bg-[#131C2E]/40 border border-slate-800 rounded-lg p-4">
-                  <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0" />
-                  <span className="text-slate-300 text-sm leading-relaxed">{principle}</span>
-                </div>
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
+                  whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(232,184,75,0.1)" }}
+                  className="bg-[#131C2E] border border-slate-700/50 hover:border-[#E8B84B]/50 rounded-2xl p-6 transition-all duration-300 relative overflow-hidden group"
+                >
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                     <CheckCircle2 className="w-24 h-24 text-[#E8B84B]" />
+                  </div>
+                  <div className="w-12 h-12 bg-[#0B1220] rounded-xl border border-slate-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-[#E8B84B]/50 transition-colors">
+                    <CheckCircle2 className="w-6 h-6 text-[#E8B84B]" />
+                  </div>
+                  <p className="text-slate-300 font-medium leading-relaxed relative z-10 group-hover:text-white transition-colors">{principle}</p>
+                </motion.div>
               ))}
             </div>
 
-            <p className="text-slate-400 text-sm italic">
-              Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work.
-            </p>
+            <motion.div 
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+              className="bg-[#131C2E]/40 border border-[#E8B84B]/20 rounded-xl p-6 text-center max-w-4xl mx-auto"
+            >
+              <p className="text-slate-400 text-sm italic flex items-center justify-center text-left sm:text-center">
+                <AlertCircle className="w-5 h-5 mr-3 text-[#E8B84B] shrink-0" />
+                Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work.
+              </p>
+            </motion.div>
           </div>
         </section>
 
         {/* Contact Grids */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="py-16 bg-[#050B14] relative overflow-hidden bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
               
               {/* Discuss Similar Requirement */}
-              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
-                <h3 className="text-2xl font-bold text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
-                <p className="text-slate-400 leading-relaxed mb-6">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
-                <div className="space-y-3 mb-10">
-                  {["Which project or solution interested you", "What you currently operate", "What you want to improve or develop", "Which result you are trying to achieve"].map((item, idx) => (
-                    <div key={idx} className="flex items-center text-slate-300 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 shrink-0" />
-                      {item}
-                    </div>
-                  ))}
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                className="border border-slate-800 rounded-3xl p-10 sm:p-12 shadow-2xl relative overflow-hidden group hover:border-[#2E5EAA]/50 transition-colors duration-500"
+              >
+                {/* AeroShards Background */}
+                <div className="absolute inset-0 z-0">
+                  <AeroShards
+                    backgroundColor="#0B1220"
+                    shardColor="#131C2E"
+                    accentColor="#4C84E0"
+                    placement="full"
+                    flow="stream"
+                    material="pearl"
+                    detail="balanced"
+                    effect="none"
+                    scale={1.2}
+                    spread={1}
+                    depth={1}
+                    speed={1}
+                    spin={1}
+                    interaction="repel"
+                    density={1.5}
+                    shardSize={1.1}
+                    stretch={1}
+                    turbulence={1}
+                    glow={0.5}
+                    edgeSoftness={2}
+                    bloom={0.3}
+                    grain={0.05}
+                    chromaticAberration={0.0075}
+                    transitionDuration={1}
+                    interactionRadius={1.5}
+                    interactionStrength={0.5}
+                    rippleIntensity={1}
+                    holdToGather
+                    paused={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#131C2E]/60 to-[#0B1220]/80 pointer-events-none" />
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
-                    Discuss a Similar Requirement
-                  </Link>
-                  <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-6 py-3 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                    Tell Us Your Challenge
-                  </Link>
+                
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#2E5EAA]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
+                
+                <div className="relative z-10 flex flex-col h-full pointer-events-none">
+                  <div className="w-16 h-16 bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
+                    <Wrench className="w-8 h-8 text-[#4C84E0]" />
+                  </div>
+                  <h2 className="text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
+                  <h3 className="text-3xl font-bold text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
+                  <p className="text-slate-400 leading-relaxed mb-8">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 pointer-events-auto">
+                    {["Which project or solution interested you", "What you currently operate", "What you want to improve or develop", "Which result you are trying to achieve"].map((item, idx) => (
+                      <div key={idx} className="flex items-start bg-[#0B1220]/70 p-4 rounded-xl border border-slate-800/50 backdrop-blur-sm">
+                        <div className="w-2 h-2 mt-1.5 rounded-full bg-[#4C84E0] mr-3 shrink-0" />
+                        <span className="text-slate-300 text-sm leading-snug">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(46,94,170,0.3)] hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
+                      Discuss Requirement
+                    </Link>
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-transparent hover:bg-[#131C2E] text-white font-bold rounded-xl border border-slate-700 hover:border-slate-500 transition-all backdrop-blur-sm">
+                      Tell Us Your Challenge
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Media Enquiries */}
-              <div className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10">
-                <MessageSquare className="w-10 h-10 text-[#E8B84B] mb-6" />
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
-                <h3 className="text-2xl font-bold text-white mb-6">Media, Partnership or Publication Enquiry</h3>
-                <p className="text-slate-400 leading-relaxed mb-10">For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team.</p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
-                    Submit a Media Enquiry
-                  </Link>
-                  <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                    Contact Sanota
-                  </Link>
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                className="border border-slate-800 rounded-3xl p-10 sm:p-12 shadow-2xl relative overflow-hidden group hover:border-[#E8B84B]/50 transition-colors duration-500"
+              >
+                {/* AeroShards Background */}
+                <div className="absolute inset-0 z-0">
+                  <AeroShards
+                    backgroundColor="#0B1220"
+                    shardColor="#1A1813"
+                    accentColor="#E8B84B"
+                    placement="full"
+                    flow="stream"
+                    material="pearl"
+                    detail="balanced"
+                    effect="none"
+                    scale={1.2}
+                    spread={1}
+                    depth={1}
+                    speed={1}
+                    spin={1}
+                    interaction="repel"
+                    density={1.5}
+                    shardSize={1.1}
+                    stretch={1}
+                    turbulence={1}
+                    glow={0.6}
+                    edgeSoftness={2}
+                    bloom={0.4}
+                    grain={0.05}
+                    chromaticAberration={0.0075}
+                    transitionDuration={1}
+                    interactionRadius={1.5}
+                    interactionStrength={0.5}
+                    rippleIntensity={1}
+                    holdToGather
+                    paused={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-bl from-[#131C2E]/60 to-[#0B1220]/80 pointer-events-none" />
                 </div>
-              </div>
+
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#E8B84B]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
+                
+                <div className="relative z-10 flex flex-col h-full pointer-events-none">
+                  <div className="w-16 h-16 bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#E8B84B]/30">
+                    <MessageSquare className="w-8 h-8 text-[#E8B84B]" />
+                  </div>
+                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
+                  <h3 className="text-3xl font-bold text-white mb-6">Media, Partnership or Publication Enquiry</h3>
+                  <p className="text-slate-400 text-lg leading-relaxed mb-12">For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team.</p>
+                  
+                  <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
+                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
+                      Submit Media Enquiry
+                    </Link>
+                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-transparent hover:bg-[#131C2E] text-white font-bold rounded-xl border border-slate-700 hover:border-slate-500 transition-all backdrop-blur-sm">
+                      Contact Sanota
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
 
             </div>
           </div>
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
+        <section className="py-16 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
               See What Sanota Has Done. <br className="hidden md:block" />
