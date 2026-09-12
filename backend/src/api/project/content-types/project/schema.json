@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Portfolio projects and case studies for the Completed Work section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "industry": {
+      "type": "enumeration",
+      "enum": [
+        "Manufacturing",
+        "Agriculture",
+        "Food & Beverage",
+        "Tea",
+        "Logistics",
+        "Energy",
+        "Environment",
+        "Infrastructure",
+        "Healthcare",
+        "Research & Development"
+      ]
+    },
+    "solution": {
+      "type": "enumeration",
+      "enum": [
+        "Machinery",
+        "Automation",
+        "IoT",
+        "Software",
+        "Modernization",
+        "Product Development",
+        "Project Execution",
+        "AMC"
+      ]
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "clientRequirement": {
+      "type": "text"
+    },
+    "sanotaRole": {
+      "type": "text"
+    },
+    "outcome": {
+      "type": "text"
+    },
+    "technologies": {
+      "type": "string"
+    },
+    "linkText": {
+      "type": "string",
+      "default": "Explore Project"
+    }
+  }
+}

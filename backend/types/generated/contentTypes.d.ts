@@ -640,6 +640,71 @@ export interface ApiContactEnquiryContactEnquiry
   };
 }
 
+export interface ApiProjectProject extends Struct.CollectionTypeSchema {
+  collectionName: 'projects';
+  info: {
+    description: 'Portfolio projects and case studies for the Completed Work section';
+    displayName: 'Project';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clientRequirement: Schema.Attribute.Text;
+    coverImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    industry: Schema.Attribute.Enumeration<
+      [
+        'Manufacturing',
+        'Agriculture',
+        'Food & Beverage',
+        'Tea',
+        'Logistics',
+        'Energy',
+        'Environment',
+        'Infrastructure',
+        'Healthcare',
+        'Research & Development',
+      ]
+    >;
+    linkText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Explore Project'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project.project'
+    > &
+      Schema.Attribute.Private;
+    outcome: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    sanotaRole: Schema.Attribute.Text;
+    solution: Schema.Attribute.Enumeration<
+      [
+        'Machinery',
+        'Automation',
+        'IoT',
+        'Software',
+        'Modernization',
+        'Product Development',
+        'Project Execution',
+        'AMC',
+      ]
+    >;
+    technologies: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1154,6 +1219,7 @@ declare module '@strapi/strapi' {
       'api::call-request.call-request': ApiCallRequestCallRequest;
       'api::challenge-enquiry.challenge-enquiry': ApiChallengeEnquiryChallengeEnquiry;
       'api::contact-enquiry.contact-enquiry': ApiContactEnquiryContactEnquiry;
+      'api::project.project': ApiProjectProject;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
