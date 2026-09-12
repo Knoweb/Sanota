@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import AeroShards from "@/components/AeroShards";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 
 const services = [
@@ -314,80 +315,70 @@ export default function ServicesPage() {
         </section>
 
         {/* Introduction */}
-        <section className="relative py-24 bg-[#0B1220] overflow-hidden border-b border-slate-800/50 bg-transparent">
-          {/* Subtle background ambient light */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none" />
+        <section className="relative py-8 lg:py-12 bg-[#0B1220] overflow-hidden">
+          {/* Slowly moving AeroShards Background */}
+          <div className="absolute inset-0 overflow-hidden z-0">
+            <AeroShards
+              backgroundColor="#0B1220"
+              shardColor="#1A1813"
+              accentColor="#E8B84B"
+              placement="full"
+              flow="stream"
+              material="pearl"
+              detail="fine"
+              effect="none"
+              scale={1}
+              spread={1.2}
+              depth={1}
+              speed={0.3}
+              spin={0.2}
+              interaction="none"
+              density={1}
+              shardSize={0.8}
+              stretch={1}
+              turbulence={0.5}
+              glow={0.3}
+              edgeSoftness={2}
+              bloom={0.1}
+              grain={0.01}
+              chromaticAberration={0}
+              transitionDuration={2}
+              interactionRadius={0}
+              interactionStrength={0}
+              rippleIntensity={0}
+              holdToGather={false}
+              paused={false}
+            />
+          </div>
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/60 to-transparent opacity-60 pointer-events-none z-0" />
 
-          <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
+                More Than a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Single Service</span>
+              </h2>
 
-              {/* Left Side: Header & Text */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7 }}
-                className="lg:col-span-7"
-              >
-                <div className="inline-flex items-center px-4 py-2 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-6 shadow-[0_0_15px_rgba(232,184,75,0.15)]">
-                  <div className="w-2 h-2 rounded-full bg-[#E8B84B] mr-2 animate-pulse" />
-                  <span className="text-[#E8B84B] font-bold tracking-widest uppercase text-xs">Integrated Approach</span>
-                </div>
+              <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-6 font-medium">
+                Industrial challenges rarely belong to only one technical discipline.
+              </p>
 
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-8 leading-tight">
-                  More Than a <br className="hidden sm:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-amber-500">Single Service</span>
-                </h2>
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-6">
+                A machinery problem may require mechanical modifications, new electrical controls, automation, software monitoring and ongoing maintenance. A new product may require concept development, engineering design, prototyping, testing and production support.
+              </p>
 
-                <div className="h-px w-24 bg-gradient-to-r from-[#2E5EAA] to-transparent mb-8" />
-
-                <p className="text-slate-300 text-xl leading-relaxed mb-6 font-medium">
-                  Industrial challenges rarely belong to only one technical discipline.
+              <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-[#131C2E]/50 border border-slate-700/50 border-l-4 border-l-[#E8B84B] shadow-lg relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#E8B84B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <p className="text-white text-base md:text-lg leading-relaxed relative z-10 font-medium">
+                  <span className="text-[#E8B84B]">Sanota brings the required capabilities together</span> around the client's operational need. This provides clients with a more coordinated path from the initial requirement to a practical working solution.
                 </p>
-
-                <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                  A machinery problem may require mechanical modifications, new electrical controls, automation, software monitoring and ongoing maintenance. A new product may require concept development, engineering design, prototyping, testing and production support.
-                </p>
-              </motion.div>
-
-              {/* Right Side: Interactive Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="lg:col-span-5 flex items-center justify-center"
-              >
-                <div className="relative w-full group">
-                  {/* Glowing backdrop */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#2E5EAA]/20 to-[#E8B84B]/20 blur-xl rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-
-                  {/* Glass Card */}
-                  <div className="relative bg-[#131C2E]/60 backdrop-blur-xl border border-slate-700/60 group-hover:border-[#E8B84B]/40 rounded-3xl p-8 lg:p-10 shadow-2xl transition-all duration-500 hover:-translate-y-2">
-
-                    {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#E8B84B]/50 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#2E5EAA]/50 rounded-br-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#131C2E] to-[#0B1220] border border-slate-700 flex items-center justify-center mb-8 shadow-inner group-hover:shadow-[0_0_20px_rgba(232,184,75,0.2)] transition-shadow duration-500">
-                      <Layers className="w-7 h-7 text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-
-                    <p className="text-white text-xl lg:text-2xl font-semibold leading-relaxed relative z-10">
-                      Sanota brings the required capabilities together around the client's operational need.
-                    </p>
-
-                    <div className="mt-8 pt-6 border-t border-slate-700/50">
-                      <p className="text-slate-400 text-[15px] leading-relaxed">
-                        This provides clients with a more coordinated path from the initial requirement to a practical working solution.
-                      </p>
-                    </div>
-
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
