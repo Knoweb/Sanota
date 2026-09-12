@@ -142,11 +142,11 @@ export default function AMCAndLifecycle() {
   };
 
   return (
-    <section className="relative py-24 bg-[#0B1220] overflow-hidden border-t border-slate-800">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Massive Immersive Card */}
-        <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-800/60 shadow-2xl bg-[#0B1220]">
+        <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-700/50 shadow-2xl bg-[#131C2E]/30 backdrop-blur-md">
           
           {/* Background Image */}
           <div className="absolute inset-0">

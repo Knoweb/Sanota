@@ -243,7 +243,7 @@ export default function IndustriesWeSupport() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto glowing-card bg-[#131C2E]/60 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 lg:p-10 relative overflow-hidden"
+          className="max-w-5xl mx-auto glowing-card bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)] rounded-3xl p-8 lg:p-10 relative overflow-hidden transition-all duration-300"
         >
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#2E5EAA]/10 to-transparent pointer-events-none" />
           

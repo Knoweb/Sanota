@@ -19,7 +19,7 @@ export default function VisitorPathways() {
   ];
 
   return (
-    <section className="relative py-12 lg:py-16 bg-[#0B1220] overflow-hidden">
+    <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="mb-8 text-center max-w-3xl mx-auto">
@@ -50,7 +50,7 @@ export default function VisitorPathways() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 border border-slate-800 hover:border-[#E8B84B]/40 transition-all duration-500 overflow-hidden flex flex-col"
+            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-[#E8B84B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
@@ -97,7 +97,7 @@ export default function VisitorPathways() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 border border-slate-800 hover:border-[#2E5EAA]/50 transition-all duration-500 overflow-hidden flex flex-col"
+            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-[#2E5EAA]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             

@@ -20,7 +20,7 @@ const capabilities = [
 
 export default function InnovationAndCollaboration() {
   return (
-    <section className="relative py-24 bg-[#050B14] overflow-hidden border-t border-slate-800/60">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/60">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#2E5EAA]/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
@@ -74,7 +74,7 @@ export default function InnovationAndCollaboration() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative rounded-[2.5rem] bg-gradient-to-br from-[#131C2E]/90 to-[#0B1220]/95 backdrop-blur-2xl border border-slate-700/50 p-8 sm:p-12 shadow-2xl overflow-hidden group"
+              className="relative rounded-[2.5rem] bg-gradient-to-br from-[#131C2E]/40 to-[#0B1220]/50 backdrop-blur-md border border-slate-700/50 p-8 sm:p-12 shadow-2xl overflow-hidden group"
             >
               {/* Internal Glowing Orbs for the Card */}
               <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#E8B84B]/15 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#E8B84B]/25 transition-colors duration-700" />

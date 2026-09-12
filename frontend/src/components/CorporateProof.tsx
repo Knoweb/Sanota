@@ -23,7 +23,7 @@ const proofPoints = [
 
 export default function CorporateProof() {
   return (
-    <section className="relative pt-12 pb-16 bg-[#0B1220] border-t border-slate-800/60 shadow-[0_-15px_40px_-5px_rgba(0,0,0,0.5)]">
+    <section className="relative pt-12 pb-16 bg-transparent border-t border-slate-800/40 relative z-10">
       {/* Inner top glow to soften the border while keeping it distinct */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#131C2E]/30 to-transparent pointer-events-none z-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ export default function CorporateProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glowing-card group flex flex-col p-6 rounded-2xl bg-[#131C2E] border border-slate-800 hover:border-[#E8B84B]/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(232,184,75,0.15)] transition-all duration-300 cursor-default"
+              className="glowing-card group flex flex-col p-6 rounded-3xl bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(232,184,75,0.15)] transition-all duration-300 cursor-default"
             >
               <h3 className="text-lg font-black text-[#E8B84B] mb-3 group-hover:text-[#f3c65c] group-hover:translate-x-1 transition-all duration-300">{point.title}</h3>
               <p className="text-sm font-medium text-slate-300 leading-relaxed group-hover:text-white transition-colors duration-300">{point.description}</p>

@@ -51,7 +51,7 @@ const capabilities = [
 
 export default function IntegratedSolutionCapability() {
   return (
-    <section className="relative py-12 lg:py-16 bg-[#0B1220] overflow-hidden">
+    <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-[#E8B84B]/5 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-[#2E5EAA]/10 blur-[100px] pointer-events-none" />
@@ -75,7 +75,7 @@ export default function IntegratedSolutionCapability() {
               <p>A production issue may require mechanical changes, electrical controls, automation, sensors, software, installation and ongoing maintenance. Sanota brings these capabilities together through one coordinated solution.</p>
             </div>
             
-            <div className="p-5 border-l-4 border-[#E8B84B] bg-[#131C2E] mb-8 rounded-r-xl">
+            <div className="p-5 border-l-4 border-[#E8B84B] bg-[#131C2E]/40 backdrop-blur-md mb-8 rounded-r-xl shadow-lg">
               <p className="text-white font-bold tracking-wide leading-relaxed">
                 One coordinated team.<br/>
                 One accountable delivery approach.<br/>
@@ -111,7 +111,7 @@ export default function IntegratedSolutionCapability() {
                     ease: "easeInOut",
                     delay: idx * 0.4
                   }}
-                  className="relative flex flex-col items-center text-center p-6 sm:p-8 rounded-full aspect-square w-full max-w-[280px] sm:max-w-[310px] bg-[#131C2E] border border-slate-800 transition-all duration-500 group overflow-hidden justify-center shadow-2xl mx-auto"
+                  className="relative flex flex-col items-center text-center p-6 sm:p-8 rounded-full aspect-square w-full max-w-[280px] sm:max-w-[310px] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-500 group overflow-hidden justify-center shadow-2xl mx-auto"
                   style={{ '--card-color': cap.color } as React.CSSProperties}
                   onMouseEnter={(e: any) => {
                     e.currentTarget.style.borderColor = cap.color;

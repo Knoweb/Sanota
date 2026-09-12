@@ -94,7 +94,7 @@ export default function SolutionNavigator() {
   }, [paused]);
 
   return (
-    <section className="relative py-24 bg-[#131C2E] overflow-hidden">
+    <section className="relative py-24 bg-transparent overflow-hidden">
       {/* Ambient glow that follows active card */}
       <div
         className="absolute pointer-events-none transition-all duration-700"
@@ -137,10 +137,10 @@ export default function SolutionNavigator() {
                 onMouseEnter={() => setActiveIdx(idx)}
               >
                 <div
-                  className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 group w-full cursor-default overflow-hidden
+                  className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-500 group w-full cursor-default overflow-hidden
                     ${isActive
-                      ? "bg-[#0F1928] border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
-                      : "bg-[#0B1220] border-slate-800 hover:border-[#E8B84B]/30"
+                      ? "bg-[#050B14]/60 backdrop-blur-md border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
+                      : "bg-[#131C2E]/30 backdrop-blur-sm border-slate-700/50 hover:border-[#E8B84B]/30"
                     }`}
                 >
                   {/* Animated top border pulse when active */}

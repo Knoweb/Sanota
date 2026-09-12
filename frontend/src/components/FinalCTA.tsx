@@ -16,10 +16,10 @@ const options = [
 
 export default function FinalCTA() {
   return (
-    <section id="contact" className="relative pt-16 pb-24 bg-[#050B14] overflow-hidden">
+    <section id="contact" className="relative pt-16 pb-24 bg-transparent overflow-hidden">
       
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#131C2E]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050B14]/80 pointer-events-none" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#2E5EAA]/20 to-transparent rounded-[100%] blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

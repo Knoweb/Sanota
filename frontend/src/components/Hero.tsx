@@ -72,7 +72,7 @@ export default function Hero() {
             </div>
 
             {/* Chat Prompt */}
-            <div className="p-4 rounded-lg bg-[#131C2E]/60 border border-slate-800/80 max-w-xl backdrop-blur-sm">
+            <div className="p-4 rounded-xl bg-[#131C2E]/40 border border-slate-700/50 max-w-xl backdrop-blur-md shadow-lg">
               <h3 className="text-white font-bold text-sm mb-1.5">Not sure where to begin?</h3>
               <p className="text-slate-400 text-xs mb-3">
                 Tell us what is not working—or what you want to achieve. We will help direct your enquiry to the appropriate engineering team.

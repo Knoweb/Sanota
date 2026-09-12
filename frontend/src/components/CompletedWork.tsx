@@ -46,7 +46,7 @@ const projects = [
 
 export default function CompletedWork() {
   return (
-    <section className="relative py-12 lg:py-16 bg-[#131C2E] overflow-hidden">
+    <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
@@ -96,7 +96,7 @@ export default function CompletedWork() {
             {[...projects, ...projects].map((project, idx) => (
               <div
                 key={idx}
-                className="w-[300px] sm:w-[350px] lg:w-[400px] shrink-0 group flex flex-col rounded-2xl overflow-hidden border border-slate-800 bg-[#0B1220] transition-all hover:border-[#E8B84B]/50 hover:shadow-xl hover:shadow-[#050B14] min-h-[420px]"
+                className="w-[300px] sm:w-[350px] lg:w-[400px] shrink-0 group flex flex-col rounded-3xl overflow-hidden border border-slate-700/50 bg-[#131C2E]/40 backdrop-blur-md transition-all hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] min-h-[420px]"
               >
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image

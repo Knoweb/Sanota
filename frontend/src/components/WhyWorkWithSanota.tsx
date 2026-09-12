@@ -82,7 +82,7 @@ export default function WhyWorkWithSanota() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glowing-card bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 rounded-3xl hover:bg-[#131C2E]/80 hover:border-[#E8B84B]/40 transition-all duration-300 group flex flex-col h-full overflow-hidden shadow-2xl"
+              className="glowing-card bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 rounded-3xl hover:bg-[#131C2E]/80 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-300 group flex flex-col h-full overflow-hidden shadow-2xl"
             >
               {/* Image Banner */}
               <div className="relative h-40 w-full overflow-hidden shrink-0 border-b border-slate-800/50">

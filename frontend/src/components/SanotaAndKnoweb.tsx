@@ -20,7 +20,7 @@ const capabilities = [
 
 export default function SanotaAndKnoweb() {
   return (
-    <section className="relative py-24 bg-[#0B1220] overflow-hidden border-t border-slate-800">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800">
       
       {/* Dynamic Background Glows */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#2E5EAA] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none -translate-y-1/2 -translate-x-1/2" />
@@ -28,7 +28,7 @@ export default function SanotaAndKnoweb() {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="relative bg-[#131C2E]/40 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] overflow-hidden shadow-2xl">
+        <div className="relative bg-[#131C2E]/30 backdrop-blur-xl border border-slate-700/50 rounded-[2.5rem] overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             
             {/* Left Content Area */}
