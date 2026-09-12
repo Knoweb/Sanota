@@ -11,6 +11,7 @@ import { ChallengeFormData } from "./types";
 import { Step1, Step2, Step3, Step4, Step5 } from "./components/FormSteps";
 import { WhatHappensNext, AlternativeContact, FinalCTA } from "./components/Sections";
 import { submitChallengeEnquiry } from "@/lib/api";
+import Galaxy from "@/components/Galaxy";
 
 const initialData: ChallengeFormData = {
   coreRequirements: [],
@@ -118,13 +119,32 @@ export default function ChallengePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-transparent">
-      <Header />
-      
-      <main className="flex-grow">
+    <div className="flex flex-col min-h-screen relative bg-[#050B14]">
+      {/* Background Galaxy Component (Faint) */}
+      <div className="fixed inset-0 z-0 pointer-events-auto opacity-40">
+        <Galaxy 
+          mouseRepulsion
+          mouseInteraction
+          density={0.7}
+          glowIntensity={0.2}
+          saturation={0}
+          hueShift={140}
+          twinkleIntensity={0.2}
+          rotationSpeed={0.03}
+          repulsionStrength={1.5}
+          autoCenterRepulsion={0}
+          starSpeed={0.15}
+          speed={0.4}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col flex-grow">
+        <Header />
         
-        {/* HERO SECTION */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#131C2E] to-[#050B14] border-b border-slate-800 bg-transparent">
+        <main className="flex-grow">
+          
+          {/* HERO SECTION */}
+          <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Tell Us Your Challenge</h1>
             <p className="text-xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
@@ -278,9 +298,10 @@ export default function ChallengePage() {
           </>
         )}
 
-      </main>
-      
-      <Footer />
+        </main>
+        
+        <Footer />
+      </div>
     </div>
   );
 }

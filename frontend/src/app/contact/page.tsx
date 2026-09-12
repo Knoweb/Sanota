@@ -9,7 +9,7 @@ import {
   ArrowRight, Phone, Mail, MapPin, CheckCircle2, AlertTriangle,
   Send, Upload, Info, MessageSquare, Briefcase, Cog, Globe, PhoneCall
 } from "lucide-react";
-import ContactBackground from "@/components/ContactBackground";
+import Galaxy from "@/components/Galaxy";
 import { submitContactEnquiry, submitCallRequest, ContactFormData, CallRequestData } from "@/lib/api";
 
 const contactOptions = [
@@ -130,16 +130,30 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen relative bg-transparent">
-      <ContactBackground />
+    <div className="flex flex-col min-h-screen relative bg-[#050B14]">
+      {/* Background Galaxy Component */}
+      <div className="fixed inset-0 z-0 pointer-events-auto">
+        <Galaxy 
+          mouseRepulsion
+          mouseInteraction
+          density={1}
+          glowIntensity={0.3}
+          saturation={0}
+          hueShift={140}
+          twinkleIntensity={0.3}
+          rotationSpeed={0.05}
+          repulsionStrength={2}
+          autoCenterRepulsion={0}
+          starSpeed={0.2}
+          speed={0.5}
+        />
+      </div>
+
       <Header />
       <main className="flex-grow">
 
         {/* ── Hero ── */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800/60 min-h-[65vh] flex flex-col justify-center">
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" style={{ backgroundImage: "url('/contact_hero_bg.jpg')" }} />
-          <div className="absolute inset-0 bg-[#050B14]/65 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/30 via-transparent to-[#050B14] z-0" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
@@ -866,7 +880,7 @@ export default function ContactPage() {
 
         {/* ── Social / Connect ── */}
         <section className="py-8 lg:py-12 bg-transparent border-b border-slate-800/60 relative z-10 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#E8B84B]/[0.02] blur-[100px] rounded-full pointer-events-none" />
+
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Connect With Sanota</p>
@@ -924,7 +938,7 @@ export default function ContactPage() {
 
         {/* ── Final CTA ── */}
         <section className="py-10 lg:py-14 bg-transparent relative z-10">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800/60 rounded-3xl p-10 md:p-14 shadow-2xl">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-[#131C2E]/20 backdrop-blur-sm border border-slate-800/40 rounded-3xl p-10 md:p-14 shadow-xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Start With the <span className="text-[#E8B84B]">Requirement</span>
             </h2>
