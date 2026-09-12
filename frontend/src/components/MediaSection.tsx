@@ -107,7 +107,7 @@ function SlideshowImage({ images }: { images: string[] }) {
 
 export default function MediaSection() {
   return (
-    <section className="relative py-24 bg-[#0B1220] overflow-hidden border-t border-slate-800">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-8">

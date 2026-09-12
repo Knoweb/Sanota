@@ -89,7 +89,7 @@ export default function Footer() {
                 { name: 'Videos', href: '/media' },
                 { name: 'Photo Gallery', href: '/media' },
                 { name: 'Innovation & Partnerships', href: '/contact' },
-                { name: 'Insights', href: '/insights' },
+                // { name: 'Insights', href: '/insights' },
                 { name: 'About Sanota', href: '/about' }
               ].map((item) => (
                 <li key={item.name}>

@@ -1,4 +1,5 @@
 // @ts-nocheck
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { draw, effect, frame, init, sampler, surface, target, uniforms } from 'vgpu';
 

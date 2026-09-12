@@ -207,8 +207,8 @@ export default function MediaPage() {
               scale={1.2}
               spread={1}
               depth={1}
-              speed={1}
-              spin={1}
+              speed={0.2}
+              spin={0.5}
               interaction="repel"
               density={1.5}
               shardSize={1.1}
@@ -225,14 +225,6 @@ export default function MediaPage() {
               rippleIntensity={1}
               holdToGather
               paused={false}
-            />
-            <motion.div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] rounded-full blur-[80px] pointer-events-none"
-              style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(232,184,75,0.4) 50%, transparent 100%)'
-              }}
-              animate={{ x: ['-100vw', '100vw'] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
             />
           </div>
           

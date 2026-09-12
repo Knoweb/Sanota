@@ -14,7 +14,7 @@ const navLinks = [
   { name: "Products & Systems", href: "/products" },
   { name: "Media", href: "/media" },
   { name: "About", href: "/about" },
-  { name: "Insights", href: "/insights" },
+  // { name: "Insights", href: "/insights" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -23,17 +23,17 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-200/95 via-[#2E5EAA]/80 to-[#050B14]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#2E5EAA]/20">
+    <header className="fixed top-0 w-full z-50 bg-[#050B14]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#2E5EAA]/20">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center shrink-0">
-            <Link href="/" className="flex items-center mr-6 hover:opacity-80 transition-opacity">
+            <Link href="/" className="relative flex items-center justify-center mr-6 group p-2 rounded-xl bg-[#DBEAFE]/95 border border-[#60A5FA] shadow-[0_0_15px_rgba(96,165,250,0.6)] hover:shadow-[0_0_25px_rgba(96,165,250,0.9)] transition-all duration-300">
               <Image
                 src="/lg.png"
                 alt="Sanota Logo"
                 width={150}
                 height={45}
-                className="object-contain h-10 w-auto"
+                className="object-contain h-10 w-auto relative z-10"
                 priority
               />
             </Link>
