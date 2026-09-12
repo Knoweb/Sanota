@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import AeroShards from "@/components/AeroShards";
+import Carousel from "@/components/Carousel";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 
 const services = [
@@ -243,7 +244,7 @@ export default function ServicesPage() {
       <main className="flex-grow">
 
         {/* Hero Section */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/services_hero_bg.jpg')" }}
@@ -383,105 +384,119 @@ export default function ServicesPage() {
         </section>
 
         {/* Services List */}
-        <section id="services-list" className="py-24 bg-[#050B14] bg-transparent">
+        <section id="services-list" className="py-10 lg:py-16 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div className="text-center mb-16">
+            <div className="text-center mb-8">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Service Pillars</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">How Sanota Can Support You</h3>
             </div>
 
-            <div className="space-y-8">
-              {services.map((service, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: 0.05 * (idx % 4) }}
-                  className="relative group bg-[#0F1523] border border-slate-800/60 rounded-[28px] p-8 lg:p-12 mb-10 last:mb-0 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 overflow-hidden"
-                >
-                  <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
+            <div className="mt-4 overflow-hidden relative">
+              <Carousel
+                autoplay={true}
+                autoplayDelay={10000}
+                loop={true}
+                round={false}
+                baseWidth={1300}
+                items={services.map((service, idx) => ({
+                  id: idx,
+                  content: (
+                    <div className="relative group w-full h-full rounded-3xl p-[1px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                      {/* Flowing light effect */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#E8B84B_360deg)] animate-[spin_6s_linear_infinite] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Inner content box */}
+                      <div className="relative bg-[#0F1523] w-full h-full p-5 lg:p-8 rounded-[calc(1.5rem-1px)] flex flex-col z-10">
+                        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 relative z-10 h-full">
 
-                    {/* Left: Header + Description */}
-                    <div className="lg:w-1/2 flex flex-col">
-                      <div className="flex items-start mb-8">
-                        {/* Icon with prominent glow */}
-                        <div className="relative mr-6 shrink-0">
-                          {/* Intense blur behind the icon */}
-                          <div className={`absolute -inset-3 bg-gradient-to-br ${service.color} rounded-full blur-[24px] opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
+                        {/* Left: Header + Description */}
+                        <div className="lg:w-1/2 flex flex-col pr-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-slate-800/50 pb-5 lg:pb-0 mb-5 lg:mb-0">
+                          
+                          <div className="flex items-start mb-5">
+                            {/* Colorful Glowing Icon */}
+                            <div className="relative mr-5 shrink-0">
+                              <div className={`absolute -inset-2 bg-gradient-to-br ${service.color} rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
+                              <div className={`relative w-12 h-12 rounded-xl p-[1px] bg-gradient-to-br ${service.color}`}>
+                                <div className="w-full h-full bg-[#0F1523] rounded-[11px] flex items-center justify-center">
+                                  <service.icon className="w-6 h-6 text-white" />
+                                </div>
+                              </div>
+                            </div>
 
-                          {/* Icon Container */}
-                          <div className={`relative w-[60px] h-[60px] rounded-2xl p-[1px] bg-gradient-to-br ${service.color}`}>
-                            <div className="w-full h-full bg-[#0F1523] rounded-[15px] flex items-center justify-center">
-                              <service.icon className="w-7 h-7 text-white" />
+                            <div className="flex flex-col justify-center">
+                              <span className="text-slate-500 font-bold tracking-[0.2em] text-[11px] uppercase mb-1">
+                                {service.number}
+                              </span>
+                              <h3 className="text-3xl font-black text-white leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-500">
+                                {service.title}
+                              </h3>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="flex flex-col justify-center pt-1">
-                          <span className="text-slate-500 font-bold text-[11px] tracking-widest uppercase mb-1.5">{service.number}</span>
-                          <h3 className="text-2xl md:text-[32px] font-bold text-white leading-tight">{service.title}</h3>
-                        </div>
-                      </div>
+                          <p className="text-[17px] text-slate-200 mb-3 font-semibold leading-relaxed">
+                            {service.intro}
+                          </p>
+                          
+                          <p className="text-slate-400 text-[14px] leading-relaxed mb-5">
+                            {service.description}
+                          </p>
 
-                      <p className="text-white text-lg font-bold mb-5 leading-relaxed">{service.intro}</p>
-                      <p className="text-slate-400 text-[15px] leading-relaxed mb-8">{service.description}</p>
-
-                      {/* Client Needs */}
-                      <div className="bg-[#0A0F1A] rounded-[20px] p-7 mt-auto relative">
-                        {/* Decorative subtle left border glow */}
-                        <div className="absolute left-0 top-6 bottom-6 w-[2px] bg-gradient-to-b from-transparent via-slate-700 to-transparent group-hover:via-[#E8B84B] transition-colors duration-500" />
-
-                        <p className="text-[#E8B84B] font-bold text-[11px] uppercase tracking-[0.15em] mb-5 flex items-center">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2.5" />
-                          Typical client needs
-                        </p>
-                        <div className="space-y-4">
-                          {service.clientNeeds.map((need, nIdx) => (
-                            <p key={nIdx} className="text-slate-300 text-[14px] italic leading-relaxed">
-                              {need}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-
-                    </div>
-
-                    {/* Right: Services list */}
-                    <div className="lg:w-1/2 pt-2 flex flex-col">
-                      <p className="text-slate-500 font-bold text-[11px] uppercase tracking-[0.15em] mb-6">Services may include</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                        {service.items.map((item, itemIdx) => (
-                          <div key={itemIdx} className="flex items-center bg-[#151D2F] rounded-xl px-5 py-4">
-                            <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${service.color} mr-4 shrink-0`} />
-                            <span className="text-slate-300 text-[14.5px] font-medium leading-snug">{item}</span>
+                          {/* Client Needs Box */}
+                          <div className="bg-[#050B14] rounded-xl p-4 lg:p-5 border border-slate-800/80 relative overflow-hidden group/box mt-auto">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/5 to-transparent opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
+                            <h4 className="flex items-center text-[#E8B84B] font-bold text-[10px] uppercase tracking-widest mb-3">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2 shadow-[0_0_8px_rgba(232,184,75,0.8)]" />
+                              Typical Client Needs
+                            </h4>
+                            <div className="grid grid-cols-1 gap-2.5">
+                              {service.clientNeeds.map((need, nIdx) => (
+                                <div key={nIdx} className="flex items-start">
+                                   <span className="text-slate-600 font-serif text-2xl leading-none mr-2.5 mt-0.5">"</span>
+                                   <p className="text-slate-300 text-[13px] italic leading-relaxed">
+                                     {need.replace(/"/g, '')}
+                                   </p>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        ))}
-                      </div>
 
-                      <div className="mt-auto flex justify-end">
-                        <a href={service.link} className="inline-flex items-center text-[#3B82F6] hover:text-blue-400 text-[15px] font-semibold transition-all duration-300 group/link">
-                          Explore {service.title}
-                          <span className="ml-3 w-8 h-8 rounded-full bg-[#151D2F] flex items-center justify-center group-hover/link:bg-[#1E293B] transition-colors duration-300">
-                            <ArrowRight className="w-4 h-4 text-[#3B82F6] group-hover/link:text-blue-400 group-hover/link:translate-x-0.5 transition-all" />
-                          </span>
-                        </a>
+                        </div>
+
+                        {/* Right: Services list */}
+                        <div className="lg:w-1/2 flex flex-col h-full">
+                          <p className="text-slate-500 font-bold text-[10px] uppercase tracking-widest mb-3">Services may include</p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
+                            {service.items.map((item, itemIdx) => (
+                              <div key={itemIdx} className="flex items-center bg-[#151D2F] rounded-lg px-4 py-3 border border-transparent hover:border-slate-700 transition-colors">
+                                <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${service.color} mr-3 shrink-0 shadow-lg`} />
+                                <span className="text-slate-200 text-[13.5px] font-medium leading-snug">{item}</span>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="mt-auto flex justify-end">
+                            <a href={service.link} className="inline-flex items-center text-[#3B82F6] hover:text-blue-400 text-[14px] font-bold transition-all duration-300 group/link bg-[#3B82F6]/10 px-5 py-2.5 rounded-full hover:bg-[#3B82F6]/20">
+                              Explore {service.title}
+                              <span className="ml-2 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center transition-colors duration-300">
+                                <ArrowRight className="w-3 h-3 text-[#3B82F6] group-hover/link:translate-x-0.5 transition-all" />
+                              </span>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-
-                  </div>
-                </motion.div>
-              ))}
+                    </div>
+                  )
+                }))}
+              />
             </div>
-
           </div>
         </section>
-
         {/* Integrated Service Model */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Integrated Service Model</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">One Requirement May Use Several Sanota Services</h3>
               <p className="text-slate-400 text-lg max-w-2xl mx-auto">A client does not need to decide which technical departments should be involved. Sanota first studies the requirement and then identifies the appropriate combination of services.</p>
@@ -515,9 +530,9 @@ export default function ServicesPage() {
         </section>
 
         {/* How to Engage */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How to Engage Sanota</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Start With the Operational Need</h3>
             </div>
@@ -550,7 +565,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Industries Supported */}
-        <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-10 lg:py-14 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Ambient Background Effects */}
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#2E5EAA]/10 to-[#E8B84B]/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#E8B84B]/5 to-transparent rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4" />
@@ -637,7 +652,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-10 lg:py-14 bg-transparent overflow-hidden border-t border-slate-800/40">
           
           {/* Merging Glows representing Partnership */}
           <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#E8B84B]/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
@@ -694,12 +709,12 @@ export default function ServicesPage() {
         </section>
 
         {/* Why Work With Sanota */}
-        <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-10 lg:py-14 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Ambient Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
                 Why Work With Sanota?
@@ -745,7 +760,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Completed Work */}
-        <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-10 lg:py-14 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
@@ -781,7 +796,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-10 lg:py-14 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Subtle CTA Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none" />
           

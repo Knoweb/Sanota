@@ -177,7 +177,7 @@ export default function IndustriesPage() {
       <main className="flex-grow">
         
         {/* 1. Page Hero */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/industries_hero_bg.jpg')" }}
@@ -331,7 +331,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 3. Priority Industries (Interactive) */}
-        <section id="industries" className="relative py-24 min-h-[90vh] flex items-center overflow-hidden bg-[#050B14]">
+        <section id="industries" className="relative py-10 lg:py-14 min-h-[90vh] flex items-center overflow-hidden bg-[#050B14]">
           {/* Background Images with AnimatePresence */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -424,7 +424,7 @@ export default function IndustriesPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
           
           <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Additional Industries</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Broad Operational Support</h3>
               <p className="text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
@@ -504,7 +504,7 @@ export default function IndustriesPage() {
         {/* 5. How Sanota Helps Industries */}
         <section className="pt-12 pb-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 max-w-3xl mx-auto">
+            <div className="text-center mb-8 lg:mb-12 max-w-3xl mx-auto">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Support Across the Complete Engineering Journey</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
@@ -512,7 +512,7 @@ export default function IndustriesPage() {
               </p>
             </div>
 
-            <div className="relative mt-24 mb-20">
+            <div className="relative mt-24 mb-10 lg:mb-12">
               {/* Connecting Background Circuit Lines (Desktop) */}
               <div className="hidden lg:block absolute top-[40px] left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent z-0 overflow-hidden">
                 {/* Moving light on the top line */}
@@ -587,7 +587,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 6. Engineering and Digital Technology Together (Premium Image Overlay Design) */}
-        <section className="py-20 bg-[#050B14] relative overflow-hidden">
+        <section className="py-8 lg:py-12 bg-[#050B14] relative overflow-hidden">
           {/* Subtle background ambient light */}
           <div className="absolute top-1/2 right-0 w-1/3 h-[500px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2" />
 
@@ -659,7 +659,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 7 & 8. Lifecycle Support (Interactive Tabs) */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Lifecycle & Operations Support</h2>
@@ -883,7 +883,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 10. Call to Action (Sleek Edge-to-Edge Animated Design) */}
-        <section className="py-20 relative overflow-hidden bg-[#02050A] border-t border-slate-900">
+        <section className="py-8 lg:py-12 relative overflow-hidden bg-[#02050A] border-t border-slate-900">
           
           {/* Animated Scanning Laser Lines */}
           <div className="absolute inset-0 z-0 opacity-60">
@@ -928,7 +928,7 @@ export default function IndustriesPage() {
                 Whether it's a production challenge, an inefficient process, an outdated machine, or a new product idea—tell us what you need to achieve. We'll connect you with the appropriate engineering and technology capabilities.
               </p>
 
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8 lg:mb-12">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                   <Link href="/tell-us-your-challenge" className="relative group w-full sm:w-auto px-8 py-5 bg-white text-[#0B1220] font-bold rounded-full overflow-hidden transition-all flex items-center justify-center">
                     <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#E8B84B] to-[#d4a643] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

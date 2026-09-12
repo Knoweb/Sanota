@@ -155,7 +155,7 @@ export default function ChallengePage() {
         </section>
 
         {/* GUIDED ENQUIRY FORM */}
-        <section id="form-container" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
+        <section id="form-container" className="py-8 lg:py-12 px-4 sm:px-6 lg:px-8 bg-transparent">
           <div className="max-w-4xl mx-auto">
             
             <AnimatePresence mode="wait">

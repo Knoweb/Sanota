@@ -136,7 +136,7 @@ export default function ContactPage() {
       <main className="flex-grow">
 
         {/* ── Hero ── */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800/60 min-h-[65vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800/60 min-h-[65vh] flex flex-col justify-center">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" style={{ backgroundImage: "url('/contact_hero_bg.jpg')" }} />
           <div className="absolute inset-0 bg-[#050B14]/65 z-0" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/30 via-transparent to-[#050B14] z-0" />
@@ -268,9 +268,9 @@ export default function ContactPage() {
         </section>
 
         {/* ── Contact Options ── */}
-        <section className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
+        <section className="py-10 lg:py-14 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Contact Options</p>
               <h2 className="text-3xl md:text-5xl font-black text-white">Choose the Right Contact Route</h2>
             </div>
@@ -352,9 +352,9 @@ export default function ContactPage() {
         </section>
 
         {/* ── Direct Contact Info ── */}
-        <section className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
+        <section className="py-10 lg:py-14 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <p className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4">Direct Contact</p>
               <h2 className="text-3xl md:text-5xl font-black text-white">Contact Sanota Directly</h2>
             </div>
@@ -520,7 +520,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Contact Form + Sidebar ── */}
-        <section id="contact-form" className="py-24 bg-transparent border-b border-slate-800/60 relative z-10">
+        <section id="contact-form" className="py-10 lg:py-14 bg-transparent border-b border-slate-800/60 relative z-10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-16">
 
@@ -865,7 +865,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Social / Connect ── */}
-        <section className="py-20 bg-transparent border-b border-slate-800/60 relative z-10 overflow-hidden">
+        <section className="py-8 lg:py-12 bg-transparent border-b border-slate-800/60 relative z-10 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#E8B84B]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -923,7 +923,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Final CTA ── */}
-        <section className="py-20 bg-transparent relative z-10">
+        <section className="py-10 lg:py-14 bg-transparent relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800/60 rounded-3xl p-10 md:p-14 shadow-2xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Start With the <span className="text-[#E8B84B]">Requirement</span>

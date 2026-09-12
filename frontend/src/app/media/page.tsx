@@ -120,7 +120,7 @@ export default function MediaPage() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/media_hero_bg.jpg')" }}
@@ -278,7 +278,7 @@ export default function MediaPage() {
         {/* Featured Work */}
         <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">See Sanota in Action</h3>
               <p className="text-slate-400 text-lg max-w-3xl mx-auto">Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs.</p>
@@ -417,7 +417,7 @@ export default function MediaPage() {
         {/* Photo Gallery */}
         <section className="py-16 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Projects, Products and People</h3>
               <p className="text-slate-400 text-lg max-w-3xl mx-auto mb-10">The Sanota Photo Gallery provides a visual record of engineering work across project and company environments.</p>
@@ -696,7 +696,7 @@ export default function MediaPage() {
         <section className="py-16 bg-[#0B1220] border-y border-slate-800/50 bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#E8B84B]/10 text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#E8B84B]/20">
                   <Shield className="w-4 h-4 mr-2" /> Media Publication Principles

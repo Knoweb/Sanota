@@ -244,7 +244,7 @@ export default function InsightsPage() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/insights_hero_bg.jpg')" }}
@@ -307,7 +307,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
+        <section className="py-8 lg:py-12 bg-[#0B1220] border-b border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Turning Technical Knowledge into Practical Understanding</h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
@@ -323,9 +323,9 @@ export default function InsightsPage() {
         </section>
 
         {/* Insight Categories */}
-        <section id="categories" className="py-24 bg-[#050B14] bg-transparent">
+        <section id="categories" className="py-10 lg:py-14 bg-[#050B14] bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Insight Categories</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">Explore by Topic</h3>
             </div>
@@ -363,9 +363,9 @@ export default function InsightsPage() {
         </section>
 
         {/* Featured Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Insights</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">Recommended Reading</h3>
             </div>
@@ -386,7 +386,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Latest Insights */}
-        <section id="latest" className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section id="latest" className="py-10 lg:py-14 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div>
@@ -426,7 +426,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Individual Article Structure */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Template</h2>
@@ -470,7 +470,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Insights by Industry & Technical Guides */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
@@ -518,7 +518,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Engineering Questions & Knoweb Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               
@@ -563,7 +563,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Knowledge & Disclaimer */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
@@ -608,7 +608,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Receive New Insights */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Mail className="w-12 h-12 text-[#E8B84B] mx-auto mb-6" />
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Receive New Insights</h2>
@@ -659,7 +659,7 @@ export default function InsightsPage() {
         </section>
 
         {/* Need Help & Final CTA */}
-        <section className="py-24 bg-[#131C2E] border-t border-slate-800 bg-transparent">
+        <section className="py-10 lg:py-14 bg-[#131C2E] border-t border-slate-800 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               

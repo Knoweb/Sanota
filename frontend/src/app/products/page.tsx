@@ -380,7 +380,7 @@ export default function ProductsPage() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/products_hero_bg.jpg')" }}
@@ -452,7 +452,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-b border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-b border-slate-800/40">
           {/* Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none" />
 
@@ -544,7 +544,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Categories Carousel */}
-        <section id="categories" className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section id="categories" className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -554,7 +554,7 @@ export default function ProductsPage() {
             </div>
 
             <div 
-              className="relative max-w-6xl mx-auto"
+              className="relative max-w-[1350px] mx-auto"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -584,7 +584,7 @@ export default function ProductsPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#0A101A]/50 via-transparent to-[#0A101A]/80" />
                   </div>
                   
-                  <div className="p-8 md:p-12 flex flex-col lg:flex-row gap-10 relative z-10 h-full">
+                  <div className="p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row gap-10 lg:gap-16 relative z-10 h-full">
                     <div className="lg:w-5/12 flex flex-col justify-center">
                       <div className="flex items-start mb-6">
                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${productCategories[activeCategoryIndex].color} p-0.5 mr-5 flex-shrink-0 shadow-lg`}>
@@ -602,10 +602,10 @@ export default function ProductsPage() {
                       </div>
                       <p className="text-slate-300 text-[15px] leading-relaxed mb-8 drop-shadow-sm">{productCategories[activeCategoryIndex].intro}</p>
                       
-                      <div className="bg-[#050B14]/80 backdrop-blur-xl border border-slate-700/50 rounded-xl p-5 shadow-2xl relative overflow-hidden group/box hover:border-slate-500/50 transition-colors">
+                      <div className="bg-[#050B14]/80 backdrop-blur-xl border border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-2xl relative overflow-hidden group/box hover:border-slate-500/50 transition-colors">
                         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-slate-400 to-slate-700" />
-                        <p className="text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-3 ml-2">Suitable for organizations seeking to:</p>
-                        <div className="space-y-2.5 ml-2">
+                        <p className="text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">Suitable for organizations seeking to:</p>
+                        <div className="space-y-4 ml-2">
                           {productCategories[activeCategoryIndex].clientNeeds.map((need, nIdx) => (
                             <p key={nIdx} className="text-slate-400 text-sm italic leading-relaxed flex items-start">
                               <span className="mr-2 text-slate-500 font-serif">"</span>
@@ -617,16 +617,16 @@ export default function ProductsPage() {
                     </div>
 
                     <div className="lg:w-7/12 flex flex-col justify-center">
-                      <div className="bg-[#0A101A]/30 group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-8 border border-white/5 backdrop-blur-sm">
+                      <div className="bg-[#0A101A]/30 group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-white/5 backdrop-blur-sm">
                         <p className="text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-md flex items-center">
                           <span className="w-2 h-2 rounded-full bg-white/50 mr-3 animate-pulse" />
                           Solutions may include
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                           {productCategories[activeCategoryIndex].items.map((item, itemIdx) => (
                             <div 
                               key={itemIdx} 
-                              className="flex items-start bg-[#050B14]/70 hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-700/60 hover:border-white/30 rounded-xl px-4 py-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item"
+                              className="flex items-start bg-[#050B14]/70 hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-700/60 hover:border-white/30 rounded-xl px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item"
                             >
                               <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${productCategories[activeCategoryIndex].color} mt-1.5 mr-3 shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/item:scale-150 transition-transform`} />
                               <span className="text-slate-200 text-sm font-medium leading-snug group-hover/item:text-white transition-colors">{item}</span>
@@ -639,21 +639,21 @@ export default function ProductsPage() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Controls */}
+              {/* Navigation Controls - New Sleek Style */}
               <button 
                 onClick={prevSlide} 
-                className="absolute top-1/2 -left-4 md:-left-6 lg:-left-8 -translate-y-1/2 w-12 h-12 rounded-full bg-[#131C2E]/90 border border-slate-700/80 flex items-center justify-center text-white hover:bg-[#E8B84B] hover:text-[#0B1220] transition-colors shadow-2xl z-20 group"
+                className="absolute left-0 lg:-left-20 top-1/2 -translate-y-1/2 z-20 p-2 text-slate-500 hover:text-[#E8B84B] transition-all hidden md:block group"
                 aria-label="Previous Category"
               >
-                <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+                <ChevronLeft className="w-12 h-12 drop-shadow-[0_0_10px_rgba(232,184,75,0.0)] group-hover:drop-shadow-[0_0_10px_rgba(232,184,75,0.5)] group-hover:-translate-x-1 transition-all duration-300" strokeWidth={1.5} />
               </button>
               
               <button 
                 onClick={nextSlide} 
-                className="absolute top-1/2 -right-4 md:-right-6 lg:-right-8 -translate-y-1/2 w-12 h-12 rounded-full bg-[#131C2E]/90 border border-slate-700/80 flex items-center justify-center text-white hover:bg-[#E8B84B] hover:text-[#0B1220] transition-colors shadow-2xl z-20 group"
+                className="absolute right-0 lg:-right-20 top-1/2 -translate-y-1/2 z-20 p-2 text-slate-500 hover:text-[#E8B84B] transition-all hidden md:block group"
                 aria-label="Next Category"
               >
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+                <ChevronRight className="w-12 h-12 drop-shadow-[0_0_10px_rgba(232,184,75,0.0)] group-hover:drop-shadow-[0_0_10px_rgba(232,184,75,0.5)] group-hover:translate-x-1 transition-all duration-300" strokeWidth={1.5} />
               </button>
             </div>
 
@@ -676,12 +676,12 @@ export default function ProductsPage() {
         </section>
 
         {/* How Sanota Classifies an Offering */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Subtle Ambient Background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#2E5EAA]/5 to-[#E8B84B]/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
                 How Sanota Classifies an Offering
@@ -693,7 +693,7 @@ export default function ProductsPage() {
               </h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 lg:mb-12">
               {[
                 { title: "Product", desc: "A defined item of machinery, equipment, hardware or software that can be supplied or adapted for an application.", icon: PackageSearch },
                 { title: "System", desc: "A coordinated combination of products, equipment, controls and technologies working together to achieve an operational outcome.", icon: Layers },
@@ -742,12 +742,12 @@ export default function ProductsPage() {
         </section>
 
         {/* Selected Solution Areas */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Subtle Background Glow */}
           <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
                 Selected Solution Areas
@@ -760,7 +760,7 @@ export default function ProductsPage() {
             </div>
             
             {/* Premium Compact Multi-Column List with Container */}
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative group mb-16 z-10">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative group mb-8 lg:mb-12 z-10">
               {/* Decorative ambient background elements */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#E8B84B]/20 to-amber-600/20 rounded-3xl blur-2xl opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-300 pointer-events-none" />
               
@@ -802,7 +802,7 @@ export default function ProductsPage() {
         </section>
 
         {/* New Systems and Existing Equipment */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-[#E8B84B]/5 to-transparent rounded-full blur-[150px] pointer-events-none -translate-x-1/4 -translate-y-1/4" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -882,7 +882,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           {/* Dual Theme Background Glow */}
           <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
           <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
@@ -891,7 +891,7 @@ export default function ProductsPage() {
             <div className="max-w-5xl mx-auto flex flex-col items-center">
               
               {/* Top Side: Typography */}
-              <div className="text-center mb-16 w-full">
+              <div className="text-center mb-8 lg:mb-12 w-full">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1001,11 +1001,11 @@ export default function ProductsPage() {
         </section>
 
         {/* How a Solution is Developed */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#E8B84B]/5 rounded-full blur-[150px] pointer-events-none" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-10 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
                 How a Solution is Developed
@@ -1076,7 +1076,7 @@ export default function ProductsPage() {
         </section>
 
         {/* Support After Implementation */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-[#E8B84B]/5 to-transparent rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1180,9 +1180,9 @@ export default function ProductsPage() {
         </section>
 
         {/* Industries Served */}
-        <section className="relative py-16 lg:py-20 bg-transparent overflow-hidden border-t border-slate-800/40">
+        <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-800/40">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
                 Industries Served
@@ -1195,7 +1195,7 @@ export default function ProductsPage() {
             </div>
             
             {/* Premium Industry Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 mb-16 max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 mb-8 lg:mb-12 max-w-[1400px] mx-auto">
               {[
                 { name: "Manufacturing and industrial automation", icon: Settings, color: "#f97316" }, // Orange
                 { name: "Smart agriculture and agri-technology", icon: Sprout, color: "#10b981" }, // Emerald
@@ -1310,12 +1310,12 @@ export default function ProductsPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-white mb-6">See Sanota Products and Systems in Operation</h3>
-              <p className="text-slate-300 text-lg leading-relaxed mb-16 max-w-3xl mx-auto">
+              <p className="text-slate-300 text-lg leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
                 Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments.
               </p>
               
               {/* Premium 5-Step Case Study Flow */}
-              <div className="relative max-w-5xl mx-auto mb-16 px-4">
+              <div className="relative max-w-5xl mx-auto mb-8 lg:mb-12 px-4">
                 {/* Background track line */}
                 <div className="hidden md:block absolute top-6 left-[10%] right-[10%] h-[1px] bg-slate-800/50" />
                 
@@ -1386,7 +1386,7 @@ export default function ProductsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative text-center mt-10 mb-20"
+              className="relative text-center mt-10 mb-10 lg:mb-12"
             >
               <div className="bg-[#050B14] border border-slate-800/60 rounded-[2.5rem] p-10 md:p-16 max-w-5xl mx-auto relative overflow-hidden shadow-2xl">
                 {/* Background ambient glow inside the box */}
@@ -1456,7 +1456,7 @@ export default function ProductsPage() {
                 From individual machinery and products to complete integrated systems, Sanota brings together the engineering and technology capabilities required to move from concept to working solution.
               </p>
               
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 lg:mb-12">
                 <Link
                   href="/tell-us-your-challenge"
                   className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
