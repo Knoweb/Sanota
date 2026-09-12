@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,6 +8,7 @@ import FeaturedProjectCardCopy from "@/components/FeaturedProjectCardCopy";
 import VideosAndDemonstrations from "@/components/VideosAndDemonstrations";
 import Link from "next/link";
 import Image from "next/image";
+import AeroShards from "@/components/AeroShards";
 import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 
 // Data Structures
@@ -163,6 +164,13 @@ export default function IndustriesPage() {
   const [activeAdditional, setActiveAdditional] = useState<number | null>(0);
   const [activeSupportTab, setActiveSupportTab] = useState<'modernization' | 'amc'>('modernization');
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % priorityIndustries.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
@@ -226,48 +234,95 @@ export default function IndustriesPage() {
         </section>
 
         {/* 2. Industry-Focused Engineering */}
-        <section className="relative py-24 bg-[#0B1220] overflow-hidden">
+        <section className="relative py-12 lg:py-16 bg-[#0B1220] overflow-hidden">
+          {/* Slowly moving AeroShards Background */}
+          <div className="absolute inset-0 overflow-hidden z-0">
+            <AeroShards
+              backgroundColor="#0B1220"
+              shardColor="#1A1813"
+              accentColor="#E8B84B"
+              placement="full"
+              flow="stream"
+              material="pearl"
+              detail="fine"
+              effect="none"
+              scale={1}
+              spread={1.2}
+              depth={1}
+              speed={0.3}
+              spin={0.2}
+              interaction="none"
+              density={1}
+              shardSize={0.8}
+              stretch={1}
+              turbulence={0.5}
+              glow={0.3}
+              edgeSoftness={2}
+              bloom={0.1}
+              grain={0.01}
+              chromaticAberration={0}
+              transitionDuration={2}
+              interactionRadius={0}
+              interactionStrength={0}
+              rippleIntensity={0}
+              holdToGather={false}
+              paused={false}
+            />
+          </div>
           {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/40 to-transparent opacity-50 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/60 to-transparent opacity-60 pointer-events-none z-0" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               
-              <div className="lg:col-span-7">
-                <div className="inline-block px-5 py-2 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-8">
-                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-xs">Industry-Focused Engineering</h2>
+              <div className="lg:col-span-7 pr-0 lg:pr-4">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2 animate-pulse" />
+                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">Industry-Focused Engineering</h2>
                 </div>
-                <h3 className="text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">Solutions Developed Around How Your Industry Operates</h3>
-                <p className="text-slate-300 text-xl leading-relaxed mb-8">
+                
+                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                  Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Your Industry Operates</span>
+                </h3>
+                
+                <p className="text-slate-400 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl">
                   Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another.
                 </p>
-                <div className="h-px w-24 bg-gradient-to-r from-[#E8B84B] to-transparent mb-8" />
-                <p className="text-white text-lg font-semibold mb-8">Sanota begins by understanding your operation, including:</p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 mb-8">
+                <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-800 via-[#E8B84B]/40 to-transparent mb-6" />
+                
+                <p className="text-slate-300 text-base lg:text-lg font-medium mb-4">Sanota begins by understanding your operation, including:</p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
                   {operationalUnderstanding.map((item, idx) => (
-                    <div key={idx} className="flex items-center group">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#131C2E] border border-slate-700 group-hover:border-[#E8B84B] transition-colors shrink-0 mr-4 shadow-sm shadow-black/50">
-                        <div className="w-2 h-2 rounded-full bg-[#E8B84B] group-hover:scale-150 transition-transform" />
+                    <div key={idx} className="flex items-center bg-[#131C2E]/30 border border-slate-800/60 p-3 rounded-xl group hover:border-[#E8B84B]/40 hover:bg-[#131C2E]/60 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-[#0B1220] border border-slate-700 group-hover:border-[#E8B84B]/60 transition-colors shrink-0 mr-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] opacity-50 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300" />
                       </div>
-                      <span className="text-slate-300 text-base font-medium group-hover:text-white transition-colors leading-snug">{item}</span>
+                      <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover:text-white transition-colors leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex items-center justify-center">
-                <div className="glowing-card relative w-full bg-gradient-to-br from-[#131C2E] to-[#0B1220] border border-slate-700/50 rounded-3xl p-8 lg:p-10 flex flex-col justify-center overflow-hidden group hover:border-[#E8B84B]/40 transition-colors shadow-2xl">
-                  {/* Decorative Quote Icon */}
-                  <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] text-white group-hover:text-[#E8B84B] transition-colors duration-500 transform group-hover:scale-110">
-                    <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor">
+              <div className="lg:col-span-5 flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
+                <div className="relative w-full max-w-md bg-[#0B1220]/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 lg:p-8 overflow-hidden group hover:border-[#E8B84B]/30 transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                  {/* Subtle top highlight */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E8B84B]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  
+                  {/* Elegant Quote Icon */}
+                  <div className="mb-4 text-[#E8B84B]/30 group-hover:text-[#E8B84B]/50 transition-colors duration-500">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
                   
-                  <p className="text-white text-2xl lg:text-3xl font-medium leading-relaxed relative z-10">
-                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold">practical and scalable solution.</span>
+                  <p className="text-slate-300 text-base lg:text-lg font-light leading-relaxed relative z-10">
+                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-medium">practical and scalable solution.</span>
                   </p>
+                  
+                  {/* Subtle corner glow */}
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#E8B84B]/10 blur-3xl rounded-full pointer-events-none group-hover:bg-[#E8B84B]/20 transition-colors duration-700" />
                 </div>
               </div>
 
@@ -364,7 +419,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 4. Additional Industries (Premium Accordion Layout) */}
-        <section className="py-24 bg-[#0B1220] border-t border-slate-800/50 bg-transparent relative overflow-hidden">
+        <section className="pt-24 pb-12 bg-[#0B1220] border-t border-slate-800/50 bg-transparent relative overflow-hidden">
           {/* Subtle background ambient light */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
           
@@ -391,9 +446,18 @@ export default function IndustriesPage() {
                       className="w-full py-6 flex items-center justify-between text-left group focus:outline-none"
                     >
                       <div className="flex items-center space-x-6">
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-[#E8B84B]/10 border border-[#E8B84B]/30 shadow-[0_0_15px_rgba(232,184,75,0.2)]' : 'bg-slate-800/30 border border-slate-700/50 group-hover:bg-slate-800'}`}>
-                          <ind.icon className={`w-5 h-5 transition-colors duration-500 ${isActive ? 'text-[#E8B84B]' : 'text-slate-400 group-hover:text-white'}`} />
-                        </div>
+                        <motion.div 
+                          className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-800/30 group-hover:bg-slate-800/60"
+                          animate={{ 
+                            borderColor: ['rgba(76,132,224,0.5)', 'rgba(232,184,75,0.5)', 'rgba(168,85,247,0.5)', 'rgba(16,185,129,0.5)', 'rgba(76,132,224,0.5)'],
+                            boxShadow: ['0 0 15px rgba(76,132,224,0.3)', '0 0 15px rgba(232,184,75,0.3)', '0 0 15px rgba(168,85,247,0.3)', '0 0 15px rgba(16,185,129,0.3)', '0 0 15px rgba(76,132,224,0.3)'],
+                            color: ['#4C84E0', '#E8B84B', '#A855F7', '#10B981', '#4C84E0']
+                          }}
+                          transition={{ duration: 4, delay: idx * 0.5, repeat: Infinity, ease: "linear" }}
+                          style={{ borderStyle: 'solid', borderWidth: '1px' }}
+                        >
+                          <ind.icon className="w-5 h-5" />
+                        </motion.div>
                         <h4 className={`text-xl sm:text-2xl font-bold transition-colors duration-500 ${isActive ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
                           {ind.title}
                         </h4>
@@ -438,7 +502,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 5. How Sanota Helps Industries */}
-        <section className="py-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="pt-12 pb-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
