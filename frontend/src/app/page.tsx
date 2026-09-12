@@ -15,12 +15,52 @@ import MediaSection from "@/components/MediaSection";
 import InnovationAndCollaboration from "@/components/InnovationAndCollaboration";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import GradientWaves from "@/components/GradientWaves";
+import Particles from "@/components/Particles";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-transparent">
-      <Header />
-      <main className="flex-grow pt-24">
+    <div className="flex flex-col min-h-screen bg-[#050B14] relative">
+      <div className="fixed inset-0 z-0">
+        <GradientWaves
+          horizonColor="#050B14"
+          waveColor="#2E5EAA"
+          crestColor="#60A5FA"
+          speed={0.4}
+          amplitude={2.5}
+          waveScale={0.6}
+          waveRatio={0.9}
+          swell={35}
+          turbulence={20}
+          tilt={1.11}
+          zoom={1}
+          height={5.5}
+          fogDepth={15}
+          detail="medium"
+          brightness={1.5}
+          opacity={1}
+          mouseInteraction={true}
+          parallaxStrength={0.5}
+          grain={true}
+          grainIntensity={0.05}
+        />
+      </div>
+      <div className="fixed inset-0 z-0 pointer-events-none mix-blend-screen">
+        <Particles
+          particleColors={["#ffffff", "#2E5EAA", "#E8B84B"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
+      </div>
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow pt-24">
         <Hero />
         <CorporateProof />
         <VisitorPathways />
@@ -36,8 +76,9 @@ export default function Home() {
         <MediaSection />
         <InnovationAndCollaboration />
         <FinalCTA />
-      </main>
-      <Footer />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
