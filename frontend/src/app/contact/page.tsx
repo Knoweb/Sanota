@@ -60,6 +60,14 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -891,9 +899,9 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto mb-12">
               {[
-                { name: 'LinkedIn', icon: LinkedinIcon, link: '#', hoverClass: 'hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]', iconColor: 'text-blue-400 group-hover:text-blue-300', glowColor: 'bg-blue-500' },
-                { name: 'Facebook', icon: FacebookIcon, link: '#', hoverClass: 'hover:border-blue-600/50 hover:shadow-[0_0_40px_rgba(37,99,235,0.15)]', iconColor: 'text-blue-500 group-hover:text-blue-400', glowColor: 'bg-blue-600' },
-                { name: 'YouTube', icon: YoutubeIcon, link: '#', hoverClass: 'hover:border-red-500/50 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)]', iconColor: 'text-red-500 group-hover:text-red-400', glowColor: 'bg-red-500' }
+                { name: 'LinkedIn', icon: LinkedinIcon, link: 'https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk', hoverClass: 'hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]', iconColor: 'text-blue-400 group-hover:text-blue-300', glowColor: 'bg-blue-500' },
+                { name: 'Instagram', icon: InstagramIcon, link: 'https://www.instagram.com/sanota_lk/', hoverClass: 'hover:border-pink-500/50 hover:shadow-[0_0_40px_rgba(236,72,153,0.15)]', iconColor: 'text-pink-500 group-hover:text-pink-400', glowColor: 'bg-pink-500' },
+                { name: 'Facebook', icon: FacebookIcon, link: 'https://web.facebook.com/SanotaPrivateLimited/?_rdc=1&_rdr#', hoverClass: 'hover:border-blue-600/50 hover:shadow-[0_0_40px_rgba(37,99,235,0.15)]', iconColor: 'text-blue-500 group-hover:text-blue-400', glowColor: 'bg-blue-600' }
               ].map((social, idx) => {
                 const Icon = social.icon;
                 return (
