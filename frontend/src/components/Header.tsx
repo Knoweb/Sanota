@@ -27,13 +27,13 @@ export default function Header() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center shrink-0">
-            <Link href="/" className="relative flex items-center justify-center mr-6 group p-2 rounded-xl bg-[#DBEAFE]/95 border border-[#60A5FA] shadow-[0_0_15px_rgba(96,165,250,0.6)] hover:shadow-[0_0_25px_rgba(96,165,250,0.9)] transition-all duration-300">
+            <Link href="/" className="relative flex items-center justify-center mr-6 group transition-opacity hover:opacity-80">
               <Image
                 src="/lg.png"
                 alt="Sanota Logo"
-                width={150}
-                height={45}
-                className="object-contain h-10 w-auto relative z-10"
+                width={160}
+                height={48}
+                className="object-contain h-12 w-auto relative z-10 drop-shadow-[0_0_2px_rgba(255,255,255,1)] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
                 priority
               />
             </Link>
