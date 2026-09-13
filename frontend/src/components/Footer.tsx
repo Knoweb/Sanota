@@ -142,15 +142,15 @@ export default function Footer() {
 
             <h4 className="text-white font-bold mb-2.5 tracking-wider text-[13px]">Social Links</h4>
             <div className="flex space-x-3">
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
+              <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </Link>
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
-              </Link>
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
+              </a>
+              <a href="https://www.instagram.com/sanota_lk/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="https://web.facebook.com/SanotaPrivateLimited/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#131C2E] border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#E8B84B] hover:border-[#E8B84B]/50 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </Link>
+              </a>
             </div>
           </div>
           
@@ -166,7 +166,7 @@ export default function Footer() {
             <Link href="#" className="hover:text-slate-300 transition-colors">Terms and Conditions</Link>
           </div>
           <p className="text-slate-500 text-xs flex items-center">
-            Built by: <a href="https://knoweb.com" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#E8B84B] hover:text-white font-semibold transition-colors">Knoweb</a>
+            Built by: <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#E8B84B] hover:text-white font-semibold transition-colors">Knoweb</a>
           </p>
         </div>
 

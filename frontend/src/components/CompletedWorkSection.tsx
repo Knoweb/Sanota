@@ -22,33 +22,69 @@ const projectCriteria = [
 // Dummy data injected if database is empty so the client can preview the design
 const dummyProjects: any = [
   {
-    id: 991,
+    id: 1,
     attributes: {
-      title: 'Automated Tea Withering System',
-      description: 'A fully automated, IoT connected tea withering system designed to optimize moisture loss and reduce energy consumption in large-scale tea factories.',
-      industry: 'Tea',
-      solution: 'Automation',
-      clientRequirement: 'Reduce energy waste and standardize withering quality.',
-      sanotaRole: 'Full design, integration, and software development.',
-      outcome: '30% reduction in energy usage and consistent leaf quality.',
-      technologies: 'Siemens PLC, Custom IoT Sensors, Node.js Dashboard',
-      linkText: 'Explore Tea Automation',
-      coverImage: { data: null }
+      title: 'Food Processing Line',
+      description: 'High-efficiency food processing line with integrated conveyor system from washing to packaging.',
+      industry: 'Food & Beverage',
+      solution: 'Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/food-processing.webp', isLocal: true } } }
     }
   },
   {
-    id: 992,
+    id: 2,
     attributes: {
-      title: 'Smart Conveyor Routing Network',
-      description: 'High-speed automated logistics conveyor system featuring RFID tracking and automated sorting for a major distribution center.',
-      industry: 'Logistics',
+      title: 'Mini Tea Factory',
+      description: 'Compact, affordable tea processing solution for small to medium-scale producers.',
+      industry: 'Tea',
       solution: 'Machinery',
-      clientRequirement: 'Increase sorting throughput by 50%.',
-      sanotaRole: 'Mechanical design and PLC programming.',
-      outcome: 'Sorting speed increased to 5000 units/hour.',
-      technologies: 'RFID, Scanners, Actuators',
-      linkText: 'Explore Logistics Machinery',
-      coverImage: { data: null }
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/mini tea college.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 3,
+    attributes: {
+      title: 'PLC Educational Panels',
+      description: 'Advanced PLC-based training systems for technical education in automation and control.',
+      industry: 'Research & Development',
+      solution: 'Automation',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/plc-2.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 4,
+    attributes: {
+      title: 'Solar Water Heater',
+      description: 'Efficient solar water heating systems for residential and industrial applications.',
+      industry: 'Energy',
+      solution: 'Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/sola-hotwater.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 5,
+    attributes: {
+      title: 'Hydraulic Baling Press',
+      description: 'Heavy-duty hydraulic baling press for recycling and waste management.',
+      industry: 'Environment',
+      solution: 'Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/bale machines.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 6,
+    attributes: {
+      title: 'Industrial Ovens',
+      description: 'Precision industrial ovens for baking, curing, and drying processes.',
+      industry: 'Manufacturing',
+      solution: 'Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/dehydrator2.webp', isLocal: true } } }
     }
   }
 ];
@@ -69,6 +105,7 @@ interface Project {
       data: {
         attributes: {
           url: string;
+          isLocal?: boolean;
         }
       } | null;
     }
@@ -80,6 +117,7 @@ export default function CompletedWorkSection() {
   const [loading, setLoading] = useState(true);
   const [activeIndustry, setActiveIndustry] = useState("All Projects");
   const [activeSolution, setActiveSolution] = useState("All Solutions");
+  const [showProjects, setShowProjects] = useState(false);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -103,9 +141,10 @@ export default function CompletedWorkSection() {
     fetchProjects();
   }, []);
 
-  // Filter separately!
-  const industryProjects = projects.filter((project) => activeIndustry === "All Projects" || project.attributes.industry === activeIndustry);
-  const solutionProjects = projects.filter((project) => activeSolution === "All Solutions" || project.attributes.solution === activeSolution);
+  const filteredProjects = projects.filter((project) => 
+    (activeIndustry === "All Projects" || project.attributes.industry === activeIndustry) &&
+    (activeSolution === "All Solutions" || project.attributes.solution === activeSolution)
+  );
 
   const renderProjectGrid = (gridProjects: Project[]) => (
     gridProjects.length > 0 ? (
@@ -113,16 +152,22 @@ export default function CompletedWorkSection() {
         {gridProjects.map((project) => (
           <Link key={project.id} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block border border-slate-800">
             {/* Background Image */}
-            {project.attributes.coverImage?.data?.attributes?.url ? (
-              <Image 
-                src={`http://localhost:1337${project.attributes.coverImage.data.attributes.url}`}
-                alt={project.attributes.title} 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-110" 
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-[#131C2E] to-[#0B1220]" />
-            )}
+            {(() => {
+              const imgUrl = project.attributes.coverImage?.data?.attributes?.url;
+              const isLocal = project.attributes.coverImage?.data?.attributes?.isLocal;
+              const finalSrc = imgUrl ? (isLocal ? imgUrl : `http://localhost:1337${imgUrl}`) : null;
+              
+              return finalSrc ? (
+                <Image 
+                  src={finalSrc}
+                  alt={project.attributes.title} 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-[#131C2E] to-[#0B1220]" />
+              );
+            })()}
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#0B1220]/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
             
@@ -181,7 +226,7 @@ export default function CompletedWorkSection() {
         </div>
 
         {/* SECTION 1: Industry Filters */}
-        <div className="mb-20">
+        <div className="mb-10">
           <div className="mb-4">
             <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Industry</h4>
             <div className="flex flex-wrap gap-2">
@@ -196,12 +241,10 @@ export default function CompletedWorkSection() {
               ))}
             </div>
           </div>
-          {/* Grid showing ONLY industry filtered projects */}
-          {loading ? <div className="text-center py-12 text-slate-400">Loading projects...</div> : renderProjectGrid(industryProjects)}
         </div>
 
         {/* SECTION 2: Solution Filters */}
-        <div className="mb-12 pt-16 border-t border-slate-800/50">
+        <div className="mb-12 pt-10 border-t border-slate-800/50">
           <div className="mb-4">
             <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Solution</h4>
             <div className="flex flex-wrap gap-2">
@@ -216,9 +259,23 @@ export default function CompletedWorkSection() {
               ))}
             </div>
           </div>
-          {/* Grid showing ONLY solution filtered projects */}
-          {loading ? <div className="text-center py-12 text-slate-400">Loading projects...</div> : renderProjectGrid(solutionProjects)}
         </div>
+
+        {!showProjects ? (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowProjects(true)}
+              className="inline-flex justify-center items-center px-8 py-4 border border-transparent hover:border-[#E8B84B]/50 text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:shadow-[0_0_30px_rgba(232,184,75,0.5)] group"
+            >
+              Browse Completed Work
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        ) : (
+          <div className="mt-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+            {loading ? <div className="text-center py-12 text-slate-400">Loading projects...</div> : renderProjectGrid(filteredProjects)}
+          </div>
+        )}
 
       </div>
     </section>
