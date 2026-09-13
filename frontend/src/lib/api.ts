@@ -206,3 +206,58 @@ export async function submitCallRequest(data: CallRequestData): Promise<{ succes
 
   return await response.json();
 }
+
+export interface Article {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  category: string;
+  date: string;
+  author: string;
+  content: string;
+  coverImage?: {
+    url: string;
+    alternativeText?: string;
+  };
+}
+
+export async function getArticles(limit: number = 3): Promise<Article[]> {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/articles?populate=*&sort=date:desc&pagination[limit]=${limit}`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error("Failed to fetch articles");
+    const json = await res.json();
+    return json.data.map((item: any) => ({
+      ...item,
+      coverImage: item.coverImage ? {
+        url: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.coverImage.url}`,
+        alternativeText: item.coverImage.alternativeText,
+      } : undefined
+    }));
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    return [];
+  }
+}
+
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error("Failed to fetch article");
+    const json = await res.json();
+    if (!json.data || json.data.length === 0) return null;
+    const item = json.data[0];
+    return {
+      ...item,
+      coverImage: item.coverImage ? {
+        url: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.coverImage.url}`,
+        alternativeText: item.coverImage.alternativeText,
+      } : undefined
+    };
+  } catch (error) {
+    console.error(`Error fetching article ${slug}:`, error);
+    return null;
+  }
+}

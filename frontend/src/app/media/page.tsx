@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,8 +9,9 @@ import MediaNavigationCarousel from "@/components/MediaNavigationCarousel";
 import CompletedWorkSection from "@/components/CompletedWorkSection";
 import DriftWall from "@/components/DriftWall";
 import NewsTagCloud from "@/components/NewsTagCloud";
-import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield } from "lucide-react";
+import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield, User, Tag, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
+import { getArticles, Article } from "@/lib/api";
 
 const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 
@@ -113,6 +114,18 @@ const publicationPrinciples = [
 
 export default function MediaPage() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [articles, setArticles] = useState<Article[]>([]);
+  
+  const getImageForSlug = (slug: string) => {
+    if (slug === 'smart-drainage-system') return '/completed work/drain-water.webp';
+    if (slug === 'nerve-stimulator') return '/nerve-stimulator.png';
+    if (slug === 'asmp-food-processing') return '/asmp-blog.jpg';
+    return '/placeholder-image.jpg';
+  };
+
+  useEffect(() => {
+    getArticles(3).then(setArticles);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
@@ -499,7 +512,15 @@ export default function MediaPage() {
               <div className="relative flex-grow overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#E8B84B]/10 blur-[120px] rounded-full pointer-events-none" />
                 <DriftWall
-                  items={galleryCollections.map(c => ({ image: c.image || '', title: c.title }))}
+                  items={[
+                    { image: '/food-processing.webp', title: 'Food Processing Line' },
+                    { image: '/mini tea college.webp', title: 'Mini Tea Factory' },
+                    { image: '/plc-2.webp', title: 'PLC Educational Panels' },
+                    { image: '/sola-hotwater.webp', title: 'Solar Water Heater' },
+                    { image: '/bale machines.webp', title: 'Hydraulic Baling Press' },
+                    { image: '/dehydrator2.webp', title: 'Industrial Ovens' },
+                    { image: '/gold award best automated 2023.webp', title: 'Awards & Recognition' },
+                  ]}
                   columns={5}
                   tileWidth={240}
                   tileHeight={160}
@@ -526,31 +547,100 @@ export default function MediaPage() {
           </div>
         )}
 
-        {/* News & Activities */}
-        <section className="pt-12 pb-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        {/* Latest News Feeds */}
+        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">News & Activities</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Latest from Sanota</h3>
-                <p className="text-slate-400 text-lg leading-relaxed mb-8">Follow company developments, technical activities and important project milestones.</p>
-                <Link href="#" className="inline-flex items-center px-7 py-3.5 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
-                  View All News & Activities <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </div>
-              <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6 shadow-2xl">
-                <div className="flex items-center justify-between mb-4">
-                  <p className="text-white font-bold">Updates may include:</p>
-                  <div className="flex space-x-1">
-                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
-                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
-                     <span className="w-2 h-2 rounded-full bg-slate-600"></span>
-                  </div>
-                </div>
-                <div className="min-h-[250px]">
-                  <NewsTagCloud items={newsUpdates} />
-                </div>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Latest News Feeds</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {articles.length > 0 ? articles.map((article) => (
+                 <div key={article.id} className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                    <div className="relative h-56 w-full overflow-hidden">
+                       <Image src={article.coverImage?.url || getImageForSlug(article.slug)} alt={article.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                       <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                    <div className="p-8 flex flex-col flex-grow">
+                       <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                          <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: {article.author}</span>
+                          <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {article.category}</span>
+                       </div>
+                       <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                         {article.title}
+                       </h3>
+                       <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
+                          <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> {new Date(article.date).toLocaleDateString()}</span>
+                          <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                       </div>
+                    </div>
+                 </div>
+               )) : (
+                 <>
+                   {/* Card 1 */}
+                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                      <div className="relative h-56 w-full overflow-hidden">
+                         <Image src="/completed work/drain-water.webp" alt="Smart Drainage System" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      <div className="p-8 flex flex-col flex-grow">
+                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> IoT Solutions</span>
+                         </div>
+                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                           Smart Drainage System: Tackling Floods with Technology
+                         </h3>
+                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/6/2025</span>
+                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Card 2 */}
+                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                      <div className="relative h-56 w-full overflow-hidden">
+                         <Image src="/nerve-stimulator.png" alt="Nerve Stimulator" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      <div className="p-8 flex flex-col flex-grow">
+                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Health Tech</span>
+                         </div>
+                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                           Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator
+                         </h3>
+                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/6/2025</span>
+                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Card 3 */}
+                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                      <div className="relative h-56 w-full overflow-hidden">
+                         <Image src="/asmp-blog.jpg" alt="Food Processing System" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      <div className="p-8 flex flex-col flex-grow">
+                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Industrial Solutions</span>
+                         </div>
+                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                           Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)
+                         </h3>
+                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/7/2025</span>
+                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         </div>
+                      </div>
+                   </div>
+                 </>
+               )}
             </div>
           </div>
         </section>
