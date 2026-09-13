@@ -548,7 +548,7 @@ export default function MediaPage() {
         )}
 
         {/* Latest News Feeds */}
-        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section id="latest-news" className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Latest News Feeds</h2>

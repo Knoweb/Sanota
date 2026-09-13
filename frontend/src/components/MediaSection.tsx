@@ -65,7 +65,7 @@ const mediaCategories = [
     desc: "Follow new developments, collaborations, awards, exhibitions, training programmes and industry initiatives.", 
     icon: ImageIcon,
     linkText: "View News & Activities",
-    linkHref: "/media",
+    linkHref: "/media#latest-news",
     image: "/images/capabilities/cap_integrated_1789034204880.jpg",
     colSpan: "lg:col-span-4",
     height: "h-[300px]"

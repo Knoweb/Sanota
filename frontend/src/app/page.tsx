@@ -16,7 +16,6 @@ import InnovationAndCollaboration from "@/components/InnovationAndCollaboration"
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import GradientWaves from "@/components/GradientWaves";
-import Particles from "@/components/Particles";
 
 export default function Home() {
   return (
@@ -45,19 +44,7 @@ export default function Home() {
           grainIntensity={0.05}
         />
       </div>
-      <div className="fixed inset-0 z-0 pointer-events-none mix-blend-screen">
-        <Particles
-          particleColors={["#ffffff", "#2E5EAA", "#E8B84B"]}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-          pixelRatio={1}
-        />
-      </div>
+
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow pt-24">
