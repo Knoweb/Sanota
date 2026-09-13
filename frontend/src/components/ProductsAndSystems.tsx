@@ -70,7 +70,7 @@ export default function ProductsAndSystems() {
         </div>
 
         {/* 3-Column Immersive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
           {products.map((product, idx) => (
             <motion.div
               key={idx}
@@ -78,7 +78,7 @@ export default function ProductsAndSystems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="group relative h-[300px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-slate-800/60"
+              className="group relative h-[180px] md:h-[300px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-slate-800/60"
             >
               {/* Background Image */}
               <Image
@@ -93,29 +93,29 @@ export default function ProductsAndSystems() {
               <div className="absolute inset-0 bg-[#2E5EAA]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
 
               {/* Content Area */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end">
                 <div className="transition-transform duration-500 ease-out">
 
                   {/* Floating Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center mb-4 group-hover:border-[#E8B84B]/50 group-hover:bg-[#E8B84B]/20 transition-all duration-500 shadow-lg">
-                    <product.icon className="w-6 h-6 text-white group-hover:text-[#E8B84B] transition-colors duration-500" />
+                  <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center mb-2 md:mb-4 group-hover:border-[#E8B84B]/50 group-hover:bg-[#E8B84B]/20 transition-all duration-500 shadow-lg">
+                    <product.icon className="w-4 h-4 md:w-6 md:h-6 text-white group-hover:text-[#E8B84B] transition-colors duration-500" />
                   </div>
 
-                  <h4 className="text-[18px] font-bold text-white leading-tight mb-3">
+                  <h4 className="text-[12px] md:text-[18px] font-bold text-white leading-tight mb-1 md:mb-3">
                     {product.title}
                   </h4>
 
                   {/* Description and Link (Visible by Default) */}
                   <div>
-                    <p className="text-[13px] text-slate-300 leading-relaxed mb-4">
+                    <p className="text-xs md:text-[13px] text-slate-300 leading-relaxed mb-4 hidden md:block">
                       {product.desc}
                     </p>
                     <Link
                       href="/products"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center text-[#E8B84B] text-[12px] font-bold uppercase tracking-wider hover:text-white transition-colors group/link"
+                      className="inline-flex items-center text-[#E8B84B] text-[10px] md:text-[12px] font-bold uppercase tracking-wider hover:text-white transition-colors group/link mt-1 md:mt-0"
                     >
-                      Explore Solution <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      Explore Solution <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
 

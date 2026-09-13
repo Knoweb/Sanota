@@ -119,7 +119,7 @@ export default function SolutionNavigator() {
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -137,7 +137,7 @@ export default function SolutionNavigator() {
                 onMouseEnter={() => setActiveIdx(idx)}
               >
                 <div
-                  className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-500 group w-full cursor-default overflow-hidden
+                  className={`relative flex flex-col p-4 md:p-8 rounded-2xl md:rounded-3xl border transition-all duration-500 group w-full cursor-default overflow-hidden
                     ${isActive
                       ? "bg-[#050B14]/60 backdrop-blur-md border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
                       : "bg-[#131C2E]/30 backdrop-blur-sm border-slate-700/50 hover:border-[#E8B84B]/30"
@@ -169,27 +169,27 @@ export default function SolutionNavigator() {
                   </div>
 
                   <div
-                    className="relative z-20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 border transition-all duration-500"
+                    className="relative z-20 w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6 border transition-all duration-500"
                     style={{
                       backgroundColor: isActive ? `${option.color}26` : `${option.color}0D`,
                       borderColor: isActive ? `${option.color}66` : `${option.color}26`
                     }}
                   >
                     <Icon
-                      className="w-7 h-7 transition-colors duration-500"
+                      className="w-5 h-5 md:w-7 md:h-7 transition-colors duration-500"
                       style={{ color: isActive ? option.color : `${option.color}99` }}
                     />
                   </div>
 
                   <h3
-                    className={`relative z-20 font-bold text-[18px] leading-snug mb-3 transition-colors duration-500
+                    className={`relative z-20 font-bold text-[13px] md:text-[18px] leading-snug mb-2 md:mb-3 transition-colors duration-500
                       ${isActive ? "text-white" : "text-slate-300"}`}
                   >
                     {option.name}
                   </h3>
 
                   <p
-                    className={`relative z-20 text-sm leading-relaxed mb-8 flex-grow transition-colors duration-500
+                    className={`relative z-20 text-xs md:text-sm leading-relaxed mb-4 md:mb-8 flex-grow transition-colors duration-500 hidden md:block
                       ${isActive ? "text-slate-300" : "text-slate-500"}`}
                   >
                     {option.description}
@@ -197,11 +197,11 @@ export default function SolutionNavigator() {
 
                   <Link
                     href={option.href}
-                    className="text-[13px] font-bold flex items-center transition-all duration-300 w-fit group-hover:translate-x-1"
+                    className="text-[10px] md:text-[13px] font-bold flex items-center transition-all duration-300 w-fit group-hover:translate-x-1 mt-auto"
                     style={{ color: isActive ? option.color : `${option.color}b3` }}
                   >
                     {option.linkText}
-                    <ArrowRight className="ml-1.5 w-4 h-4" />
+                    <ArrowRight className="ml-1 md:ml-1.5 w-3 h-3 md:w-4 md:h-4" />
                   </Link>
                 </div>
               </motion.div>

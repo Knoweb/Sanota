@@ -92,13 +92,13 @@ export default function SanotaAndKnoweb() {
                   viewport={{ once: true }}
                   className="w-full lg:w-[95%] bg-[#0B1220]/60 backdrop-blur-xl border border-slate-700/50 p-8 sm:p-10 lg:p-12 rounded-[2rem] shadow-2xl"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-8">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 gap-y-4 gap-x-3 sm:gap-y-8 sm:gap-x-8">
                     {capabilities.map((item, idx) => (
                       <div key={idx} className="flex items-start group">
-                        <div className="w-8 h-8 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/30 flex items-center justify-center shrink-0 mt-0 mr-4 group-hover:bg-[#E8B84B] transition-colors duration-300 shadow-[0_0_10px_rgba(232,184,75,0.1)]">
-                          <CheckCircle2 className="w-4 h-4 text-[#E8B84B] group-hover:text-[#0B1220] transition-colors" />
+                        <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/30 flex items-center justify-center shrink-0 mt-0 mr-2 sm:mr-4 group-hover:bg-[#E8B84B] transition-colors duration-300 shadow-[0_0_10px_rgba(232,184,75,0.1)]">
+                          <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-[#E8B84B] group-hover:text-[#0B1220] transition-colors" />
                         </div>
-                        <span className="text-slate-200 text-[16px] font-medium leading-relaxed group-hover:text-white transition-colors drop-shadow-md pt-0.5">{item}</span>
+                        <span className="text-slate-200 text-[10px] sm:text-[16px] font-medium leading-tight sm:leading-relaxed group-hover:text-white transition-colors drop-shadow-md pt-0.5 sm:pt-1">{item}</span>
                       </div>
                     ))}
                   </div>

@@ -94,9 +94,9 @@ export default function IndustriesWeSupport() {
           </motion.p>
         </div>
 
-        {/* 3D Coverflow Carousel */}
+        {/* 3D Coverflow Carousel (Desktop only) */}
         <div 
-          className="relative w-full h-[540px] flex justify-center items-center mb-10 overflow-hidden"
+          className="relative w-full h-[540px] hidden lg:flex justify-center items-center mb-10 overflow-hidden"
           style={{ perspective: 1400 }}
         >
           {/* Floating Glowing Navigation Arrows */}
@@ -236,6 +236,36 @@ export default function IndustriesWeSupport() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile 2-Column Grid (Mobile & Tablet only) */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:hidden mb-10">
+          {industries.map((ind) => (
+            <Link key={ind.id} href={ind.link}>
+              <div className="relative h-40 sm:h-56 rounded-2xl overflow-hidden border border-slate-700/50 group cursor-pointer shadow-lg flex flex-col justify-end p-4 sm:p-5">
+                <Image 
+                  src={ind.image} 
+                  alt={ind.title} 
+                  fill 
+                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                />
+                <div 
+                  className="absolute inset-0"
+                  style={{ 
+                    background: `linear-gradient(to top, #0B1220 0%, ${ind.color}30 60%, transparent 100%)`
+                  }} 
+                />
+                <div className="relative z-10">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-black/40 backdrop-blur-md flex items-center justify-center mb-2 border border-white/10 group-hover:border-white/30 transition-colors">
+                    <ind.icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: ind.color }} />
+                  </div>
+                  <h3 className="text-white font-bold text-[12px] sm:text-[15px] leading-snug drop-shadow-md">
+                    {ind.title}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* Additional Industries - 2 Column Row */}
