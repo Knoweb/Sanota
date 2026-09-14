@@ -122,7 +122,7 @@ export default function CompletedWorkSection() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch("http://localhost:1337/api/projects?populate=*");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=*`);
         const data = await res.json();
         
         if (data && data.data && data.data.length > 0) {
