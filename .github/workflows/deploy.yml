@@ -13,6 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Build Docker images
+        run: |
+          docker build -t sanota-backend:latest ./backend
+          docker build -t sanota-frontend:latest ./frontend
+          docker save sanota-backend:latest sanota-frontend:latest | gzip > images.tar.gz
+
+      - name: Copy images to Droplet
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          source: "images.tar.gz"
+          target: "/tmp"
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -21,12 +36,16 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           command_timeout: 30m
           script: |
+            echo "Loading Docker images..."
+            docker load < /tmp/images.tar.gz
+            rm /tmp/images.tar.gz
+            
             cd /var/www/sanota
             # Pull latest changes
             git fetch --all
             git reset --hard origin/main
             git pull origin main
             
-            # Restart containers with new build
+            # Restart containers without building
             docker-compose down
-            docker-compose up -d --build
+            docker-compose up -d --no-build

@@ -21,6 +21,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: sanota-backend:latest
     container_name: sanota_backend
     restart: always
     depends_on:
@@ -45,6 +46,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: sanota-frontend:latest
     container_name: sanota_frontend
     restart: always
     depends_on:
