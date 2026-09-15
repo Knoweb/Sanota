@@ -48,4 +48,4 @@ jobs:
             
             # Restart containers without building
             docker-compose down
-            docker-compose up -d --no-build
+            docker-compose up -d --force-recreate --no-build
