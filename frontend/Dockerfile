@@ -18,7 +18,7 @@ COPY . .
 
 # Next.js telemetry can be disabled during the build and runtime
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_PUBLIC_STRAPI_API_URL=http://147.182.173.247
+ENV NEXT_PUBLIC_STRAPI_API_URL=https://sanotaglobal.com
 
 RUN npm run build
 
@@ -28,7 +28,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_PUBLIC_STRAPI_API_URL=http://147.182.173.247
+ENV NEXT_PUBLIC_STRAPI_API_URL=https://sanotaglobal.com
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
