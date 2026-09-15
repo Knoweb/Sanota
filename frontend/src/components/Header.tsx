@@ -34,7 +34,7 @@ export default function Header() {
                 width={160}
                 height={48}
                 className="object-contain h-12 w-auto relative z-10 hover:scale-105 transition-transform duration-300"
-                style={{ filter: "drop-shadow(0.05px 0.05px 0 rgba(255,255,255,0.3)) drop-shadow(-0.05px -0.05px 0 rgba(255,255,255,0.3)) drop-shadow(0.05px -0.05px 0 rgba(255,255,255,0.3)) drop-shadow(-0.05px 0.05px 0 rgba(255,255,255,0.3)) drop-shadow(2px 2px 1px rgba(0,0,0,0.7)) drop-shadow(4px 4px 4px rgba(0,0,0,0.5))" }}
+                style={{ filter: "drop-shadow(0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(2px 2px 1px rgba(0,0,0,0.7)) drop-shadow(4px 4px 4px rgba(0,0,0,0.5))" }}
                 priority
               />
             </Link>

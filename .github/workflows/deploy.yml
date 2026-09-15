@@ -36,9 +36,7 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           command_timeout: 30m
           script: |
-            echo "Loading Docker images..."
-            docker load < /tmp/images.tar.gz
-            rm /tmp/images.tar.gz
+            set -e
             
             cd /var/www/sanota
             # Pull latest changes
@@ -46,6 +44,15 @@ jobs:
             git reset --hard origin/main
             git pull origin main
             
-            # Restart containers without building
+            echo "Stopping old containers..."
             docker-compose down
+            
+            echo "Cleaning up old Docker images to free space..."
+            docker system prune -af
+            
+            echo "Loading new Docker images..."
+            docker load < /tmp/images.tar.gz
+            rm -f /tmp/images.tar.gz
+            
+            # Restart containers without building
             docker-compose up -d --force-recreate --no-build
