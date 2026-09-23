@@ -9,8 +9,9 @@ import {
   ArrowRight, Phone, Mail, MapPin, CheckCircle2, AlertTriangle,
   Send, Upload, Info, MessageSquare, Briefcase, Cog, Globe, PhoneCall
 } from "lucide-react";
-import Galaxy from "@/components/Galaxy";
 import { submitContactEnquiry, submitCallRequest, ContactFormData, CallRequestData } from "@/lib/api";
+import dynamic from 'next/dynamic';
+const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 const contactOptions = [
   { title: "Engineering & Project Enquiries", desc: "Contact us about machinery, automation, new systems, engineering design, product development, modernization or integrated project requirements.", button: "Submit an Engineering Enquiry", icon: Cog },
@@ -139,21 +140,28 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-col min-h-screen relative bg-[#050B14]">
-      {/* Background Galaxy Component */}
-      <div className="fixed inset-0 z-0 pointer-events-auto">
-        <Galaxy 
-          mouseRepulsion
-          mouseInteraction
-          density={1}
-          glowIntensity={0.3}
-          saturation={0}
-          hueShift={140}
-          twinkleIntensity={0.3}
-          rotationSpeed={0.05}
-          repulsionStrength={2}
-          autoCenterRepulsion={0}
-          starSpeed={0.2}
-          speed={0.5}
+      {/* Lightweight Animated Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-80">
+        <GradientWaves
+          horizonColor="#1E2B47"
+          waveColor="#2E5EAA"
+          crestColor="#60A5FA"
+          speed={0.3}
+          amplitude={1.5}
+          waveScale={0.5}
+          waveRatio={0.9}
+          swell={20}
+          turbulence={10}
+          tilt={1.2}
+          zoom={1}
+          height={4.5}
+          fogDepth={20}
+          detail="low"
+          brightness={1.2}
+          opacity={1}
+          grain={0}
+          grainIntensity={0}
+          enableMouse={false}
         />
       </div>
 

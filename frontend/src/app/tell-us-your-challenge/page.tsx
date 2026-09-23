@@ -11,8 +11,8 @@ import { ChallengeFormData } from "./types";
 import { Step1, Step2, Step3, Step4, Step5 } from "./components/FormSteps";
 import { WhatHappensNext, AlternativeContact, FinalCTA } from "./components/Sections";
 import { submitChallengeEnquiry } from "@/lib/api";
-import Galaxy from "@/components/Galaxy";
-
+import dynamic from 'next/dynamic';
+const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 const initialData: ChallengeFormData = {
   coreRequirements: [],
   currentSituation: "",
@@ -120,21 +120,28 @@ export default function ChallengePage() {
 
   return (
     <div className="flex flex-col min-h-screen relative bg-[#050B14]">
-      {/* Background Galaxy Component (Faint) */}
-      <div className="fixed inset-0 z-0 pointer-events-auto opacity-40">
-        <Galaxy 
-          mouseRepulsion
-          mouseInteraction
-          density={0.7}
-          glowIntensity={0.2}
-          saturation={0}
-          hueShift={140}
-          twinkleIntensity={0.2}
-          rotationSpeed={0.03}
-          repulsionStrength={1.5}
-          autoCenterRepulsion={0}
-          starSpeed={0.15}
-          speed={0.4}
+      {/* Lightweight Animated Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-80">
+        <GradientWaves
+          horizonColor="#1E2B47"
+          waveColor="#2E5EAA"
+          crestColor="#60A5FA"
+          speed={0.3}
+          amplitude={1.5}
+          waveScale={0.5}
+          waveRatio={0.9}
+          swell={20}
+          turbulence={10}
+          tilt={1.2}
+          zoom={1}
+          height={4.5}
+          fogDepth={20}
+          detail="low"
+          brightness={1.2}
+          opacity={1}
+          grain={0}
+          grainIntensity={0}
+          enableMouse={false}
         />
       </div>
 
