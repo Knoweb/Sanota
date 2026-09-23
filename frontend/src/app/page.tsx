@@ -1,3 +1,4 @@
+"use client";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CorporateProof from "@/components/CorporateProof";
@@ -15,7 +16,8 @@ import MediaSection from "@/components/MediaSection";
 import InnovationAndCollaboration from "@/components/InnovationAndCollaboration";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import GradientWaves from "@/components/GradientWaves";
+import dynamic from 'next/dynamic';
+const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 export default function Home() {
   return (
@@ -35,12 +37,12 @@ export default function Home() {
           zoom={1}
           height={5.5}
           fogDepth={15}
-          detail="medium"
+          detail="low"
           brightness={1.5}
           opacity={1}
-          mouseInteraction={true}
+          mouseInteraction={false}
           parallaxStrength={0.5}
-          grain={true}
+          grain={false}
           grainIntensity={0.05}
         />
       </div>
