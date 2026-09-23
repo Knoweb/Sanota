@@ -47,6 +47,9 @@ jobs:
             echo "Stopping old containers..."
             docker-compose down
             
+            echo "Applying SSL configuration..."
+            cp nginx/default-ssl.conf nginx/default.conf
+            
             echo "Cleaning up old Docker images to free space..."
             docker system prune -af
             
