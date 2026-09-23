@@ -8,7 +8,8 @@ import FeaturedProjectCardCopy from "@/components/FeaturedProjectCardCopy";
 import VideosAndDemonstrations from "@/components/VideosAndDemonstrations";
 import Link from "next/link";
 import Image from "next/image";
-import AeroShards from "@/components/AeroShards";
+import dynamic from 'next/dynamic';
+const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 
 // Data Structures
@@ -244,7 +245,7 @@ export default function IndustriesPage() {
               placement="full"
               flow="stream"
               material="pearl"
-              detail="fine"
+              detail="low"
               effect="none"
               scale={1}
               spread={1.2}
@@ -252,14 +253,14 @@ export default function IndustriesPage() {
               speed={0.3}
               spin={0.2}
               interaction="none"
-              density={1}
+              density={0.5}
               shardSize={0.8}
               stretch={1}
               turbulence={0.5}
               glow={0.3}
               edgeSoftness={2}
-              bloom={0.1}
-              grain={0.01}
+              bloom={0}
+              grain={0}
               chromaticAberration={0}
               transitionDuration={2}
               interactionRadius={0}

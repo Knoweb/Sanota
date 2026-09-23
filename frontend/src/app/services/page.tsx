@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import AeroShards from "@/components/AeroShards";
+import dynamic from 'next/dynamic';
+const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 import Carousel from "@/components/Carousel";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 
@@ -326,7 +327,7 @@ export default function ServicesPage() {
               placement="full"
               flow="stream"
               material="pearl"
-              detail="fine"
+              detail="low"
               effect="none"
               scale={1}
               spread={1.2}
@@ -334,14 +335,14 @@ export default function ServicesPage() {
               speed={0.3}
               spin={0.2}
               interaction="none"
-              density={1}
+              density={0.5}
               shardSize={0.8}
               stretch={1}
               turbulence={0.5}
               glow={0.3}
               edgeSoftness={2}
-              bloom={0.1}
-              grain={0.01}
+              bloom={0}
+              grain={0}
               chromaticAberration={0}
               transitionDuration={2}
               interactionRadius={0}

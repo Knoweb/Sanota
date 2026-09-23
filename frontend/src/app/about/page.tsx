@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Antigravity from "@/components/Antigravity";
+import dynamic from 'next/dynamic';
+const Antigravity = dynamic(() => import("@/components/Antigravity"), { ssr: false });
 import PixelCard from "@/components/PixelCard";
 import { ArrowRight, Target, Compass, CheckCircle2, Factory, Cpu, Network, PenTool, Wrench, RefreshCw, BarChart4, Lightbulb, Users, Globe2, ShieldCheck, Cog, ClipboardCheck } from "lucide-react";
 
@@ -324,7 +325,7 @@ export default function AboutPage() {
         <div className="relative w-full">
           <div className="sticky top-0 w-full h-screen z-0 opacity-40 pointer-events-none">
             <Antigravity
-              count={250}
+              count={50}
               magnetRadius={6}
               ringRadius={7}
               waveSpeed={0.4}
