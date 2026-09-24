@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link2, Settings, Zap, Building2, Cpu, Wrench, PackageSearch, Network, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const options = [
   {
@@ -161,10 +162,11 @@ export default function SolutionNavigator() {
                   {/* Background Image */}
                   <div className={`absolute inset-0 z-0 transition-all duration-700 ${isActive ? 'opacity-70 scale-105' : 'opacity-30 group-hover:opacity-50 scale-100'}`}>
                     <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/60 via-[#0B1220]/40 to-[#0B1220]/90 z-10" />
-                    <img
+                    <Image
                       src={option.bgImage}
                       alt={option.name}
-                      className="w-full h-full object-cover mix-blend-lighten"
+                      fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                      className="object-cover mix-blend-lighten"
                     />
                   </div>
 

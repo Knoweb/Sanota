@@ -81,6 +81,7 @@ export default function Header() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-300 hover:text-[#E8B84B]"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>

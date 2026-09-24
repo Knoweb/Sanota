@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Wrench, Cpu, Activity, Network, PenTool, LifeBuoy, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const capabilities = [
   { 
@@ -126,10 +127,11 @@ export default function IntegratedSolutionCapability() {
                       className="absolute inset-0 z-10" 
                       style={{ background: `linear-gradient(to bottom, rgba(11, 18, 32, 0.6), ${cap.color}33, rgba(11, 18, 32, 0.9))` }}
                     />
-                    <img
+                    <Image
                       src={cap.bgImage}
                       alt={cap.name}
-                      className="w-full h-full object-cover mix-blend-lighten"
+                      fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover mix-blend-lighten"
                     />
                   </div>
 
