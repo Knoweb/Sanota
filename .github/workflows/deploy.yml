@@ -45,7 +45,8 @@ jobs:
             git pull origin main
             
             echo "Stopping old containers..."
-            docker-compose down
+            docker-compose down --remove-orphans
+            docker-compose rm -f
             
             echo "Applying SSL configuration..."
             cp nginx/default-ssl.conf nginx/default.conf
@@ -58,4 +59,4 @@ jobs:
             rm -f /tmp/images.tar.gz
             
             # Restart containers without building
-            docker-compose up -d --force-recreate --no-build
+            docker-compose up -d --remove-orphans --force-recreate --no-build
