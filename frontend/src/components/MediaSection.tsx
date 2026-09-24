@@ -96,7 +96,7 @@ function SlideshowImage({ images }: { images: string[] }) {
           <Image 
             src={images[currentIndex]} 
             alt={`Slideshow ${currentIndex}`}
-            fill
+            fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
           />
         </motion.div>
@@ -158,7 +158,7 @@ export default function MediaSection() {
                 <Image 
                   src={cat.image} 
                   alt={cat.title}
-                  fill
+                  fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
               )}

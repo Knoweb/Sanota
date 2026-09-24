@@ -75,7 +75,7 @@ export default function SanotaAndKnoweb() {
               <Image 
                 src="/images/capabilities/cap_iot_1789018334030.jpg" 
                 alt="Digital Technology and IoT"
-                fill
+                fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"
               />
               

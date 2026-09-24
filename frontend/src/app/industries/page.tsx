@@ -610,7 +610,7 @@ export default function IndustriesPage() {
                 <Image 
                   src="/ind_manufacturing_1788515164504.jpg" 
                   alt="Industrial Machinery and Digital Technology" 
-                  fill 
+                  fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                   className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out"
                 />
                 {/* Tech overlay effects */}
@@ -832,7 +832,7 @@ export default function IndustriesPage() {
             <Image 
               src="/ind_tea_1788515252795.jpg" 
               alt="Industry Partnership Environment" 
-              fill 
+              fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
               className="object-cover opacity-10 pointer-events-none mix-blend-overlay"
             />
           </div>

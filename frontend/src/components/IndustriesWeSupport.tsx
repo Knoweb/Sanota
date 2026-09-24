@@ -178,7 +178,7 @@ export default function IndustriesWeSupport() {
                   <Image 
                     src={ind.image} 
                     alt={ind.title} 
-                    fill 
+                    fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                     className="object-cover transition-all duration-700"
                     style={{ 
                       transform: isCenter ? "scale(1.06)" : "scale(1)",
@@ -246,7 +246,7 @@ export default function IndustriesWeSupport() {
                 <Image 
                   src={ind.image} 
                   alt={ind.title} 
-                  fill 
+                  fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                   className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 />
                 <div 

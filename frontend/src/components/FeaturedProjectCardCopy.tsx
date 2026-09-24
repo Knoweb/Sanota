@@ -21,7 +21,7 @@ export default function FeaturedProjectCardCopy() {
         >
           {/* Left Side: Placeholder for Project Image */}
           <div className="w-full md:w-5/12 bg-slate-800 relative min-h-[300px]">
-             {/* <Image src="..." alt="Project" fill className="object-cover" /> */}
+             {/* <Image src="..." alt="Project" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" /> */}
              <div className="absolute inset-0 flex items-center justify-center text-slate-500 font-medium">
                [Project Image]
              </div>

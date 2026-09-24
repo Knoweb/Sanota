@@ -153,7 +153,7 @@ export default function AMCAndLifecycle() {
             <Image
               src="/images/capabilities/cap_practical_1789034261822.jpg"
               alt="AMC and Maintenance Services"
-              fill
+              fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover opacity-60 mix-blend-lighten"
             />
             {/* Gradient Overlay to ensure text readability */}

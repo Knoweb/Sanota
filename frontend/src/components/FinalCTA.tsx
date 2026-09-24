@@ -79,7 +79,7 @@ export default function FinalCTA() {
               <Image 
                 src="/images/products/industrial_machinery.jpg" 
                 alt="Engineering Background" 
-                fill 
+                fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                 className="object-cover opacity-20 mix-blend-overlay pointer-events-none"
               />
 

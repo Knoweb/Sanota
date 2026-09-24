@@ -63,7 +63,7 @@ export default async function BlogDetails({ params }: { params: Promise<{ slug: 
             <Image 
               src={data.coverImage?.url || getImageForSlug(data.slug)} 
               alt={data.title} 
-              fill 
+              fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
               className="object-cover" 
               priority
             />

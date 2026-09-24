@@ -113,7 +113,7 @@ export default function MediaNavigationCarousel() {
                   <Image 
                     src={nav.image} 
                     alt={nav.title} 
-                    fill 
+                    fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                     className={`object-cover transition-transform duration-700 ${isCenter ? 'scale-100' : 'scale-110 grayscale'}`} 
                   />
                   {/* Overlay adjusted so side cards are clearly visible but readable */}

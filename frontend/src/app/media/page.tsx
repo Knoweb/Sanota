@@ -296,7 +296,7 @@ export default function MediaPage() {
                   <Image 
                     src={work.image} 
                     alt={work.title} 
-                    fill 
+                    fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
                   />
                   {/* Gradient Overlay */}
@@ -441,7 +441,7 @@ export default function MediaPage() {
                     <Image 
                       src={col.image} 
                       alt={col.title}
-                      fill
+                      fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   )}
@@ -558,7 +558,7 @@ export default function MediaPage() {
                {articles.length > 0 ? articles.map((article) => (
                  <div key={article.id} className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                     <div className="relative h-56 w-full overflow-hidden">
-                       <Image src={article.coverImage?.url || getImageForSlug(article.slug)} alt={article.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                       <Image src={article.coverImage?.url || getImageForSlug(article.slug)} alt={article.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                        <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
@@ -580,7 +580,7 @@ export default function MediaPage() {
                    {/* Card 1 */}
                    <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/completed work/drain-water.webp" alt="Smart Drainage System" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <Image src="/completed work/drain-water.webp" alt="Smart Drainage System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                          <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
@@ -601,7 +601,7 @@ export default function MediaPage() {
                    {/* Card 2 */}
                    <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/nerve-stimulator.png" alt="Nerve Stimulator" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <Image src="/nerve-stimulator.png" alt="Nerve Stimulator" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                          <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
@@ -622,7 +622,7 @@ export default function MediaPage() {
                    {/* Card 3 */}
                    <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/asmp-blog.jpg" alt="Food Processing System" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                         <Image src="/asmp-blog.jpg" alt="Food Processing System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                          <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
@@ -674,7 +674,7 @@ export default function MediaPage() {
               {/* By Industry */}
               <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
                 <div className="relative h-56 w-full shrink-0 overflow-hidden">
-                  <Image src="/gallery/automation.jpg" alt="Browse By Industry" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/gallery/automation.jpg" alt="Browse By Industry" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
                   <div className="absolute bottom-6 left-8 right-8 z-10">
                     <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Industry</h2>
@@ -704,7 +704,7 @@ export default function MediaPage() {
               <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8B84B]/5 blur-[80px] rounded-full pointer-events-none z-10" />
                 <div className="relative h-56 w-full shrink-0 overflow-hidden">
-                  <Image src="/gallery/workshop.jpg" alt="Browse By Capability" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/gallery/workshop.jpg" alt="Browse By Capability" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
                   <div className="absolute bottom-6 left-8 right-8 z-10">
                     <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Capability</h2>
