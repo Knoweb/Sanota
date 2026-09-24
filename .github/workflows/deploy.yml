@@ -45,7 +45,8 @@ jobs:
             git pull origin main
             
             echo "Stopping old containers..."
-            docker-compose down --remove-orphans
+            docker-compose down --remove-orphans || true
+            docker rm -f sanota_frontend sanota_backend sanota_nginx sanota_mysql || true
             docker-compose rm -f
             
             echo "Applying SSL configuration..."
