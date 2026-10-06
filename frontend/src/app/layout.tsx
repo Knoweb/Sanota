@@ -9,8 +9,35 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sanota | Integrated Engineering for Evolving Industries",
-  description: "Sanota designs, develops, automates, modernizes and maintains machinery, products, processes and operational systems for industries in Sri Lanka and international markets.",
+  metadataBase: new URL('https://www.sanotaglobal.com'),
+  title: {
+    default: "Sanota | Integrated Engineering for Evolving Industries",
+    template: "%s | Sanota Global",
+  },
+  description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team. Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward.",
+  keywords: ["Engineering Solutions Sri Lanka", "Industrial Automation", "Mechanical Engineering", "IoT", "sanota"],
+  openGraph: {
+    title: "Sanota | Integrated Engineering for Evolving Industries",
+    description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team.",
+    url: "https://www.sanotaglobal.com",
+    siteName: "Sanota Global",
+    images: [
+      {
+        url: "/sanota.png",
+        width: 1200,
+        height: 630,
+        alt: "Sanota Global - Engineering Solutions in Sri Lanka",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanota | Integrated Engineering for Evolving Industries",
+    description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support.",
+    images: ["/sanota.png"],
+  }
 };
 
 import AnimatedBackground from "@/components/AnimatedBackground";

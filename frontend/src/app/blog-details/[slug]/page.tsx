@@ -7,6 +7,45 @@ import { ArrowLeft, Calendar, User, Tag, Share2, CheckCircle2 } from "lucide-rea
 import { getArticleBySlug } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const data = await getArticleBySlug(resolvedParams.slug);
+
+  if (!data) {
+    return {
+      title: "Article Not Found | Sanota Global",
+    };
+  }
+
+  const getImageForSlug = (slug: string) => {
+    if (slug === 'smart-drainage-system') return '/completed work/drain-water.webp';
+    if (slug === 'nerve-stimulator') return '/nerve-stimulator.png';
+    if (slug === 'asmp-food-processing') return '/asmp-blog.jpg';
+    return '/sanota.png';
+  };
+
+  const imageUrl = data.coverImage?.url || getImageForSlug(data.slug);
+
+  return {
+    title: data.title,
+    description: data.content ? data.content.substring(0, 155) + "..." : "Read this article on Sanota Global.",
+    openGraph: {
+      title: data.title,
+      description: data.content ? data.content.substring(0, 155) + "..." : "Read this article on Sanota Global.",
+      images: [imageUrl],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.content ? data.content.substring(0, 155) + "..." : "Read this article on Sanota Global.",
+      images: [imageUrl],
+    },
+  };
+}
+
 export default async function BlogDetails({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const data = await getArticleBySlug(resolvedParams.slug);
