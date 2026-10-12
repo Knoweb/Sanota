@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/context/ThemeContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -21,6 +23,8 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#050B14]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#2E5EAA]/20">
@@ -34,7 +38,11 @@ export default function Header() {
                 width={160}
                 height={48}
                 className="object-contain h-12 w-auto relative z-10 hover:scale-105 transition-transform duration-300"
-                style={{ filter: "drop-shadow(0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(2px 2px 1px rgba(0,0,0,0.7)) drop-shadow(4px 4px 4px rgba(0,0,0,0.5))" }}
+                style={{
+                  filter: isDark
+                    ? "drop-shadow(0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(0.15px -0.15px 0 rgba(255,255,255,0.6)) drop-shadow(-0.15px 0.15px 0 rgba(255,255,255,0.6)) drop-shadow(2px 2px 1px rgba(0,0,0,0.7)) drop-shadow(4px 4px 4px rgba(0,0,0,0.5))"
+                    : "none",
+                }}
                 priority
               />
             </Link>
@@ -68,19 +76,21 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden xl:flex items-center ml-6 shrink-0">
+          <div className="hidden xl:flex items-center space-x-4 ml-6 shrink-0">
             <Link
               href="/tell-us-your-challenge"
               className="inline-flex items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider shadow-lg whitespace-nowrap"
             >
               Tell Us Your Challenge
             </Link>
+            <ThemeToggle />
           </div>
 
-          <div className="flex items-center xl:hidden">
+          <div className="flex items-center space-x-3 xl:hidden">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-[#E8B84B]"
+              className="text-slate-300 hover:text-[#E8B84B] p-1"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
@@ -108,6 +118,10 @@ export default function Header() {
             >
               Tell Us Your Challenge
             </Link>
+            <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between px-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Switch Theme</span>
+              <ThemeToggle showLabel={true} />
+            </div>
           </div>
         </div>
       )}

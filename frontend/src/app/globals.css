@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #0B1220;
   --foreground: #f8fafc;
@@ -23,8 +25,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 
 /* Glowing Card Utilities */
 .glowing-card {
@@ -55,4 +57,263 @@ body {
 .glowing-card > * {
   position: relative;
   z-index: 10;
+}
+
+/* ==========================================================================
+   LIGHT MODE DESIGN SYSTEM
+   Inspired by Sanota Engineering & Technology Brand Identity
+   Palette:
+     Canvas: #FBFBFA (Warm Ivory with subtle technical grid)
+     Surfaces/Cards: #FFFFFF (Crisp elevated white with soft warm borders)
+     Primary Headings & Text: #0C1E3C (Deep Rich Navy)
+     Accent / Highlights: #C89D2B (Warm Engineering Gold / Amber)
+     Body text: #334155 / #475569 (Slate Charcoal)
+     Muted text: #64748B (Medium Slate)
+     Borders: #E2E8F0 / #E5E7EB (Subtle soft grey)
+   ========================================================================== */
+
+html.light,
+html[data-theme="light"] {
+  --background: #FBFBFA;
+  --foreground: #1E293B;
+  --primary: #0C1E3C;
+  --accent: #C89D2B;
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+  color-scheme: light;
+}
+
+/* Light mode body background with architectural subtle grid pattern */
+html.light body,
+html[data-theme="light"] body {
+  background-color: #FBFBFA !important;
+  color: #334155 !important;
+  background-image: 
+    linear-gradient(to right, rgba(12, 30, 60, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 30, 60, 0.035) 1px, transparent 1px) !important;
+  background-size: 44px 44px !important;
+}
+
+/* Background overrides for light mode */
+html.light .bg-\[\#050B14\],
+html.light .bg-\[\#02050A\],
+html.light .bg-\[\#03060a\] {
+  background-color: #FBFBFA !important;
+}
+
+html.light .bg-\[\#050B14\]\/95,
+html.light .bg-\[\#050B14\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(16px);
+}
+
+html.light .bg-\[\#050B14\]\/80,
+html.light .bg-\[\#050B14\]\/70,
+html.light .bg-\[\#050B14\]\/60,
+html.light .bg-\[\#050B14\]\/50 {
+  background-color: rgba(251, 251, 250, 0.8) !important;
+}
+
+/* Header specific light mode styling */
+html.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 25px -4px rgba(12, 30, 60, 0.06) !important;
+}
+
+/* Header logo dropshadow removal in light mode */
+html.light header img[alt="Sanota Logo"] {
+  filter: none !important;
+}
+
+/* Header nav links */
+html.light header nav a {
+  color: #0C1E3C !important;
+}
+
+html.light header nav a:hover {
+  color: #C89D2B !important;
+}
+
+html.light header nav a .text-white {
+  color: #0C1E3C !important;
+}
+
+/* Mobile drawer in light mode */
+html.light header .xl\:hidden.bg-\[\#0B1220\],
+html.light header .bg-\[\#0B1220\] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 20px 40px -10px rgba(12, 30, 60, 0.12) !important;
+}
+
+html.light header .xl\:hidden a {
+  color: #0C1E3C !important;
+}
+
+html.light header .xl\:hidden a:hover {
+  color: #C89D2B !important;
+  background-color: #F8F9FA !important;
+}
+
+/* Section and secondary container backgrounds */
+html.light .bg-\[\#0B1220\],
+html.light .bg-\[\#0A101A\],
+html.light .bg-\[\#0F1523\] {
+  background-color: #F8F9FA !important;
+}
+
+html.light .bg-\[\#0B1220\]\/90,
+html.light .bg-\[\#0B1220\]\/80,
+html.light .bg-\[\#0B1220\]\/70,
+html.light .bg-\[\#0B1220\]\/60 {
+  background-color: rgba(248, 249, 250, 0.85) !important;
+}
+
+/* Cards and panels: Crisp Elevated White */
+html.light .bg-\[\#131C2E\],
+html.light .bg-\[\#151D2F\],
+html.light .bg-\[\#1B2A45\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 10px 30px -5px rgba(12, 30, 60, 0.05), 0 4px 6px -2px rgba(12, 30, 60, 0.02) !important;
+}
+
+html.light .bg-\[\#131C2E\]\/40,
+html.light .bg-\[\#131C2E\]\/50,
+html.light .bg-\[\#131C2E\]\/60,
+html.light .bg-\[\#131C2E\]\/70,
+html.light .bg-\[\#131C2E\]\/80,
+html.light .bg-\[\#131C2E\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 24px -4px rgba(12, 30, 60, 0.05) !important;
+}
+
+/* Glowing cards in light mode */
+html.light .glowing-card {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 6px 24px -4px rgba(12, 30, 60, 0.05) !important;
+}
+
+html.light .glowing-card:hover {
+  border-color: rgba(200, 157, 43, 0.6) !important;
+  box-shadow: 0 12px 35px -5px rgba(200, 157, 43, 0.15), 0 4px 10px -2px rgba(12, 30, 60, 0.05) !important;
+}
+
+html.light .glowing-card::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(200, 157, 43, 0.1),
+    transparent 45%
+  ) !important;
+}
+
+/* Borders in light mode */
+html.light .border-slate-800,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/60,
+html.light .border-slate-800\/50,
+html.light .border-slate-800\/40,
+html.light .border-slate-700,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60,
+html.light .border-slate-700\/50,
+html.light .border-slate-700\/40,
+html.light .border-\[\#1e293b\],
+html.light .border-\[\#2E5EAA\]\/20,
+html.light .border-\[\#2E5EAA\]\/30 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Typography in light mode */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #0C1E3C !important;
+}
+
+/* Main title gradients in light mode */
+html.light .from-\[\#E8B84B\].to-yellow-200 {
+  --tw-gradient-from: #B45309 !important;
+  --tw-gradient-to: #D97706 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #CA8A04, var(--tw-gradient-to) !important;
+}
+
+/* Headings and prominent text with text-white: convert to deep navy, UNLESS inside dark buttons or tags */
+html.light .text-white:not(button):not(button *):not(a.bg-\[\#E8B84B\]):not(a.bg-\[\#0B1220\]):not(a[class*="bg-[#0C1E3C]"]):not(a[class*="bg-[#0F1E36]"]):not(a[class*="bg-[#2E5EAA]"]):not([class*="bg-[#0C1E3C]"] *):not([class*="bg-[#0F1E36]"] *):not([class*="bg-[#2E5EAA]"] *) {
+  color: #0C1E3C !important;
+}
+
+/* Text slate conversions for optimal light mode readability */
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+/* Gold text adaptation in light mode */
+html.light .text-\[\#E8B84B\] {
+  color: #C89D2B !important;
+}
+
+/* Small tag/pill chips (e.g. Integrated Engineering Solutions tag) */
+html.light .rounded-full.bg-\[\#131C2E\] {
+  background-color: #FEF9ED !important;
+  border-color: #FDE68A !important;
+}
+
+html.light .rounded-full.bg-\[\#131C2E\] .text-slate-300 {
+  color: #92400E !important;
+}
+
+/* Form inputs & textareas in light mode */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0C1E3C !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Footer in light mode */
+html.light footer {
+  background-color: #F8F9FA !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+html.light footer img[alt="Sanota Logo"] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+html.light footer h4 {
+  color: #0C1E3C !important;
+}
+
+html.light footer a {
+  color: #475569 !important;
+}
+
+html.light footer a:hover {
+  color: #C89D2B !important;
+}
+
+html.light footer p {
+  color: #475569 !important;
+}
+
+/* In light mode, soften dark canvas / webgl wave backgrounds so they blend seamlessly */
+html.light canvas {
+  opacity: 0.15;
+  filter: contrast(0.8) brightness(1.2);
 }

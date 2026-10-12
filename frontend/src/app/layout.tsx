@@ -43,11 +43,32 @@ export const metadata: Metadata = {
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AmbientGlow from "@/components/AmbientGlow";
 import GlobalGlow from "@/components/GlobalGlow";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} h-full antialiased dark`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('sanota-theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-0DFYHW9ETK"
           strategy="afterInteractive"
@@ -62,10 +83,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className="min-h-full flex flex-col relative text-slate-300">
-        <AnimatedBackground />
-        <AmbientGlow />
-        <GlobalGlow />
-        {children}
+        <ThemeProvider>
+          <AnimatedBackground />
+          <AmbientGlow />
+          <GlobalGlow />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

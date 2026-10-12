@@ -141,7 +141,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen relative bg-[#050B14]">
       {/* Lightweight Animated Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-80">
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-80 dark:block hidden">
         <GradientWaves
           horizonColor="#1E2B47"
           waveColor="#2E5EAA"

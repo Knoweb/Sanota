@@ -1,13 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function AnimatedBackground() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <div className="fixed inset-0 -z-20 pointer-events-none overflow-hidden bg-[#050B14]">
+    <div className={`fixed inset-0 -z-20 pointer-events-none overflow-hidden transition-colors duration-500 ${
+      isDark ? "bg-[#050B14]" : "bg-[#FBFBFA]"
+    }`}>
       {/* Dynamic Gradient Base */}
       <motion.div
-        className="absolute inset-0 opacity-80"
+        className={`absolute inset-0 transition-opacity duration-500 ${isDark ? "opacity-80" : "opacity-40"}`}
         animate={{
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
@@ -17,18 +23,24 @@ export default function AnimatedBackground() {
           repeat: Infinity,
         }}
         style={{
-          backgroundImage: "linear-gradient(-45deg, #050B14, #131C2E, #0B1220, #1B2A45)",
+          backgroundImage: isDark
+            ? "linear-gradient(-45deg, #050B14, #131C2E, #0B1220, #1B2A45)"
+            : "linear-gradient(-45deg, #FBFBFA, #F5F3EF, #FAF9F6, #EDE7DA)",
           backgroundSize: "300% 300%",
         }}
       />
       
-      {/* Huge Slow Moving Waves for the Entire Screen Background */}
-      <div className="absolute inset-0 opacity-60 mix-blend-screen">
+      {/* Giant Slow Moving Waves */}
+      <div className={`absolute inset-0 transition-opacity duration-500 ${
+        isDark ? "opacity-60 mix-blend-screen" : "opacity-30 mix-blend-multiply"
+      }`}>
         {/* Giant Wave 1 (Moves left, very slow) */}
         <motion.svg
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[10%] w-[200%] h-[120vh] fill-[#2E5EAA]/15"
+          className={`absolute top-[10%] w-[200%] h-[120vh] ${
+            isDark ? "fill-[#2E5EAA]/15" : "fill-[#2E5EAA]/5"
+          }`}
           viewBox="0 0 2880 1000"
           preserveAspectRatio="none"
         >
@@ -39,7 +51,9 @@ export default function AnimatedBackground() {
         <motion.svg
           animate={{ x: ["-50%", "0%"] }}
           transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] w-[200%] h-[150vh] fill-[#E8B84B]/10"
+          className={`absolute -top-[20%] w-[200%] h-[150vh] ${
+            isDark ? "fill-[#E8B84B]/10" : "fill-[#C89D2B]/5"
+          }`}
           viewBox="0 0 2880 1000"
           preserveAspectRatio="none"
         >

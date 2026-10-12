@@ -17,16 +17,21 @@ import InnovationAndCollaboration from "@/components/InnovationAndCollaboration"
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import dynamic from 'next/dynamic';
+import { useTheme } from "@/context/ThemeContext";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 export default function Home() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14] relative">
-      <div className="fixed inset-0 z-0 hidden md:block">
-        <GradientWaves
-          horizonColor="#050B14"
-          waveColor="#2E5EAA"
-          crestColor="#60A5FA"
+    <div className="flex flex-col min-h-screen bg-[#050B14] relative transition-colors duration-500">
+      {isDark && (
+        <div className="fixed inset-0 z-0 hidden md:block">
+          <GradientWaves
+            horizonColor="#050B14"
+            waveColor="#2E5EAA"
+            crestColor="#60A5FA"
           speed={0.4}
           amplitude={2.5}
           waveScale={0.6}
@@ -46,6 +51,7 @@ export default function Home() {
           grainIntensity={0.05}
         />
       </div>
+      )}
 
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
