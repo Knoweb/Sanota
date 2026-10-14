@@ -133,18 +133,18 @@ export default function MediaPage() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/media_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
+          <div className="absolute inset-0 bg-white/75 dark:bg-[#050B14]/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 dark:via-[#050B14]/20 to-[#FAF8F5] dark:to-[#050B14]/90 z-0" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
+              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
               Media, Projects & Engineering Stories
             </motion.p>
@@ -152,7 +152,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
+              className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
               Engineering in <span className="text-[#2E5EAA]">Action</span>
             </motion.h1>
@@ -160,7 +160,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
               Explore the projects, products, people and technologies behind Sanota’s integrated engineering solutions.
             </motion.p>
@@ -168,7 +168,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="text-lg text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
               See how Sanota applies engineering, automation, IoT, software and technical expertise to real operational requirements across industries.
             </motion.p>
@@ -181,13 +181,13 @@ export default function MediaPage() {
             >
               <a
                 href="#completed-work"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center"
+                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-lg"
               >
                 Explore Completed Work <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <Link
                 href="#videos"
-                className="px-8 py-4 bg-[#131C2E]/80 hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center"
+                className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center"
               >
                 Watch Our Videos <Play className="ml-2 w-5 h-5" />
               </Link>
@@ -197,17 +197,17 @@ export default function MediaPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
+              className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
             >
-              Completed Work <span className="mx-2 text-slate-600">•</span> Project Stories <span className="mx-2 text-slate-600">•</span> Videos <span className="mx-2 text-slate-600">•</span> Photo Gallery <span className="mx-2 text-slate-600">•</span> News & Activities
+              Completed Work <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Project Stories <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Videos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Photo Gallery <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> News & Activities
             </motion.p>
           </div>
         </section>
 
         {/* Media Introduction */}
-        <section className="py-16 relative overflow-hidden bg-[#050B14]">
+        <section className="py-16 relative overflow-hidden bg-transparent border-b border-slate-200 dark:border-slate-800/50">
           {/* AeroShards Background and Animated Middle Shade */}
-          <div className="absolute inset-0 overflow-hidden z-0">
+          <div className="absolute inset-0 overflow-hidden z-0 dark:block hidden">
             <AeroShards
               backgroundColor="#050B14"
               shardColor="#1A1813"
@@ -248,28 +248,28 @@ export default function MediaPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                See What Sanota <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Does</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                See What Sanota <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">Does</span>
               </h2>
               
               {/* Animated Divider */}
               <motion.div 
-                className="h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent w-48 mx-auto mb-8"
+                className="h-[2px] bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent w-48 mx-auto mb-8"
                 initial={{ scaleX: 0, opacity: 0 }}
                 whileInView={{ scaleX: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
 
-              <p className="text-slate-300 text-lg md:text-xl font-medium leading-relaxed mb-6">
+              <p className="text-slate-700 dark:text-slate-300 text-lg md:text-xl font-medium leading-relaxed mb-6">
                 Engineering capabilities are best understood through practical application.
               </p>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
                 The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented.
               </p>
               
-              <div className="inline-block px-6 py-2 rounded-full border border-slate-800 bg-[#0B1220] shadow-lg">
-                <p className="text-white font-bold text-sm tracking-wide">
+              <div className="inline-block px-6 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1220] shadow-md">
+                <p className="text-[#17135B] dark:text-white font-bold text-sm tracking-wide">
                   Explore Sanota’s work by industry, solution or media type.
                 </p>
               </div>
@@ -281,17 +281,17 @@ export default function MediaPage() {
         <MediaNavigationCarousel />
 
         {/* Featured Work */}
-        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section id="featured-work" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">See Sanota in Action</h3>
-              <p className="text-slate-400 text-lg max-w-3xl mx-auto">Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">See Sanota in Action</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto">Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {featuredWork.map((work, idx) => (
-                <Link key={idx} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block">
+                <Link key={idx} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block shadow-lg dark:shadow-none">
                   {/* Background Image */}
                   <Image 
                     src={work.image} 
@@ -300,15 +300,15 @@ export default function MediaPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
                   />
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#0B1220]/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Content */}
                   <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-                    <div className="w-12 h-12 rounded-xl bg-[#131C2E]/80 backdrop-blur-md border border-slate-700 flex items-center justify-center mb-4 group-hover:border-[#E8B84B] transition-colors duration-500">
+                    <div className="w-12 h-12 rounded-xl bg-white/10 dark:bg-[#131C2E]/80 backdrop-blur-md border border-white/20 dark:border-slate-700 flex items-center justify-center mb-4 group-hover:border-[#E8B84B] transition-colors duration-500">
                       <work.icon className="w-6 h-6 text-[#E8B84B] group-hover:drop-shadow-[0_0_8px_rgba(232,184,75,0.8)] transition-all duration-500" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500">{work.title}</h4>
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-slate-200 transition-colors duration-500">{work.desc}</p>
+                    <h4 className="text-xl font-bold !text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500" style={{ color: '#FFFFFF' }}>{work.title}</h4>
+                    <p className="text-slate-200 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-white transition-colors duration-500" style={{ color: '#CBD5E1' }}>{work.desc}</p>
                     
                     {/* Animated Link */}
                     <div className="inline-flex items-center text-xs font-bold text-[#E8B84B] uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
@@ -320,7 +320,7 @@ export default function MediaPage() {
             </div>
 
             <div className="text-center">
-              <Link href="#completed-work" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
+              <Link href="#completed-work" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
                 View All Completed Work <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
@@ -331,12 +331,12 @@ export default function MediaPage() {
         <CompletedWorkSection />
 
         {/* Project Stories */}
-        <section className="py-12 md:py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section id="project-stories" className="py-12 md:py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">Project Stories</h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">From Challenge to Working Solution</h3>
-              <p className="text-slate-400 text-base max-w-3xl mx-auto">Project Stories provide a closer look at how Sanota approaches complex operational requirements.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">Project Stories</h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#17135B] dark:text-white mb-4">From Challenge to Working Solution</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-base max-w-3xl mx-auto">Project Stories provide a closer look at how Sanota approaches complex operational requirements.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
@@ -345,7 +345,7 @@ export default function MediaPage() {
                 const Icon = iconsList[idx];
                 
                 return (
-                  <div key={idx} className="group relative bg-[#131C2E]/40 border border-slate-800 rounded-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden min-h-[220px] flex flex-col items-center justify-center text-center cursor-default shadow-lg">
+                  <div key={idx} className="group relative bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden min-h-[220px] flex flex-col items-center justify-center text-center cursor-default shadow-md dark:shadow-lg">
                     
                     {/* The sliding background fill */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#FFF59D] to-[#FFD54F] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
@@ -354,17 +354,17 @@ export default function MediaPage() {
                     <div className="relative z-10 p-6 flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-1">
                       
                       {/* Icon container */}
-                      <div className="w-14 h-14 rounded-2xl bg-[#050B14] border border-[#E8B84B]/20 group-hover:border-transparent group-hover:bg-white/20 group-hover:backdrop-blur-md flex items-center justify-center mb-4 transition-all duration-700 rotate-3 group-hover:-rotate-6 group-hover:scale-110 shadow-[0_0_15px_rgba(232,184,75,0.1)] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
-                        <Icon className="w-6 h-6 text-[#E8B84B] group-hover:text-[#0B1220] transition-colors duration-700" />
+                      <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-[#050B14] border border-slate-200 dark:border-[#E8B84B]/20 group-hover:border-transparent group-hover:bg-white/20 group-hover:backdrop-blur-md flex items-center justify-center mb-4 transition-all duration-700 rotate-3 group-hover:-rotate-6 group-hover:scale-110 shadow-sm dark:shadow-[0_0_15px_rgba(232,184,75,0.1)] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
+                        <Icon className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B] group-hover:text-[#0B1220] transition-colors duration-700" />
                       </div>
                       
                       {/* Title */}
-                      <h4 className="text-lg font-bold text-white group-hover:text-[#0B1220] transition-colors duration-700 mb-1">{story.title}</h4>
+                      <h4 className="text-lg font-bold text-[#17135B] dark:text-white group-hover:text-[#0B1220] transition-colors duration-700 mb-1">{story.title}</h4>
                       
                       {/* Animating description */}
                       <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full">
                         <div className="overflow-hidden">
-                          <p className="text-slate-400 group-hover:text-[#0B1220]/80 transition-colors duration-700 pt-2 leading-relaxed text-xs opacity-0 group-hover:opacity-100 transform translate-y-3 group-hover:translate-y-0">
+                          <p className="text-slate-600 dark:text-slate-400 group-hover:text-[#0B1220]/80 transition-colors duration-700 pt-2 leading-relaxed text-xs opacity-0 group-hover:opacity-100 transform translate-y-3 group-hover:translate-y-0">
                             {story.desc}
                           </p>
                         </div>
@@ -377,10 +377,10 @@ export default function MediaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="#" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm">
+              <Link href="#" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm shadow-md">
                 Read Project Stories <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-              <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center text-sm">
+              <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center text-sm">
                 Discuss a Similar Requirement
               </Link>
             </div>
@@ -420,12 +420,12 @@ export default function MediaPage() {
         </div>
 
         {/* Photo Gallery */}
-        <section className="py-16 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section id="photo-gallery" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Projects, Products and People</h3>
-              <p className="text-slate-400 text-lg max-w-3xl mx-auto mb-10">The Sanota Photo Gallery provides a visual record of engineering work across project and company environments.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Projects, Products and People</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto mb-10">The Sanota Photo Gallery provides a visual record of engineering work across project and company environments.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14">
@@ -456,11 +456,11 @@ export default function MediaPage() {
                   <div className="absolute inset-0 p-6 flex flex-col justify-end group-hover:justify-center transition-all duration-500">
                     <div className="transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
                       <ImageIcon className="w-6 h-6 text-[#E8B84B] mb-3 group-hover:scale-125 transition-transform duration-500 origin-left group-hover:origin-center group-hover:mx-auto" />
-                      <h4 className="text-white font-bold text-lg mb-2 group-hover:text-center group-hover:text-[#E8B84B] transition-colors">{col.title}</h4>
+                      <h4 className="!text-white font-bold text-lg mb-2 group-hover:text-center group-hover:text-[#E8B84B] transition-colors" style={{ color: '#FFFFFF' }}>{col.title}</h4>
                     </div>
                     
                     {/* Description (Fades in on hover) */}
-                    <p className="text-slate-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100 group-hover:text-center">
+                    <p className="text-slate-200 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100 group-hover:text-center" style={{ color: '#CBD5E1' }}>
                       {col.desc}
                     </p>
                   </div>
@@ -469,7 +469,7 @@ export default function MediaPage() {
             </div>
 
             <div className="text-center">
-              <button onClick={() => setIsGalleryOpen(true)} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
+              <button onClick={() => setIsGalleryOpen(true)} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
                 Open Photo Gallery <Camera className="ml-2 w-5 h-5" />
               </button>
             </div>
@@ -481,7 +481,7 @@ export default function MediaPage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-12">
             {/* Backdrop */}
             <div 
-              className="absolute inset-0 bg-[#050B14]/90 backdrop-blur-md" 
+              className="absolute inset-0 bg-black/80 dark:bg-[#050B14]/90 backdrop-blur-md" 
               onClick={() => setIsGalleryOpen(false)}
             />
             
@@ -490,19 +490,19 @@ export default function MediaPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-7xl h-full max-h-[800px] bg-[#03060a] border border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+              className="relative w-full max-w-7xl h-full max-h-[800px] bg-white dark:bg-[#03060a] border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-slate-800 bg-[#0B1220] relative z-20">
+              <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1220] relative z-20">
                 <div className="flex items-center">
-                  <Camera className="w-6 h-6 text-[#E8B84B] mr-3" />
-                  <h3 className="text-xl font-bold text-white">Sanota Engineering Gallery</h3>
+                  <Camera className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B] mr-3" />
+                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">Sanota Engineering Gallery</h3>
                 </div>
                 <button 
                   onClick={() => setIsGalleryOpen(false)}
-                  className="w-10 h-10 rounded-full bg-[#131C2E] hover:bg-slate-700 flex items-center justify-center transition-colors group"
+                  className="w-10 h-10 rounded-full bg-slate-200 dark:bg-[#131C2E] hover:bg-slate-300 dark:hover:bg-slate-700 flex items-center justify-center transition-colors group"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-600 dark:text-slate-400 group-hover:text-black dark:group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -548,94 +548,94 @@ export default function MediaPage() {
         )}
 
         {/* Latest News Feeds */}
-        <section id="latest-news" className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section id="latest-news" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Latest News Feeds</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white tracking-tight">Latest News Feeds</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                {articles.length > 0 ? articles.map((article) => (
-                 <div key={article.id} className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                 <div key={article.id} className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                     <div className="relative h-56 w-full overflow-hidden">
                        <Image src={article.coverImage?.url || getImageForSlug(article.slug)} alt={article.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                       <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
-                       <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                       <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
                           <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: {article.author}</span>
                           <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {article.category}</span>
                        </div>
-                       <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                       <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
                          {article.title}
                        </h3>
-                       <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
-                          <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> {new Date(article.date).toLocaleDateString()}</span>
-                          <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                       <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
+                          <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> {new Date(article.date).toLocaleDateString()}</span>
+                          <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
                        </div>
                     </div>
                  </div>
                )) : (
                  <>
                    {/* Card 1 */}
-                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
                          <Image src="/completed work/drain-water.webp" alt="Smart Drainage System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
                             <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
                             <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> IoT Solutions</span>
                          </div>
-                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
                            Smart Drainage System: Tackling Floods with Technology
                          </h3>
-                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
+                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
                          </div>
                       </div>
                    </div>
 
                    {/* Card 2 */}
-                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
                          <Image src="/nerve-stimulator.png" alt="Nerve Stimulator" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
                             <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
                             <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Health Tech</span>
                          </div>
-                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
                            Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator
                          </h3>
-                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
+                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
                          </div>
                       </div>
                    </div>
 
                    {/* Card 3 */}
-                   <div className="bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-800 hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
+                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
                       <div className="relative h-56 w-full overflow-hidden">
                          <Image src="/asmp-blog.jpg" alt="Food Processing System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-400 mb-5 gap-5">
+                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
                             <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
                             <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Industrial Solutions</span>
                          </div>
-                         <h3 className="text-xl font-bold text-white leading-snug mb-8 group-hover:text-[#E8B84B] transition-colors">
+                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
                            Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)
                          </h3>
-                         <div className="mt-auto border-t border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-500" /> 7/7/2025</span>
-                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#E8B84B] hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
+                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/7/2025</span>
+                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
                          </div>
                       </div>
                    </div>
@@ -646,21 +646,20 @@ export default function MediaPage() {
         </section>
 
         {/* Featured Video Section */}
-        <section id="videos" className="py-16 bg-[#050B14] border-t border-slate-800/50 relative overflow-hidden bg-transparent">
-          <div className="absolute inset-0 bg-[#0B1220] mix-blend-overlay opacity-50" />
+        <section id="videos" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50 relative overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div className="w-16 h-16 rounded-full bg-[#E8B84B]/20 flex items-center justify-center mx-auto mb-6">
-              <Play className="w-8 h-8 text-[#E8B84B] ml-1" />
+            <div className="w-16 h-16 rounded-full bg-[#C59B27]/10 dark:bg-[#E8B84B]/20 flex items-center justify-center mx-auto mb-6 shadow-sm">
+              <Play className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B] ml-1" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">See How Integrated Engineering Comes Together</h2>
-            <p className="text-slate-300 text-lg leading-relaxed mb-6">A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support.</p>
-            <p className="text-slate-400 text-lg leading-relaxed mb-10">Watch how these capabilities connect around a real operational requirement.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">See How Integrated Engineering Comes Together</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support.</p>
+            <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-10">Watch how these capabilities connect around a real operational requirement.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
+              <button className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
                 Play Featured Video <Play className="ml-2 w-5 h-5" />
               </button>
-              <Link href="/services" className="px-8 py-4 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+              <Link href="/services" className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center">
                 Explore Integrated Solutions
               </Link>
             </div>
@@ -668,32 +667,39 @@ export default function MediaPage() {
         </section>
 
         {/* Browse Sections */}
-        <section className="py-16 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <section className="py-14 md:py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
               {/* By Industry */}
-              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
-                <div className="relative h-56 w-full shrink-0 overflow-hidden">
+              <div className="bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg dark:shadow-xl relative overflow-hidden flex flex-col h-full group">
+                <div className="relative h-48 sm:h-52 w-full shrink-0 overflow-hidden">
                   <Image src="/gallery/automation.jpg" alt="Browse By Industry" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
-                  <div className="absolute bottom-6 left-8 right-8 z-10">
-                    <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Industry</h2>
-                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">Explore Work Relevant to Your Sector</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
+                  <div className="absolute bottom-5 left-6 right-6 z-10">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#2E5EAA] text-white font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
+                      Browse By Industry
+                    </div>
+                    <h3 
+                      className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
+                      style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
+                    >
+                      Explore Work Relevant to Your Sector
+                    </h3>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col flex-grow relative z-20">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 flex-grow">
+                <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
                     {browseIndustries.map((ind, idx) => (
-                      <Link href="#" key={idx} className="group/btn flex items-center p-3 bg-[#131C2E]/50 hover:bg-[#131C2E] border border-slate-800 hover:border-[#2E5EAA]/50 rounded-xl transition-all duration-300">
-                         <div className="w-8 h-8 shrink-0 rounded-lg bg-[#0B1220] group-hover/btn:bg-[#2E5EAA]/20 flex items-center justify-center mr-3 transition-colors duration-300">
-                           <ChevronRight className="w-4 h-4 text-[#2E5EAA] transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      <Link href="/industries" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#2E5EAA]/50 rounded-xl transition-all duration-300">
+                         <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#2E5EAA]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
+                           <ChevronRight className="w-4 h-4 text-[#2E5EAA] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
                          </div>
-                         <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{ind}</span>
+                         <span className="text-slate-700 dark:text-slate-300 text-xs sm:text-[13px] font-medium group-hover/btn:text-[#17135B] dark:group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{ind}</span>
                       </Link>
                     ))}
                   </div>
-                  <div className="mt-auto border-t border-slate-800/80 pt-6">
-                    <Link href="/industries" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-[#2E5EAA] text-white font-bold rounded-lg border border-slate-700 hover:border-[#2E5EAA] transition-all duration-300 group/link">
+                  <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
+                    <Link href="/industries" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#2E5EAA] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#2E5EAA] dark:text-white font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#2E5EAA] transition-all duration-300 group/link">
                       Explore All Industries <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
@@ -701,29 +707,36 @@ export default function MediaPage() {
               </div>
 
               {/* By Capability */}
-              <div className="bg-[#0B1220] border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col h-full group">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8B84B]/5 blur-[80px] rounded-full pointer-events-none z-10" />
-                <div className="relative h-56 w-full shrink-0 overflow-hidden">
+              <div className="bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg dark:shadow-xl relative overflow-hidden flex flex-col h-full group">
+                <div className="absolute top-0 right-0 w-56 h-56 bg-[#E8B84B]/5 blur-[70px] rounded-full pointer-events-none z-10" />
+                <div className="relative h-48 sm:h-52 w-full shrink-0 overflow-hidden">
                   <Image src="/gallery/workshop.jpg" alt="Browse By Capability" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
-                  <div className="absolute bottom-6 left-8 right-8 z-10">
-                    <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">Browse By Capability</h2>
-                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">Explore How Sanota Delivers Solutions</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
+                  <div className="absolute bottom-5 left-6 right-6 z-10">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] text-[#0B1220] font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
+                      Browse By Capability
+                    </div>
+                    <h3 
+                      className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
+                      style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
+                    >
+                      Explore How Sanota Delivers Solutions
+                    </h3>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col flex-grow relative z-20">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 flex-grow">
+                <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
                     {browseCapabilities.map((cap, idx) => (
-                      <Link href="#" key={idx} className="group/btn flex items-center p-3 bg-[#131C2E]/50 hover:bg-[#131C2E] border border-slate-800 hover:border-[#E8B84B]/50 rounded-xl transition-all duration-300">
-                         <div className="w-8 h-8 shrink-0 rounded-lg bg-[#0B1220] group-hover/btn:bg-[#E8B84B]/20 flex items-center justify-center mr-3 transition-colors duration-300">
-                           <ChevronRight className="w-4 h-4 text-[#E8B84B] transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      <Link href="/services" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#C59B27]/50 rounded-xl transition-all duration-300">
+                         <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#C59B27]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
+                           <ChevronRight className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
                          </div>
-                         <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{cap}</span>
+                         <span className="text-slate-700 dark:text-slate-300 text-xs sm:text-[13px] font-medium group-hover/btn:text-[#17135B] dark:group-hover/btn:text-white transition-colors duration-300 line-clamp-2">{cap}</span>
                       </Link>
                     ))}
                   </div>
-                  <div className="mt-auto border-t border-slate-800/80 pt-6">
-                    <Link href="/services" className="inline-flex items-center px-6 py-3 bg-[#131C2E] hover:bg-[#E8B84B] text-white font-bold rounded-lg border border-slate-700 hover:border-[#E8B84B] hover:text-[#0B1220] transition-all duration-300 group/link">
+                  <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
+                    <Link href="/services" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#C59B27] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#E8B84B] dark:text-white dark:hover:text-[#0B1220] font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#C59B27] transition-all duration-300 group/link">
                       Explore All Services <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
@@ -734,8 +747,8 @@ export default function MediaPage() {
         </section>
 
         {/* Sanota + Knoweb */}
-        <section className="py-16 bg-[#050B14] relative overflow-hidden bg-transparent">
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
+        <section className="py-16 relative overflow-hidden bg-transparent">
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 dark:bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
               <div className="lg:col-span-2">
@@ -743,9 +756,9 @@ export default function MediaPage() {
                   <h2 className="text-[#2E5EAA] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
                     <Zap className="w-4 h-4 mr-2" /> Sanota + Knoweb
                   </h2>
-                  <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Engineering Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digital Technology</span></h3>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-8">Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb.</p>
-                  <Link href="#" className="group inline-flex items-center px-7 py-4 bg-gradient-to-r from-[#131C2E] to-[#0B1220] hover:from-[#2E5EAA] hover:to-[#1a4185] text-white font-bold rounded-xl border border-[#2E5EAA]/30 hover:border-[#2E5EAA] transition-all duration-500 shadow-[0_0_20px_rgba(46,94,170,0.15)] hover:shadow-[0_0_30px_rgba(46,94,170,0.4)]">
+                  <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Engineering Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digital Technology</span></h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb.</p>
+                  <Link href="#" className="group inline-flex items-center px-7 py-4 bg-[#17135B] hover:bg-[#2E5EAA] dark:bg-gradient-to-r dark:from-[#131C2E] dark:to-[#0B1220] dark:hover:from-[#2E5EAA] dark:hover:to-[#1a4185] text-white font-bold rounded-xl border border-slate-300 dark:border-[#2E5EAA]/30 hover:border-[#2E5EAA] transition-all duration-500 shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.15)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.4)]">
                     Explore IoT & Digital Projects <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
                   </Link>
                 </motion.div>
@@ -759,13 +772,13 @@ export default function MediaPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1, duration: 0.5 }}
-                      whileHover={{ scale: 1.03, backgroundColor: "rgba(19, 28, 46, 0.9)" }}
-                      className="flex items-center bg-[#131C2E]/40 border border-[#2E5EAA]/20 hover:border-[#2E5EAA]/60 rounded-2xl px-5 py-4 cursor-default backdrop-blur-sm transition-all shadow-lg"
+                      whileHover={{ scale: 1.03 }}
+                      className="flex items-center bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-[#2E5EAA]/20 hover:border-[#2E5EAA]/60 rounded-2xl px-5 py-4 cursor-default backdrop-blur-sm transition-all shadow-sm dark:shadow-lg"
                     >
-                      <div className="w-8 h-8 rounded-full bg-[#2E5EAA]/20 flex items-center justify-center mr-4 shrink-0">
-                         <Monitor className="w-4 h-4 text-[#4C84E0]" />
+                      <div className="w-8 h-8 rounded-full bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 flex items-center justify-center mr-4 shrink-0">
+                         <Monitor className="w-4 h-4 text-[#2E5EAA] dark:text-[#4C84E0]" />
                       </div>
-                      <span className="text-slate-200 text-sm font-medium">{story}</span>
+                      <span className="text-slate-700 dark:text-slate-200 text-sm font-medium">{story}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -775,16 +788,16 @@ export default function MediaPage() {
         </section>
 
         {/* Publication Principles */}
-        <section className="py-16 bg-[#0B1220] border-y border-slate-800/50 bg-transparent relative overflow-hidden">
+        <section className="py-16 border-y border-slate-200 dark:border-slate-800/50 bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-8 lg:mb-12">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#E8B84B]/10 text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#E8B84B]/20">
+                <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 text-[#C59B27] dark:text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#C59B27]/20 dark:border-[#E8B84B]/20">
                   <Shield className="w-4 h-4 mr-2" /> Media Publication Principles
                 </h2>
-                <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Authentic Work. Clear Information.<br/><span className="text-slate-400">Responsible Publication.</span>
+                <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white leading-tight">
+                  Authentic Work. Clear Information.<br/><span className="text-slate-500 dark:text-slate-400">Responsible Publication.</span>
                 </h3>
               </motion.div>
             </div>
@@ -797,26 +810,26 @@ export default function MediaPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
-                  whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(232,184,75,0.1)" }}
-                  className="bg-[#131C2E] border border-slate-700/50 hover:border-[#E8B84B]/50 rounded-2xl p-6 transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(197,155,39,0.15)" }}
+                  className="bg-white dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700/50 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 rounded-2xl p-6 transition-all duration-300 relative overflow-hidden group shadow-sm dark:shadow-none"
                 >
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                     <CheckCircle2 className="w-24 h-24 text-[#E8B84B]" />
+                  <div className="absolute top-0 right-0 p-4 opacity-5 dark:opacity-10 group-hover:opacity-15 dark:group-hover:opacity-20 transition-opacity">
+                     <CheckCircle2 className="w-24 h-24 text-[#C59B27] dark:text-[#E8B84B]" />
                   </div>
-                  <div className="w-12 h-12 bg-[#0B1220] rounded-xl border border-slate-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-[#E8B84B]/50 transition-colors">
-                    <CheckCircle2 className="w-6 h-6 text-[#E8B84B]" />
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-[#0B1220] rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-[#C59B27]/50 dark:group-hover:border-[#E8B84B]/50 transition-colors">
+                    <CheckCircle2 className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B]" />
                   </div>
-                  <p className="text-slate-300 font-medium leading-relaxed relative z-10 group-hover:text-white transition-colors">{principle}</p>
+                  <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed relative z-10 group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{principle}</p>
                 </motion.div>
               ))}
             </div>
 
             <motion.div 
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-              className="bg-[#131C2E]/40 border border-[#E8B84B]/20 rounded-xl p-6 text-center max-w-4xl mx-auto"
+              className="bg-white/80 dark:bg-[#131C2E]/40 border border-slate-200 dark:border-[#E8B84B]/20 rounded-xl p-6 text-center max-w-4xl mx-auto shadow-sm dark:shadow-none"
             >
-              <p className="text-slate-400 text-sm italic flex items-center justify-center text-left sm:text-center">
-                <AlertCircle className="w-5 h-5 mr-3 text-[#E8B84B] shrink-0" />
+              <p className="text-slate-600 dark:text-slate-400 text-sm italic flex items-center justify-center text-left sm:text-center">
+                <AlertCircle className="w-5 h-5 mr-3 text-[#C59B27] dark:text-[#E8B84B] shrink-0" />
                 Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work.
               </p>
             </motion.div>
@@ -824,14 +837,14 @@ export default function MediaPage() {
         </section>
 
         {/* Contact Grids */}
-        <section className="py-16 bg-[#050B14] relative overflow-hidden bg-transparent">
+        <section className="py-16 relative overflow-hidden bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
               
               {/* Discuss Similar Requirement */}
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                className="border border-slate-800 rounded-3xl p-10 sm:p-12 shadow-2xl relative overflow-hidden group hover:border-[#2E5EAA]/50 transition-colors duration-500"
+                className="border border-slate-200 dark:border-slate-800 rounded-3xl p-10 sm:p-12 shadow-xl relative overflow-hidden group hover:border-[#2E5EAA]/50 transition-colors duration-500 bg-white/50 dark:bg-transparent backdrop-blur-sm"
               >
                 {/* AeroShards Background */}
                 <div className="absolute inset-0 z-0">
@@ -866,33 +879,33 @@ export default function MediaPage() {
                     holdToGather
                     paused={false}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#131C2E]/60 to-[#0B1220]/80 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-slate-50/90 to-blue-50/80 dark:from-[#131C2E]/60 dark:to-[#0B1220]/80 pointer-events-none" />
                 </div>
                 
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#2E5EAA]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
                 
                 <div className="relative z-10 flex flex-col h-full pointer-events-none">
-                  <div className="w-16 h-16 bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
-                    <Wrench className="w-8 h-8 text-[#4C84E0]" />
+                  <div className="w-16 h-16 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
+                    <Wrench className="w-8 h-8 text-[#2E5EAA] dark:text-[#4C84E0]" />
                   </div>
-                  <h2 className="text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
-                  <h3 className="text-3xl font-bold text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
-                  <p className="text-slate-400 leading-relaxed mb-8">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
+                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 pointer-events-auto">
                     {["Which project or solution interested you", "What you currently operate", "What you want to improve or develop", "Which result you are trying to achieve"].map((item, idx) => (
-                      <div key={idx} className="flex items-start bg-[#0B1220]/70 p-4 rounded-xl border border-slate-800/50 backdrop-blur-sm">
-                        <div className="w-2 h-2 mt-1.5 rounded-full bg-[#4C84E0] mr-3 shrink-0" />
-                        <span className="text-slate-300 text-sm leading-snug">{item}</span>
+                      <div key={idx} className="flex items-start bg-white/90 dark:bg-[#0B1220]/70 p-4 rounded-xl border border-slate-200 dark:border-slate-800/50 backdrop-blur-sm shadow-sm dark:shadow-none">
+                        <div className="w-2 h-2 mt-1.5 rounded-full bg-[#2E5EAA] dark:bg-[#4C84E0] mr-3 shrink-0" />
+                        <span className="text-slate-700 dark:text-slate-300 text-sm leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
-                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(46,94,170,0.3)] hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.3)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
                       Discuss Requirement
                     </Link>
-                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-transparent hover:bg-[#131C2E] text-white font-bold rounded-xl border border-slate-700 hover:border-slate-500 transition-all backdrop-blur-sm">
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
                       Tell Us Your Challenge
                     </Link>
                   </div>
@@ -902,7 +915,7 @@ export default function MediaPage() {
               {/* Media Enquiries */}
               <motion.div 
                 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                className="border border-slate-800 rounded-3xl p-10 sm:p-12 shadow-2xl relative overflow-hidden group hover:border-[#E8B84B]/50 transition-colors duration-500"
+                className="border border-slate-200 dark:border-slate-800 rounded-3xl p-10 sm:p-12 shadow-xl relative overflow-hidden group hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 transition-colors duration-500 bg-white/50 dark:bg-transparent backdrop-blur-sm"
               >
                 {/* AeroShards Background */}
                 <div className="absolute inset-0 z-0">
@@ -937,24 +950,24 @@ export default function MediaPage() {
                     holdToGather
                     paused={false}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-bl from-[#131C2E]/60 to-[#0B1220]/80 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-bl from-white/95 via-amber-50/50 to-slate-50/90 dark:from-[#131C2E]/60 dark:to-[#0B1220]/80 pointer-events-none" />
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#E8B84B]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
                 
                 <div className="relative z-10 flex flex-col h-full pointer-events-none">
-                  <div className="w-16 h-16 bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#E8B84B]/30">
-                    <MessageSquare className="w-8 h-8 text-[#E8B84B]" />
+                  <div className="w-16 h-16 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#C59B27]/30 dark:border-[#E8B84B]/30">
+                    <MessageSquare className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B]" />
                   </div>
-                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
-                  <h3 className="text-3xl font-bold text-white mb-6">Media, Partnership or Publication Enquiry</h3>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-12">For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team.</p>
+                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">Media, Partnership or Publication Enquiry</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team.</p>
                   
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
-                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
+                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(232,184,75,0.3)] dark:hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
                       Submit Media Enquiry
                     </Link>
-                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-transparent hover:bg-[#131C2E] text-white font-bold rounded-xl border border-slate-700 hover:border-slate-500 transition-all backdrop-blur-sm">
+                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
                       Contact Sanota
                     </Link>
                   </div>
@@ -966,24 +979,24 @@ export default function MediaPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-16 bg-[#131C2E] border-t border-slate-800 bg-transparent">
+        <section className="py-16 border-t border-slate-200 dark:border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
               See What Sanota Has Done. <br className="hidden md:block" />
-              <span className="text-[#E8B84B]">Imagine What We Can Develop With You.</span>
+              <span className="text-[#C59B27] dark:text-[#E8B84B]">Imagine What We Can Develop With You.</span>
             </h2>
-            <p className="text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-slate-600 dark:text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
               From machinery and industrial automation to smart agriculture, IoT, software and lifecycle support, Sanota brings multiple capabilities together to solve practical operational challenges.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
+              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
                 Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link href="/products" className="px-8 py-4 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+              <Link href="/products" className="px-8 py-4 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center">
                 Explore Products & Systems
               </Link>
             </div>
-            <p className="text-slate-500 text-sm italic">Real challenges. Integrated solutions. Engineering in action.</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm italic">Real challenges. Integrated solutions. Engineering in action.</p>
           </div>
         </section>
 

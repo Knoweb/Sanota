@@ -122,18 +122,29 @@ export default function CompletedWorkSection() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=*`);
-        const data = await res.json();
-        
-        if (data && data.data && data.data.length > 0) {
-          setProjects(data.data);
+        const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+        if (!strapiUrl) {
+          setProjects(dummyProjects);
+          setLoading(false);
+          return;
+        }
+
+        const res = await fetch(`${strapiUrl}/api/projects?populate=*`, {
+          signal: AbortSignal.timeout(3000),
+        }).catch(() => null);
+
+        if (res && res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) {
+            setProjects(data.data);
+          } else {
+            setProjects(dummyProjects);
+          }
         } else {
-          // Use dummy projects if DB is empty
           setProjects(dummyProjects);
         }
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-        setProjects(dummyProjects); // Fallback on network error too
+      } catch {
+        setProjects(dummyProjects);
       } finally {
         setLoading(false);
       }
@@ -173,8 +184,8 @@ export default function CompletedWorkSection() {
             
             {/* Content */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-              <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500">{project.attributes.title}</h4>
-              <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-slate-200 transition-colors duration-500">{project.attributes.description}</p>
+              <h4 className="text-xl font-bold !text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500" style={{ color: '#FFFFFF' }}>{project.attributes.title}</h4>
+              <p className="text-slate-200 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-white transition-colors duration-500" style={{ color: '#CBD5E1' }}>{project.attributes.description}</p>
               
               <div className="flex gap-2 mb-4">
                 {project.attributes.industry && (

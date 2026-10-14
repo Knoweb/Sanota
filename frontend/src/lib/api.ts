@@ -224,40 +224,50 @@ export interface Article {
 
 export async function getArticles(limit: number = 3): Promise<Article[]> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/articles?populate=*&sort=date:desc&pagination[limit]=${limit}`;
-    const res = await fetch(url, { next: { revalidate: 60 } });
-    if (!res.ok) throw new Error("Failed to fetch articles");
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+    if (!strapiUrl) return [];
+    const url = `${strapiUrl}/api/articles?populate=*&sort=date:desc&pagination[limit]=${limit}`;
+    const res = await fetch(url, { 
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(3000)
+    }).catch(() => null);
+
+    if (!res || !res.ok) return [];
     const json = await res.json();
     return json.data.map((item: any) => ({
       ...item,
       coverImage: item.coverImage ? {
-        url: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.coverImage.url}`,
+        url: `${strapiUrl}${item.coverImage.url}`,
         alternativeText: item.coverImage.alternativeText,
       } : undefined
     }));
-  } catch (error) {
-    console.error("Error fetching articles:", error);
+  } catch {
     return [];
   }
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`;
-    const res = await fetch(url, { next: { revalidate: 60 } });
-    if (!res.ok) throw new Error("Failed to fetch article");
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+    if (!strapiUrl) return null;
+    const url = `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&populate=*`;
+    const res = await fetch(url, { 
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(3000)
+    }).catch(() => null);
+
+    if (!res || !res.ok) return null;
     const json = await res.json();
     if (!json.data || json.data.length === 0) return null;
     const item = json.data[0];
     return {
       ...item,
       coverImage: item.coverImage ? {
-        url: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.coverImage.url}`,
+        url: `${strapiUrl}${item.coverImage.url}`,
         alternativeText: item.coverImage.alternativeText,
       } : undefined
     };
-  } catch (error) {
-    console.error(`Error fetching article ${slug}:`, error);
+  } catch {
     return null;
   }
 }
