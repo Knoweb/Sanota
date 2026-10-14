@@ -60,155 +60,124 @@ body {
 }
 
 /* ==========================================================================
-   LIGHT MODE DESIGN SYSTEM
-   Inspired by Sanota Engineering & Technology Brand Identity
-   Palette:
-     Canvas: #FBFBFA (Warm Ivory with subtle technical grid)
-     Surfaces/Cards: #FFFFFF (Crisp elevated white with soft warm borders)
-     Primary Headings & Text: #0C1E3C (Deep Rich Navy)
-     Accent / Highlights: #C89D2B (Warm Engineering Gold / Amber)
-     Body text: #334155 / #475569 (Slate Charcoal)
-     Muted text: #64748B (Medium Slate)
-     Borders: #E2E8F0 / #E5E7EB (Subtle soft grey)
+   SANOTA GLOBAL - EXECUTIVE LIGHT MODE THEME
+   Directly matching Sanota Brand Guidelines & Showcase CSS Specifications
+   Colors:
+     Canvas: #FAF8F5 (Warm Cream Ivory with subtle technical grid)
+     Primary Navy: #17135B (Deep Rich Indigo / Royal Navy)
+     Deepest Navy: #0F0C3B / #0E0A3C
+     Dark Text: #111424
+     Primary Gold: #C59B27 (Warm Engineering Gold)
+     Bright Gold: #D4AF37
+     CTA Button Gold: #E5A93C
+     Pill Badges: rgba(212, 175, 55, 0.14) with #8C6D1F
+     Subtext / Secondary: #555E75 / #646C82
+     Muted: #7B8196 / #9CA3AF
+     Surfaces & Cards: #FFFFFF
+     Borders: #ECE7DD / rgba(23, 19, 91, 0.08)
+     Card Hover Border: rgba(212, 175, 55, 0.45)
    ========================================================================== */
 
 html.light,
 html[data-theme="light"] {
-  --background: #FBFBFA;
-  --foreground: #1E293B;
-  --primary: #0C1E3C;
-  --accent: #C89D2B;
+  --background: #FAF8F5;
+  --foreground: #111424;
+  --primary: #17135B;
+  --accent: #C59B27;
   --card-bg: #FFFFFF;
-  --border-color: #E2E8F0;
+  --border-color: #ECE7DD;
   color-scheme: light;
 }
 
 /* Light mode body background with architectural subtle grid pattern */
 html.light body,
 html[data-theme="light"] body {
-  background-color: #FBFBFA !important;
-  color: #334155 !important;
+  background-color: #FAF8F5 !important;
+  color: #555E75 !important;
   background-image: 
-    linear-gradient(to right, rgba(12, 30, 60, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(12, 30, 60, 0.035) 1px, transparent 1px) !important;
-  background-size: 44px 44px !important;
+    radial-gradient(circle at 12% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 88% 18%, rgba(23, 19, 91, 0.05) 0%, transparent 40%),
+    linear-gradient(to right, rgba(23, 19, 91, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 19, 91, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px !important;
 }
 
-/* Background overrides for light mode */
+/* Base Canvas & Container Backgrounds in Light Mode */
 html.light .bg-\[\#050B14\],
 html.light .bg-\[\#02050A\],
 html.light .bg-\[\#03060a\] {
-  background-color: #FBFBFA !important;
+  background-color: #FAF8F5 !important;
 }
 
 html.light .bg-\[\#050B14\]\/95,
 html.light .bg-\[\#050B14\]\/90 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(16px);
+  background-color: rgba(250, 248, 245, 0.98) !important;
+  backdrop-filter: blur(12px);
 }
 
 html.light .bg-\[\#050B14\]\/80,
 html.light .bg-\[\#050B14\]\/70,
 html.light .bg-\[\#050B14\]\/60,
 html.light .bg-\[\#050B14\]\/50 {
-  background-color: rgba(251, 251, 250, 0.8) !important;
+  background-color: rgba(250, 248, 245, 0.85) !important;
 }
 
-/* Header specific light mode styling */
-html.light header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 4px 25px -4px rgba(12, 30, 60, 0.06) !important;
-}
-
-/* Header logo dropshadow removal in light mode */
-html.light header img[alt="Sanota Logo"] {
-  filter: none !important;
-}
-
-/* Header nav links */
-html.light header nav a {
-  color: #0C1E3C !important;
-}
-
-html.light header nav a:hover {
-  color: #C89D2B !important;
-}
-
-html.light header nav a .text-white {
-  color: #0C1E3C !important;
-}
-
-/* Mobile drawer in light mode */
-html.light header .xl\:hidden.bg-\[\#0B1220\],
-html.light header .bg-\[\#0B1220\] {
-  background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-  box-shadow: 0 20px 40px -10px rgba(12, 30, 60, 0.12) !important;
-}
-
-html.light header .xl\:hidden a {
-  color: #0C1E3C !important;
-}
-
-html.light header .xl\:hidden a:hover {
-  color: #C89D2B !important;
-  background-color: #F8F9FA !important;
-}
-
-/* Section and secondary container backgrounds */
+/* Section backgrounds */
 html.light .bg-\[\#0B1220\],
 html.light .bg-\[\#0A101A\],
 html.light .bg-\[\#0F1523\] {
-  background-color: #F8F9FA !important;
+  background-color: #FAF8F5 !important;
 }
 
 html.light .bg-\[\#0B1220\]\/90,
 html.light .bg-\[\#0B1220\]\/80,
 html.light .bg-\[\#0B1220\]\/70,
 html.light .bg-\[\#0B1220\]\/60 {
-  background-color: rgba(248, 249, 250, 0.85) !important;
+  background-color: rgba(250, 248, 245, 0.85) !important;
 }
 
-/* Cards and panels: Crisp Elevated White */
-html.light .bg-\[\#131C2E\],
-html.light .bg-\[\#151D2F\],
-html.light .bg-\[\#1B2A45\] {
+/* Elevated Luxury White Cards (except inside dedicated dark sections like .aero-dark-section) */
+html.light .bg-\[\#131C2E\]:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#151D2F\]:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#1B2A45\]:not(.aero-dark-section *):not(.photo-overlay *) {
   background-color: #FFFFFF !important;
-  box-shadow: 0 10px 30px -5px rgba(12, 30, 60, 0.05), 0 4px 6px -2px rgba(12, 30, 60, 0.02) !important;
+  border-color: #ECE7DD !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(23, 19, 91, 0.04) !important;
 }
 
-html.light .bg-\[\#131C2E\]\/40,
-html.light .bg-\[\#131C2E\]\/50,
-html.light .bg-\[\#131C2E\]\/60,
-html.light .bg-\[\#131C2E\]\/70,
-html.light .bg-\[\#131C2E\]\/80,
-html.light .bg-\[\#131C2E\]\/90 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 8px 24px -4px rgba(12, 30, 60, 0.05) !important;
+html.light .bg-\[\#131C2E\]\/40:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#131C2E\]\/50:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#131C2E\]\/60:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#131C2E\]\/70:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#131C2E\]\/80:not(.aero-dark-section *):not(.photo-overlay *),
+html.light .bg-\[\#131C2E\]\/90:not(.aero-dark-section *):not(.photo-overlay *) {
+  background-color: #FFFFFF !important;
+  border-color: #ECE7DD !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
 }
 
-/* Glowing cards in light mode */
+/* Glowing Card Effects in Light Mode */
 html.light .glowing-card {
   background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-  box-shadow: 0 6px 24px -4px rgba(12, 30, 60, 0.05) !important;
+  border-color: #ECE7DD !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
 }
 
 html.light .glowing-card:hover {
-  border-color: rgba(200, 157, 43, 0.6) !important;
-  box-shadow: 0 12px 35px -5px rgba(200, 157, 43, 0.15), 0 4px 10px -2px rgba(12, 30, 60, 0.05) !important;
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 14px 30px rgba(23, 19, 91, 0.08) !important;
+  transform: translateY(-2px);
 }
 
 html.light .glowing-card::before {
   background: radial-gradient(
     800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
-    rgba(200, 157, 43, 0.1),
+    rgba(212, 175, 55, 0.12),
     transparent 45%
   ) !important;
 }
 
-/* Borders in light mode */
+/* Borders in Light Mode */
 html.light .border-slate-800,
 html.light .border-slate-800\/80,
 html.light .border-slate-800\/60,
@@ -222,73 +191,365 @@ html.light .border-slate-700\/40,
 html.light .border-\[\#1e293b\],
 html.light .border-\[\#2E5EAA\]\/20,
 html.light .border-\[\#2E5EAA\]\/30 {
-  border-color: #E2E8F0 !important;
+  border-color: #ECE7DD !important;
 }
 
-/* Typography in light mode */
-html.light h1,
-html.light h2,
-html.light h3,
-html.light h4,
-html.light h5,
-html.light h6 {
-  color: #0C1E3C !important;
+/* Header Specific Styling */
+html.light header {
+  background-color: rgba(250, 248, 245, 0.98) !important;
+  border-bottom: 1px solid #ECE7DD !important;
+  box-shadow: 0 2px 12px rgba(23, 19, 91, 0.04) !important;
 }
 
-/* Main title gradients in light mode */
+html.light header img[alt="Sanota Logo"] {
+  filter: none !important;
+}
+
+html.light header nav a {
+  color: #17135B !important;
+  font-weight: 700;
+}
+
+html.light header nav a:hover {
+  color: #C59B27 !important;
+}
+
+html.light header nav a.text-\[\#E8B84B\] {
+  color: #C59B27 !important;
+}
+
+html.light header .xl\:hidden.bg-\[\#0B1220\],
+html.light header .bg-\[\#0B1220\] {
+  background-color: #FFFFFF !important;
+  border-color: #ECE7DD !important;
+  box-shadow: 0 20px 48px -10px rgba(23, 19, 91, 0.12) !important;
+}
+
+html.light header .xl\:hidden a {
+  color: #17135B !important;
+}
+
+html.light header .xl\:hidden a:hover {
+  color: #C59B27 !important;
+  background-color: #FAF8F5 !important;
+}
+
+/* Headings Typography */
+html.light h1:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white),
+html.light h2:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white),
+html.light h3:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white),
+html.light h4:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white),
+html.light h5:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white),
+html.light h6:not(.photo-overlay *):not(.dark-overlay *):not([class*="bg-black"] *):not([class*="bg-[#050B14]"] *):not(.relative:has(img) .absolute *):not(.\!text-white) {
+  color: #17135B;
+}
+
+/* Safeguard text positioned on top of photo cards / dark image overlays */
+html.light .relative:has(img) .absolute h1,
+html.light .relative:has(img) .absolute h2,
+html.light .relative:has(img) .absolute h3,
+html.light .relative:has(img) .absolute h4,
+html.light .relative:has(img) .absolute h5,
+html.light .relative:has(img) .absolute h6,
+html.light .relative:has(img) .absolute .text-white {
+  color: #FFFFFF !important;
+}
+
+html.light .relative:has(img) .absolute p.text-slate-200,
+html.light .relative:has(img) .absolute p.text-slate-300,
+html.light .relative:has(img) .absolute span.text-slate-200,
+html.light .relative:has(img) .absolute span.text-slate-300 {
+  color: #CBD5E1 !important;
+}
+
+/* Gradient Headings */
 html.light .from-\[\#E8B84B\].to-yellow-200 {
-  --tw-gradient-from: #B45309 !important;
-  --tw-gradient-to: #D97706 !important;
-  --tw-gradient-stops: var(--tw-gradient-from), #CA8A04, var(--tw-gradient-to) !important;
+  --tw-gradient-from: #C59B27 !important;
+  --tw-gradient-to: #E2BA4B !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #D4AF37, var(--tw-gradient-to) !important;
 }
 
-/* Headings and prominent text with text-white: convert to deep navy, UNLESS inside dark buttons or tags */
-html.light .text-white:not(button):not(button *):not(a.bg-\[\#E8B84B\]):not(a.bg-\[\#0B1220\]):not(a[class*="bg-[#0C1E3C]"]):not(a[class*="bg-[#0F1E36]"]):not(a[class*="bg-[#2E5EAA]"]):not([class*="bg-[#0C1E3C]"] *):not([class*="bg-[#0F1E36]"] *):not([class*="bg-[#2E5EAA]"] *) {
-  color: #0C1E3C !important;
-}
-
-/* Text slate conversions for optimal light mode readability */
+/* Body & Subtext in Light Mode */
+html.light .text-slate-100,
+html.light .text-slate-200,
 html.light .text-slate-300 {
-  color: #334155 !important;
+  color: #555E75 !important;
+}
+
+html.light p.text-slate-200,
+html.light span.text-slate-200,
+html.light div.text-slate-200 {
+  color: #555E75 !important;
+}
+
+html.light h1.text-slate-200,
+html.light h2.text-slate-200,
+html.light h3.text-slate-200,
+html.light h4.text-slate-200 {
+  color: #17135B !important;
 }
 
 html.light .text-slate-400 {
-  color: #64748B !important;
+  color: #646C82 !important;
 }
 
-/* Gold text adaptation in light mode */
+html.light .text-slate-500 {
+  color: #7B8196 !important;
+}
+
+/* Hover contrast safeguard: text should NOT turn white on light cards on hover! */
+html.light .group:hover .group-hover\:text-white:not(.\!text-white):not([class*="bg-[#17135B]"] *):not(.photo-overlay *):not(.group.relative:has(img) .absolute *),
+html.light .hover\:text-white:hover:not(.\!text-white):not([class*="bg-[#17135B]"] *):not(.photo-overlay *):not(.group.relative:has(img) .absolute *) {
+  color: #17135B !important;
+}
+
+html.light .text-\[\#E8B84B\].hover\:text-white:hover,
+html.light .group:hover .group-hover\:text-\[\#E8B84B\] {
+  color: #C59B27 !important;
+}
+
+/* Gold Accent Text */
 html.light .text-\[\#E8B84B\] {
-  color: #C89D2B !important;
+  color: #C59B27 !important;
 }
 
-/* Small tag/pill chips (e.g. Integrated Engineering Solutions tag) */
-html.light .rounded-full.bg-\[\#131C2E\] {
-  background-color: #FEF9ED !important;
-  border-color: #FDE68A !important;
+/* Navy Accent Text */
+html.light .text-\[\#2E5EAA\] {
+  color: #17135B !important;
 }
 
-html.light .rounded-full.bg-\[\#131C2E\] .text-slate-300 {
-  color: #92400E !important;
+/* Kicker Tags & Mini Badges (matches .kicker-text & .pill-badge) */
+html.light .rounded-full.bg-\[\#131C2E\],
+html.light .rounded-full.border-\[\#1e293b\] {
+  background-color: rgba(212, 175, 55, 0.14) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
 }
 
-/* Form inputs & textareas in light mode */
+html.light .rounded-full.bg-\[\#131C2E\] .text-slate-300,
+html.light .rounded-full.bg-\[\#131C2E\] span {
+  color: #8C6D1F !important;
+}
+
+/* ==========================================================================
+   BUTTONS STYLING IN LIGHT MODE
+   ========================================================================== */
+
+/* Gold Primary CTA Buttons */
+html.light a.bg-\[\#E8B84B\],
+html.light button.bg-\[\#E8B84B\],
+html.light a.bg-\[\#E5A93C\],
+html.light button.bg-\[\#E5A93C\] {
+  background-color: #E5A93C !important;
+  color: #111424 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(229, 169, 60, 0.35) !important;
+  border-color: transparent !important;
+}
+
+html.light a.bg-\[\#E8B84B\]:hover,
+html.light button.bg-\[\#E8B84B\]:hover,
+html.light a.bg-\[\#E5A93C\]:hover,
+html.light button.bg-\[\#E5A93C\]:hover {
+  background-color: #F0B74C !important;
+  box-shadow: 0 6px 18px rgba(229, 169, 60, 0.45) !important;
+}
+
+/* Outline Secondary Buttons (e.g. "See Sanota in Action") */
+html.light a.border-\[\#2E5EAA\],
+html.light button.border-\[\#2E5EAA\],
+html.light a.border-slate-700,
+html.light button.border-slate-700 {
+  color: #17135B !important;
+  background-color: #FFFFFF !important;
+  border-color: rgba(23, 19, 91, 0.2) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light a.border-\[\#2E5EAA\]:hover,
+html.light button.border-\[\#2E5EAA\]:hover,
+html.light a.border-slate-700:hover,
+html.light button.border-slate-700:hover {
+  background-color: #FAF8F5 !important;
+  border-color: #D4AF37 !important;
+  color: #17135B !important;
+}
+
+/* ==========================================================================
+   CRITICAL: SUBPAGE HERO BANNERS IN LIGHT MODE
+   Transforms subpage hero headers into elegant ivory architectural showcases
+   ========================================================================== */
+
+html.light section:has([style*="_hero_bg.jpg"]) {
+  background-color: #FAF8F5 !important;
+  border-bottom-color: #ECE7DD !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) [style*="_hero_bg.jpg"] {
+  opacity: 0.18 !important;
+  filter: grayscale(35%) contrast(115%) !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) .bg-\[\#050B14\]\/60 {
+  background: linear-gradient(180deg, rgba(250, 248, 245, 0.72) 0%, rgba(250, 248, 245, 0.94) 100%) !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) .bg-gradient-to-b {
+  background: linear-gradient(180deg, transparent 0%, rgba(250, 248, 245, 0.96) 100%) !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) h1,
+html.light section:has([style*="_hero_bg.jpg"]) h2 {
+  color: #17135B !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) h1 span,
+html.light section:has([style*="_hero_bg.jpg"]) .text-\[\#E8B84B\],
+html.light section:has([style*="_hero_bg.jpg"]) .text-\[\#2E5EAA\] {
+  color: #C59B27 !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) p.text-slate-300 {
+  color: #17135B !important;
+  font-weight: 600 !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) p.text-slate-400 {
+  color: #555E75 !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) a[class*="bg-[#131C2E]"] {
+  background-color: #FFFFFF !important;
+  color: #17135B !important;
+  border-color: #ECE7DD !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light section:has([style*="_hero_bg.jpg"]) a[class*="bg-[#131C2E]"]:hover {
+  background-color: #FAF8F5 !important;
+  border-color: #C59B27 !important;
+  color: #C59B27 !important;
+}
+
+/* ==========================================================================
+   CRITICAL: FULL-BLEED PHOTO CARDS & PHOTO OVERLAYS
+   Whenever text sits on top of a dark photo with dark gradient overlay,
+   IT MUST REMAIN CRISP WHITE & GOLD!
+   ========================================================================== */
+
+/* Cards with background image and absolute content overlay */
+html.light .group.relative:has(img) .absolute.inset-0 h1,
+html.light .group.relative:has(img) .absolute.inset-0 h2,
+html.light .group.relative:has(img) .absolute.inset-0 h3,
+html.light .group.relative:has(img) .absolute.inset-0 h4,
+html.light .group.relative:has(img) .absolute.inset-0 .text-white,
+html.light .photo-overlay h1,
+html.light .photo-overlay h2,
+html.light .photo-overlay h3,
+html.light .photo-overlay h4,
+html.light .photo-overlay .text-white {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.light .group.relative:has(img) .absolute.inset-0 p,
+html.light .group.relative:has(img) .absolute.inset-0 .text-slate-200,
+html.light .group.relative:has(img) .absolute.inset-0 .text-slate-300,
+html.light .group.relative:has(img) .absolute.inset-0 .text-slate-400,
+html.light .photo-overlay p,
+html.light .photo-overlay .text-slate-200,
+html.light .photo-overlay .text-slate-300,
+html.light .photo-overlay .text-slate-400 {
+  color: #E2E8F0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.light .group.relative:has(img) .absolute.inset-0 .text-\[\#E8B84B\],
+html.light .photo-overlay .text-\[\#E8B84B\] {
+  color: #E5A93C !important;
+}
+
+/* Dedicated dark showcase sections (like AeroShards) remain dark and crisp in all themes */
+html.light .aero-dark-section h1,
+html.light .aero-dark-section h2,
+html.light .aero-dark-section h3,
+html.light .aero-dark-section h4 {
+  color: #FFFFFF !important;
+}
+html.light .aero-dark-section p,
+html.light .aero-dark-section span {
+  color: #F8FAFC !important;
+}
+html.light .aero-dark-section .text-slate-400,
+html.light .aero-dark-section .text-slate-500 {
+  color: #94A3B8 !important;
+}
+html.light .aero-dark-section .text-slate-300 {
+  color: #CBD5E1 !important;
+}
+html.light .aero-dark-section .text-slate-200 {
+  color: #F8FAFC !important;
+}
+html.light .aero-dark-section .text-\[\#E8B84B\] {
+  color: #E8B84B !important;
+}
+
+/* Priority Industries Interactive section in /industries */
+html.light section#priority-industries h3,
+html.light section#priority-industries .text-white {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.light section#priority-industries p.text-slate-300,
+html.light section#priority-industries span.text-slate-300 {
+  color: #E2E8F0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.light section#priority-industries button.text-slate-600 {
+  color: #94A3B8 !important;
+}
+
+html.light section#priority-industries button.text-white {
+  color: #FFFFFF !important;
+}
+
+/* Ensure forced white text utility always works */
+html.light .\!text-white {
+  color: #FFFFFF !important;
+}
+
+/* General text-white on regular light containers turns to deep navy */
+html.light .text-white:not(button):not(button *):not(a[class*="bg-"]):not(a[class*="bg-"] *):not(.\!text-white):not([class*="bg-[#17135B]"] *):not([class*="bg-[#0F1E36]"] *):not([class*="bg-[#2E5EAA]"] *):not(.group.relative:has(img) .absolute *):not([class*="overflow-hidden"]:has(img) .absolute *):not(section#priority-industries *):not(.aero-dark-section *) {
+  color: #17135B !important;
+}
+
+/* Form Inputs & Controls */
 html.light input,
 html.light textarea,
 html.light select {
   background-color: #FFFFFF !important;
-  border-color: #CBD5E1 !important;
-  color: #0C1E3C !important;
+  border-color: #D1D5DB !important;
+  color: #111827 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus,
+html.light select:focus {
+  border-color: #D4AF37 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
 }
 
 html.light input::placeholder,
 html.light textarea::placeholder {
-  color: #94A3B8 !important;
+  color: #9CA3AF !important;
 }
 
-/* Footer in light mode */
+/* Footer in Light Mode */
 html.light footer {
-  background-color: #F8F9FA !important;
-  border-top: 1px solid #E2E8F0 !important;
+  background-color: #FAF8F5 !important;
+  border-top: 1px solid #ECE7DD !important;
 }
 
 html.light footer img[alt="Sanota Logo"] {
@@ -297,23 +558,29 @@ html.light footer img[alt="Sanota Logo"] {
 }
 
 html.light footer h4 {
-  color: #0C1E3C !important;
+  color: #17135B !important;
 }
 
 html.light footer a {
-  color: #475569 !important;
+  color: #555E75 !important;
 }
 
 html.light footer a:hover {
-  color: #C89D2B !important;
+  color: #C59B27 !important;
 }
 
 html.light footer p {
-  color: #475569 !important;
+  color: #646C82 !important;
 }
 
-/* In light mode, soften dark canvas / webgl wave backgrounds so they blend seamlessly */
-html.light canvas {
-  opacity: 0.15;
-  filter: contrast(0.8) brightness(1.2);
+html.light footer .w-8.h-8 {
+  background-color: #FFFFFF !important;
+  border-color: #ECE7DD !important;
+  color: #555E75 !important;
+}
+
+html.light footer .w-8.h-8:hover {
+  background-color: #17135B !important;
+  border-color: #17135B !important;
+  color: #FFFFFF !important;
 }
