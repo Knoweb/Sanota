@@ -113,7 +113,7 @@ export default function AboutPage() {
       <main className="flex-grow">
         
         {/* 1. Page Hero */}
-        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/about_hero_bg.jpg')" }}
@@ -163,7 +163,7 @@ export default function AboutPage() {
               <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
                 Discuss Your Requirement <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link href="/media" className="px-8 py-4 bg-[#131C2E]/80 hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+              <Link href="/media" className="px-8 py-4 bg-[#131C2E]/80 hover:bg-slate-800 text-white dark:text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
                 Explore Our Projects
               </Link>
             </motion.div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
         </section>
 
         {/* 2. Who We Are */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200/60 dark:border-transparent">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E8B84B]/5 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -192,25 +192,25 @@ export default function AboutPage() {
                 <motion.h2 variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
                   <span className="w-8 h-px bg-[#E8B84B] mr-4" /> Who We Are
                 </motion.h2>
-                <motion.h3 variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Engineering Solutions Built Around Real Requirements</motion.h3>
-                <motion.p variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="text-slate-300 text-lg leading-relaxed mb-8">
+                <motion.h3 variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Engineering Solutions Built Around Real Requirements</motion.h3>
+                <motion.p variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
                   Sanota (Pvt) Ltd works with organizations to understand operational challenges and develop practical engineering solutions that improve productivity, reliability, safety, visibility and resource efficiency.
                 </motion.p>
-                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="bg-[#0B1220]/50 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 mb-8 hover:border-[#2E5EAA]/50 transition-colors">
-                  <p className="text-slate-400 mb-4 font-bold text-sm tracking-wide uppercase">Our technical disciplines include:</p>
+                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="bg-white/80 dark:bg-[#0B1220]/50 backdrop-blur-md border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 mb-8 hover:border-[#2E5EAA]/50 transition-colors shadow-sm dark:shadow-none">
+                  <p className="text-slate-500 dark:text-slate-400 mb-4 font-bold text-sm tracking-wide uppercase">Our technical disciplines include:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {technicalDisciplines.map((item, idx) => (
                       <div key={idx} className="flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#E8B84B] to-amber-600 mt-2 mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
-                        <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#C59B27] to-amber-600 mt-2 mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
+                        <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{item}</span>
                       </div>
                     ))}
                   </div>
                 </motion.div>
                 
-                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="relative p-6 rounded-xl border border-slate-700/50 bg-gradient-to-br from-[#131C2E]/60 to-[#0B1220]/60 overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#E8B84B] to-transparent" />
-                  <p className="text-slate-300 italic text-sm leading-relaxed relative z-10 font-medium">
+                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="relative p-6 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-[#F5F3EF] dark:from-[#131C2E]/60 to-white/80 dark:to-[#0B1220]/60 overflow-hidden group shadow-sm dark:shadow-none">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-[#E8B84B] to-transparent" />
+                  <p className="text-slate-600 dark:text-slate-300 italic text-sm leading-relaxed relative z-10 font-medium">
                     "This integrated capability allows Sanota to take responsibility for more than an individual machine or isolated technology. We consider how the complete system must operate, how it will be implemented and how it can be supported over the long term."
                   </p>
                 </motion.div>
@@ -248,7 +248,7 @@ export default function AboutPage() {
         </section>
 
         {/* 3. Our Story */}
-        <section className="py-8 lg:py-12 bg-[#0B1220]/30 relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-slate-50/60 dark:bg-[#0B1220]/30 relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2E5EAA]/5 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
@@ -273,7 +273,7 @@ export default function AboutPage() {
                     <div className="text-3xl font-black text-[#E8B84B] mr-4">1,250+</div>
                     <div>
                       <p className="text-white font-bold text-lg">Client Engagements</p>
-                      <p className="text-slate-400 text-sm">Since 2010</p>
+                      <p className="text-slate-300 text-sm">Since 2010</p>
                     </div>
                   </div>
                 </div>
@@ -295,8 +295,8 @@ export default function AboutPage() {
                 <motion.h2 variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
                   <span className="w-8 h-px bg-[#E8B84B] mr-4" /> Our Story
                 </motion.h2>
-                <motion.h3 variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Developing Engineering Solutions Since 2010</motion.h3>
-                <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
+                <motion.h3 variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Developing Engineering Solutions Since 2010</motion.h3>
+                <div className="space-y-6 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
                   <motion.p variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}>
                     Sanota was founded in 2010 by Mr. Sahan C. Ranasinghe with the objective of identifying real industrial and operational problems and developing practical technical solutions to address them.
                   </motion.p>
@@ -307,10 +307,10 @@ export default function AboutPage() {
                     The company has worked across a wide range of sectors, supporting requirements in manufacturing, agriculture, food processing, tea, logistics, energy, environmental management, infrastructure, healthcare and research.
                   </motion.p>
                   <motion.p variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}>
-                    Through more than <strong className="text-white">1,250 client engagements</strong>, Sanota has gained experience in developing new systems, improving existing operations, modernizing ageing machinery and creating specialized solutions for requirements that cannot always be met through standard products.
+                    Through more than <strong className="text-[#17135B] dark:text-white">1,250 client engagements</strong>, Sanota has gained experience in developing new systems, improving existing operations, modernizing ageing machinery and creating specialized solutions for requirements that cannot always be met through standard products.
                   </motion.p>
-                  <motion.div variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="bg-gradient-to-r from-[#2E5EAA]/20 to-transparent p-5 rounded-xl border-l-2 border-[#2E5EAA]">
-                    <p className="text-white font-medium text-base">
+                  <motion.div variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="bg-gradient-to-r from-[#2E5EAA]/10 dark:from-[#2E5EAA]/20 to-transparent p-5 rounded-xl border-l-2 border-[#2E5EAA]">
+                    <p className="text-[#17135B] dark:text-white font-medium text-base">
                       Today, Sanota continues to strengthen its role as a Sri Lankan engineering and technology company with the capability to support both local and international customers, projects and partnerships.
                     </p>
                   </motion.div>
@@ -352,11 +352,11 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-8 lg:mb-12 max-w-3xl mx-auto"
             >
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#E8B84B] mr-3" /> What We Do <span className="w-6 h-px bg-[#E8B84B] ml-3" />
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> What We Do <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">From Operational Challenge to Engineered Solution</h3>
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">From Operational Challenge to Engineered Solution</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
                 Customers do not always need to approach Sanota with a completed technical specification. They may come to us with:
               </p>
             </motion.div>
@@ -372,9 +372,9 @@ export default function AboutPage() {
                   className="relative group w-full h-full rounded-2xl p-[1px] overflow-hidden shadow-lg"
                 >
                   <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#2E5EAA_360deg)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative bg-[#131C2E]/80 backdrop-blur-sm w-full h-full p-6 flex items-start rounded-[calc(1rem-1px)] border border-slate-700/50 group-hover:border-transparent transition-colors z-10">
+                  <div className="relative bg-white dark:bg-[#131C2E]/80 backdrop-blur-sm w-full h-full p-6 flex items-start rounded-[calc(1rem-1px)] border border-slate-200 dark:border-slate-700/50 group-hover:border-transparent transition-colors z-10 shadow-sm dark:shadow-none">
                     <CheckCircle2 className="w-6 h-6 text-[#2E5EAA] mr-4 shrink-0 mt-0.5 group-hover:text-[#E8B84B] transition-colors" />
-                    <p className="text-slate-300 font-medium group-hover:text-white transition-colors">{challenge}</p>
+                    <p className="text-slate-600 dark:text-slate-300 font-medium group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{challenge}</p>
                   </div>
                 </motion.div>
               ))}
@@ -384,13 +384,13 @@ export default function AboutPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="max-w-4xl mx-auto text-center space-y-6 bg-gradient-to-r from-[#0B1220] via-[#131C2E]/80 to-[#0B1220] border border-slate-700/50 rounded-3xl p-10 shadow-2xl relative overflow-hidden"
+              className="max-w-4xl mx-auto text-center space-y-6 bg-gradient-to-r from-[#F5F3EF] dark:from-[#0B1220] via-white dark:via-[#131C2E]/80 to-[#F5F3EF] dark:to-[#0B1220] border border-slate-200 dark:border-slate-700/50 rounded-3xl p-10 shadow-lg dark:shadow-2xl relative overflow-hidden"
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent opacity-50" />
-              <p className="text-white text-xl font-bold leading-relaxed">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent opacity-50" />
+              <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed">
                 Our role is to study the requirement, understand the operating environment and develop an appropriate engineering response.
               </p>
-              <p className="text-slate-400 text-lg leading-relaxed mb-8">
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-8">
                 Depending on the project, this may involve machinery design, fabrication, electrical systems, automation, sensors, IoT, software, dashboards, installation, commissioning, maintenance or a combination of these capabilities.
               </p>
               <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-all hover:scale-105 shadow-xl">
@@ -401,7 +401,7 @@ export default function AboutPage() {
         </section>
 
         {/* 5. Our Integrated Capabilities */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-[#E8B84B]/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
@@ -410,12 +410,12 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-8 lg:mb-12"
             >
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#E8B84B] mr-3" /> Our Integrated Capabilities <span className="w-6 h-px bg-[#E8B84B] ml-3" />
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> Our Integrated Capabilities <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">One Connected Engineering Approach</h3>
-              <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                Sanota’s principal strength is the ability to coordinate different engineering and technology disciplines within one solution.
+              <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">One Connected Engineering Approach</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+                Sanota's principal strength is the ability to coordinate different engineering and technology disciplines within one solution.
               </p>
             </motion.div>
             
@@ -430,12 +430,12 @@ export default function AboutPage() {
                   className="relative group rounded-3xl p-[1px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex-shrink-0 flex flex-col"
                 >
                   <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#E8B84B_360deg)] animate-[spin_6s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative bg-[#131C2E]/80 backdrop-blur-md w-full h-full p-8 flex flex-col rounded-[calc(1.5rem-1px)] border border-slate-700/50 group-hover:border-transparent transition-colors z-10 flex-grow">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0B1220] to-[#131C2E] border border-slate-700 flex items-center justify-center mb-6 shadow-inner group-hover:shadow-[0_0_15px_rgba(232,184,75,0.3)] transition-all">
-                      <cap.icon className="w-7 h-7 text-[#E8B84B]" />
+                  <div className="relative bg-white dark:bg-[#131C2E]/80 backdrop-blur-md w-full h-full p-8 flex flex-col rounded-[calc(1.5rem-1px)] border border-slate-200 dark:border-slate-700/50 group-hover:border-transparent transition-colors z-10 flex-grow shadow-sm dark:shadow-none">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F5F3EF] dark:from-[#0B1220] to-white dark:to-[#131C2E] border border-slate-200 dark:border-slate-700 flex items-center justify-center mb-6 shadow-inner group-hover:shadow-[0_0_15px_rgba(232,184,75,0.3)] transition-all">
+                      <cap.icon className="w-7 h-7 text-[#C59B27] dark:text-[#E8B84B]" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[#E8B84B] transition-colors">{cap.title}</h4>
-                    <p className="text-slate-400 text-sm leading-relaxed">{cap.desc}</p>
+                    <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-4 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{cap.title}</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{cap.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -444,7 +444,7 @@ export default function AboutPage() {
         </section>
 
         {/* 6 & 7. Supporting Industries & Engineering Approach */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2E5EAA]/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
@@ -455,15 +455,15 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
-                  <span className="w-8 h-px bg-[#E8B84B] mr-4" /> Supporting Industries
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
+                  <span className="w-8 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-4" /> Supporting Industries
                 </h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Engineering Progress Across Diverse Sectors</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Engineering Progress Across Diverse Sectors</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
                   Sanota has extended engineering and technical support across a broad range of industries in Sri Lanka.
                 </p>
                 
-                <p className="text-slate-400 mb-6 font-bold uppercase tracking-widest text-xs">Our work has included:</p>
+                <p className="text-slate-500 dark:text-slate-400 mb-6 font-bold uppercase tracking-widest text-xs">Our work has included:</p>
                 <div className="space-y-4 mb-8">
                   {industrySupport.map((item, idx) => (
                     <motion.div 
@@ -475,22 +475,22 @@ export default function AboutPage() {
                       className="flex items-start group"
                     >
                       <CheckCircle2 className="w-5 h-5 text-[#2E5EAA] mr-3 mt-0.5 shrink-0 group-hover:text-[#E8B84B] transition-colors" />
-                      <span className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-200 transition-colors">{item}</span>
+                      <span className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">{item}</span>
                     </motion.div>
                   ))}
                 </div>
 
-                <div className="bg-gradient-to-br from-[#131C2E]/60 to-[#0B1220]/60 border border-slate-700/50 rounded-2xl p-6 mb-8 relative overflow-hidden group">
+                <div className="bg-gradient-to-br from-[#F5F3EF] dark:from-[#131C2E]/60 to-white dark:to-[#0B1220]/60 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 mb-8 relative overflow-hidden group shadow-sm dark:shadow-none">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#2E5EAA] to-[#E8B84B]" />
-                  <p className="text-slate-300 text-sm leading-relaxed mb-4 font-medium">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 font-medium">
                     Through these activities, Sanota contributes to local engineering development, industrial productivity, technology adoption, value addition and import-substitution opportunities.
                   </p>
-                  <p className="text-slate-400 text-sm leading-relaxed italic">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed italic">
                     Our experience across different industries also enables us to transfer relevant knowledge and technologies from one operational environment to another.
                   </p>
                 </div>
 
-                <Link href="/industries" className="inline-flex items-center px-8 py-4 bg-[#131C2E] hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-lg transition-all hover:scale-105">
+                <Link href="/industries" className="inline-flex items-center px-8 py-4 bg-[#17135B] dark:bg-[#131C2E] hover:bg-[#0f0d45] dark:hover:bg-slate-800 border border-[#17135B] dark:border-slate-700 text-white font-bold rounded-lg transition-all hover:scale-105">
                   Explore Industries <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
@@ -501,15 +501,15 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
-                  Our Engineering Approach <span className="w-8 h-px bg-[#E8B84B] ml-4" />
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
+                  Our Engineering Approach <span className="w-8 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-4" />
                 </h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Practical Solutions Designed for Implementation</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Practical Solutions Designed for Implementation</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
                   Sanota approaches every project with an understanding that a successful engineering solution must work reliably within the customer’s actual operating environment.
                 </p>
                 
-                <p className="text-[#E8B84B] font-bold mb-8 uppercase tracking-widest text-xs">Our approach is guided by five principles:</p>
+                <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold mb-8 uppercase tracking-widest text-xs">Our approach is guided by five principles:</p>
                 
                 <div className="space-y-0 relative before:absolute before:inset-0 before:ml-[23px] before:w-0.5 before:bg-gradient-to-b before:from-slate-700 before:to-transparent">
                   {engineeringApproach.map((item, idx) => (
@@ -521,12 +521,12 @@ export default function AboutPage() {
                       transition={{ delay: idx * 0.1 }}
                       className="flex gap-6 pb-10 group"
                     >
-                      <div className="relative z-10 w-12 h-12 rounded-full bg-[#131C2E] border-[3px] border-slate-700 flex items-center justify-center shrink-0 group-hover:border-[#E8B84B] group-hover:bg-[#E8B84B]/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <span className="text-slate-400 font-black text-sm group-hover:text-[#E8B84B] transition-colors">{idx + 1}</span>
+                      <div className="relative z-10 w-12 h-12 rounded-full bg-[#F5F3EF] dark:bg-[#131C2E] border-[3px] border-slate-300 dark:border-slate-700 flex items-center justify-center shrink-0 group-hover:border-[#C59B27] dark:group-hover:border-[#E8B84B] group-hover:bg-[#C59B27]/20 dark:group-hover:bg-[#E8B84B]/20 transition-all duration-300 shadow-sm dark:shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <span className="text-slate-500 dark:text-slate-400 font-black text-sm group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{idx + 1}</span>
                       </div>
                       <div className="pt-1.5 group-hover:translate-x-2 transition-transform duration-300">
-                        <h4 className="text-white font-bold text-xl mb-2 group-hover:text-[#E8B84B] transition-colors">{item.title}</h4>
-                        <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                        <h4 className="text-[#17135B] dark:text-white font-bold text-xl mb-2 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{item.title}</h4>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -538,7 +538,7 @@ export default function AboutPage() {
         </section>
 
         {/* 8 & 9. Sanota and Knoweb & Innovation */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             
             {/* Sanota and Knoweb */}
@@ -546,7 +546,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-[2.5rem] overflow-hidden border border-slate-700/50 shadow-2xl flex flex-col lg:flex-row group bg-[#131C2E]/80 backdrop-blur-md"
+              className="rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-2xl flex flex-col lg:flex-row group bg-white dark:bg-[#131C2E]/80 backdrop-blur-md"
             >
               <div className="relative w-full lg:w-[45%] h-64 lg:h-auto overflow-hidden">
                 <motion.img 
@@ -557,27 +557,26 @@ export default function AboutPage() {
                   className="absolute inset-0 w-full h-full object-cover" 
                 />
               </div>
-              
-              <div className="p-8 lg:p-12 xl:p-16 lg:w-[55%] flex flex-col justify-center">
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Sanota and Knoweb</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-5">Engineering Connected by Digital Technology</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                  Sanota’s integrated engineering capability is supported by Knoweb, an affiliated information technology company under common ownership.
+                          <div className="p-8 lg:p-12 xl:p-16 lg:w-[55%] flex flex-col justify-center">
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Sanota and Knoweb</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-5">Engineering Connected by Digital Technology</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
+                  Sanota's integrated engineering capability is supported by Knoweb, an affiliated information technology company under common ownership.
                 </p>
                 
-                <div className="bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-700/50">
-                  <p className="text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">Knoweb contributes specialist expertise in:</p>
+                <div className="bg-slate-50 dark:bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-200 dark:border-slate-700/50">
+                  <p className="text-slate-500 dark:text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">Knoweb contributes specialist expertise in:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {knowebExpertise.map((item, idx) => (
                       <div key={idx} className="flex items-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
-                        <span className="text-slate-300 text-sm">{item}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
+                        <span className="text-slate-600 dark:text-slate-300 text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-base leading-relaxed mb-8 font-medium">
+                <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8 font-medium">
                   This relationship enables Sanota to combine physical engineering systems with digital technologies. A machine can therefore become part of a connected operational system incorporating sensors, automation, cloud access, dashboards, alerts, traceability and management reporting.
                 </p>
 
@@ -594,7 +593,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-[2.5rem] overflow-hidden border border-slate-700/50 shadow-2xl flex flex-col lg:flex-row-reverse group bg-[#131C2E]/80 backdrop-blur-md"
+              className="rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-2xl flex flex-col lg:flex-row-reverse group bg-white dark:bg-[#131C2E]/80 backdrop-blur-md"
             >
               <div className="relative w-full lg:w-[45%] h-64 lg:h-auto overflow-hidden">
                 <motion.img 
@@ -607,25 +606,25 @@ export default function AboutPage() {
               </div>
               
               <div className="p-8 lg:p-12 xl:p-16 lg:w-[55%] flex flex-col justify-center">
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Innovation and Collaboration</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-5">Turning Ideas into Practical Solutions</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Innovation and Collaboration</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-5">Turning Ideas into Practical Solutions</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
                   Sanota works with businesses, inventors, universities, researchers, institutions and technology partners to develop solutions for specialized and emerging requirements.
                 </p>
                 
-                <div className="bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-700/50">
-                  <p className="text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">Our collaborative capability includes:</p>
+                <div className="bg-slate-50 dark:bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-200 dark:border-slate-700/50">
+                  <p className="text-slate-500 dark:text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">Our collaborative capability includes:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-3">
                     {collaborationCapabilities.map((item, idx) => (
                       <div key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0 mt-0.5" />
-                        <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
+                        <CheckCircle2 className="w-5 h-5 text-[#C59B27] dark:text-[#E8B84B] mr-3 shrink-0 mt-0.5" />
+                        <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-base leading-relaxed font-medium mb-8">
+                <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed font-medium mb-8">
                   This approach allows Sanota to contribute not only as a supplier, but also as an engineering development partner.
                 </p>
 
@@ -641,7 +640,7 @@ export default function AboutPage() {
         </section>
 
         {/* 10 & 11. Vision & Mission */}
-        <section className="py-8 lg:py-12 bg-gradient-to-b from-[#0B1220] to-[#050B14] relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-gradient-to-b from-slate-50 dark:from-[#0B1220] to-white dark:to-[#050B14] relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-[#E8B84B]/5 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -653,16 +652,16 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-center lg:text-left"
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[#131C2E] border border-slate-700 shadow-inner mb-8">
-                  <Target className="w-10 h-10 text-[#E8B84B]" />
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[#F5F3EF] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700 shadow-inner mb-8">
+                  <Target className="w-10 h-10 text-[#C59B27] dark:text-[#E8B84B]" />
                 </div>
-                <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center lg:justify-start">
-                  <span className="w-6 h-px bg-[#E8B84B] mr-3 hidden lg:block" /> Our Vision
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center lg:justify-start">
+                  <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3 hidden lg:block" /> Our Vision
                 </h2>
-                <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+                <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight drop-shadow-md">
                   To Advance Industries Through Practical Engineering and Intelligent Technology
                 </h3>
-                <p className="text-slate-300 text-xl leading-relaxed border-l-2 border-[#E8B84B]/50 pl-5">
+                <p className="text-slate-600 dark:text-slate-300 text-xl leading-relaxed border-l-2 border-[#C59B27]/50 dark:border-[#E8B84B]/50 pl-5">
                   Our vision is to become a trusted engineering and technology partner for industries seeking practical, reliable, sustainable and future-ready operational solutions.
                 </p>
               </motion.div>
@@ -675,18 +674,18 @@ export default function AboutPage() {
                 className="relative rounded-[2.5rem] p-[1px] overflow-hidden shadow-2xl group"
               >
                 <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#2E5EAA_360deg)] animate-[spin_5s_linear_infinite]" />
-                <div className="relative bg-[#131C2E]/90 backdrop-blur-md w-full h-full p-10 lg:p-12 rounded-[calc(2.5rem-1px)] border border-slate-700/50 z-10">
+                <div className="relative bg-white dark:bg-[#131C2E]/90 backdrop-blur-md w-full h-full p-10 lg:p-12 rounded-[calc(2.5rem-1px)] border border-slate-200 dark:border-slate-700/50 z-10 shadow-lg dark:shadow-none">
                   <Compass className="w-12 h-12 text-[#2E5EAA] mb-6" />
-                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Our Mission</h2>
-                  <p className="text-white text-xl font-bold leading-relaxed mb-8">
+                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Our Mission</h2>
+                  <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed mb-8">
                     Our mission is to understand real operational challenges and deliver integrated engineering solutions that create measurable and long-term value for our customers.
                   </p>
-                  <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">We pursue this mission by:</p>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">We pursue this mission by:</p>
                   <div className="space-y-4">
                     {missionPoints.map((item, idx) => (
                       <div key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 mt-0.5 shrink-0" />
-                        <span className="text-slate-300 text-base">{item}</span>
+                        <CheckCircle2 className="w-5 h-5 text-[#C59B27] dark:text-[#E8B84B] mr-3 mt-0.5 shrink-0" />
+                        <span className="text-slate-600 dark:text-slate-300 text-base">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -706,10 +705,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-8 lg:mb-12"
             >
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#E8B84B] mr-3" /> What Guides Our Work <span className="w-6 h-px bg-[#E8B84B] ml-3" />
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> What Guides Our Work <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white">Core Principles</h3>
+              <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">Core Principles</h3>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-8 lg:gap-10">
@@ -722,12 +721,12 @@ export default function AboutPage() {
                   transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
                   className="relative group w-[230px] h-[230px] shrink-0 shadow-lg rounded-full"
                 >
-                  <PixelCard active={activePrinciple === idx} variant="yellow" className="w-full h-full rounded-full border border-slate-700/50 group-hover:border-[#E8B84B]/60 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] bg-[#131C2E]/70 backdrop-blur-md flex flex-col items-center justify-center text-center">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mb-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] relative z-10" />
-                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-[#E8B84B] transition-colors leading-tight relative z-10 px-4">
+                  <PixelCard active={activePrinciple === idx} variant="yellow" className="w-full h-full rounded-full border border-slate-200 dark:border-slate-700/50 group-hover:border-[#C59B27]/60 dark:group-hover:border-[#E8B84B]/60 shadow-sm dark:shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] bg-white dark:bg-[#131C2E]/70 backdrop-blur-md flex flex-col items-center justify-center text-center">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mb-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] relative z-10" />
+                    <h4 className="text-lg font-bold text-[#17135B] dark:text-white mb-2 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors leading-tight relative z-10 px-4">
                       {principle.title}
                     </h4>
-                    <p className="text-slate-400 text-xs leading-relaxed group-hover:text-slate-200 transition-colors relative z-10 px-5">
+                    <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors relative z-10 px-5">
                       {principle.desc}
                     </p>
                   </PixelCard>
@@ -738,7 +737,7 @@ export default function AboutPage() {
         </section>
 
         {/* 13. Why Organizations Work With Sanota */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-800/40">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           <div className="absolute left-1/4 bottom-0 w-[400px] h-[400px] bg-[#2E5EAA]/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
@@ -747,10 +746,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-8 lg:mb-12"
             >
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#E8B84B] mr-3" /> The Sanota Advantage <span className="w-6 h-px bg-[#E8B84B] ml-3" />
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> The Sanota Advantage <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white">Why Organizations Work With Sanota</h3>
+              <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">Why Organizations Work With Sanota</h3>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
@@ -773,19 +772,19 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="relative bg-[#131C2E]/70 backdrop-blur-md border border-slate-700/50 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-24px)] flex-shrink-0 flex flex-col overflow-hidden"
+                  className="relative bg-white dark:bg-[#131C2E]/70 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-24px)] flex-shrink-0 flex flex-col overflow-hidden shadow-sm dark:shadow-none"
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" style={{ background: `radial-gradient(circle at top right, ${color}, transparent)` }} />
                   <div className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ backgroundColor: color, boxShadow: `0 0 15px ${color}` }} />
                   
-                  <div className="w-16 h-16 rounded-2xl bg-[#0B1220] border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-inner relative z-10" style={{ borderColor: `${color}40`, boxShadow: `inset 0 0 20px ${color}10` }}>
+                  <div className="w-16 h-16 rounded-2xl bg-[#F5F3EF] dark:bg-[#0B1220] border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-inner relative z-10" style={{ borderColor: `${color}40`, boxShadow: `inset 0 0 20px ${color}10` }}>
                     <reason.icon className="w-8 h-8 transition-colors" style={{ color: color, filter: `drop-shadow(0 0 8px ${color}80)` }} />
                   </div>
                   
-                  <h4 className="text-xl font-bold text-white mb-4 transition-colors relative z-10 group-hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                  <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-4 transition-colors relative z-10">
                     {reason.title}
                   </h4>
-                  <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-200 transition-colors relative z-10">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors relative z-10">
                     {reason.desc}
                   </p>
                 </motion.div>
@@ -795,7 +794,7 @@ export default function AboutPage() {
         </section>
 
         {/* 14. Sanota at a Glance */}
-        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-800/50">
+        <section className="py-8 lg:py-12 bg-transparent relative overflow-hidden border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -803,10 +802,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-8 lg:mb-12"
             >
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#E8B84B] mr-3" /> Key Facts <span className="w-6 h-px bg-[#E8B84B] ml-3" />
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> Key Facts <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white">Sanota at a Glance</h3>
+              <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">Sanota at a Glance</h3>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -817,10 +816,10 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-[#0B1220] border border-slate-700/50 rounded-2xl p-8 text-center hover:bg-[#0B1220]/80 hover:border-[#E8B84B]/40 transition-colors"
+                  className="bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-50 dark:hover:bg-[#0B1220]/80 hover:border-[#C59B27]/40 dark:hover:border-[#E8B84B]/40 transition-colors shadow-sm dark:shadow-none"
                 >
-                  <h4 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-amber-500 mb-4">{fact.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">{fact.desc}</p>
+                  <h4 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500 mb-4">{fact.title}</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{fact.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -831,8 +830,8 @@ export default function AboutPage() {
         <section className="py-24 lg:py-32 bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/80 to-[#131C2E]/50 pointer-events-none" />
-            <div className="absolute left-1/2 top-0 w-full h-px -translate-x-1/2 bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] dark:from-[#050B14] via-[#FAF8F5]/60 dark:via-[#050B14]/80 to-transparent pointer-events-none" />
+            <div className="absolute left-1/2 top-0 w-full h-px -translate-x-1/2 bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent opacity-30" />
           </div>
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -840,16 +839,16 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight drop-shadow-lg"
+              className="text-4xl md:text-6xl font-black text-[#17135B] dark:text-white mb-8 leading-tight tracking-tight drop-shadow-lg"
             >
-              Let’s Develop the Right Solution <br className="hidden md:block" /> for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4B85E8]">Operation</span>
+              Let's Develop the Right Solution <br className="hidden md:block" /> for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4B85E8]">Operation</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-slate-300 text-xl md:text-2xl mb-8 leading-relaxed font-medium"
+              className="text-slate-600 dark:text-slate-300 text-xl md:text-2xl mb-8 leading-relaxed font-medium"
             >
               Whether you are planning a new engineering project, improving a production process, developing a product, modernizing machinery, introducing automation or seeking dependable maintenance support, Sanota can help identify a practical way forward.
             </motion.p>
@@ -858,7 +857,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-slate-400 text-lg mb-12 max-w-3xl mx-auto"
+              className="text-slate-500 dark:text-slate-400 text-lg mb-12 max-w-3xl mx-auto"
             >
               Tell us about your operational challenge, requirement or opportunity. Our team will connect you with the appropriate engineering and technical expertise.
             </motion.p>
@@ -875,7 +874,7 @@ export default function AboutPage() {
                 <Target className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform" />
                 Discuss Your Requirement
               </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-5 bg-[#0B1220]/60 backdrop-blur-md text-white font-bold rounded-xl border border-slate-700 hover:bg-[#131C2E]/80 hover:border-[#2E5EAA]/50 transition-all hover:scale-105 shadow-xl">
+              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-5 bg-white dark:bg-[#0B1220]/60 backdrop-blur-md text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131C2E]/80 hover:border-[#2E5EAA]/50 transition-all hover:scale-105 shadow-lg dark:shadow-xl">
                 Request a Technical Consultation <ArrowRight className="ml-3 w-5 h-5" />
               </Link>
             </motion.div>
@@ -885,12 +884,12 @@ export default function AboutPage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap justify-center gap-6 sm:gap-10 pt-8 border-t border-slate-800/50"
+              className="flex flex-wrap justify-center gap-6 sm:gap-10 pt-8 border-t border-slate-200 dark:border-slate-800/50"
             >
-              <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-500 hover:text-[#E8B84B] transition-colors">Explore Our Services</Link>
-              <Link href="/media" className="text-sm font-bold tracking-wider uppercase text-slate-500 hover:text-[#E8B84B] transition-colors">View Our Projects</Link>
-              <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-500 hover:text-[#E8B84B] transition-colors">Request an AMC Assessment</Link>
-              <Link href="/contact" className="text-sm font-bold tracking-wider uppercase text-slate-500 hover:text-[#E8B84B] transition-colors">Explore a Partnership</Link>
+              <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">Explore Our Services</Link>
+              <Link href="/media" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">View Our Projects</Link>
+              <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">Request an AMC Assessment</Link>
+              <Link href="/contact" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">Explore a Partnership</Link>
             </motion.div>
           </div>
         </section>

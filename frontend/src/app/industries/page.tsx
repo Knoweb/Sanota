@@ -178,7 +178,7 @@ export default function IndustriesPage() {
       <main className="flex-grow">
         
         {/* 1. Page Hero */}
-        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
+        <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style={{ backgroundImage: "url('/industries_hero_bg.jpg')" }}
@@ -235,7 +235,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 2. Industry-Focused Engineering */}
-        <section className="relative py-12 lg:py-16 bg-[#0B1220] overflow-hidden">
+        <section className="relative py-12 lg:py-16 bg-[#0B1220] aero-dark-section overflow-hidden border-t border-slate-800/60">
           {/* Slowly moving AeroShards Background */}
           <div className="absolute inset-0 overflow-hidden z-0">
             <AeroShards
@@ -277,53 +277,82 @@ export default function IndustriesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               
               <div className="lg:col-span-7 pr-0 lg:pr-4">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4 backdrop-blur-sm">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4 backdrop-blur-sm shadow-[0_0_15px_rgba(232,184,75,0.15)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2 animate-pulse" />
-                  <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">Industry-Focused Engineering</h2>
+                  <h2 className="!text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">Industry-Focused Engineering</h2>
                 </div>
                 
-                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                <h3 className="text-3xl lg:text-4xl font-extrabold !text-white mb-4 leading-tight drop-shadow-sm">
                   Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Your Industry Operates</span>
                 </h3>
                 
-                <p className="text-slate-400 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl">
+                <p className="!text-slate-300 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl font-light">
                   Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another.
                 </p>
                 
-                <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-800 via-[#E8B84B]/40 to-transparent mb-6" />
+                <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-700 via-[#E8B84B]/50 to-transparent mb-6" />
                 
-                <p className="text-slate-300 text-base lg:text-lg font-medium mb-4">Sanota begins by understanding your operation, including:</p>
+                <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">Sanota begins by understanding your operation, including:</p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
                   {operationalUnderstanding.map((item, idx) => (
-                    <div key={idx} className="flex items-center bg-[#131C2E]/30 border border-slate-800/60 p-3 rounded-xl group hover:border-[#E8B84B]/40 hover:bg-[#131C2E]/60 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-[#0B1220] border border-slate-700 group-hover:border-[#E8B84B]/60 transition-colors shrink-0 mr-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] opacity-50 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300" />
+                    <div 
+                      key={idx} 
+                      className="flex items-center p-3.5 rounded-xl group transition-all duration-300 shadow-lg hover:-translate-y-0.5 cursor-default"
+                      style={{
+                        backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        backdropFilter: 'blur(12px)'
+                      }}
+                    >
+                      <div 
+                        className="flex items-center justify-center w-6 h-6 rounded-full shrink-0 mr-3 transition-colors"
+                        style={{
+                          backgroundColor: 'rgba(11, 18, 32, 0.95)',
+                          border: '1px solid rgba(232, 184, 75, 0.4)'
+                        }}
+                      >
+                        <div className="w-2 h-2 rounded-full bg-[#E8B84B] shadow-[0_0_8px_rgba(232,184,75,0.9)]" />
                       </div>
-                      <span className="text-slate-300 text-xs sm:text-sm font-medium group-hover:text-white transition-colors leading-snug">{item}</span>
+                      <span 
+                        className="text-white text-xs sm:text-sm font-semibold group-hover:text-[#E8B84B] transition-colors leading-snug"
+                        style={{ color: '#FFFFFF' }}
+                      >
+                        {item}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
-                <div className="relative w-full max-w-md bg-[#0B1220]/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 lg:p-8 overflow-hidden group hover:border-[#E8B84B]/30 transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+              <div className="lg:col-span-5 mt-8 lg:mt-0 relative z-10">
+                <div 
+                  className="rounded-2xl p-6 lg:p-8 overflow-hidden group transition-all duration-500 shadow-2xl relative"
+                  style={{
+                    backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
+                    backdropFilter: 'blur(16px)'
+                  }}
+                >
                   {/* Subtle top highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E8B84B]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B]/60 to-transparent" />
                   
                   {/* Elegant Quote Icon */}
-                  <div className="mb-4 text-[#E8B84B]/30 group-hover:text-[#E8B84B]/50 transition-colors duration-500">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <div className="mb-4 text-[#E8B84B] transition-colors duration-500">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
                   
-                  <p className="text-slate-300 text-base lg:text-lg font-light leading-relaxed relative z-10">
-                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-medium">practical and scalable solution.</span>
+                  <p 
+                    className="text-white text-base lg:text-lg font-normal leading-relaxed relative z-10"
+                    style={{ color: '#FFFFFF' }}
+                  >
+                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>practical and scalable solution.</span>
                   </p>
                   
                   {/* Subtle corner glow */}
-                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#E8B84B]/10 blur-3xl rounded-full pointer-events-none group-hover:bg-[#E8B84B]/20 transition-colors duration-700" />
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#E8B84B]/15 blur-3xl rounded-full pointer-events-none" />
                 </div>
               </div>
 
@@ -332,7 +361,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 3. Priority Industries (Interactive) */}
-        <section id="industries" className="relative py-10 lg:py-14 min-h-[90vh] flex items-center overflow-hidden bg-[#050B14]">
+        <section id="priority-industries" className="relative py-10 lg:py-14 min-h-[90vh] flex items-center overflow-hidden bg-[#050B14]">
           {/* Background Images with AnimatePresence */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -420,15 +449,15 @@ export default function IndustriesPage() {
         </section>
 
         {/* 4. Additional Industries (Premium Accordion Layout) */}
-        <section className="pt-24 pb-12 bg-[#0B1220] border-t border-slate-800/50 bg-transparent relative overflow-hidden">
+        <section className="pt-24 pb-12 border-t border-slate-200 dark:border-slate-800/50 bg-transparent relative overflow-hidden">
           {/* Subtle background ambient light */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
           
           <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Additional Industries</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Broad Operational Support</h3>
-              <p className="text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Additional Industries</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Broad Operational Support</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
                 Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments.
               </p>
             </div>
@@ -440,7 +469,7 @@ export default function IndustriesPage() {
                 return (
                   <div 
                     key={idx} 
-                    className={`border-b border-slate-800/60 transition-colors duration-500 ${isActive ? 'border-[#E8B84B]/30' : 'hover:border-slate-600'}`}
+                    className={`border-b border-slate-200 dark:border-slate-800/60 transition-colors duration-500 ${isActive ? 'border-[#C59B27]/30 dark:border-[#E8B84B]/30' : 'hover:border-slate-300 dark:hover:border-slate-600'}`}
                   >
                     <button
                       onClick={() => setActiveAdditional(isActive ? null : idx)}
@@ -448,7 +477,7 @@ export default function IndustriesPage() {
                     >
                       <div className="flex items-center space-x-6">
                         <motion.div 
-                          className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-800/30 group-hover:bg-slate-800/60"
+                          className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800/30 group-hover:bg-slate-200 dark:group-hover:bg-slate-800/60"
                           animate={{ 
                             borderColor: ['rgba(76,132,224,0.5)', 'rgba(232,184,75,0.5)', 'rgba(168,85,247,0.5)', 'rgba(16,185,129,0.5)', 'rgba(76,132,224,0.5)'],
                             boxShadow: ['0 0 15px rgba(76,132,224,0.3)', '0 0 15px rgba(232,184,75,0.3)', '0 0 15px rgba(168,85,247,0.3)', '0 0 15px rgba(16,185,129,0.3)', '0 0 15px rgba(76,132,224,0.3)'],
@@ -459,7 +488,7 @@ export default function IndustriesPage() {
                         >
                           <ind.icon className="w-5 h-5" />
                         </motion.div>
-                        <h4 className={`text-xl sm:text-2xl font-bold transition-colors duration-500 ${isActive ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
+                        <h4 className={`text-xl sm:text-2xl font-bold transition-colors duration-500 ${isActive ? 'text-[#17135B] dark:text-white' : 'text-slate-500 dark:text-slate-300 group-hover:text-[#17135B] dark:group-hover:text-white'}`}>
                           {ind.title}
                         </h4>
                       </div>
@@ -481,7 +510,7 @@ export default function IndustriesPage() {
                         >
                           <div className="pl-24 pr-4 pb-8 pt-2">
                             <p className="text-[#2E5EAA] font-bold text-sm mb-4 uppercase tracking-wide">{ind.subtitle}</p>
-                            <p className="text-slate-400 text-[15px] leading-relaxed mb-6 max-w-3xl">
+                            <p className="text-slate-500 dark:text-slate-400 text-[15px] leading-relaxed mb-6 max-w-3xl">
                               {ind.desc}
                             </p>
                             <Link 
@@ -503,12 +532,12 @@ export default function IndustriesPage() {
         </section>
 
         {/* 5. How Sanota Helps Industries */}
-        <section className="pt-12 pb-24 bg-[#050B14] border-t border-slate-800/50 bg-transparent">
+        <section className="pt-12 pb-24 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12 max-w-3xl mx-auto">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Support Across the Complete Engineering Journey</h3>
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Support Across the Complete Engineering Journey</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
                 Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle.
               </p>
             </div>
@@ -558,7 +587,7 @@ export default function IndustriesPage() {
                       </div>
 
                       {/* Inner dark background */}
-                      <div className="absolute inset-[1px] rounded-[17px] bg-[#0B1220] group-hover:bg-[#131C2E] transition-colors duration-500 z-20 overflow-hidden">
+                      <div className="absolute inset-[1px] rounded-[17px] bg-[#F5F3EF] dark:bg-[#0B1220] group-hover:bg-[#ECE7DD] dark:group-hover:bg-[#131C2E] transition-colors duration-500 z-20 overflow-hidden">
                         {/* Subtle sweep gradient inside the diamond */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                       </div>
@@ -568,10 +597,10 @@ export default function IndustriesPage() {
                       </div>
                     </div>
                     
-                    <h4 className="text-xl font-bold text-white mb-3 group-hover:text-[#E8B84B] transition-colors duration-300">
+                    <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors duration-300">
                       {step.title}
                     </h4>
-                    <p className="text-slate-400 text-[14.5px] leading-relaxed max-w-[260px] group-hover:text-slate-300 transition-colors duration-300">
+                    <p className="text-slate-500 dark:text-slate-400 text-[14.5px] leading-relaxed max-w-[260px] group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
                       {step.desc}
                     </p>
                   </div>
@@ -588,7 +617,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* 6. Engineering and Digital Technology Together (Premium Image Overlay Design) */}
-        <section className="py-8 lg:py-12 bg-[#050B14] relative overflow-hidden">
+        <section className="py-8 lg:py-12 bg-[#F5F3EF]/80 dark:bg-[#050B14] relative overflow-hidden border-t border-slate-200 dark:border-slate-900">
           {/* Subtle background ambient light */}
           <div className="absolute top-1/2 right-0 w-1/3 h-[500px] bg-[#2E5EAA]/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2" />
 
@@ -596,9 +625,9 @@ export default function IndustriesPage() {
             
             {/* Header Text */}
             <div className="mb-10 max-w-4xl">
-               <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Engineering & Digital Integration</h2>
-               <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">Physical Systems Connected with Intelligent Technology</h3>
-               <p className="text-slate-400 text-lg leading-relaxed max-w-3xl">
+               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Engineering & Digital Integration</h2>
+               <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-4 leading-tight">Physical Systems Connected with Intelligent Technology</h3>
+               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-3xl">
                  Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly.
                </p>
             </div>
@@ -627,23 +656,23 @@ export default function IndustriesPage() {
 
               {/* Right: The Overlapping Glass Card */}
               <div className="w-full lg:w-7/12 mt-8 lg:mt-0 lg:-ml-20 relative z-10">
-                <div className="bg-[#131C2E]/80 backdrop-blur-2xl border border-slate-700/80 rounded-[30px] p-8 lg:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
+                <div className="bg-white dark:bg-[#131C2E]/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-700/80 rounded-[30px] p-8 lg:p-10 shadow-lg dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                   
-                  <p className="text-white text-xl font-bold leading-relaxed mb-6">
-                    This combination helps customers move from isolated machinery and manual records toward more <span className="text-[#E8B84B]">connected and visible operations.</span>
+                  <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed mb-6">
+                    This combination helps customers move from isolated machinery and manual records toward more <span className="text-[#C59B27] dark:text-[#E8B84B]">connected and visible operations.</span>
                   </p>
                   
-                  <div className="h-px w-full bg-gradient-to-r from-slate-700 to-transparent mb-6" />
+                  <div className="h-px w-full bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent mb-6" />
                   
                   <p className="text-[#2E5EAA] font-bold uppercase tracking-widest text-xs mb-5">Connected Solutions Incorporating:</p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
                     {digitalTechList.map((tech, idx) => (
                       <div key={idx} className="flex items-center group cursor-default">
-                        <div className="w-6 h-6 rounded-full bg-[#0B1220] border border-slate-700 group-hover:border-[#E8B84B]/60 flex items-center justify-center shrink-0 mr-4 transition-colors duration-300">
+                        <div className="w-6 h-6 rounded-full bg-[#F5F3EF] dark:bg-[#0B1220] border border-slate-200 dark:border-slate-700 group-hover:border-[#C59B27]/60 dark:group-hover:border-[#E8B84B]/60 flex items-center justify-center shrink-0 mr-4 transition-colors duration-300">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors duration-300" />
                         </div>
-                        <span className="text-slate-300 text-[14.5px] font-medium group-hover:text-white transition-colors duration-300">{tech}</span>
+                        <span className="text-slate-600 dark:text-slate-300 text-[14.5px] font-medium group-hover:text-[#17135B] dark:group-hover:text-white transition-colors duration-300">{tech}</span>
                       </div>
                     ))}
                   </div>
@@ -660,28 +689,28 @@ export default function IndustriesPage() {
         </section>
 
         {/* 7 & 8. Lifecycle Support (Interactive Tabs) */}
-        <section className="py-10 lg:py-14 bg-[#0B1220] border-t border-slate-800/50 bg-transparent">
+        <section className="py-10 lg:py-14 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Lifecycle & Operations Support</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Sustaining and Improving Critical Systems</h3>
-              <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Lifecycle & Operations Support</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Sustaining and Improving Critical Systems</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
                 Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently.
               </p>
             </div>
 
             {/* Custom Tabs */}
             <div className="flex justify-center mb-12">
-              <div className="bg-[#131C2E]/80 backdrop-blur-md border border-slate-700/80 p-1.5 rounded-2xl inline-flex relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] min-w-[320px] sm:min-w-[400px]">
+              <div className="bg-[#F5F3EF] dark:bg-[#131C2E]/80 backdrop-blur-md border border-slate-200 dark:border-slate-700/80 p-1.5 rounded-2xl inline-flex relative shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] min-w-[320px] sm:min-w-[400px]">
                 <button
                   onClick={() => setActiveSupportTab('modernization')}
-                  className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'modernization' ? 'text-[#0B1220]' : 'text-slate-400 hover:text-white'}`}
+                  className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'modernization' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
                   <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> Modernization
                 </button>
                 <button
                   onClick={() => setActiveSupportTab('amc')}
-                  className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'amc' ? 'text-[#0B1220]' : 'text-slate-400 hover:text-white'}`}
+                  className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'amc' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
                   <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> AMC & Support
                 </button>
@@ -704,34 +733,34 @@ export default function IndustriesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-gradient-to-br from-[#131C2E]/90 to-[#0B1220]/90 backdrop-blur-xl border border-slate-700/60 rounded-[30px] p-8 sm:p-12 overflow-hidden relative shadow-2xl"
+                    className="bg-gradient-to-br from-white dark:from-[#131C2E]/90 to-[#FAF8F5] dark:to-[#0B1220]/90 backdrop-blur-xl border border-slate-200 dark:border-slate-700/60 rounded-[30px] p-8 sm:p-12 overflow-hidden relative shadow-lg dark:shadow-2xl"
                   >
-                    <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#E8B84B]/5 blur-[80px] rounded-full pointer-events-none" />
+                    <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#C59B27]/5 dark:bg-[#E8B84B]/5 blur-[80px] rounded-full pointer-events-none" />
                     
                     <div className="flex flex-col lg:flex-row gap-12 relative z-10 items-center">
                       <div className="w-full lg:w-5/12 flex flex-col">
-                        <RefreshCw className="w-12 h-12 text-[#E8B84B] mb-6 opacity-90" />
-                        <h3 className="text-3xl font-bold text-white mb-6 leading-tight">Improve Existing Operations Before Replacement</h3>
-                        <p className="text-slate-300 leading-relaxed mb-8">
+                        <RefreshCw className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
+                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Improve Existing Operations Before Replacement</h3>
+                        <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
                           Many organizations operate valuable machinery and systems that have become unreliable, inefficient or difficult to maintain. Sanota assesses whether existing assets can be modernized to extend life and reduce costs.
                         </p>
-                        <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-white/5 hover:bg-white/10 border border-slate-600 text-white font-bold rounded-xl transition-colors mt-auto self-start">
+                        <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#17135B] dark:bg-white/5 hover:bg-[#0f0d45] dark:hover:bg-white/10 border border-[#17135B] dark:border-slate-600 text-white font-bold rounded-xl transition-colors mt-auto self-start">
                           Request Assessment <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                       </div>
                       
-                      <div className="w-full lg:w-7/12 lg:border-l border-slate-700/50 lg:pl-12">
-                        <p className="text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">Modernization approaches include:</p>
+                      <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
+                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">Modernization approaches include:</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
                           {modernizationImprovements.map((item, idx) => (
                             <div key={idx} className="flex items-start group">
                               <CheckCircle2 className="w-4 h-4 text-[#2E5EAA] group-hover:text-[#E8B84B] mr-3 mt-0.5 shrink-0 transition-colors" />
-                              <span className="text-slate-300 text-[14.5px] leading-snug group-hover:text-white transition-colors">{item}</span>
+                              <span className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-snug group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{item}</span>
                             </div>
                           ))}
                         </div>
-                        <div className="bg-[#0B1220]/50 border border-slate-800 rounded-xl p-5 mt-auto">
-                          <p className="text-slate-400 text-[13px] leading-relaxed italic">
+                        <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
+                          <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
                             This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement.
                           </p>
                         </div>
@@ -747,15 +776,15 @@ export default function IndustriesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-gradient-to-br from-[#131C2E]/90 to-[#0B1220]/90 backdrop-blur-xl border border-slate-700/60 rounded-[30px] p-8 sm:p-12 overflow-hidden relative shadow-2xl"
+                    className="bg-gradient-to-br from-white dark:from-[#131C2E]/90 to-[#FAF8F5] dark:to-[#0B1220]/90 backdrop-blur-xl border border-slate-200 dark:border-slate-700/60 rounded-[30px] p-8 sm:p-12 overflow-hidden relative shadow-lg dark:shadow-2xl"
                   >
                     <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-[#2E5EAA]/10 blur-[80px] rounded-full pointer-events-none" />
                     
                     <div className="flex flex-col lg:flex-row gap-12 relative z-10 items-center">
                       <div className="w-full lg:w-5/12 flex flex-col">
-                        <ShieldCheck className="w-12 h-12 text-[#E8B84B] mb-6 opacity-90" />
-                        <h3 className="text-3xl font-bold text-white mb-6 leading-tight">Keep Critical Systems Operating Reliably</h3>
-                        <p className="text-slate-300 leading-relaxed mb-8">
+                        <ShieldCheck className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
+                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Keep Critical Systems Operating Reliably</h3>
+                        <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
                           Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment.
                         </p>
                         <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors mt-auto self-start shadow-[0_5px_20px_rgba(232,184,75,0.2)]">
@@ -763,18 +792,18 @@ export default function IndustriesPage() {
                         </Link>
                       </div>
                       
-                      <div className="w-full lg:w-7/12 lg:border-l border-slate-700/50 lg:pl-12">
-                        <p className="text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">AMC programmes may cover:</p>
+                      <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
+                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">AMC programmes may cover:</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
                           {amcCoverage.map((item, idx) => (
                             <div key={idx} className="flex items-start group">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#2E5EAA] group-hover:bg-[#E8B84B] mr-3 mt-2 shrink-0 transition-colors" />
-                              <span className="text-slate-300 text-[14.5px] leading-snug group-hover:text-white transition-colors">{item}</span>
+                              <span className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-snug group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{item}</span>
                             </div>
                           ))}
                         </div>
-                        <div className="bg-[#0B1220]/50 border border-slate-800 rounded-xl p-5 mt-auto">
-                          <p className="text-slate-400 text-[13px] leading-relaxed italic">
+                        <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
+                          <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
                             Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer.
                           </p>
                         </div>
@@ -788,10 +817,10 @@ export default function IndustriesPage() {
         </section>
 
         {/* 9. A Partner for Established and Emerging Industries (Creative Animated Design) */}
-        <section className="py-12 lg:py-16 relative overflow-hidden bg-[#050B14] border-t border-slate-800/50">
+        <section className="py-12 lg:py-16 relative overflow-hidden bg-[#F5F3EF]/60 dark:bg-[#050B14] border-t border-slate-200 dark:border-slate-800/50">
           {/* Dynamic Background with Image and Shader Gradient */}
           {/* Dynamic Background with Guaranteed Visible Animation */}
-          <div className="absolute inset-0 z-0 bg-[#050B14] overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-[#F5F3EF]/60 dark:bg-[#050B14] overflow-hidden">
             {/* Highly Visible Animated Background Orbs */}
             <motion.div 
               className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#2E5EAA] rounded-full"
@@ -800,7 +829,7 @@ export default function IndustriesPage() {
                 x: [0, 200, 0],
                 y: [0, 100, 0],
                 scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5]
+                opacity: [0.15, 0.35, 0.15]
               }}
               transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -812,7 +841,7 @@ export default function IndustriesPage() {
                 x: [0, -200, 0],
                 y: [0, -100, 0],
                 scale: [1, 1.3, 1],
-                opacity: [0.4, 0.7, 0.4]
+                opacity: [0.15, 0.35, 0.15]
               }}
               transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             />
@@ -823,35 +852,35 @@ export default function IndustriesPage() {
               animate={{ 
                 x: [-100, 100, -100],
                 y: [-50, 50, -50],
-                opacity: [0.4, 0.7, 0.4]
+                opacity: [0.15, 0.35, 0.15]
               }}
               transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             />
             
-            {/* Texture Layer - Extremely subtle so it doesn't block the crazy bright lights */}
+            {/* Texture Layer - Extremely subtle so it doesn't block the background lights */}
             <Image 
               src="/ind_tea_1788515252795.jpg" 
               alt="Industry Partnership Environment" 
               fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
-              className="object-cover opacity-10 pointer-events-none mix-blend-overlay"
+              className="object-cover opacity-5 dark:opacity-10 pointer-events-none mix-blend-overlay"
             />
           </div>
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-8">
-              <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Collaborative Innovation</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">A Partner for Established and Emerging Industries</h3>
-              <div className="bg-[#131C2E]/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)] inline-block relative overflow-hidden">
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Collaborative Innovation</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">A Partner for Established and Emerging Industries</h3>
+              <div className="bg-white/80 dark:bg-[#131C2E]/40 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 shadow-sm dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] inline-block relative overflow-hidden">
                 {/* Subtle shine on the text box */}
-                <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 animate-[runRight_8s_linear_infinite]" />
+                <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-[#C59B27]/10 dark:via-white/5 to-transparent skew-x-12 animate-[runRight_8s_linear_infinite]" />
                 
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl relative z-10">
+                <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl relative z-10">
                   Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward.
                 </p>
               </div>
             </div>
 
-            <p className="text-center text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">We work with organizations across all stages:</p>
+            <p className="text-center text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">We work with organizations across all stages:</p>
 
             {/* Floating Badges Grid */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto">
@@ -863,20 +892,20 @@ export default function IndustriesPage() {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: idx * 0.05, duration: 0.6, type: "spring", stiffness: 100 }}
                   whileHover={{ y: -5, scale: 1.05 }}
-                  className="bg-[#131C2E]/60 backdrop-blur-xl border border-slate-700/50 hover:border-[#E8B84B]/50 hover:bg-[#131C2E] px-6 py-4 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_15px_30px_rgba(232,184,75,0.15)] transition-all cursor-default flex items-center group"
+                  className="bg-white/80 dark:bg-[#131C2E]/60 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:bg-white dark:hover:bg-[#131C2E] px-6 py-4 rounded-full shadow-sm dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] hover:shadow-md dark:hover:shadow-[0_15px_30px_rgba(232,184,75,0.15)] transition-all cursor-default flex items-center group"
                 >
                   <div className="relative mr-3 flex items-center justify-center w-2 h-2 shrink-0">
                     <motion.div 
-                      className="absolute inset-0 rounded-full bg-[#E8B84B]"
+                      className="absolute inset-0 rounded-full bg-[#C59B27] dark:bg-[#E8B84B]"
                       animate={{ 
                         boxShadow: ['0 0 0px rgba(232,184,75,0)', '0 0 12px rgba(232,184,75,0.9)', '0 0 0px rgba(232,184,75,0)'],
                         opacity: [0.3, 1, 0.3]
                       }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: idx * 0.15 }}
                     />
-                    <div className="relative w-full h-full rounded-full bg-[#E8B84B] group-hover:bg-white transition-colors" />
+                    <div className="relative w-full h-full rounded-full bg-[#C59B27] dark:bg-[#E8B84B] group-hover:bg-[#17135B] dark:group-hover:bg-white transition-colors" />
                   </div>
-                  <span className="text-slate-300 group-hover:text-white font-medium text-sm sm:text-[15px] transition-colors">{partner}</span>
+                  <span className="text-slate-600 dark:text-slate-300 group-hover:text-[#17135B] dark:group-hover:text-white font-medium text-sm sm:text-[15px] transition-colors">{partner}</span>
                 </motion.div>
               ))}
             </div>
@@ -884,13 +913,13 @@ export default function IndustriesPage() {
         </section>
 
         {/* 10. Call to Action (Sleek Edge-to-Edge Animated Design) */}
-        <section className="py-8 lg:py-12 relative overflow-hidden bg-[#02050A] border-t border-slate-900">
+        <section className="py-8 lg:py-12 relative overflow-hidden bg-slate-100 dark:bg-[#02050A] border-t border-slate-200 dark:border-slate-900">
           
           {/* Animated Scanning Laser Lines */}
-          <div className="absolute inset-0 z-0 opacity-60">
+          <div className="absolute inset-0 z-0 opacity-40 dark:opacity-60 pointer-events-none">
             {/* Horizontal scanning line */}
             <motion.div 
-              className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B] to-transparent shadow-[0_0_15px_rgba(232,184,75,0.8)]"
+              className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent shadow-[0_0_15px_rgba(232,184,75,0.8)]"
               animate={{ top: ['0%', '100%', '0%'] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             />
@@ -903,10 +932,10 @@ export default function IndustriesPage() {
           </div>
 
           {/* Massive Scrolling Background Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] overflow-hidden z-0 pointer-events-none opacity-20 flex mix-blend-screen">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] overflow-hidden z-0 pointer-events-none opacity-10 dark:opacity-20 flex mix-blend-screen">
             <motion.h2 
               className="text-[12vw] font-black text-transparent whitespace-nowrap"
-              style={{ WebkitTextStroke: '2px #E8B84B' }}
+              style={{ WebkitTextStroke: '2px #C59B27' }}
               animate={{ x: [0, -1000] }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
@@ -921,23 +950,22 @@ export default function IndustriesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h3 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
-                What Does Your Industry <br className="hidden md:block"/> Need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Improve?</span>
+              <h3 className="text-5xl md:text-7xl font-black text-[#17135B] dark:text-white mb-6 leading-tight tracking-tight">
+                What Does Your Industry <br className="hidden md:block"/> Need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">Improve?</span>
               </h3>
               
-              <p className="text-slate-400 text-lg md:text-xl mb-12 leading-relaxed max-w-3xl mx-auto font-light">
+              <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-12 leading-relaxed max-w-3xl mx-auto font-light">
                 Whether it's a production challenge, an inefficient process, an outdated machine, or a new product idea—tell us what you need to achieve. We'll connect you with the appropriate engineering and technology capabilities.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8 lg:mb-12">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Link href="/tell-us-your-challenge" className="relative group w-full sm:w-auto px-8 py-5 bg-white text-[#0B1220] font-bold rounded-full overflow-hidden transition-all flex items-center justify-center">
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#E8B84B] to-[#d4a643] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Link href="/tell-us-your-challenge" className="relative group w-full sm:w-auto px-8 py-5 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-full overflow-hidden transition-all flex items-center justify-center shadow-lg shadow-[#E8B84B]/20">
                     <span className="relative z-10 flex items-center">Discuss Your Requirement <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" /></span>
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Link href="/contact" className="w-full sm:w-auto px-8 py-5 bg-transparent hover:bg-white/5 text-white font-bold rounded-full border border-slate-700 hover:border-white transition-all flex items-center justify-center">
+                  <Link href="/contact" className="w-full sm:w-auto px-8 py-5 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/5 text-[#17135B] dark:text-white font-bold rounded-full border border-slate-300 dark:border-slate-700 hover:border-[#17135B] dark:hover:border-white transition-all flex items-center justify-center shadow-sm dark:shadow-none">
                     Request Technical Consultation
                   </Link>
                 </motion.div>
@@ -951,7 +979,7 @@ export default function IndustriesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">Additional Enquiry Options</p>
+              <p className="text-slate-500 dark:text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">Additional Enquiry Options</p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
                 {[
                   "Industrial Assessment", 
@@ -966,8 +994,8 @@ export default function IndustriesPage() {
                     whileTap={{ scale: 0.98 }}
                     className="group cursor-pointer"
                   >
-                    <Link href="/contact" className="flex items-center gap-3 px-6 py-3 rounded-full border border-slate-800/80 bg-[#0B1220]/40 backdrop-blur-md hover:bg-[#0B1220] hover:border-[#E8B84B]/40 transition-all text-sm font-medium text-slate-400 group-hover:text-white shadow-[0_4px_15px_rgba(0,0,0,0.2)] group-hover:shadow-[0_8px_20px_rgba(232,184,75,0.1)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-[#E8B84B] group-hover:shadow-[0_0_8px_#E8B84B] transition-all" />
+                    <Link href="/contact" className="flex items-center gap-3 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-800/80 bg-white/80 dark:bg-[#0B1220]/40 backdrop-blur-md hover:bg-white dark:hover:bg-[#0B1220] hover:border-[#C59B27]/40 dark:hover:border-[#E8B84B]/40 transition-all text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-[#17135B] dark:group-hover:text-white shadow-sm dark:shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:shadow-md dark:group-hover:shadow-[0_8px_20px_rgba(232,184,75,0.1)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-[#C59B27] dark:group-hover:bg-[#E8B84B] group-hover:shadow-[0_0_8px_#E8B84B] transition-all" />
                       {option}
                     </Link>
                   </motion.div>
