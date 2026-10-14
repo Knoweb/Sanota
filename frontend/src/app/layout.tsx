@@ -47,7 +47,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased dark`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} h-full antialiased light`} data-theme="light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -55,14 +55,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               (function() {
                 try {
                   var saved = localStorage.getItem('sanota-theme');
-                  if (saved === 'light') {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.classList.add('light');
-                    document.documentElement.setAttribute('data-theme', 'light');
-                  } else {
+                  if (saved === 'dark') {
                     document.documentElement.classList.add('dark');
                     document.documentElement.classList.remove('light');
                     document.documentElement.setAttribute('data-theme', 'dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    document.documentElement.setAttribute('data-theme', 'light');
                   }
                 } catch (e) {}
               })();
