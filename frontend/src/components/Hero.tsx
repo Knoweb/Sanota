@@ -51,33 +51,33 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
               <Link
                 href="/tell-us-your-challenge"
-                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group"
+                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md shadow-[#E5A93C]/25 group"
               >
                 Tell Us Your Challenge
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/media"
-                className="inline-flex justify-center items-center px-6 py-3 border border-[#2E5EAA] text-[14px] font-bold rounded text-white hover:bg-[#2E5EAA]/10 transition-colors group"
+                className="inline-flex justify-center items-center px-6 py-3 border border-slate-700 dark:border-[#2E5EAA] text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#2E5EAA]/10 transition-colors group shadow-sm dark:shadow-none"
               >
                 See Sanota in Action
-                <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform text-[#2E5EAA]" />
+                <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform text-[#C59B27] dark:text-[#2E5EAA]" />
               </Link>
             </div>
 
             <div className="mb-8">
-              <p className="text-[13px] font-bold text-slate-400 uppercase tracking-widest">
+              <p className="text-[13px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 Engineering • Automation • IoT • Software • Implementation • Support
               </p>
             </div>
 
             {/* Chat Prompt */}
-            <div className="p-4 rounded-xl bg-[#131C2E]/40 border border-slate-700/50 max-w-xl backdrop-blur-md shadow-lg">
-              <h3 className="text-white font-bold text-sm mb-1.5">Not sure where to begin?</h3>
-              <p className="text-slate-400 text-xs mb-3">
+            <div className="p-4 rounded-xl bg-white/90 dark:bg-[#131C2E]/40 border border-[#ECE7DD] dark:border-slate-700/50 max-w-xl backdrop-blur-md shadow-sm dark:shadow-lg">
+              <h3 className="text-[#17135B] dark:text-white font-bold text-sm mb-1.5">Not sure where to begin?</h3>
+              <p className="text-[#555E75] dark:text-slate-400 text-xs mb-3">
                 Tell us what is not working—or what you want to achieve. We will help direct your enquiry to the appropriate engineering team.
               </p>
-              <Link href="/tell-us-your-challenge" className="text-xs font-bold text-[#E8B84B] hover:text-[#d4a643] flex items-center transition-colors">
+              <Link href="/tell-us-your-challenge" className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline flex items-center transition-colors">
                 Start Guided Chat
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -86,12 +86,12 @@ export default function Hero() {
 
           <div className="lg:col-span-5 relative group">
             {/* Ambient Background Glow behind image */}
-            <div className="absolute -inset-2 lg:-inset-4 bg-[#E8B84B]/20 rounded-[2.5rem] blur-xl opacity-60 animate-pulse -z-10" />
+            <div className="absolute -inset-2 lg:-inset-4 bg-[#C59B27]/20 dark:bg-[#E8B84B]/20 rounded-[2.5rem] blur-xl opacity-60 animate-pulse -z-10" />
 
             <motion.div 
               animate={{ 
-                boxShadow: ["0 0 10px rgba(232,184,75,0.2)", "0 0 30px rgba(232,184,75,0.8)", "0 0 10px rgba(232,184,75,0.2)"],
-                borderColor: ["rgba(232,184,75,0.3)", "rgba(232,184,75,1)", "rgba(232,184,75,0.3)"]
+                boxShadow: ["0 0 10px rgba(212,175,55,0.2)", "0 0 30px rgba(212,175,55,0.6)", "0 0 10px rgba(212,175,55,0.2)"],
+                borderColor: ["rgba(212,175,55,0.3)", "rgba(212,175,55,0.9)", "rgba(212,175,55,0.3)"]
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden flex items-center justify-center bg-[#0B1220] z-10 border-2"
@@ -114,12 +114,12 @@ export default function Hero() {
                   />
                 </motion.div>
               </AnimatePresence>
-              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0B1220] to-transparent opacity-90" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0B1220] to-transparent opacity-90 pointer-events-none" />
 
               <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
                 <div className="flex items-center space-x-3 mb-5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] animate-pulse" />
-                  <p className="text-[13px] font-bold text-white uppercase tracking-widest">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#E5A93C] animate-pulse" />
+                  <p className="text-[13px] font-bold !text-white uppercase tracking-widest drop-shadow-md">
                     {currentImageIndex === 0 && "Industrial Automation"}
                     {currentImageIndex === 1 && "Smart Agriculture"}
                     {currentImageIndex === 2 && "Food Processing"}
@@ -130,7 +130,7 @@ export default function Hero() {
                     <button
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`h-1.5 transition-all duration-300 rounded-full ${idx === currentImageIndex ? 'w-10 bg-[#E8B84B]' : 'w-4 bg-white/30 hover:bg-white/50'}`}
+                      className={`h-1.5 transition-all duration-300 rounded-full ${idx === currentImageIndex ? 'w-10 bg-[#E5A93C]' : 'w-4 bg-white/40 hover:bg-white/60'}`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}

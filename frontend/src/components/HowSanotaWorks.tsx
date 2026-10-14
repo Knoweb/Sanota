@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { MessageSquare, Search, PenTool, Wrench, PlayCircle, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 const steps = [
   {
@@ -51,6 +52,8 @@ const steps = [
 ];
 
 export default function HowSanotaWorks() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [activeStep, setActiveStep] = useState<number>(0);
   const [glowingStep, setGlowingStep] = useState<number>(0);
   const [paused, setPaused] = useState(false);
@@ -75,7 +78,7 @@ export default function HowSanotaWorks() {
   };
 
   return (
-    <section className="relative overflow-hidden border-t border-slate-800/60 py-12 lg:py-16 bg-transparent">
+    <section className="relative overflow-hidden border-t border-slate-200 dark:border-slate-800/60 py-12 lg:py-16 bg-transparent">
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 w-full">
 
@@ -85,7 +88,7 @@ export default function HowSanotaWorks() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-black text-[#E8B84B] uppercase tracking-[0.3em] mb-4"
+            className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4"
           >
             How Sanota Works
           </motion.p>
@@ -94,7 +97,7 @@ export default function HowSanotaWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight"
           >
             From Requirement to Working Solution
           </motion.h2>
@@ -108,7 +111,7 @@ export default function HowSanotaWorks() {
             <defs>
               {steps.map((step, idx) => (
                 <linearGradient key={`grad-${idx}`} id={`icon-grad-${idx}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                  <stop offset="0%" stopColor={isDark ? "#ffffff" : step.color} stopOpacity="0.9" />
                   <stop offset="100%" stopColor={step.color} />
                 </linearGradient>
               ))}
@@ -116,9 +119,9 @@ export default function HowSanotaWorks() {
           </svg>
 
           {/* Connecting line behind circles */}
-          <div className="hidden lg:block absolute top-[40px] left-[8.33%] right-[8.33%] h-[2px] z-0 rounded-full bg-slate-800/30">
+          <div className="hidden lg:block absolute top-[40px] left-[8.33%] right-[8.33%] h-[2px] z-0 rounded-full bg-slate-300 dark:bg-slate-800/30">
             {/* The Track */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-400 dark:via-slate-600/50 to-transparent" />
 
             {/* Energy Particle (Shooting Star) */}
             <motion.div
@@ -156,11 +159,19 @@ export default function HowSanotaWorks() {
                   <div
                     className={`w-[80px] h-[80px] rounded-full border-2 flex items-center justify-center mb-5 transition-all duration-500 relative`}
                     style={{
-                      borderColor: isGlowing ? step.color : `${step.color}33`,
-                      background: isGlowing
-                        ? `radial-gradient(circle at center, ${step.color}25 0%, rgba(11,18,32,0.9) 100%)`
-                        : 'rgba(11,18,32,0.8)',
-                      boxShadow: isGlowing ? `0 0 40px ${step.color}60, inset 0 0 15px ${step.color}30` : 'none',
+                      borderColor: isGlowing ? step.color : (isDark ? `${step.color}33` : `${step.color}55`),
+                      background: isDark
+                        ? (isGlowing
+                          ? `radial-gradient(circle at center, ${step.color}25 0%, rgba(11,18,32,0.9) 100%)`
+                          : 'rgba(11,18,32,0.8)')
+                        : (isGlowing
+                          ? `radial-gradient(circle at center, ${step.color}20 0%, #FFFFFF 100%)`
+                          : '#FFFFFF'),
+                      boxShadow: isGlowing
+                        ? (isDark
+                          ? `0 0 40px ${step.color}60, inset 0 0 15px ${step.color}30`
+                          : `0 8px 24px ${step.color}35, 0 2px 6px rgba(0,0,0,0.06)`)
+                        : (isDark ? 'none' : '0 2px 8px rgba(0,0,0,0.04)'),
                       transform: isGlowing ? 'scale(1.15)' : 'scale(1)',
                     }}
                   >
@@ -178,8 +189,8 @@ export default function HowSanotaWorks() {
 
                     {/* Colorful Gradient Icon */}
                     <Icon
-                      className={`w-8 h-8 transition-all duration-500 ${isGlowing ? "scale-110 drop-shadow-lg" : "opacity-60"}`}
-                      stroke={isGlowing ? `url(#icon-grad-${idx})` : '#94a3b8'}
+                      className={`w-8 h-8 transition-all duration-500 ${isGlowing ? "scale-110 drop-shadow-md" : "opacity-75"}`}
+                      stroke={isGlowing ? `url(#icon-grad-${idx})` : (isDark ? '#94a3b8' : '#555E75')}
                       strokeWidth={isGlowing ? 2.5 : 2}
                     />
                   </div>
@@ -188,8 +199,8 @@ export default function HowSanotaWorks() {
                   <p
                     className="text-[13px] font-black tracking-[0.15em] uppercase mb-2 transition-colors duration-300 text-center"
                     style={{
-                      color: isGlowing ? step.color : '#64748b',
-                      textShadow: isGlowing ? `0 0 10px ${step.color}60` : 'none'
+                      color: isGlowing ? step.color : (isDark ? '#64748b' : '#555E75'),
+                      textShadow: isGlowing && isDark ? `0 0 10px ${step.color}60` : 'none'
                     }}
                   >
                     {step.title}
@@ -209,7 +220,7 @@ export default function HowSanotaWorks() {
         >
           <Link
             href="/contact"
-            className="inline-flex justify-center items-center px-8 py-4 border border-[#E8B84B]/50 text-[15px] font-bold rounded-xl text-white hover:bg-[#E8B84B]/10 hover:border-[#E8B84B] transition-all duration-300 group"
+            className="inline-flex justify-center items-center px-8 py-4 border border-[#17135B]/20 dark:border-[#E8B84B]/50 text-[15px] font-bold rounded-xl text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-[#FAF8F5] dark:hover:bg-[#E8B84B]/10 hover:border-[#C59B27] dark:hover:border-[#E8B84B] shadow-sm dark:shadow-none transition-all duration-300 group"
           >
             Start a Discussion
             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>

@@ -142,11 +142,11 @@ export default function AMCAndLifecycle() {
   };
 
   return (
-    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Massive Immersive Card */}
-        <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-700/50 shadow-2xl bg-[#131C2E]/30 backdrop-blur-md">
+        <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-2xl bg-white dark:bg-[#131C2E]/30 backdrop-blur-md">
           
           {/* Background Image */}
           <div className="absolute inset-0">
@@ -154,11 +154,11 @@ export default function AMCAndLifecycle() {
               src="/images/capabilities/cap_practical_1789034261822.jpg"
               alt="AMC and Maintenance Services"
               fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover opacity-60 mix-blend-lighten"
+              className="object-cover opacity-20 dark:opacity-60 mix-blend-multiply dark:mix-blend-lighten"
             />
             {/* Gradient Overlay to ensure text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/90 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40 dark:from-[#0B1220] dark:via-[#0B1220]/90 dark:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/90 dark:from-[#0B1220] to-transparent opacity-80" />
           </div>
 
           <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 gap-12 p-8 sm:p-12 lg:p-16 items-center">
@@ -169,18 +169,18 @@ export default function AMCAndLifecycle() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 p-8 sm:p-10 rounded-3xl shadow-xl"
+                className="bg-white/95 dark:bg-[#131C2E]/40 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 p-8 sm:p-10 rounded-3xl shadow-lg dark:shadow-xl"
               >
-                <div className="inline-flex items-center space-x-2 bg-[#E8B84B]/10 border border-[#E8B84B]/30 px-4 py-2 rounded-full mb-6">
-                  <Wrench className="w-4 h-4 text-[#E8B84B]" />
-                  <span className="text-xs font-bold text-[#E8B84B] uppercase tracking-widest">AMC and Lifecycle Support</span>
+                <div className="inline-flex items-center space-x-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 border border-[#C59B27]/30 dark:border-[#E8B84B]/30 px-4 py-2 rounded-full mb-6">
+                  <Wrench className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+                  <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">AMC and Lifecycle Support</span>
                 </div>
                 
-                <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-                  Keep Critical Systems <br/><span className="text-[#E8B84B]">Operating Reliably</span>
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
+                  Keep Critical Systems <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">Operating Reliably</span>
                 </h3>
                 
-                <div className="text-[15px] text-slate-300 mb-8 leading-relaxed space-y-5">
+                <div className="text-[15px] text-[#555E75] dark:text-slate-300 mb-8 leading-relaxed space-y-5">
                   <p>
                     Sanota provides Annual Maintenance Contracts and technical support for machinery, automation and integrated systems developed by Sanota.
                   </p>
@@ -189,9 +189,9 @@ export default function AMCAndLifecycle() {
                   </p>
                 </div>
                 
-                <div className="flex items-center space-x-4 p-5 bg-[#0B1220]/60 rounded-2xl border border-slate-700/50 mb-10 shadow-inner">
-                  <Shield className="w-10 h-10 text-[#2E5EAA] shrink-0" />
-                  <p className="text-[13.5px] text-slate-300 leading-relaxed">
+                <div className="flex items-center space-x-4 p-5 bg-[#FAF8F5] dark:bg-[#0B1220]/60 rounded-2xl border border-slate-200 dark:border-slate-700/50 mb-10 shadow-inner">
+                  <Shield className="w-10 h-10 text-[#17135B] dark:text-[#2E5EAA] shrink-0" />
+                  <p className="text-[13.5px] text-[#555E75] dark:text-slate-300 leading-relaxed">
                     Each AMC is developed according to the equipment, operating environment, asset criticality and required response level.
                   </p>
                 </div>
@@ -199,14 +199,14 @@ export default function AMCAndLifecycle() {
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <Link
                     href="/contact"
-                    className="inline-flex justify-center items-center px-6 py-4 border border-transparent text-[14px] font-bold rounded-xl text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group w-full sm:w-auto"
+                    className="inline-flex justify-center items-center px-6 py-4 border border-transparent text-[14px] font-bold rounded-xl text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-colors shadow-lg shadow-[#E5A93C]/20 group w-full sm:w-auto"
                   >
                     Request an Assessment
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/services"
-                    className="inline-flex justify-center items-center px-6 py-4 border border-slate-600 text-[14px] font-bold rounded-xl text-white hover:bg-slate-800 transition-colors w-full sm:w-auto backdrop-blur-sm bg-[#131C2E]/50"
+                    className="inline-flex justify-center items-center px-6 py-4 border border-[#17135B]/20 dark:border-slate-600 text-[14px] font-bold rounded-xl text-[#17135B] dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors w-full sm:w-auto backdrop-blur-sm bg-white dark:bg-[#131C2E]/50"
                   >
                     Explore Services
                   </Link>
@@ -223,9 +223,9 @@ export default function AMCAndLifecycle() {
                 className="relative p-2 sm:p-8 flex flex-col"
               >
                 {/* Header */}
-                <div className="mb-4 border-b border-slate-700/50 pb-4 flex items-center justify-between shrink-0">
-                  <h4 className="text-xl font-bold text-white flex items-center">
-                    <CheckCircle2 className="w-6 h-6 text-[#2E5EAA] mr-3" />
+                <div className="mb-4 border-b border-slate-200 dark:border-slate-700/50 pb-4 flex items-center justify-between shrink-0">
+                  <h4 className="text-xl font-bold text-[#17135B] dark:text-white flex items-center">
+                    <CheckCircle2 className="w-6 h-6 text-[#17135B] dark:text-[#2E5EAA] mr-3" />
                     AMC Services May Include
                   </h4>
                 </div>
@@ -234,7 +234,7 @@ export default function AMCAndLifecycle() {
                 <div className="flex justify-center py-2 shrink-0 z-10">
                   <button 
                     onClick={() => scroll('up')} 
-                    className="pointer-events-auto text-slate-500 hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md hover:drop-shadow-[0_0_12px_rgba(232,184,75,0.6)]"
+                    className="pointer-events-auto text-slate-400 dark:text-slate-500 hover:text-[#C59B27] dark:hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md"
                   >
                     <ChevronUp className="w-8 h-8" strokeWidth={1.5} />
                   </button>
@@ -260,20 +260,20 @@ export default function AMCAndLifecycle() {
                         data-index={idx}
                         className={`flex items-center group p-5 transition-all duration-500 relative cursor-pointer overflow-hidden rounded-r-[1.5rem] rounded-l-md ${
                           isActive 
-                            ? 'scale-[1.05] shadow-[0_0_30px_rgba(232,184,75,0.15)] bg-gradient-to-r from-[#E8B84B]/10 via-[#131C2E] to-[#131C2E]/60 border border-slate-700 border-l-[4px] border-l-[#E8B84B] z-10' 
-                            : 'scale-95 opacity-100 bg-[#131C2E]/40 border border-slate-700/50 border-l-[4px] border-l-transparent hover:bg-gradient-to-r hover:from-[#2E5EAA]/10 hover:to-[#131C2E]/60 hover:border-l-[#2E5EAA]'
+                            ? 'scale-[1.05] shadow-lg dark:shadow-[0_0_30px_rgba(232,184,75,0.15)] bg-gradient-to-r from-[#C59B27]/15 via-white to-white dark:from-[#E8B84B]/10 dark:via-[#131C2E] dark:to-[#131C2E]/60 border border-slate-300 dark:border-slate-700 border-l-[4px] border-l-[#C59B27] dark:border-l-[#E8B84B] z-10' 
+                            : 'scale-95 opacity-100 bg-white/80 dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-700/50 border-l-[4px] border-l-transparent hover:bg-slate-50 dark:hover:bg-[#131C2E]/60 hover:border-l-[#17135B] dark:hover:border-l-[#2E5EAA]'
                         }`}
                         onClick={() => setActiveIndex(idx)}
                       >
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-5 shrink-0 transition-all duration-500 ${
-                          isActive ? 'bg-[#E8B84B]/10 border border-[#E8B84B] shadow-[0_0_15px_rgba(232,184,75,0.3)]' : 'bg-[#0B1220] border border-slate-600 group-hover:border-[#2E5EAA]'
+                          isActive ? 'bg-[#C59B27]/15 dark:bg-[#E8B84B]/10 border border-[#C59B27] dark:border-[#E8B84B] shadow-md' : 'bg-[#FAF8F5] dark:bg-[#0B1220] border border-slate-300 dark:border-slate-600 group-hover:border-[#17135B] dark:group-hover:border-[#2E5EAA]'
                         }`}>
                           <Pointer className={`w-5 h-5 transition-all duration-500 rotate-90 ${
-                            isActive ? 'text-[#E8B84B] scale-110' : 'text-slate-400 group-hover:text-[#2E5EAA]'
+                            isActive ? 'text-[#C59B27] dark:text-[#E8B84B] scale-110' : 'text-slate-500 dark:text-slate-400 group-hover:text-[#17135B] dark:group-hover:text-[#2E5EAA]'
                           }`} />
                         </div>
                         <span className={`text-[15px] font-bold transition-colors duration-500 drop-shadow-sm ${
-                          isActive ? 'text-white' : 'text-slate-300 group-hover:text-white'
+                          isActive ? 'text-[#17135B] dark:text-white' : 'text-[#555E75] dark:text-slate-300 group-hover:text-[#17135B] dark:group-hover:text-white'
                         }`}>
                           {item}
                         </span>
@@ -286,7 +286,7 @@ export default function AMCAndLifecycle() {
                 <div className="flex justify-center py-2 shrink-0 z-10">
                   <button 
                     onClick={() => scroll('down')} 
-                    className="pointer-events-auto text-slate-500 hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md hover:drop-shadow-[0_0_12px_rgba(232,184,75,0.6)] animate-pulse"
+                    className="pointer-events-auto text-slate-400 dark:text-slate-500 hover:text-[#C59B27] dark:hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md animate-pulse"
                   >
                     <ChevronDown className="w-8 h-8" strokeWidth={1.5} />
                   </button>

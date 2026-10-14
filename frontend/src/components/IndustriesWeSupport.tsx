@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Box, Leaf, CupSoda, Coffee, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const industries = [
   {
@@ -59,6 +60,8 @@ const additionalIndustries = [
 ];
 
 export default function IndustriesWeSupport() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -69,7 +72,7 @@ export default function IndustriesWeSupport() {
   }, []);
 
   return (
-    <section id="industries" className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
+    <section id="industries-we-support" className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         
@@ -78,17 +81,17 @@ export default function IndustriesWeSupport() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase"
+            className={`text-2xl sm:text-3xl font-extrabold tracking-tight uppercase ${isDark ? "text-white" : "text-[#17135B]"}`}
           >
             Engineering Support <br />
-            <span className="text-[#2E5EAA]">Across Industries</span>
+            <span className={isDark ? "text-[#2E5EAA]" : "text-[#C59B27]"}>Across Industries</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 max-w-3xl mx-auto text-[14.5px] text-slate-400 leading-relaxed"
+            className={`mt-4 max-w-3xl mx-auto text-[14.5px] leading-relaxed ${isDark ? "text-slate-400" : "text-[#555E75]"}`}
           >
             Sanota helps organizations improve productivity, reliability, process control, operational visibility, resource efficiency and long-term system performance.
           </motion.p>
@@ -102,34 +105,42 @@ export default function IndustriesWeSupport() {
           {/* Floating Glowing Navigation Arrows */}
           <motion.button 
             onClick={() => setActiveIndex((prev) => (prev - 1 + industries.length) % industries.length)}
-            className="absolute left-2 sm:left-6 lg:left-16 z-40 p-3.5 rounded-full border text-white backdrop-blur-sm"
+            className="absolute left-2 sm:left-6 lg:left-16 z-40 p-3.5 rounded-full border backdrop-blur-sm"
             style={{ 
-              background: 'linear-gradient(135deg, rgba(19,28,46,0.9), rgba(11,18,32,0.9))',
-              borderColor: 'rgba(232,184,75,0.4)',
-              boxShadow: '0 0 20px rgba(232,184,75,0.25), 0 8px 32px rgba(0,0,0,0.4)'
+              background: isDark
+                ? 'linear-gradient(135deg, rgba(19,28,46,0.9), rgba(11,18,32,0.9))'
+                : '#FFFFFF',
+              borderColor: isDark ? 'rgba(232,184,75,0.4)' : '#ECE7DD',
+              boxShadow: isDark
+                ? '0 0 20px rgba(232,184,75,0.25), 0 8px 32px rgba(0,0,0,0.4)'
+                : '0 4px 16px rgba(23,19,91,0.08), 0 1px 4px rgba(0,0,0,0.02)'
             }}
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.1, boxShadow: '0 0 35px rgba(232,184,75,0.6), 0 8px 32px rgba(0,0,0,0.5)' }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronLeft className="w-6 h-6 text-[#E8B84B]" />
+            <ChevronLeft className={`w-6 h-6 ${isDark ? "text-[#E8B84B]" : "text-[#17135B]"}`} />
           </motion.button>
           
           <motion.button 
             onClick={() => setActiveIndex((prev) => (prev + 1) % industries.length)}
-            className="absolute right-2 sm:right-6 lg:right-16 z-40 p-3.5 rounded-full border text-white backdrop-blur-sm"
+            className="absolute right-2 sm:right-6 lg:right-16 z-40 p-3.5 rounded-full border backdrop-blur-sm"
             style={{ 
-              background: 'linear-gradient(135deg, rgba(19,28,46,0.9), rgba(11,18,32,0.9))',
-              borderColor: 'rgba(232,184,75,0.4)',
-              boxShadow: '0 0 20px rgba(232,184,75,0.25), 0 8px 32px rgba(0,0,0,0.4)'
+              background: isDark
+                ? 'linear-gradient(135deg, rgba(19,28,46,0.9), rgba(11,18,32,0.9))'
+                : '#FFFFFF',
+              borderColor: isDark ? 'rgba(232,184,75,0.4)' : '#ECE7DD',
+              boxShadow: isDark
+                ? '0 0 20px rgba(232,184,75,0.25), 0 8px 32px rgba(0,0,0,0.4)'
+                : '0 4px 16px rgba(23,19,91,0.08), 0 1px 4px rgba(0,0,0,0.02)'
             }}
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.25 }}
-            whileHover={{ scale: 1.1, boxShadow: '0 0 35px rgba(232,184,75,0.6), 0 8px 32px rgba(0,0,0,0.5)' }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronRight className="w-6 h-6 text-[#E8B84B]" />
+            <ChevronRight className={`w-6 h-6 ${isDark ? "text-[#E8B84B]" : "text-[#17135B]"}`} />
           </motion.button>
 
           {industries.map((ind, idx) => {
@@ -150,7 +161,7 @@ export default function IndustriesWeSupport() {
             return (
               <motion.div 
                 key={ind.id}
-                className={`absolute w-[300px] sm:w-[360px] lg:w-[430px] rounded-3xl overflow-hidden border flex flex-col cursor-pointer`}
+                className={`coverflow-card absolute w-[300px] sm:w-[360px] lg:w-[430px] rounded-3xl overflow-hidden border flex flex-col cursor-pointer`}
                 initial={false}
                 animate={{
                   x,
@@ -163,58 +174,74 @@ export default function IndustriesWeSupport() {
                 style={{ 
                   height: isCenter ? 500 : 460,
                   transformStyle: "preserve-3d",
-                  background: isCenter 
-                    ? 'linear-gradient(135deg, #131C2E, #0B1220)' 
-                    : `linear-gradient(135deg, #0d1625, #0B1220)`,
-                  borderColor: isCenter 
-                    ? 'rgba(232,184,75,0.5)' 
-                    : `${ind.color}55`,
-                  boxShadow: isCenter 
-                    ? '0 0 0 1px rgba(232,184,75,0.2), 0 40px 80px -20px rgba(0,0,0,0.9), 0 0 60px rgba(232,184,75,0.08)' 
-                    : `0 10px 40px rgba(0,0,0,0.5), 0 0 30px ${ind.color}15`,
+                  background: isDark
+                    ? (isCenter 
+                        ? 'linear-gradient(135deg, #131C2E, #0B1220)' 
+                        : 'linear-gradient(135deg, #0d1625, #0B1220)')
+                    : '#FFFFFF',
+                  borderColor: isDark
+                    ? (isCenter ? 'rgba(232,184,75,0.5)' : `${ind.color}55`)
+                    : (isCenter ? '#C59B27' : '#ECE7DD'),
+                  boxShadow: isDark
+                    ? (isCenter 
+                        ? '0 0 0 1px rgba(232,184,75,0.2), 0 40px 80px -20px rgba(0,0,0,0.9), 0 0 60px rgba(232,184,75,0.08)' 
+                        : `0 10px 40px rgba(0,0,0,0.5), 0 0 30px ${ind.color}15`)
+                    : (isCenter
+                        ? '0 20px 48px -10px rgba(23,19,91,0.12), 0 0 25px rgba(212,175,55,0.18)'
+                        : '0 8px 24px rgba(23,19,91,0.05)'),
                 }}
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-60 overflow-hidden bg-slate-900">
                   <Image 
                     src={ind.image} 
                     alt={ind.title} 
                     fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                     className="object-cover transition-all duration-700"
                     style={{ 
-                      transform: isCenter ? "scale(1.06)" : "scale(1)",
-                      opacity: isCenter ? 0.9 : 0.80,
-                      filter: isCenter ? 'brightness(1.1)' : 'brightness(0.9) saturate(1.1)',
+                      transform: isCenter ? "scale(1.05)" : "scale(1)",
+                      opacity: isCenter ? 1 : 0.92,
                     }}
                   />
-                  {/* Color-tinted gradient overlay for side cards */}
+                  {/* Subtle edge vignette without washing out the photo */}
                   <div 
-                    className="absolute inset-0"
+                    className="absolute inset-0 pointer-events-none"
                     style={{ 
-                      background: isCenter 
-                        ? 'linear-gradient(to top, #0B1220 0%, rgba(11,18,32,0.5) 50%, transparent 100%)'
-                        : `linear-gradient(to top, #0B1220 0%, ${ind.color}20 50%, transparent 100%)`
+                      background: isDark
+                        ? 'linear-gradient(to top, rgba(11,18,32,0.6) 0%, transparent 40%)'
+                        : 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 35%)'
                     }} 
                   />
                   <div 
-                    className="absolute top-4 left-4 w-12 h-12 backdrop-blur-md rounded-xl border flex items-center justify-center transition-all duration-500"
+                    className="absolute top-4 left-4 w-11 h-11 backdrop-blur-md rounded-xl border flex items-center justify-center transition-all duration-500 shadow-md"
                     style={{
-                      background: 'rgba(11,18,32,0.85)',
-                      borderColor: isCenter ? 'rgba(232,184,75,0.4)' : `${ind.color}60`,
-                      boxShadow: `0 0 16px ${ind.color}40`,
+                      background: isDark ? 'rgba(11,18,32,0.85)' : '#FFFFFF',
+                      borderColor: isDark 
+                        ? (isCenter ? 'rgba(232,184,75,0.4)' : `${ind.color}60`)
+                        : (isCenter ? '#C59B27' : '#ECE7DD'),
+                      boxShadow: isDark ? `0 0 16px ${ind.color}40` : '0 2px 8px rgba(0,0,0,0.08)',
                     }}
                   >
                     <ind.icon 
-                      className="w-6 h-6 transition-colors duration-500" 
+                      className="w-5 h-5 transition-colors duration-500" 
                       style={{ color: ind.color }} 
                     />
                   </div>
                 </div>
-                <div className="p-6 md:p-8 flex flex-col flex-grow relative -mt-8 z-10 pointer-events-none">
+                <div className="p-6 md:p-7 flex flex-col flex-grow relative z-10 bg-white dark:bg-[#131C2E]">
                   <h3 
-                    className="text-[20px] md:text-[22px] font-bold mb-3 transition-colors duration-500"
-                    style={{ color: isCenter ? 'white' : ind.color }}
+                    className="text-[20px] md:text-[22px] font-black mb-2 transition-colors duration-300 leading-tight !drop-shadow-none"
+                    style={{ 
+                      color: isDark ? '#FFFFFF' : '#17135B',
+                      textShadow: 'none'
+                    }}
                   >{ind.title}</h3>
-                  <p className={`text-[13px] md:text-[14px] flex-grow leading-relaxed transition-colors duration-500 ${isCenter ? 'text-slate-300' : 'text-slate-400'}`}>
+                  <p 
+                    className="text-[13px] md:text-[14px] flex-grow leading-relaxed transition-colors duration-300 font-normal !drop-shadow-none"
+                    style={{ 
+                      color: isDark ? '#CBD5E1' : '#555E75',
+                      textShadow: 'none' 
+                    }}
+                  >
                     {ind.description}
                   </p>
                   
@@ -226,9 +253,11 @@ export default function IndustriesWeSupport() {
                     >
                       <Link 
                         href={ind.link}
-                        className="inline-flex items-center text-[#E8B84B] font-semibold hover:text-white transition-colors group"
+                        className={`inline-flex items-center font-bold text-sm transition-colors group ${
+                          isDark ? 'text-[#E8B84B] hover:text-white' : 'text-[#C59B27] hover:text-[#17135B]'
+                        }`}
                       >
-                        {ind.linkText} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        {ind.linkText} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                       </Link>
                     </motion.div>
                   )}
@@ -242,24 +271,30 @@ export default function IndustriesWeSupport() {
         <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:hidden mb-10">
           {industries.map((ind) => (
             <Link key={ind.id} href={ind.link}>
-              <div className="relative h-40 sm:h-56 rounded-2xl overflow-hidden border border-slate-700/50 group cursor-pointer shadow-lg flex flex-col justify-end p-4 sm:p-5">
+              <div className={`relative h-40 sm:h-56 rounded-2xl overflow-hidden border group cursor-pointer shadow-md flex flex-col justify-end p-4 sm:p-5 ${
+                isDark ? "border-slate-700/50 bg-[#131C2E]" : "border-[#ECE7DD] bg-white"
+              }`}>
                 <Image 
                   src={ind.image} 
                   alt={ind.title} 
                   fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
-                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                  className={`object-cover transition-opacity duration-500 ${isDark ? "opacity-60 group-hover:opacity-80" : "opacity-80 group-hover:opacity-95"}`}
                 />
                 <div 
                   className="absolute inset-0"
                   style={{ 
-                    background: `linear-gradient(to top, #0B1220 0%, ${ind.color}30 60%, transparent 100%)`
+                    background: isDark
+                      ? `linear-gradient(to top, #0B1220 0%, ${ind.color}30 60%, transparent 100%)`
+                      : `linear-gradient(to top, rgba(23,19,91,0.85) 0%, rgba(23,19,91,0.3) 60%, transparent 100%)`
                   }} 
                 />
                 <div className="relative z-10">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-black/40 backdrop-blur-md flex items-center justify-center mb-2 border border-white/10 group-hover:border-white/30 transition-colors">
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg backdrop-blur-md flex items-center justify-center mb-2 border ${
+                    isDark ? "bg-black/40 border-white/10 group-hover:border-white/30" : "bg-white/90 border-[#ECE7DD]"
+                  } transition-colors`}>
                     <ind.icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: ind.color }} />
                   </div>
-                  <h3 className="text-white font-bold text-[12px] sm:text-[15px] leading-snug drop-shadow-md">
+                  <h3 className="font-bold text-[12px] sm:text-[15px] leading-snug drop-shadow-md !text-white">
                     {ind.title}
                   </h3>
                 </div>
@@ -273,26 +308,39 @@ export default function IndustriesWeSupport() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto glowing-card bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)] rounded-3xl p-8 lg:p-10 relative overflow-hidden transition-all duration-300"
+          className={`max-w-5xl mx-auto glowing-card border rounded-3xl p-8 lg:p-10 relative overflow-hidden transition-all duration-300 ${
+            isDark 
+              ? "bg-[#131C2E]/40 backdrop-blur-md border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)]"
+              : "bg-white border-[#ECE7DD] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-[#C59B27]/60 hover:shadow-[0_12px_32px_rgba(23,19,91,0.06)]"
+          }`}
         >
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#2E5EAA]/10 to-transparent pointer-events-none" />
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6 relative z-10">
-            <h3 className="text-[22px] font-bold text-white">Additional Industries</h3>
+            <h3 
+              className="text-[22px] font-extrabold !text-[#17135B] dark:!text-white !drop-shadow-none"
+              style={{ color: isDark ? '#FFFFFF' : '#17135B', textShadow: 'none' }}
+            >
+              Additional Industries
+            </h3>
             <Link
               href="/industries"
-              className="inline-flex items-center px-6 py-2.5 border border-slate-700 hover:border-[#2E5EAA] text-[12px] font-bold rounded-lg text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10 transition-colors uppercase tracking-wider whitespace-nowrap"
+              className={`inline-flex items-center px-6 py-2.5 border text-[12px] font-bold rounded-lg transition-colors uppercase tracking-wider whitespace-nowrap ${
+                isDark 
+                  ? "border-slate-700 hover:border-[#2E5EAA] text-white bg-[#0B1220] hover:bg-[#2E5EAA]/10"
+                  : "border-[#ECE7DD] hover:border-[#C59B27] text-[#17135B] bg-[#FAF8F5] hover:bg-white"
+              }`}
             >
               View All Industries
-              <ChevronRight className="ml-2 w-4 h-4" />
+              <ChevronRight className={`ml-2 w-4 h-4 ${isDark ? "text-white" : "text-[#C59B27]"}`} />
             </Link>
           </div>
 
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-12 lg:gap-x-24 relative z-10">
             {additionalIndustries.map((industry, idx) => (
               <li key={idx} className="flex items-center">
-                <CheckCircle2 className="w-4 h-4 text-[#E8B84B] mr-4 shrink-0" />
-                <span className="text-[14.5px] text-slate-300 font-medium">{industry}</span>
+                <CheckCircle2 className={`w-4 h-4 mr-4 shrink-0 ${isDark ? "text-[#E8B84B]" : "text-[#C59B27]"}`} />
+                <span className={`text-[14.5px] font-medium ${isDark ? "text-slate-300" : "text-[#555E75]"}`}>{industry}</span>
               </li>
             ))}
           </ul>

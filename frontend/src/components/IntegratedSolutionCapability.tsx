@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Wrench, Cpu, Activity, Network, PenTool, LifeBuoy, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
 const capabilities = [
   { 
@@ -51,6 +52,9 @@ const capabilities = [
 ];
 
 export default function IntegratedSolutionCapability() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       {/* Background accents */}
@@ -67,17 +71,19 @@ export default function IntegratedSolutionCapability() {
             viewport={{ once: true }}
             className="xl:col-span-6 sticky top-24 xl:pr-6"
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
+            <h2 className={`text-2xl sm:text-3xl lg:text-5xl font-black mb-6 leading-tight ${isDark ? "text-white" : "text-[#17135B]"}`}>
               More Than One Technology. <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">One Connected Solution.</span>
             </h2>
-            <div className="text-[15.5px] text-slate-300 mb-8 leading-relaxed space-y-5">
+            <div className={`text-[15.5px] mb-8 leading-relaxed space-y-5 ${isDark ? "text-slate-300" : "text-[#555E75]"}`}>
               <p>Industrial problems rarely belong to a single technical discipline.</p>
               <p>A production issue may require mechanical changes, electrical controls, automation, sensors, software, installation and ongoing maintenance. Sanota brings these capabilities together through one coordinated solution.</p>
             </div>
             
-            <div className="p-5 border-l-4 border-[#E8B84B] bg-[#131C2E]/40 backdrop-blur-md mb-8 rounded-r-xl shadow-lg">
-              <p className="text-white font-bold tracking-wide leading-relaxed">
+            <div className={`p-5 border-l-4 border-[#E8B84B] mb-8 rounded-r-xl shadow-lg ${
+              isDark ? "bg-[#131C2E]/40 backdrop-blur-md" : "bg-white border-[#ECE7DD] shadow-[0_4px_16px_rgba(0,0,0,0.02)]"
+            }`}>
+              <p className={`font-bold tracking-wide leading-relaxed ${isDark ? "text-white" : "text-[#17135B]"}`}>
                 One coordinated team.<br/>
                 One accountable delivery approach.<br/>
                 One integrated solution.
@@ -86,7 +92,9 @@ export default function IntegratedSolutionCapability() {
 
             <Link
               href="/services"
-              className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg shadow-[#E8B84B]/20 group w-full sm:w-auto"
+              className={`inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg transition-colors shadow-lg group w-full sm:w-auto ${
+                isDark ? "text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] shadow-[#E8B84B]/20" : "text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] shadow-[#E5A93C]/25"
+              }`}
             >
               Explore Our Services
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -112,41 +120,58 @@ export default function IntegratedSolutionCapability() {
                     ease: "easeInOut",
                     delay: idx * 0.4
                   }}
-                  className="relative flex flex-col items-center text-center p-6 sm:p-8 rounded-full aspect-square w-full max-w-[280px] sm:max-w-[310px] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-500 group overflow-hidden justify-center shadow-2xl mx-auto"
+                  className={`relative flex flex-col items-center text-center p-6 sm:p-8 rounded-full aspect-square w-full max-w-[280px] sm:max-w-[310px] border transition-all duration-500 group overflow-hidden justify-center shadow-2xl mx-auto ${
+                    isDark 
+                      ? "bg-[#131C2E]/40 backdrop-blur-md border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)]"
+                      : "bg-white border-[#ECE7DD] shadow-[0_8px_24px_rgba(23,19,91,0.06)] hover:border-[#C59B27] hover:shadow-[0_14px_36px_rgba(23,19,91,0.12)]"
+                  }`}
                   style={{ '--card-color': cap.color } as React.CSSProperties}
                   onMouseEnter={(e: any) => {
                     e.currentTarget.style.borderColor = cap.color;
                   }}
                   onMouseLeave={(e: any) => {
-                    e.currentTarget.style.borderColor = '#1e293b'; // slate-800
+                    e.currentTarget.style.borderColor = isDark ? '#1e293b' : '#ECE7DD';
                   }}
                 >
                   {/* Background Image */}
-                  <div className="absolute inset-0 z-0 transition-all duration-700 opacity-40 group-hover:opacity-70 group-hover:scale-110">
+                  <div className={`absolute inset-0 z-0 transition-all duration-700 ${
+                    isDark ? "opacity-40 group-hover:opacity-70 group-hover:scale-110" : "opacity-10 group-hover:opacity-20 group-hover:scale-105"
+                  }`}>
                     <div 
                       className="absolute inset-0 z-10" 
-                      style={{ background: `linear-gradient(to bottom, rgba(11, 18, 32, 0.6), ${cap.color}33, rgba(11, 18, 32, 0.9))` }}
+                      style={{ 
+                        background: isDark
+                          ? `linear-gradient(to bottom, rgba(11, 18, 32, 0.6), ${cap.color}33, rgba(11, 18, 32, 0.9))`
+                          : `linear-gradient(to bottom, rgba(255,255,255,0.9), ${cap.color}20, rgba(255,255,255,0.95))`
+                      }}
                     />
                     <Image
                       src={cap.bgImage}
                       alt={cap.name}
                       fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover mix-blend-lighten"
+                      className={`object-cover ${isDark ? "mix-blend-lighten" : "mix-blend-multiply"}`}
                     />
                   </div>
 
                   <div 
                     className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full backdrop-blur-md flex items-center justify-center mb-4 border transition-all duration-500 shadow-lg shrink-0 group-hover:scale-110"
-                    style={{ backgroundColor: `${cap.color}1A`, borderColor: `${cap.color}40` }}
+                    style={{ 
+                      backgroundColor: isDark ? `${cap.color}1A` : '#FAF8F5', 
+                      borderColor: isDark ? `${cap.color}40` : '#ECE7DD' 
+                    }}
                   >
                     <Icon className="w-7 h-7 sm:w-8 sm:h-8 transition-colors" style={{ color: cap.color }} />
                   </div>
                   <h3 
-                    className="relative z-10 font-black text-white text-[16px] sm:text-[18px] mb-2 transition-colors duration-300 px-3 leading-tight group-hover:!text-[var(--card-color)]"
+                    className={`relative z-10 font-black text-[16px] sm:text-[18px] mb-2 transition-colors duration-300 px-3 leading-tight group-hover:!text-[var(--card-color)] ${
+                      isDark ? "text-white" : "text-[#17135B]"
+                    }`}
                   >
                     {cap.name}
                   </h3>
-                  <p className="relative z-10 text-slate-300 text-[13px] sm:text-[14px] leading-relaxed group-hover:text-white transition-colors duration-300 px-4 line-clamp-4">
+                  <p className={`relative z-10 text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300 px-4 line-clamp-4 ${
+                    isDark ? "text-slate-300 group-hover:text-white" : "text-[#555E75] group-hover:text-[#17135B]"
+                  }`}>
                     {cap.description}
                   </p>
                 </motion.div>

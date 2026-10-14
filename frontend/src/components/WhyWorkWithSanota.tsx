@@ -68,7 +68,7 @@ export default function WhyWorkWithSanota() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"
+            className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight"
           >
             One Accountable Engineering Partner
           </motion.h3>
@@ -92,21 +92,21 @@ export default function WhyWorkWithSanota() {
                   fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#131C2E] to-transparent opacity-95" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#131C2E] to-transparent opacity-95" />
                 <div className="absolute inset-0 bg-[#2E5EAA]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Floating Icon */}
-                <div className="absolute bottom-4 left-6 w-12 h-12 rounded-xl bg-[#0B1220]/80 backdrop-blur-md border border-slate-700 flex items-center justify-center group-hover:border-[#E8B84B]/60 transition-all duration-300 z-10 shadow-lg">
-                  <reason.icon className="w-6 h-6 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors" />
+                <div className="absolute bottom-4 left-6 w-12 h-12 rounded-xl bg-white/95 dark:bg-[#0B1220]/80 backdrop-blur-md border border-[#ECE7DD] dark:border-slate-700 flex items-center justify-center group-hover:border-[#E8B84B]/60 transition-all duration-300 z-10 shadow-lg">
+                  <reason.icon className="w-6 h-6 text-[#C59B27] dark:text-[#2E5EAA] group-hover:text-[#17135B] dark:group-hover:text-[#E8B84B] transition-colors" />
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6 pt-5 flex flex-col flex-grow">
-                <h4 className="text-[17.5px] font-bold text-white mb-3 group-hover:text-[#E8B84B] transition-colors leading-tight">
+                <h4 className="text-[17.5px] font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors leading-tight">
                   {reason.title}
                 </h4>
-                <p className="text-slate-400 leading-relaxed text-[13.5px] flex-grow">
+                <p className="text-[#555E75] dark:text-slate-400 leading-relaxed text-[13.5px] flex-grow">
                   {reason.description}
                 </p>
               </div>

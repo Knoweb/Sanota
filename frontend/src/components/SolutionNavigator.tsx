@@ -5,6 +5,7 @@ import { Link2, Settings, Zap, Building2, Cpu, Wrench, PackageSearch, Network, A
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
 const options = [
   {
@@ -82,6 +83,8 @@ const options = [
 ];
 
 export default function SolutionNavigator() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [activeIdx, setActiveIdx] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -100,7 +103,9 @@ export default function SolutionNavigator() {
       <div
         className="absolute pointer-events-none transition-all duration-700"
         style={{
-          background: "radial-gradient(600px circle at 50% 50%, rgba(232,184,75,0.06), transparent 70%)",
+          background: isDark
+            ? "radial-gradient(600px circle at 50% 50%, rgba(232,184,75,0.06), transparent 70%)"
+            : "radial-gradient(600px circle at 50% 50%, rgba(212,175,55,0.08), transparent 70%)",
           inset: 0,
         }}
       />
@@ -112,11 +117,11 @@ export default function SolutionNavigator() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-black text-white mb-4"
+            className={`text-3xl md:text-4xl font-black mb-4 ${isDark ? "text-white" : "text-[#17135B]"}`}
           >
             What Are You Trying to Achieve?
           </motion.h2>
-          <p className="text-slate-500 text-sm">Hover over a card to pause</p>
+          <p className={`${isDark ? "text-slate-500" : "text-[#646C82]"} text-sm font-medium`}>Hover over a card to pause</p>
         </div>
 
         <div
@@ -138,11 +143,15 @@ export default function SolutionNavigator() {
                 onMouseEnter={() => setActiveIdx(idx)}
               >
                 <div
-                  className={`relative flex flex-col p-4 md:p-8 rounded-2xl md:rounded-3xl border transition-all duration-500 group w-full cursor-default overflow-hidden
-                    ${isActive
-                      ? "bg-[#050B14]/60 backdrop-blur-md border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
-                      : "bg-[#131C2E]/30 backdrop-blur-sm border-slate-700/50 hover:border-[#E8B84B]/30"
-                    }`}
+                  className={`relative flex flex-col p-4 md:p-8 rounded-2xl md:rounded-3xl border transition-all duration-500 group w-full cursor-default overflow-hidden ${
+                    isDark
+                      ? isActive
+                        ? "bg-[#050B14]/60 backdrop-blur-md border-[#E8B84B]/60 shadow-[0_0_30px_rgba(232,184,75,0.18)] -translate-y-1"
+                        : "bg-[#131C2E]/30 backdrop-blur-sm border-slate-700/50 hover:border-[#E8B84B]/30"
+                      : isActive
+                        ? "bg-white border-[#C59B27] shadow-[0_14px_30px_rgba(23,19,91,0.09)] -translate-y-1"
+                        : "bg-white border-[#ECE7DD] shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:border-[#D4AF37]/60 hover:shadow-[0_10px_24px_rgba(23,19,91,0.06)]"
+                  }`}
                 >
                   {/* Animated top border pulse when active */}
                   {isActive && (
@@ -159,40 +168,62 @@ export default function SolutionNavigator() {
                     />
                   )}
 
-                  {/* Background Image */}
-                  <div className={`absolute inset-0 z-0 transition-all duration-700 ${isActive ? 'opacity-70 scale-105' : 'opacity-30 group-hover:opacity-50 scale-100'}`}>
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/60 via-[#0B1220]/40 to-[#0B1220]/90 z-10" />
-                    <Image
-                      src={option.bgImage}
-                      alt={option.name}
-                      fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-                      className="object-cover mix-blend-lighten"
-                    />
-                  </div>
+                  {/* Background Image: Dark overlay in dark mode, light clean subtle watermark in light mode */}
+                  {isDark ? (
+                    <div className={`absolute inset-0 z-0 transition-all duration-700 ${isActive ? 'opacity-70 scale-105' : 'opacity-30 group-hover:opacity-50 scale-100'}`}>
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/60 via-[#0B1220]/40 to-[#0B1220]/90 z-10" />
+                      <Image
+                        src={option.bgImage}
+                        alt={option.name}
+                        fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                        className="object-cover mix-blend-lighten"
+                      />
+                    </div>
+                  ) : (
+                    <div className={`absolute inset-0 z-0 transition-all duration-700 ${isActive ? 'opacity-10 scale-105' : 'opacity-5 group-hover:opacity-10 scale-100'}`}>
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95 z-10" />
+                      <Image
+                        src={option.bgImage}
+                        alt={option.name}
+                        fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                        className="object-cover mix-blend-multiply"
+                      />
+                    </div>
+                  )}
 
                   <div
                     className="relative z-20 w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl flex items-center justify-center mb-3 md:mb-6 border transition-all duration-500"
                     style={{
-                      backgroundColor: isActive ? `${option.color}26` : `${option.color}0D`,
-                      borderColor: isActive ? `${option.color}66` : `${option.color}26`
+                      backgroundColor: isDark
+                        ? (isActive ? `${option.color}26` : `${option.color}0D`)
+                        : (isActive ? `${option.color}18` : "#F8F7F3"),
+                      borderColor: isDark
+                        ? (isActive ? `${option.color}66` : `${option.color}26`)
+                        : (isActive ? option.color : "#ECE7DD"),
                     }}
                   >
                     <Icon
                       className="w-5 h-5 md:w-7 md:h-7 transition-colors duration-500"
-                      style={{ color: isActive ? option.color : `${option.color}99` }}
+                      style={{ color: isActive ? option.color : (isDark ? `${option.color}99` : option.color) }}
                     />
                   </div>
 
                   <h3
-                    className={`relative z-20 font-bold text-[13px] md:text-[18px] leading-snug mb-2 md:mb-3 transition-colors duration-500
-                      ${isActive ? "text-white" : "text-slate-300"}`}
+                    className={`relative z-20 font-bold text-[13px] md:text-[18px] leading-snug mb-2 md:mb-3 transition-colors duration-500 ${
+                      isDark
+                        ? (isActive ? "text-white" : "text-slate-300")
+                        : "text-[#17135B]"
+                    }`}
                   >
                     {option.name}
                   </h3>
 
                   <p
-                    className={`relative z-20 text-xs md:text-sm leading-relaxed mb-4 md:mb-8 flex-grow transition-colors duration-500 hidden md:block
-                      ${isActive ? "text-slate-300" : "text-slate-500"}`}
+                    className={`relative z-20 text-xs md:text-sm leading-relaxed mb-4 md:mb-8 flex-grow transition-colors duration-500 hidden md:block ${
+                      isDark
+                        ? (isActive ? "text-slate-300" : "text-slate-500")
+                        : "text-[#555E75]"
+                    }`}
                   >
                     {option.description}
                   </p>
@@ -200,7 +231,11 @@ export default function SolutionNavigator() {
                   <Link
                     href={option.href}
                     className="text-[10px] md:text-[13px] font-bold flex items-center transition-all duration-300 w-fit group-hover:translate-x-1 mt-auto"
-                    style={{ color: isActive ? option.color : `${option.color}b3` }}
+                    style={{
+                      color: isDark
+                        ? (isActive ? option.color : `${option.color}b3`)
+                        : (isActive ? "#C59B27" : "#17135B"),
+                    }}
                   >
                     {option.linkText}
                     <ArrowRight className="ml-1 md:ml-1.5 w-3 h-3 md:w-4 md:h-4" />

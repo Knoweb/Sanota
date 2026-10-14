@@ -20,7 +20,7 @@ const capabilities = [
 
 export default function InnovationAndCollaboration() {
   return (
-    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800/60">
+    <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800/60">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#2E5EAA]/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
@@ -38,17 +38,17 @@ export default function InnovationAndCollaboration() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center space-x-2 bg-[#E8B84B]/10 border border-[#E8B84B]/30 px-5 py-2 rounded-full mb-8 shadow-[0_0_15px_rgba(232,184,75,0.15)]">
-                <Users className="w-4 h-4 text-[#E8B84B]" />
-                <span className="text-xs font-bold text-[#E8B84B] uppercase tracking-widest">Innovation and Partnerships</span>
+              <div className="inline-flex items-center space-x-2 bg-[#E8B84B]/10 border border-[#E8B84B]/30 px-5 py-2 rounded-full mb-8 shadow-sm dark:shadow-[0_0_15px_rgba(232,184,75,0.15)]">
+                <Users className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+                <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">Innovation and Partnerships</span>
               </div>
               
-              <h3 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-white tracking-tight mb-8 leading-[1.1]">
+              <h3 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#17135B] dark:text-white tracking-tight mb-8 leading-[1.1]">
                 From Ideas to <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-lg">Practical Engineering</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Practical Engineering</span>
               </h3>
               
-              <div className="space-y-5 text-[16px] text-slate-300 leading-relaxed mb-12 border-l-2 border-slate-700/50 pl-6">
+              <div className="space-y-5 text-[16px] text-slate-600 dark:text-slate-300 leading-relaxed mb-12 border-l-2 border-slate-300 dark:border-slate-700/50 pl-6">
                 <p>
                   Sanota works with businesses, inventors, universities, research institutions and technology partners to develop solutions for specialized and emerging requirements.
                 </p>
@@ -59,7 +59,7 @@ export default function InnovationAndCollaboration() {
               
               <Link
                 href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-[15px] font-bold rounded-xl text-white bg-[#2E5EAA] hover:bg-[#1e3a8a] transition-all duration-300 shadow-[0_0_20px_rgba(46,94,170,0.3)] hover:shadow-[0_0_30px_rgba(46,94,170,0.5)] group w-full sm:w-auto"
+                className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-[15px] font-bold rounded-xl text-white bg-[#2E5EAA] hover:bg-[#1e3a8a] transition-all duration-300 shadow-[0_4px_20px_rgba(46,94,170,0.3)] hover:shadow-[0_6px_30px_rgba(46,94,170,0.5)] group w-full sm:w-auto"
               >
                 Explore a Collaboration
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
@@ -74,20 +74,20 @@ export default function InnovationAndCollaboration() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative rounded-[2.5rem] bg-gradient-to-br from-[#131C2E]/40 to-[#0B1220]/50 backdrop-blur-md border border-slate-700/50 p-8 sm:p-12 shadow-2xl overflow-hidden group"
+              className="relative rounded-[2.5rem] bg-white dark:bg-gradient-to-br dark:from-[#131C2E]/90 dark:to-[#0B1220]/95 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 p-8 sm:p-12 shadow-xl dark:shadow-2xl overflow-hidden group"
             >
               {/* Internal Glowing Orbs for the Card */}
-              <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#E8B84B]/15 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#E8B84B]/25 transition-colors duration-700" />
-              <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#2E5EAA]/15 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#2E5EAA]/25 transition-colors duration-700" />
+              <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#E8B84B]/10 dark:bg-[#E8B84B]/15 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#E8B84B]/20 transition-colors duration-700" />
+              <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#2E5EAA]/10 dark:bg-[#2E5EAA]/15 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#2E5EAA]/20 transition-colors duration-700" />
 
               <div className="relative z-10">
-                <div className="flex items-center mb-10 pb-8 border-b border-slate-700/50">
+                <div className="flex items-center mb-10 pb-8 border-b border-slate-200 dark:border-slate-700/50">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2E5EAA] to-[#1e3a8a] flex items-center justify-center mr-5 shadow-lg shadow-[#2E5EAA]/30 border border-[#2E5EAA]/50">
                     <Lightbulb className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Collaborative Capabilities</h4>
-                    <p className="text-slate-400 text-sm mt-1">End-to-end support for innovation pipelines</p>
+                    <h4 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight">Collaborative Capabilities</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">End-to-end support for innovation pipelines</p>
                   </div>
                 </div>
                 
@@ -101,10 +101,10 @@ export default function InnovationAndCollaboration() {
                       viewport={{ once: true }}
                       className="flex items-start group/item cursor-default"
                     >
-                      <div className="w-7 h-7 rounded-full bg-[#0B1220] border border-slate-600 flex items-center justify-center shrink-0 mt-0 mr-4 group-hover/item:border-[#E8B84B] group-hover/item:bg-[#E8B84B]/10 transition-all duration-300 shadow-sm group-hover/item:shadow-[0_0_10px_rgba(232,184,75,0.2)]">
-                        <CheckCircle2 className="w-4 h-4 text-slate-400 group-hover/item:text-[#E8B84B] transition-colors" />
+                      <div className="w-7 h-7 rounded-full bg-[#F5F3EF] dark:bg-[#0B1220] border border-slate-300 dark:border-slate-600 flex items-center justify-center shrink-0 mt-0 mr-4 group-hover/item:border-[#C59B27] dark:group-hover/item:border-[#E8B84B] group-hover/item:bg-[#E8B84B]/10 transition-all duration-300 shadow-sm group-hover/item:shadow-[0_0_10px_rgba(232,184,75,0.2)]">
+                        <CheckCircle2 className="w-4 h-4 text-[#C59B27] dark:text-slate-400 group-hover/item:text-[#C59B27] dark:group-hover/item:text-[#E8B84B] transition-colors" />
                       </div>
-                      <span className="text-slate-300 text-[15px] font-medium leading-snug pt-0.5 group-hover/item:text-white transition-colors">{item}</span>
+                      <span className="text-slate-700 dark:text-slate-200 text-[15px] font-medium leading-snug pt-0.5 group-hover/item:text-[#17135B] dark:group-hover/item:text-white transition-colors">{item}</span>
                     </motion.div>
                   ))}
                 </div>
