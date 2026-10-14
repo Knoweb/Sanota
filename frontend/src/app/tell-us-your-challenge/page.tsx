@@ -119,7 +119,7 @@ export default function ChallengePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen relative bg-[#050B14]">
+    <div className="flex flex-col min-h-screen relative bg-transparent">
       {/* Lightweight Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-80 dark:block hidden">
         <GradientWaves
@@ -151,32 +151,32 @@ export default function ChallengePage() {
         <main className="flex-grow">
           
           {/* HERO SECTION */}
-          <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800/50 bg-transparent">
+          <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Tell Us Your Challenge</h1>
-            <p className="text-xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#17135B] dark:text-white mb-6">Tell Us Your Challenge</h1>
+            <p className="text-xl text-slate-700 dark:text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
               You do not need to know the technical solution. Start by telling us what you need to achieve.
             </p>
-            <p className="text-lg text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
               Whether you need to improve a machine, automate a process, develop a new system, introduce IoT and software, or arrange long-term maintenance support, Sanota can help you identify the right way forward.
               Our team will review your requirement and connect the necessary engineering, automation, digital and technical-support capabilities around it.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
               <button 
                 onClick={() => document.getElementById('form-container')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors text-[15px]"
+                className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors text-[15px] shadow-md"
               >
                 Start Your Enquiry
               </button>
               <Link 
                 href="/contact" 
-                className="px-8 py-4 bg-[#131C2E] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors text-[15px]"
+                className="px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors text-[15px] shadow-sm"
               >
                 Speak to Sanota
               </Link>
             </div>
-            <p className="text-[#E8B84B] font-bold text-xs sm:text-sm tracking-widest uppercase">
-              Engineering <span className="mx-2 text-slate-600">•</span> Automation <span className="mx-2 text-slate-600">•</span> IoT <span className="mx-2 text-slate-600">•</span> Software <span className="mx-2 text-slate-600">•</span> Implementation <span className="mx-2 text-slate-600">•</span> Lifecycle Support
+            <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs sm:text-sm tracking-widest uppercase">
+              Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support
             </p>
           </div>
         </section>
@@ -191,21 +191,21 @@ export default function ChallengePage() {
                   key="success"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="glowing-card bg-[#131C2E]/60 border border-slate-800 rounded-3xl p-10 md:p-16 text-center"
+                  className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 md:p-16 text-center shadow-xl"
                 >
                   <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8">
                     <CheckCircle2 className="w-12 h-12 text-green-500" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Thank You. Your Enquiry Has Been Received.</h2>
-                  <p className="text-xl text-[#E8B84B] font-semibold mb-6">Your reference number is {enquiryRef}.</p>
-                  <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-4">Thank You. Your Enquiry Has Been Received.</h2>
+                  <p className="text-xl text-[#C59B27] dark:text-[#E8B84B] font-semibold mb-6">Your reference number is {enquiryRef}.</p>
+                  <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
                     The Sanota team will review the information and direct it to the appropriate technical team. A representative will contact you using your preferred contact method.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Link href="/" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
+                    <Link href="/" className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
                       Return to Homepage
                     </Link>
-                    <Link href="/media" className="px-8 py-4 bg-[#0B1220] hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors">
+                    <Link href="/media" className="px-8 py-4 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors">
                       Explore Completed Work
                     </Link>
                   </div>
@@ -218,22 +218,22 @@ export default function ChallengePage() {
                 >
                   {/* Progress Header */}
                   <div className="mb-10 text-center">
-                    <h3 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Guided Enquiry</h3>
+                    <h3 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Guided Enquiry</h3>
                     <div className="flex justify-between items-center max-w-2xl mx-auto mb-4 relative">
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-800 rounded-full -z-10"></div>
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-[#E8B84B] rounded-full -z-10 transition-all duration-300" style={{ width: `${((currentStep - 1) / 4) * 100}%` }}></div>
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full -z-10"></div>
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-[#C59B27] dark:bg-[#E8B84B] rounded-full -z-10 transition-all duration-300" style={{ width: `${((currentStep - 1) / 4) * 100}%` }}></div>
                       
                       {[1, 2, 3, 4, 5].map(step => (
-                        <div key={step} className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${currentStep >= step ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border-2 border-slate-700 text-slate-500'}`}>
+                        <div key={step} className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${currentStep >= step ? 'bg-[#C59B27] dark:bg-[#E8B84B] text-white dark:text-[#0B1220] shadow-sm' : 'bg-slate-100 dark:bg-[#131C2E] border-2 border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500'}`}>
                           {step}
                         </div>
                       ))}
                     </div>
-                    <p className="text-slate-400 font-medium">Step {currentStep} of 5</p>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">Step {currentStep} of 5</p>
                   </div>
 
                   {/* Form Card */}
-                  <div className="glowing-card bg-[#131C2E]/40 backdrop-blur-sm border border-slate-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-8">
+                  <div className="glowing-card bg-white/90 dark:bg-[#131C2E]/40 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-8 shadow-sm dark:shadow-none">
                     
                     {currentStep === 1 && <Step1 data={formData} updateData={updateData} showErrors={showErrors} />}
                     {currentStep === 2 && <Step2 data={formData} updateData={updateData} showErrors={showErrors} />}
@@ -248,7 +248,7 @@ export default function ChallengePage() {
                     {currentStep > 1 ? (
                       <button 
                         onClick={handlePrev}
-                        className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors font-semibold"
+                        className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors font-semibold"
                       >
                         <ArrowLeft className="w-5 h-5 mr-2" /> Back
                       </button>
@@ -260,14 +260,14 @@ export default function ChallengePage() {
                       {currentStep === 5 ? (
                         <>
                           <button 
-                            className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-400 hover:text-white border border-slate-700 hover:border-slate-500 rounded-lg transition-colors font-semibold bg-[#131C2E]"
+                            className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 rounded-lg transition-colors font-semibold bg-white dark:bg-[#131C2E] shadow-sm"
                           >
                             <Save className="w-4 h-4 mr-2" /> Save and Continue Later
                           </button>
                           <button 
                             onClick={handleSubmit}
                             disabled={!isStepValid() || isSubmitting}
-                            className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                           >
                             {isSubmitting ? 'Submitting...' : 'Submit My Challenge'} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
                           </button>
@@ -276,7 +276,7 @@ export default function ChallengePage() {
                         <button 
                           onClick={handleNext}
                           disabled={!isStepValid()}
-                          className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                         >
                           Continue <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
