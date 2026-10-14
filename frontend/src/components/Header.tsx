@@ -27,7 +27,7 @@ export default function Header() {
   const isDark = theme === "dark";
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#050B14]/95 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#2E5EAA]/20">
+    <header className="fixed top-0 w-full z-50 bg-white/95 dark:bg-[#050B14]/95 backdrop-blur-md shadow-sm dark:shadow-[0_10px_40px_-10px_rgba(5,11,20,0.5)] border-b border-[#ECE7DD] dark:border-[#2E5EAA]/20">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center shrink-0">
@@ -55,21 +55,23 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative px-1 py-2 text-[13px] font-bold transition-all duration-300 uppercase tracking-wider whitespace-nowrap group hover:-translate-y-1 ${
-                    isActive ? "text-[#E8B84B]" : "text-slate-300 hover:text-white"
+                  className={`relative px-1 py-2 text-[13px] font-bold transition-all duration-300 uppercase tracking-wider whitespace-nowrap group hover:-translate-y-0.5 ${
+                    isActive 
+                      ? "text-[#C59B27] dark:text-[#E8B84B]" 
+                      : "text-[#555E75] hover:text-[#17135B] dark:text-slate-300 dark:hover:text-white"
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavTab"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#E8B84B] rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C59B27] dark:bg-[#E8B84B] rounded-full"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
                   {/* Hover indicator for non-active tabs */}
                   {!isActive && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#E8B84B]/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C59B27]/50 dark:bg-[#E8B84B]/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
                   )}
                 </Link>
               );
@@ -79,7 +81,7 @@ export default function Header() {
           <div className="hidden xl:flex items-center space-x-4 ml-6 shrink-0">
             <Link
               href="/tell-us-your-challenge"
-              className="inline-flex items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors uppercase tracking-wider shadow-lg whitespace-nowrap"
+              className="inline-flex items-center px-7 py-3 border border-transparent text-[14px] font-bold rounded-full text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all uppercase tracking-wider shadow-md hover:shadow-lg whitespace-nowrap"
             >
               Tell Us Your Challenge
             </Link>
@@ -90,7 +92,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-[#E8B84B] p-1"
+              className="text-[#17135B] dark:text-slate-300 hover:text-[#C59B27] dark:hover:text-[#E8B84B] p-1"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
@@ -101,25 +103,25 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="xl:hidden bg-[#0B1220] border-b border-slate-800 shadow-[0_20px_40px_-10px_rgba(5,11,20,0.8)]">
+        <div className="xl:hidden bg-white dark:bg-[#0B1220] border-b border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-[0_20px_40px_-10px_rgba(5,11,20,0.8)]">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-3 rounded-md text-[14px] font-bold text-slate-300 hover:text-[#E8B84B] hover:bg-[#131C2E] transition-colors uppercase tracking-wider"
+                className="block px-3 py-3 rounded-md text-[14px] font-bold text-[#555E75] hover:text-[#17135B] hover:bg-[#FAF8F5] dark:text-slate-300 dark:hover:text-[#E8B84B] dark:hover:bg-[#131C2E] transition-colors uppercase tracking-wider"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/tell-us-your-challenge"
-              className="block mt-6 text-center px-4 py-4 border border-transparent text-[14px] font-bold rounded-md text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] uppercase tracking-wider"
+              className="block mt-6 text-center px-4 py-4 border border-transparent text-[14px] font-bold rounded-md text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] uppercase tracking-wider shadow-md"
             >
               Tell Us Your Challenge
             </Link>
-            <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between px-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Switch Theme</span>
+            <div className="pt-3 mt-3 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between px-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Switch Theme</span>
               <ThemeToggle showLabel={true} />
             </div>
           </div>
