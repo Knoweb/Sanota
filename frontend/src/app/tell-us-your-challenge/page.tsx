@@ -12,6 +12,8 @@ import { Step1, Step2, Step3, Step4, Step5 } from "./components/FormSteps";
 import { WhatHappensNext, AlternativeContact, FinalCTA } from "./components/Sections";
 import { submitChallengeEnquiry } from "@/lib/api";
 import dynamic from 'next/dynamic';
+import { useLanguage } from "@/context/LanguageContext";
+import { challengeES } from "@/locales/es/challenge";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 const initialData: ChallengeFormData = {
   coreRequirements: [],
@@ -53,6 +55,10 @@ const initialData: ChallengeFormData = {
 };
 
 export default function ChallengePage() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ch = isEs ? challengeES : null;
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<ChallengeFormData>(initialData);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -153,30 +159,33 @@ export default function ChallengePage() {
           {/* HERO SECTION */}
           <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#17135B] dark:text-white mb-6">Tell Us Your Challenge</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#17135B] dark:text-white mb-6">
+              {ch ? ch.hero.heading : "Tell Us Your Challenge"}
+            </h1>
             <p className="text-xl text-slate-700 dark:text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
-              You do not need to know the technical solution. Start by telling us what you need to achieve.
+              {ch ? ch.hero.subheading : "You do not need to know the technical solution. Start by telling us what you need to achieve."}
             </p>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Whether you need to improve a machine, automate a process, develop a new system, introduce IoT and software, or arrange long-term maintenance support, Sanota can help you identify the right way forward.
-              Our team will review your requirement and connect the necessary engineering, automation, digital and technical-support capabilities around it.
+              {ch ? ch.hero.description : "Whether you need to improve a machine, automate a process, develop a new system, introduce IoT and software, or arrange long-term maintenance support, Sanota can help you identify the right way forward. Our team will review your requirement and connect the necessary engineering, automation, digital and technical-support capabilities around it."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
               <button 
                 onClick={() => document.getElementById('form-container')?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors text-[15px] shadow-md"
               >
-                Start Your Enquiry
+                {ch ? ch.hero.primaryButton : "Start Your Enquiry"}
               </button>
               <Link 
                 href="/contact" 
                 className="px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors text-[15px] shadow-sm"
               >
-                Speak to Sanota
+                {ch ? ch.hero.secondaryButton : "Speak to Sanota"}
               </Link>
             </div>
             <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs sm:text-sm tracking-widest uppercase">
-              Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support
+              {ch ? ch.hero.supportLine : (
+                <>Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support</>
+              )}
             </p>
           </div>
         </section>
@@ -196,17 +205,21 @@ export default function ChallengePage() {
                   <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8">
                     <CheckCircle2 className="w-12 h-12 text-green-500" />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-4">Thank You. Your Enquiry Has Been Received.</h2>
-                  <p className="text-xl text-[#C59B27] dark:text-[#E8B84B] font-semibold mb-6">Your reference number is {enquiryRef}.</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-4">
+                    {ch ? ch.confirmation.heading : "Thank You. Your Enquiry Has Been Received."}
+                  </h2>
+                  <p className="text-xl text-[#C59B27] dark:text-[#E8B84B] font-semibold mb-6">
+                    {ch ? `${ch.confirmation.refText} ${enquiryRef}.` : `Your reference number is ${enquiryRef}.`}
+                  </p>
                   <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-                    The Sanota team will review the information and direct it to the appropriate technical team. A representative will contact you using your preferred contact method.
+                    {ch ? ch.confirmation.body : "The Sanota team will review the information and direct it to the appropriate technical team. A representative will contact you using your preferred contact method."}
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Link href="/" className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                      Return to Homepage
+                      {ch ? ch.confirmation.homeButton : "Return to Homepage"}
                     </Link>
                     <Link href="/media" className="px-8 py-4 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors">
-                      Explore Completed Work
+                      {ch ? ch.confirmation.workButton : "Explore Completed Work"}
                     </Link>
                   </div>
                 </motion.div>
@@ -218,7 +231,9 @@ export default function ChallengePage() {
                 >
                   {/* Progress Header */}
                   <div className="mb-10 text-center">
-                    <h3 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Guided Enquiry</h3>
+                    <h3 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                      {isEs ? "Consulta Guiada" : "Guided Enquiry"}
+                    </h3>
                     <div className="flex justify-between items-center max-w-2xl mx-auto mb-4 relative">
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full -z-10"></div>
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-[#C59B27] dark:bg-[#E8B84B] rounded-full -z-10 transition-all duration-300" style={{ width: `${((currentStep - 1) / 4) * 100}%` }}></div>
@@ -229,7 +244,9 @@ export default function ChallengePage() {
                         </div>
                       ))}
                     </div>
-                    <p className="text-slate-600 dark:text-slate-400 font-medium">Step {currentStep} of 5</p>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">
+                      {isEs ? `Paso ${currentStep} de 5` : `Step ${currentStep} of 5`}
+                    </p>
                   </div>
 
                   {/* Form Card */}
@@ -250,7 +267,7 @@ export default function ChallengePage() {
                         onClick={handlePrev}
                         className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors font-semibold"
                       >
-                        <ArrowLeft className="w-5 h-5 mr-2" /> Back
+                        <ArrowLeft className="w-5 h-5 mr-2" /> {isEs ? "Atrás" : "Back"}
                       </button>
                     ) : (
                       <div />
@@ -262,14 +279,14 @@ export default function ChallengePage() {
                           <button 
                             className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 rounded-lg transition-colors font-semibold bg-white dark:bg-[#131C2E] shadow-sm"
                           >
-                            <Save className="w-4 h-4 mr-2" /> Save and Continue Later
+                            <Save className="w-4 h-4 mr-2" /> {ch ? ch.steps.step5.saveButton : "Save and Continue Later"}
                           </button>
                           <button 
                             onClick={handleSubmit}
                             disabled={!isStepValid() || isSubmitting}
                             className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                           >
-                            {isSubmitting ? 'Submitting...' : 'Submit My Challenge'} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
+                            {isSubmitting ? (isEs ? 'Enviando...' : 'Submitting...') : (ch ? ch.steps.step5.submitButton : 'Submit My Challenge')} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
                           </button>
                         </>
                       ) : (
@@ -278,7 +295,7 @@ export default function ChallengePage() {
                           disabled={!isStepValid()}
                           className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                         >
-                          Continue <ArrowRight className="w-5 h-5 ml-2" />
+                          {ch ? ch.steps.step1.continueButton : "Continue"} <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
                       )}
                     </div>
