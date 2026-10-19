@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const f = isEs ? homeES.footer : null;
 
   return (
     <footer className="relative z-10 bg-white dark:bg-[#050B14] border-t border-[#ECE7DD] dark:border-slate-800/80 pt-8 pb-4">
@@ -21,10 +28,14 @@ export default function Footer() {
             />
           </Link>
           <p className="text-[#555E75] dark:text-slate-400 text-[13px] leading-relaxed max-w-2xl">
-            Integrated engineering solutions developed around real operational requirements.
+            {f ? f.tagline : "Integrated engineering solutions developed around real operational requirements."}
           </p>
           <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mt-2">
-            Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support
+            {f ? f.capabilityPills : (
+              <>
+                Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support
+              </>
+            )}
           </p>
         </div>
 
@@ -32,7 +43,9 @@ export default function Footer() {
           
           {/* Column 1: Industries */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">Industries</h4>
+            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+              {f ? f.headings.industries : "Industries"}
+            </h4>
             <ul className="space-y-1.5">
               {[
                 { name: 'Manufacturing & Industrial Automation', href: '/industries' },
@@ -57,7 +70,9 @@ export default function Footer() {
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">Services</h4>
+            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+              {f ? f.headings.services : "Services"}
+            </h4>
             <ul className="space-y-1.5">
               {[
                 { name: 'Engineering Consultation', href: '/services' },
@@ -80,7 +95,9 @@ export default function Footer() {
 
           {/* Column 3: Explore */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">Explore</h4>
+            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+              {f ? f.headings.explore : "Explore"}
+            </h4>
             <ul className="space-y-1.5">
               {[
                 { name: 'Products & Systems', href: '/products' },
@@ -102,7 +119,9 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">Contact</h4>
+            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+              {f ? f.headings.contact : "Contact"}
+            </h4>
             <ul className="space-y-2.5 mb-5">
               <li className="flex items-start">
                 <Globe className="w-5 h-5 text-[#C59B27] dark:text-[#2E5EAA] mr-4 shrink-0 mt-0.5" />
@@ -122,25 +141,29 @@ export default function Footer() {
               </li>
               <li className="flex items-start">
                 <MapPin className="w-3.5 h-3.5 text-[#C59B27] dark:text-[#2E5EAA] mr-2.5 shrink-0 mt-0.5" />
-                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">Sri Lanka</span>
+                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">{f ? f.location : "Sri Lanka"}</span>
               </li>
             </ul>
 
-            {/* Challenge Callout Card (Matching User CSS specs) */}
+            {/* Challenge Callout Card */}
             <div className="bg-gradient-to-br from-[#0F0C3B] to-[#1A1658] border border-[#D4AF37]/40 rounded-xl p-4 mb-5 shadow-lg shadow-[#17135B]/15">
-              <h5 className="text-white font-bold text-[12.5px] mb-1">Have an engineering challenge?</h5>
+              <h5 className="text-white font-bold text-[12.5px] mb-1">
+                {f ? f.callToActionText : "Have an engineering challenge?"}
+              </h5>
               <p className="text-slate-300 text-[11px] leading-relaxed mb-3">
-                Tell us what you need to achieve.
+                {f ? f.closingLine : "Tell us what you need to achieve."}
               </p>
               <Link 
                 href="/tell-us-your-challenge"
                 className="flex items-center justify-center w-full py-2 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold text-[11.5px] rounded-md transition-colors shadow-sm"
               >
-                Start Your Enquiry
+                {f ? f.callToActionButton : "Start Your Enquiry"}
               </Link>
             </div>
 
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">Social Links</h4>
+            <h4 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
+              {f ? "Redes Sociales" : "Social Links"}
+            </h4>
             <div className="flex space-x-3">
               <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -159,14 +182,18 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <p className="text-slate-500 text-xs">
-            © {currentYear} Sanota (Pvt) Ltd. All rights reserved.
+            {f ? f.rights : `© ${currentYear} Sanota (Pvt) Ltd. All rights reserved.`}
           </p>
           <div className="flex space-x-6 text-slate-500 text-xs">
-            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">Terms and Conditions</Link>
+            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
+              {f ? f.privacyPolicy : "Privacy Policy"}
+            </Link>
+            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
+              {f ? f.terms : "Terms and Conditions"}
+            </Link>
           </div>
           <p className="text-slate-500 text-xs flex items-center">
-            Built by: <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
+            {f ? "Desarrollado por:" : "Built by:"} <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
           </p>
         </div>
 

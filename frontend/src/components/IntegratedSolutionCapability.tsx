@@ -5,6 +5,8 @@ import { Wrench, Cpu, Activity, Network, PenTool, LifeBuoy, ArrowRight } from "l
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const capabilities = [
   { 
@@ -54,6 +56,20 @@ const capabilities = [
 export default function IntegratedSolutionCapability() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const isc = isEs ? homeES.integratedSolution : null;
+
+  const displayCaps = capabilities.map((cap, idx) => {
+    if (isc && isc.capabilities[idx]) {
+      return {
+        ...cap,
+        name: isc.capabilities[idx].name,
+        description: isc.capabilities[idx].description,
+      };
+    }
+    return cap;
+  });
 
   return (
     <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
@@ -72,21 +88,21 @@ export default function IntegratedSolutionCapability() {
             className="xl:col-span-6 sticky top-24 xl:pr-6"
           >
             <h2 className={`text-2xl sm:text-3xl lg:text-5xl font-black mb-6 leading-tight ${isDark ? "text-white" : "text-[#17135B]"}`}>
-              More Than One Technology. <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">One Connected Solution.</span>
+              {isc ? isc.titleLine1 : "More Than One Technology."} <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">
+                {isc ? isc.titleLine2 : "One Connected Solution."}
+              </span>
             </h2>
             <div className={`text-[15.5px] mb-8 leading-relaxed space-y-5 ${isDark ? "text-slate-300" : "text-[#555E75]"}`}>
-              <p>Industrial problems rarely belong to a single technical discipline.</p>
-              <p>A production issue may require mechanical changes, electrical controls, automation, sensors, software, installation and ongoing maintenance. Sanota brings these capabilities together through one coordinated solution.</p>
+              <p>{isc ? isc.paragraph1 : "Industrial problems rarely belong to a single technical discipline."}</p>
+              <p>{isc ? isc.paragraph2 : "A production issue may require mechanical changes, electrical controls, automation, sensors, software, installation and ongoing maintenance. Sanota brings these capabilities together through one coordinated solution."}</p>
             </div>
             
             <div className={`p-5 border-l-4 border-[#E8B84B] mb-8 rounded-r-xl shadow-lg ${
               isDark ? "bg-[#131C2E]/40 backdrop-blur-md" : "bg-white border-[#ECE7DD] shadow-[0_4px_16px_rgba(0,0,0,0.02)]"
             }`}>
-              <p className={`font-bold tracking-wide leading-relaxed ${isDark ? "text-white" : "text-[#17135B]"}`}>
-                One coordinated team.<br/>
-                One accountable delivery approach.<br/>
-                One integrated solution.
+              <p className={`font-bold tracking-wide leading-relaxed whitespace-pre-line ${isDark ? "text-white" : "text-[#17135B]"}`}>
+                {isc ? isc.boxText : "One coordinated team.\nOne accountable delivery approach.\nOne integrated solution."}
               </p>
             </div>
 
@@ -96,7 +112,7 @@ export default function IntegratedSolutionCapability() {
                 isDark ? "text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] shadow-[#E8B84B]/20" : "text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] shadow-[#E5A93C]/25"
               }`}
             >
-              Explore Our Services
+              {isc ? isc.button : "Explore Our Services"}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -108,7 +124,7 @@ export default function IntegratedSolutionCapability() {
             viewport={{ once: true }}
             className="xl:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10 justify-items-center"
           >
-            {capabilities.map((cap, idx) => {
+            {displayCaps.map((cap, idx) => {
               const Icon = cap.icon;
               return (
                 <motion.div 

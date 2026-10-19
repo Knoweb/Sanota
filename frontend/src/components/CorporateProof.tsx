@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
-const proofPoints = [
+const defaultProofPoints = [
   { 
     title: "Established in 2010", 
     description: "Engineering and technology experience developed across changing industrial requirements."
@@ -22,6 +24,8 @@ const proofPoints = [
 ];
 
 export default function CorporateProof() {
+  const { language } = useLanguage();
+  const proofPoints = language === "es" ? homeES.corporateProof.points : defaultProofPoints;
   return (
     <section className="relative pt-12 pb-16 bg-transparent border-t border-slate-800/40 relative z-10">
       {/* Inner top glow to soften the border while keeping it distinct */}

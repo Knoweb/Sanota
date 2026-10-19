@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const projects = [
   {
@@ -16,7 +18,7 @@ const projects = [
     title: "Smart Agriculture",
     description: "Combining environmental monitoring, irrigation, fertigation and digital control to support more efficient cultivation.",
     linkText: "View Agriculture Projects",
-    image: "/proj_greenhouse_1788515466596.jpg",
+    image: "/proj_greenhouse_1788515615060.jpg",
   },
   {
     title: "Tea Process Automation",
@@ -45,6 +47,22 @@ const projects = [
 ];
 
 export default function CompletedWork() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const cw = isEs ? homeES.completedWork : null;
+
+  const displayProjects = projects.map((p, idx) => {
+    if (cw && cw.categories[idx]) {
+      return {
+        ...p,
+        title: cw.categories[idx].title,
+        description: cw.categories[idx].description,
+        linkText: cw.categories[idx].linkText,
+      };
+    }
+    return p;
+  });
+
   return (
     <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,10 +75,10 @@ export default function CompletedWork() {
             className="max-w-2xl"
           >
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
-              See Sanota in Action
+              {cw ? cw.heading : "See Sanota in Action"}
             </h2>
             <p className="text-[15.5px] text-slate-400 leading-relaxed">
-              Explore how Sanota combines engineering and technology to solve real operational requirements across industries.
+              {cw ? cw.subheading : "Explore how Sanota combines engineering and technology to solve real operational requirements across industries."}
             </p>
           </motion.div>
           <motion.div
@@ -73,7 +91,7 @@ export default function CompletedWork() {
               href="/media"
               className="inline-flex justify-center items-center px-7 py-3 border border-transparent hover:border-[#C59B27]/50 text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md group"
             >
-              Explore Completed Work
+              {cw ? cw.primaryButton : "Explore Completed Work"}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
@@ -81,7 +99,7 @@ export default function CompletedWork() {
               className="inline-flex justify-center items-center px-7 py-3 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent transition-colors group shadow-sm dark:shadow-none"
             >
               <PlayCircle className="mr-2 w-5 h-5 text-[#C59B27] dark:text-slate-400 group-hover:text-[#17135B] dark:group-hover:text-white transition-colors" />
-              Watch Project Videos
+              {cw ? cw.secondaryButton : "Watch Project Videos"}
             </Link>
           </motion.div>
         </div>
@@ -93,7 +111,7 @@ export default function CompletedWork() {
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
           >
-            {[...projects, ...projects].map((project, idx) => (
+            {[...displayProjects, ...displayProjects].map((project, idx) => (
               <div
                 key={idx}
                 className="w-[300px] sm:w-[350px] lg:w-[400px] shrink-0 group flex flex-col rounded-3xl overflow-hidden border border-[#ECE7DD] dark:border-slate-700/50 bg-white dark:bg-[#131C2E]/40 backdrop-blur-md transition-all hover:border-[#D4AF37] dark:hover:border-[#E8B84B]/50 shadow-[0_4px_16px_rgba(0,0,0,0.03)] dark:shadow-none hover:shadow-[0_14px_30px_rgba(23,19,91,0.08)] dark:hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] min-h-[420px]"

@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
-const options = [
+const defaultOptions = [
   "Start Guided Chat",
   "Request a Technical Consultation",
   "Request a Modernization Assessment",
@@ -15,6 +17,10 @@ const options = [
 ];
 
 export default function FinalCTA() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const cta = isEs ? homeES.finalCTA : null;
+  const options = cta ? cta.alternatives : defaultOptions;
   return (
     <section id="contact" className="relative pt-16 pb-24 bg-transparent overflow-hidden">
       
@@ -30,16 +36,24 @@ export default function FinalCTA() {
            viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-4">
-            Tell Us What Is Not Working—<br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-[#2E5EAA]">or What You Want to Achieve.</span>
+            {cta ? (
+              cta.heading
+            ) : (
+              <>
+                Tell Us What Is Not Working—<br className="hidden sm:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-[#2E5EAA]">
+                  or What You Want to Achieve.
+                </span>
+              </>
+            )}
           </h2>
           
           <p className="text-lg text-[#17135B] dark:text-white font-semibold mb-6">
-            You do not need to know the exact technical solution.
+            {cta ? cta.subheading : "You do not need to know the exact technical solution."}
           </p>
           
           <p className="text-[16px] text-[#555E75] dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Describe the present situation, the challenge and the result you need. Sanota will review your requirement and guide you towards the appropriate engineering, automation, digital, implementation or maintenance pathway.
+            {cta ? cta.description : "Describe the present situation, the challenge and the result you need. Sanota will review your requirement and guide you towards the appropriate engineering, automation, digital, implementation or maintenance pathway."}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
@@ -47,13 +61,13 @@ export default function FinalCTA() {
               href="/tell-us-your-challenge"
               className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all transform hover:scale-105 shadow-lg shadow-[#E5A93C]/30 w-full sm:w-auto group"
             >
-              Tell Us Your Challenge <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              {cta ? cta.primaryButton : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/contact"
               className="inline-flex justify-center items-center px-10 py-4 border border-[#17135B]/20 dark:border-slate-700 text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 transition-all w-full sm:w-auto shadow-sm dark:shadow-none"
             >
-              Contact Sanota
+              {cta ? cta.secondaryButton : "Contact Sanota"}
             </Link>
           </div>
 
@@ -88,7 +102,7 @@ export default function FinalCTA() {
               
               <h4 className="relative z-10 text-[#17135B] dark:text-white font-bold mb-8 text-center text-[16px] tracking-widest uppercase flex items-center justify-center">
                 <span className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700 mr-4"></span>
-                Alternative Enquiry Options
+                {cta ? cta.alternativeTitle : "Alternative Enquiry Options"}
                 <span className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700 ml-4"></span>
               </h4>
               

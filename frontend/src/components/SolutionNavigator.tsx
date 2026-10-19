@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const options = [
   {
@@ -85,6 +87,22 @@ const options = [
 export default function SolutionNavigator() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const sn = isEs ? homeES.solutionNavigator : null;
+
+  const displayOptions = options.map((opt, idx) => {
+    if (sn && sn.items[idx]) {
+      return {
+        ...opt,
+        name: sn.items[idx].name,
+        description: sn.items[idx].description,
+        linkText: sn.items[idx].linkText,
+      };
+    }
+    return opt;
+  });
+
   const [activeIdx, setActiveIdx] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -119,9 +137,11 @@ export default function SolutionNavigator() {
             viewport={{ once: true }}
             className={`text-3xl md:text-4xl font-black mb-4 ${isDark ? "text-white" : "text-[#17135B]"}`}
           >
-            What Are You Trying to Achieve?
+            {sn ? sn.heading : "What Are You Trying to Achieve?"}
           </motion.h2>
-          <p className={`${isDark ? "text-slate-500" : "text-[#646C82]"} text-sm font-medium`}>Hover over a card to pause</p>
+          <p className={`${isDark ? "text-slate-500" : "text-[#646C82]"} text-sm font-medium`}>
+            {sn ? sn.subheading : "Hover over a card to pause"}
+          </p>
         </div>
 
         <div
@@ -129,7 +149,7 @@ export default function SolutionNavigator() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {options.map((option, idx) => {
+          {displayOptions.map((option, idx) => {
             const Icon = option.icon;
             const isActive = activeIdx === idx;
             return (

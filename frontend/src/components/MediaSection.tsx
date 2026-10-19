@@ -6,6 +6,8 @@ import { ArrowRight, Image as ImageIcon, Video, Newspaper, Briefcase, Camera } f
 import { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const mediaCategories = [
   { 
@@ -106,6 +108,22 @@ function SlideshowImage({ images }: { images: string[] }) {
 }
 
 export default function MediaSection() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ms = isEs ? homeES.mediaSection : null;
+
+  const displayCategories = mediaCategories.map((cat, idx) => {
+    if (ms && ms.cards[idx]) {
+      return {
+        ...cat,
+        title: ms.cards[idx].title,
+        desc: ms.cards[idx].description,
+        linkText: ms.cards[idx].linkText,
+      };
+    }
+    return cat;
+  });
+
   return (
     <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-800">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,12 +135,14 @@ export default function MediaSection() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">Media Section</h2>
+            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
+              {isEs ? "Sección de Medios" : "Media Section"}
+            </h2>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
-              Inside Sanota
+              {ms ? ms.heading : "Inside Sanota"}
             </h3>
             <p className="text-[15.5px] text-slate-400 leading-relaxed">
-              See the people, processes and engineering work behind Sanota’s solutions.
+              {ms ? ms.subheading : "See the people, processes and engineering work behind Sanota’s solutions."}
             </p>
           </motion.div>
           <motion.div
@@ -134,7 +154,7 @@ export default function MediaSection() {
                href="/media"
                className="inline-flex justify-center items-center px-8 py-3.5 border border-slate-300 dark:border-[#2E5EAA] text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-[#2E5EAA]/10 transition-colors group shadow-sm dark:shadow-[#2E5EAA]/10"
              >
-               Explore All Media
+               {ms ? ms.button : "Explore All Media"}
                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform text-[#C59B27] dark:text-[#2E5EAA]" />
              </Link>
           </motion.div>
@@ -142,7 +162,7 @@ export default function MediaSection() {
 
         {/* Bento Grid Collage */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6">
-          {mediaCategories.map((cat, idx) => (
+          {displayCategories.map((cat, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}

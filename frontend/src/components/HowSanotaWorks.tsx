@@ -5,6 +5,8 @@ import Link from "next/link";
 import { MessageSquare, Search, PenTool, Wrench, PlayCircle, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const steps = [
   {
@@ -54,6 +56,21 @@ const steps = [
 export default function HowSanotaWorks() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const hsw = isEs ? homeES.howSanotaWorks : null;
+
+  const displaySteps = steps.map((s, idx) => {
+    if (hsw && hsw.steps[idx]) {
+      return {
+        ...s,
+        title: hsw.steps[idx].title.toUpperCase(),
+        desc: hsw.steps[idx].description,
+      };
+    }
+    return s;
+  });
+
   const [activeStep, setActiveStep] = useState<number>(0);
   const [glowingStep, setGlowingStep] = useState<number>(0);
   const [paused, setPaused] = useState(false);
@@ -90,7 +107,7 @@ export default function HowSanotaWorks() {
             viewport={{ once: true }}
             className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4"
           >
-            How Sanota Works
+            {hsw ? hsw.heading : "How Sanota Works"}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -99,7 +116,7 @@ export default function HowSanotaWorks() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight"
           >
-            From Requirement to Working Solution
+            {hsw ? hsw.subheading : "From Requirement to Working Solution"}
           </motion.h2>
         </div>
 
@@ -140,7 +157,7 @@ export default function HowSanotaWorks() {
 
           {/* Steps */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-4 relative z-10">
-            {steps.map((step, idx) => {
+            {displaySteps.map((step, idx) => {
               const Icon = step.icon;
               const isGlowing = glowingStep === idx;
 
@@ -222,7 +239,7 @@ export default function HowSanotaWorks() {
             href="/contact"
             className="inline-flex justify-center items-center px-8 py-4 border border-[#17135B]/20 dark:border-[#E8B84B]/50 text-[15px] font-bold rounded-xl text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-[#FAF8F5] dark:hover:bg-[#E8B84B]/10 hover:border-[#C59B27] dark:hover:border-[#E8B84B] shadow-sm dark:shadow-none transition-all duration-300 group"
           >
-            Start a Discussion
+            {hsw ? hsw.button : "Start a Discussion"}
             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </motion.div>

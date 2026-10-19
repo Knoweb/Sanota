@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Link as LinkIcon, CheckCircle2, ArrowRight } from "lucide-react";
 
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
-const capabilities = [
+const defaultCapabilities = [
   "Sensors and data acquisition",
   "Cloud connectivity",
   "Web and mobile access",
@@ -19,6 +21,11 @@ const capabilities = [
 ];
 
 export default function SanotaAndKnoweb() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const sk = isEs ? homeES.sanotaAndKnoweb : null;
+  const capabilities = sk ? sk.features : defaultCapabilities;
+
   return (
     <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800">
       
@@ -40,22 +47,28 @@ export default function SanotaAndKnoweb() {
               >
                 <div className="inline-flex items-center space-x-2 bg-[#17135B]/8 dark:bg-[#2E5EAA]/10 border border-[#17135B]/15 dark:border-[#2E5EAA]/30 px-4 py-2 rounded-full mb-6">
                   <LinkIcon className="w-4 h-4 text-[#17135B] dark:text-[#2E5EAA]" />
-                  <span className="text-xs font-bold text-[#17135B] dark:text-[#2E5EAA] uppercase tracking-widest">Sanota and Knoweb</span>
+                  <span className="text-xs font-bold text-[#17135B] dark:text-[#2E5EAA] uppercase tracking-widest">
+                    {sk ? sk.heading : "Sanota and Knoweb"}
+                  </span>
                 </div>
                 
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
-                  Engineering Connected by <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">Digital Technology</span>
+                  {sk ? (
+                    <>Ingeniería Conectada por <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">Tecnología Digital</span></>
+                  ) : (
+                    <>Engineering Connected by <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">Digital Technology</span></>
+                  )}
                 </h3>
                 
                 <div className="space-y-4 text-[15px] text-[#555E75] dark:text-slate-300 leading-relaxed mb-10">
                   <p>
-                    Sanota’s integrated engineering capability is supported by Knoweb, an affiliated information technology company under common ownership.
+                    {sk ? sk.paragraph1 : "Sanota’s integrated engineering capability is supported by Knoweb, an affiliated information technology company under common ownership."}
                   </p>
                   <p>
-                    Knoweb contributes expertise in software development, IoT connectivity, cloud platforms, web and mobile applications, dashboards, enterprise systems and data management.
+                    {sk ? sk.paragraph2 : "Knoweb contributes expertise in software development, IoT connectivity, cloud platforms, web and mobile applications, dashboards, enterprise systems and data management."}
                   </p>
                   <p className="font-semibold text-[#17135B] dark:text-white pt-2">
-                    Together, these capabilities enable physical machinery and operational systems to be connected with:
+                    {sk ? sk.paragraph3 : "Together, these capabilities enable physical machinery and operational systems to be connected with:"}
                   </p>
                 </div>
                 
@@ -63,7 +76,7 @@ export default function SanotaAndKnoweb() {
                   href="/services"
                   className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-[14px] font-bold rounded-xl text-white bg-[#17135B] hover:bg-[#0E0A3C] transition-all duration-300 shadow-lg shadow-[#17135B]/20 group w-full sm:w-auto"
                 >
-                  Explore Automation & IoT
+                  {sk ? sk.button : "Explore Automation & IoT"}
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>

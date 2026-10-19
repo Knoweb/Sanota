@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Layers, Lightbulb, Settings, Repeat, Target, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const reasons = [
   {
@@ -45,6 +47,21 @@ const reasons = [
 ];
 
 export default function WhyWorkWithSanota() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ws = isEs ? homeES.whySanota : null;
+
+  const displayReasons = reasons.map((r, idx) => {
+    if (ws && ws.points[idx]) {
+      return {
+        ...r,
+        title: ws.points[idx].title,
+        description: ws.points[idx].description,
+      };
+    }
+    return r;
+  });
+
   return (
     <section id="about" className="relative py-24 bg-transparent overflow-hidden">
       
@@ -61,7 +78,7 @@ export default function WhyWorkWithSanota() {
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
-            Why Sanota
+            {ws ? ws.heading : "Why Sanota"}
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -70,12 +87,12 @@ export default function WhyWorkWithSanota() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight"
           >
-            One Accountable Engineering Partner
+            {ws ? ws.subheading : "One Accountable Engineering Partner"}
           </motion.h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-          {reasons.map((reason, idx) => (
+          {displayReasons.map((reason, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -124,7 +141,7 @@ export default function WhyWorkWithSanota() {
             href="/about"
             className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-lg group"
           >
-            About Sanota
+            {ws ? ws.button : "About Sanota"}
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

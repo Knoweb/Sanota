@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Settings2, Flame, Droplets, Sprout, Network, Truck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const products = [
   {
@@ -45,6 +47,21 @@ const products = [
 ];
 
 export default function ProductsAndSystems() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ps = isEs ? homeES.productsAndSystems : null;
+
+  const displayProducts = products.map((item, idx) => {
+    if (ps && ps.categories[idx]) {
+      return {
+        ...item,
+        title: ps.categories[idx].title,
+        desc: ps.categories[idx].description,
+      };
+    }
+    return item;
+  });
+
   return (
     <section id="products" className="relative pt-8 pb-20 lg:pt-12 lg:pb-24 bg-transparent border-t border-slate-800/50 overflow-hidden">
       {/* Background glow */}
@@ -59,19 +76,23 @@ export default function ProductsAndSystems() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">Products and Systems</h2>
+            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
+              {isEs ? "Productos y Sistemas" : "Products and Systems"}
+            </h2>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white leading-tight mb-6">
-              Developed Around Real <br className="hidden sm:block" />Operational Requirements
+              {ps ? ps.heading : (
+                <>Developed Around Real <br className="hidden sm:block" />Operational Requirements</>
+              )}
             </h3>
             <p className="text-[15.5px] text-[#555E75] dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              Sanota develops standard, configurable and custom-engineered products and systems for specific industrial applications. Supported through consultation, customization, installation, and AMC services.
+              {ps ? `${ps.subheading} ${ps.supportNote}` : "Sanota develops standard, configurable and custom-engineered products and systems for specific industrial applications. Supported through consultation, customization, installation, and AMC services."}
             </p>
           </motion.div>
         </div>
 
         {/* 3-Column Immersive Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
-          {products.map((product, idx) => (
+          {displayProducts.map((product, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -115,7 +136,7 @@ export default function ProductsAndSystems() {
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center text-[#E5A93C] dark:text-[#E8B84B] text-[10px] md:text-[12px] font-bold uppercase tracking-wider hover:!text-white transition-colors group/link mt-1 md:mt-0"
                     >
-                      Explore Solution <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
+                      {isEs ? "Explorar Solución" : "Explore Solution"} <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
 
@@ -136,7 +157,7 @@ export default function ProductsAndSystems() {
             href="/products"
             className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-[14.5px] font-bold rounded-xl text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] dark:text-[#0B1220] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] transition-all hover:scale-105 shadow-[0_4px_14px_rgba(229,169,60,0.3)] group"
           >
-            Explore All Products & Systems
+            {ps ? ps.button : "Explore All Products & Systems"}
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

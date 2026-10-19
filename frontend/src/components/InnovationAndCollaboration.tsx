@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Lightbulb, Users } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
-const capabilities = [
+const defaultCapabilities = [
   "Feasibility assessment",
   "Concept development",
   "Prototype design",
@@ -19,6 +21,11 @@ const capabilities = [
 ];
 
 export default function InnovationAndCollaboration() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ic = isEs ? homeES.innovationAndCollaboration : null;
+  const capabilities = ic ? ic.capabilities : defaultCapabilities;
+
   return (
     <section className="relative py-24 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800/60">
       
@@ -40,28 +47,39 @@ export default function InnovationAndCollaboration() {
             >
               <div className="inline-flex items-center space-x-2 bg-[#E8B84B]/10 border border-[#E8B84B]/30 px-5 py-2 rounded-full mb-8 shadow-sm dark:shadow-[0_0_15px_rgba(232,184,75,0.15)]">
                 <Users className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
-                <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">Innovation and Partnerships</span>
+                <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">
+                  {ic ? ic.heading : "Innovation and Partnerships"}
+                </span>
               </div>
               
               <h3 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#17135B] dark:text-white tracking-tight mb-8 leading-[1.1]">
-                From Ideas to <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Practical Engineering</span>
+                {ic ? (
+                  <>De las Ideas a la <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Ingeniería Práctica</span></>
+                ) : (
+                  <>From Ideas to <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Practical Engineering</span></>
+                )}
               </h3>
               
               <div className="space-y-5 text-[16px] text-slate-600 dark:text-slate-300 leading-relaxed mb-12 border-l-2 border-slate-300 dark:border-slate-700/50 pl-6">
-                <p>
-                  Sanota works with businesses, inventors, universities, research institutions and technology partners to develop solutions for specialized and emerging requirements.
-                </p>
-                <p>
-                  By combining our diverse engineering expertise with your domain knowledge, we turn theoretical concepts into robust, field-ready realities.
-                </p>
+                {ic ? (
+                  <p>{ic.description}</p>
+                ) : (
+                  <>
+                    <p>
+                      Sanota works with businesses, inventors, universities, research institutions and technology partners to develop solutions for specialized and emerging requirements.
+                    </p>
+                    <p>
+                      By combining our diverse engineering expertise with your domain knowledge, we turn theoretical concepts into robust, field-ready realities.
+                    </p>
+                  </>
+                )}
               </div>
               
               <Link
                 href="/contact"
                 className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-[15px] font-bold rounded-xl text-white bg-[#2E5EAA] hover:bg-[#1e3a8a] transition-all duration-300 shadow-[0_4px_20px_rgba(46,94,170,0.3)] hover:shadow-[0_6px_30px_rgba(46,94,170,0.5)] group w-full sm:w-auto"
               >
-                Explore a Collaboration
+                {ic ? ic.button : "Explore a Collaboration"}
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </motion.div>

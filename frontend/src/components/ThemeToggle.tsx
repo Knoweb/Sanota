@@ -33,10 +33,10 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
       type="button"
       aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
       title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      className={`relative inline-flex items-center justify-center gap-2 p-2 rounded-full transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#E8B84B]/50 ${
+      className={`relative inline-flex items-center justify-center gap-1.5 p-1.5 rounded-full transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#E8B84B]/50 ${
         isDark
-          ? "bg-[#131C2E]/90 border border-slate-700/80 text-[#E8B84B] hover:border-[#E8B84B]/70 hover:bg-[#1A263D] hover:shadow-[0_0_15px_rgba(232,184,75,0.25)]"
-          : "bg-white/95 border border-[#E5E7EB] text-[#C89D2B] hover:border-[#C89D2B]/70 hover:bg-amber-50/60 shadow-sm hover:shadow-[0_4px_12px_rgba(200,157,43,0.18)]"
+          ? "bg-[#131C2E] border border-slate-700/80 text-[#E8B84B] hover:border-[#E8B84B]/70 hover:bg-[#1A263D] hover:shadow-[0_0_12px_rgba(232,184,75,0.25)]"
+          : "bg-white border border-[#E5E7EB] text-[#C89D2B] hover:border-[#C89D2B]/70 hover:bg-amber-50/60 shadow-xs hover:shadow-[0_2px_8px_rgba(200,157,43,0.18)]"
       } ${className}`}
     >
       <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">

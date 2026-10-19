@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { Wrench, Shield, CheckCircle2, ArrowRight, ChevronUp, ChevronDown, Pointer } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
-
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
-const amcScope = [
+const defaultAmcScope = [
   "Asset and condition assessment",
   "Preventive-maintenance planning",
   "Scheduled mechanical and electrical servicing",
@@ -23,10 +24,15 @@ const amcScope = [
   "Operator and maintenance-team training"
 ];
 
-const originalLength = amcScope.length;
-const extendedScope = [...amcScope, ...amcScope, ...amcScope]; // 3x duplication for seamless infinite scrolling
-
 export default function AMCAndLifecycle() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const amcData = isEs ? homeES.amcAndLifecycle : null;
+
+  const amcScope = amcData ? amcData.scopeItems : defaultAmcScope;
+  const originalLength = amcScope.length;
+  const extendedScope = [...amcScope, ...amcScope, ...amcScope]; // 3x duplication for seamless infinite scrolling
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(originalLength);
   const activeIndexRef = useRef(originalLength);
@@ -173,26 +179,34 @@ export default function AMCAndLifecycle() {
               >
                 <div className="inline-flex items-center space-x-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 border border-[#C59B27]/30 dark:border-[#E8B84B]/30 px-4 py-2 rounded-full mb-6">
                   <Wrench className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
-                  <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">AMC and Lifecycle Support</span>
+                  <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">
+                    {amcData ? "AMC y Soporte del Ciclo de Vida" : "AMC and Lifecycle Support"}
+                  </span>
                 </div>
                 
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
-                  Keep Critical Systems <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">Operating Reliably</span>
+                  {amcData ? (
+                    <>Mantenga los sistemas críticos <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">funcionando de manera confiable</span></>
+                  ) : (
+                    <>Keep Critical Systems <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">Operating Reliably</span></>
+                  )}
                 </h3>
                 
                 <div className="text-[15px] text-[#555E75] dark:text-slate-300 mb-8 leading-relaxed space-y-5">
-                  <p>
-                    Sanota provides Annual Maintenance Contracts and technical support for machinery, automation and integrated systems developed by Sanota.
-                  </p>
-                  <p>
-                    We can also take over eligible third-party machinery and systems following an initial technical and condition assessment.
-                  </p>
+                  {amcData ? (
+                    <p>{amcData.description}</p>
+                  ) : (
+                    <>
+                      <p>Sanota provides Annual Maintenance Contracts and technical support for machinery, automation and integrated systems developed by Sanota.</p>
+                      <p>We can also take over eligible third-party machinery and systems following an initial technical and condition assessment.</p>
+                    </>
+                  )}
                 </div>
                 
                 <div className="flex items-center space-x-4 p-5 bg-[#FAF8F5] dark:bg-[#0B1220]/60 rounded-2xl border border-slate-200 dark:border-slate-700/50 mb-10 shadow-inner">
                   <Shield className="w-10 h-10 text-[#17135B] dark:text-[#2E5EAA] shrink-0" />
                   <p className="text-[13.5px] text-[#555E75] dark:text-slate-300 leading-relaxed">
-                    Each AMC is developed according to the equipment, operating environment, asset criticality and required response level.
+                    {amcData ? amcData.note : "Each AMC is developed according to the equipment, operating environment, asset criticality and required response level."}
                   </p>
                 </div>
 
@@ -201,14 +215,14 @@ export default function AMCAndLifecycle() {
                     href="/contact"
                     className="inline-flex justify-center items-center px-6 py-4 border border-transparent text-[14px] font-bold rounded-xl text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-colors shadow-lg shadow-[#E5A93C]/20 group w-full sm:w-auto"
                   >
-                    Request an Assessment
+                    {amcData ? amcData.primaryButton : "Request an Assessment"}
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/services"
                     className="inline-flex justify-center items-center px-6 py-4 border border-[#17135B]/20 dark:border-slate-600 text-[14px] font-bold rounded-xl text-[#17135B] dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors w-full sm:w-auto backdrop-blur-sm bg-white dark:bg-[#131C2E]/50"
                   >
-                    Explore Services
+                    {amcData ? amcData.secondaryButton : "Explore Services"}
                   </Link>
                 </div>
               </motion.div>
@@ -226,7 +240,7 @@ export default function AMCAndLifecycle() {
                 <div className="mb-4 border-b border-slate-200 dark:border-slate-700/50 pb-4 flex items-center justify-between shrink-0">
                   <h4 className="text-xl font-bold text-[#17135B] dark:text-white flex items-center">
                     <CheckCircle2 className="w-6 h-6 text-[#17135B] dark:text-[#2E5EAA] mr-3" />
-                    AMC Services May Include
+                    {amcData ? amcData.scopeTitle : "AMC Services May Include"}
                   </h4>
                 </div>
                 

@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Box, Leaf, CupSoda, Coffee, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 const industries = [
   {
@@ -62,6 +64,24 @@ const additionalIndustries = [
 export default function IndustriesWeSupport() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const indData = isEs ? homeES.industries : null;
+
+  const displayIndustries = industries.map((item, idx) => {
+    if (indData && indData.priority[idx]) {
+      return {
+        ...item,
+        title: indData.priority[idx].title,
+        description: indData.priority[idx].description,
+        linkText: indData.priority[idx].linkText,
+      };
+    }
+    return item;
+  });
+
+  const displayAdditional = indData ? indData.additionalList : additionalIndustries;
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -83,8 +103,12 @@ export default function IndustriesWeSupport() {
             viewport={{ once: true }}
             className={`text-2xl sm:text-3xl font-extrabold tracking-tight uppercase ${isDark ? "text-white" : "text-[#17135B]"}`}
           >
-            Engineering Support <br />
-            <span className={isDark ? "text-[#2E5EAA]" : "text-[#C59B27]"}>Across Industries</span>
+            {indData ? indData.heading : (
+              <>
+                Engineering Support <br />
+                <span className={isDark ? "text-[#2E5EAA]" : "text-[#C59B27]"}>Across Industries</span>
+              </>
+            )}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +117,7 @@ export default function IndustriesWeSupport() {
             transition={{ delay: 0.1 }}
             className={`mt-4 max-w-3xl mx-auto text-[14.5px] leading-relaxed ${isDark ? "text-slate-400" : "text-[#555E75]"}`}
           >
-            Sanota helps organizations improve productivity, reliability, process control, operational visibility, resource efficiency and long-term system performance.
+            {indData ? indData.subheading : "Sanota helps organizations improve productivity, reliability, process control, operational visibility, resource efficiency and long-term system performance."}
           </motion.p>
         </div>
 
@@ -143,7 +167,7 @@ export default function IndustriesWeSupport() {
             <ChevronRight className={`w-6 h-6 ${isDark ? "text-[#E8B84B]" : "text-[#17135B]"}`} />
           </motion.button>
 
-          {industries.map((ind, idx) => {
+          {displayIndustries.map((ind, idx) => {
             let offset = idx - activeIndex;
             const total = industries.length;
             
@@ -269,7 +293,7 @@ export default function IndustriesWeSupport() {
 
         {/* Mobile 2-Column Grid (Mobile & Tablet only) */}
         <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:hidden mb-10">
-          {industries.map((ind) => (
+          {displayIndustries.map((ind) => (
             <Link key={ind.id} href={ind.link}>
               <div className={`relative h-40 sm:h-56 rounded-2xl overflow-hidden border group cursor-pointer shadow-md flex flex-col justify-end p-4 sm:p-5 ${
                 isDark ? "border-slate-700/50 bg-[#131C2E]" : "border-[#ECE7DD] bg-white"
@@ -321,7 +345,7 @@ export default function IndustriesWeSupport() {
               className="text-[22px] font-extrabold !text-[#17135B] dark:!text-white !drop-shadow-none"
               style={{ color: isDark ? '#FFFFFF' : '#17135B', textShadow: 'none' }}
             >
-              Additional Industries
+              {indData ? indData.additionalTitle : "Additional Industries"}
             </h3>
             <Link
               href="/industries"
@@ -331,13 +355,13 @@ export default function IndustriesWeSupport() {
                   : "border-[#ECE7DD] hover:border-[#C59B27] text-[#17135B] bg-[#FAF8F5] hover:bg-white"
               }`}
             >
-              View All Industries
+              {indData ? indData.button : "View All Industries"}
               <ChevronRight className={`ml-2 w-4 h-4 ${isDark ? "text-white" : "text-[#C59B27]"}`} />
             </Link>
           </div>
 
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-12 lg:gap-x-24 relative z-10">
-            {additionalIndustries.map((industry, idx) => (
+            {displayAdditional.map((industry, idx) => (
               <li key={idx} className="flex items-center">
                 <CheckCircle2 className={`w-4 h-4 mr-4 shrink-0 ${isDark ? "text-[#E8B84B]" : "text-[#C59B27]"}`} />
                 <span className={`text-[14.5px] font-medium ${isDark ? "text-slate-300" : "text-[#555E75]"}`}>{industry}</span>

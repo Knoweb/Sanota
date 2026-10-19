@@ -3,20 +3,29 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Wrench, Compass } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { homeES } from "@/locales/es/home";
 
 export default function VisitorPathways() {
-  const solveList = [
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const vp = isEs ? homeES.visitorPathways : null;
+
+  const defaultSolveList = [
     "Improve a production process", "Automate a manual operation", "Modernize an existing machine",
     "Develop custom machinery", "Introduce monitoring or tracking", "Connect equipment with IoT or software",
     "Develop a new product or prototype", "Build a processing or production system", "Arrange maintenance or an AMC",
     "Understand where to begin"
   ];
 
-  const exploreList = [
+  const defaultExploreList = [
     "Completed work", "Project stories", "Machinery demonstrations",
     "Products and systems", "Videos", "Photo gallery",
     "Innovation and partnerships", "News and activities"
   ];
+
+  const solveList = vp ? vp.solveCard.items : defaultSolveList;
+  const exploreList = vp ? vp.exploreCard.items : defaultExploreList;
 
   return (
     <section className="relative py-12 lg:py-16 bg-transparent overflow-hidden">
@@ -29,7 +38,7 @@ export default function VisitorPathways() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-black text-white mb-3 leading-tight"
           >
-            How Can We Help You Today?
+            {vp ? vp.heading : "How Can We Help You Today?"}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 15 }}
@@ -38,7 +47,7 @@ export default function VisitorPathways() {
             transition={{ delay: 0.1 }}
             className="text-slate-400 text-base"
           >
-            Select the pathway that best describes what you are looking for.
+            {vp ? vp.subheading : "Select the pathway that best describes what you are looking for."}
           </motion.p>
         </div>
 
@@ -59,18 +68,24 @@ export default function VisitorPathways() {
                  <div className="w-10 h-10 rounded-xl bg-[#E8B84B]/10 flex items-center justify-center mr-4 shrink-0 border border-[#E8B84B]/20">
                    <Wrench className="w-5 h-5 text-[#E8B84B]" />
                  </div>
-                 <h3 className="text-xl sm:text-2xl font-black text-white">I Need to Solve a Problem</h3>
+                 <h3 className="text-xl sm:text-2xl font-black text-white">
+                   {vp ? vp.solveCard.title : "I Need to Solve a Problem"}
+                 </h3>
               </div>
               
               <div className="inline-flex w-max px-3 py-1 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4">
-                 <span className="text-[#E8B84B] font-bold tracking-widest uppercase text-[10px]">For Clients & Partners</span>
+                 <span className="text-[#E8B84B] font-bold tracking-widest uppercase text-[10px]">
+                   {vp ? vp.solveCard.tag : "For Clients & Partners"}
+                 </span>
               </div>
               
               <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-80 min-h-[44px]">
-                <p>You do not need to arrive with a completed technical specification. Tell us about the present situation, what is not working and what you need to achieve.</p>
+                <p>{vp ? vp.solveCard.description : "You do not need to arrive with a completed technical specification. Tell us about the present situation, what is not working and what you need to achieve."}</p>
               </div>
               
-              <h4 className="text-white font-bold text-sm sm:text-base mb-4">We can help when you need to:</h4>
+              <h4 className="text-white font-bold text-sm sm:text-base mb-4">
+                {vp ? vp.solveCard.weCanHelpTitle : "We can help when you need to:"}
+              </h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {solveList.map((item, idx) => (
@@ -85,7 +100,7 @@ export default function VisitorPathways() {
                 href="/tell-us-your-challenge"
                 className="mt-auto w-full inline-flex justify-center items-center px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] text-[14px] font-black rounded-xl transition-all duration-300 shadow-md shadow-[#E8B84B]/10 hover:shadow-[#E8B84B]/30 hover:-translate-y-1 group/btn"
               >
-                Tell Us Your Challenge
+                {vp ? vp.solveCard.button : "Tell Us Your Challenge"}
                 <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -106,18 +121,24 @@ export default function VisitorPathways() {
                  <div className="w-10 h-10 rounded-xl bg-[#2E5EAA]/10 flex items-center justify-center mr-4 shrink-0 border border-[#2E5EAA]/30">
                    <Compass className="w-5 h-5 text-[#2E5EAA]" />
                  </div>
-                 <h3 className="text-xl sm:text-2xl font-black text-white">I Want to Explore Sanota</h3>
+                 <h3 className="text-xl sm:text-2xl font-black text-white">
+                   {vp ? vp.exploreCard.title : "I Want to Explore Sanota"}
+                 </h3>
               </div>
               
               <div className="inline-flex w-max px-3 py-1 rounded-full border border-[#2E5EAA]/30 bg-[#2E5EAA]/10 mb-4">
-                 <span className="text-[#2E5EAA] font-bold tracking-widest uppercase text-[10px]">For Visitors & Researchers</span>
+                 <span className="text-[#2E5EAA] font-bold tracking-widest uppercase text-[10px]">
+                   {vp ? vp.exploreCard.tag : "For Visitors & Researchers"}
+                 </span>
               </div>
               
               <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-80 min-h-[44px]">
-                <p>Discover the machinery, systems, products and integrated solutions Sanota has developed across a diverse range of industries and environments.</p>
+                <p>{vp ? vp.exploreCard.description : "Discover the machinery, systems, products and integrated solutions Sanota has developed across a diverse range of industries and environments."}</p>
               </div>
               
-              <h4 className="text-white font-bold text-sm sm:text-base mb-4">Explore our world:</h4>
+              <h4 className="text-white font-bold text-sm sm:text-base mb-4">
+                {vp ? vp.exploreCard.weCanHelpTitle : "Explore our world:"}
+              </h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {exploreList.map((item, idx) => (
@@ -132,7 +153,7 @@ export default function VisitorPathways() {
                 href="/media"
                 className="mt-auto w-full inline-flex justify-center items-center px-6 py-3 bg-[#2E5EAA] hover:bg-[#254d8c] text-white text-[14px] font-black rounded-xl transition-all duration-300 shadow-md shadow-[#2E5EAA]/10 hover:shadow-[#2E5EAA]/30 hover:-translate-y-1 group/btn"
               >
-                See Sanota in Action
+                {vp ? vp.exploreCard.button : "See Sanota in Action"}
                 <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>
