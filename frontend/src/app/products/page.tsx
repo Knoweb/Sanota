@@ -6,6 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Settings, Coffee, Sprout, Activity, Truck, Zap, Trash2, Lightbulb, PackageSearch, Layers, Wrench, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { productsES } from "@/locales/es/products";
 
 const productCategories = [
   {
@@ -354,7 +356,90 @@ const industries = [
   "Research, innovation and product development"
 ];
 
+const selectedSolutionsES = [
+  "Maquinaria automatizada",
+  "Equipos de propósito especial",
+  "Maquinaria de procesamiento",
+  "Sistemas de producción y manipulación",
+  "Soluciones de invernaderos inteligentes",
+  "Sistemas de riego y fertirrigación",
+  "Sistemas de control ambiental",
+  "Sistemas de automatización industrial",
+  "Soluciones basadas en PLC y HMI",
+  "Plataformas de monitoreo IoT",
+  "Sistemas de control remoto",
+  "Paneles de control y herramientas de informes",
+  "Sistemas de seguimiento de activos y ubicación",
+  "Equipos de manipulación de materiales",
+  "Sistemas de transporte",
+  "Vehículos guiados automáticamente (AGV)",
+  "Monitoreo de energía y servicios públicos",
+  "Equipos de procesamiento de residuos",
+  "Productos habilitados con sensores",
+  "Prototipos a medida",
+  "Sistemas industriales e instalaciones integradas"
+];
+
+const existingEquipmentsES = [
+  "Mejora mecánica",
+  "Actualizaciones de sistemas eléctricos",
+  "Reemplazo de controles",
+  "Automatización",
+  "Integración de sensores",
+  "Conectividad IoT",
+  "Monitoreo por software",
+  "Mejora de la seguridad",
+  "Aumento de capacidad",
+  "Gestión de obsolescencia",
+  "Mantenimiento preventivo",
+  "Soporte de ciclo de vida a largo plazo"
+];
+
+const knowebItemsES = [
+  "Plataformas IoT",
+  "Conectividad en la nube",
+  "Aplicaciones web",
+  "Aplicaciones móviles",
+  "Paneles de control (Dashboards)",
+  "Alertas y notificaciones",
+  "Informes automatizados",
+  "Gestión de datos",
+  "Sistemas de gestión de usuarios",
+  "Integración con software existente"
+];
+
+const supportItemsES = [
+  "Mantenimiento preventivo",
+  "Inspecciones periódicas",
+  "Soporte ante averías",
+  "Servicio mecánico y eléctrico",
+  "Soporte de automatización y control",
+  "Soporte de IoT y software",
+  "Revisiones de rendimiento",
+  "Planificación de reemplazo de piezas",
+  "Recomendaciones de modernización",
+  "Capacitación de operadores y mantenimiento",
+  "Contratos de Mantenimiento Anual (AMC)"
+];
+
+const industriesES = [
+  "Fabricación y automatización industrial",
+  "Agricultura inteligente y agrotecnología",
+  "Procesamiento de alimentos y bebidas",
+  "Industria del té",
+  "Logística, almacenamiento y manipulación",
+  "Eficiencia energética y de recursos",
+  "Gestión ambiental y de residuos",
+  "Infraestructura e instalaciones inteligentes",
+  "Ingeniería biomédica y salud",
+  "Investigación, innovación y prototipos"
+];
+
 export default function ProductsPage() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const p = isEs ? productsES : null;
+
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -393,7 +478,7 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              Engineering Products & Integrated Systems
+              {p ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -401,7 +486,13 @@ export default function ProductsPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
-              Products and Systems Developed Around <span className="text-[#2E5EAA]">Real Operational Requirements</span>
+              {p ? (
+                p.hero.heading
+              ) : (
+                <>
+                  Products and Systems Developed Around <span className="text-[#2E5EAA]">Real Operational Requirements</span>
+                </>
+              )}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -409,7 +500,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
-              Machinery, automation, connected technologies and integrated systems designed to solve practical industry needs.
+              {p ? p.hero.subheading : "Machinery, automation, connected technologies and integrated systems designed to solve practical industry needs."}
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -417,7 +508,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
-              Sanota develops, integrates and supports engineering products and systems for industrial, agricultural, commercial and infrastructure applications. Our solutions can combine mechanical engineering, electrical and electronic systems, automation, IoT, software, fabrication, installation and lifecycle support.
+              {p ? p.hero.description : "Sanota develops, integrates and supports engineering products and systems for industrial, agricultural, commercial and infrastructure applications. Our solutions can combine mechanical engineering, electrical and electronic systems, automation, IoT, software, fabrication, installation and lifecycle support."}
             </motion.p>
             
             <motion.div
@@ -430,13 +521,13 @@ export default function ProductsPage() {
                 href="#categories"
                 className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm"
               >
-                Explore Products & Systems
+                {p ? p.hero.primaryButton : "Explore Products & Systems"}
               </a>
               <Link
                 href="/tell-us-your-challenge"
                 className="px-8 py-4 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-white dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
               >
-                Tell Us Your Requirement <ArrowRight className="ml-2 w-5 h-5" />
+                {p ? p.hero.secondaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </motion.div>
             
@@ -446,7 +537,9 @@ export default function ProductsPage() {
               transition={{ delay: 0.3 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
             >
-              Machinery <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Integrated Systems
+              {p ? p.hero.supportLine : (
+                <>Machinery <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Integrated Systems</>
+              )}
             </motion.p>
           </div>
         </section>
@@ -463,8 +556,17 @@ export default function ProductsPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight"
             >
-              From Individual Equipment to <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">Complete Integrated Solutions</span>
+              {p ? (
+                <>
+                  Desde equipos individuales hasta <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">soluciones integradas completas</span>
+                </>
+              ) : (
+                <>
+                  From Individual Equipment to <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">Complete Integrated Solutions</span>
+                </>
+              )}
             </motion.h2>
             
             <motion.p 
@@ -474,7 +576,15 @@ export default function ProductsPage() {
               transition={{ delay: 0.1 }}
               className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium max-w-3xl mx-auto"
             >
-              Some clients require a specific machine or product. Others require a complete operational system involving equipment, controls, sensors, software and implementation. <strong className="text-[#17135B] dark:text-white">Sanota supports both.</strong>
+              {p ? (
+                <>
+                  Algunos clientes requieren una máquina o producto específico. Otros requieren un sistema operativo completo que incluya equipos, controles, sensores, software e implementación. <strong className="text-[#17135B] dark:text-white">Sanota apoya ambas posturas.</strong>
+                </>
+              ) : (
+                <>
+                  Some clients require a specific machine or product. Others require a complete operational system involving equipment, controls, sensors, software and implementation. <strong className="text-[#17135B] dark:text-white">Sanota supports both.</strong>
+                </>
+              )}
             </motion.p>
             
             <motion.p 
@@ -484,7 +594,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.15 }}
               className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10"
             >
-              Depending on the requirement, Sanota can provide:
+              {p ? "En función de los requisitos, Sanota puede suministrar:" : "Depending on the requirement, Sanota can provide:"}
             </motion.p>
             
             <div className="relative max-w-4xl mx-auto mb-14 mt-8 group">
@@ -492,14 +602,11 @@ export default function ProductsPage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-[#E8B84B]/20 via-transparent to-amber-600/20 rounded-[2rem] blur-2xl opacity-30 group-hover:opacity-70 transition duration-1000 pointer-events-none" />
               
               <div className="relative bg-white dark:bg-[#050B14]/90 backdrop-blur-3xl border border-slate-200 dark:border-slate-800/80 rounded-[2rem] p-8 md:p-12 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-500 hover:border-[#C59B27]/40 dark:hover:border-[#E8B84B]/30">
-                {/* Top highlight line */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27]/40 dark:via-[#E8B84B]/40 to-transparent" />
-                
-                {/* Faint internal texture */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 relative z-10">
-                  {[
+                  {(p ? p.intro.points : [
                     "An existing or adaptable product concept",
                     "A system configured around the client’s operation",
                     "Custom machinery or equipment",
@@ -508,7 +615,7 @@ export default function ProductsPage() {
                     "A complete multi-disciplinary project",
                     "Modernization of existing equipment",
                     "AMC and long-term lifecycle support"
-                  ].map((item, idx) => (
+                  ]).map((item, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 15 }}
@@ -517,10 +624,8 @@ export default function ProductsPage() {
                       transition={{ delay: 0.1 + (idx * 0.05) }}
                       className="flex items-center group/item cursor-default p-3 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-2xl transition-all duration-300"
                     >
-                      {/* Premium Circle Icon */}
                       <div className="relative w-12 h-12 rounded-full bg-[#F5F3EF] dark:bg-[#0A101A] border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mr-5 shrink-0 group-hover/item:border-[#C59B27]/60 dark:group-hover/item:border-[#E8B84B]/60 group-hover/item:shadow-[0_0_20px_rgba(232,184,75,0.2)] transition-all duration-300">
                         <div className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-500 group-hover/item:bg-[#C59B27] dark:group-hover/item:bg-[#E8B84B] transition-colors duration-300" />
-                        {/* Ping animation ring */}
                         <div className="absolute inset-0 rounded-full border border-[#E8B84B]/0 group-hover/item:border-[#E8B84B]/50 group-hover/item:animate-ping opacity-0 group-hover/item:opacity-100 transition-all duration-500 pointer-events-none" />
                       </div>
                       
@@ -538,7 +643,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.6 }}
               className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm"
             >
-              The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome.
+              {p ? "El enfoque adecuado se determina después de comprender la aplicación, el entorno operativo y el resultado esperado del cliente." : "The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome."}
             </motion.p>
           </div>
         </section>
@@ -549,8 +654,12 @@ export default function ProductsPage() {
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Product and System Categories</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">Explore Sanota’s Product and System Capabilities</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {p ? "Categorías de productos y sistemas" : "Product and System Categories"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
+                {p ? "Explore los productos y capacidades de sistemas de Sanota" : "Explore Sanota’s Product and System Capabilities"}
+              </h3>
             </div>
 
             <div 
@@ -577,65 +686,74 @@ export default function ProductsPage() {
                       className="absolute inset-0 w-full h-full object-cover object-right lg:object-center opacity-30 dark:opacity-40 group-hover:opacity-70 dark:group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" 
                     />
                     
-                    {/* Smart Gradients: Heavy on the left (text), transparent on the right (image) */}
                     <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 lg:via-white/90 to-transparent dark:from-[#0A101A] dark:via-[#0A101A]/95 lg:dark:via-[#0A101A]/90 dark:to-transparent transition-all duration-1000 group-hover:to-white/20 dark:group-hover:to-[#0A101A]/20" />
-                    
-                    {/* Top and Bottom edge darkening for contrast */}
                     <div className="absolute inset-0 bg-gradient-to-b from-white/50 dark:from-[#0A101A]/50 via-transparent to-white/80 dark:to-[#0A101A]/80" />
                   </div>
                   
-                  <div className="p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row gap-10 lg:gap-16 relative z-10 h-full">
-                    <div className="lg:w-5/12 flex flex-col justify-center">
-                      <div className="flex items-start mb-6">
-                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${productCategories[activeCategoryIndex].color} p-0.5 mr-5 flex-shrink-0 shadow-lg`}>
-                          <div className="w-full h-full bg-[#17135B] dark:bg-[#0D1829] rounded-[14px] flex items-center justify-center">
-                            {(() => {
-                              const IconComponent = productCategories[activeCategoryIndex].icon;
-                              return <IconComponent className="w-7 h-7 text-white" />;
-                            })()}
+                  {(() => {
+                    const cp = p?.categories?.[activeCategoryIndex];
+                    const catTitle = cp ? cp.title.replace(/^\d+\.\s*/, '') : productCategories[activeCategoryIndex].title;
+                    const catIntro = cp ? cp.summary : productCategories[activeCategoryIndex].intro;
+                    const catNeeds = cp ? cp.suitableFor : productCategories[activeCategoryIndex].clientNeeds;
+                    const catSolutions = cp ? cp.solutions : productCategories[activeCategoryIndex].items;
+
+                    return (
+                      <div className="p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row gap-10 lg:gap-16 relative z-10 h-full">
+                        <div className="lg:w-5/12 flex flex-col justify-center">
+                          <div className="flex items-start mb-6">
+                            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${productCategories[activeCategoryIndex].color} p-0.5 mr-5 flex-shrink-0 shadow-lg`}>
+                              <div className="w-full h-full bg-[#17135B] dark:bg-[#0D1829] rounded-[14px] flex items-center justify-center">
+                                {(() => {
+                                  const IconComponent = productCategories[activeCategoryIndex].icon;
+                                  return <IconComponent className="w-7 h-7 text-white" />;
+                                })()}
+                              </div>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 dark:text-slate-400 font-bold text-xs tracking-widest uppercase block mb-1">{productCategories[activeCategoryIndex].number}</span>
+                              <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white leading-tight drop-shadow-sm">{catTitle}</h3>
+                            </div>
+                          </div>
+                          <p className="text-slate-600 dark:text-slate-300 text-[15px] leading-relaxed mb-8 drop-shadow-sm">{catIntro}</p>
+                          
+                          <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
+                            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-slate-400 to-[#17135B] dark:to-slate-700" />
+                            <p className="text-[#17135B] dark:text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">
+                              {p ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
+                            </p>
+                            <div className="space-y-4 ml-2">
+                              {catNeeds.map((need, nIdx) => (
+                                <p key={nIdx} className="text-slate-600 dark:text-slate-400 text-sm italic leading-relaxed flex items-start">
+                                  <span className="mr-2 text-[#C59B27] dark:text-slate-500 font-serif">"</span>
+                                  {need.replace(/["“”]/g, '')}
+                                </p>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                        <div>
-                          <span className="text-slate-500 dark:text-slate-400 font-bold text-xs tracking-widest uppercase block mb-1">{productCategories[activeCategoryIndex].number}</span>
-                          <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white leading-tight drop-shadow-sm">{productCategories[activeCategoryIndex].title}</h3>
-                        </div>
-                      </div>
-                      <p className="text-slate-600 dark:text-slate-300 text-[15px] leading-relaxed mb-8 drop-shadow-sm">{productCategories[activeCategoryIndex].intro}</p>
-                      
-                      <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-slate-400 to-[#17135B] dark:to-slate-700" />
-                        <p className="text-[#17135B] dark:text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">Suitable for organizations seeking to:</p>
-                        <div className="space-y-4 ml-2">
-                          {productCategories[activeCategoryIndex].clientNeeds.map((need, nIdx) => (
-                            <p key={nIdx} className="text-slate-600 dark:text-slate-400 text-sm italic leading-relaxed flex items-start">
-                              <span className="mr-2 text-[#C59B27] dark:text-slate-500 font-serif">"</span>
-                              {need}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="lg:w-7/12 flex flex-col justify-center">
-                      <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
-                        <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-sm flex items-center">
-                          <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-white/50 mr-3 animate-pulse" />
-                          Solutions may include
-                        </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                          {productCategories[activeCategoryIndex].items.map((item, itemIdx) => (
-                            <div 
-                              key={itemIdx} 
-                              className="flex items-start bg-white dark:bg-[#050B14]/70 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/60 hover:border-[#C59B27]/40 dark:hover:border-white/30 rounded-xl px-5 py-4 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item"
-                            >
-                              <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${productCategories[activeCategoryIndex].color} mt-1.5 mr-3 shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/item:scale-150 transition-transform`} />
-                              <span className="text-slate-700 dark:text-slate-200 text-sm font-medium leading-snug group-hover/item:text-[#17135B] dark:group-hover/item:text-white transition-colors">{item}</span>
+                        <div className="lg:w-7/12 flex flex-col justify-center">
+                          <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
+                            <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-sm flex items-center">
+                              <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-white/50 mr-3 animate-pulse" />
+                              {p ? "Las soluciones pueden incluir" : "Solutions may include"}
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                              {catSolutions.map((item, itemIdx) => (
+                                <div 
+                                  key={itemIdx} 
+                                  className="flex items-start bg-white dark:bg-[#050B14]/70 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/60 hover:border-[#C59B27]/40 dark:hover:border-white/30 rounded-xl px-5 py-4 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item"
+                                >
+                                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${productCategories[activeCategoryIndex].color} mt-1.5 mr-3 shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/item:scale-150 transition-transform`} />
+                                  <span className="text-slate-700 dark:text-slate-200 text-sm font-medium leading-snug group-hover/item:text-[#17135B] dark:group-hover/item:text-white transition-colors">{item}</span>
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })()}
                 </motion.div>
               </AnimatePresence>
 
@@ -678,53 +796,67 @@ export default function ProductsPage() {
         {/* How Sanota Classifies an Offering */}
         <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           {/* Subtle Ambient Background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#2E5EAA]/5 to-[#E8B84B]/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#2E5EAA]/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                How Sanota Classifies an Offering
+                {p ? p.classification.subheading : "How Sanota Classifies an Offering"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#17135B] dark:from-white to-slate-500 dark:to-slate-400">Product, System or</span> <br className="hidden md:block" />
-                Custom Solution?
+                {p ? (
+                  p.classification.heading
+                ) : (
+                  <>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#17135B] dark:from-white to-slate-500 dark:to-slate-400">Product, System or</span> <br className="hidden md:block" />
+                    Custom Solution?
+                  </>
+                )}
               </h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 lg:mb-12">
-              {[
-                { title: "Product", desc: "A defined item of machinery, equipment, hardware or software that can be supplied or adapted for an application.", icon: PackageSearch },
-                { title: "System", desc: "A coordinated combination of products, equipment, controls and technologies working together to achieve an operational outcome.", icon: Layers },
-                { title: "Custom Solution", desc: "A product or system designed or significantly modified around a client’s specific requirement.", icon: Wrench },
-                { title: "Integrated Solution", desc: "A complete response that may combine engineering, machinery, automation, IoT, software, implementation and long-term support.", icon: ShieldCheck }
-              ].map((item, idx) => (
-                <motion.div 
-                  key={idx} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: idx * 0.1, duration: 0.6 }}
-                  className="group relative bg-white dark:bg-[#0A101A]/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800/60 hover:border-[#C59B27]/50 dark:hover:border-slate-600 rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-2 shadow-sm dark:shadow-none hover:shadow-lg dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col items-center text-center"
-                >
-                  {/* Hover gradient sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
-                  {/* Top glowing line */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27]/60 dark:via-[#E8B84B]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {(() => {
+                const icons = [PackageSearch, Layers, Wrench, ShieldCheck];
+                const itemsList = p ? p.classification.items : [
+                  { title: "Product", desc: "A defined item of machinery, equipment, hardware or software that can be supplied or adapted for an application." },
+                  { title: "System", desc: "A coordinated combination of products, equipment, controls and technologies working together to achieve an operational outcome." },
+                  { title: "Custom Solution", desc: "A product or system designed or significantly modified around a client’s specific requirement." },
+                  { title: "Integrated Solution", desc: "A complete response that may combine engineering, machinery, automation, IoT, software, implementation and long-term support." }
+                ];
 
-                  <div className="relative w-20 h-20 mb-8 mt-2">
-                    <div className="absolute inset-0 bg-[#E8B84B]/10 rounded-full blur-xl group-hover:bg-[#E8B84B]/20 transition-colors duration-500" />
-                    <div className="relative w-full h-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700/50 rounded-2xl flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-inner">
-                      <item.icon className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                  </div>
-                  
-                  <h4 className="text-xl text-[#17135B] dark:text-white font-black mb-4 tracking-wide">{item.title}</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-relaxed relative z-10 group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors duration-500">{item.desc}</p>
-                </motion.div>
-              ))}
+                return itemsList.map((item, idx) => {
+                  const Icon = icons[idx] || ShieldCheck;
+                  return (
+                    <motion.div 
+                      key={idx} 
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ delay: idx * 0.1, duration: 0.6 }}
+                      className="group relative bg-white dark:bg-[#0A101A]/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800/60 hover:border-[#C59B27]/50 dark:hover:border-slate-600 rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-2 shadow-sm dark:shadow-none hover:shadow-lg dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col items-center text-center"
+                    >
+                      {/* Hover gradient sweep */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#E8B84B]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      
+                      {/* Top glowing line */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27]/60 dark:via-[#E8B84B]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      <div className="relative w-20 h-20 mb-8 mt-2">
+                        <div className="absolute inset-0 bg-[#E8B84B]/10 rounded-full blur-xl group-hover:bg-[#E8B84B]/20 transition-colors duration-500" />
+                        <div className="relative w-full h-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700/50 rounded-2xl flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-inner">
+                          <Icon className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
+                        </div>
+                      </div>
+                      
+                      <h4 className="text-xl text-[#17135B] dark:text-white font-black mb-4 tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-relaxed relative z-10 group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors duration-500">{item.desc}</p>
+                    </motion.div>
+                  );
+                });
+              })()}
             </div>
             
             <motion.div 
@@ -735,13 +867,12 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm">
-                Sanota will help determine which approach is most appropriate after reviewing the requirement.
+                {p ? "Sanota le ayudará a determinar qué enfoque es el más adecuado después de revisar el requisito." : "Sanota will help determine which approach is most appropriate after reviewing the requirement."}
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Selected Solution Areas */}
         {/* Selected Solution Areas */}
         <section className="relative py-16 lg:py-8 lg:py-12 bg-transparent overflow-hidden border-t border-slate-200 dark:border-slate-800/40">
           {/* Subtle Background Glow */}
@@ -751,12 +882,21 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                Selected Solution Areas
+                {p ? "Áreas de Soluciones Seleccionadas" : "Selected Solution Areas"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                Examples of What Sanota Can <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">Develop and Integrate</span>
+                {p ? (
+                  <>
+                    Ejemplos de lo que Sanota puede <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">desarrollar e integrar</span>
+                  </>
+                ) : (
+                  <>
+                    Examples of What Sanota Can <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">Develop and Integrate</span>
+                  </>
+                )}
               </h3>
             </div>
             
@@ -771,7 +911,7 @@ export default function ProductsPage() {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay" />
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 relative z-10">
-                  {selectedSolutions.map((sol, idx) => (
+                  {(p ? selectedSolutionsES : selectedSolutions).map((sol, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 10 }}
@@ -796,7 +936,7 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold italic max-w-3xl mx-auto leading-relaxed shadow-sm">
-                The final configuration, specifications and scope will depend on the client’s application and technical assessment.
+                {p ? "La configuración final, especificaciones y alcance dependerán de la aplicación y evaluación técnica del cliente." : "The final configuration, specifications and scope will depend on the client’s application and technical assessment."}
               </p>
             </motion.div>
           </div>
@@ -816,17 +956,30 @@ export default function ProductsPage() {
               >
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                  New Systems and Existing Equipment
+                  {p ? "Nuevos Sistemas y Equipos Existentes" : "New Systems and Existing Equipment"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-                  Develop New. Improve Existing. <br className="hidden xl:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Connect What Already Works.</span>
+                  {p ? (
+                    <>
+                      Desarrollar lo nuevo. Mejorar lo existente. <br className="hidden xl:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Conectar lo que ya funciona.</span>
+                    </>
+                  ) : (
+                    <>
+                      Develop New. Improve Existing. <br className="hidden xl:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Connect What Already Works.</span>
+                    </>
+                  )}
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium">Sanota’s role is not limited to developing new machinery and systems.</p>
-                <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10">Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance.</p>
+                <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium">
+                  {p ? "El papel de Sanota no se limita al desarrollo de maquinaria y sistemas nuevos." : "Sanota’s role is not limited to developing new machinery and systems."}
+                </p>
+                <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10">
+                  {p ? "Los equipos existentes pueden conservar un gran valor operativo pero requerir controles actualizados, nuevos componentes, automatización, monitorización digital o mantenimiento estructurado." : "Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance."}
+                </p>
                 
                 <Link href="/services" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0B1220]/80 backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                  Explore Retrofit & Modernization 
+                  {p ? "Explorar Modernización y Reacondicionamiento" : "Explore Retrofit & Modernization"} 
                   <ArrowRight className="ml-3 w-5 h-5 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
                 </Link>
               </motion.div>
@@ -858,10 +1011,10 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-8 text-lg drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       Sanota can assess existing machinery and systems to identify opportunities for:
+                       {p ? "Sanota puede evaluar la maquinaria y sistemas existentes para identificar oportunidades de:" : "Sanota can assess existing machinery and systems to identify opportunities for:"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                      {existingEquipments.map((eq, idx) => (
+                      {(p ? existingEquipmentsES : existingEquipments).map((eq, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, y: 15 }}
@@ -907,23 +1060,40 @@ export default function ProductsPage() {
                   </div>
                   
                   <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                    Engineering Products <br className="hidden md:block" />
-                    Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">Digital Tech</span>
+                    {p ? (
+                      <>
+                        Productos de ingeniería <br className="hidden md:block" />
+                        conectados mediante <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">tecnología digital</span>
+                      </>
+                    ) : (
+                      <>
+                        Engineering Products <br className="hidden md:block" />
+                        Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">Digital Tech</span>
+                      </>
+                    )}
                   </h3>
                   
                   <div className="space-y-6 mb-10 max-w-3xl mx-auto text-center">
                     <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
-                      Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems.
+                      {p ? "Los productos de ingeniería modernos dependen cada vez más del software, la conectividad y el acceso a información operativa. A través de Knoweb, empresa de TI afiliada bajo propiedad común, Sanota fortalece productos y sistemas de ingeniería." : "Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems."}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-                      <strong className="text-[#17135B] dark:text-white">Sanota</strong> coordinates the overall engineering requirement, while <strong className="text-[#17135B] dark:text-white">Knoweb</strong> contributes specialized software and digital capability where required.
+                      {p ? (
+                        <>
+                          <strong className="text-[#17135B] dark:text-white">Sanota</strong> coordina los requisitos globales de ingeniería, mientras que <strong className="text-[#17135B] dark:text-white">Knoweb</strong> aporta software especializado y capacidad digital cuando se requiere.
+                        </>
+                      ) : (
+                        <>
+                          <strong className="text-[#17135B] dark:text-white">Sanota</strong> coordinates the overall engineering requirement, while <strong className="text-[#17135B] dark:text-white">Knoweb</strong> contributes specialized software and digital capability where required.
+                        </>
+                      )}
                     </p>
                   </div>
                   
                   <Link href="#automation-iot" className="relative inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] overflow-hidden rounded-xl group border border-slate-300 dark:border-slate-700 transition-all hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] shadow-sm">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#E8B84B]/10 to-cyan-500/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                     <span className="relative z-10 text-[#17135B] dark:text-white font-bold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#C59B27] dark:group-hover:from-[#E8B84B] group-hover:to-cyan-500 dark:group-hover:to-cyan-400 transition-all duration-300">
-                      Explore Automation & IoT
+                      {p ? "Explorar Automatización e IoT" : "Explore Automation & IoT"}
                     </span>
                     <div className="relative z-10 ml-4 w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors">
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
@@ -956,23 +1126,12 @@ export default function ProductsPage() {
                          <Activity className="w-10 h-10 text-cyan-500 dark:text-cyan-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors" />
                        </motion.div>
                        <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-300 dark:to-blue-500 tracking-wide mb-2">
-                         Digital Capabilities
+                         {p ? "Capacidades Digitales" : "Digital Capabilities"}
                        </h4>
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {[
-                        "IoT platforms",
-                        "Cloud connectivity",
-                        "Web applications",
-                        "Mobile applications",
-                        "Dashboards",
-                        "Alerts and notifications",
-                        "Automated reporting",
-                        "Data management",
-                        "User-management systems",
-                        "Integration with existing software"
-                      ].map((item, idx) => (
+                      {(p ? knowebItemsES : knowebItems).map((item, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -1009,11 +1168,19 @@ export default function ProductsPage() {
             <div className="text-center mb-10 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                How a Solution is Developed
+                {p ? "Cómo se Desarrolla una Solución" : "How a Solution is Developed"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                From Requirement to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Working System</span>
+                {p ? (
+                  <>
+                    Del Requisito al <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Sistema Operativo</span>
+                  </>
+                ) : (
+                  <>
+                    From Requirement to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Working System</span>
+                  </>
+                )}
               </h3>
             </div>
             
@@ -1022,7 +1189,15 @@ export default function ProductsPage() {
               <div className="hidden md:block absolute left-1/2 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-[#C59B27]/40 dark:via-[#E8B84B]/30 to-transparent -translate-x-1/2" />
               
               <div className="space-y-6 md:space-y-0 relative z-10">
-                {[
+                {(p ? [
+                  { n: "1", title: "Comprender el requisito", desc: "Sanota analiza el desafío operativo, el resultado esperado y el entorno de trabajo." },
+                  { n: "2", title: "Evaluar la aplicación", desc: "Se revisan los equipos existentes, procesos, restricciones, riesgos y requisitos de integración." },
+                  { n: "3", title: "Definir la solución", desc: "Se identifica el producto, sistema o enfoque de desarrollo a medida más adecuado." },
+                  { n: "4", title: "Diseñar y desarrollar", desc: "Se desarrollan los componentes mecánicos, eléctricos, de automatización, IoT y software según sea necesario." },
+                  { n: "5", title: "Integrar y probar", desc: "Los componentes y tecnologías se ensamblan, programan, conectan y prueban exhaustivamente." },
+                  { n: "6", title: "Instalar y poner en marcha", desc: "La solución se implementa y verifica en su entorno operativo real." },
+                  { n: "7", title: "Capacitar y dar soporte", desc: "Se proporciona orientación al operador, documentación técnica, mantenimiento y contratos AMC." }
+                ] : [
                   { n: "1", title: "Understand the Requirement", desc: "Sanota studies the operational challenge, intended outcome and working environment." },
                   { n: "2", title: "Assess the Application", desc: "Existing equipment, processes, constraints, risks and integration requirements are reviewed." },
                   { n: "3", title: "Define the Solution", desc: "The appropriate product, system or custom-development approach is identified." },
@@ -1030,7 +1205,7 @@ export default function ProductsPage() {
                   { n: "5", title: "Integrate and Test", desc: "Components and technologies are assembled, programmed, connected and tested." },
                   { n: "6", title: "Install and Commission", desc: "The solution is implemented and verified in the intended operating environment." },
                   { n: "7", title: "Train and Support", desc: "Operator guidance, technical documentation, maintenance and AMC support can be provided." }
-                ].map((step, idx) => (
+                ]).map((step, idx) => (
                   <motion.div 
                     key={idx} 
                     initial={{ opacity: 0, y: 20 }} 
@@ -1067,7 +1242,7 @@ export default function ProductsPage() {
             >
               <Link href="/tell-us-your-challenge" className="relative inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl overflow-hidden group transition-all hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-1 shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10">Tell Us Your Requirement</span>
+                <span className="relative z-10">{p ? "Cuéntenos sus requisitos" : "Tell Us Your Requirement"}</span>
                 <div className="relative z-10 ml-3 w-8 h-8 rounded-full bg-[#0B1220]/10 flex items-center justify-center group-hover:bg-[#0B1220]/20 transition-colors">
                   <ArrowRight className="w-4 h-4 text-[#0B1220] group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -1087,27 +1262,38 @@ export default function ProductsPage() {
               >
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                  Support After Implementation
+                  {p ? p.lifecycle.heading : "Support After Implementation"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                  Protecting the Value <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">of the Solution</span>
+                  {p ? (
+                    <>
+                      {p.lifecycle.subheading.split(" ")[0]} {p.lifecycle.subheading.split(" ")[1]} <br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">
+                        {p.lifecycle.subheading.split(" ").slice(2).join(" ")}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      Protecting the Value <br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">of the Solution</span>
+                    </>
+                  )}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-10">
-                  Sanota can continue supporting products and systems after installation and commissioning. AMC and maintenance support may also be available for eligible third-party machinery and systems following a technical assessment.
+                  {p ? p.lifecycle.description : "Sanota can continue supporting products and systems after installation and commissioning. AMC and maintenance support may also be available for eligible third-party machinery and systems following a technical assessment."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-5 mt-4">
                   <Link href="/contact" className="relative group overflow-hidden px-8 py-4 bg-gradient-to-r from-[#E8B84B] to-amber-500 text-[#0A101A] font-black rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(232,184,75,0.3)] flex items-center justify-center">
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center">
-                      Request an AMC Assessment
+                      {p ? p.lifecycle.primaryButton : "Request an AMC Assessment"}
                       <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Link>
                   
                   <Link href="/services" className="relative group px-8 py-4 bg-white dark:bg-[#0B1220]/80 backdrop-blur-md border border-slate-300 dark:border-slate-700 hover:border-[#C59B27]/60 dark:hover:border-[#E8B84B]/60 text-[#17135B] dark:text-white font-bold rounded-xl transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-[0_15px_30px_rgba(0,0,0,0.4)] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#E8B84B]/0 via-[#E8B84B]/10 to-[#E8B84B]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                    <span className="relative z-10">Explore Lifecycle Support</span>
+                    <span className="relative z-10">{p ? p.lifecycle.secondaryButton : "Explore Lifecycle Support"}</span>
                   </Link>
                 </div>
               </motion.div>
@@ -1139,39 +1325,48 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-6 text-xs uppercase tracking-widest drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       Comprehensive Support Cover
+                       {p ? "Cobertura de Soporte Integral" : "Comprehensive Support Cover"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                      {[
-                        { name: "Preventive maintenance", icon: ShieldCheck },
-                        { name: "Periodic inspections", icon: PackageSearch },
-                        { name: "Breakdown-support", icon: Wrench },
-                        { name: "Mechanical & electrical servicing", icon: Zap },
-                        { name: "Automation & control support", icon: Settings },
-                        { name: "IoT & software support", icon: Layers },
-                        { name: "Performance reviews", icon: Activity },
-                        { name: "Component-replacement planning", icon: Layers },
-                        { name: "Modernization recommendations", icon: Lightbulb },
-                        { name: "Operator & maintenance training", icon: Activity },
-                        { name: "Annual Maintenance Contracts", icon: ShieldCheck },
-                      ].map((item, idx) => {
-                        const Icon = item.icon;
-                        return (
-                          <motion.div 
-                            key={idx} 
-                            initial={{ opacity: 0, y: 15 }} 
-                            whileInView={{ opacity: 1, y: 0 }} 
-                            viewport={{ once: true, margin: "-50px" }} 
-                            transition={{ delay: (idx % 6) * 0.05, duration: 0.4 }}
-                            className="flex items-start bg-[#131C2E]/90 hover:bg-[#1A253C] backdrop-blur-md border border-slate-700/80 hover:border-[#E8B84B]/80 rounded-xl px-4 py-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default group/item"
-                          >
-                            <div className="w-8 h-8 rounded-full bg-[#0B1220] border border-slate-600/80 flex items-center justify-center mr-3 shrink-0 group-hover/item:border-[#E8B84B]/70 group-hover/item:shadow-[0_0_10px_rgba(232,184,75,0.4)] transition-all duration-300">
-                               <Icon className="w-4 h-4 text-[#E8B84B] group-hover/item:scale-110 transition-transform duration-300" />
-                            </div>
-                            <span className="!text-slate-100 text-sm font-semibold leading-snug group-hover/item:!text-white transition-colors pt-1.5">{item.name}</span>
-                          </motion.div>
-                        );
-                      })}
+                      {(() => {
+                        const iconsList = [
+                          ShieldCheck, PackageSearch, Wrench, Zap, Settings, Layers,
+                          Activity, Layers, Lightbulb, Activity, ShieldCheck
+                        ];
+                        const list = (p ? supportItemsES : [
+                          "Preventive maintenance",
+                          "Periodic inspections",
+                          "Breakdown-support",
+                          "Mechanical & electrical servicing",
+                          "Automation & control support",
+                          "IoT & software support",
+                          "Performance reviews",
+                          "Component-replacement planning",
+                          "Modernization recommendations",
+                          "Operator & maintenance training",
+                          "Annual Maintenance Contracts"
+                        ]);
+
+                        return list.map((item, idx) => {
+                          const Icon = iconsList[idx] || ShieldCheck;
+                          const name = typeof item === "string" ? item : item;
+                          return (
+                            <motion.div 
+                              key={idx} 
+                              initial={{ opacity: 0, y: 15 }} 
+                              whileInView={{ opacity: 1, y: 0 }} 
+                              viewport={{ once: true, margin: "-50px" }} 
+                              transition={{ delay: (idx % 6) * 0.05, duration: 0.4 }}
+                              className="flex items-start bg-[#131C2E]/90 hover:bg-[#1A253C] backdrop-blur-md border border-slate-700/80 hover:border-[#E8B84B]/80 rounded-xl px-4 py-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default group/item"
+                            >
+                              <div className="w-8 h-8 rounded-full bg-[#0B1220] border border-slate-600/80 flex items-center justify-center mr-3 shrink-0 group-hover/item:border-[#E8B84B]/70 group-hover/item:shadow-[0_0_10px_rgba(232,184,75,0.4)] transition-all duration-300">
+                                 <Icon className="w-4 h-4 text-[#E8B84B] group-hover/item:scale-110 transition-transform duration-300" />
+                              </div>
+                              <span className="!text-slate-100 text-sm font-semibold leading-snug group-hover/item:!text-white transition-colors pt-1.5">{name}</span>
+                            </motion.div>
+                          );
+                        });
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -1186,12 +1381,21 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                Industries Served
+                {p ? "Industrias Atendidas" : "Industries Served"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
-                Products and Systems for <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Diverse Operating Environments</span>
+                {p ? (
+                  <>
+                    Productos y Sistemas para <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Diversos Entornos Operativos</span>
+                  </>
+                ) : (
+                  <>
+                    Products and Systems for <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Diverse Operating Environments</span>
+                  </>
+                )}
               </h3>
             </div>
             
@@ -1280,7 +1484,7 @@ export default function ProductsPage() {
                       
                       {/* Text */}
                       <span className="text-slate-700 dark:text-slate-300 text-[14px] leading-snug font-medium group-hover:text-[#17135B] dark:group-hover:text-white transition-colors duration-300 relative z-10">
-                        {ind.name}
+                        {p ? industriesES[idx] : ind.name}
                       </span>
                     </div>
                   </motion.div>
@@ -1290,7 +1494,7 @@ export default function ProductsPage() {
             
             <div className="text-center">
               <Link href="/industries" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm">
-                Explore Industries <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
+                {p ? "Explorar Industrias" : "Explore Industries"} <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </div>
@@ -1307,12 +1511,14 @@ export default function ProductsPage() {
             <div className="text-center">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                Completed Work
+                {p ? "Trabajos Completados" : "Completed Work"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
-              <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">See Sanota Products and Systems in Operation</h3>
+              <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
+                {p ? "Vea los productos y sistemas de Sanota en funcionamiento" : "See Sanota Products and Systems in Operation"}
+              </h3>
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
-                Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments.
+                {p ? "Explore maquinaria, automatización, sistemas de agricultura inteligente, plataformas de IoT, proyectos de modernización y soluciones de ingeniería desarrolladas para entornos reales." : "Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments."}
               </p>
               
               {/* Premium 5-Step Case Study Flow */}
@@ -1330,13 +1536,19 @@ export default function ProductsPage() {
                 />
                 
                 <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4 relative z-10">
-                  {[
+                  {(p ? [
+                    "El desafío del cliente", 
+                    "El producto o sistema requerido", 
+                    "Las tecnologías reunidas", 
+                    "El papel de Sanota", 
+                    "El resultado implementado"
+                  ] : [
                     "The client’s challenge", 
                     "The product or system required", 
                     "The technologies brought together", 
                     "Sanota’s role", 
                     "The implemented outcome"
-                  ].map((item, idx) => (
+                  ]).map((item, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, scale: 0.5, y: 30 }} 
@@ -1373,10 +1585,10 @@ export default function ProductsPage() {
               
               <div className="flex flex-col sm:flex-row justify-center gap-5">
                 <Link href="/media" className="px-8 py-4 bg-gradient-to-r from-[#E8B84B] to-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all hover:shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:-translate-y-1 flex items-center justify-center group shadow-sm">
-                  View Completed Work <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {p ? "Ver Trabajos Completados" : "View Completed Work"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="/media" className="px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:-translate-y-1 flex items-center justify-center shadow-sm">
-                  Visit the Media Centre
+                  {p ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
                 </Link>
               </div>
             </div>
@@ -1394,22 +1606,37 @@ export default function ProductsPage() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#E8B84B]/10 to-transparent rounded-[100%] blur-3xl pointer-events-none" />
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 relative z-10">
-                  Not Sure Which Product or <br className="hidden sm:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">System You Need?</span>
+                  {p ? (
+                    <>
+                      ¿No está seguro de qué producto o <br className="hidden sm:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">sistema necesita?</span>
+                    </>
+                  ) : (
+                    <>
+                      Not Sure Which Product or <br className="hidden sm:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">System You Need?</span>
+                    </>
+                  )}
                 </h2>
                 
                 <p className="text-lg text-white font-semibold mb-8 relative z-10">
-                  You do not need to begin with a product name or technical specification. Tell us:
+                  {p ? "No necesita comenzar con un nombre de producto o especificación técnica. Cuéntenos:" : "You do not need to begin with a product name or technical specification. Tell us:"}
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 max-w-4xl mx-auto relative z-10">
-                  {[
+                  {(p ? [
+                    "Qué está sucediendo ahora",
+                    "Qué necesita funcionar mejor",
+                    "Qué desea desarrollar",
+                    "Dónde operará la solución",
+                    "Qué resultado espera"
+                  ] : [
                     "What is happening now",
                     "What needs to work better",
                     "What you want to develop",
                     "Where the solution will operate",
                     "What result you expect"
-                  ].map((item, idx) => (
+                  ]).map((item, idx) => (
                     <span 
                       key={idx}
                       className="inline-flex items-center px-6 py-3 border border-white/20 dark:border-slate-700/60 rounded-full text-white dark:text-slate-300 text-[14px] font-medium bg-white/10 dark:bg-[#0B1220]/50 hover:bg-white/20 dark:hover:bg-[#131C2E] hover:text-white hover:border-[#E8B84B]/50 transition-colors shadow-sm cursor-default"
@@ -1421,7 +1648,7 @@ export default function ProductsPage() {
                 </div>
 
                 <p className="text-[16px] text-slate-200 dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed relative z-10">
-                  Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway.
+                  {p ? "Sanota revisará el requisito y le guiará hacia el producto, sistema o ruta de ingeniería personalizada más adecuada." : "Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway."}
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10">
@@ -1429,13 +1656,13 @@ export default function ProductsPage() {
                     href="/tell-us-your-challenge"
                     className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
                   >
-                    Tell Us Your Challenge <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {p ? "Cuéntenos su desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/contact"
                     className="inline-flex justify-center items-center px-10 py-4 border border-white/30 dark:border-slate-700 text-[14px] font-bold rounded-lg text-white hover:bg-white/10 dark:hover:bg-slate-800 transition-all w-full sm:w-auto"
                   >
-                    Request Engineering Consultation
+                    {p ? "Solicitar Consulta de Ingeniería" : "Request Engineering Consultation"}
                   </Link>
                 </div>
               </div>
@@ -1450,11 +1677,20 @@ export default function ProductsPage() {
               className="relative mt-16 text-center"
             >
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-6">
-                What Do You Need to Build, <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">Improve, Automate or Connect?</span>
+                {p ? (
+                  <>
+                    ¿Qué necesita construir, <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">mejorar, automatizar o conectar?</span>
+                  </>
+                ) : (
+                  <>
+                    What Do You Need to Build, <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">Improve, Automate or Connect?</span>
+                  </>
+                )}
               </h3>
               <p className="text-[16px] text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-                From individual machinery and products to complete integrated systems, Sanota brings together the engineering and technology capabilities required to move from concept to working solution.
+                {p ? p.cta.description : "From individual machinery and products to complete integrated systems, Sanota brings together the engineering and technology capabilities required to move from concept to working solution."}
               </p>
               
               <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 lg:mb-12">
@@ -1462,18 +1698,18 @@ export default function ProductsPage() {
                   href="/tell-us-your-challenge"
                   className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
                 >
-                  Tell Us Your Requirement <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {p ? p.cta.primaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/contact"
                   className="inline-flex justify-center items-center px-10 py-4 border border-slate-300 dark:border-slate-700 text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 transition-all w-full sm:w-auto shadow-sm dark:shadow-none"
                 >
-                  Contact Sanota
+                  {p ? p.cta.secondaryButton : "Contact Sanota"}
                 </Link>
               </div>
 
               <p className="text-[#C59B27] dark:text-[#E8B84B] text-[11px] font-bold tracking-[0.2em] uppercase">
-                Designed around the requirement. Integrated for the operation. Supported throughout the lifecycle.
+                {p ? p.cta.closingLine : "Designed around the requirement. Integrated for the operation. Supported throughout the lifecycle."}
               </p>
             </motion.div>
 
