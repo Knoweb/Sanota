@@ -44,6 +44,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import AmbientGlow from "@/components/AmbientGlow";
 import GlobalGlow from "@/components/GlobalGlow";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -64,6 +65,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     document.documentElement.classList.add('light');
                     document.documentElement.setAttribute('data-theme', 'light');
                   }
+                  
+                  var savedLang = localStorage.getItem('sanota-lang') || 'en';
+                  document.documentElement.setAttribute('lang', savedLang);
+                  if (savedLang === 'ar') {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.documentElement.classList.add('rtl');
+                  } else {
+                    document.documentElement.setAttribute('dir', 'ltr');
+                    document.documentElement.classList.remove('rtl');
+                  }
                 } catch (e) {}
               })();
             `,
@@ -83,12 +94,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className="min-h-full flex flex-col relative text-slate-300">
-        <ThemeProvider>
-          <AnimatedBackground />
-          <AmbientGlow />
-          <GlobalGlow />
-          {children}
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <AnimatedBackground />
+            <AmbientGlow />
+            <GlobalGlow />
+            {children}
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
