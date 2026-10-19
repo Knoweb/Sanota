@@ -6,11 +6,83 @@ import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 
+const industriesLinksEN = [
+  { name: 'Manufacturing & Industrial Automation', href: '/industries' },
+  { name: 'Smart Agriculture', href: '/industries' },
+  { name: 'Food & Beverage Processing', href: '/industries' },
+  { name: 'Tea Industry Solutions', href: '/industries' },
+  { name: 'Logistics & Warehousing', href: '/industries' },
+  { name: 'Energy & Resource Efficiency', href: '/industries' },
+  { name: 'Environmental & Waste Solutions', href: '/industries' },
+  { name: 'Infrastructure & Smart Facilities', href: '/industries' },
+  { name: 'Healthcare & Biomedical Engineering', href: '/industries' },
+  { name: 'Research & Custom Product Development', href: '/industries' }
+];
+
+const industriesLinksES = [
+  { name: 'Fabricación y automatización industrial', href: '/industries' },
+  { name: 'Agricultura inteligente', href: '/industries' },
+  { name: 'Procesamiento de alimentos y bebidas', href: '/industries' },
+  { name: 'Soluciones para la industria del té', href: '/industries' },
+  { name: 'Logística y almacenamiento', href: '/industries' },
+  { name: 'Eficiencia energética y de recursos', href: '/industries' },
+  { name: 'Soluciones ambientales y de residuos', href: '/industries' },
+  { name: 'Infraestructura e instalaciones inteligentes', href: '/industries' },
+  { name: 'Ingeniería biomédica y sanitaria', href: '/industries' },
+  { name: 'Investigación y desarrollo de productos a medida', href: '/industries' }
+];
+
+const servicesLinksEN = [
+  { name: 'Engineering Consultation', href: '/services' },
+  { name: 'System & Product Design', href: '/services' },
+  { name: 'Custom Machinery Development', href: '/services' },
+  { name: 'Automation, IoT & Digital Integration', href: '/services' },
+  { name: 'Retrofit & Modernization', href: '/services' },
+  { name: 'Project Execution & Commissioning', href: '/services' },
+  { name: 'AMC & Lifecycle Support', href: '/services' },
+  { name: 'Technical Training', href: '/services' }
+];
+
+const servicesLinksES = [
+  { name: 'Consultoría de ingeniería', href: '/services' },
+  { name: 'Diseño de sistemas y productos', href: '/services' },
+  { name: 'Desarrollo de maquinaria a medida', href: '/services' },
+  { name: 'Automatización, IoT e integración digital', href: '/services' },
+  { name: 'Modernización y reacondicionamiento', href: '/services' },
+  { name: 'Ejecución y puesta en marcha de proyectos', href: '/services' },
+  { name: 'Contratos AMC y soporte del ciclo de vida', href: '/services' },
+  { name: 'Capacitación técnica', href: '/services' }
+];
+
+const exploreLinksEN = [
+  { name: 'Products & Systems', href: '/products' },
+  { name: 'Completed Work', href: '/media' },
+  { name: 'Project Stories', href: '/media' },
+  { name: 'Videos', href: '/media' },
+  { name: 'Photo Gallery', href: '/media' },
+  { name: 'Innovation & Partnerships', href: '/contact' },
+  { name: 'About Sanota', href: '/about' }
+];
+
+const exploreLinksES = [
+  { name: 'Productos y sistemas', href: '/products' },
+  { name: 'Trabajos completados', href: '/media' },
+  { name: 'Historias de proyectos', href: '/media' },
+  { name: 'Vídeos y demostraciones', href: '/media' },
+  { name: 'Galería fotográfica', href: '/media' },
+  { name: 'Innovación y alianzas', href: '/contact' },
+  { name: 'Sobre Sanota', href: '/about' }
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const isEs = language === "es";
   const f = isEs ? homeES.footer : null;
+
+  const currentIndustries = isEs ? industriesLinksES : industriesLinksEN;
+  const currentServices = isEs ? servicesLinksES : servicesLinksEN;
+  const currentExplore = isEs ? exploreLinksES : exploreLinksEN;
 
   return (
     <footer className="relative z-10 bg-white dark:bg-[#050B14] border-t border-[#ECE7DD] dark:border-slate-800/80 pt-8 pb-4">
@@ -47,18 +119,7 @@ export default function Footer() {
               {f ? f.headings.industries : "Industries"}
             </h4>
             <ul className="space-y-1.5">
-              {[
-                { name: 'Manufacturing & Industrial Automation', href: '/industries' },
-                { name: 'Smart Agriculture', href: '/industries' },
-                { name: 'Food & Beverage Processing', href: '/industries' },
-                { name: 'Tea Industry Solutions', href: '/industries' },
-                { name: 'Logistics & Warehousing', href: '/industries' },
-                { name: 'Energy & Resource Efficiency', href: '/industries' },
-                { name: 'Environmental & Waste Solutions', href: '/industries' },
-                { name: 'Infrastructure & Smart Facilities', href: '/industries' },
-                { name: 'Healthcare & Biomedical Engineering', href: '/industries' },
-                { name: 'Research & Custom Product Development', href: '/industries' }
-              ].map((item) => (
+              {currentIndustries.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
@@ -74,16 +135,7 @@ export default function Footer() {
               {f ? f.headings.services : "Services"}
             </h4>
             <ul className="space-y-1.5">
-              {[
-                { name: 'Engineering Consultation', href: '/services' },
-                { name: 'System & Product Design', href: '/services' },
-                { name: 'Custom Machinery Development', href: '/services' },
-                { name: 'Automation, IoT & Digital Integration', href: '/services' },
-                { name: 'Retrofit & Modernization', href: '/services' },
-                { name: 'Project Execution & Commissioning', href: '/services' },
-                { name: 'AMC & Lifecycle Support', href: '/services' },
-                { name: 'Technical Training', href: '/services' }
-              ].map((item) => (
+              {currentServices.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
@@ -99,15 +151,7 @@ export default function Footer() {
               {f ? f.headings.explore : "Explore"}
             </h4>
             <ul className="space-y-1.5">
-              {[
-                { name: 'Products & Systems', href: '/products' },
-                { name: 'Completed Work', href: '/media' },
-                { name: 'Project Stories', href: '/media' },
-                { name: 'Videos', href: '/media' },
-                { name: 'Photo Gallery', href: '/media' },
-                { name: 'Innovation & Partnerships', href: '/contact' },
-                { name: 'About Sanota', href: '/about' }
-              ].map((item) => (
+              {currentExplore.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
@@ -145,12 +189,12 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Challenge Callout Card */}
-            <div className="bg-gradient-to-br from-[#0F0C3B] to-[#1A1658] border border-[#D4AF37]/40 rounded-xl p-4 mb-5 shadow-lg shadow-[#17135B]/15">
-              <h5 className="text-white font-bold text-[12.5px] mb-1">
+            {/* Challenge Callout Card - with explicit high contrast styling for light & dark mode */}
+            <div className="dark-overlay bg-gradient-to-br from-[#0F0C3B] to-[#1A1658] border border-[#D4AF37]/50 rounded-xl p-4 mb-5 shadow-lg shadow-[#17135B]/20">
+              <h5 className="!text-white font-bold text-[12.5px] mb-1.5 leading-snug" style={{ color: '#FFFFFF' }}>
                 {f ? f.callToActionText : "Have an engineering challenge?"}
               </h5>
-              <p className="text-slate-300 text-[11px] leading-relaxed mb-3">
+              <p className="!text-slate-200 text-[11px] leading-relaxed mb-3.5 opacity-90" style={{ color: '#E2E8F0' }}>
                 {f ? f.closingLine : "Tell us what you need to achieve."}
               </p>
               <Link 
