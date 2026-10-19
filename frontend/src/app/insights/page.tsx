@@ -5,8 +5,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Settings, Cpu, Activity, Sprout, Zap, ShieldCheck, Lightbulb, ClipboardList, BookOpen, ChevronRight, Download, HelpCircle, Mail, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { insightsES } from "@/locales/es/insights";
+import { insightsDE } from "@/locales/de/insights";
 
-const insightCategories = [
+const defaultCategories = [
   {
     title: "Engineering & Industrial Automation",
     desc: "Understand how machinery, controls, sensors and automation can improve industrial operations.",
@@ -134,7 +137,7 @@ const insightCategories = [
   }
 ];
 
-const featuredInsights = [
+const defaultFeaturedInsights = [
   {
     title: "How to Explain an Engineering Requirement When You Do Not Know the Solution",
     summary: "You do not need to begin with a technical specification. Start by explaining what is happening now, what needs to improve and what result you want to achieve.",
@@ -230,17 +233,312 @@ const practicalExperience = [
 ];
 
 export default function InsightsPage() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const isDe = language === "de";
+  const ins = isDe ? insightsDE : isEs ? insightsES : null;
+
+  const getTopics = (idx: number) => {
+    if (isDe) {
+      const deTopics = [
+        [
+          "Prozesse identifizieren, die für die Automatisierung geeignet sind",
+          "Verbesserung der Produktionskonsistenz",
+          "Auswahl der Steuerungstechnologien",
+          "Integration von Maschinen und Automatisierung",
+          "Verbesserung der Maschinensicherheit",
+          "Planung eines industriellen Automatisierungsprojekts",
+          "Vermeidung typischer Fehler bei Automatisierungsprojekten"
+        ],
+        [
+          "Industrielles IoT verstehen",
+          "Maschinen mit Dashboards verbinden",
+          "Auswahl nützlicher Betriebsdaten",
+          "Fernüberwachung und Warnmeldungen",
+          "Integration von Sensoren und Software",
+          "Cloud-verbundene Engineering-Systeme",
+          "Web- und mobile Anwendungen für den Betrieb",
+          "Schutz von Betriebsinformationen"
+        ],
+        [
+          "Wann modernisieren statt ersetzen",
+          "Umgang mit veralteten Steuerungskomponenten",
+          "Bestehende Maschinen um Automatisierung erweitern",
+          "Verbesserung der Maschinenzuverlässigkeit",
+          "Einführung von Sensoren und Überwachung",
+          "Planung eines Steuerungssystem-Upgrades",
+          "Verlängerung der Nutzungsdauer von Anlagen"
+        ],
+        [
+          "Landwirtschaft in kontrollierter Umgebung",
+          "Intelligente Gewächshaussysteme",
+          "Automatisierung von Bewässerung und Fertigation",
+          "Umgebungsüberwachung",
+          "Transparenz über den Wasserverbrauch",
+          "Landwirtschaftliche Fernüberwachung",
+          "Auswahl praxistauglicher Agrartechnologie",
+          "Vorbereitung auf ein landwirtschaftliches IoT-Projekt"
+        ],
+        [
+          "Verstehen, wo Ressourcen verbraucht werden",
+          "Energie- und Versorgungsüberwachung",
+          "Pumpen- und Motorsteuerung",
+          "Überwachung von Wasserstand und Durchfluss",
+          "Erkennung ungewöhnlicher Betriebsbedingungen",
+          "Verwendung von Dashboards für Ressourcenentscheidungen",
+          "Verbindung von Ressourceneffizienz und Wartung"
+        ],
+        [
+          "Vorbeugende im Vergleich zu reaktiver Wartung",
+          "Vorbereitung eines jährlichen Wartungsvertrags (AMC)",
+          "Bewertung von Fremdmaschinen für AMC",
+          "Wartungsdokumentation und Berichterstattung",
+          "Umgang mit Bauteilobsoleszenz",
+          "Identifizierung von Modernisierungspotenzialen",
+          "Lebenszyklusplanung integrierter Systeme",
+          "Betreuung von Automatisierung, IoT und Software nach der Inbetriebnahme"
+        ],
+        [
+          "Definition von Produktanforderungen",
+          "Vorbereitung auf das Engineering-Design",
+          "Entwicklung eines Prototyps",
+          "Integration von Mechanik, Elektronik und Software",
+          "Testen und Validieren eines Konzepts",
+          "Verbesserung eines bestehenden Produkts",
+          "Planung einer Pilot-Implementierung",
+          "Zusammenarbeit mit einem Entwicklungspartner"
+        ],
+        [
+          "Vorbereitung einer Projektanforderung",
+          "Definition des Projektumfangs",
+          "Koordination mehrerer technischer Fachbereiche",
+          "Planung von Installation und Inbetriebnahme",
+          "Management von Standort- und Betriebsbeschränkungen",
+          "Vorbereitung der Teams auf die Systemübergabe",
+          "Schulung von Bedienern und Wartungspersonal",
+          "Planung der Unterstützung nach dem Projekt"
+        ]
+      ];
+      return deTopics[idx] || defaultCategories[idx].topics;
+    }
+    if (isEs) {
+      const esTopics = [
+        [
+          "Identificación de procesos aptos para automatización",
+          "Mejora de la consistencia en producción",
+          "Selección de tecnologías de control",
+          "Integración de maquinaria y automatización",
+          "Mejora de la seguridad de las máquinas",
+          "Planificación de un proyecto de automatización industrial",
+          "Cómo evitar errores comunes en automatización"
+        ],
+        [
+          "Comprensión del IoT industrial",
+          "Conexión de maquinaria a cuadros de mando",
+          "Selección de datos operativos útiles",
+          "Monitoreo remoto y alertas automáticas",
+          "Integración de sensores y software",
+          "Sistemas de ingeniería conectados a la nube",
+          "Aplicaciones web y móviles para operaciones",
+          "Protección de la información operativa"
+        ],
+        [
+          "Cuándo modernizar en lugar de sustituir",
+          "Gestión de componentes de control obsoletos",
+          "Incorporación de automatización a máquinas existentes",
+          "Mejora de la confiabilidad de las máquinas",
+          "Introducción de sensores y monitorización",
+          "Planificación de la actualización de sistemas de control",
+          "Extensión de la vida útil de los equipos"
+        ],
+        [
+          "Agricultura en entornos controlados",
+          "Sistemas de invernaderos inteligentes",
+          "Automatización de riego y fertirrigación",
+          "Monitoreo ambiental",
+          "Visibilidad del uso de agua",
+          "Monitoreo agrícola remoto",
+          "Selección de tecnología agrícola práctica",
+          "Preparación para un proyecto de IoT agrícola"
+        ],
+        [
+          "Comprensión del consumo de recursos",
+          "Monitoreo de energía y servicios públicos",
+          "Control de bombas y motores",
+          "Monitoreo de nivel y flujo de agua",
+          "Detección de condiciones anómalas de operación",
+          "Uso de tableros para decisiones de recursos",
+          "Conexión de la eficiencia de recursos con el mantenimiento"
+        ],
+        [
+          "Mantenimiento preventivo frente a correctivo",
+          "Preparación de contratos de mantenimiento (AMC)",
+          "Evaluación de maquinaria de terceros para AMC",
+          "Documentación y reportes de mantenimiento",
+          "Gestión de la obsolescencia de componentes",
+          "Identificación de oportunidades de modernización",
+          "Planificación del ciclo de vida de sistemas integrados",
+          "Soporte de automatización, IoT y software tras la puesta en marcha"
+        ],
+        [
+          "Definición de requerimientos de producto",
+          "Preparación para el diseño de ingeniería",
+          "Desarrollo de prototipos funcionales",
+          "Integración de mecánica, electrónica y software",
+          "Pruebas y validación de conceptos",
+          "Mejora de un producto existente",
+          "Planificación de una implementación piloto",
+          "Colaboración con un socio de desarrollo de ingeniería"
+        ],
+        [
+          "Preparación del pliego de condiciones de un proyecto",
+          "Definición del alcance del proyecto",
+          "Coordinación de múltiples disciplinas técnicas",
+          "Planificación de montaje y puesta en servicio",
+          "Gestión de restricciones operativas y de planta",
+          "Preparación de equipos para la entrega del sistema",
+          "Capacitación de operadores y personal de mantenimiento",
+          "Planificación del soporte posterior al proyecto"
+        ]
+      ];
+      return esTopics[idx] || defaultCategories[idx].topics;
+    }
+    return defaultCategories[idx].topics;
+  };
+
+  const filters = isDe ? [
+    insightsDE.filters.all,
+    insightsDE.filters.engineering,
+    insightsDE.filters.automation,
+    insightsDE.filters.iot,
+    insightsDE.filters.modernization,
+    insightsDE.filters.agri,
+    insightsDE.filters.energy,
+    insightsDE.filters.maintenance,
+    insightsDE.filters.product,
+    insightsDE.filters.projects
+  ] : isEs ? [
+    insightsES.filters.all,
+    insightsES.filters.engineering,
+    insightsES.filters.automation,
+    insightsES.filters.iot,
+    insightsES.filters.modernization,
+    insightsES.filters.agri,
+    insightsES.filters.energy,
+    insightsES.filters.maintenance,
+    insightsES.filters.product,
+    insightsES.filters.projects
+  ] : filterLabels;
+
+  const articleSections = isDe ? [
+    { title: "Einführung", desc: "Erklären Sie kurz das im Artikel behandelte betriebliche oder technische Problem." },
+    { title: "Warum es wichtig ist", desc: "Erläutern Sie, warum das Thema für die betreffende Branche oder den Entscheidungsträger relevant ist." },
+    { title: "Wichtige Überlegungen", desc: "Stellen Sie die relevanten technischen, betrieblichen, finanziellen oder umsetzungsbezogenen Faktoren dar." },
+    { title: "Praktischer Ansatz", desc: "Erklären Sie, wie eine Organisation die Anforderungen bewerten oder sich auf den nächsten Schritt vorbereiten kann." },
+    { title: "Häufige Herausforderungen", desc: "Benennen Sie häufig auftretende Einschränkungen, Risiken oder Missverständnisse." },
+    { title: "Wichtige Fragen", desc: "Geben Sie eine prägnante Liste von Fragen an, die der Leser vor einer Entscheidung berücksichtigen sollte." },
+    { title: "Wie Sanota helfen kann", desc: "Verknüpfen Sie das Thema mit den relevanten Sanota-Dienstleistungen, Produkten, Systemen oder dem Bewertungsprozess." },
+    { title: "Verwandte Inhalte", desc: "Verlinken Sie auf relevante Branchen, Dienstleistungen, Produkte, Projektberichte und weitere Einblicke." }
+  ] : isEs ? [
+    { title: "Introducción", desc: "Explique brevemente el problema operativo o técnico abordado en el artículo." },
+    { title: "Por qué es importante", desc: "Explique por qué el problema es relevante para la industria o el responsable de la toma de decisiones." },
+    { title: "Consideraciones clave", desc: "Presente los factores importantes de ingeniería, operativos, financieros o de implementación." },
+    { title: "Enfoque práctico", desc: "Explique cómo una organización puede evaluar el requerimiento o prepararse para el siguiente paso." },
+    { title: "Desafíos comunes", desc: "Identifique las limitaciones, riesgos o malentendidos que se encuentran con frecuencia." },
+    { title: "Preguntas que debe hacerse", desc: "Proporcione una lista concisa de preguntas que el lector debe considerar antes de tomar una decisión." },
+    { title: "Cómo puede ayudar Sanota", desc: "Conecte el tema con los servicios, productos, sistemas o procesos de evaluación pertinentes de Sanota." },
+    { title: "Contenido relacionado", desc: "Enlace a industrias, servicios, productos, historias de proyectos y otros análisis pertinentes." }
+  ] : [
+    { title: "Introduction", desc: "Briefly explain the operational or technical issue addressed by the article." },
+    { title: "Why It Matters", desc: "Explain why the issue is relevant to the intended industry or decision-maker." },
+    { title: "Key Considerations", desc: "Present the important engineering, operational, financial or implementation factors." },
+    { title: "Practical Approach", desc: "Explain how an organization can assess the requirement or prepare for the next step." },
+    { title: "Common Challenges", desc: "Identify frequently encountered limitations, risks or misunderstandings." },
+    { title: "Questions to Ask", desc: "Provide a concise list of questions the reader should consider before making a decision." },
+    { title: "How Sanota Can Help", desc: "Connect the topic to the relevant Sanota services, products, systems or assessment process." },
+    { title: "Related Content", desc: "Link to relevant industries, services, products, project stories and other insights." }
+  ];
+
+  const industriesList = isDe ? [
+    "Fertigung & Industrieautomation",
+    "Intelligente Landwirtschaft & Agrartechnologie",
+    "Lebensmittel- und Getränkeverarbeitung",
+    "Teeindustrie",
+    "Logistik, Lagerhaltung & Materialtransport",
+    "Energie- und Ressourceneffizienz",
+    "Umwelt- und Abfallwirtschaft",
+    "Infrastruktur & intelligente Gebäude",
+    "Gesundheitswesen & Biomedizintechnik",
+    "Forschung, Innovation & Produktentwicklung"
+  ] : isEs ? [
+    "Fabricación y automatización industrial",
+    "Agricultura inteligente y agrotecnología",
+    "Procesamiento de alimentos y bebidas",
+    "Industria del té",
+    "Logística, almacenamiento y manejo de materiales",
+    "Eficiencia energética y de recursos",
+    "Gestión ambiental y de residuos",
+    "Infraestructura e instalaciones inteligentes",
+    "Salud e ingeniería biomédica",
+    "Investigación, innovación y desarrollo de productos"
+  ] : browseIndustries;
+
+  const knowebList = isDe ? [
+    "Maschinen mit Software verbinden",
+    "Entwicklung nützlicher operativer Dashboards",
+    "Auswahl von Sensoren und Kommunikationsmethoden",
+    "Entwicklung von Web- und mobilen Schnittstellen",
+    "Verwaltung von Warnmeldungen und Berichten",
+    "Integration von IoT-Plattformen in bestehende Abläufe",
+    "Betreuung vernetzter Systeme während ihres gesamten Lebenszyklus"
+  ] : isEs ? [
+    "Conexión de maquinaria con software",
+    "Diseño de tableros de control operativos útiles",
+    "Selección de sensores y métodos de comunicación",
+    "Desarrollo de interfaces web y móviles",
+    "Gestión de alertas y reportes automáticos",
+    "Integración de plataformas IoT con operaciones existentes",
+    "Soporte de sistemas conectados a lo largo de su ciclo de vida"
+  ] : knowebTopics;
+
+  const practicalPrinciples = isDe ? [
+    "Eine echte betriebliche Frage beantworten",
+    "Technische Themen verständlich erklären",
+    "Lesern helfen, bessere Entscheidungen zu treffen",
+    "Unnötigen Fachjargon vermeiden",
+    "Grenzen und wichtige Aspekte aufzeigen",
+    "Wissen mit praktischem Handeln verknüpfen",
+    "Präzise und verantwortungsbewusst bleiben",
+    "Vertraulichkeit der Kunden wahren"
+  ] : isEs ? [
+    "Responder a un problema operativo real",
+    "Explicar temas técnicos con claridad",
+    "Ayudar a tomar decisiones informadas",
+    "Evitar tecnicismos innecesarios",
+    "Identificar limitaciones y factores críticos",
+    "Conectar el conocimiento con la acción práctica",
+    "Mantener rigor técnico y responsabilidad",
+    "Proteger la confidencialidad de los clientes"
+  ] : practicalExperience;
+
+  const newsletterIndustries = isDe ? [
+    "Fertigung", "Landwirtschaft", "Lebensmittel und Getränke", "Tee", 
+    "Logistik", "Energie und Umwelt", "Infrastruktur und Anlagen", 
+    "Produktentwicklung", "Allgemeines Ingenieurwesen"
+  ] : isEs ? [
+    "Fabricación", "Agricultura", "Alimentos y bebidas", "Té", 
+    "Logística", "Energía y medio ambiente", "Infraestructura e instalaciones", 
+    "Desarrollo de productos", "Ingeniería general"
+  ] : [
+    "Manufacturing", "Agriculture", "Food and beverage", "Tea", 
+    "Logistics", "Energy and environment", "Infrastructure and facilities", 
+    "Product development", "General engineering"
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
       <Header />
       
-      {/* 
-        ================================================================
-        HIDDEN CONTENT SECTION
-        Per instructions, the entire page content is built but hidden.
-        Remove 'hidden' class to make this page publicly visible.
-        ================================================================
-      */}
       <main className="flex-grow">
         
         {/* Hero Section */}
@@ -257,7 +555,7 @@ export default function InsightsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              Engineering & Technology Insights
+              {isDe ? "Einblicke in Engineering & Technologie" : isEs ? "Perspectivas de Ingeniería y Tecnología" : "Engineering & Technology Insights"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -265,7 +563,13 @@ export default function InsightsPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
-              Practical Engineering Insights for <span className="text-[#2E5EAA]">Evolving Industries</span>
+              {isDe ? (
+                <>Praktische Einblicke in die Ingenieurwissenschaften für <span className="text-[#2E5EAA]">sich entwickelnde Branchen</span></>
+              ) : isEs ? (
+                <>Ideas prácticas de ingeniería para <span className="text-[#2E5EAA]">industrias en evolución</span></>
+              ) : (
+                <>Practical Engineering Insights for <span className="text-[#2E5EAA]">Evolving Industries</span></>
+              )}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -273,7 +577,7 @@ export default function InsightsPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
-              Ideas, technical perspectives and industry knowledge that help organizations make better operational decisions.
+              {ins ? ins.hero.subheading : "Ideas, technical perspectives and industry knowledge that help organizations make better operational decisions."}
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -281,7 +585,7 @@ export default function InsightsPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
-              Sanota Insights explores the engineering, automation, IoT, software and maintenance considerations behind modern industrial and operational systems.
+              {ins ? ins.hero.description : "Sanota Insights explores the engineering, automation, IoT, software and maintenance considerations behind modern industrial and operational systems."}
             </motion.p>
             
             <motion.div
@@ -294,13 +598,13 @@ export default function InsightsPage() {
                 href="#latest"
                 className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md"
               >
-                Explore Latest Insights <ArrowRight className="ml-2 w-5 h-5" />
+                {ins ? ins.hero.primaryButton : "Explore Latest Insights"} <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <a
                 href="#categories"
                 className="px-8 py-4 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
               >
-                Browse by Topic
+                {ins ? ins.hero.secondaryButton : "Browse by Topic"}
               </a>
             </motion.div>
           </div>
@@ -309,15 +613,17 @@ export default function InsightsPage() {
         {/* Introduction */}
         <section className="py-8 lg:py-12 border-b border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Turning Technical Knowledge into Practical Understanding</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+              {ins ? ins.intro.title : "Turning Technical Knowledge into Practical Understanding"}
+            </h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
-              Technology continues to change how machinery, production processes, agricultural operations, facilities and resources are managed.
+              {isDe ? "Die Technologie verändert ständig die Art und Weise, wie Maschinen, Produktionsprozesse, landwirtschaftliche Betriebe, Anlagen und Ressourcen verwaltet werden." : isEs ? "La tecnología sigue cambiando la forma en que se gestionan la maquinaria, los procesos de producción, las operaciones agrícolas, las instalaciones y los recursos." : "Technology continues to change how machinery, production processes, agricultural operations, facilities and resources are managed."}
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
-              However, adopting technology should begin with a clear operational need—not with technology alone.
+              {isDe ? "Die Einführung neuer Technologien sollte jedoch mit einem klaren betrieblichen Bedarf beginnen – und nicht mit der Technologie allein." : isEs ? "Sin embargo, la adopción de tecnología debe comenzar con una necesidad operativa clara, no solo con la tecnología en sí." : "However, adopting technology should begin with a clear operational need—not with technology alone."}
             </p>
             <p className="text-slate-800 dark:text-slate-300 font-bold text-lg leading-relaxed border-l-4 border-[#C59B27] dark:border-[#E8B84B] pl-6 text-left max-w-3xl mx-auto">
-              Sanota Insights provides practical information to help decision-makers, engineers, technical teams and business leaders better understand operational challenges, evaluate improvement opportunities and prepare for engineering and technology projects.
+              {ins ? ins.intro.description : "Sanota Insights provides practical information to help decision-makers, engineers, technical teams and business leaders better understand operational challenges, evaluate improvement opportunities and prepare for engineering and technology projects."}
             </p>
           </div>
         </section>
@@ -326,38 +632,48 @@ export default function InsightsPage() {
         <section id="categories" className="py-10 lg:py-14 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Insight Categories</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">Explore by Topic</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {isDe ? "Kategorien von Einblicken" : isEs ? "Categorías de Perspectivas" : "Insight Categories"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
+                {isDe ? "Nach Themen entdecken" : isEs ? "Explorar por Tema" : "Explore by Topic"}
+              </h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {insightCategories.map((cat, idx) => (
-                <div key={idx} className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col shadow-sm dark:shadow-none">
-                  <div className="flex items-center mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-[#0B1220] border border-slate-200 dark:border-slate-700 flex items-center justify-center mr-5 shrink-0">
-                      <cat.icon className="w-7 h-7 text-[#C59B27] dark:text-[#E8B84B]" />
+              {defaultCategories.map((cat, idx) => {
+                const categoryData = ins && ins.categories[idx] ? ins.categories[idx] : cat;
+                const topics = getTopics(idx);
+                return (
+                  <div key={idx} className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:border-[#2E5EAA]/50 transition-colors flex flex-col shadow-sm dark:shadow-none">
+                    <div className="flex items-center mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-[#0B1220] border border-slate-200 dark:border-slate-700 flex items-center justify-center mr-5 shrink-0">
+                        <cat.icon className="w-7 h-7 text-[#C59B27] dark:text-[#E8B84B]" />
+                      </div>
+                      <h4 className="text-2xl font-bold text-[#17135B] dark:text-white">{categoryData.title}</h4>
                     </div>
-                    <h4 className="text-2xl font-bold text-[#17135B] dark:text-white">{cat.title}</h4>
-                  </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">{cat.desc}</p>
-                  
-                  <div className="glowing-card bg-slate-50 dark:bg-[#0B1220]/60 border border-slate-200 dark:border-slate-800/60 rounded-xl p-6 mb-8 flex-grow">
-                    <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Topics may include:</p>
-                    <div className="space-y-3">
-                      {cat.topics.map((topic, tIdx) => (
-                        <div key={tIdx} className="flex items-start">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mt-2 mr-3 shrink-0" />
-                          <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{topic}</span>
-                        </div>
-                      ))}
+                    <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">{categoryData.desc}</p>
+                    
+                    <div className="glowing-card bg-slate-50 dark:bg-[#0B1220]/60 border border-slate-200 dark:border-slate-800/60 rounded-xl p-6 mb-8 flex-grow">
+                      <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
+                        {isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
+                      </p>
+                      <div className="space-y-3">
+                        {topics.map((topic, tIdx) => (
+                          <div key={tIdx} className="flex items-start">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mt-2 mr-3 shrink-0" />
+                            <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{topic}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <Link href="#" className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#B38A22] dark:hover:text-[#d4a643] transition-colors mt-auto">
-                    {cat.button} <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </div>
-              ))}
+                    <Link href="/tell-us-your-challenge" className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#B38A22] dark:hover:text-[#d4a643] transition-colors mt-auto">
+                      {categoryData.button} <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -366,18 +682,22 @@ export default function InsightsPage() {
         <section className="py-10 lg:py-14 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Insights</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">Recommended Reading</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {isDe ? "Ausgewählte Einblicke" : isEs ? "Perspectivas Destacadas" : "Featured Insights"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
+                {ins ? ins.featured.heading : "Recommended Reading"}
+              </h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredInsights.map((insight, idx) => (
+              {(ins ? ins.featured.articles : defaultFeaturedInsights).map((insight: any, idx) => (
                 <div key={idx} className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 hover:bg-slate-50 dark:hover:bg-[#131C2E] transition-colors flex flex-col group shadow-sm dark:shadow-none">
                   <span className="text-[#C59B27] dark:text-slate-500 font-bold text-xs uppercase tracking-widest mb-3 block">{insight.category}</span>
                   <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-4 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{insight.title}</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{insight.summary}</p>
-                  <Link href="#" className="inline-flex items-center text-sm font-bold text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white transition-colors mt-auto">
-                    Read Article <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{insight.desc || insight.summary}</p>
+                  <Link href="/tell-us-your-challenge" className="inline-flex items-center text-sm font-bold text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white transition-colors mt-auto">
+                    {insight.linkText || (isDe ? "Artikel lesen" : isEs ? "Leer artículo" : "Read Article")} <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               ))}
@@ -390,20 +710,24 @@ export default function InsightsPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div>
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Latest Insights</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">Latest Articles and Technical Updates</h3>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Neueste Einblicke" : isEs ? "Últimas Perspectivas" : "Latest Insights"}
+                </h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
+                  {isDe ? "Neueste Artikel und technische Updates" : isEs ? "Últimos artículos y actualizaciones técnicas" : "Latest Articles and Technical Updates"}
+                </h3>
               </div>
               <div className="w-full lg:w-1/3">
                 <input 
                   type="text" 
-                  placeholder="Search Sanota Insights" 
+                  placeholder={ins ? ins.filters.searchPlaceholder : "Search Sanota Insights"} 
                   className="w-full bg-white dark:bg-[#131C2E] border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B] transition-colors shadow-sm"
                 />
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-12">
-              {filterLabels.map((filter, idx) => (
+              {filters.map((filter, idx) => (
                 <button key={idx} className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${idx === 0 ? 'bg-[#C59B27] dark:bg-[#E8B84B] text-white dark:text-[#0B1220] shadow-sm' : 'bg-white dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-[#17135B] dark:hover:text-white shadow-sm'}`}>
                   {filter}
                 </button>
@@ -413,13 +737,17 @@ export default function InsightsPage() {
             {/* Placeholder for Articles Grid */}
             <div className="bg-slate-50 dark:bg-[#0B1220] border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-16 text-center mb-10">
               <BookOpen className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
-              <p className="text-slate-700 dark:text-slate-400 font-medium">Article feed will be populated here.</p>
-              <p className="text-slate-500 text-sm mt-2">Each card will contain: Title, Category, Date, Reading time, Summary, Image, and Link.</p>
+              <p className="text-slate-700 dark:text-slate-400 font-medium">
+                {isDe ? "Der Artikel-Feed wird hier angezeigt." : isEs ? "El feed de artículos se mostrará aquí." : "Article feed will be populated here."}
+              </p>
+              <p className="text-slate-500 text-sm mt-2">
+                {isDe ? "Jede Karte enthält: Titel, Kategorie, Datum, Lesezeit, Zusammenfassung, Bild und Link." : isEs ? "Cada tarjeta contendrá: Título, Categoría, Fecha, Tiempo de lectura, Resumen, Imagen y Enlace." : "Each card will contain: Title, Category, Date, Reading time, Summary, Image, and Link."}
+              </p>
             </div>
 
             <div className="text-center">
-              <Link href="#" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                View All Insights <ArrowRight className="ml-2 w-5 h-5" />
+              <Link href="/tell-us-your-challenge" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
+                {ins ? ins.filters.viewAllButton : "View All Insights"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -429,27 +757,28 @@ export default function InsightsPage() {
         <section className="py-10 lg:py-14 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Template</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">Individual Article Structure</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {isDe ? "Vorlage" : isEs ? "Plantilla" : "Template"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
+                {isDe ? "Aufbau der einzelnen Artikel" : isEs ? "Estructura del Artículo Individual" : "Individual Article Structure"}
+              </h3>
             </div>
             
             <div className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
-              <h4 className="text-2xl font-bold text-[#17135B] dark:text-white mb-2">[Article Title]</h4>
+              <h4 className="text-2xl font-bold text-[#17135B] dark:text-white mb-2">
+                {isDe ? "[Artikeltitel]" : isEs ? "[Título del Artículo]" : "[Article Title]"}
+              </h4>
               <p className="text-slate-500 text-sm mb-8 border-b border-slate-200 dark:border-slate-700 pb-6">
-                Category: [Insight category] <span className="mx-2">•</span> Published: [Publication date] <span className="mx-2">•</span> Reading time: [Estimated time]
+                {isDe 
+                  ? "Kategorie: [Kategorie] • Veröffentlicht: [Veröffentlichungsdatum] • Lesezeit: [Geschätzte Zeit]" 
+                  : isEs 
+                  ? "Categoría: [Categoría de análisis] • Publicado: [Fecha de publicación] • Tiempo de lectura: [Tiempo estimado]" 
+                  : "Category: [Insight category] • Published: [Publication date] • Reading time: [Estimated time]"}
               </p>
               
               <div className="space-y-8">
-                {[
-                  { title: "Introduction", desc: "Briefly explain the operational or technical issue addressed by the article." },
-                  { title: "Why It Matters", desc: "Explain why the issue is relevant to the intended industry or decision-maker." },
-                  { title: "Key Considerations", desc: "Present the important engineering, operational, financial or implementation factors." },
-                  { title: "Practical Approach", desc: "Explain how an organization can assess the requirement or prepare for the next step." },
-                  { title: "Common Challenges", desc: "Identify frequently encountered limitations, risks or misunderstandings." },
-                  { title: "Questions to Ask", desc: "Provide a concise list of questions the reader should consider before making a decision." },
-                  { title: "How Sanota Can Help", desc: "Connect the topic to the relevant Sanota services, products, systems or assessment process." },
-                  { title: "Related Content", desc: "Link to relevant industries, services, products, project stories and other insights." }
-                ].map((section, idx) => (
+                {articleSections.map((section, idx) => (
                   <div key={idx}>
                     <h5 className="text-[#17135B] dark:text-white font-bold mb-2">{section.title}</h5>
                     <p className="text-slate-600 dark:text-slate-400 text-sm">{section.desc}</p>
@@ -458,12 +787,12 @@ export default function InsightsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
-                <button className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                  Discuss This Requirement
-                </button>
-                <button className="px-6 py-3 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors">
-                  Tell Us Your Challenge
-                </button>
+                <Link href="/contact" className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md text-center">
+                  {isDe ? "Diese Anforderung besprechen" : isEs ? "Comentar esta necesidad" : "Discuss This Requirement"}
+                </Link>
+                <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors text-center">
+                  {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"}
+                </Link>
               </div>
             </div>
           </div>
@@ -476,40 +805,56 @@ export default function InsightsPage() {
               
               {/* Insights by Industry */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Insights by Industry</h2>
-                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">Knowledge Relevant to Your Operating Environment</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-8">Explore insights developed for:</p>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Einblicke nach Branchen" : isEs ? "Perspectivas por Industria" : "Insights by Industry"}
+                </h2>
+                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">
+                  {isDe ? "Wissen, das für Ihr Betriebsumfeld relevant ist" : isEs ? "Conocimiento relevante para su entorno operativo" : "Knowledge Relevant to Your Operating Environment"}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-8">
+                  {isDe ? "Entdecken Sie Einblicke für:" : isEs ? "Explore perspectivas desarrolladas para:" : "Explore insights developed for:"}
+                </p>
                 <div className="space-y-3 mb-10">
-                  {browseIndustries.map((ind, idx) => (
+                  {industriesList.map((ind, idx) => (
                     <div key={idx} className="flex items-center text-slate-700 dark:text-slate-300 text-sm hover:text-[#2E5EAA] dark:hover:text-white transition-colors cursor-pointer">
                       <ChevronRight className="w-4 h-4 text-[#2E5EAA] mr-2" />
                       {ind}
                     </div>
                   ))}
                 </div>
-                <Link href="#" className="inline-flex items-center px-6 py-3 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                  Browse Insights by Industry <ArrowRight className="ml-2 w-4 h-4" />
+                <Link href="/industries" className="inline-flex items-center px-6 py-3 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
+                  {isDe ? "Einblicke nach Branchen durchsuchen" : isEs ? "Explorar perspectivas por industria" : "Browse Insights by Industry"} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
 
               {/* Technical Guides */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Technical Guides</h2>
-                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">Practical Guides and Checklists</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-8">Sanota can provide downloadable resources to help organizations prepare for engineering and technology projects. Suggested guides include:</p>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Technische Leitfäden" : isEs ? "Guías Técnicas" : "Technical Guides"}
+                </h2>
+                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">
+                  {ins ? ins.technicalGuides.heading : "Practical Guides and Checklists"}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-8">
+                  {ins ? ins.technicalGuides.subheading : "Sanota can provide downloadable resources to help organizations prepare for engineering and technology projects. Suggested guides include:"}
+                </p>
                 <div className="space-y-3 mb-10">
-                  {technicalGuides.map((guide, idx) => (
+                  {(ins ? ins.technicalGuides.guides : technicalGuides).map((guide, idx) => (
                     <div key={idx} className="flex items-center text-slate-700 dark:text-slate-300 text-sm hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors cursor-pointer">
                       <Download className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B] mr-3" />
                       {guide}
                     </div>
                   ))}
                 </div>
-                <Link href="#" className="inline-flex items-center px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors mb-4 shadow-md">
-                  Explore Technical Guides <ArrowRight className="ml-2 w-4 h-4" />
+                <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors mb-4 shadow-md">
+                  {ins ? ins.technicalGuides.button : "Explore Technical Guides"} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
                 <p className="text-slate-500 text-xs italic">
-                  Note: Downloads may require basic contact information where follow-up assistance is offered. Visitors should be clearly informed before submitting their details.
+                  {isDe 
+                    ? "Hinweis: Für Downloads können grundlegende Kontaktdaten erforderlich sein, wenn eine weiterführende Unterstützung angeboten wird. Besucher werden vor der Übermittlung ihrer Daten transparent informiert." 
+                    : isEs 
+                    ? "Nota: Las descargas pueden requerir datos de contacto básicos cuando se ofrezca asistencia de seguimiento. Se informará con total transparencia a los visitantes antes de enviar sus datos." 
+                    : "Note: Downloads may require basic contact information where follow-up assistance is offered. Visitors should be clearly informed before submitting their details."}
                 </p>
               </div>
 
@@ -524,10 +869,14 @@ export default function InsightsPage() {
               
               {/* Engineering Questions */}
               <div>
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Engineering Questions</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-10">Questions We Frequently Help Clients Answer</h3>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Technische Fragen" : isEs ? "Preguntas de Ingeniería" : "Engineering Questions"}
+                </h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-10">
+                  {ins ? ins.faqs.heading : "Questions We Frequently Help Clients Answer"}
+                </h3>
                 <div className="space-y-4 mb-10">
-                  {engineeringQuestions.map((q, idx) => (
+                  {(ins ? ins.faqs.questions : engineeringQuestions).map((q, idx) => (
                     <div key={idx} className="flex items-start bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm dark:shadow-none">
                       <HelpCircle className="w-5 h-5 text-[#2E5EAA] mr-3 shrink-0" />
                       <span className="text-slate-700 dark:text-slate-300 text-sm">{q}</span>
@@ -535,26 +884,34 @@ export default function InsightsPage() {
                   ))}
                 </div>
                 <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                  Ask Sanota a Question <ArrowRight className="ml-2 w-5 h-5" />
+                  {ins ? ins.faqs.askButton : "Ask Sanota a Question"} <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
 
               {/* Sanota + Knoweb */}
               <div>
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Sanota + Knoweb Insights</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Where Engineering Meets Digital Technology</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">Through its collaboration with Knoweb, Sanota can provide perspectives covering both physical engineering systems and their digital components.</p>
-                <p className="text-[#17135B] dark:text-white font-bold mb-6">Topics may include:</p>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Sanota + Knoweb Einblicke" : isEs ? "Perspectivas Sanota + Knoweb" : "Sanota + Knoweb Insights"}
+                </h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                  {isDe ? "Wo Ingenieurwesen auf digitale Technologie trifft" : isEs ? "Donde la ingeniería se une a la tecnología digital" : "Where Engineering Meets Digital Technology"}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+                  {isDe ? "Durch die Zusammenarbeit mit Knoweb kann Sanota Perspektiven bieten, die sowohl physische Engineering-Systeme als auch deren digitale Komponenten umfassen." : isEs ? "A través de su colaboración con Knoweb, Sanota aporta perspectivas que abarcan tanto los sistemas físicos de ingeniería como sus componentes digitales." : "Through its collaboration with Knoweb, Sanota can provide perspectives covering both physical engineering systems and their digital components."}
+                </p>
+                <p className="text-[#17135B] dark:text-white font-bold mb-6">
+                  {isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
+                </p>
                 <div className="space-y-3 mb-10">
-                  {knowebTopics.map((topic, idx) => (
+                  {knowebList.map((topic, idx) => (
                     <div key={idx} className="flex items-center">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 shrink-0" />
                       <span className="text-slate-700 dark:text-slate-300 text-sm">{topic}</span>
                     </div>
                   ))}
                 </div>
-                <Link href="#" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                  Explore Engineering & Digital Insights <ArrowRight className="ml-2 w-5 h-5" />
+                <Link href="/tell-us-your-challenge" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
+                  {isDe ? "Engineering- & digitale Einblicke entdecken" : isEs ? "Explorar perspectivas digitales y de ingeniería" : "Explore Engineering & Digital Insights"} <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
 
@@ -569,11 +926,17 @@ export default function InsightsPage() {
               
               {/* Practical Experience */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Knowledge from Practical Experience</h2>
-                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">Insights Informed by Real Operating Requirements</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-8">Sanota’s insight content should be developed using practical engineering experience, project learning and relevant industry knowledge. Every article should aim to:</p>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Wissen aus praktischer Erfahrung" : isEs ? "Conocimiento de la Experiencia Práctica" : "Knowledge from Practical Experience"}
+                </h2>
+                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">
+                  {isDe ? "Einblicke basierend auf echten Betriebsanforderungen" : isEs ? "Perspectivas fundamentadas en requisitos reales de operación" : "Insights Informed by Real Operating Requirements"}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-8">
+                  {isDe ? "Die Inhalte von Sanota werden auf der Grundlage praktischer Erfahrungen, Erkenntnissen aus Projekten und relevantem Branchenwissen erstellt. Jeder Artikel zielt darauf ab:" : isEs ? "El contenido de Sanota se desarrolla a partir de experiencia práctica en ingeniería, aprendizajes de proyectos y conocimiento sectorial. Cada artículo persigue:" : "Sanota’s insight content should be developed using practical engineering experience, project learning and relevant industry knowledge. Every article should aim to:"}
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-left">
-                  {practicalExperience.map((principle, idx) => (
+                  {practicalPrinciples.map((principle, idx) => (
                     <div key={idx} className="flex items-start">
                       <CheckCircle2 className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B] mr-2 mt-0.5 shrink-0" />
                       <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{principle}</span>
@@ -582,7 +945,11 @@ export default function InsightsPage() {
                 </div>
                 <div className="bg-slate-50 dark:bg-[#0B1220] p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <p className="text-slate-600 dark:text-slate-400 text-xs italic">
-                    Where an article refers to standards, regulations, performance figures or external research, the information should be verified and appropriately referenced before publication.
+                    {isDe 
+                      ? "Wenn sich ein Artikel auf Normen, Vorschriften, Leistungsdaten oder externe Forschung bezieht, werden die Angaben vor der Veröffentlichung geprüft und entsprechend belegt." 
+                      : isEs 
+                      ? "Cuando un artículo haga referencia a normas, reglamentos, cifras de rendimiento o investigaciones externas, la información debe verificarse y citarse adecuadamente antes de su publicación." 
+                      : "Where an article refers to standards, regulations, performance figures or external research, the information should be verified and appropriately referenced before publication."}
                   </p>
                 </div>
               </div>
@@ -590,16 +957,32 @@ export default function InsightsPage() {
               {/* Disclaimer */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 flex flex-col justify-center shadow-sm dark:shadow-none">
                 <AlertTriangle className="w-10 h-10 text-[#C59B27] dark:text-[#E8B84B] mb-6" />
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Content Disclaimer</h2>
-                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">Important Information</h3>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Haftungsausschluss" : isEs ? "Descargo de Responsabilidad" : "Content Disclaimer"}
+                </h2>
+                <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">
+                  {isDe ? "Wichtige Information" : isEs ? "Información Importante" : "Important Information"}
+                </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                  Sanota Insights provides general information for educational and planning purposes. Engineering requirements differ according to equipment, operating conditions, location, application and applicable standards.
+                  {isDe 
+                    ? "Sanota Insights bietet allgemeine Informationen zu Bildungs- und Planungszwecken. Die technischen Anforderungen variieren je nach Ausrüstung, Betriebsbedingungen, Standort, Anwendung und geltenden Normen." 
+                    : isEs 
+                    ? "Sanota Insights ofrece información general con fines educativos y de planificación. Los requisitos técnicos varían según el equipo, las condiciones operativas, la ubicación, la aplicación y las normas aplicables." 
+                    : "Sanota Insights provides general information for educational and planning purposes. Engineering requirements differ according to equipment, operating conditions, location, application and applicable standards."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                  Information published in an article should not be treated as a substitute for a site-specific technical assessment, professional design or approved safety procedure.
+                  {isDe 
+                    ? "In einem Artikel veröffentlichte Informationen sollten nicht als Ersatz für eine standortspezifische technische Bewertung, fachgerechte Konstruktion oder anerkannte Sicherheitsverfahren verstanden werden." 
+                    : isEs 
+                    ? "La información contenida en un artículo no debe considerarse un sustituto de una evaluación técnica específica para el emplazamiento, un diseño profesional o procedimientos de seguridad aprobados." 
+                    : "Information published in an article should not be treated as a substitute for a site-specific technical assessment, professional design or approved safety procedure."}
                 </p>
                 <Link href="/contact" className="inline-flex text-[#2E5EAA] font-bold hover:text-[#17135B] dark:hover:text-white transition-colors">
-                  Contact Sanota for advice relating to a specific requirement <ArrowRight className="ml-2 w-5 h-5" />
+                  {isDe 
+                    ? "Sanota für Beratung zu einer spezifischen Anforderung kontaktieren" 
+                    : isEs 
+                    ? "Contactar a Sanota para asesoramiento sobre una necesidad específica" 
+                    : "Contact Sanota for advice relating to a specific requirement"} <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
 
@@ -611,30 +994,32 @@ export default function InsightsPage() {
         <section className="py-10 lg:py-14 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Mail className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mx-auto mb-6" />
-            <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Receive New Insights</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Stay Informed</h3>
+            <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+              {isDe ? "Neue Einblicke erhalten" : isEs ? "Recibir Nuevas Perspectivas" : "Receive New Insights"}
+            </h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+              {ins ? ins.newsletter.heading : "Stay Informed"}
+            </h3>
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-              Receive selected engineering insights, project stories, product developments and company updates from Sanota.
+              {ins ? ins.newsletter.subheading : "Receive selected engineering insights, project stories, product developments and company updates from Sanota."}
             </p>
             
-            <form className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 sm:p-12 text-left shadow-sm dark:shadow-none">
+            <form className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 sm:p-12 text-left shadow-sm dark:shadow-none" onSubmit={(e) => e.preventDefault()}>
               <div className="mb-6">
                 <input 
                   type="email" 
-                  placeholder="Enter your email address" 
+                  placeholder={ins ? ins.newsletter.placeholder : "Enter your email address"} 
                   className="w-full bg-slate-50 dark:bg-[#0B1220] border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-4 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B] transition-colors"
                   required
                 />
               </div>
               
               <div className="mb-8">
-                <p className="text-[#17135B] dark:text-white font-bold mb-4 text-sm">Industry interest:</p>
+                <p className="text-[#17135B] dark:text-white font-bold mb-4 text-sm">
+                  {isDe ? "Brancheninteresse:" : isEs ? "Interés del sector:" : "Industry interest:"}
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {[
-                    "Manufacturing", "Agriculture", "Food and beverage", "Tea", 
-                    "Logistics", "Energy and environment", "Infrastructure and facilities", 
-                    "Product development", "General engineering"
-                  ].map((interest, idx) => (
+                  {newsletterIndustries.map((interest, idx) => (
                     <label key={idx} className="flex items-center space-x-3 cursor-pointer">
                       <input type="checkbox" className="form-checkbox text-[#C59B27] dark:text-[#E8B84B] rounded bg-white dark:bg-[#0B1220] border-slate-300 dark:border-slate-700" />
                       <span className="text-slate-700 dark:text-slate-300 text-sm">{interest}</span>
@@ -645,12 +1030,15 @@ export default function InsightsPage() {
 
               <div className="flex flex-col sm:flex-row items-center gap-6 pt-6 border-t border-slate-200 dark:border-slate-800">
                 <button type="submit" className="w-full sm:w-auto px-10 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                  Subscribe
+                  {ins ? ins.newsletter.button : "Subscribe"}
                 </button>
                 <label className="flex items-start space-x-3 cursor-pointer">
                   <input required type="checkbox" className="form-checkbox text-[#C59B27] dark:text-[#E8B84B] rounded bg-white dark:bg-[#0B1220] border-slate-300 dark:border-slate-700 mt-1 shrink-0" />
                   <span className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
-                    I agree to receive relevant updates from Sanota. I understand that I may unsubscribe at any time. <Link href="/privacy" className="text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white">View Privacy Notice</Link>
+                    {ins ? ins.newsletter.consent : "I agree to receive relevant updates from Sanota. I understand that I may unsubscribe at any time."}{" "}
+                    <Link href="/privacy" className="text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white">
+                      {isDe ? "Datenschutzhinweise ansehen" : isEs ? "Ver aviso de privacidad" : "View Privacy Notice"}
+                    </Link>
                   </span>
                 </label>
               </div>
@@ -664,36 +1052,46 @@ export default function InsightsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
               <div>
-                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Need Help With a Similar Requirement?</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Turn Information into Action</h3>
+                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                  {isDe ? "Benötigen Sie Hilfe bei einer ähnlichen Anforderung?" : isEs ? "¿Necesita ayuda con un requerimiento similar?" : "Need Help With a Similar Requirement?"}
+                </h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                  {isDe ? "Informationen in Handeln verwandeln" : isEs ? "Convierta la información en acción" : "Turn Information into Action"}
+                </h3>
                 <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6">
-                  If an insight relates to a challenge in your organization, tell us about the current situation and what you want to achieve.
+                  {isDe ? "Wenn sich ein Einblick auf eine Herausforderung in Ihrer Organisation bezieht, beschreiben Sie uns die aktuelle Situation und was Sie erreichen möchten." : isEs ? "Si un análisis se relaciona con un desafío de su organización, cuéntenos la situación actual y lo que desea lograr." : "If an insight relates to a challenge in your organization, tell us about the current situation and what you want to achieve."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                  Sanota will help identify the appropriate engineering, automation, IoT, software, modernization or maintenance pathway.
+                  {isDe ? "Sanota unterstützt Sie bei der Auswahl des passenden Weges in den Bereichen Engineering, Automatisierung, IoT, Software, Modernisierung oder Wartung." : isEs ? "Sanota le ayudará a identificar la vía más adecuada en ingeniería, automatización, IoT, software, modernización o mantenimiento." : "Sanota will help identify the appropriate engineering, automation, IoT, software, modernization or maintenance pathway."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
-                    Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5" />
+                    {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                   <Link href="/contact" className="px-6 py-3 bg-white dark:bg-[#0B1220] hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm">
-                    Request Engineering Consultation
+                    {isDe ? "Ingenieurberatung anfordern" : isEs ? "Solicitar consulta de ingeniería" : "Request Engineering Consultation"}
                   </Link>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 rounded-3xl p-10 text-center shadow-sm dark:shadow-none">
-                <h2 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">Have an Engineering Question?</h2>
-                <p className="text-slate-600 dark:text-slate-400 mb-10">Start with the challenge, concern or opportunity. Sanota will help you determine the appropriate next step.</p>
+                <h2 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">
+                  {ins ? ins.cta.heading : "Have an Engineering Question?"}
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400 mb-10">
+                  {ins ? ins.cta.description : "Start with the challenge, concern or opportunity. Sanota will help you determine the appropriate next step."}
+                </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                   <Link href="/contact" className="px-6 py-3 bg-slate-100 dark:bg-[#131C2E] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors flex items-center justify-center">
-                    Ask Sanota
+                    {ins ? ins.cta.primaryButton : "Ask Sanota"}
                   </Link>
                   <Link href="/media" className="px-6 py-3 bg-slate-100 dark:bg-[#131C2E] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors flex items-center justify-center">
-                    Explore Completed Work
+                    {ins ? ins.cta.secondaryButton : "Explore Completed Work"}
                   </Link>
                 </div>
-                <p className="text-slate-500 text-sm italic">Practical knowledge for better engineering decisions.</p>
+                <p className="text-slate-500 text-sm italic">
+                  {ins ? ins.cta.closingLine : "Practical knowledge for better engineering decisions."}
+                </p>
               </div>
 
             </div>

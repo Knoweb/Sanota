@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const mediaCategories = [
   { 
@@ -110,7 +111,8 @@ function SlideshowImage({ images }: { images: string[] }) {
 export default function MediaSection() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ms = isEs ? homeES.mediaSection : null;
+  const isDe = language === "de";
+  const ms = isDe ? homeDE.mediaSection : isEs ? homeES.mediaSection : null;
 
   const displayCategories = mediaCategories.map((cat, idx) => {
     if (ms && ms.cards[idx]) {

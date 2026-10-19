@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const defaultProofPoints = [
   { 
@@ -25,7 +26,11 @@ const defaultProofPoints = [
 
 export default function CorporateProof() {
   const { language } = useLanguage();
-  const proofPoints = language === "es" ? homeES.corporateProof.points : defaultProofPoints;
+  const proofPoints = language === "de" 
+    ? homeDE.corporateProof.points 
+    : language === "es" 
+    ? homeES.corporateProof.points 
+    : defaultProofPoints;
   return (
     <section className="relative pt-12 pb-16 bg-transparent border-t border-slate-800/40 relative z-10">
       {/* Inner top glow to soften the border while keeping it distinct */}

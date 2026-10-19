@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const industriesLinksEN = [
   { name: 'Manufacturing & Industrial Automation', href: '/industries' },
@@ -32,6 +33,19 @@ const industriesLinksES = [
   { name: 'Investigación y desarrollo de productos a medida', href: '/industries' }
 ];
 
+const industriesLinksDE = [
+  { name: 'Fertigung & Industrieautomation', href: '/industries' },
+  { name: 'Intelligente Landwirtschaft', href: '/industries' },
+  { name: 'Lebensmittel- & Getränkeverarbeitung', href: '/industries' },
+  { name: 'Lösungen für die Teeindustrie', href: '/industries' },
+  { name: 'Logistik & Lagerhaltung', href: '/industries' },
+  { name: 'Energie- & Ressourceneffizienz', href: '/industries' },
+  { name: 'Umwelt- & Abfalllösungen', href: '/industries' },
+  { name: 'Infrastruktur und intelligente Einrichtungen', href: '/industries' },
+  { name: 'Gesundheitswesen & Biomedizintechnik', href: '/industries' },
+  { name: 'Forschung & kundenspezifische Produktentwicklung', href: '/industries' }
+];
+
 const servicesLinksEN = [
   { name: 'Engineering Consultation', href: '/services' },
   { name: 'System & Product Design', href: '/services' },
@@ -54,6 +68,17 @@ const servicesLinksES = [
   { name: 'Capacitación técnica', href: '/services' }
 ];
 
+const servicesLinksDE = [
+  { name: 'Ingenieurberatung', href: '/services' },
+  { name: 'System- und Produktentwicklung', href: '/services' },
+  { name: 'Sondermaschinenbau', href: '/services' },
+  { name: 'Automatisierung, IoT und digitale Integration', href: '/services' },
+  { name: 'Nachrüstung und Modernisierung', href: '/services' },
+  { name: 'Projektabwicklung und Inbetriebnahme', href: '/services' },
+  { name: 'Wartungsverträge und Lebenszyklusbetreuung', href: '/services' },
+  { name: 'Technische Schulungen', href: '/services' }
+];
+
 const exploreLinksEN = [
   { name: 'Products & Systems', href: '/products' },
   { name: 'Completed Work', href: '/media' },
@@ -74,15 +99,26 @@ const exploreLinksES = [
   { name: 'Sobre Sanota', href: '/about' }
 ];
 
+const exploreLinksDE = [
+  { name: 'Produkte & Systeme', href: '/products' },
+  { name: 'Abgeschlossene Projekte', href: '/media' },
+  { name: 'Projektberichte', href: '/media' },
+  { name: 'Videos', href: '/media' },
+  { name: 'Fotogalerie', href: '/media' },
+  { name: 'Innovation & Partnerschaften', href: '/contact' },
+  { name: 'Über Sanota', href: '/about' }
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const isEs = language === "es";
-  const f = isEs ? homeES.footer : null;
+  const isDe = language === "de";
+  const f = isDe ? homeDE.footer : isEs ? homeES.footer : null;
 
-  const currentIndustries = isEs ? industriesLinksES : industriesLinksEN;
-  const currentServices = isEs ? servicesLinksES : servicesLinksEN;
-  const currentExplore = isEs ? exploreLinksES : exploreLinksEN;
+  const currentIndustries = isDe ? industriesLinksDE : isEs ? industriesLinksES : industriesLinksEN;
+  const currentServices = isDe ? servicesLinksDE : isEs ? servicesLinksES : servicesLinksEN;
+  const currentExplore = isDe ? exploreLinksDE : isEs ? exploreLinksES : exploreLinksEN;
 
   return (
     <footer className="relative z-10 bg-white dark:bg-[#050B14] border-t border-[#ECE7DD] dark:border-slate-800/80 pt-8 pb-4">

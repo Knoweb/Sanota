@@ -11,6 +11,7 @@ import PixelCard from "@/components/PixelCard";
 import { ArrowRight, Target, Compass, CheckCircle2, Factory, Cpu, Network, PenTool, Wrench, RefreshCw, BarChart4, Lightbulb, Users, Globe2, ShieldCheck, Cog, ClipboardCheck } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { aboutES } from "@/locales/es/about";
+import { aboutDE } from "@/locales/de/about";
 
 // Data Structures
 const technicalDisciplines = [
@@ -185,10 +186,97 @@ const atAGlanceES = [
   { title: "Soporte Completo del Ciclo de Vida", desc: "Desde la evaluación y diseño hasta la entrega de proyectos, contratos AMC y mejora continua." }
 ];
 
+const technicalDisciplinesDE = [
+  "Maschinenbau", "Elektrotechnik und Elektronik", "Industrieautomatisierung",
+  "SPS-, HMI- und Steuerungssysteme", "Sensoren und Instrumentierung", "IoT und vernetzte Überwachung",
+  "Software und digitale Plattformen", "Maschinenbau und -integration", "Produktentwicklung",
+  "Nachrüstung und Modernisierung", "Wartung und Lebenszyklus-Support"
+];
+
+const customerChallengesDE = [
+  "Ein Produktionsproblem", "Ein ineffizienter Prozess", "Eine veraltete oder unzuverlässige Maschine",
+  "Die Anforderung, manuelle Arbeit zu reduzieren", "Bedarf an besserer Überwachung und Steuerung", "Ein Produkt- oder Maschinenkonzept",
+  "Eine Anforderung zur Verbesserung der Energie- oder Ressourceneffizienz", "Bedarf an Wartung oder technischer Unterstützung", "Eine Gelegenheit zur Einführung von Automatisierung oder digitaler Technologie"
+];
+
+const integratedCapabilitiesDE = [
+  { title: "Konstruktionstechnik", desc: "Wir entwickeln Maschinen, mechanische Systeme, elektrische Konstruktionen, Steuerungsarchitekturen und integrierte technische Lösungen nach Kundenanforderungen.", icon: PenTool },
+  { title: "Sondermaschinenbau und Produktentwicklung", desc: "Wir entwerfen und entwickeln Sondermaschinen, Verarbeitungsanlagen, Testsysteme, Prototypen und kundenspezifische Produkte.", icon: Factory },
+  { title: "Industrieautomation", desc: "Wir integrieren SPSen, HMIs, Sensoren, Aktoren, Motorsteuerungen, Antriebe, Servosysteme und industrielle Sicherheitsfunktionen.", icon: Cpu },
+  { title: "IoT und digitale Integration", desc: "Wir verbinden Maschinen, Anlagen und Betriebsumgebungen mit Cloud-Plattformen, Dashboards, mobilen Anwendungen, Alarmen und Berichtssystemen.", icon: Network },
+  { title: "Nachrüstung und Modernisierung", desc: "Wir überholen Maschinen, ersetzen veraltete Steuerungssysteme, verbessern die Sicherheit und führen Automatisierung ein, um die Lebensdauer der Anlagen zu verlängern und die Leistung zu steigern.", icon: RefreshCw },
+  { title: "Projektumsetzung", desc: "Wir unterstützen Beschaffung, Fertigung, Montage, Programmierung, Installation, Prüfung, Integration, Inbetriebnahme, Schulung und Übergabe.", icon: ClipboardCheck },
+  { title: "AMC und Lifecycle-Support", desc: "Wir bieten geplante Wartung, technische Unterstützung, Störungsbehebung, System-Upgrades und jährliche Wartungsverträge für Sanota- und berechtigte Fremdsysteme an.", icon: ShieldCheck }
+];
+
+const industrySupportDE = [
+  "Entwicklung von Maschinen für Produktion und Verarbeitung", "Automatisierung von Industrieanlagen und Arbeitsabläufen", "Instandsetzung nicht betriebsbereiter und veralteter Maschinen",
+  "Austausch veralteter Steuerungssysteme", "Einführung vernetzter Überwachung und Berichterstattung", "Entwicklung von Anlagen zur Lebensmittel- und Agrarverarbeitung",
+  "Unterstützung der Modernisierung der Teeverarbeitung", "Verbesserung der Materialhandhabung und Anlagentransparenz", "Entwicklung von Abfall- und Umweltlösungen",
+  "Unterstützung der technischen Ausbildung und Forschung", "Zusammenarbeit bei medizinischen und spezialisierten Produkten", "Unterstützung von Kunden bei der Entwicklung neuer Produkte und Prototypen"
+];
+
+const engineeringApproachDE = [
+  { title: "Verstehen vor dem Entwerfen", desc: "Wir beginnen mit dem Verständnis des Prozesses, des Problems, der Betriebsbedingungen, der Einschränkungen und des erwarteten Ergebnisses." },
+  { title: "Integration des Gesamtsystems", desc: "Wir berücksichtigen die Wechselwirkungen zwischen Maschinen, Steuerungen, elektrischen Systemen, Software, Personal und Betriebsabläufen." },
+  { title: "Modernisieren, wo es sinnvoll ist", desc: "Bevor wir einen kompletten Austausch empfehlen, prüfen wir, ob die vorhandenen Maschinen wiederhergestellt, nachgerüstet oder verbessert werden können." },
+  { title: "Design für den Langzeiteinsatz", desc: "Wir berücksichtigen Wartungsfreundlichkeit, Bedienerfreundlichkeit, Verfügbarkeit von Komponenten, zukünftige Erweiterungsmöglichkeiten und Lebenszyklusunterstützung." },
+  { title: "Verantwortungsvolle Umsetzung", desc: "Unser Engagement erstreckt sich von der ersten Bewertung und Planung über Entwicklung, Installation, Inbetriebnahme, Schulung und Wartung." }
+];
+
+const knowebExpertiseDE = [
+  "Softwareentwicklung", "IoT-Konnektivität", "Cloud-Plattformen", "Web- und mobile Anwendungen",
+  "Operative Dashboards", "Unternehmenssysteme", "Datenbankentwicklung", "Digitale Berichterstattung",
+  "Fernüberwachung und -steuerung", "Daten- und Systemintegration"
+];
+
+const collaborationCapabilitiesDE = [
+  "Anforderungs- und Machbarkeitsanalyse", "Entwicklung von Ingenieurkonzepten", "Prototypendesign",
+  "Mechanische und elektronische Entwicklung", "Eingebettete Systeme", "Automatisierung und Steuerung",
+  "IoT- und Softwareintegration", "Prüfung und Designverbesserung", "Pilotsysteme",
+  "Produktionsentwicklung", "Technische Unterstützung bei der Kommerzialisierung"
+];
+
+const missionPointsDE = [
+  "Kombination von Ingenieur- und Digitalkapazitäten", "Entwicklung kundenspezifischer Lösungen",
+  "Unterstützung bei Modernisierung und Ressourceneffizienz", "Verantwortung vom Konzept bis zur Umsetzung",
+  "Aufbau langfristiger Kunden- und Technikpartnerschaften", "Förderung von Innovation und industrieller Entwicklung"
+];
+
+const guidingPrinciplesDE = [
+  { title: "Praxisnähe", desc: "Lösungen müssen für reale Betriebsbedingungen und Umsetzungsanforderungen geeignet sein." },
+  { title: "Zuverlässigkeit", desc: "Systeme müssen auf gleichbleibende Leistung und langfristigen Betrieb ausgelegt sein." },
+  { title: "Integration", desc: "Ingenieurwesen, Automatisierung und digitale Technologien müssen als koordiniertes System funktionieren." },
+  { title: "Innovation", desc: "Neue Technologien sollten dort eingesetzt werden, wo sie echten operativen Mehrwert schaffen." },
+  { title: "Verantwortung", desc: "Fokus auf Qualität, Sicherheit, Wartbarkeit und Leistungsfähigkeit der Lösung." },
+  { title: "Partnerschaft", desc: "Enge Zusammenarbeit mit Kunden und Partnern zur Erreichung gemeinsamer Ziele." },
+  { title: "Kontinuierliche Verbesserung", desc: "Unterstützung der kontinuierlichen Optimierung und Weiterentwicklung von Kundenabläufen." }
+];
+
+const whyWorkWithUsDE = [
+  { title: "Ein verantwortlicher Partner", desc: "Zugang zu Maschinenbau, Elektrik, Automatisierung, IoT, Software und Support aus einer Hand.", icon: CheckCircle2 },
+  { title: "Branchenübergreifende Erfahrung", desc: "Erfahrung in vielfältigen Sektoren hilft uns, unterschiedliche Betriebsumgebungen zu verstehen.", icon: Globe2 },
+  { title: "Maßgeschneiderte Ingenieurkompetenz", desc: "Entwicklung von Speziallösungen, wo Standardmaschinen oder -technik nicht ausreichen.", icon: Wrench },
+  { title: "Retrofit- und Modernisierungskompetenz", desc: "Lebensdauer von Anlagen verlängern, veraltete Steuerungen ersetzen und bestehende Abläufe optimieren.", icon: RefreshCw },
+  { title: "Physische und digitale Integration", desc: "Maschinen und Betriebssysteme mit intelligenter Überwachung, Dashboards und Daten vernetzen.", icon: Network },
+  { title: "Ganzheitliche Projektabwicklung", desc: "Von der Bewertung und Konstruktion bis zur Installation, Inbetriebnahme, Schulung und Lifecycle-Betreuung.", icon: Cog },
+  { title: "Langfristiger technischer Support", desc: "Wartung, AMC-Verträge, Störungsbehebung, Upgrades und Leistungsoptimierung.", icon: ShieldCheck }
+];
+
+const atAGlanceDE = [
+  { title: "Gegründet 2010", desc: "Ingenieur- und Technologieerfahrung gewachsen an sich wandelnden industriellen Anforderungen." },
+  { title: "1.250+ Kundenprojekte", desc: "Erfolgreiche Unterstützung von Unternehmen durch Produkte, Projekte und technische Dienstleistungen." },
+  { title: "Branchenübergreifende Expertise", desc: "Lösungen in Fertigung, Landwirtschaft, Teeverarbeitung, Lebensmittel, Logistik, Energie und Gesundheit." },
+  { title: "Integrierte Ingenieurkompetenz", desc: "Maschinenbau, Elektrotechnik, Elektronik, Automatisierung, IoT und Software nahtlos vereint." },
+  { title: "Lokale Stärke & globale Reichweite", desc: "Srilankische Ingenieurkompetenz zur Unterstützung lokaler Industrien und internationaler Partner." },
+  { title: "Vollständiger Lifecycle-Support", desc: "Von der Betriebsanalyse und Konstruktion über Projektabwicklung bis zu Wartungsverträgen (AMC)." }
+];
+
 export default function AboutPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ab = isEs ? aboutES : null;
+  const isDe = language === "de";
+  const ab = isDe ? aboutDE : isEs ? aboutES : null;
 
   const [activePrinciple, setActivePrinciple] = useState<number>(0);
 
@@ -301,7 +389,7 @@ export default function AboutPage() {
                     {ab ? ab.whoWeAre.disciplinesTitle : "Our technical disciplines include:"}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {(ab ? technicalDisciplinesES : technicalDisciplines).map((item, idx) => (
+                    {(isDe ? technicalDisciplinesDE : isEs ? technicalDisciplinesES : technicalDisciplines).map((item, idx) => (
                       <div key={idx} className="flex items-start">
                         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#C59B27] to-amber-600 mt-2 mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
                         <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{item}</span>
@@ -338,8 +426,8 @@ export default function AboutPage() {
                   <div className="flex items-center">
                     <Factory className="w-8 h-8 text-[#E8B84B] mr-4" />
                     <div>
-                      <p className="text-white font-bold text-lg">{ab ? "Capacidad Integrada" : "Integrated Capability"}</p>
-                      <p className="text-slate-400 text-sm">{ab ? "Mecánica, Eléctrica y Digital" : "Mechanical, Electrical, & Digital"}</p>
+                      <p className="text-white font-bold text-lg">{isDe ? "Integrierte Kompetenz" : isEs ? "Capacidad Integrada" : "Integrated Capability"}</p>
+                      <p className="text-slate-400 text-sm">{isDe ? "Mechanisch, Elektrisch & Digital" : isEs ? "Mecánica, Eléctrica y Digital" : "Mechanical, Electrical, & Digital"}</p>
                     </div>
                   </div>
                 </div>
@@ -374,8 +462,8 @@ export default function AboutPage() {
                   <div className="flex items-center">
                     <div className="text-3xl font-black text-[#E8B84B] mr-4">1,250+</div>
                     <div>
-                      <p className="text-white font-bold text-lg">{ab ? "Proyectos Ejecutados" : "Client Engagements"}</p>
-                      <p className="text-slate-300 text-sm">{ab ? "Desde 2010" : "Since 2010"}</p>
+                      <p className="text-white font-bold text-lg">{isDe ? "Kundenprojekte" : isEs ? "Proyectos Ejecutados" : "Client Engagements"}</p>
+                      <p className="text-slate-300 text-sm">{isDe ? "Seit 2010" : isEs ? "Desde 2010" : "Since 2010"}</p>
                     </div>
                   </div>
                 </div>
@@ -408,10 +496,12 @@ export default function AboutPage() {
                     {ab ? ab.ourHistory.paragraph2 : "Since its establishment, Sanota has expanded its capabilities across machinery development, industrial automation, electronics, IoT, software, product development and integrated engineering systems."}
                   </motion.p>
                   <motion.p variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}>
-                    {ab ? "La empresa ha trabajado en una amplia gama de sectores, respaldando requerimientos en manufactura, agricultura, procesamiento de alimentos, té, logística, energía, gestión ambiental, infraestructura, salud e investigación." : "The company has worked across a wide range of sectors, supporting requirements in manufacturing, agriculture, food processing, tea, logistics, energy, environmental management, infrastructure, healthcare and research."}
+                    {isDe ? "Das Unternehmen hat in einer Vielzahl von Branchen gearbeitet und Anforderungen in Fertigung, Landwirtschaft, Lebensmittelverarbeitung, Tee, Logistik, Energie, Umweltmanagement, Infrastruktur, Gesundheitswesen und Forschung unterstützt." : isEs ? "La empresa ha trabajado en una amplia gama de sectores, respaldando requerimientos en manufactura, agricultura, procesamiento de alimentos, té, logística, energía, gestión ambiental, infraestructura, salud e investigación." : "The company has worked across a wide range of sectors, supporting requirements in manufacturing, agriculture, food processing, tea, logistics, energy, environmental management, infrastructure, healthcare and research."}
                   </motion.p>
                   <motion.p variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}>
-                    {ab ? (
+                    {isDe ? (
+                      <>Durch mehr als <strong className="text-[#17135B] dark:text-white">1.250 Kundenprojekte</strong> hat Sanota Erfahrung in der Entwicklung neuer Systeme, der Optimierung bestehender Abläufe und der Modernisierung veralteter Maschinen gesammelt.</>
+                    ) : isEs ? (
                       <>A través de más de <strong className="text-[#17135B] dark:text-white">1.250 proyectos con clientes</strong>, Sanota ha adquirido la experiencia para desarrollar nuevos sistemas, optimizar operaciones existentes, modernizar maquinaria y crear soluciones especializadas que no siempre se satisfacen con productos comerciales estándar.</>
                     ) : (
                       <>Through more than <strong className="text-[#17135B] dark:text-white">1,250 client engagements</strong>, Sanota has gained experience in developing new systems, improving existing operations, modernizing ageing machinery and creating specialized solutions for requirements that cannot always be met through standard products.</>
@@ -419,7 +509,7 @@ export default function AboutPage() {
                   </motion.p>
                   <motion.div variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }} className="bg-gradient-to-r from-[#2E5EAA]/10 dark:from-[#2E5EAA]/20 to-transparent p-5 rounded-xl border-l-2 border-[#2E5EAA]">
                     <p className="text-[#17135B] dark:text-white font-medium text-base">
-                      {ab ? "Hoy, Sanota continúa fortaleciendo su papel como una empresa de ingeniería y tecnología de Sri Lanka con la capacidad de apoyar tanto a clientes, proyectos y asociaciones locales como internacionales." : "Today, Sanota continues to strengthen its role as a Sri Lankan engineering and technology company with the capability to support both local and international customers, projects and partnerships."}
+                      {isDe ? "Heute stärkt Sanota weiterhin seine Rolle als srilankisches Engineering- und Technologieunternehmen mit der Fähigkeit, sowohl lokale als auch internationale Kunden, Projekte und Partnerschaften zu unterstützen." : isEs ? "Hoy, Sanota continúa fortaleciendo su papel como una empresa de ingeniería y tecnología de Sri Lanka con la capacidad de apoyar tanto a clientes, proyectos y asociaciones locales como internacionales." : "Today, Sanota continues to strengthen its role as a Sri Lankan engineering and technology company with the capability to support both local and international customers, projects and partnerships."}
                     </p>
                   </motion.div>
                 </div>
@@ -472,7 +562,7 @@ export default function AboutPage() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 lg:mb-12">
-              {(ab ? customerChallengesES : customerChallenges).map((challenge, idx) => (
+              {(isDe ? customerChallengesDE : isEs ? customerChallengesES : customerChallenges).map((challenge, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
@@ -498,10 +588,10 @@ export default function AboutPage() {
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent opacity-50" />
               <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed">
-                {ab ? "Nuestra función es estudiar el requerimiento, comprender el entorno operativo y formular una respuesta de ingeniería adecuada." : "Our role is to study the requirement, understand the operating environment and develop an appropriate engineering response."}
+                {isDe ? "Unsere Aufgabe ist es, die Anforderungen zu analysieren, die Betriebsumgebung zu verstehen und eine angemessene technische Lösung zu formulieren." : isEs ? "Nuestra función es estudiar el requerimiento, comprender el entorno operativo y formular una respuesta de ingeniería adecuada." : "Our role is to study the requirement, understand the operating environment and develop an appropriate engineering response."}
               </p>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                {ab ? "Según el proyecto, esto puede incluir diseño y fabricación de maquinaria, sistemas eléctricos, automatización, sensores, IoT, software, paneles de control, instalación, puesta en marcha, mantenimiento o una combinación integrada de estas disciplinas." : "Depending on the project, this may involve machinery design, fabrication, electrical systems, automation, sensors, IoT, software, dashboards, installation, commissioning, maintenance or a combination of these capabilities."}
+                {isDe ? "Je nach Projekt kann dies Maschinenkonstruktion, Fertigung, Elektrotechnik, Automatisierung, Sensorik, IoT, Software, Dashboards, Installation, Inbetriebnahme, Wartung oder eine Kombination dieser Disziplinen umfassen." : isEs ? "Según el proyecto, esto puede incluir diseño y fabricación de maquinaria, sistemas eléctricos, automatización, sensores, IoT, software, paneles de control, instalación, puesta en marcha, mantenimiento o una combinación integrada de estas disciplinas." : "Depending on the project, this may involve machinery design, fabrication, electrical systems, automation, sensors, IoT, software, dashboards, installation, commissioning, maintenance or a combination of these capabilities."}
               </p>
               <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-all hover:scale-105 shadow-xl">
                 {ab ? ab.whatWeDo.button : "Explore Our Services"} <ArrowRight className="ml-2 w-5 h-5" />
@@ -527,12 +617,12 @@ export default function AboutPage() {
                 {ab ? ab.capabilities.subheading : "One Connected Engineering Approach"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                {ab ? "La principal fortaleza de Sanota es la capacidad de coordinar diferentes disciplinas de ingeniería y tecnología dentro de una misma solución integral." : "Sanota's principal strength is the ability to coordinate different engineering and technology disciplines within one solution."}
+                {isDe ? "Die Kernstärke von Sanota liegt in der Fähigkeit, verschiedene Engineering- und Technologiedisziplinen in einer einzigen integrierten Lösung zu koordinieren." : isEs ? "La principal fortaleza de Sanota es la capacidad de coordinar diferentes disciplinas de ingeniería y tecnología dentro de una misma solución integral." : "Sanota's principal strength is the ability to coordinate different engineering and technology disciplines within one solution."}
               </p>
             </motion.div>
             
             <div className="flex flex-wrap justify-center gap-6">
-              {(ab ? integratedCapabilitiesES : integratedCapabilities).map((cap, idx) => (
+              {(isDe ? integratedCapabilitiesDE : isEs ? integratedCapabilitiesES : integratedCapabilities).map((cap, idx) => (
                 <motion.div 
                   key={idx} 
                   initial={{ opacity: 0, y: 30 }}
@@ -574,14 +664,14 @@ export default function AboutPage() {
                   {ab ? ab.sriLankaSupport.title : "Engineering Progress Across Diverse Sectors"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
-                  {ab ? "Sanota ha extendido apoyo técnico y de ingeniería a través de una amplia gama de industrias en Sri Lanka e internacionalmente." : "Sanota has extended engineering and technical support across a broad range of industries in Sri Lanka."}
+                  {isDe ? "Sanota hat technische und ingenieurmäßige Unterstützung für eine Vielzahl von Branchen in Sri Lanka und international bereitgestellt." : isEs ? "Sanota ha extendido apoyo técnico y de ingeniería a través de una amplia gama de industrias en Sri Lanka e internacionalmente." : "Sanota has extended engineering and technical support across a broad range of industries in Sri Lanka."}
                 </p>
                 
                 <p className="text-slate-500 dark:text-slate-400 mb-6 font-bold uppercase tracking-widest text-xs">
-                  {ab ? "Nuestro trabajo ha incluido:" : "Our work has included:"}
+                  {isDe ? "Unsere Arbeit umfasste unter anderem:" : isEs ? "Nuestro trabajo ha incluido:" : "Our work has included:"}
                 </p>
                 <div className="space-y-4 mb-8">
-                  {(ab ? industrySupportES : industrySupport).map((item, idx) => (
+                  {(isDe ? industrySupportDE : isEs ? industrySupportES : industrySupport).map((item, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 10 }}
@@ -599,10 +689,10 @@ export default function AboutPage() {
                 <div className="bg-gradient-to-br from-[#F5F3EF] dark:from-[#131C2E]/60 to-white dark:to-[#0B1220]/60 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 mb-8 relative overflow-hidden group shadow-sm dark:shadow-none">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#2E5EAA] to-[#E8B84B]" />
                   <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 font-medium">
-                    {ab ? "A través de estas actividades, Sanota contribuye al desarrollo de la ingeniería local, productividad industrial, adopción de tecnología, adición de valor y sustitución de importaciones." : "Through these activities, Sanota contributes to local engineering development, industrial productivity, technology adoption, value addition and import-substitution opportunities."}
+                    {isDe ? "Durch diese Aktivitäten trägt Sanota zur lokalen Ingenieurentwicklung, industriellen Produktivität, Technologieeinführung, Wertschöpfung und Importsubstitution bei." : isEs ? "A través de estas actividades, Sanota contribuye al desarrollo de la ingeniería local, productividad industrial, adopción de tecnología, adición de valor y sustitución de importaciones." : "Through these activities, Sanota contributes to local engineering development, industrial productivity, technology adoption, value addition and import-substitution opportunities."}
                   </p>
                   <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed italic">
-                    {ab ? "Nuestra experiencia en diferentes sectores nos permite transferir conocimientos y tecnologías relevantes de un entorno operativo a otro." : "Our experience across different industries also enables us to transfer relevant knowledge and technologies from one operational environment to another."}
+                    {isDe ? "Unsere Erfahrung in verschiedenen Branchen ermöglicht es uns, relevantes Wissen und Technologien von einer Betriebsumgebung auf eine andere zu übertragen." : isEs ? "Nuestra experiencia en diferentes sectores nos permite transferir conocimientos y tecnologías relevantes de un entorno operativo a otro." : "Our experience across different industries also enables us to transfer relevant knowledge and technologies from one operational environment to another."}
                   </p>
                 </div>
 
@@ -624,15 +714,15 @@ export default function AboutPage() {
                   {ab ? ab.engineeringApproach.title : "Practical Solutions Designed for Implementation"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
-                  {ab ? "Sanota aborda cada proyecto comprendiendo que una solución de ingeniería exitosa debe funcionar de manera fiable dentro del entorno operativo real del cliente." : "Sanota approaches every project with an understanding that a successful engineering solution must work reliably within the customer’s actual operating environment."}
+                  {isDe ? "Sanota geht jedes Projekt mit dem Verständnis an, dass eine erfolgreiche technische Lösung in der realen Betriebsumgebung des Kunden zuverlässig funktionieren muss." : isEs ? "Sanota aborda cada proyecto comprendiendo que una solución de ingeniería exitosa debe funcionar de manera fiable dentro del entorno operativo real del cliente." : "Sanota approaches every project with an understanding that a successful engineering solution must work reliably within the customer’s actual operating environment."}
                 </p>
                 
                 <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold mb-8 uppercase tracking-widest text-xs">
-                  {ab ? "Nuestro enfoque se guía por cinco principios:" : "Our approach is guided by five principles:"}
+                  {isDe ? "Unser Ansatz basiert auf fünf Prinzipien:" : isEs ? "Nuestro enfoque se guía por cinco principios:" : "Our approach is guided by five principles:"}
                 </p>
                 
                 <div className="space-y-0 relative before:absolute before:inset-0 before:ml-[23px] before:w-0.5 before:bg-gradient-to-b before:from-slate-700 before:to-transparent">
-                  {(ab ? engineeringApproachES : engineeringApproach).map((item, idx) => (
+                  {(isDe ? engineeringApproachDE : isEs ? engineeringApproachES : engineeringApproach).map((item, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, x: 20 }}
@@ -690,10 +780,10 @@ export default function AboutPage() {
                 
                 <div className="bg-slate-50 dark:bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-200 dark:border-slate-700/50">
                   <p className="text-slate-500 dark:text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">
-                    {ab ? "Knoweb aporta experiencia especializada en:" : "Knoweb contributes specialist expertise in:"}
+                    {isDe ? "Knoweb bringt Fachwissen ein in:" : isEs ? "Knoweb aporta experiencia especializada en:" : "Knoweb contributes specialist expertise in:"}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {(ab ? knowebExpertiseES : knowebExpertise).map((item, idx) => (
+                    {(isDe ? knowebExpertiseDE : isEs ? knowebExpertiseES : knowebExpertise).map((item, idx) => (
                       <div key={idx} className="flex items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 shrink-0 shadow-[0_0_5px_rgba(232,184,75,0.5)]" />
                         <span className="text-slate-600 dark:text-slate-300 text-sm">{item}</span>
@@ -703,7 +793,7 @@ export default function AboutPage() {
                 </div>
 
                 <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8 font-medium">
-                  {ab ? "Esta relación permite a Sanota combinar sistemas de ingeniería física con tecnologías digitales. Una máquina puede formar parte de un sistema operativo conectado con sensores, automatización, nube, paneles, alertas y gestión." : "This relationship enables Sanota to combine physical engineering systems with digital technologies. A machine can therefore become part of a connected operational system incorporating sensors, automation, cloud access, dashboards, alerts, traceability and management reporting."}
+                  {isDe ? "Diese Zusammenarbeit ermöglicht es Sanota, physische Systeme mit digitalen Technologien zu verbinden. Eine Maschine wird so Teil eines vernetzten Gesamtsystems mit Sensoren, Automatisierung, Cloud, Dashboards und Reporting." : isEs ? "Esta relación permite a Sanota combinar sistemas de ingeniería física con tecnologías digitales. Una máquina puede formar parte de un sistema operativo conectado con sensores, automatización, nube, paneles, alertas y gestión." : "This relationship enables Sanota to combine physical engineering systems with digital technologies. A machine can therefore become part of a connected operational system incorporating sensors, automation, cloud access, dashboards, alerts, traceability and management reporting."}
                 </p>
 
                 <div>
@@ -744,10 +834,10 @@ export default function AboutPage() {
                 
                 <div className="bg-slate-50 dark:bg-[#0B1220]/60 backdrop-blur-md rounded-2xl p-6 mb-6 border border-slate-200 dark:border-slate-700/50">
                   <p className="text-slate-500 dark:text-slate-400 font-bold mb-4 text-sm uppercase tracking-wider">
-                    {ab ? "Nuestra capacidad de colaboración incluye:" : "Our collaborative capability includes:"}
+                    {isDe ? "Unsere Kooperationskapazitäten umfassen:" : isEs ? "Nuestra capacidad de colaboración incluye:" : "Our collaborative capability includes:"}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-3">
-                    {(ab ? collaborationCapabilitiesES : collaborationCapabilities).map((item, idx) => (
+                    {(isDe ? collaborationCapabilitiesDE : isEs ? collaborationCapabilitiesES : collaborationCapabilities).map((item, idx) => (
                       <div key={idx} className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-[#C59B27] dark:text-[#E8B84B] mr-3 shrink-0 mt-0.5" />
                         <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{item}</span>
@@ -757,7 +847,7 @@ export default function AboutPage() {
                 </div>
 
                 <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed font-medium mb-8">
-                  {ab ? "Este enfoque permite a Sanota contribuir no solo como proveedor, sino también como socio de desarrollo de ingeniería." : "This approach allows Sanota to contribute not only as a supplier, but also as an engineering development partner."}
+                  {isDe ? "Dieser Ansatz ermöglicht es Sanota, nicht nur als Lieferant, sondern als Entwicklungspartner aufzutreten." : isEs ? "Este enfoque permite a Sanota contribuir no solo como proveedor, sino también como socio de desarrollo de ingeniería." : "This approach allows Sanota to contribute not only as a supplier, but also as an engineering development partner."}
                 </p>
 
                 <div>
@@ -791,7 +881,7 @@ export default function AboutPage() {
                   <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3 hidden lg:block" /> {ab ? ab.vision.title : "Our Vision"}
                 </h2>
                 <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight drop-shadow-md">
-                  {ab ? "Avanzar en las Industrias a Través de la Ingeniería Práctica y la Tecnología Inteligente" : "To Advance Industries Through Practical Engineering and Intelligent Technology"}
+                  {isDe ? "Industrien durch praktische Ingenieurskunst und intelligente Technologie voranbringen" : isEs ? "Avanzar en las Industrias a Través de la Ingeniería Práctica y la Tecnología Inteligente" : "To Advance Industries Through Practical Engineering and Intelligent Technology"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 text-xl leading-relaxed border-l-2 border-[#C59B27]/50 dark:border-[#E8B84B]/50 pl-5">
                   {ab ? ab.vision.text : "Our vision is to become a trusted engineering and technology partner for industries seeking practical, reliable, sustainable and future-ready operational solutions."}
@@ -815,10 +905,10 @@ export default function AboutPage() {
                     {ab ? ab.mission.text : "Our mission is to understand real operational challenges and deliver integrated engineering solutions that create measurable and long-term value for our customers."}
                   </p>
                   <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">
-                    {ab ? "Perseguimos esta misión mediante:" : "We pursue this mission by:"}
+                    {isDe ? "Wir verfolgen diese Mission durch:" : isEs ? "Perseguimos esta misión mediante:" : "We pursue this mission by:"}
                   </p>
                   <div className="space-y-4">
-                    {(ab ? missionPointsES : missionPoints).map((item, idx) => (
+                    {(isDe ? missionPointsDE : isEs ? missionPointsES : missionPoints).map((item, idx) => (
                       <div key={idx} className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-[#C59B27] dark:text-[#E8B84B] mr-3 mt-0.5 shrink-0" />
                         <span className="text-slate-600 dark:text-slate-300 text-base">{item}</span>
@@ -842,15 +932,15 @@ export default function AboutPage() {
               className="text-center mb-8 lg:mb-12"
             >
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {ab ? "Lo que Guía Nuestro Trabajo" : "What Guides Our Work"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {isDe ? "Was unsere Arbeit leitet" : isEs ? "Lo que Guía Nuestro Trabajo" : "What Guides Our Work"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
               <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">
-                {ab ? "Principios Fundamentales" : "Core Principles"}
+                {isDe ? "Grundlegende Prinzipien" : isEs ? "Principios Fundamentales" : "Core Principles"}
               </h3>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-8 lg:gap-10">
-              {(ab ? guidingPrinciplesES : guidingPrinciples).map((principle, idx) => (
+              {(isDe ? guidingPrinciplesDE : isEs ? guidingPrinciplesES : guidingPrinciples).map((principle, idx) => (
                 <motion.div 
                   key={idx} 
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -885,15 +975,15 @@ export default function AboutPage() {
               className="text-center mb-8 lg:mb-12"
             >
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {ab ? "La Ventaja Sanota" : "The Sanota Advantage"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {isDe ? "Der Sanota-Vorteil" : isEs ? "La Ventaja Sanota" : "The Sanota Advantage"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
               <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">
-                {ab ? "¿Por qué las organizaciones trabajan con Sanota?" : "Why Organizations Work With Sanota"}
+                {isDe ? "Warum Organisationen mit Sanota zusammenarbeiten" : isEs ? "¿Por qué las organizaciones trabajan con Sanota?" : "Why Organizations Work With Sanota"}
               </h3>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
-              {(ab ? whyWorkWithUsES : whyWorkWithUs).map((reason, idx) => {
+              {(isDe ? whyWorkWithUsDE : isEs ? whyWorkWithUsES : whyWorkWithUs).map((reason, idx) => {
                 const cardColors = [
                   "#00F0FF", // Electric Blue
                   "#FF0055", // Magenta
@@ -943,7 +1033,7 @@ export default function AboutPage() {
               className="text-center mb-8 lg:mb-12"
             >
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4 flex items-center justify-center">
-                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {ab ? "Datos Clave" : "Key Facts"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
+                <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] mr-3" /> {isDe ? "Wichtigste Fakten" : isEs ? "Datos Clave" : "Key Facts"} <span className="w-6 h-px bg-[#C59B27] dark:bg-[#E8B84B] ml-3" />
               </h2>
               <h3 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white">
                 {ab ? ab.atAGlance.heading : "Sanota at a Glance"}
@@ -951,7 +1041,7 @@ export default function AboutPage() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(ab ? atAGlanceES : atAGlance).map((fact, idx) => (
+              {(isDe ? atAGlanceDE : isEs ? atAGlanceES : atAGlance).map((fact, idx) => (
                 <motion.div 
                   key={idx} 
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -983,7 +1073,11 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-black text-[#17135B] dark:text-white mb-8 leading-tight tracking-tight drop-shadow-lg"
             >
-              {ab ? (
+              {isDe ? (
+                <>
+                  Entwickeln wir die passende Lösung <br className="hidden md:block" /> für Ihren <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4B85E8]">Betrieb</span>
+                </>
+              ) : isEs ? (
                 <>
                   Desarrollemos la Solución Ideal <br className="hidden md:block" /> para su <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4B85E8]">Operación</span>
                 </>
@@ -1009,7 +1103,7 @@ export default function AboutPage() {
               transition={{ delay: 0.2 }}
               className="text-slate-500 dark:text-slate-400 text-lg mb-12 max-w-3xl mx-auto"
             >
-              {ab ? "Cuéntenos su desafío, requerimiento u oportunidad operativa. Nuestro equipo lo conectará con los especialistas técnicos y de ingeniería pertinentes." : "Tell us about your operational challenge, requirement or opportunity. Our team will connect you with the appropriate engineering and technical expertise."}
+              {isDe ? "Erzählen Sie uns von Ihrer betrieblichen Herausforderung, Anforderung oder Chance. Unser Team verbindet Sie mit den passenden technischen Experten." : isEs ? "Cuéntenos su desafío, requerimiento u oportunidad operativa. Nuestro equipo lo conectará con los especialistas técnicos y de ingeniería pertinentes." : "Tell us about your operational challenge, requirement or opportunity. Our team will connect you with the appropriate engineering and technical expertise."}
             </motion.p>
 
             <motion.div 
@@ -1037,16 +1131,16 @@ export default function AboutPage() {
               className="flex flex-wrap justify-center gap-6 sm:gap-10 pt-8 border-t border-slate-200 dark:border-slate-800/50"
             >
               <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">
-                {ab ? "Explorar Nuestros Servicios" : "Explore Our Services"}
+                {isDe ? "Dienstleistungen erkunden" : isEs ? "Explorar Nuestros Servicios" : "Explore Our Services"}
               </Link>
               <Link href="/media" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">
-                {ab ? "Ver Nuestros Proyectos" : "View Our Projects"}
+                {isDe ? "Unsere Projekte ansehen" : isEs ? "Ver Nuestros Proyectos" : "View Our Projects"}
               </Link>
               <Link href="/services" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">
-                {ab ? "Solicitar Evaluación AMC" : "Request an AMC Assessment"}
+                {isDe ? "AMC-Bewertung anfordern" : isEs ? "Solicitar Evaluación AMC" : "Request an AMC Assessment"}
               </Link>
               <Link href="/contact" className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">
-                {ab ? "Explorar una Alianza" : "Explore a Partnership"}
+                {isDe ? "Partnerschaft erkunden" : isEs ? "Explorar una Alianza" : "Explore a Partnership"}
               </Link>
             </motion.div>
           </div>

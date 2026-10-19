@@ -8,6 +8,7 @@ import { ArrowRight, Box, Leaf, CupSoda, Coffee, ChevronLeft, ChevronRight, Chec
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const industries = [
   {
@@ -66,7 +67,8 @@ export default function IndustriesWeSupport() {
   const isDark = theme === "dark";
   const { language } = useLanguage();
   const isEs = language === "es";
-  const indData = isEs ? homeES.industries : null;
+  const isDe = language === "de";
+  const indData = isDe ? homeDE.industries : isEs ? homeES.industries : null;
 
   const displayIndustries = industries.map((item, idx) => {
     if (indData && indData.priority[idx]) {

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const products = [
   {
@@ -49,7 +50,8 @@ const products = [
 export default function ProductsAndSystems() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ps = isEs ? homeES.productsAndSystems : null;
+  const isDe = language === "de";
+  const ps = isDe ? homeDE.productsAndSystems : isEs ? homeES.productsAndSystems : null;
 
   const displayProducts = products.map((item, idx) => {
     if (ps && ps.categories[idx]) {

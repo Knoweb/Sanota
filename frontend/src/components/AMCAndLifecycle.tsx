@@ -7,6 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const defaultAmcScope = [
   "Asset and condition assessment",
@@ -27,7 +28,8 @@ const defaultAmcScope = [
 export default function AMCAndLifecycle() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const amcData = isEs ? homeES.amcAndLifecycle : null;
+  const isDe = language === "de";
+  const amcData = isDe ? homeDE.amcAndLifecycle : isEs ? homeES.amcAndLifecycle : null;
 
   const amcScope = amcData ? amcData.scopeItems : defaultAmcScope;
   const originalLength = amcScope.length;

@@ -8,6 +8,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Briefcase, Newspaper, Video, Cam
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { mediaES } from "@/locales/es/media";
+import { mediaDE } from "@/locales/de/media";
 
 const mediaNavigation = [
   { 
@@ -58,6 +59,7 @@ export default function MediaNavigationCarousel() {
   const isDark = theme === "dark";
   const { language } = useLanguage();
   const isEs = language === "es";
+  const isDe = language === "de";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -246,10 +248,10 @@ export default function MediaNavigationCarousel() {
                 {/* Lower Card Body */}
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-10 bg-white dark:bg-[#131C2E] justify-between">
                   {(() => {
-                    const esNav = isEs ? mediaES.navigation.sections[idx] : null;
-                    const title = esNav ? esNav.title : nav.title;
-                    const desc = esNav ? esNav.desc : nav.desc;
-                    const buttonText = esNav ? esNav.button : nav.button;
+                    const transNav = isDe ? mediaDE.navigation.sections[idx] : isEs ? mediaES.navigation.sections[idx] : null;
+                    const title = transNav ? transNav.title : nav.title;
+                    const desc = transNav ? transNav.desc : nav.desc;
+                    const buttonText = transNav ? transNav.button : nav.button;
 
                     return (
                       <>

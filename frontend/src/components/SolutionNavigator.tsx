@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const options = [
   {
@@ -89,7 +90,8 @@ export default function SolutionNavigator() {
   const isDark = theme === "dark";
   const { language } = useLanguage();
   const isEs = language === "es";
-  const sn = isEs ? homeES.solutionNavigator : null;
+  const isDe = language === "de";
+  const sn = isDe ? homeDE.solutionNavigator : isEs ? homeES.solutionNavigator : null;
 
   const displayOptions = options.map((opt, idx) => {
     if (sn && sn.items[idx]) {

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const projects = [
   {
@@ -49,7 +50,8 @@ const projects = [
 export default function CompletedWork() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const cw = isEs ? homeES.completedWork : null;
+  const isDe = language === "de";
+  const cw = isDe ? homeDE.completedWork : isEs ? homeES.completedWork : null;
 
   const displayProjects = projects.map((p, idx) => {
     if (cw && cw.categories[idx]) {

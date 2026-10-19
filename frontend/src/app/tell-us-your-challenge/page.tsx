@@ -14,6 +14,7 @@ import { submitChallengeEnquiry } from "@/lib/api";
 import dynamic from 'next/dynamic';
 import { useLanguage } from "@/context/LanguageContext";
 import { challengeES } from "@/locales/es/challenge";
+import { challengeDE } from "@/locales/de/challenge";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 const initialData: ChallengeFormData = {
   coreRequirements: [],
@@ -57,7 +58,8 @@ const initialData: ChallengeFormData = {
 export default function ChallengePage() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ch = isEs ? challengeES : null;
+  const isDe = language === "de";
+  const ch = isDe ? challengeDE : isEs ? challengeES : null;
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<ChallengeFormData>(initialData);
@@ -118,7 +120,7 @@ export default function ChallengePage() {
         window.scrollTo({ top: document.getElementById('form-container')?.offsetTop || 0 - 100, behavior: 'smooth' });
       }
     } catch (err: any) {
-      setConnectionError(err.message || 'Your enquiry could not be submitted because of a connection problem. Please try again.');
+      setConnectionError(err.message || (isDe ? 'Ihre Anfrage konnte aufgrund eines Verbindungsproblems nicht übermittelt werden. Bitte versuchen Sie es erneut.' : isEs ? 'Su consulta no se pudo enviar debido a un problema de conexión. Inténtelo de nuevo.' : 'Your enquiry could not be submitted because of a connection problem. Please try again.'));
     } finally {
       setIsSubmitting(false);
     }
@@ -232,7 +234,7 @@ export default function ChallengePage() {
                   {/* Progress Header */}
                   <div className="mb-10 text-center">
                     <h3 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                      {isEs ? "Consulta Guiada" : "Guided Enquiry"}
+                      {isDe ? "Geführte Anfrage" : isEs ? "Consulta Guiada" : "Guided Enquiry"}
                     </h3>
                     <div className="flex justify-between items-center max-w-2xl mx-auto mb-4 relative">
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full -z-10"></div>
@@ -245,7 +247,7 @@ export default function ChallengePage() {
                       ))}
                     </div>
                     <p className="text-slate-600 dark:text-slate-400 font-medium">
-                      {isEs ? `Paso ${currentStep} de 5` : `Step ${currentStep} of 5`}
+                      {isDe ? `Schritt ${currentStep} von 5` : isEs ? `Paso ${currentStep} de 5` : `Step ${currentStep} of 5`}
                     </p>
                   </div>
 
@@ -267,7 +269,7 @@ export default function ChallengePage() {
                         onClick={handlePrev}
                         className="w-full sm:w-auto px-6 py-3 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors font-semibold"
                       >
-                        <ArrowLeft className="w-5 h-5 mr-2" /> {isEs ? "Atrás" : "Back"}
+                        <ArrowLeft className="w-5 h-5 mr-2" /> {isDe ? "Zurück" : isEs ? "Atrás" : "Back"}
                       </button>
                     ) : (
                       <div />
@@ -286,7 +288,7 @@ export default function ChallengePage() {
                             disabled={!isStepValid() || isSubmitting}
                             className="w-full sm:w-auto px-8 py-3 flex items-center justify-center bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                           >
-                            {isSubmitting ? (isEs ? 'Enviando...' : 'Submitting...') : (ch ? ch.steps.step5.submitButton : 'Submit My Challenge')} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
+                            {isSubmitting ? (isDe ? 'Wird gesendet...' : isEs ? 'Enviando...' : 'Submitting...') : (ch ? ch.steps.step5.submitButton : 'Submit My Challenge')} {!isSubmitting && <CheckCircle2 className="w-5 h-5 ml-2" />}
                           </button>
                         </>
                       ) : (

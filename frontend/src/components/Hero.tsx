@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const images = [
   "/hero_image.jpg",
@@ -18,7 +19,8 @@ export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { language } = useLanguage();
   const isEs = language === "es";
-  const h = isEs ? homeES.hero : null;
+  const isDe = language === "de";
+  const h = isDe ? homeDE.hero : isEs ? homeES.hero : null;
 
   useEffect(() => {
     const timer = setInterval(() => {

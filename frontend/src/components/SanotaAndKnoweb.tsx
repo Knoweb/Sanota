@@ -7,6 +7,7 @@ import { Link as LinkIcon, CheckCircle2, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const defaultCapabilities = [
   "Sensors and data acquisition",
@@ -23,7 +24,8 @@ const defaultCapabilities = [
 export default function SanotaAndKnoweb() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const sk = isEs ? homeES.sanotaAndKnoweb : null;
+  const isDe = language === "de";
+  const sk = isDe ? homeDE.sanotaAndKnoweb : isEs ? homeES.sanotaAndKnoweb : null;
   const capabilities = sk ? sk.features : defaultCapabilities;
 
   return (

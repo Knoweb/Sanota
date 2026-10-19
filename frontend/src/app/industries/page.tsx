@@ -13,6 +13,7 @@ const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false
 import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { industriesES } from "@/locales/es/industries";
+import { industriesDE } from "@/locales/de/industries";
 
 // Data Structures
 
@@ -165,7 +166,8 @@ const partnerTypes = [
 export default function IndustriesPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ind = isEs ? industriesES : null;
+  const isDe = language === "de";
+  const ind = isDe ? industriesDE : isEs ? industriesES : null;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeAdditional, setActiveAdditional] = useState<number | null>(0);
@@ -227,7 +229,7 @@ export default function IndustriesPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-400 max-w-4xl mx-auto mb-10 leading-relaxed"
             >
-              {ind ? "Combinamos ingeniería, automatización, IoT y software para desarrollar soluciones prácticas en torno a los requisitos de cada industria y cliente." : "We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer."}
+              {isDe ? "Wir kombinieren Ingenieurwesen, Automatisierung, IoT und Software, um praxisnahe Lösungen für die Anforderungen jeder Branche und jedes Kunden zu entwickeln." : isEs ? "Combinamos ingeniería, automatización, IoT y software para desarrollar soluciones prácticas en torno a los requisitos de cada industria y cliente." : "We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer."}
             </motion.p>
             
             <motion.div
@@ -313,7 +315,7 @@ export default function IndustriesPage() {
                 <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-700 via-[#E8B84B]/50 to-transparent mb-6" />
                 
                 <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">
-                  {ind ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
+                  {isDe ? "Sanota beginnt damit, Ihre Betriebsabläufe zu verstehen, einschließlich:" : isEs ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
@@ -370,7 +372,9 @@ export default function IndustriesPage() {
                     className="text-white text-base lg:text-lg font-normal leading-relaxed relative z-10"
                     style={{ color: '#FFFFFF' }}
                   >
-                    {ind ? (
+                    {isDe ? (
+                      <>Anschließend bündeln wir die passenden Engineering- und Technologiekompetenzen, um eine <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>praktische und skalierbare Lösung zu entwickeln.</span></>
+                    ) : isEs ? (
                       <>Luego combinamos las capacidades adecuadas de ingeniería y tecnología para desarrollar una <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>solución práctica y escalable.</span></>
                     ) : (
                       <>We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>practical and scalable solution.</span></>
@@ -415,7 +419,8 @@ export default function IndustriesPage() {
             <div className="lg:w-1/3 flex flex-col space-y-8">
               {priorityIndustries.map((item, idx) => {
                 const esShortTitles = ["Fabricación", "Agricultura", "Alimentos", "Té"];
-                const titleText = ind ? esShortTitles[idx] || item.shortTitle : item.shortTitle;
+                const deShortTitles = ["Fertigung", "Landwirtschaft", "Lebensmittel", "Tee"];
+                const titleText = isDe ? deShortTitles[idx] || item.shortTitle : isEs ? esShortTitles[idx] || item.shortTitle : item.shortTitle;
                 return (
                   <button 
                     key={idx} 
@@ -465,7 +470,7 @@ export default function IndustriesPage() {
                   </p>
                   
                   <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
-                    {ind ? "Nuestro apoyo puede incluir:" : "Our support can include:"}
+                    {isDe ? "Unsere Unterstützung umfasst:" : isEs ? "Nuestro apoyo puede incluir:" : "Our support can include:"}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10 max-w-3xl">
                     {(ind && ind.prioritySectors[activeIndex]
@@ -502,10 +507,10 @@ export default function IndustriesPage() {
                 {ind ? ind.additionalIndustries.heading : "Additional Industries"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {ind ? "Amplio apoyo operativo" : "Broad Operational Support"}
+                {isDe ? "Umfassende betriebliche Unterstützung" : isEs ? "Amplio apoyo operativo" : "Broad Operational Support"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
-                {ind ? "Más allá de nuestros sectores principales, Sanota proporciona ingeniería altamente especializada e integración digital para una variedad de entornos operativos exigentes." : "Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments."}
+                {isDe ? "Über unsere Kernbereiche hinaus bietet Sanota hochspezialisierte Ingenieurleistungen und digitale Integration für eine Vielzahl anspruchsvoller Betriebsumgebungen." : isEs ? "Más allá de nuestros sectores principales, Sanota proporciona ingeniería altamente especializada e integración digital para una variedad de entornos operativos exigentes." : "Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments."}
               </p>
             </div>
 
@@ -593,7 +598,7 @@ export default function IndustriesPage() {
                 {ind ? ind.lifecycle.subheading : "Support Across the Complete Engineering Journey"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                {ind ? "El soporte de Sanota no se limita al suministro de una máquina o tecnología individual. Según los requisitos, ayudamos a lo largo de todo el ciclo de vida de la solución." : "Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle."}
+                {isDe ? "Die Unterstützung durch Sanota beschränkt sich nicht auf die Lieferung einer Maschine oder einzelner Technologien. Je nach Anforderung unterstützen wir über den gesamten Lebenszyklus der Lösung." : isEs ? "El soporte de Sanota no se limita al suministro de una máquina o tecnología individual. Según los requisitos, ayudamos a lo largo de todo el ciclo de vida de la solución." : "Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle."}
               </p>
             </div>
 
@@ -627,7 +632,7 @@ export default function IndustriesPage() {
                       
                       {/* Elegant Step Indicator */}
                       <div className="absolute -top-6 text-[11px] font-black tracking-[0.2em] text-[#2E5EAA] opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
-                        {ind ? `FASE 0${idx + 1}` : `PHASE 0${idx + 1}`}
+                        {isDe ? `PHASE 0${idx + 1}` : isEs ? `FASE 0${idx + 1}` : `PHASE 0${idx + 1}`}
                       </div>
 
                       {/* Diamond Node with Spinning Border Light */}
@@ -687,13 +692,13 @@ export default function IndustriesPage() {
             {/* Header Text */}
             <div className="mb-10 max-w-4xl">
                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
-                 {ind ? "Integración digital y de ingeniería" : "Engineering & Digital Integration"}
+                 {isDe ? "Engineering & Digitale Integration" : isEs ? "Integración digital y de ingeniería" : "Engineering & Digital Integration"}
                </h2>
                <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-4 leading-tight">
-                 {ind ? "Sistemas físicos conectados con tecnología inteligente" : "Physical Systems Connected with Intelligent Technology"}
+                 {isDe ? "Physische Systeme, vernetzt mit intelligenter Technologie" : isEs ? "Sistemas físicos conectados con tecnología inteligente" : "Physical Systems Connected with Intelligent Technology"}
                </h3>
                <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-3xl">
-                 {ind ? "Las industrias modernas requieren cada vez más que la maquinaria, la automatización y los sistemas digitales trabajen de forma coordinada. Sanota combina su experiencia en ingeniería con el conocimiento digital de Knoweb para desarrollar sistemas integrados y conectados." : "Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly."}
+                 {isDe ? "Moderne Industrien erfordern zunehmend, dass Maschinen, Automatisierung und digitale Systeme koordiniert zusammenarbeiten. Sanota kombiniert seine Engineering-Kompetenz mit dem Software- und Digitalwissen von Knoweb, um nahtlos integrierte Systeme zu entwickeln." : isEs ? "Las industrias modernas requieren cada vez más que la maquinaria, la automatización y los sistemas digitales trabajen de forma coordinada. Sanota combina su experiencia en ingeniería con el conocimiento digital de Knoweb para desarrollar sistemas integrados y conectados." : "Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly."}
                </p>
             </div>
 
@@ -716,7 +721,7 @@ export default function IndustriesPage() {
                 <div className="absolute top-8 left-8 bg-[#0B1220]/80 backdrop-blur-md border border-[#E8B84B]/30 rounded-xl px-4 py-2 flex items-center shadow-lg">
                   <div className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse mr-3" />
                   <span className="text-white text-xs font-bold tracking-widest uppercase">
-                    {ind ? "Sistema en línea" : "System Online"}
+                    {isDe ? "System online" : isEs ? "Sistema en línea" : "System Online"}
                   </span>
                 </div>
               </div>
@@ -726,7 +731,9 @@ export default function IndustriesPage() {
                 <div className="bg-white dark:bg-[#131C2E]/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-700/80 rounded-[30px] p-8 lg:p-10 shadow-lg dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                   
                   <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed mb-6">
-                    {ind ? (
+                    {isDe ? (
+                      <>Diese Kombination hilft Kunden, von isolierten Maschinen und manuellen Aufzeichnungen zu <span className="text-[#C59B27] dark:text-[#E8B84B]">vernetzten und transparenten Abläufen überzugehen.</span></>
+                    ) : isEs ? (
                       <>Esta combinación ayuda a los clientes a pasar de maquinaria aislada y registros manuales a <span className="text-[#C59B27] dark:text-[#E8B84B]">operaciones más conectadas y visibles.</span></>
                     ) : (
                       <>This combination helps customers move from isolated machinery and manual records toward more <span className="text-[#C59B27] dark:text-[#E8B84B]">connected and visible operations.</span></>
@@ -736,11 +743,16 @@ export default function IndustriesPage() {
                   <div className="h-px w-full bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent mb-6" />
                   
                   <p className="text-[#2E5EAA] font-bold uppercase tracking-widest text-xs mb-5">
-                    {ind ? "Soluciones conectadas que incorporan:" : "Connected Solutions Incorporating:"}
+                    {isDe ? "Vernetzte Lösungen, die Folgendes beinhalten:" : isEs ? "Soluciones conectadas que incorporan:" : "Connected Solutions Incorporating:"}
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
-                    {(ind ? [
+                    {(isDe ? [
+                      "Industriemaschinen", "SPS- und HMI-Steuerung", "Sensoren und Instrumentierung", 
+                      "IoT-Konnektivität", "Cloud-Plattformen", "Web- und mobile Anwendungen", 
+                      "Betriebs-Dashboards", "Nachverfolgung und Rückverfolgbarkeit", "Warnungen und Berichte", 
+                      "Fernüberwachung und -steuerung", "Integration mit Unternehmenssystemen"
+                    ] : isEs ? [
                       "Maquinaria industrial", "Control por PLC y HMI", "Sensores e instrumentación", 
                       "Conectividad IoT", "Plataformas en la nube", "Aplicaciones web y móviles", 
                       "Paneles de control operativos", "Seguimiento y trazabilidad", "Alertas e informes", 
@@ -756,7 +768,7 @@ export default function IndustriesPage() {
                   </div>
                   
                   <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(232,184,75,0.2)] hover:shadow-[0_15px_30px_rgba(232,184,75,0.4)] hover:-translate-y-1">
-                    {ind ? "Explorar la automatización e IoT" : "Explore Automation & IoT"} <ArrowRight className="ml-2 w-5 h-5" />
+                    {isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar la automatización e IoT" : "Explore Automation & IoT"} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
 
                 </div>
@@ -771,13 +783,13 @@ export default function IndustriesPage() {
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {ind ? "Soporte de ciclo de vida y operaciones" : "Lifecycle & Operations Support"}
+                {isDe ? "Lebenszyklus- & Betriebsunterstützung" : isEs ? "Soporte de ciclo de vida y operaciones" : "Lifecycle & Operations Support"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {ind ? "Mantenimiento y mejora de sistemas críticos" : "Sustaining and Improving Critical Systems"}
+                {isDe ? "Erhalt und Optimierung kritischer Systeme" : isEs ? "Mantenimiento y mejora de sistemas críticos" : "Sustaining and Improving Critical Systems"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                {ind ? "Más allá del desarrollo de nuevos sistemas, Sanota garantiza que su maquinaria e infraestructura existentes continúen funcionando de manera confiable y eficiente." : "Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently."}
+                {isDe ? "Über die Entwicklung neuer Systeme hinaus stellt Sanota sicher, dass Ihre vorhandenen Maschinen und Ihre Infrastruktur weiterhin zuverlässig und effizient arbeiten." : isEs ? "Más allá del desarrollo de nuevos sistemas, Sanota garantiza que su maquinaria e infraestructura existentes continúen funcionando de manera confiable y eficiente." : "Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently."}
               </p>
             </div>
 
@@ -788,13 +800,13 @@ export default function IndustriesPage() {
                   onClick={() => setActiveSupportTab('modernization')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'modernization' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> {ind ? "Modernización" : "Modernization"}
+                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> {isDe ? "Modernisierung" : isEs ? "Modernización" : "Modernization"}
                 </button>
                 <button
                   onClick={() => setActiveSupportTab('amc')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'amc' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> {ind ? "AMC y soporte" : "AMC & Support"}
+                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> {isDe ? "AMC & Support" : isEs ? "AMC y soporte" : "AMC & Support"}
                 </button>
                 
                 {/* Active Tab Background indicator */}
@@ -835,10 +847,21 @@ export default function IndustriesPage() {
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
                         <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
-                          {ind ? "Los enfoques de modernización incluyen:" : "Modernization approaches include:"}
+                          {isDe ? "Modernisierungsansätze umfassen:" : isEs ? "Los enfoques de modernización incluyen:" : "Modernization approaches include:"}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {(ind ? [
+                          {(isDe ? [
+                            "Mechanische Überholung",
+                            "Elektrische Reparaturen und Neuverkabelung",
+                            "Austausch von Steuerungen",
+                            "Upgrades für Sensoren und Instrumentierung",
+                            "SPS- und HMI-Integration",
+                            "Automatisierungsverbesserungen",
+                            "Sicherheits-Upgrades",
+                            "Software- und Monitoring-Integration",
+                            "Energie- und Leistungsoptimierung",
+                            "Bediener- und Wartungsschulung"
+                          ] : isEs ? [
                             "Restauración mecánica",
                             "Reparaciones eléctricas y recableado",
                             "Sustitución de controladores",
@@ -858,7 +881,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            {ind ? "Este enfoque puede extender la vida útil de los equipos, mejorar la confiabilidad y reducir el costo e interrupción de un reemplazo total." : "This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement."}
+                            {isDe ? "Dieser Ansatz kann die Lebensdauer der Ausrüstung verlängern, die Zuverlässigkeit verbessern und die Kosten sowie Betriebsunterbrechungen eines kompletten Austauschs reduzieren." : isEs ? "Este enfoque puede extender la vida útil de los equipos, mejorar la confiabilidad y reducir el costo e interrupción de un reemplazo total." : "This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement."}
                           </p>
                         </div>
                       </div>
@@ -881,22 +904,32 @@ export default function IndustriesPage() {
                       <div className="w-full lg:w-5/12 flex flex-col">
                         <ShieldCheck className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
                         <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-                          {ind ? "Mantenga los sistemas críticos funcionando de manera confiable" : "Keep Critical Systems Operating Reliably"}
+                          {isDe ? "Kritische Systeme zuverlässig in Betrieb halten" : isEs ? "Mantenga los sistemas críticos funcionando de manera confiable" : "Keep Critical Systems Operating Reliably"}
                         </h3>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                          {ind ? "Sanota proporciona contratos de mantenimiento anual y soporte técnico para sistemas construidos por Sanota. También admitimos equipos de terceros elegibles tras una evaluación técnica inicial." : "Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment."}
+                          {isDe ? "Sanota bietet jährliche Wartungsverträge (AMC) und technischen Support für Sanota-Systeme. Nach einer technischen Zustandsbewertung unterstützen wir auch geeignete Drittsysteme." : isEs ? "Sanota proporciona contratos de mantenimiento anual y soporte técnico para sistemas construidos por Sanota. También admitimos equipos de terceros elegibles tras una evaluación técnica inicial." : "Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment."}
                         </p>
                         <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors mt-auto self-start shadow-[0_5px_20px_rgba(232,184,75,0.2)]">
-                          {ind ? "Solicitar información de AMC" : "Request AMC Info"} <ArrowRight className="ml-2 w-4 h-4" />
+                          {isDe ? "AMC-Informationen anfordern" : isEs ? "Solicitar información de AMC" : "Request AMC Info"} <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                       </div>
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
                         <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
-                          {ind ? "Los programas de AMC pueden cubrir:" : "AMC programmes may cover:"}
+                          {isDe ? "AMC-Programme können abdecken:" : isEs ? "Los programas de AMC pueden cubrir:" : "AMC programmes may cover:"}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {(ind ? [
+                          {(isDe ? [
+                            "Maschinen und Verarbeitungsanlagen",
+                            "Schaltschränke und Steuerungssysteme",
+                            "SPS, HMIs und Industrieantriebe",
+                            "Sensoren und Instrumentierung",
+                            "Fördertechnik und Materialtransportsysteme",
+                            "Agrar- und Umweltsteuerungen",
+                            "IoT-Geräte und Überwachungsplattformen",
+                            "Software und Betriebs-Dashboards",
+                            "Integrierte Produktions- und Verarbeitungssysteme"
+                          ] : isEs ? [
                             "Maquinaria y equipos de procesamiento",
                             "Cuadros eléctricos y sistemas de control",
                             "PLCs, HMIs y variadores industriales",
@@ -915,7 +948,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            {ind ? "Cada AMC se desarrolla según el equipo, el entorno operativo, la criticidad y los requisitos de soporte del cliente." : "Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer."}
+                            {isDe ? "Jeder AMC-Vertrag wird individuell auf Ausrüstung, Betriebsumgebung, Kritikalität und Supportanforderungen des Kunden abgestimmt." : isEs ? "Cada AMC se desarrolla según el equipo, el entorno operativo, la criticidad y los requisitos de soporte del cliente." : "Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer."}
                           </p>
                         </div>
                       </div>
@@ -976,27 +1009,38 @@ export default function IndustriesPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-8">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
-                {ind ? "Innovación colaborativa" : "Collaborative Innovation"}
+                {isDe ? "Kollaborative Innovation" : isEs ? "Innovación colaborativa" : "Collaborative Innovation"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-                {ind ? "Un socio para industrias establecidas y emergentes" : "A Partner for Established and Emerging Industries"}
+                {isDe ? "Ein Partner für etablierte und aufstrebende Branchen" : isEs ? "Un socio para industrias establecidas y emergentes" : "A Partner for Established and Emerging Industries"}
               </h3>
               <div className="bg-white/80 dark:bg-[#131C2E]/40 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 shadow-sm dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] inline-block relative overflow-hidden">
                 <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-[#C59B27]/10 dark:via-white/5 to-transparent skew-x-12 animate-[runRight_8s_linear_infinite]" />
                 
                 <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl relative z-10">
-                  {ind ? "Ya sea que el requisito implique un sistema completamente nuevo, una máquina individual, una actualización de automatización, una plataforma digital o soporte técnico continuo, Sanota puede ayudar a desarrollar el camino más adecuado." : "Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward."}
+                  {isDe ? "Ob es sich um ein komplett neues System, eine einzelne Maschine, ein Automatisierungs-Upgrade, eine digitale Plattform oder kontinuierlichen technischen Support handelt – Sanota hilft Ihnen, den passenden Weg nach vorn zu entwickeln." : isEs ? "Ya sea que el requisito implique un sistema completamente nuevo, una máquina individual, una actualización de automatización, una plataforma digital o soporte técnico continuo, Sanota puede ayudar a desarrollar el camino más adecuado." : "Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward."}
                 </p>
               </div>
             </div>
 
             <p className="text-center text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">
-              {ind ? "Trabajamos con organizaciones en todas las etapas:" : "We work with organizations across all stages:"}
+              {isDe ? "Wir arbeiten mit Organisationen in allen Phasen:" : isEs ? "Trabajamos con organizaciones en todas las etapas:" : "We work with organizations across all stages:"}
             </p>
 
             {/* Floating Badges Grid */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {(ind ? [
+              {(isDe ? [
+                "Etablierte Industrieunternehmen",
+                "Kleine und mittlere Unternehmen",
+                "Exportorientierte Hersteller",
+                "Landwirtschaftliche Betriebe",
+                "Teeplantagen und -fabriken",
+                "Lebensmittelverarbeiter",
+                "Regierungs- und öffentlich-rechtliche Organisationen",
+                "Universitäten und Forschungseinrichtungen",
+                "Erfinder und Start-ups",
+                "Internationale Technologie- und Geschäftspartner"
+              ] : isEs ? [
                 "Empresas industriales consolidadas",
                 "Pequeñas y medianas empresas",
                 "Fabricantes orientados a la exportación",
@@ -1060,7 +1104,7 @@ export default function IndustriesPage() {
               animate={{ x: [0, -1000] }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
-              {ind ? "ACTÚE • INNOVE • MODERNISE • ACTÚE • INNOVE • MODERNISE" : "TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE"}
+              {isDe ? "HANDELN • INNOVATION • MODERNISIERUNG • HANDELN • INNOVATION • MODERNISIERUNG" : isEs ? "ACTÚE • INNOVE • MODERNISE • ACTÚE • INNOVE • MODERNISE" : "TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE"}
             </motion.h2>
           </div>
 
@@ -1072,7 +1116,11 @@ export default function IndustriesPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h3 className="text-5xl md:text-7xl font-black text-[#17135B] dark:text-white mb-6 leading-tight tracking-tight">
-                {ind ? (
+                {isDe ? (
+                  <>
+                    Was muss Ihre Branche <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">verbessern?</span>
+                  </>
+                ) : isEs ? (
                   <>
                     ¿Qué necesita mejorar <br className="hidden md:block"/> su <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">sector?</span>
                   </>
@@ -1109,10 +1157,16 @@ export default function IndustriesPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-slate-500 dark:text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">
-                {ind ? "Opciones de consulta adicionales" : "Additional Enquiry Options"}
+                {isDe ? "Zusätzliche Anfrageoptionen" : isEs ? "Opciones de consulta adicionales" : "Additional Enquiry Options"}
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
-                {(ind ? [
+                {(isDe ? [
+                  "Industriebewertung", 
+                  "Modernisierungsbewertung", 
+                  "AMC-Bewertung", 
+                  "Produktinformationen", 
+                  "Entwicklungspartnerschaft"
+                ] : isEs ? [
                   "Evaluación industrial", 
                   "Evaluación de modernización", 
                   "Evaluación de AMC", 

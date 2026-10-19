@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const reasons = [
   {
@@ -49,7 +50,8 @@ const reasons = [
 export default function WhyWorkWithSanota() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ws = isEs ? homeES.whySanota : null;
+  const isDe = language === "de";
+  const ws = isDe ? homeDE.whySanota : isEs ? homeES.whySanota : null;
 
   const displayReasons = reasons.map((r, idx) => {
     if (ws && ws.points[idx]) {

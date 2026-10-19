@@ -10,6 +10,7 @@ import Carousel from "@/components/Carousel";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { servicesES } from "@/locales/es/services";
+import { servicesDE } from "@/locales/de/services";
 
 const services = [
   {
@@ -243,7 +244,8 @@ const services = [
 export default function ServicesPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const s = isEs ? servicesES : null;
+  const isDe = language === "de";
+  const s = isDe ? servicesDE : isEs ? servicesES : null;
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
@@ -265,7 +267,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {s ? "Servicios de ingeniería" : "Engineering Services"}
+              {isDe ? "Ingenieurdienstleistungen" : isEs ? "Servicios de ingeniería" : "Engineering Services"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}

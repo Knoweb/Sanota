@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const steps = [
   {
@@ -58,7 +59,8 @@ export default function HowSanotaWorks() {
   const isDark = theme === "dark";
   const { language } = useLanguage();
   const isEs = language === "es";
-  const hsw = isEs ? homeES.howSanotaWorks : null;
+  const isDe = language === "de";
+  const hsw = isDe ? homeDE.howSanotaWorks : isEs ? homeES.howSanotaWorks : null;
 
   const displaySteps = steps.map((s, idx) => {
     if (hsw && hsw.steps[idx]) {

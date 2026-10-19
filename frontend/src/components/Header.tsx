@@ -50,14 +50,14 @@ export default function Header() {
             </Link>
           </div>
 
-          <nav className="hidden xl:flex items-center gap-3.5 2xl:gap-6 min-w-0">
+          <nav className="hidden xl:flex items-center justify-center gap-2 xl:gap-2.5 2xl:gap-5 flex-1 mx-2 2xl:mx-4 min-w-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== "/");
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-1 py-1.5 text-[12.5px] 2xl:text-[13.5px] font-bold transition-all duration-300 uppercase tracking-wider whitespace-nowrap group hover:-translate-y-0.5 ${
+                  className={`relative px-1.5 py-1.5 text-[11.5px] xl:text-[12px] 2xl:text-[13px] font-bold transition-all duration-300 uppercase tracking-wide whitespace-nowrap group hover:-translate-y-0.5 ${
                     isActive 
                       ? "text-[#C59B27] dark:text-[#E8B84B]" 
                       : "text-[#555E75] hover:text-[#17135B] dark:text-slate-300 dark:hover:text-white"
@@ -80,10 +80,10 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden xl:flex items-center gap-2.5 2xl:gap-3.5 shrink-0 ml-3">
+          <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
             <Link
               href="/tell-us-your-challenge"
-              className="inline-flex items-center px-4 py-2 2xl:px-5 2xl:py-2.5 border border-transparent text-xs 2xl:text-[13px] font-bold rounded-full text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all uppercase tracking-wider shadow-md hover:shadow-lg whitespace-nowrap"
+              className="inline-flex items-center px-3.5 py-2 2xl:px-5 2xl:py-2.5 border border-transparent text-[11.5px] 2xl:text-[13px] font-bold rounded-full text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all uppercase tracking-wider shadow-md hover:shadow-lg whitespace-nowrap"
             >
               {t.nav.tellUsYourChallenge}
             </Link>

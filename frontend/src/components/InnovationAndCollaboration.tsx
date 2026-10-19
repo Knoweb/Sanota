@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Lightbulb, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
+import { homeDE } from "@/locales/de/home";
 
 const defaultCapabilities = [
   "Feasibility assessment",
@@ -23,7 +24,8 @@ const defaultCapabilities = [
 export default function InnovationAndCollaboration() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const ic = isEs ? homeES.innovationAndCollaboration : null;
+  const isDe = language === "de";
+  const ic = isDe ? homeDE.innovationAndCollaboration : isEs ? homeES.innovationAndCollaboration : null;
   const capabilities = ic ? ic.capabilities : defaultCapabilities;
 
   return (

@@ -13,6 +13,7 @@ import { submitContactEnquiry, submitCallRequest, ContactFormData, CallRequestDa
 import dynamic from 'next/dynamic';
 import { useLanguage } from "@/context/LanguageContext";
 import { contactES } from "@/locales/es/contact";
+import { contactDE } from "@/locales/de/contact";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 const contactOptions = [
@@ -29,6 +30,14 @@ const contactOptionsES = [
   { title: "Consultas generales", desc: "Póngase en contacto con Sanota para información corporativa, administrativa o consultas no vinculadas a un proyecto técnico.", button: "Enviar consulta general", icon: Globe },
   { title: "Asociaciones y proveedores", desc: "Hablemos sobre alianzas tecnológicas, desarrollo conjunto, distribución, suministros o colaboración en proyectos.", button: "Enviar consulta de colaboración", icon: MessageSquare },
   { title: "Prensa y publicaciones", desc: "Exposiciones, entrevistas, artículos técnicos, conferencias y reportajes sobre nuestras soluciones.", button: "Enviar consulta de prensa", icon: Info },
+];
+
+const contactOptionsDE = [
+  { title: "Anfragen zu Ingenieurwesen und Projekten", desc: "Kontaktieren Sie uns bezüglich Maschinen, Automatisierung, neuen Systemen, Konstruktion, Produktentwicklung, Modernisierung oder integrierten Projektanforderungen.", button: "Technische Anfrage einreichen", icon: Cog },
+  { title: "Wartungs- und Instandhaltungsanfragen", desc: "Fordern Sie eine Bewertung für vorbeugende Wartung, technischen Support oder einen jährlichen Wartungsvertrag an.", button: "AMC-Bewertung anfordern", icon: Briefcase },
+  { title: "Allgemeine Anfragen", desc: "Wenden Sie sich bei Fragen zum Unternehmen, zur Verwaltung oder bei Anfragen, die nicht mit einer spezifischen technischen Anforderung zusammenhängen, an Sanota.", button: "Allgemeine Anfrage senden", icon: Globe },
+  { title: "Partnerschafts- und Lieferantenanfragen", desc: "Kontaktieren Sie uns bezüglich Technologiepartnerschaften, gemeinsamer Entwicklung, Lieferantenmöglichkeiten, Vertrieb oder Projektkooperationen.", button: "Partnerschaftsanfrage senden", icon: MessageSquare },
+  { title: "Medien- und Publikationsanfragen", desc: "Kontaktieren Sie uns bezüglich Ausstellungen, Interviews, Fachartikeln, Projektvorstellungen, Mediennutzung oder Unternehmensaktivitäten.", button: "Medienanfrage einreichen", icon: Info },
 ];
 
 const directContact = {
@@ -55,6 +64,18 @@ const directContactES = {
   ],
 };
 
+const directContactDE = {
+  telephone: [
+    { label: "Hauptbüro & Technische Anfragen", value: "+94 740 70 99 89" },
+  ],
+  email: [
+    { label: "Allgemeine Anfragen", value: "info@sanotaglobal.com" },
+    { label: "Engineering- & Projektanfragen", value: "engineering@sanotaglobal.com" },
+    { label: "AMC & Wartung", value: "support@sanotaglobal.com" },
+    { label: "Partnerschaften & Medienanfragen", value: "partners@sanotaglobal.com" },
+  ],
+};
+
 const whatHappensNext = [
   { step: "1", title: "We Receive Your Enquiry", desc: "Your message is recorded and assigned a reference number." },
   { step: "2", title: "We Review the Requirement", desc: "The enquiry is reviewed to identify the relevant industry, service and technical capability." },
@@ -69,6 +90,14 @@ const whatHappensNextES = [
   { step: "3", title: "Asignamos al equipo adecuado", desc: "La consulta se remite al equipo de ingeniería o mantenimiento especialista." },
   { step: "4", title: "Nos comunicamos con usted", desc: "Un representante le contactará por el método preferido para definir el siguiente paso." },
   { step: "5", title: "Definimos la ruta de acción", desc: "Reunión técnica, revisión de planos o evaluación in situ según sea necesario." },
+];
+
+const whatHappensNextDE = [
+  { step: "1", title: "Wir erhalten Ihre Anfrage", desc: "Ihre Nachricht wird aufgezeichnet und mit einer Referenznummer versehen." },
+  { step: "2", title: "Wir prüfen die Anforderungen", desc: "Die Anfrage wird geprüft, um die relevante Branche, Dienstleistung und technische Kompetenz zu ermitteln." },
+  { step: "3", title: "Wir leiten es an das richtige Team weiter", desc: "Die Anforderung wird dem entsprechenden Engineering-, Automatisierungs-, IoT-, Software- oder Wartungsteam zugewiesen." },
+  { step: "4", title: "Wir kontaktieren Sie", desc: "Ein Mitarbeiter wird sich mit Ihnen in Verbindung setzen, um die Anforderungen zu klären und das nächste Vorgehen abzustimmen." },
+  { step: "5", title: "Wir legen das weitere Vorgehen fest", desc: "Der nächste Schritt kann eine Diskussion, eine Dokumentenprüfung, ein Online-Meeting oder ein Vor-Ort-Besuch sein." },
 ];
 
 const inputClass = "w-full bg-white dark:bg-[#050B14] border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3.5 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/60 focus:bg-white dark:focus:bg-[#0A1525] transition-all duration-200 text-sm";
@@ -102,11 +131,12 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 export default function ContactPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
-  const c = isEs ? contactES : null;
+  const isDe = language === "de";
+  const c = isDe ? contactDE : isEs ? contactES : null;
 
-  const currentContactOptions = isEs ? contactOptionsES : contactOptions;
-  const currentDirectContact = isEs ? directContactES : directContact;
-  const currentWhatHappensNext = isEs ? whatHappensNextES : whatHappensNext;
+  const currentContactOptions = isDe ? contactOptionsDE : isEs ? contactOptionsES : contactOptions;
+  const currentDirectContact = isDe ? directContactDE : isEs ? directContactES : directContact;
+  const currentWhatHappensNext = isDe ? whatHappensNextDE : isEs ? whatHappensNextES : whatHappensNext;
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -141,7 +171,7 @@ export default function ContactPage() {
         setFormStatus('success');
       }
     } catch (err: any) {
-      setConnectionError(err.message || (isEs ? c?.messages.sendError : 'Your enquiry could not be submitted because of a connection problem. Please try again.'));
+      setConnectionError(err.message || (c ? c.messages.sendError : 'Your enquiry could not be submitted because of a connection problem. Please try again.'));
       setFormStatus('error');
     }
   };
@@ -171,12 +201,24 @@ export default function ContactPage() {
         setCallStatus('success');
       }
     } catch (err: any) {
-      setCallError(err.message || (isEs ? c?.messages.sendError : 'Your request could not be submitted because of a connection problem. Please try again.'));
+      setCallError(err.message || (c ? c.messages.sendError : 'Your request could not be submitted because of a connection problem. Please try again.'));
       setCallStatus('error');
     }
   };
 
-  const enquiryTypes = isEs ? (c?.form.fields.queryTypes || [
+  const enquiryTypes = isDe ? (c?.form.fields.queryTypes || [
+    "Technische oder Projektanforderungen",
+    "Maschinen oder Automatisierung",
+    "IoT oder Software",
+    "Produktentwicklung",
+    "Nachrüstung oder Modernisierung",
+    "Wartungsvertrag oder Instandhaltung",
+    "Ausbildung",
+    "Anfrage nach Partnerschaften oder Lieferanten",
+    "Medienanfrage",
+    "Allgemeine Anfrage",
+    "Andere"
+  ]) : isEs ? (c?.form.fields.queryTypes || [
     "Requisito de ingeniería o del proyecto",
     "Maquinaria o automatización",
     "IoT o software",
@@ -202,7 +244,12 @@ export default function ContactPage() {
     "Other"
   ];
 
-  const responseMethods = isEs ? [
+  const responseMethods = isDe ? [
+    { label: "Telefonanruf", value: "Telephone call" },
+    { label: "E-Mail", value: "Email" },
+    { label: "Online-Meeting", value: "Online meeting" },
+    { label: "Keine Präferenz", value: "No preference" }
+  ] : isEs ? [
     { label: "Llamada telefónica", value: "Telephone call" },
     { label: "Correo electrónico", value: "Email" },
     { label: "Reunión virtual", value: "Online meeting" },
@@ -214,7 +261,11 @@ export default function ContactPage() {
     { label: "No preference", value: "No preference" }
   ];
 
-  const contactTimes = isEs ? [
+  const contactTimes = isDe ? [
+    { label: "Vormittag", value: "Morning" },
+    { label: "Nachmittag", value: "Afternoon" },
+    { label: "Jederzeit während der Geschäftszeiten", value: "Any time during business hours" }
+  ] : isEs ? [
     { label: "Mañana", value: "Morning" },
     { label: "Tarde", value: "Afternoon" },
     { label: "Cualquier momento en horario laboral", value: "Any time during business hours" }
@@ -263,7 +314,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-5"
             >
-              {c ? "Contactar con Sanota" : "Contact Sanota"}
+              {isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -349,18 +400,22 @@ export default function ContactPage() {
                   <div className="inline-flex items-center space-x-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-3 py-1 mb-5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] animate-pulse shadow-[0_0_6px_#E8B84B]" />
                     <span className="text-slate-600 dark:text-slate-300 text-[10px] font-bold tracking-[0.2em] uppercase">
-                      {isEs ? "Proceso Guiado" : "Guided Process"}
+                      {isDe ? "Geführter Prozess" : isEs ? "Proceso Guiado" : "Guided Process"}
                     </span>
                   </div>
                   <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white mb-4 leading-tight">
-                    {isEs ? (
+                    {isDe ? (
+                      <>Haben Sie eine technische oder <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">betriebliche Herausforderung?</span></>
+                    ) : isEs ? (
                       <>¿Tiene un Desafío Técnico u <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">Operativo?</span></>
                     ) : (
                       <>Have a Technical or <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">Operational Challenge?</span></>
                     )}
                   </h3>
                   <p className="text-slate-600 dark:text-slate-300 text-[15px] leading-relaxed mb-6 max-w-2xl">
-                    {isEs ? (
+                    {isDe ? (
+                      <>Für Engineering-Anforderungen ist der schnellste Weg, die erforderlichen Informationen bereitzustellen, unser geführtes Formular <strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">Schildern Sie uns Ihre Herausforderung</strong>. Es hilft Ihnen, Folgendes genau zu beschreiben:</>
+                    ) : isEs ? (
                       <>Para requisitos de ingeniería, la forma más rápida de proporcionar la información necesaria es a través de nuestro formulario guiado <strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">Cuéntenos su desafío</strong>. Le ayuda a explicar con precisión:</>
                     ) : (
                       <>For engineering requirements, the fastest way to provide necessary information is through the guided <strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">Tell Us Your Challenge</strong> form. It helps you accurately explain:</>
@@ -368,7 +423,7 @@ export default function ContactPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    {(isEs ? ["Qué está sucediendo actualmente", "Qué no está funcionando", "Qué desea mejorar"] : ["What is happening now", "What is not working", "What you want to improve"]).map((item, i) => (
+                    {(isDe ? ["Was aktuell passiert", "Was nicht wie vorgesehen funktioniert", "Was Sie verbessern möchten"] : isEs ? ["Qué está sucediendo actualmente", "Qué no está funcionando", "Qué desea mejorar"] : ["What is happening now", "What is not working", "What you want to improve"]).map((item, i) => (
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -393,7 +448,7 @@ export default function ContactPage() {
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center text-sm uppercase tracking-wider">
-                      {isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"}
+                      {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </span>
                   </Link>
@@ -408,7 +463,7 @@ export default function ContactPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
               <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-                {isEs ? "Opciones de Contacto" : "Contact Options"}
+                {isDe ? "Kontaktwege" : isEs ? "Opciones de Contacto" : "Contact Options"}
               </p>
               <h2 className="text-3xl md:text-5xl font-black text-[#17135B] dark:text-white">
                 {c ? c.routes.heading : "Choose the Right Contact Route"}
@@ -493,7 +548,7 @@ export default function ContactPage() {
                 {c ? c.directInfo.title : "Direct Contact"}
               </p>
               <h2 className="text-3xl md:text-5xl font-black text-[#17135B] dark:text-white">
-                {isEs ? "Contacte con Sanota Directamente" : "Contact Sanota Directly"}
+                {isDe ? "Sanota direkt kontaktieren" : isEs ? "Contacte con Sanota Directamente" : "Contact Sanota Directly"}
               </h2>
             </div>
 
@@ -507,7 +562,7 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-[#C59B27] dark:text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
                   </div>
                   <h4 className="text-2xl font-black text-[#17135B] dark:text-white transition-all duration-500">
-                    {isEs ? "Teléfono" : "Telephone"}
+                    {isDe ? "Telefon" : isEs ? "Teléfono" : "Telephone"}
                   </h4>
                 </div>
 
@@ -530,7 +585,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-[#C59B27] dark:text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
                   </div>
                   <h4 className="text-2xl font-black text-[#17135B] dark:text-white transition-all duration-500">
-                    {isEs ? "Correo Electrónico" : "Email"}
+                    {isDe ? "E-Mail" : isEs ? "Correo Electrónico" : "Email"}
                   </h4>
                 </div>
 
@@ -562,16 +617,16 @@ export default function ContactPage() {
                     Sanota (Pvt) Ltd<br />
                     No 16, Wewelwala Road<br />
                     Bataganwila, Galle.<br />
-                    {isEs ? "Sri Lanka" : "Sri Lanka"}
+                    Sri Lanka
                   </p>
                 </div>
 
                 <div className="transform group-hover:translate-x-2 transition-transform duration-500 delay-100 mb-10">
                   <span className="block text-slate-400 dark:text-slate-500 text-[11px] font-bold uppercase tracking-widest mb-1.5">
-                    {isEs ? "Horario de Atención" : "Business Hours"}
+                    {isDe ? "Geschäftszeiten" : isEs ? "Horario de Atención" : "Business Hours"}
                   </span>
                   <p className="text-[#17135B] dark:text-white text-[15px] font-semibold tracking-wide">
-                    {isEs ? "Lun–Vie: 8:30 AM – 5:30 PM" : "Mon–Fri: 8:30 AM – 5:30 PM"}
+                    {isDe ? "Mo–Fr: 8:30 – 17:30 Uhr" : isEs ? "Lun–Vie: 8:30 AM – 5:30 PM" : "Mon–Fri: 8:30 AM – 5:30 PM"}
                   </p>
                 </div>
 
@@ -579,7 +634,7 @@ export default function ContactPage() {
                   <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="flex-1 py-3 px-4 bg-transparent border border-[#C59B27] dark:border-[#E8B84B]/50 hover:bg-[#C59B27] dark:hover:bg-[#E8B84B] hover:border-[#C59B27] dark:hover:border-[#E8B84B] text-[#C59B27] dark:text-[#E8B84B] hover:text-white dark:hover:text-[#0A101A] font-black rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.getDirections : "Get Directions"}
                   </a>
-                  <button onClick={() => alert(isEs ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTeléfono: +94 740 70 99 89\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle.\nPhone: +94 740 70 99 89\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
+                  <button onClick={() => alert(isDe ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTelefon: +94 740 70 99 89\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTeléfono: +94 740 70 99 89\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle.\nPhone: +94 740 70 99 89\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.saveContact : "Save Details"}
                   </button>
                 </div>
@@ -609,7 +664,7 @@ export default function ContactPage() {
 
                 <div className="flex-grow">
                   <p className="text-emerald-700 dark:text-emerald-400 font-black text-[11px] uppercase tracking-[0.3em] mb-4 flex items-center">
-                    {isEs ? "Canal de Soporte Prioritario" : "Priority Support Channel"}
+                    {isDe ? "Prioritärer Supportkanal" : isEs ? "Canal de Soporte Prioritario" : "Priority Support Channel"}
                   </p>
 
                   <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white mb-4 tracking-tight">
@@ -617,7 +672,9 @@ export default function ContactPage() {
                   </h3>
 
                   <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8 max-w-4xl">
-                    {isEs ? (
+                    {isDe ? (
+                      <>Wenn sich Ihre Anfrage auf einen aktuellen Maschinenstillstand, eine Produktionsunterbrechung oder ein zeitkritisches technisches Problem bezieht, kennzeichnen Sie sie bitte deutlich als <strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">Dringender technischer Support</strong>.</>
+                    ) : isEs ? (
                       <>Si su consulta se refiere a una parada actual de maquinaria, interrupción de producción o problema técnico crítico, márquela claramente como <strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">Soporte Técnico Urgente</strong>.</>
                     ) : (
                       <>If your enquiry relates to a current machinery stoppage, production interruption or time-sensitive technical issue, clearly mark it as <strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">Urgent Technical Support</strong>.</>
@@ -626,10 +683,18 @@ export default function ContactPage() {
 
                   <div className="mb-10">
                     <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[11px] mb-5">
-                      {isEs ? "Por favor tenga a mano la siguiente información:" : "Please have this information ready:"}
+                      {isDe ? "Bitte halten Sie folgende Informationen bereit:" : isEs ? "Por favor tenga a mano la siguiente información:" : "Please have this information ready:"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8">
-                      {(isEs ? [
+                      {(isDe ? [
+                        "Ihr Name und Firmenname",
+                        "Eine Kontakttelefonnummer",
+                        "Standort der Anlage",
+                        "Betroffenes Gerät oder System",
+                        "Kurze Beschreibung des Problems",
+                        "Ob das Gerät derzeit in Betrieb ist",
+                        "Relevante Fotos oder Fehlercodes"
+                      ] : isEs ? [
                         "Su nombre y empresa",
                         "Un número de teléfono de contacto",
                         "Ubicación de la instalación",
@@ -667,9 +732,9 @@ export default function ContactPage() {
                   <div className="bg-white/80 dark:bg-[#050B14]/50 border-l-2 border-emerald-500/40 py-3.5 px-5 rounded-r-xl shadow-sm">
                     <p className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed mb-1.5 tracking-wide">
                       <strong className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-[10px] mr-2">
-                        {isEs ? "Aviso importante:" : "Important notice:"}
+                        {isDe ? "Wichtiger Hinweis:" : isEs ? "Aviso importante:" : "Important notice:"}
                       </strong>
-                      {isEs ? "El envío de una consulta urgente no garantiza la asistencia presencial inmediata ni un tiempo de respuesta específico sin un contrato previo de servicio." : "Urgent-enquiry submission does not guarantee immediate attendance or a specific response time."}
+                      {isDe ? "Das Absenden einer dringenden Anfrage garantiert kein sofortiges Erscheinen oder feste Reaktionszeiten ohne vorherigen Wartungsvertrag." : isEs ? "El envío de una consulta urgente no garantiza la asistencia presencial inmediata ni un tiempo de respuesta específico sin un contrato previo de servicio." : "Urgent-enquiry submission does not guarantee immediate attendance or a specific response time."}
                     </p>
                     <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed tracking-wide">
                       {c ? c.urgentSupport.notice : "For safety-related situations, follow your organization's approved safety, isolation and emergency procedures before seeking technical assistance."}
@@ -690,7 +755,7 @@ export default function ContactPage() {
               <div className="lg:col-span-2">
                 <div className="mb-10">
                   <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-                    {isEs ? "Formulario de Contacto" : "Contact Form"}
+                    {isDe ? "Kontaktformular" : isEs ? "Formulario de Contacto" : "Contact Form"}
                   </p>
                   <h2 className="text-3xl md:text-4xl font-black text-[#17135B] dark:text-white mb-4">
                     {c ? c.form.heading : "Send Us a Message"}
@@ -714,7 +779,7 @@ export default function ContactPage() {
                         {c ? c.confirmation.heading : "Thank You for Contacting Sanota"}
                       </h3>
                       <p className="text-slate-700 dark:text-slate-300 text-lg mb-3">
-                        {isEs ? "Su consulta ha sido recibida correctamente." : "Your enquiry has been received successfully."}
+                        {isDe ? "Ihre Anfrage ist erfolgreich bei uns eingegangen." : isEs ? "Su consulta ha sido recibida correctamente." : "Your enquiry has been received successfully."}
                       </p>
                       <p className="text-[#C59B27] dark:text-[#E8B84B] font-mono font-bold mb-8">
                         {c ? c.confirmation.refText : "Reference:"} {enquiryRef}
@@ -741,26 +806,26 @@ export default function ContactPage() {
                       {/* Your Details */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isEs ? "Sus Datos" : "Your Details"}
+                          {isDe ? "Ihre Angaben" : isEs ? "Sus Datos" : "Your Details"}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.fullName : "Full name"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isEs ? "Su nombre completo" : "Your full name"} value={formData.name} onChange={e => updateData({ name: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isDe ? "Ihr vollständiger Name" : isEs ? "Su nombre completo" : "Your full name"} value={formData.name} onChange={e => updateData({ name: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.company : "Company or organization"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isEs ? "Su empresa u organización" : "Your company"} value={formData.company} onChange={e => updateData({ company: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isDe ? "Ihr Unternehmen" : isEs ? "Su empresa u organización" : "Your company"} value={formData.company} onChange={e => updateData({ company: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.jobTitle : "Job title"}
                             </label>
-                            <input type="text" className={inputClass} placeholder={isEs ? "Su puesto o especialidad" : "Your role"} value={formData.jobTitle} onChange={e => updateData({ jobTitle: e.target.value })} />
+                            <input type="text" className={inputClass} placeholder={isDe ? "Ihre Position / Funktion" : isEs ? "Su puesto o especialidad" : "Your role"} value={formData.jobTitle} onChange={e => updateData({ jobTitle: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -786,7 +851,7 @@ export default function ContactPage() {
                       {/* Enquiry Details */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isEs ? "Detalles de la Consulta" : "Enquiry Details"}
+                          {isDe ? "Details zur Anfrage" : isEs ? "Detalles de la Consulta" : "Enquiry Details"}
                         </h4>
                         <div className="space-y-5 mt-6">
                           <div className="space-y-2">
@@ -794,7 +859,7 @@ export default function ContactPage() {
                               {c ? c.form.fields.queryType : "Type of enquiry"} <span className="text-red-500">*</span>
                             </label>
                             <select required className={inputClass + " appearance-none cursor-pointer"} value={formData.enquiryType} onChange={e => updateData({ enquiryType: e.target.value })}>
-                              <option value="">{isEs ? "Seleccione una opción" : "Select an option"}</option>
+                              <option value="">{isDe ? "Bitte auswählen" : isEs ? "Seleccione una opción" : "Select an option"}</option>
                               {enquiryTypes.map((type, idx) => (
                                 <option key={idx} value={type}>{type}</option>
                               ))}
@@ -804,7 +869,7 @@ export default function ContactPage() {
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.subject : "Subject"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isEs ? "Breve asunto de su consulta" : "Brief subject of your enquiry"} value={formData.subject} onChange={e => updateData({ subject: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isDe ? "Kurzer Betreff Ihrer Anfrage" : isEs ? "Breve asunto de su consulta" : "Brief subject of your enquiry"} value={formData.subject} onChange={e => updateData({ subject: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -828,7 +893,7 @@ export default function ContactPage() {
                         </h4>
                         <div className="mt-6">
                           <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
-                            {isEs ? "Adjunte fotografías, planos, especificaciones de equipos u otros documentos relevantes." : "Attach photographs, videos, drawings, equipment details or other relevant documents."}
+                            {isDe ? "Fügen Sie Fotos, Zeichnungen, Gerätedaten oder sonstige Unterlagen bei." : isEs ? "Adjunte fotografías, planos, especificaciones de equipos u otros documentos relevantes." : "Attach photographs, videos, drawings, equipment details or other relevant documents."}
                           </p>
                           <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors cursor-pointer bg-slate-50 dark:bg-[#050B14]" onClick={() => fileInputRef.current?.click()}>
                             <input
@@ -846,11 +911,11 @@ export default function ContactPage() {
                             <Upload className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto mb-3" />
                             <p className="text-[#17135B] dark:text-white font-bold mb-1">
                               {formData.supportingFiles && formData.supportingFiles.length > 0
-                                ? (isEs ? `${formData.supportingFiles.length} archivo(s) seleccionado(s)` : `${formData.supportingFiles.length} File(s) Selected`)
-                                : (isEs ? "Haga clic para agregar archivos" : "Click to Add Files")}
+                                ? (isDe ? `${formData.supportingFiles.length} Datei(en) ausgewählt` : isEs ? `${formData.supportingFiles.length} archivo(s) seleccionado(s)` : `${formData.supportingFiles.length} File(s) Selected`)
+                                : (isDe ? "Hier klicken, um Dateien hinzuzufügen" : isEs ? "Haga clic para agregar archivos" : "Click to Add Files")}
                             </p>
                             <p className="text-slate-500 text-xs">
-                              {isEs ? "Tamaño máximo de archivo: 20 MB" : "Maximum file size: 20MB"}
+                              {isDe ? "Maximale Dateigröße: 20 MB" : isEs ? "Tamaño máximo de archivo: 20 MB" : "Maximum file size: 20MB"}
                             </p>
                           </div>
                           <div className="flex items-start mt-4 bg-slate-50 dark:bg-[#050B14] p-3 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -865,7 +930,7 @@ export default function ContactPage() {
                       {/* Preferences */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isEs ? "Preferencias" : "Preferences"}
+                          {isDe ? "Präferenzen" : isEs ? "Preferencias" : "Preferences"}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
                           <div>
@@ -908,7 +973,7 @@ export default function ContactPage() {
                         <label className="flex items-start space-x-3 cursor-pointer group">
                           <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#C59B27] dark:accent-[#E8B84B] shrink-0" checked={formData.consentNoObligation} onChange={e => updateData({ consentNoObligation: e.target.checked })} />
                           <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">
-                            {isEs ? "Entiendo que el envío de esta consulta no crea una obligación contractual. Sanota puede solicitar información adicional antes de recomendar una solución." : "I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution."}
+                            {isDe ? "Ich verstehe, dass das Absenden dieser Anfrage keine vertragliche Verpflichtung begründet. Sanota kann weitere Informationen anfordern, bevor eine Empfehlung ausgesprochen wird." : isEs ? "Entiendo que el envío de esta consulta no crea una obligación contractual. Sanota puede solicitar información adicional antes de recomendar una solución." : "I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution."}
                           </span>
                         </label>
                       </div>
@@ -926,7 +991,7 @@ export default function ContactPage() {
                           className="w-full sm:w-auto px-10 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center disabled:opacity-60 shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group"
                         >
                           {formStatus === 'submitting'
-                            ? (isEs ? 'Enviando…' : 'Submitting…')
+                            ? (isDe ? 'Wird gesendet…' : isEs ? 'Enviando…' : 'Submitting…')
                             : (c ? c.form.fields.submitButton : 'Submit Enquiry')}
                           {formStatus !== 'submitting' && <Send className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />}
                         </button>
@@ -964,30 +1029,30 @@ export default function ContactPage() {
                     <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-6 text-center shadow-sm">
                       <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400 mx-auto mb-3" />
                       <p className="text-[#17135B] dark:text-white font-bold mb-1">
-                        {isEs ? "Solicitud Recibida" : "Request Received"}
+                        {isDe ? "Anfrage eingegangen" : isEs ? "Solicitud Recibida" : "Request Received"}
                       </p>
                       <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
-                        {isEs ? "Nos comunicaremos con usted a la brevedad." : "We will contact you shortly."}
+                        {isDe ? "Wir werden uns in Kürze mit Ihnen in Verbindung setzen." : isEs ? "Nos comunicaremos con usted a la brevedad." : "We will contact you shortly."}
                       </p>
                       <p className="text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold tracking-wider">Ref: {callRef}</p>
                     </div>
                   ) : (
                     <form className="space-y-3.5 relative z-10" onSubmit={handleCallSubmit}>
-                      <input required type="text" placeholder={isEs ? "Nombre completo" : "Full name"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
-                      <input required type="text" placeholder={isEs ? "Empresa" : "Company"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
+                      <input required type="text" placeholder={isDe ? "Vollständiger Name" : isEs ? "Nombre completo" : "Full name"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
+                      <input required type="text" placeholder={isDe ? "Unternehmen" : isEs ? "Empresa" : "Company"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
                       <div className="grid grid-cols-2 gap-3">
-                        <input required type="tel" placeholder={isEs ? "Teléfono" : "Phone"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
-                        <input required type="email" placeholder={isEs ? "Correo" : "Email"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
+                        <input required type="tel" placeholder={isDe ? "Telefonnummer" : isEs ? "Teléfono" : "Phone"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
+                        <input required type="email" placeholder={isDe ? "E-Mail" : isEs ? "Correo" : "Email"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
                       </div>
                       <select required className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm appearance-none cursor-pointer" value={callData.preferredContactTime} onChange={e => updateCallData({ preferredContactTime: e.target.value })}>
                         <option value="" className="text-slate-400 dark:text-slate-500">
-                          {isEs ? "Horario de contacto preferido" : "Preferred contact time"}
+                          {isDe ? "Bevorzugte Kontaktzeit" : isEs ? "Horario de contacto preferido" : "Preferred contact time"}
                         </option>
-                        <option value="Morning (8:30 AM - 12:00 PM)">{isEs ? "Mañana (8:30 AM - 12:00 PM)" : "Morning (8:30 AM - 12:00 PM)"}</option>
-                        <option value="Afternoon (12:00 PM - 5:30 PM)">{isEs ? "Tarde (12:00 PM - 5:30 PM)" : "Afternoon (12:00 PM - 5:30 PM)"}</option>
-                        <option value="Any time during business hours">{isEs ? "Cualquier momento en horario laboral" : "Any time during business hours"}</option>
+                        <option value="Morning (8:30 AM - 12:00 PM)">{isDe ? "Vormittags (8:30 – 12:00 Uhr)" : isEs ? "Mañana (8:30 AM - 12:00 PM)" : "Morning (8:30 AM - 12:00 PM)"}</option>
+                        <option value="Afternoon (12:00 PM - 5:30 PM)">{isDe ? "Nachmittags (12:00 – 17:30 Uhr)" : isEs ? "Tarde (12:00 PM - 5:30 PM)" : "Afternoon (12:00 PM - 5:30 PM)"}</option>
+                        <option value="Any time during business hours">{isDe ? "Jederzeit während der Geschäftszeiten" : isEs ? "Cualquier momento en horario laboral" : "Any time during business hours"}</option>
                       </select>
-                      <input type="text" placeholder={isEs ? "Breve motivo de la llamada" : "Brief reason for the call"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.reason} onChange={e => updateCallData({ reason: e.target.value })} />
+                      <input type="text" placeholder={isDe ? "Kurzer Grund des Anrufs" : isEs ? "Breve motivo de la llamada" : "Brief reason for the call"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.reason} onChange={e => updateCallData({ reason: e.target.value })} />
 
                       {callStatus === 'error' && (
                         <p className="text-red-500 dark:text-red-400 text-xs mt-2 bg-red-100 dark:bg-red-950/30 p-2 rounded-lg">{callError}</p>
@@ -995,7 +1060,7 @@ export default function ContactPage() {
 
                       <button disabled={callStatus === 'submitting'} type="submit" className="w-full py-3.5 bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500 text-white dark:text-[#0A101A] font-black rounded-xl transition-all duration-300 text-sm shadow-[0_0_15px_rgba(232,184,75,0.2)] hover:shadow-[0_0_25px_rgba(232,184,75,0.4)] mt-4 disabled:opacity-60 flex items-center justify-center group">
                         {callStatus === 'submitting'
-                          ? (isEs ? 'Enviando...' : 'Submitting...')
+                          ? (isDe ? 'Wird gesendet...' : isEs ? 'Enviando...' : 'Submitting...')
                           : (c ? c.requestCall.button : 'Request Call Back')}
                         {callStatus !== 'submitting' && <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />}
                       </button>
@@ -1009,7 +1074,7 @@ export default function ContactPage() {
                     {c ? c.whatHappensNext.heading : "What Happens Next?"}
                   </h3>
                   <p className="text-slate-500 text-xs mb-6 uppercase tracking-widest font-bold">
-                    {isEs ? "Una ruta de acción clara" : "A clear route to action"}
+                    {isDe ? "Ein klarer Weg zum Handeln" : isEs ? "Una ruta de acción clara" : "A clear route to action"}
                   </p>
                   <div className="relative">
                     {/* Animated vertical line */}
@@ -1064,7 +1129,7 @@ export default function ContactPage() {
                 <div className="bg-white dark:bg-[#050B14]/80 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 rounded-2xl p-7 shadow-lg">
                   <h3 className="text-lg font-black text-[#17135B] dark:text-white mb-5 flex items-center">
                     <MapPin className="w-5 h-5 text-[#C59B27] dark:text-slate-400 mr-2" />
-                    {isEs ? "Visitar Sanota" : "Visit Sanota"}
+                    {isDe ? "Sanota besuchen" : isEs ? "Visitar Sanota" : "Visit Sanota"}
                   </h3>
                   <div className="bg-slate-100 dark:bg-[#131C2E] h-40 rounded-xl border border-slate-200 dark:border-slate-700/60 mb-5 overflow-hidden relative group">
                     <iframe
@@ -1083,10 +1148,10 @@ export default function ContactPage() {
 
                   <div className="space-y-3">
                     <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="w-full py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-colors text-xs flex items-center justify-center shadow-sm">
-                      {isEs ? "Abrir en Google Maps" : "Open in Google Maps"}
+                      {isDe ? "In Google Maps öffnen" : isEs ? "Abrir en Google Maps" : "Open in Google Maps"}
                     </a>
                     <p className="text-slate-500 text-[10px] uppercase tracking-wider text-center mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
-                      {isEs ? "Las visitas deben coordinarse con antelación" : "Visits should be arranged in advance"}
+                      {isDe ? "Besuche sollten im Voraus vereinbart werden" : isEs ? "Las visitas deben coordinarse con antelación" : "Visits should be arranged in advance"}
                     </p>
                   </div>
                 </div>
@@ -1101,13 +1166,13 @@ export default function ContactPage() {
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-              {isEs ? "Conéctese con Sanota" : "Connect With Sanota"}
+              {isDe ? "Mit Sanota verbinden" : isEs ? "Conéctese con Sanota" : "Connect With Sanota"}
             </p>
             <h2 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-5 tracking-tight">
-              {isEs ? "Siga Nuestro Trabajo" : "Follow Our Work"}
+              {isDe ? "Verfolgen Sie unsere Arbeit" : isEs ? "Siga Nuestro Trabajo" : "Follow Our Work"}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-              {isEs ? "Manténgase al día sobre proyectos, desarrollos tecnológicos, videos de ingeniería y novedades corporativas." : "Stay connected for project stories, product developments, engineering videos and company news."}
+              {isDe ? "Bleiben Sie auf dem Laufenden über Projektberichte, Technologie-Entwicklungen, Engineering-Videos und Unternehmensneuigkeiten." : isEs ? "Manténgase al día sobre proyectos, desarrollos tecnológicos, videos de ingeniería y novedades corporativas." : "Stay connected for project stories, product developments, engineering videos and company news."}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto mb-12">
@@ -1151,7 +1216,7 @@ export default function ContactPage() {
             >
               <Link href="/media" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] hover:bg-slate-50 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-700 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/40 text-[#17135B] dark:text-white font-black rounded-2xl transition-all duration-500 group shadow-lg hover:shadow-[0_0_30px_rgba(232,184,75,0.15)]">
                 <span className="text-[#C59B27] dark:text-[#E8B84B] mr-3 group-hover:text-amber-500 transition-colors">
-                  {isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
+                  {isDe ? "Mediathek besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
                 </span>
                 <ArrowRight className="w-4 h-4 text-[#17135B] dark:text-white group-hover:translate-x-1.5 transition-transform" />
               </Link>
@@ -1163,25 +1228,27 @@ export default function ContactPage() {
         <section className="py-10 lg:py-14 bg-transparent relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-white dark:bg-[#131C2E]/20 backdrop-blur-sm border border-slate-200 dark:border-slate-800/40 rounded-3xl p-10 md:p-14 shadow-xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white mb-4 tracking-tight">
-              {isEs ? (
+              {isDe ? (
+                <>Starten Sie mit der <span className="text-[#C59B27] dark:text-[#E8B84B]">Anforderung</span></>
+              ) : isEs ? (
                 <>Comience con el <span className="text-[#C59B27] dark:text-[#E8B84B]">Requisito</span></>
               ) : (
                 <>Start With the <span className="text-[#C59B27] dark:text-[#E8B84B]">Requirement</span></>
               )}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base mb-10 leading-relaxed max-w-2xl mx-auto">
-              {isEs ? "Ya sea que necesite resolver un problema de maquinaria, automatizar un proceso, desarrollar un nuevo sistema o coordinar soporte técnico continuo — Sanota está lista para comprender sus necesidades." : "Whether you need to solve a machinery problem, automate a process, develop a new system or arrange ongoing technical support — Sanota is ready to understand your requirement."}
+              {isDe ? "Ganz gleich, ob Sie ein Maschinenproblem lösen, einen Prozess automatisieren, ein neues System entwickeln oder kontinuierlichen technischen Support vereinbaren möchten — Sanota ist bereit, Ihre Anforderungen zu verstehen." : isEs ? "Ya sea que necesite resolver un problema de maquinaria, automatizar un proceso, desarrollar un nuevo sistema o coordinar soporte técnico continuo — Sanota está lista para comprender sus necesidades." : "Whether you need to solve a machinery problem, automate a process, develop a new system or arrange ongoing technical support — Sanota is ready to understand your requirement."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
               <Link href="/tell-us-your-challenge" className="w-full sm:w-auto px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-[0_0_20px_rgba(232,184,75,0.15)] hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-0.5 group text-sm">
-                {isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
               <a href="#contact-form" className="w-full sm:w-auto px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#050B14] dark:hover:bg-[#0A101A] text-[#17135B] dark:text-slate-300 dark:hover:text-white font-black rounded-xl border border-slate-300 dark:border-slate-700/60 hover:border-slate-400 dark:hover:border-slate-500/60 transition-all duration-300 flex items-center justify-center shadow-sm text-sm">
-                {isEs ? "Contactar con Sanota" : "Contact Sanota"}
+                {isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
               </a>
             </div>
             <p className="text-slate-500 dark:text-slate-600 text-xs italic tracking-wide">
-              {isEs ? "Desde el desafío operativo hasta la solución de ingeniería integrada." : "From operational challenge to integrated engineering solution."}
+              {isDe ? "Von der betrieblichen Herausforderung zur integrierten Engineering-Lösung." : isEs ? "Desde el desafío operativo hasta la solución de ingeniería integrada." : "From operational challenge to integrated engineering solution."}
             </p>
           </div>
         </section>
