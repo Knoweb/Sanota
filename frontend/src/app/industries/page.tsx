@@ -11,6 +11,8 @@ import Image from "next/image";
 import dynamic from 'next/dynamic';
 const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { industriesES } from "@/locales/es/industries";
 
 // Data Structures
 
@@ -161,6 +163,10 @@ const partnerTypes = [
 ];
 
 export default function IndustriesPage() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const ind = isEs ? industriesES : null;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeAdditional, setActiveAdditional] = useState<number | null>(0);
   const [activeSupportTab, setActiveSupportTab] = useState<'modernization' | 'amc'>('modernization');
@@ -191,7 +197,7 @@ export default function IndustriesPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              Industries We Support
+              {ind ? ind.hero.heading : "Industries We Support"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -199,7 +205,13 @@ export default function IndustriesPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-8 leading-tight max-w-5xl mx-auto"
             >
-              Integrated Engineering Across <span className="text-[#E8B84B]">Diverse Operational Environments</span>
+              {ind ? (
+                ind.hero.subheading
+              ) : (
+                <>
+                  Integrated Engineering Across <span className="text-[#E8B84B]">Diverse Operational Environments</span>
+                </>
+              )}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -207,7 +219,7 @@ export default function IndustriesPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-300 max-w-4xl mx-auto mb-6 font-medium leading-relaxed"
             >
-              Sanota helps organizations design, develop, automate, modernize and maintain machinery, processes and operational systems across a wide range of industries.
+              {ind ? ind.hero.description : "Sanota helps organizations design, develop, automate, modernize and maintain machinery, processes and operational systems across a wide range of industries."}
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -215,7 +227,7 @@ export default function IndustriesPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-400 max-w-4xl mx-auto mb-10 leading-relaxed"
             >
-              We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer.
+              {ind ? "Combinamos ingeniería, automatización, IoT y software para desarrollar soluciones prácticas en torno a los requisitos de cada industria y cliente." : "We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer."}
             </motion.p>
             
             <motion.div
@@ -225,10 +237,10 @@ export default function IndustriesPage() {
               className="flex flex-col sm:flex-row justify-center gap-4"
             >
               <a href="#industries" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
-                Select Your Industry <ArrowRight className="ml-2 w-5 h-5" />
+                {ind ? ind.hero.primaryButton : "Select Your Industry"} <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#131C2E]/80 hover:bg-slate-800 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
-                Discuss Your Requirement
+                {ind ? ind.hero.secondaryButton : "Discuss Your Requirement"}
               </Link>
             </motion.div>
           </div>
@@ -279,23 +291,33 @@ export default function IndustriesPage() {
               <div className="lg:col-span-7 pr-0 lg:pr-4">
                 <div className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4 backdrop-blur-sm shadow-[0_0_15px_rgba(232,184,75,0.15)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2 animate-pulse" />
-                  <h2 className="!text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">Industry-Focused Engineering</h2>
+                  <h2 className="!text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">
+                    {ind ? ind.approach.heading : "Industry-Focused Engineering"}
+                  </h2>
                 </div>
                 
                 <h3 className="text-3xl lg:text-4xl font-extrabold !text-white mb-4 leading-tight drop-shadow-sm">
-                  Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Your Industry Operates</span>
+                  {ind ? (
+                    ind.approach.subheading
+                  ) : (
+                    <>
+                      Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Your Industry Operates</span>
+                    </>
+                  )}
                 </h3>
                 
                 <p className="!text-slate-300 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl font-light">
-                  Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another.
+                  {ind ? ind.approach.description : "Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another."}
                 </p>
                 
                 <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-700 via-[#E8B84B]/50 to-transparent mb-6" />
                 
-                <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">Sanota begins by understanding your operation, including:</p>
+                <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">
+                  {ind ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
+                </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
-                  {operationalUnderstanding.map((item, idx) => (
+                  {(ind ? ind.approach.evaluationPoints : operationalUnderstanding).map((item, idx) => (
                     <div 
                       key={idx} 
                       className="flex items-center p-3.5 rounded-xl group transition-all duration-300 shadow-lg hover:-translate-y-0.5 cursor-default"
@@ -348,7 +370,11 @@ export default function IndustriesPage() {
                     className="text-white text-base lg:text-lg font-normal leading-relaxed relative z-10"
                     style={{ color: '#FFFFFF' }}
                   >
-                    We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>practical and scalable solution.</span>
+                    {ind ? (
+                      <>Luego combinamos las capacidades adecuadas de ingeniería y tecnología para desarrollar una <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>solución práctica y escalable.</span></>
+                    ) : (
+                      <>We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>practical and scalable solution.</span></>
+                    )}
                   </p>
                   
                   {/* Subtle corner glow */}
@@ -387,19 +413,23 @@ export default function IndustriesPage() {
             
             {/* Left Column: Titles */}
             <div className="lg:w-1/3 flex flex-col space-y-8">
-              {priorityIndustries.map((ind, idx) => (
-                <button 
-                  key={idx} 
-                  onClick={() => setActiveIndex(idx)}
-                  onMouseEnter={() => setActiveIndex(idx)}
-                  className={`text-left text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-widest transition-all duration-300 border-l-4 pl-6 py-2
-                    ${idx === activeIndex 
-                      ? 'text-white border-[#E8B84B] translate-x-2' 
-                      : 'text-slate-600 border-transparent hover:text-slate-400'}`}
-                >
-                  {ind.shortTitle}
-                </button>
-              ))}
+              {priorityIndustries.map((item, idx) => {
+                const esShortTitles = ["Fabricación", "Agricultura", "Alimentos", "Té"];
+                const titleText = ind ? esShortTitles[idx] || item.shortTitle : item.shortTitle;
+                return (
+                  <button 
+                    key={idx} 
+                    onClick={() => setActiveIndex(idx)}
+                    onMouseEnter={() => setActiveIndex(idx)}
+                    className={`text-left text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-widest transition-all duration-300 border-l-4 pl-6 py-2
+                      ${idx === activeIndex 
+                        ? 'text-white border-[#E8B84B] translate-x-2' 
+                        : 'text-slate-600 border-transparent hover:text-slate-400'}`}
+                  >
+                    {titleText}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Right Column: Content */}
@@ -418,19 +448,30 @@ export default function IndustriesPage() {
                       return <Icon className="w-8 h-8 text-[#E8B84B] mr-4" />;
                     })()}
                     <h3 className="text-2xl sm:text-4xl font-bold text-white leading-tight">
-                      {priorityIndustries[activeIndex].title}
+                      {ind && ind.prioritySectors[activeIndex] 
+                        ? ind.prioritySectors[activeIndex].title 
+                        : priorityIndustries[activeIndex].title}
                     </h3>
                   </div>
                   <p className="text-[#2E5EAA] font-bold text-lg mb-6 tracking-wide">
-                    {priorityIndustries[activeIndex].subtitle}
+                    {ind && ind.prioritySectors[activeIndex] 
+                      ? ind.prioritySectors[activeIndex].tagline 
+                      : priorityIndustries[activeIndex].subtitle}
                   </p>
                   <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-2xl">
-                    {priorityIndustries[activeIndex].desc}
+                    {ind && ind.prioritySectors[activeIndex] 
+                      ? ind.prioritySectors[activeIndex].description 
+                      : priorityIndustries[activeIndex].desc}
                   </p>
                   
-                  <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Our support can include:</p>
+                  <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
+                    {ind ? "Nuestro apoyo puede incluir:" : "Our support can include:"}
+                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10 max-w-3xl">
-                    {priorityIndustries[activeIndex].points.map((pt, i) => (
+                    {(ind && ind.prioritySectors[activeIndex]
+                      ? ind.prioritySectors[activeIndex].supportIncludes
+                      : priorityIndustries[activeIndex].points
+                    ).map((pt, i) => (
                       <div key={i} className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-[#E8B84B] mr-3 shrink-0" />
                         <span className="text-slate-300 font-medium">{pt}</span>
@@ -439,7 +480,9 @@ export default function IndustriesPage() {
                   </div>
                   
                   <Link href="#" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors text-sm shadow-lg shadow-[#E8B84B]/20">
-                    {priorityIndustries[activeIndex].buttonText} <ArrowRight className="ml-2 w-5 h-5" />
+                    {ind && ind.prioritySectors[activeIndex] 
+                      ? ind.prioritySectors[activeIndex].button 
+                      : priorityIndustries[activeIndex].buttonText} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </motion.div>
               </AnimatePresence>
@@ -455,16 +498,24 @@ export default function IndustriesPage() {
           
           <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Additional Industries</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Broad Operational Support</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {ind ? ind.additionalIndustries.heading : "Additional Industries"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                {ind ? "Amplio apoyo operativo" : "Broad Operational Support"}
+              </h3>
               <p className="text-slate-500 dark:text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
-                Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments.
+                {ind ? "Más allá de nuestros sectores principales, Sanota proporciona ingeniería altamente especializada e integración digital para una variedad de entornos operativos exigentes." : "Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments."}
               </p>
             </div>
 
             <div className="flex flex-col space-y-2">
-              {additionalIndustries.map((ind, idx) => {
+              {additionalIndustries.map((item, idx) => {
                 const isActive = activeAdditional === idx;
+                const localizedItem = ind && ind.additionalIndustries.sectors[idx] ? ind.additionalIndustries.sectors[idx] : null;
+                const title = localizedItem ? localizedItem.title : item.title;
+                const desc = localizedItem ? localizedItem.desc : item.desc;
+                const buttonText = localizedItem ? localizedItem.linkText : item.button;
                 
                 return (
                   <div 
@@ -486,10 +537,10 @@ export default function IndustriesPage() {
                           transition={{ duration: 4, delay: idx * 0.5, repeat: Infinity, ease: "linear" }}
                           style={{ borderStyle: 'solid', borderWidth: '1px' }}
                         >
-                          <ind.icon className="w-5 h-5" />
+                          <item.icon className="w-5 h-5" />
                         </motion.div>
                         <h4 className={`text-xl sm:text-2xl font-bold transition-colors duration-500 ${isActive ? 'text-[#17135B] dark:text-white' : 'text-slate-500 dark:text-slate-300 group-hover:text-[#17135B] dark:group-hover:text-white'}`}>
-                          {ind.title}
+                          {title}
                         </h4>
                       </div>
                       <div className={`shrink-0 ml-4 transition-transform duration-500 ${isActive ? 'rotate-180' : ''}`}>
@@ -509,15 +560,15 @@ export default function IndustriesPage() {
                           className="overflow-hidden"
                         >
                           <div className="pl-24 pr-4 pb-8 pt-2">
-                            <p className="text-[#2E5EAA] font-bold text-sm mb-4 uppercase tracking-wide">{ind.subtitle}</p>
+                            <p className="text-[#2E5EAA] font-bold text-sm mb-4 uppercase tracking-wide">{item.subtitle}</p>
                             <p className="text-slate-500 dark:text-slate-400 text-[15px] leading-relaxed mb-6 max-w-3xl">
-                              {ind.desc}
+                              {desc}
                             </p>
                             <Link 
                               href="#" 
                               className="inline-flex items-center text-[13px] font-bold uppercase tracking-widest text-[#E8B84B] hover:text-white transition-colors group/link"
                             >
-                              {ind.button} <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                              {buttonText} <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                             </Link>
                           </div>
                         </motion.div>
@@ -535,10 +586,14 @@ export default function IndustriesPage() {
         <section className="pt-12 pb-24 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12 max-w-3xl mx-auto">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">How Sanota Helps Industries</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Support Across the Complete Engineering Journey</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {ind ? ind.lifecycle.heading : "How Sanota Helps Industries"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                {ind ? ind.lifecycle.subheading : "Support Across the Complete Engineering Journey"}
+              </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle.
+                {ind ? "El soporte de Sanota no se limita al suministro de una máquina o tecnología individual. Según los requisitos, ayudamos a lo largo de todo el ciclo de vida de la solución." : "Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle."}
               </p>
             </div>
 
@@ -562,55 +617,61 @@ export default function IndustriesPage() {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-20 relative z-10">
-                {engineeringJourney.map((step, idx) => (
-                  <div key={idx} className="flex flex-col items-center text-center group relative">
-                    
-                    {/* Elegant Step Indicator */}
-                    <div className="absolute -top-6 text-[11px] font-black tracking-[0.2em] text-[#2E5EAA] opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
-                      PHASE 0{idx + 1}
-                    </div>
+                {engineeringJourney.map((step, idx) => {
+                  const localizedStep = ind && ind.lifecycle.steps[idx] ? ind.lifecycle.steps[idx] : null;
+                  const stepTitle = localizedStep ? localizedStep.name : step.title;
+                  const stepDesc = localizedStep ? localizedStep.desc : step.desc;
 
-                    {/* Diamond Node with Spinning Border Light */}
-                    <div className="w-20 h-20 rounded-[18px] rotate-45 flex items-center justify-center mb-10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(232,184,75,0.2)] transition-all duration-500 relative cursor-pointer">
+                  return (
+                    <div key={idx} className="flex flex-col items-center text-center group relative">
                       
-                      {/* Outer container for the spinning border */}
-                      <div className="absolute inset-0 rounded-[18px] overflow-hidden">
-                        {/* Default static border */}
-                        <div className="absolute inset-0 rounded-[18px] border border-slate-700/80 group-hover:border-transparent transition-colors duration-500 z-10" />
+                      {/* Elegant Step Indicator */}
+                      <div className="absolute -top-6 text-[11px] font-black tracking-[0.2em] text-[#2E5EAA] opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
+                        {ind ? `FASE 0${idx + 1}` : `PHASE 0${idx + 1}`}
+                      </div>
+
+                      {/* Diamond Node with Spinning Border Light */}
+                      <div className="w-20 h-20 rounded-[18px] rotate-45 flex items-center justify-center mb-10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(232,184,75,0.2)] transition-all duration-500 relative cursor-pointer">
                         
-                        {/* Spinning Light Element */}
-                        <motion.div 
-                          className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_75%,rgba(232,184,75,0.9)_100%)] opacity-30 group-hover:opacity-100 transition-opacity duration-500 z-0"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        />
-                      </div>
+                        {/* Outer container for the spinning border */}
+                        <div className="absolute inset-0 rounded-[18px] overflow-hidden">
+                          {/* Default static border */}
+                          <div className="absolute inset-0 rounded-[18px] border border-slate-700/80 group-hover:border-transparent transition-colors duration-500 z-10" />
+                          
+                          {/* Spinning Light Element */}
+                          <motion.div 
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_75%,rgba(232,184,75,0.9)_100%)] opacity-30 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                          />
+                        </div>
 
-                      {/* Inner dark background */}
-                      <div className="absolute inset-[1px] rounded-[17px] bg-[#F5F3EF] dark:bg-[#0B1220] group-hover:bg-[#ECE7DD] dark:group-hover:bg-[#131C2E] transition-colors duration-500 z-20 overflow-hidden">
-                        {/* Subtle sweep gradient inside the diamond */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                        {/* Inner dark background */}
+                        <div className="absolute inset-[1px] rounded-[17px] bg-[#F5F3EF] dark:bg-[#0B1220] group-hover:bg-[#ECE7DD] dark:group-hover:bg-[#131C2E] transition-colors duration-500 z-20 overflow-hidden">
+                          {/* Subtle sweep gradient inside the diamond */}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                        </div>
+                        
+                        <div className="-rotate-45 relative z-30">
+                          <step.icon className="w-8 h-8 text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
+                        </div>
                       </div>
                       
-                      <div className="-rotate-45 relative z-30">
-                        <step.icon className="w-8 h-8 text-[#E8B84B] group-hover:scale-110 transition-transform duration-500" />
-                      </div>
+                      <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors duration-300">
+                        {stepTitle}
+                      </h4>
+                      <p className="text-slate-500 dark:text-slate-400 text-[14.5px] leading-relaxed max-w-[260px] group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
+                        {stepDesc}
+                      </p>
                     </div>
-                    
-                    <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors duration-300">
-                      {step.title}
-                    </h4>
-                    <p className="text-slate-500 dark:text-slate-400 text-[14.5px] leading-relaxed max-w-[260px] group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-                      {step.desc}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
             <div className="text-center">
               <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors">
-                Explore Our Services <ArrowRight className="ml-2 w-5 h-5" />
+                {ind ? ind.lifecycle.button : "Explore Our Services"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -625,10 +686,14 @@ export default function IndustriesPage() {
             
             {/* Header Text */}
             <div className="mb-10 max-w-4xl">
-               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Engineering & Digital Integration</h2>
-               <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-4 leading-tight">Physical Systems Connected with Intelligent Technology</h3>
+               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
+                 {ind ? "Integración digital y de ingeniería" : "Engineering & Digital Integration"}
+               </h2>
+               <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-4 leading-tight">
+                 {ind ? "Sistemas físicos conectados con tecnología inteligente" : "Physical Systems Connected with Intelligent Technology"}
+               </h3>
                <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-3xl">
-                 Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly.
+                 {ind ? "Las industrias modernas requieren cada vez más que la maquinaria, la automatización y los sistemas digitales trabajen de forma coordinada. Sanota combina su experiencia en ingeniería con el conocimiento digital de Knoweb para desarrollar sistemas integrados y conectados." : "Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly."}
                </p>
             </div>
 
@@ -650,7 +715,9 @@ export default function IndustriesPage() {
                 {/* Floating animated data tag on the image */}
                 <div className="absolute top-8 left-8 bg-[#0B1220]/80 backdrop-blur-md border border-[#E8B84B]/30 rounded-xl px-4 py-2 flex items-center shadow-lg">
                   <div className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse mr-3" />
-                  <span className="text-white text-xs font-bold tracking-widest uppercase">System Online</span>
+                  <span className="text-white text-xs font-bold tracking-widest uppercase">
+                    {ind ? "Sistema en línea" : "System Online"}
+                  </span>
                 </div>
               </div>
 
@@ -659,15 +726,26 @@ export default function IndustriesPage() {
                 <div className="bg-white dark:bg-[#131C2E]/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-700/80 rounded-[30px] p-8 lg:p-10 shadow-lg dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                   
                   <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed mb-6">
-                    This combination helps customers move from isolated machinery and manual records toward more <span className="text-[#C59B27] dark:text-[#E8B84B]">connected and visible operations.</span>
+                    {ind ? (
+                      <>Esta combinación ayuda a los clientes a pasar de maquinaria aislada y registros manuales a <span className="text-[#C59B27] dark:text-[#E8B84B]">operaciones más conectadas y visibles.</span></>
+                    ) : (
+                      <>This combination helps customers move from isolated machinery and manual records toward more <span className="text-[#C59B27] dark:text-[#E8B84B]">connected and visible operations.</span></>
+                    )}
                   </p>
                   
                   <div className="h-px w-full bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent mb-6" />
                   
-                  <p className="text-[#2E5EAA] font-bold uppercase tracking-widest text-xs mb-5">Connected Solutions Incorporating:</p>
+                  <p className="text-[#2E5EAA] font-bold uppercase tracking-widest text-xs mb-5">
+                    {ind ? "Soluciones conectadas que incorporan:" : "Connected Solutions Incorporating:"}
+                  </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
-                    {digitalTechList.map((tech, idx) => (
+                    {(ind ? [
+                      "Maquinaria industrial", "Control por PLC y HMI", "Sensores e instrumentación", 
+                      "Conectividad IoT", "Plataformas en la nube", "Aplicaciones web y móviles", 
+                      "Paneles de control operativos", "Seguimiento y trazabilidad", "Alertas e informes", 
+                      "Monitorización y control remotos", "Integración con sistemas empresariales"
+                    ] : digitalTechList).map((tech, idx) => (
                       <div key={idx} className="flex items-center group cursor-default">
                         <div className="w-6 h-6 rounded-full bg-[#F5F3EF] dark:bg-[#0B1220] border border-slate-200 dark:border-slate-700 group-hover:border-[#C59B27]/60 dark:group-hover:border-[#E8B84B]/60 flex items-center justify-center shrink-0 mr-4 transition-colors duration-300">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#2E5EAA] group-hover:text-[#E8B84B] transition-colors duration-300" />
@@ -678,7 +756,7 @@ export default function IndustriesPage() {
                   </div>
                   
                   <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(232,184,75,0.2)] hover:shadow-[0_15px_30px_rgba(232,184,75,0.4)] hover:-translate-y-1">
-                    Explore Automation & IoT <ArrowRight className="ml-2 w-5 h-5" />
+                    {ind ? "Explorar la automatización e IoT" : "Explore Automation & IoT"} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
 
                 </div>
@@ -687,15 +765,19 @@ export default function IndustriesPage() {
             </div>
           </div>
         </section>
-
+                  
         {/* 7 & 8. Lifecycle Support (Interactive Tabs) */}
         <section className="py-10 lg:py-14 border-t border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Lifecycle & Operations Support</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Sustaining and Improving Critical Systems</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+                {ind ? "Soporte de ciclo de vida y operaciones" : "Lifecycle & Operations Support"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
+                {ind ? "Mantenimiento y mejora de sistemas críticos" : "Sustaining and Improving Critical Systems"}
+              </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently.
+                {ind ? "Más allá del desarrollo de nuevos sistemas, Sanota garantiza que su maquinaria e infraestructura existentes continúen funcionando de manera confiable y eficiente." : "Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently."}
               </p>
             </div>
 
@@ -706,13 +788,13 @@ export default function IndustriesPage() {
                   onClick={() => setActiveSupportTab('modernization')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'modernization' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> Modernization
+                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> {ind ? "Modernización" : "Modernization"}
                 </button>
                 <button
                   onClick={() => setActiveSupportTab('amc')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'amc' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> AMC & Support
+                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> {ind ? "AMC y soporte" : "AMC & Support"}
                 </button>
                 
                 {/* Active Tab Background indicator */}
@@ -740,19 +822,34 @@ export default function IndustriesPage() {
                     <div className="flex flex-col lg:flex-row gap-12 relative z-10 items-center">
                       <div className="w-full lg:w-5/12 flex flex-col">
                         <RefreshCw className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
-                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Improve Existing Operations Before Replacement</h3>
+                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
+                          {ind ? ind.modernizationBanner.subheading : "Improve Existing Operations Before Replacement"}
+                        </h3>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                          Many organizations operate valuable machinery and systems that have become unreliable, inefficient or difficult to maintain. Sanota assesses whether existing assets can be modernized to extend life and reduce costs.
+                          {ind ? ind.modernizationBanner.description : "Many organizations operate valuable machinery and systems that have become unreliable, inefficient or difficult to maintain. Sanota assesses whether existing assets can be modernized to extend life and reduce costs."}
                         </p>
                         <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#17135B] dark:bg-white/5 hover:bg-[#0f0d45] dark:hover:bg-white/10 border border-[#17135B] dark:border-slate-600 text-white font-bold rounded-xl transition-colors mt-auto self-start">
-                          Request Assessment <ArrowRight className="ml-2 w-4 h-4" />
+                          {ind ? ind.modernizationBanner.button : "Request Assessment"} <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                       </div>
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
-                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">Modernization approaches include:</p>
+                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
+                          {ind ? "Los enfoques de modernización incluyen:" : "Modernization approaches include:"}
+                        </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {modernizationImprovements.map((item, idx) => (
+                          {(ind ? [
+                            "Restauración mecánica",
+                            "Reparaciones eléctricas y recableado",
+                            "Sustitución de controladores",
+                            "Actualizaciones de sensores e instrumentación",
+                            "Integración de PLC y HMI",
+                            "Mejoras de automatización",
+                            "Actualizaciones de sistemas de seguridad",
+                            "Integración de software y monitorización",
+                            "Optimización energética y de rendimiento",
+                            "Capacitación de operadores y mantenimiento"
+                          ] : modernizationImprovements).map((item, idx) => (
                             <div key={idx} className="flex items-start group">
                               <CheckCircle2 className="w-4 h-4 text-[#2E5EAA] group-hover:text-[#E8B84B] mr-3 mt-0.5 shrink-0 transition-colors" />
                               <span className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-snug group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{item}</span>
@@ -761,7 +858,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement.
+                            {ind ? "Este enfoque puede extender la vida útil de los equipos, mejorar la confiabilidad y reducir el costo e interrupción de un reemplazo total." : "This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement."}
                           </p>
                         </div>
                       </div>
@@ -783,19 +880,33 @@ export default function IndustriesPage() {
                     <div className="flex flex-col lg:flex-row gap-12 relative z-10 items-center">
                       <div className="w-full lg:w-5/12 flex flex-col">
                         <ShieldCheck className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
-                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Keep Critical Systems Operating Reliably</h3>
+                        <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
+                          {ind ? "Mantenga los sistemas críticos funcionando de manera confiable" : "Keep Critical Systems Operating Reliably"}
+                        </h3>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                          Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment.
+                          {ind ? "Sanota proporciona contratos de mantenimiento anual y soporte técnico para sistemas construidos por Sanota. También admitimos equipos de terceros elegibles tras una evaluación técnica inicial." : "Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment."}
                         </p>
                         <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors mt-auto self-start shadow-[0_5px_20px_rgba(232,184,75,0.2)]">
-                          Request AMC Info <ArrowRight className="ml-2 w-4 h-4" />
+                          {ind ? "Solicitar información de AMC" : "Request AMC Info"} <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                       </div>
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
-                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">AMC programmes may cover:</p>
+                        <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
+                          {ind ? "Los programas de AMC pueden cubrir:" : "AMC programmes may cover:"}
+                        </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {amcCoverage.map((item, idx) => (
+                          {(ind ? [
+                            "Maquinaria y equipos de procesamiento",
+                            "Cuadros eléctricos y sistemas de control",
+                            "PLCs, HMIs y variadores industriales",
+                            "Sensores e instrumentación",
+                            "Transportadores y sistemas de manipulación de materiales",
+                            "Controles agrícolas y ambientales",
+                            "Dispositivos IoT y plataformas de monitoreo",
+                            "Software y paneles operativos",
+                            "Sistemas integrados de producción y procesamiento"
+                          ] : amcCoverage).map((item, idx) => (
                             <div key={idx} className="flex items-start group">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#2E5EAA] group-hover:bg-[#E8B84B] mr-3 mt-2 shrink-0 transition-colors" />
                               <span className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-snug group-hover:text-[#17135B] dark:group-hover:text-white transition-colors">{item}</span>
@@ -804,7 +915,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer.
+                            {ind ? "Cada AMC se desarrolla según el equipo, el entorno operativo, la criticidad y los requisitos de soporte del cliente." : "Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer."}
                           </p>
                         </div>
                       </div>
@@ -818,10 +929,7 @@ export default function IndustriesPage() {
 
         {/* 9. A Partner for Established and Emerging Industries (Creative Animated Design) */}
         <section className="py-12 lg:py-16 relative overflow-hidden bg-[#F5F3EF]/60 dark:bg-[#050B14] border-t border-slate-200 dark:border-slate-800/50">
-          {/* Dynamic Background with Image and Shader Gradient */}
-          {/* Dynamic Background with Guaranteed Visible Animation */}
           <div className="absolute inset-0 z-0 bg-[#F5F3EF]/60 dark:bg-[#050B14] overflow-hidden">
-            {/* Highly Visible Animated Background Orbs */}
             <motion.div 
               className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#2E5EAA] rounded-full"
               style={{ filter: 'blur(80px)' }}
@@ -857,7 +965,6 @@ export default function IndustriesPage() {
               transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             />
             
-            {/* Texture Layer - Extremely subtle so it doesn't block the background lights */}
             <Image 
               src="/ind_tea_1788515252795.jpg" 
               alt="Industry Partnership Environment" 
@@ -868,23 +975,39 @@ export default function IndustriesPage() {
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-8">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">Collaborative Innovation</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">A Partner for Established and Emerging Industries</h3>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
+                {ind ? "Innovación colaborativa" : "Collaborative Innovation"}
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
+                {ind ? "Un socio para industrias establecidas y emergentes" : "A Partner for Established and Emerging Industries"}
+              </h3>
               <div className="bg-white/80 dark:bg-[#131C2E]/40 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 shadow-sm dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] inline-block relative overflow-hidden">
-                {/* Subtle shine on the text box */}
                 <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-[#C59B27]/10 dark:via-white/5 to-transparent skew-x-12 animate-[runRight_8s_linear_infinite]" />
                 
                 <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl relative z-10">
-                  Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward.
+                  {ind ? "Ya sea que el requisito implique un sistema completamente nuevo, una máquina individual, una actualización de automatización, una plataforma digital o soporte técnico continuo, Sanota puede ayudar a desarrollar el camino más adecuado." : "Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward."}
                 </p>
               </div>
             </div>
 
-            <p className="text-center text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">We work with organizations across all stages:</p>
+            <p className="text-center text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">
+              {ind ? "Trabajamos con organizaciones en todas las etapas:" : "We work with organizations across all stages:"}
+            </p>
 
             {/* Floating Badges Grid */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {partnerTypes.map((partner, idx) => (
+              {(ind ? [
+                "Empresas industriales consolidadas",
+                "Pequeñas y medianas empresas",
+                "Fabricantes orientados a la exportación",
+                "Empresas agrícolas",
+                "Plantaciones y fábricas de té",
+                "Procesadores de alimentos",
+                "Organizaciones gubernamentales y del sector público",
+                "Universidades e instituciones de investigación",
+                "Inventores y empresas emergentes",
+                "Socios tecnológicos y comerciales internacionales"
+              ] : partnerTypes).map((partner, idx) => (
                 <motion.div 
                   key={idx} 
                   initial={{ opacity: 0, y: 30 }}
@@ -917,13 +1040,11 @@ export default function IndustriesPage() {
           
           {/* Animated Scanning Laser Lines */}
           <div className="absolute inset-0 z-0 opacity-40 dark:opacity-60 pointer-events-none">
-            {/* Horizontal scanning line */}
             <motion.div 
               className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27] dark:via-[#E8B84B] to-transparent shadow-[0_0_15px_rgba(232,184,75,0.8)]"
               animate={{ top: ['0%', '100%', '0%'] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             />
-            {/* Vertical scanning line */}
             <motion.div 
               className="absolute top-0 bottom-0 left-1/3 w-[2px] bg-gradient-to-b from-transparent via-[#2E5EAA] to-transparent shadow-[0_0_15px_rgba(46,94,170,0.8)]"
               animate={{ left: ['0%', '100%', '0%'] }}
@@ -939,7 +1060,7 @@ export default function IndustriesPage() {
               animate={{ x: [0, -1000] }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
-              TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE
+              {ind ? "ACTÚE • INNOVE • MODERNISE • ACTÚE • INNOVE • MODERNISE" : "TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE"}
             </motion.h2>
           </div>
 
@@ -951,22 +1072,30 @@ export default function IndustriesPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h3 className="text-5xl md:text-7xl font-black text-[#17135B] dark:text-white mb-6 leading-tight tracking-tight">
-                What Does Your Industry <br className="hidden md:block"/> Need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">Improve?</span>
+                {ind ? (
+                  <>
+                    ¿Qué necesita mejorar <br className="hidden md:block"/> su <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">sector?</span>
+                  </>
+                ) : (
+                  <>
+                    What Does Your Industry <br className="hidden md:block"/> Need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">Improve?</span>
+                  </>
+                )}
               </h3>
               
               <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-                Whether it's a production challenge, an inefficient process, an outdated machine, or a new product idea—tell us what you need to achieve. We'll connect you with the appropriate engineering and technology capabilities.
+                {ind ? ind.cta.description : "Whether it's a production challenge, an inefficient process, an outdated machine, or a new product idea—tell us what you need to achieve. We'll connect you with the appropriate engineering and technology capabilities."}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8 lg:mb-12">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                   <Link href="/tell-us-your-challenge" className="relative group w-full sm:w-auto px-8 py-5 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-full overflow-hidden transition-all flex items-center justify-center shadow-lg shadow-[#E8B84B]/20">
-                    <span className="relative z-10 flex items-center">Discuss Your Requirement <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" /></span>
+                    <span className="relative z-10 flex items-center">{ind ? ind.cta.primaryButton : "Discuss Your Requirement"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" /></span>
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                   <Link href="/contact" className="w-full sm:w-auto px-8 py-5 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/5 text-[#17135B] dark:text-white font-bold rounded-full border border-slate-300 dark:border-slate-700 hover:border-[#17135B] dark:hover:border-white transition-all flex items-center justify-center shadow-sm dark:shadow-none">
-                    Request Technical Consultation
+                    {ind ? ind.cta.secondaryButton : "Request Technical Consultation"}
                   </Link>
                 </motion.div>
               </div>
@@ -979,15 +1108,23 @@ export default function IndustriesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-slate-500 dark:text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">Additional Enquiry Options</p>
+              <p className="text-slate-500 dark:text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">
+                {ind ? "Opciones de consulta adicionales" : "Additional Enquiry Options"}
+              </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
-                {[
+                {(ind ? [
+                  "Evaluación industrial", 
+                  "Evaluación de modernización", 
+                  "Evaluación de AMC", 
+                  "Información del producto", 
+                  "Asociación de desarrollo"
+                ] : [
                   "Industrial Assessment", 
                   "Modernization Assessment", 
                   "AMC Assessment", 
                   "Product Information", 
                   "Development Partnership"
-                ].map((option, idx) => (
+                ]).map((option, idx) => (
                   <motion.div 
                     key={idx}
                     whileHover={{ y: -4, scale: 1.02 }}
