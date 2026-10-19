@@ -4,9 +4,36 @@ import { useState, useEffect } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const industryFilters = ["All Projects", "Manufacturing", "Agriculture", "Food & Beverage", "Tea", "Logistics", "Energy", "Environment", "Infrastructure", "Healthcare", "Research & Development"];
 const solutionFilters = ["All Solutions", "Machinery", "Automation", "IoT", "Software", "Modernization", "Product Development", "Project Execution", "AMC"];
+
+const industryFiltersES: Record<string, string> = {
+  "All Projects": "Todos los proyectos",
+  "Manufacturing": "Fabricación",
+  "Agriculture": "Agricultura",
+  "Food & Beverage": "Alimentos y bebidas",
+  "Tea": "Té",
+  "Logistics": "Logística",
+  "Energy": "Energía",
+  "Environment": "Medio ambiente",
+  "Infrastructure": "Infraestructura",
+  "Healthcare": "Sanidad",
+  "Research & Development": "Investigación y desarrollo"
+};
+
+const solutionFiltersES: Record<string, string> = {
+  "All Solutions": "Todas las soluciones",
+  "Machinery": "Maquinaria",
+  "Automation": "Automatización",
+  "IoT": "IoT",
+  "Software": "Software",
+  "Modernization": "Modernización",
+  "Product Development": "Desarrollo de productos",
+  "Project Execution": "Ejecución de proyectos",
+  "AMC": "AMC"
+};
 
 const projectCriteria = [
   "The industry or operating environment",
@@ -17,6 +44,17 @@ const projectCriteria = [
   "The services provided by Sanota",
   "Sanota's role in implementation",
   "Related photographs or videos"
+];
+
+const projectCriteriaES = [
+  "La industria o entorno operativo",
+  "El producto, maquinaria o sistema involucrado",
+  "Las tecnologías integradas",
+  "El resultado operativo obtenido",
+  "El requerimiento específico del cliente",
+  "Los servicios proporcionados por Sanota",
+  "El papel de Sanota en la implementación",
+  "Fotografías o vídeos relacionados"
 ];
 
 // Dummy data injected if database is empty so the client can preview the design
@@ -113,6 +151,8 @@ interface Project {
 }
 
 export default function CompletedWorkSection() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeIndustry, setActiveIndustry] = useState("All Projects");
@@ -189,16 +229,20 @@ export default function CompletedWorkSection() {
               
               <div className="flex gap-2 mb-4">
                 {project.attributes.industry && (
-                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-slate-300 uppercase tracking-wider">{project.attributes.industry}</span>
+                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-slate-300 uppercase tracking-wider">
+                    {isEs && industryFiltersES[project.attributes.industry] ? industryFiltersES[project.attributes.industry] : project.attributes.industry}
+                  </span>
                 )}
                 {project.attributes.solution && (
-                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-[#E8B84B] uppercase tracking-wider">{project.attributes.solution}</span>
+                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-[#E8B84B] uppercase tracking-wider">
+                    {isEs && solutionFiltersES[project.attributes.solution] ? solutionFiltersES[project.attributes.solution] : project.attributes.solution}
+                  </span>
                 )}
               </div>
 
               {/* Animated Link */}
               <div className="inline-flex items-center text-xs font-bold text-[#E8B84B] uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                {project.attributes.linkText || "Explore Project"} <ArrowRight className="ml-2 w-4 h-4" />
+                {isEs ? "Explorar proyecto" : (project.attributes.linkText || "Explore Project")} <ArrowRight className="ml-2 w-4 h-4" />
               </div>
             </div>
           </Link>
@@ -206,7 +250,7 @@ export default function CompletedWorkSection() {
       </div>
     ) : (
       <div className="text-center py-12 bg-[#131C2E]/30 rounded-2xl border border-slate-800 mt-8">
-        <p className="text-slate-400 mb-4">No projects found matching this filter.</p>
+        <p className="text-slate-400 mb-4">{isEs ? "No se encontraron proyectos con este filtro." : "No projects found matching this filter."}</p>
       </div>
     )
   );
@@ -216,17 +260,29 @@ export default function CompletedWorkSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
           <div>
-            <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Completed Work</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Practical Solutions for Real Operating Environments</h3>
-            <p className="text-slate-400 text-lg leading-relaxed mb-6">The Completed Work collection presents selected Sanota projects across industries and technical disciplines.</p>
+            <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
+              {isEs ? "Trabajo Terminado" : "Completed Work"}
+            </h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+              {isEs ? "Soluciones prácticas para entornos operativos reales" : "Practical Solutions for Real Operating Environments"}
+            </h3>
+            <p className="text-slate-400 text-lg leading-relaxed mb-6">
+              {isEs 
+                ? "La colección de trabajos completados presenta proyectos seleccionados de Sanota en diversas industrias y disciplinas técnicas."
+                : "The Completed Work collection presents selected Sanota projects across industries and technical disciplines."}
+            </p>
             <p className="text-slate-500 italic text-sm leading-relaxed border-l-2 border-slate-800 pl-4">
-              Where client confidentiality applies, project information may be presented without identifying the client or disclosing sensitive technical details.
+              {isEs 
+                ? "Cuando se aplique la confidencialidad del cliente, la información del proyecto podrá presentarse sin identificar al cliente ni revelar detalles técnicos confidenciales."
+                : "Where client confidentiality applies, project information may be presented without identifying the client or disclosing sensitive technical details."}
             </p>
           </div>
           <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6">
-            <p className="text-white font-bold mb-4">Each project entry should identify:</p>
+            <p className="text-white font-bold mb-4">
+              {isEs ? "Cada ficha de proyecto identifica:" : "Each project entry should identify:"}
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {projectCriteria.map((item, idx) => (
+              {(isEs ? projectCriteriaES : projectCriteria).map((item, idx) => (
                 <div key={idx} className="flex items-start">
                   <CheckCircle2 className="w-4 h-4 text-[#E8B84B] mt-0.5 mr-2 shrink-0" />
                   <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
@@ -239,7 +295,9 @@ export default function CompletedWorkSection() {
         {/* SECTION 1: Industry Filters */}
         <div className="mb-10">
           <div className="mb-4">
-            <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Industry</h4>
+            <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
+              {isEs ? "Filtrar por industria" : "Filter by Industry"}
+            </h4>
             <div className="flex flex-wrap gap-2">
               {industryFilters.map((filter, idx) => (
                 <button 
@@ -247,7 +305,7 @@ export default function CompletedWorkSection() {
                   onClick={() => setActiveIndustry(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeIndustry === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
-                  {filter}
+                  {isEs ? (industryFiltersES[filter] || filter) : filter}
                 </button>
               ))}
             </div>
@@ -257,7 +315,9 @@ export default function CompletedWorkSection() {
         {/* SECTION 2: Solution Filters */}
         <div className="mb-12 pt-10 border-t border-slate-800/50">
           <div className="mb-4">
-            <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">Filter by Solution</h4>
+            <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
+              {isEs ? "Filtrar por solución" : "Filter by Solution"}
+            </h4>
             <div className="flex flex-wrap gap-2">
               {solutionFilters.map((filter, idx) => (
                 <button 
@@ -265,7 +325,7 @@ export default function CompletedWorkSection() {
                   onClick={() => setActiveSolution(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeSolution === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
-                  {filter}
+                  {isEs ? (solutionFiltersES[filter] || filter) : filter}
                 </button>
               ))}
             </div>
@@ -278,13 +338,13 @@ export default function CompletedWorkSection() {
               onClick={() => setShowProjects(true)}
               className="inline-flex justify-center items-center px-8 py-4 border border-transparent hover:border-[#E8B84B]/50 text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:shadow-[0_0_30px_rgba(232,184,75,0.5)] group"
             >
-              Browse Completed Work
+              {isEs ? "Explorar Trabajos Completados" : "Browse Completed Work"}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         ) : (
           <div className="mt-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            {loading ? <div className="text-center py-12 text-slate-400">Loading projects...</div> : renderProjectGrid(filteredProjects)}
+            {loading ? <div className="text-center py-12 text-slate-400">{isEs ? "Cargando proyectos..." : "Loading projects..."}</div> : renderProjectGrid(filteredProjects)}
           </div>
         )}
 

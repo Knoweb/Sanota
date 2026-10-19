@@ -12,6 +12,8 @@ import NewsTagCloud from "@/components/NewsTagCloud";
 import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield, User, Tag, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
 import { getArticles, Article } from "@/lib/api";
+import { useLanguage } from "@/context/LanguageContext";
+import { mediaES } from "@/locales/es/media";
 
 const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 
@@ -112,7 +114,77 @@ const publicationPrinciples = [
   "Safe and professional working practices"
 ];
 
+const featuredWorkES = [
+  { title: "Maquinaria industrial y modernización", desc: "Maquinaria a medida, actualización de sistemas de control, automatización y mejoras en equipos industriales existentes.", link: "Explorar proyectos industriales", icon: Settings, image: "/featured_industrial_1789116846117.jpg" },
+  { title: "Agricultura inteligente", desc: "Invernaderos, riego, fertirrigación, monitoreo ambiental y sistemas agrícolas conectados.", link: "Explorar proyectos agrícolas", icon: Sprout, image: "/featured_agriculture_1789116860132.jpg" },
+  { title: "Alimentos, bebidas y té", desc: "Equipos de procesamiento, sistemas de producción, control ambiental y automatización especializada.", link: "Explorar proyectos de procesamiento", icon: Coffee, image: "/featured_food_1789116878789.jpg" },
+  { title: "IoT e integración digital", desc: "Maquinaria conectada, sensores, paneles de control, alertas, sistemas de seguimiento y software operativo.", link: "Explorar proyectos de IoT y digital", icon: Monitor, image: "/featured_iot_1789116892994.jpg" },
+  { title: "Manipulación de materiales y logística", desc: "Transportadores, sistemas de transferencia, vehículos guiados automatizados y equipos a medida.", link: "Explorar proyectos de logística", icon: Truck, image: "/featured_logistics_1789116908842.jpg" },
+  { title: "Energía, medio ambiente e instalaciones", desc: "Monitoreo de recursos, sistemas ambientales, gestión de residuos y tecnologías para instalaciones inteligentes.", link: "Explorar proyectos de energía y medio ambiente", icon: Zap, image: "/featured_energy_1789116922913.jpg" }
+];
+
+const galleryCollectionsES = [
+  { title: "Proyectos completados", desc: "Maquinaria, sistemas y soluciones operando en las instalaciones del cliente.", image: "/gallery/completed.jpg" },
+  { title: "Productos y equipos", desc: "Equipos desarrollados a medida, detalles de productos y componentes de sistemas.", image: "/gallery/equipment.jpg" },
+  { title: "Taller y desarrollo", desc: "Actividades de diseño, fabricación, ensamblaje, integración y pruebas.", image: "/gallery/workshop.jpg" },
+  { title: "Instalación y puesta en marcha", desc: "Implementación en el sitio, pruebas y entrega operativa.", image: "/gallery/installation.jpg" },
+  { title: "Automatización y tecnología digital", desc: "Sistemas de control, sensores, tableros, equipos conectados e interfaces de software.", image: "/gallery/automation.jpg" },
+  { title: "AMC y soporte técnico", desc: "Inspección, mantenimiento, revisiones y soporte durante todo el ciclo de vida.", image: "/gallery/amc.jpg" },
+  { title: "Eventos y exposiciones", desc: "Exposiciones industriales, demostraciones, asociaciones y participación de la empresa.", image: "/gallery/events.jpg" },
+  { title: "Equipo y capacitación", desc: "Equipos técnicos, formación de clientes, desarrollo de capacidades y actividades internas.", image: "/gallery/team.jpg" }
+];
+
+const browseIndustriesES = [
+  "Fabricación y automatización industrial",
+  "Agricultura inteligente y agrotecnología",
+  "Procesamiento de alimentos y bebidas",
+  "Soluciones para la industria del té",
+  "Logística, almacenamiento y manipulación",
+  "Eficiencia energética y de recursos",
+  "Soluciones ambientales y de residuos",
+  "Infraestructura e instalaciones inteligentes",
+  "Ingeniería biomédica y sanitaria",
+  "Investigación, innovación y desarrollo de productos"
+];
+
+const browseCapabilitiesES = [
+  "Consultoría de ingeniería y análisis de problemas",
+  "Diseño de sistemas y productos",
+  "Maquinaria personalizada y desarrollo de productos",
+  "Automatización, IoT e integración digital",
+  "Modernización y reacondicionamiento de equipos",
+  "Ejecución de proyectos, instalación y puesta en marcha",
+  "AMC, mantenimiento y soporte del ciclo de vida",
+  "Capacitación y desarrollo de habilidades técnicas"
+];
+
+const knowebStoriesES = [
+  "Maquinaria conectada",
+  "Sistemas de IoT industrial",
+  "Monitoreo remoto",
+  "Paneles de control operativos",
+  "Aplicaciones móviles y web",
+  "Sistemas de alerta y generación de informes",
+  "Tecnologías de seguimiento",
+  "Soluciones de ingeniería conectadas a la nube"
+];
+
+const publicationPrinciplesES = [
+  "Imágenes auténticas de proyectos y productos",
+  "Actividades reales de ingeniería e implementación",
+  "Explicaciones claras del requisito del cliente y del papel de Sanota",
+  "Descripciones técnicas precisas",
+  "Resultados observables y contrastables",
+  "Aprobaciones pertinentes de clientes y colaboradores",
+  "Protección rigurosa de la información confidencial",
+  "Prácticas de trabajo seguras y profesionales"
+];
+
 export default function MediaPage() {
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const m = isEs ? mediaES : null;
+
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
   
@@ -146,7 +218,7 @@ export default function MediaPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              Media, Projects & Engineering Stories
+              {m ? "Historias de medios, proyectos e ingeniería" : "Media, Projects & Engineering Stories"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -154,7 +226,13 @@ export default function MediaPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
-              Engineering in <span className="text-[#2E5EAA]">Action</span>
+              {m ? (
+                m.hero.heading
+              ) : (
+                <>
+                  Engineering in <span className="text-[#2E5EAA]">Action</span>
+                </>
+              )}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -162,7 +240,7 @@ export default function MediaPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
-              Explore the projects, products, people and technologies behind Sanota’s integrated engineering solutions.
+              {m ? m.hero.subheading : "Explore the projects, products, people and technologies behind Sanota’s integrated engineering solutions."}
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -170,7 +248,7 @@ export default function MediaPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
-              See how Sanota applies engineering, automation, IoT, software and technical expertise to real operational requirements across industries.
+              {m ? m.hero.description : "See how Sanota applies engineering, automation, IoT, software and technical expertise to real operational requirements across industries."}
             </motion.p>
             
             <motion.div
@@ -183,13 +261,13 @@ export default function MediaPage() {
                 href="#completed-work"
                 className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-lg"
               >
-                Explore Completed Work <ArrowRight className="ml-2 w-5 h-5" />
+                {m ? m.hero.primaryButton : "Explore Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <Link
                 href="#videos"
                 className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center"
               >
-                Watch Our Videos <Play className="ml-2 w-5 h-5" />
+                {m ? m.hero.secondaryButton : "Watch Our Videos"} <Play className="ml-2 w-5 h-5" />
               </Link>
             </motion.div>
             
@@ -249,7 +327,11 @@ export default function MediaPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                See What Sanota <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">Does</span>
+                {m ? (
+                  <>Mira lo que hace <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">Sanota</span></>
+                ) : (
+                  <>See What Sanota <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">Does</span></>
+                )}
               </h2>
               
               {/* Animated Divider */}
@@ -262,15 +344,15 @@ export default function MediaPage() {
               />
 
               <p className="text-slate-700 dark:text-slate-300 text-lg md:text-xl font-medium leading-relaxed mb-6">
-                Engineering capabilities are best understood through practical application.
+                {m ? "Las capacidades de ingeniería se comprenden mejor mediante la aplicación práctica." : "Engineering capabilities are best understood through practical application."}
               </p>
               <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
-                The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented.
+                {m ? m.intro.description : "The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented."}
               </p>
               
               <div className="inline-block px-6 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1220] shadow-md">
                 <p className="text-[#17135B] dark:text-white font-bold text-sm tracking-wide">
-                  Explore Sanota’s work by industry, solution or media type.
+                  {m ? "Explore el trabajo de Sanota por industria, solución o tipo de medio." : "Explore Sanota’s work by industry, solution or media type."}
                 </p>
               </div>
             </motion.div>
@@ -284,13 +366,13 @@ export default function MediaPage() {
         <section id="featured-work" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Featured Work</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">See Sanota in Action</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto">Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{m ? "Trabajo Destacado" : "Featured Work"}</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">{m ? "Vea a Sanota en Acción" : "See Sanota in Action"}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto">{m ? "Explore ejemplos seleccionados de cómo Sanota combina diferentes capacidades de ingeniería y tecnología en función de necesidades operativas reales." : "Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs."}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {featuredWork.map((work, idx) => (
+              {(m ? featuredWorkES : featuredWork).map((work, idx) => (
                 <Link key={idx} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block shadow-lg dark:shadow-none">
                   {/* Background Image */}
                   <Image 
@@ -321,7 +403,7 @@ export default function MediaPage() {
 
             <div className="text-center">
               <Link href="#completed-work" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                View All Completed Work <ArrowRight className="ml-2 w-5 h-5" />
+                {m ? "Ver Todos los Trabajos Completados" : "View All Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -334,13 +416,13 @@ export default function MediaPage() {
         <section id="project-stories" className="py-12 md:py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">Project Stories</h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-[#17135B] dark:text-white mb-4">From Challenge to Working Solution</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-base max-w-3xl mx-auto">Project Stories provide a closer look at how Sanota approaches complex operational requirements.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">{m ? "Historias de Proyectos" : "Project Stories"}</h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#17135B] dark:text-white mb-4">{m ? m.projectStories.heading : "From Challenge to Working Solution"}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-base max-w-3xl mx-auto">{m ? m.projectStories.subheading : "Project Stories provide a closer look at how Sanota approaches complex operational requirements."}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-              {projectStoryStructure.map((story, idx) => {
+              {((m ? m.projectStories.steps.map(s => ({ title: s.step, desc: s.desc })) : projectStoryStructure)).map((story, idx) => {
                 const iconsList = [AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield];
                 const Icon = iconsList[idx];
                 
@@ -378,10 +460,10 @@ export default function MediaPage() {
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="#" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm shadow-md">
-                Read Project Stories <ArrowRight className="ml-2 w-4 h-4" />
+                {m ? m.projectStories.primaryButton : "Read Project Stories"} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
               <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center text-sm">
-                Discuss a Similar Requirement
+                {m ? m.projectStories.secondaryButton : "Discuss a Similar Requirement"}
               </Link>
             </div>
           </div>
@@ -423,13 +505,13 @@ export default function MediaPage() {
         <section id="photo-gallery" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Photo Gallery</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">Projects, Products and People</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto mb-10">The Sanota Photo Gallery provides a visual record of engineering work across project and company environments.</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{m ? "Galería de Fotos" : "Photo Gallery"}</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">{m ? m.photoGallery.heading : "Projects, Products and People"}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto mb-10">{m ? m.photoGallery.subheading : "The Sanota Photo Gallery provides a visual record of engineering work across project and company environments."}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14">
-              {galleryCollections.map((col, idx) => (
+              {(m ? galleryCollectionsES : galleryCollections).map((col, idx) => (
                 <div 
                   key={idx} 
                   className="group relative w-full h-[200px] sm:h-[240px] lg:h-[260px] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
@@ -440,7 +522,7 @@ export default function MediaPage() {
                   {col.image && (
                     <Image 
                       src={col.image} 
-                      alt={col.title}
+                      alt={col.title} 
                       fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -470,7 +552,7 @@ export default function MediaPage() {
 
             <div className="text-center">
               <button onClick={() => setIsGalleryOpen(true)} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                Open Photo Gallery <Camera className="ml-2 w-5 h-5" />
+                {m ? m.photoGallery.button : "Open Photo Gallery"} <Camera className="ml-2 w-5 h-5" />
               </button>
             </div>
           </div>
@@ -496,7 +578,7 @@ export default function MediaPage() {
               <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1220] relative z-20">
                 <div className="flex items-center">
                   <Camera className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B] mr-3" />
-                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">Sanota Engineering Gallery</h3>
+                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">{m ? "Galería de Ingeniería de Sanota" : "Sanota Engineering Gallery"}</h3>
                 </div>
                 <button 
                   onClick={() => setIsGalleryOpen(false)}
@@ -551,7 +633,7 @@ export default function MediaPage() {
         <section id="latest-news" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white tracking-tight">Latest News Feeds</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white tracking-tight">{m ? m.news.heading : "Latest News Feeds"}</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -563,7 +645,7 @@ export default function MediaPage() {
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
                        <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                          <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: {article.author}</span>
+                          <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "por:" : "by:"} {article.author}</span>
                           <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {article.category}</span>
                        </div>
                        <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
@@ -571,7 +653,7 @@ export default function MediaPage() {
                        </h3>
                        <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                           <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> {new Date(article.date).toLocaleDateString()}</span>
-                          <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                          <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
                        </div>
                     </div>
                  </div>
@@ -585,15 +667,15 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> IoT Solutions</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "Soluciones IoT" : "IoT Solutions"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           Smart Drainage System: Tackling Floods with Technology
+                           {m ? "Sistema de Drenaje Inteligente: Combatiendo Inundaciones con Tecnología" : "Smart Drainage System: Tackling Floods with Technology"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
                          </div>
                       </div>
                    </div>
@@ -606,15 +688,15 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Health Tech</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "Tecnología de la Salud" : "Health Tech"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator
+                           {m ? "Avanzando en la Rehabilitación Mediante la Innovación: Estimulador Nervioso de Sanota" : "Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
                          </div>
                       </div>
                    </div>
@@ -627,15 +709,15 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> by: Sanota Team</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> Industrial Solutions</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {m ? "Soluciones Industriales" : "Industrial Solutions"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)
+                           {m ? "Sistema Inteligente de Procesamiento de Alimentos para Grupos Rurales de Sri Lanka (ASMP)" : "Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/7/2025</span>
-                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">READ MORE</Link>
+                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
                          </div>
                       </div>
                    </div>
@@ -651,16 +733,16 @@ export default function MediaPage() {
             <div className="w-16 h-16 rounded-full bg-[#C59B27]/10 dark:bg-[#E8B84B]/20 flex items-center justify-center mx-auto mb-6 shadow-sm">
               <Play className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B] ml-1" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">See How Integrated Engineering Comes Together</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support.</p>
-            <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-10">Watch how these capabilities connect around a real operational requirement.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">{m ? m.videoSection.heading : "See How Integrated Engineering Comes Together"}</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">{m ? "Una solución Sanota puede implicar maquinaria, controles, sensores, software, instalación y soporte continuo." : "A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support."}</p>
+            <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-10">{m ? m.videoSection.subheading : "Watch how these capabilities connect around a real operational requirement."}</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
-                Play Featured Video <Play className="ml-2 w-5 h-5" />
+                {m ? "Reproducir Vídeo Destacado" : "Play Featured Video"} <Play className="ml-2 w-5 h-5" />
               </button>
               <Link href="/services" className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center">
-                Explore Integrated Solutions
+                {m ? "Explorar Soluciones Integradas" : "Explore Integrated Solutions"}
               </Link>
             </div>
           </div>
@@ -677,19 +759,19 @@ export default function MediaPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
                   <div className="absolute bottom-5 left-6 right-6 z-10">
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#2E5EAA] text-white font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
-                      Browse By Industry
+                      {m ? "Buscar por Industria" : "Browse By Industry"}
                     </div>
                     <h3 
                       className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
                       style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
                     >
-                      Explore Work Relevant to Your Sector
+                      {m ? "Explore Trabajos Relevantes para su Sector" : "Explore Work Relevant to Your Sector"}
                     </h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
-                    {browseIndustries.map((ind, idx) => (
+                    {(m ? browseIndustriesES : browseIndustries).map((ind, idx) => (
                       <Link href="/industries" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#2E5EAA]/50 rounded-xl transition-all duration-300">
                          <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#2E5EAA]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
                            <ChevronRight className="w-4 h-4 text-[#2E5EAA] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
@@ -700,7 +782,7 @@ export default function MediaPage() {
                   </div>
                   <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
                     <Link href="/industries" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#2E5EAA] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#2E5EAA] dark:text-white font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#2E5EAA] transition-all duration-300 group/link">
-                      Explore All Industries <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      {m ? "Explorar Todas las Industrias" : "Explore All Industries"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -714,19 +796,19 @@ export default function MediaPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
                   <div className="absolute bottom-5 left-6 right-6 z-10">
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] text-[#0B1220] font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
-                      Browse By Capability
+                      {m ? "Buscar por Capacidad" : "Browse By Capability"}
                     </div>
                     <h3 
                       className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
                       style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
                     >
-                      Explore How Sanota Delivers Solutions
+                      {m ? "Descubra Cómo Sanota Entrega Soluciones" : "Explore How Sanota Delivers Solutions"}
                     </h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
-                    {browseCapabilities.map((cap, idx) => (
+                    {(m ? browseCapabilitiesES : browseCapabilities).map((cap, idx) => (
                       <Link href="/services" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#C59B27]/50 rounded-xl transition-all duration-300">
                          <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#C59B27]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
                            <ChevronRight className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
@@ -737,7 +819,7 @@ export default function MediaPage() {
                   </div>
                   <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
                     <Link href="/services" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#C59B27] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#E8B84B] dark:text-white dark:hover:text-[#0B1220] font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#C59B27] transition-all duration-300 group/link">
-                      Explore All Services <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      {m ? "Explorar Todos los Servicios" : "Explore All Services"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -756,16 +838,24 @@ export default function MediaPage() {
                   <h2 className="text-[#2E5EAA] font-bold tracking-widest uppercase text-sm mb-4 flex items-center">
                     <Zap className="w-4 h-4 mr-2" /> Sanota + Knoweb
                   </h2>
-                  <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">Engineering Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digital Technology</span></h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb.</p>
+                  <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
+                    {m ? (
+                      <>Ingeniería Conectada por <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Tecnología Digital</span></>
+                    ) : (
+                      <>Engineering Connected by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digital Technology</span></>
+                    )}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+                    {m ? "Las historias de medios seleccionadas demostrarán cómo Sanota combina capacidad de ingeniería con software y tecnología digital a través de su colaboración con Knoweb." : "Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb."}
+                  </p>
                   <Link href="#" className="group inline-flex items-center px-7 py-4 bg-[#17135B] hover:bg-[#2E5EAA] dark:bg-gradient-to-r dark:from-[#131C2E] dark:to-[#0B1220] dark:hover:from-[#2E5EAA] dark:hover:to-[#1a4185] text-white font-bold rounded-xl border border-slate-300 dark:border-[#2E5EAA]/30 hover:border-[#2E5EAA] transition-all duration-500 shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.15)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.4)]">
-                    Explore IoT & Digital Projects <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                    {m ? "Explorar Proyectos Digitales y de IoT" : "Explore IoT & Digital Projects"} <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
                   </Link>
                 </motion.div>
               </div>
               <div className="lg:col-span-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {knowebStories.map((story, idx) => (
+                  {(m ? knowebStoriesES : knowebStories).map((story, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 20 }}
@@ -794,16 +884,20 @@ export default function MediaPage() {
             <div className="text-center mb-8 lg:mb-12">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 text-[#C59B27] dark:text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#C59B27]/20 dark:border-[#E8B84B]/20">
-                  <Shield className="w-4 h-4 mr-2" /> Media Publication Principles
+                  <Shield className="w-4 h-4 mr-2" /> {m ? "Principios de Publicación en Medios" : "Media Publication Principles"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white leading-tight">
-                  Authentic Work. Clear Information.<br/><span className="text-slate-500 dark:text-slate-400">Responsible Publication.</span>
+                  {m ? (
+                    <>Trabajo Auténtico. Información Clara.<br/><span className="text-slate-500 dark:text-slate-400">Publicación Responsable.</span></>
+                  ) : (
+                    <>Authentic Work. Clear Information.<br/><span className="text-slate-500 dark:text-slate-400">Responsible Publication.</span></>
+                  )}
                 </h3>
               </motion.div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {publicationPrinciples.map((principle, idx) => (
+              {(m ? publicationPrinciplesES : publicationPrinciples).map((principle, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -830,7 +924,7 @@ export default function MediaPage() {
             >
               <p className="text-slate-600 dark:text-slate-400 text-sm italic flex items-center justify-center text-left sm:text-center">
                 <AlertCircle className="w-5 h-5 mr-3 text-[#C59B27] dark:text-[#E8B84B] shrink-0" />
-                Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work.
+                {m ? "Las imágenes genéricas de catálogo solo deben usarse cuando el material auténtico de Sanota no esté disponible temporalmente y no deben presentarse como trabajo terminado de Sanota." : "Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work."}
               </p>
             </motion.div>
           </div>
@@ -888,12 +982,22 @@ export default function MediaPage() {
                   <div className="w-16 h-16 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
                     <Wrench className="w-8 h-8 text-[#2E5EAA] dark:text-[#4C84E0]" />
                   </div>
-                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">Discuss a Similar Requirement</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">Have You Seen a Project Relevant to Your Operation?</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:</p>
+                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">{m ? "Comentar un Requisito Similar" : "Discuss a Similar Requirement"}</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{m ? "¿Ha visto un proyecto relevante para su operación?" : "Have You Seen a Project Relevant to Your Operation?"}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">{m ? "Es posible que su requisito no sea idéntico, pero las capacidades de ingeniería se pueden adaptar a su aplicación. Cuéntele a Sanota:" : "Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:"}</p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 pointer-events-auto">
-                    {["Which project or solution interested you", "What you currently operate", "What you want to improve or develop", "Which result you are trying to achieve"].map((item, idx) => (
+                    {(m ? [
+                      "Qué proyecto o solución le interesó",
+                      "Qué opera actualmente",
+                      "Qué desea mejorar o desarrollar",
+                      "Qué resultado está intentando lograr"
+                    ] : [
+                      "Which project or solution interested you",
+                      "What you currently operate",
+                      "What you want to improve or develop",
+                      "Which result you are trying to achieve"
+                    ]).map((item, idx) => (
                       <div key={idx} className="flex items-start bg-white/90 dark:bg-[#0B1220]/70 p-4 rounded-xl border border-slate-200 dark:border-slate-800/50 backdrop-blur-sm shadow-sm dark:shadow-none">
                         <div className="w-2 h-2 mt-1.5 rounded-full bg-[#2E5EAA] dark:bg-[#4C84E0] mr-3 shrink-0" />
                         <span className="text-slate-700 dark:text-slate-300 text-sm leading-snug">{item}</span>
@@ -903,10 +1007,10 @@ export default function MediaPage() {
 
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
                     <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.3)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
-                      Discuss Requirement
+                      {m ? "Comentar Requisito" : "Discuss Requirement"}
                     </Link>
                     <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
-                      Tell Us Your Challenge
+                      {m ? "Cuéntanos tu Desafío" : "Tell Us Your Challenge"}
                     </Link>
                   </div>
                 </div>
@@ -959,16 +1063,16 @@ export default function MediaPage() {
                   <div className="w-16 h-16 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#C59B27]/30 dark:border-[#E8B84B]/30">
                     <MessageSquare className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B]" />
                   </div>
-                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">Media Enquiries</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">Media, Partnership or Publication Enquiry</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team.</p>
+                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{m ? "Consultas de Medios" : "Media Enquiries"}</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{m ? "Consulta de Medios, Asociaciones o Publicaciones" : "Media, Partnership or Publication Enquiry"}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">{m ? "Para consultas relacionadas con reportajes de proyectos, artículos técnicos, exposiciones, colaboraciones, entrevistas o permisos para utilizar el material de Sanota, póngase en contacto con el equipo de Sanota." : "For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team."}</p>
                   
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
                     <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(232,184,75,0.3)] dark:hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
-                      Submit Media Enquiry
+                      {m ? "Enviar Consulta de Medios" : "Submit Media Enquiry"}
                     </Link>
                     <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
-                      Contact Sanota
+                      {m ? "Contactar a Sanota" : "Contact Sanota"}
                     </Link>
                   </div>
                 </div>
@@ -982,21 +1086,30 @@ export default function MediaPage() {
         <section className="py-16 border-t border-slate-200 dark:border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-              See What Sanota Has Done. <br className="hidden md:block" />
-              <span className="text-[#C59B27] dark:text-[#E8B84B]">Imagine What We Can Develop With You.</span>
+              {m ? (
+                <>
+                  Mira lo que ha hecho Sanota. <br className="hidden md:block" />
+                  <span className="text-[#C59B27] dark:text-[#E8B84B]">Imagina lo que podemos desarrollar contigo.</span>
+                </>
+              ) : (
+                <>
+                  See What Sanota Has Done. <br className="hidden md:block" />
+                  <span className="text-[#C59B27] dark:text-[#E8B84B]">Imagine What We Can Develop With You.</span>
+                </>
+              )}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
-              From machinery and industrial automation to smart agriculture, IoT, software and lifecycle support, Sanota brings multiple capabilities together to solve practical operational challenges.
+              {m ? m.cta.description : "From machinery and industrial automation to smart agriculture, IoT, software and lifecycle support, Sanota brings multiple capabilities together to solve practical operational challenges."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
-                Tell Us Your Challenge <ArrowRight className="ml-2 w-5 h-5" />
+                {m ? m.cta.primaryButton : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link href="/products" className="px-8 py-4 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center">
-                Explore Products & Systems
+                {m ? m.cta.secondaryButton : "Explore Products & Systems"}
               </Link>
             </div>
-            <p className="text-slate-500 dark:text-slate-400 text-sm italic">Real challenges. Integrated solutions. Engineering in action.</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm italic">{m ? m.cta.closingLine : "Real challenges. Integrated solutions. Engineering in action."}</p>
           </div>
         </section>
 

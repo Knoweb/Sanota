@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Briefcase, Newspaper, Video, Camera, Radio } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { mediaES } from "@/locales/es/media";
 
 const mediaNavigation = [
   { 
@@ -54,6 +56,8 @@ export default function MediaNavigationCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { language } = useLanguage();
+  const isEs = language === "es";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -76,12 +80,14 @@ export default function MediaNavigationCarousel() {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-6">
-          <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-black tracking-widest uppercase text-sm mb-2">Media Navigation</h2>
+          <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-black tracking-widest uppercase text-sm mb-2">
+            {isEs ? "Navegación de Medios" : "Media Navigation"}
+          </h2>
           <h3 
             className="text-3xl md:text-5xl font-black transition-colors duration-300"
             style={{ color: isDark ? '#FFFFFF' : '#17135B' }}
           >
-            What Would You Like to Explore?
+            {isEs ? mediaES.navigation.heading : "What Would You Like to Explore?"}
           </h3>
         </div>
       </div>
@@ -239,53 +245,64 @@ export default function MediaNavigationCarousel() {
 
                 {/* Lower Card Body */}
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-10 bg-white dark:bg-[#131C2E] justify-between">
-                  <div>
-                    <h4 
-                      className="text-xl sm:text-2xl font-black mb-3 leading-tight transition-colors duration-300 !drop-shadow-none"
-                      style={{ 
-                        color: isDark ? '#FFFFFF' : '#17135B',
-                        textShadow: 'none'
-                      }}
-                    >
-                      {nav.title}
-                    </h4>
-                    <p 
-                      className="text-[13.5px] sm:text-[14px] leading-relaxed font-normal transition-colors duration-300 !drop-shadow-none"
-                      style={{ 
-                        color: isDark ? '#CBD5E1' : '#555E75',
-                        textShadow: 'none'
-                      }}
-                    >
-                      {nav.desc}
-                    </p>
-                  </div>
+                  {(() => {
+                    const esNav = isEs ? mediaES.navigation.sections[idx] : null;
+                    const title = esNav ? esNav.title : nav.title;
+                    const desc = esNav ? esNav.desc : nav.desc;
+                    const buttonText = esNav ? esNav.button : nav.button;
 
-                  {/* Bottom Action Button / Link */}
-                  <div 
-                    className="mt-5 pt-4 border-t flex items-center justify-between transition-colors duration-300"
-                    style={{
-                      borderColor: isDark 
-                        ? (isCenter ? 'rgba(232,184,75,0.3)' : 'rgba(255,255,255,0.1)') 
-                        : (isCenter ? 'rgba(197,155,39,0.3)' : '#ECE7DD')
-                    }}
-                  >
-                    <Link 
-                      href={nav.href}
-                      className="text-sm font-bold tracking-wide flex items-center gap-2 transition-all duration-300 hover:gap-3 group-hover:underline"
-                      style={{ 
-                        color: isDark ? '#E8B84B' : '#C59B27' 
-                      }}
-                      onClick={(e) => {
-                        if (!isCenter) {
-                          e.preventDefault();
-                          setActiveIndex(idx);
-                        }
-                      }}
-                    >
-                      <span>{nav.button}</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </div>
+                    return (
+                      <>
+                        <div>
+                          <h4 
+                            className="text-xl sm:text-2xl font-black mb-3 leading-tight transition-colors duration-300 !drop-shadow-none"
+                            style={{ 
+                              color: isDark ? '#FFFFFF' : '#17135B',
+                              textShadow: 'none'
+                            }}
+                          >
+                            {title}
+                          </h4>
+                          <p 
+                            className="text-[13.5px] sm:text-[14px] leading-relaxed font-normal transition-colors duration-300 !drop-shadow-none"
+                            style={{ 
+                              color: isDark ? '#CBD5E1' : '#555E75',
+                              textShadow: 'none'
+                            }}
+                          >
+                            {desc}
+                          </p>
+                        </div>
+
+                        {/* Bottom Action Button / Link */}
+                        <div 
+                          className="mt-5 pt-4 border-t flex items-center justify-between transition-colors duration-300"
+                          style={{
+                            borderColor: isDark 
+                              ? (isCenter ? 'rgba(232,184,75,0.3)' : 'rgba(255,255,255,0.1)') 
+                              : (isCenter ? 'rgba(197,155,39,0.3)' : '#ECE7DD')
+                          }}
+                        >
+                          <Link 
+                            href={nav.href}
+                            className="text-sm font-bold tracking-wide flex items-center gap-2 transition-all duration-300 hover:gap-3 group-hover:underline"
+                            style={{ 
+                              color: isDark ? '#E8B84B' : '#C59B27' 
+                            }}
+                            onClick={(e) => {
+                              if (!isCenter) {
+                                e.preventDefault();
+                                setActiveIndex(idx);
+                              }
+                            }}
+                          >
+                            <span>{buttonText}</span>
+                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          </Link>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </motion.div>
