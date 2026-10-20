@@ -9,6 +9,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const industries = [
   {
@@ -68,7 +69,8 @@ export default function IndustriesWeSupport() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const indData = isDe ? homeDE.industries : isEs ? homeES.industries : null;
+  const isJa = language === "ja";
+  const indData = isJa ? homeJA.industries : isDe ? homeDE.industries : isEs ? homeES.industries : null;
 
   const displayIndustries = industries.map((item, idx) => {
     if (indData && indData.priority[idx]) {

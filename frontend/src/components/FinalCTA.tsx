@@ -7,6 +7,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const defaultOptions = [
   "Start Guided Chat",
@@ -21,7 +22,8 @@ export default function FinalCTA() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const cta = isDe ? homeDE.finalCTA : isEs ? homeES.finalCTA : null;
+  const isJa = language === "ja";
+  const cta = isJa ? homeJA.finalCTA : isDe ? homeDE.finalCTA : isEs ? homeES.finalCTA : null;
   const options = cta ? cta.alternatives : defaultOptions;
   return (
     <section id="contact" className="relative pt-16 pb-24 bg-transparent overflow-hidden">

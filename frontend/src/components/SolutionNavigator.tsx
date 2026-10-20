@@ -9,6 +9,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const options = [
   {
@@ -91,7 +92,8 @@ export default function SolutionNavigator() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const sn = isDe ? homeDE.solutionNavigator : isEs ? homeES.solutionNavigator : null;
+  const isJa = language === "ja";
+  const sn = isJa ? homeJA.solutionNavigator : isDe ? homeDE.solutionNavigator : isEs ? homeES.solutionNavigator : null;
 
   const displayOptions = options.map((opt, idx) => {
     if (sn && sn.items[idx]) {

@@ -108,31 +108,37 @@ export const industriesES = {
     sectors: [
       {
         title: "Logística, almacenamiento y manipulación",
+        subtitle: "Mover materiales de forma segura, inteligente y visible",
         desc: "Movimiento interno de materiales seguro y visible con AGVs, cintas transportadoras, descarga y seguimiento RFID.",
         linkText: "Explorar logística"
       },
       {
         title: "Eficiencia energética y de recursos",
+        subtitle: "Medir, controlar y optimizar los recursos",
         desc: "Medición y optimización de energía eléctrica, agua y vapor con tableros en tiempo real y controles inteligentes.",
         linkText: "Explorar energía y recursos"
       },
       {
         title: "Soluciones medioambientales y de residuos",
+        subtitle: "Ingeniería práctica para operaciones más limpias y resilientes",
         desc: "Compactación, procesamiento de residuos orgánicos, compostaje y monitoreo inteligente de desagües y efluentes.",
         linkText: "Explorar medio ambiente"
       },
       {
         title: "Infraestructura e instalaciones inteligentes",
+        subtitle: "Conectar infraestructura con supervisión y control inteligentes",
         desc: "Automatización de edificios, control de tráfico, monitoreo de servicios y plataformas de supervisión centralizada.",
         linkText: "Explorar instalaciones inteligentes"
       },
       {
         title: "Ingeniería biomédica y sanitaria",
+        subtitle: "Apoyo de ingeniería para la innovación sanitaria",
         desc: "Equipos mecánicos, dispositivos electrónicos especializados, prototipos y monitorización para el sector salud.",
         linkText: "Explorar ingeniería biomédica"
       },
       {
         title: "Investigación, innovación y desarrollo de productos",
+        subtitle: "De la idea y el desafío de investigación al producto diseñado",
         desc: "Desde la idea inicial hasta el diseño mecánico, electrónica integrada, sistemas embebidos y series piloto.",
         linkText: "Explorar innovación y desarrollo"
       }

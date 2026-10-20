@@ -6,6 +6,7 @@ import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const industriesLinksEN = [
   { name: 'Manufacturing & Industrial Automation', href: '/industries' },
@@ -46,6 +47,19 @@ const industriesLinksDE = [
   { name: 'Forschung & kundenspezifische Produktentwicklung', href: '/industries' }
 ];
 
+const industriesLinksJA = [
+  { name: '製造業および産業オートメーション', href: '/industries' },
+  { name: 'スマート農業', href: '/industries' },
+  { name: '食品・飲料加工', href: '/industries' },
+  { name: '茶産業ソリューション', href: '/industries' },
+  { name: '物流および倉庫管理', href: '/industries' },
+  { name: 'エネルギーおよび資源効率', href: '/industries' },
+  { name: '環境および廃棄物ソリューション', href: '/industries' },
+  { name: 'インフラとスマート施設', href: '/industries' },
+  { name: 'ヘルスケアおよび生物医学工学', href: '/industries' },
+  { name: '研究開発およびカスタム製品開発', href: '/industries' }
+];
+
 const servicesLinksEN = [
   { name: 'Engineering Consultation', href: '/services' },
   { name: 'System & Product Design', href: '/services' },
@@ -79,6 +93,17 @@ const servicesLinksDE = [
   { name: 'Technische Schulungen', href: '/services' }
 ];
 
+const servicesLinksJA = [
+  { name: 'エンジニアリングコンサルティング', href: '/services' },
+  { name: 'システムおよび製品設計', href: '/services' },
+  { name: '特注機械開発', href: '/services' },
+  { name: '自動化、IoT、デジタル統合', href: '/services' },
+  { name: '改修および近代化', href: '/services' },
+  { name: 'プロジェクト実行および試運転', href: '/services' },
+  { name: 'AMCおよびライフサイクルサポート', href: '/services' },
+  { name: '技術トレーニング', href: '/services' }
+];
+
 const exploreLinksEN = [
   { name: 'Products & Systems', href: '/products' },
   { name: 'Completed Work', href: '/media' },
@@ -109,16 +134,27 @@ const exploreLinksDE = [
   { name: 'Über Sanota', href: '/about' }
 ];
 
+const exploreLinksJA = [
+  { name: '製品とシステム', href: '/products' },
+  { name: '完成事例', href: '/media' },
+  { name: 'プロジェクト事例', href: '/media' },
+  { name: '動画', href: '/media' },
+  { name: 'フォトギャラリー', href: '/media' },
+  { name: 'イノベーションとパートナーシップ', href: '/contact' },
+  { name: 'サノタについて', href: '/about' }
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const f = isDe ? homeDE.footer : isEs ? homeES.footer : null;
+  const isJa = language === "ja";
+  const f = isJa ? homeJA.footer : isDe ? homeDE.footer : isEs ? homeES.footer : null;
 
-  const currentIndustries = isDe ? industriesLinksDE : isEs ? industriesLinksES : industriesLinksEN;
-  const currentServices = isDe ? servicesLinksDE : isEs ? servicesLinksES : servicesLinksEN;
-  const currentExplore = isDe ? exploreLinksDE : isEs ? exploreLinksES : exploreLinksEN;
+  const currentIndustries = isJa ? industriesLinksJA : isDe ? industriesLinksDE : isEs ? industriesLinksES : industriesLinksEN;
+  const currentServices = isJa ? servicesLinksJA : isDe ? servicesLinksDE : isEs ? servicesLinksES : servicesLinksEN;
+  const currentExplore = isJa ? exploreLinksJA : isDe ? exploreLinksDE : isEs ? exploreLinksES : exploreLinksEN;
 
   return (
     <footer className="relative z-10 bg-white dark:bg-[#050B14] border-t border-[#ECE7DD] dark:border-slate-800/80 pt-8 pb-4">
@@ -242,7 +278,7 @@ export default function Footer() {
             </div>
 
             <h4 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
-              {f ? "Redes Sociales" : "Social Links"}
+              {isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
             </h4>
             <div className="flex space-x-3">
               <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
@@ -273,7 +309,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-slate-500 text-xs flex items-center">
-            {f ? "Desarrollado por:" : "Built by:"} <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
+            {isJa ? "開発元：" : isDe ? "Entwickelt von:" : isEs ? "Desarrollado por:" : "Built by:"} <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
           </p>
         </div>
 

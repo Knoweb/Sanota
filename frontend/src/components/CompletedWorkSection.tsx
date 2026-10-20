@@ -35,6 +35,39 @@ const solutionFiltersES: Record<string, string> = {
   "AMC": "AMC"
 };
 
+const industryFiltersJA: Record<string, string> = {
+  "All Industries": "すべての業界",
+  "Food & Beverage": "食品・飲料",
+  "Tea": "製茶",
+  "Research & Development": "研究・開発",
+  "Energy": "エネルギー",
+  "Environment": "環境",
+  "Manufacturing": "製造業"
+};
+
+const solutionFiltersJA: Record<string, string> = {
+  "All Solutions": "すべてのソリューション",
+  "Machinery": "産業機械",
+  "Automation": "オートメーション",
+  "IoT": "IoT",
+  "Software": "ソフトウェア",
+  "Modernization": "近代化・改修",
+  "Product Development": "製品開発",
+  "Project Execution": "プロジェクト実行",
+  "AMC": "AMC（年間保守）"
+};
+
+const projectCriteriaJA = [
+  "業界または運用環境",
+  "対象となる製品、機械、またはシステム",
+  "統合された技術・テクノロジー",
+  "運用上の成果・効果",
+  "お客様の具体的なご要件",
+  "Sanotaが提供したサービス",
+  "導入・実装におけるSanotaの役割",
+  "関連する写真または動画"
+];
+
 const projectCriteria = [
   "The industry or operating environment",
   "The product, machinery or system involved",
@@ -153,6 +186,8 @@ interface Project {
 export default function CompletedWorkSection() {
   const { language } = useLanguage();
   const isEs = language === "es";
+  const isDe = language === "de";
+  const isJa = language === "ja";
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeIndustry, setActiveIndustry] = useState("All Projects");
@@ -242,7 +277,7 @@ export default function CompletedWorkSection() {
 
               {/* Animated Link */}
               <div className="inline-flex items-center text-xs font-bold text-[#E8B84B] uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                {isEs ? "Explorar proyecto" : (project.attributes.linkText || "Explore Project")} <ArrowRight className="ml-2 w-4 h-4" />
+                {isJa ? "プロジェクトを見る" : isDe ? "Projekt entdecken" : isEs ? "Explorar proyecto" : (project.attributes.linkText || "Explore Project")} <ArrowRight className="ml-2 w-4 h-4" />
               </div>
             </div>
           </Link>
@@ -250,7 +285,7 @@ export default function CompletedWorkSection() {
       </div>
     ) : (
       <div className="text-center py-12 bg-[#131C2E]/30 rounded-2xl border border-slate-800 mt-8">
-        <p className="text-slate-400 mb-4">{isEs ? "No se encontraron proyectos con este filtro." : "No projects found matching this filter."}</p>
+        <p className="text-slate-400 mb-4">{isJa ? "この条件に一致するプロジェクトは見つかりませんでした。" : isDe ? "Keine Projekte gefunden, die diesem Filter entsprechen." : isEs ? "No se encontraron proyectos con este filtro." : "No projects found matching this filter."}</p>
       </div>
     )
   );
@@ -261,28 +296,36 @@ export default function CompletedWorkSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
           <div>
             <h2 className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-              {isEs ? "Trabajo Terminado" : "Completed Work"}
+              {isJa ? "納入実績" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajo Terminado" : "Completed Work"}
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-              {isEs ? "Soluciones prácticas para entornos operativos reales" : "Practical Solutions for Real Operating Environments"}
+              {isJa ? "実際の運用環境に向けた実践的ソリューション" : isDe ? "Praktische Lösungen für reale Betriebsumgebungen" : isEs ? "Soluciones prácticas para entornos operativos reales" : "Practical Solutions for Real Operating Environments"}
             </h3>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
-              {isEs 
+              {isJa
+                ? "納入実績コレクションでは、多様な業界や技術分野におけるSanotaの選定プロジェクトを紹介しています。"
+                : isDe
+                ? "Die Sammlung abgeschlossener Arbeiten präsentiert ausgewählte Sanota-Projekte aus verschiedenen Branchen und technischen Fachbereichen."
+                : isEs 
                 ? "La colección de trabajos completados presenta proyectos seleccionados de Sanota en diversas industrias y disciplinas técnicas."
                 : "The Completed Work collection presents selected Sanota projects across industries and technical disciplines."}
             </p>
             <p className="text-slate-500 italic text-sm leading-relaxed border-l-2 border-slate-800 pl-4">
-              {isEs 
+              {isJa
+                ? "機密保持契約が適用される場合、クライアントを特定せず、機密技術の詳細を開示しない形でプロジェクト情報を掲載しています。"
+                : isDe
+                ? "Bei Vertraulichkeitsvereinbarungen können Projektinformationen dargestellt werden, ohne den Kunden zu identifizieren oder vertrauliche technische Details offenzulegen."
+                : isEs 
                 ? "Cuando se aplique la confidencialidad del cliente, la información del proyecto podrá presentarse sin identificar al cliente ni revelar detalles técnicos confidenciales."
                 : "Where client confidentiality applies, project information may be presented without identifying the client or disclosing sensitive technical details."}
             </p>
           </div>
           <div className="glowing-card bg-[#131C2E]/40 border border-slate-800 rounded-2xl p-6">
             <p className="text-white font-bold mb-4">
-              {isEs ? "Cada ficha de proyecto identifica:" : "Each project entry should identify:"}
+              {isJa ? "各プロジェクト事例の記載項目：" : isDe ? "Jeder Projekteintrag beschreibt:" : isEs ? "Cada ficha de proyecto identifica:" : "Each project entry should identify:"}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {(isEs ? projectCriteriaES : projectCriteria).map((item, idx) => (
+              {(isJa ? projectCriteriaJA : isEs ? projectCriteriaES : projectCriteria).map((item, idx) => (
                 <div key={idx} className="flex items-start">
                   <CheckCircle2 className="w-4 h-4 text-[#E8B84B] mt-0.5 mr-2 shrink-0" />
                   <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
@@ -296,7 +339,7 @@ export default function CompletedWorkSection() {
         <div className="mb-10">
           <div className="mb-4">
             <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
-              {isEs ? "Filtrar por industria" : "Filter by Industry"}
+              {isJa ? "業界で絞り込む" : isDe ? "Nach Branche filtern" : isEs ? "Filtrar por industria" : "Filter by Industry"}
             </h4>
             <div className="flex flex-wrap gap-2">
               {industryFilters.map((filter, idx) => (
@@ -305,7 +348,7 @@ export default function CompletedWorkSection() {
                   onClick={() => setActiveIndustry(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeIndustry === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
-                  {isEs ? (industryFiltersES[filter] || filter) : filter}
+                  {isJa ? (industryFiltersJA[filter] || filter) : isEs ? (industryFiltersES[filter] || filter) : filter}
                 </button>
               ))}
             </div>
@@ -316,7 +359,7 @@ export default function CompletedWorkSection() {
         <div className="mb-12 pt-10 border-t border-slate-800/50">
           <div className="mb-4">
             <h4 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
-              {isEs ? "Filtrar por solución" : "Filter by Solution"}
+              {isJa ? "ソリューションで絞り込む" : isDe ? "Nach Lösung filtern" : isEs ? "Filtrar por solución" : "Filter by Solution"}
             </h4>
             <div className="flex flex-wrap gap-2">
               {solutionFilters.map((filter, idx) => (
@@ -325,7 +368,7 @@ export default function CompletedWorkSection() {
                   onClick={() => setActiveSolution(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeSolution === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
-                  {isEs ? (solutionFiltersES[filter] || filter) : filter}
+                  {isJa ? (solutionFiltersJA[filter] || filter) : isEs ? (solutionFiltersES[filter] || filter) : filter}
                 </button>
               ))}
             </div>
@@ -338,13 +381,13 @@ export default function CompletedWorkSection() {
               onClick={() => setShowProjects(true)}
               className="inline-flex justify-center items-center px-8 py-4 border border-transparent hover:border-[#E8B84B]/50 text-[15px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-colors shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:shadow-[0_0_30px_rgba(232,184,75,0.5)] group"
             >
-              {isEs ? "Explorar Trabajos Completados" : "Browse Completed Work"}
+              {isJa ? "納入実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Explorar Trabajos Completados" : "Browse Completed Work"}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         ) : (
           <div className="mt-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            {loading ? <div className="text-center py-12 text-slate-400">{isEs ? "Cargando proyectos..." : "Loading projects..."}</div> : renderProjectGrid(filteredProjects)}
+            {loading ? <div className="text-center py-12 text-slate-400">{isJa ? "プロジェクトを読み込み中..." : isDe ? "Projekte werden geladen..." : isEs ? "Cargando proyectos..." : "Loading projects..."}</div> : renderProjectGrid(filteredProjects)}
           </div>
         )}
 

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const mediaCategories = [
   { 
@@ -112,7 +113,8 @@ export default function MediaSection() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const ms = isDe ? homeDE.mediaSection : isEs ? homeES.mediaSection : null;
+  const isJa = language === "ja";
+  const ms = isJa ? homeJA.mediaSection : isDe ? homeDE.mediaSection : isEs ? homeES.mediaSection : null;
 
   const displayCategories = mediaCategories.map((cat, idx) => {
     if (ms && ms.cards[idx]) {
@@ -138,7 +140,7 @@ export default function MediaSection() {
             className="max-w-2xl"
           >
             <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
-              {isEs ? "Sección de Medios" : "Media Section"}
+              {isJa ? "メディアセクション" : isDe ? "Medienbereich" : isEs ? "Sección de Medios" : "Media Section"}
             </h2>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
               {ms ? ms.heading : "Inside Sanota"}

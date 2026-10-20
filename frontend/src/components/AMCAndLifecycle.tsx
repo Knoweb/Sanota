@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const defaultAmcScope = [
   "Asset and condition assessment",
@@ -29,7 +30,8 @@ export default function AMCAndLifecycle() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const amcData = isDe ? homeDE.amcAndLifecycle : isEs ? homeES.amcAndLifecycle : null;
+  const isJa = language === "ja";
+  const amcData = isJa ? homeJA.amcAndLifecycle : isDe ? homeDE.amcAndLifecycle : isEs ? homeES.amcAndLifecycle : null;
 
   const amcScope = amcData ? amcData.scopeItems : defaultAmcScope;
   const originalLength = amcScope.length;
@@ -182,12 +184,16 @@ export default function AMCAndLifecycle() {
                 <div className="inline-flex items-center space-x-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 border border-[#C59B27]/30 dark:border-[#E8B84B]/30 px-4 py-2 rounded-full mb-6">
                   <Wrench className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
                   <span className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-widest">
-                    {amcData ? "AMC y Soporte del Ciclo de Vida" : "AMC and Lifecycle Support"}
+                    {amcData?.subheading || (isJa ? "AMCおよびライフサイクルサポート" : isDe ? "AMC & Lifecycle-Support" : isEs ? "AMC y Soporte del Ciclo de Vida" : "AMC and Lifecycle Support")}
                   </span>
                 </div>
                 
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
-                  {amcData ? (
+                  {isJa ? (
+                    <>重要システムを <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">高信頼性で安定稼働させ続ける</span></>
+                  ) : isDe ? (
+                    <>Kritische Systeme <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">zuverlässig am Laufen halten</span></>
+                  ) : isEs ? (
                     <>Mantenga los sistemas críticos <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">funcionando de manera confiable</span></>
                   ) : (
                     <>Keep Critical Systems <br/><span className="text-[#C59B27] dark:text-[#E8B84B]">Operating Reliably</span></>

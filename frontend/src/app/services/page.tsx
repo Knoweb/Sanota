@@ -11,6 +11,7 @@ import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, Gr
 import { useLanguage } from "@/context/LanguageContext";
 import { servicesES } from "@/locales/es/services";
 import { servicesDE } from "@/locales/de/services";
+import { servicesJA } from "@/locales/ja/services";
 
 const services = [
   {
@@ -245,7 +246,8 @@ export default function ServicesPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const s = isDe ? servicesDE : isEs ? servicesES : null;
+  const isJa = language === "ja";
+  const s = isJa ? servicesJA : isDe ? servicesDE : isEs ? servicesES : null;
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
@@ -267,7 +269,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isDe ? "Ingenieurdienstleistungen" : isEs ? "Servicios de ingeniería" : "Engineering Services"}
+              {isJa ? "エンジニアリングサービス" : isDe ? "Ingenieurdienstleistungen" : isEs ? "Servicios de ingeniería" : "Engineering Services"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -411,16 +413,16 @@ export default function ServicesPage() {
                   <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/30 mb-5 relative z-10 shadow-[0_0_15px_rgba(232,184,75,0.15)]">
                     <span className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse" />
                     <span className="text-[11px] font-bold tracking-widest uppercase text-[#E8B84B]">
-                      {s ? "Entrega de ingeniería integrada" : "Integrated Engineering Delivery"}
+                      {isJa ? "統合エンジニアリングの提供" : isDe ? "Integrierte Engineering-Bereitstellung" : isEs ? "Entrega de ingeniería integrada" : "Integrated Engineering Delivery"}
                     </span>
                   </div>
 
                   {/* High Impact Lead Typography */}
                   <h3 className="text-xl sm:text-2xl font-bold !text-white mb-3 leading-snug relative z-10 max-w-2xl">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] via-[#F3D78A] to-[#E8B84B] font-extrabold">
-                      {s ? "Sanota reúne las capacidades necesarias" : "Sanota brings the required capabilities together"}
+                      {isJa ? "Sanotaは必要な能力を統合します" : isDe ? "Sanota bündelt die erforderlichen Kompetenzen" : isEs ? "Sanota reúne las capacidades necesarias" : "Sanota brings the required capabilities together"}
                     </span>{" "}
-                    {s ? "en torno a sus necesidades operativas." : "around your operational need."}
+                    {isJa ? "お客様の運用上のニーズに合わせて。" : isDe ? "für Ihre betrieblichen Anforderungen." : isEs ? "en torno a sus necesidades operativas." : "around your operational need."}
                   </h3>
 
                   {/* Supporting Narrative */}
@@ -439,10 +441,10 @@ export default function ServicesPage() {
 
             <div className="text-center mb-8">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {s ? "Pilares de servicio" : "Service Pillars"}
+                {isJa ? "サービスピラー" : isDe ? "Servicesäulen" : isEs ? "Pilares de servicio" : "Service Pillars"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {s ? "Cómo Sanota puede apoyarle" : "How Sanota Can Support You"}
+                {isJa ? "Sanotaの包括的な支援体制" : isDe ? "Wie Sanota Sie unterstützen kann" : isEs ? "Cómo Sanota puede apoyarle" : "How Sanota Can Support You"}
               </h3>
             </div>
 
@@ -511,7 +513,7 @@ export default function ServicesPage() {
                               <div className="absolute inset-0 bg-gradient-to-br from-[#C59B27]/5 to-transparent opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
                               <h4 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] uppercase tracking-widest mb-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-2 shadow-[0_0_8px_rgba(197,155,39,0.8)]" />
-                                {s ? "Necesidades típicas del cliente" : "Typical Client Needs"}
+                                {isJa ? "代表的なお客様のご要望" : isDe ? "Typische Kundenanforderungen" : isEs ? "Necesidades típicas del cliente" : "Typical Client Needs"}
                               </h4>
                               <div className="grid grid-cols-1 gap-2.5">
                                 {clientNeeds.map((need, nIdx) => (
@@ -530,7 +532,7 @@ export default function ServicesPage() {
                           {/* Right: Services list */}
                           <div className="lg:w-1/2 flex flex-col h-full">
                             <p className="text-[#17135B] dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest mb-3">
-                              {sp?.servicesTitle || (s ? "Los servicios pueden incluir:" : "Services may include")}
+                              {sp?.servicesTitle || (isJa ? "提供サービス内容：" : isDe ? "Leistungen können umfassen:" : isEs ? "Los servicios pueden incluir:" : "Services may include")}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
                               {items.map((item, itemIdx) => (
@@ -568,7 +570,7 @@ export default function ServicesPage() {
                 {s ? s.integratedModel.heading : "Integrated Service Model"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {s ? "Un requisito puede requerir varios servicios de Sanota" : "One Requirement May Use Several Sanota Services"}
+                {isJa ? "1つの要件に対して複数のSanotaサービスを組み合わせ可能" : isDe ? "Eine Anforderung kann mehrere Sanota-Services erfordern" : isEs ? "Un requisito puede requerir varios servicios de Sanota" : "One Requirement May Use Several Sanota Services"}
               </h3>
               <p className="text-[#555E75] dark:text-slate-400 text-lg max-w-2xl mx-auto">
                 {s ? s.integratedModel.description : "A client does not need to decide which technical departments should be involved. Sanota first studies the requirement and then identifies the appropriate combination of services."}
@@ -669,11 +671,21 @@ export default function ServicesPage() {
                 
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-                  {s ? "Sectores a los que apoyamos" : "Industries Supported"}
+                  {isJa ? "対応産業分野" : isDe ? "Unterstützte Branchen" : isEs ? "Sectores a los que apoyamos" : "Industries Supported"}
                 </h2>
                 
                 <h3 className="text-4xl md:text-5xl lg:text-[44px] font-black text-[#17135B] dark:text-white mb-8 leading-[1.15]">
-                  {s ? (
+                  {isJa ? (
+                    <>
+                      多様な運用環境に <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">最適化されたサービス</span>
+                    </>
+                  ) : isDe ? (
+                    <>
+                      Dienstleistungen für <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">vielfältige Betriebsumgebungen</span>
+                    </>
+                  ) : isEs ? (
                     <>
                       Servicios adaptados a <br className="hidden md:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">diversos entornos operativos</span>
@@ -687,14 +699,14 @@ export default function ServicesPage() {
                 </h3>
                 
                 <p className="text-[#555E75] dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
-                  {s ? "Los servicios de Sanota cubren requisitos en una amplia gama de industrias. La solución final se desarrolla en función del entorno operativo real del cliente, los requisitos técnicos y las prioridades comerciales." : "Sanota's services can support requirements across a wide range of industries. The final solution is developed around the client's actual operating environment, technical requirements and business priorities."}
+                  {isJa ? "Sanotaのサービスは多岐にわたる産業分野のニーズに対応します。最終的なソリューションは、お客様の実際の稼働環境、技術要件、およびビジネスの優先事項に合わせて構築されます。" : isDe ? "Die Dienstleistungen von Sanota decken Anforderungen in einer Vielzahl von Branchen ab. Die endgültige Lösung wird auf der Grundlage der tatsächlichen Betriebsumgebung, der technischen Anforderungen und der geschäftlichen Prioritäten des Kunden entwickelt." : isEs ? "Los servicios de Sanota cubren requisitos en una amplia gama de industrias. La solución final se desarrolla en función del entorno operativo real del cliente, los requisitos técnicos y las prioridades comerciales." : "Sanota's services can support requirements across a wide range of industries. The final solution is developed around the client's actual operating environment, technical requirements and business priorities."}
                 </p>
                 
                 <Link 
                   href="/industries" 
                   className="inline-flex items-center px-8 py-4 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group"
                 >
-                  {s ? "Explorar industrias" : "Explore Industries"} 
+                  {isJa ? "産業分野を見る" : isDe ? "Branchen entdecken" : isEs ? "Explorar industrias" : "Explore Industries"} 
                   <span className="ml-3 w-8 h-8 rounded-full bg-[#111424]/10 flex items-center justify-center group-hover:bg-[#111424]/20 transition-colors">
                     <ArrowRight className="w-4 h-4 text-[#111424] group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -704,7 +716,29 @@ export default function ServicesPage() {
               {/* Right Column: Industry Cards */}
               <div className="lg:col-span-7">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                  {(s ? [
+                  {(isJa ? [
+                    "製造および産業オートメーション", 
+                    "スマート農業およびアグリテック", 
+                    "食品および飲料加工", 
+                    "茶葉加工産業ソリューション", 
+                    "物流、倉庫管理および資材搬送", 
+                    "エネルギーおよび資源効率化", 
+                    "環境および廃棄物管理", 
+                    "インフラおよびスマートファシリティ", 
+                    "ヘルスケアおよびバイオメディカルエンジニアリング", 
+                    "研究開発・イノベーション・新製品開発"
+                  ] : isDe ? [
+                    "Fertigung und Industrieautomation", 
+                    "Intelligente Landwirtschaft und Agrartechnologie", 
+                    "Lebensmittel- und Getränkeverarbeitung", 
+                    "Lösungen für die Teeindustrie", 
+                    "Logistik, Lagerung und Materialtransport", 
+                    "Energie- und Ressourceneffizienz", 
+                    "Umwelt- und Abfallmanagement", 
+                    "Infrastruktur und intelligente Einrichtungen", 
+                    "Gesundheitswesen und biomedizinische Technik", 
+                    "Forschung, Innovation und Produktentwicklung"
+                  ] : isEs ? [
                     "Fabricación y automatización industrial", 
                     "Agricultura inteligente y agrotecnología", 
                     "Procesamiento de alimentos y bebidas", 
@@ -787,7 +821,17 @@ export default function ServicesPage() {
                 </h2>
                 
                 <h3 className="text-4xl md:text-5xl lg:text-[52px] font-black text-[#17135B] dark:text-white mb-10 leading-tight">
-                  {s ? (
+                  {isJa ? (
+                    <>
+                      ソフトウェアとデジタル技術で強化された <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#3B82F6] dark:to-cyan-400">エンジニアリング能力</span>
+                    </>
+                  ) : isDe ? (
+                    <>
+                      Ingenieurwesen gestärkt durch <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#3B82F6] dark:to-cyan-400">Software und digitale Kompetenz</span>
+                    </>
+                  ) : isEs ? (
                     <>
                       Ingeniería reforzada por <br className="hidden md:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#3B82F6] dark:to-cyan-400">software y capacidades digitales</span>
@@ -801,17 +845,10 @@ export default function ServicesPage() {
                 </h3>
                 
                 <div className="space-y-6 text-[#555E75] dark:text-slate-300 text-[17px] leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
-                  {s ? (
-                    <>
-                      <p>{s.knowebCollab.description}</p>
-                      <p className="text-[#646C82] dark:text-slate-400">Esta relación permite a los clientes acceder a ingeniería y capacidades digitales a través de un único entorno coordinado. Sanota es responsable de comprender el requerimiento global, mientras que Knoweb aporta experiencia de software e IT especializada.</p>
-                    </>
-                  ) : (
-                    <>
-                      <p>Through its collaboration with Knoweb, Sanota can integrate engineering solutions with software, cloud platforms, IoT applications, web and mobile systems, dashboards and enterprise technologies.</p>
-                      <p className="text-[#646C82] dark:text-slate-400">This relationship allows clients to access engineering and digital capability through one coordinated solution environment. Sanota remains responsible for understanding and coordinating the overall engineering requirement, while Knoweb contributes specialized IT and software capability where required.</p>
-                    </>
-                  )}
+                  <p>{s ? s.knowebCollab.description : "Through its collaboration with Knoweb, Sanota can integrate engineering solutions with software, cloud platforms, IoT applications, web and mobile systems, dashboards and enterprise technologies."}</p>
+                  <p className="text-[#646C82] dark:text-slate-400">
+                    {isJa ? "この提携により、クライアントは単一の協調環境を通じてエンジニアリングとデジタル機能にアクセスできます。Sanotaは全体的な要件の把握と統括を担当し、Knowebは必要に応じて専門的なITおよびソフトウェア機能を提供します。" : isDe ? "Diese Beziehung ermöglicht es Kunden, über eine einzige koordinierte Umgebung auf Ingenieur- und Digitalkapazitäten zuzugreifen. Sanota bleibt für das Verständnis und die Koordination der Gesamtanforderungen verantwortlich, während Knoweb bei Bedarf spezialisierte IT- und Softwarekompetenz beisteuert." : isEs ? "Esta relación permite a los clientes acceder a ingeniería y capacidades digitales a través de un único entorno coordinado. Sanota es responsable de comprender el requerimiento global, mientras que Knoweb aporta experiencia de software e IT especializada." : "This relationship allows clients to access engineering and digital capability through one coordinated solution environment. Sanota remains responsible for understanding and coordinating the overall engineering requirement, while Knoweb contributes specialized IT and software capability where required."}
+                  </p>
                 </div>
                 
                 <Link 
@@ -838,7 +875,17 @@ export default function ServicesPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {s ? (
+                {isJa ? (
+                  <>
+                    ソリューションのライフサイクル全体にわたる <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">実践的な実行能力</span>
+                  </>
+                ) : isDe ? (
+                  <>
+                    Praktische Leistungsfähigkeit über den <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">gesamten Lösungslebenszyklus</span>
+                  </>
+                ) : isEs ? (
                   <>
                     Capacidad práctica a lo largo de <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">todo el ciclo de vida de la solución</span>
@@ -890,11 +937,21 @@ export default function ServicesPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-              {s ? "Trabajos completados" : "Completed Work"}
+              {isJa ? "納入実績・プロジェクト事例" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos completados" : "Completed Work"}
               <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
             </h2>
             <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-              {s ? (
+              {isJa ? (
+                <>
+                  Sanotaのサービスがどのように <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">適用されるかをご覧ください</span>
+                </>
+              ) : isDe ? (
+                <>
+                  Erfahren Sie, wie Sanota <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">diese Dienste einsetzt</span>
+                </>
+              ) : isEs ? (
                 <>
                   Vea cómo Sanota aplica <br className="hidden md:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">estos servicios</span>
@@ -907,7 +964,17 @@ export default function ServicesPage() {
               )}
             </h3>
             <div className="space-y-4 text-[#555E75] dark:text-slate-400 text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-              {s ? (
+              {isJa ? (
+                <>
+                  <p>機械開発、産業オートメーション、スマート農業、IoT統合、プロセス改善、近代化、および技術サポートの事例をご覧ください。</p>
+                  <p>各プロジェクトストーリーでは、課題、結集されたサービス、そして実現した機能的なソリューションを紹介しています。</p>
+                </>
+              ) : isDe ? (
+                <>
+                  <p>Entdecken Sie Beispiele für Maschinenbau, industrielle Automatisierung, intelligente Landwirtschaft, IoT-Integration, Prozessoptimierung, Modernisierung und technischen Support.</p>
+                  <p>Jede Projektgeschichte veranschaulicht die Herausforderung, die kombinierten Dienstleistungen und die resultierende betriebsfähige Lösung.</p>
+                </>
+              ) : isEs ? (
                 <>
                   <p>Explore ejemplos de desarrollo de maquinaria, automatización industrial, agricultura inteligente, integración de IoT, mejora de procesos, modernización y soporte técnico.</p>
                   <p>Cada historia de proyecto demuestra el desafío, los servicios reunidos y la solución funcional resultante.</p>
@@ -924,7 +991,7 @@ export default function ServicesPage() {
                 href="/media" 
                 className="inline-flex items-center px-8 py-4 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group w-full sm:w-auto justify-center"
               >
-                {s ? "Ver trabajos completados" : "View Completed Work"} 
+                {isJa ? "納入実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver trabajos completados" : "View Completed Work"} 
                 <span className="ml-3 w-8 h-8 rounded-full bg-[#111424]/10 flex items-center justify-center group-hover:bg-[#111424]/20 transition-colors">
                   <ArrowRight className="w-4 h-4 text-[#111424] group-hover:translate-x-0.5 transition-transform" />
                 </span>
@@ -933,7 +1000,7 @@ export default function ServicesPage() {
                 href="/media" 
                 className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0F1523]/80 backdrop-blur-md border border-[#17135B]/20 dark:border-slate-700 text-[#17135B] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 text-[15px] font-bold rounded-xl transition-all duration-300 shadow-sm w-full sm:w-auto justify-center"
               >
-                {s ? "Visitar centro de medios" : "Visit the Media Centre"}
+                {isJa ? "メディアセンターを見る" : isDe ? "Medienbereich besuchen" : isEs ? "Visitar centro de medios" : "Visit the Media Centre"}
               </Link>
             </div>
           </div>
@@ -953,12 +1020,22 @@ export default function ServicesPage() {
             >
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-                {s ? "¿Listo para empezar?" : "Ready To Start?"}
+                {isJa ? "始める準備はできましたか？" : isDe ? "Bereit zu starten?" : isEs ? "¿Listo para empezar?" : "Ready To Start?"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
               </h2>
               
               <h2 className="text-4xl md:text-5xl lg:text-[52px] font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-                {s ? (
+                {isJa ? (
+                  <>
+                    どのような課題の解決を <br className="hidden sm:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">サポートできますか？</span>
+                  </>
+                ) : isDe ? (
+                  <>
+                    Welche Herausforderung dürfen wir <br className="hidden sm:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">für Sie lösen?</span>
+                  </>
+                ) : isEs ? (
                   <>
                     ¿Qué reto podemos <br className="hidden sm:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">ayudarle a resolver?</span>

@@ -14,6 +14,7 @@ import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Cof
 import { useLanguage } from "@/context/LanguageContext";
 import { industriesES } from "@/locales/es/industries";
 import { industriesDE } from "@/locales/de/industries";
+import { industriesJA } from "@/locales/ja/industries";
 
 // Data Structures
 
@@ -167,7 +168,8 @@ export default function IndustriesPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const ind = isDe ? industriesDE : isEs ? industriesES : null;
+  const isJa = language === "ja";
+  const ind = isJa ? industriesJA : isDe ? industriesDE : isEs ? industriesES : null;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeAdditional, setActiveAdditional] = useState<number | null>(0);
@@ -229,7 +231,7 @@ export default function IndustriesPage() {
               transition={{ delay: 0.15 }}
               className="text-lg text-slate-400 max-w-4xl mx-auto mb-10 leading-relaxed"
             >
-              {isDe ? "Wir kombinieren Ingenieurwesen, Automatisierung, IoT und Software, um praxisnahe Lösungen für die Anforderungen jeder Branche und jedes Kunden zu entwickeln." : isEs ? "Combinamos ingeniería, automatización, IoT y software para desarrollar soluciones prácticas en torno a los requisitos de cada industria y cliente." : "We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer."}
+              {isJa ? "当社はエンジニアリング、自動化、IoT、ソフトウェアを組み合わせ、各業界および顧客の要件に応じた実用的なソリューションを開発しています。" : isDe ? "Wir kombinieren Ingenieurwesen, Automatisierung, IoT und Software, um praxisnahe Lösungen für die Anforderungen jeder Branche und jedes Kunden zu entwickeln." : isEs ? "Combinamos ingeniería, automatización, IoT y software para desarrollar soluciones prácticas en torno a los requisitos de cada industria y cliente." : "We combine engineering, automation, IoT and software to develop practical solutions around the requirements of each industry and customer."}
             </motion.p>
             
             <motion.div
@@ -315,7 +317,7 @@ export default function IndustriesPage() {
                 <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-700 via-[#E8B84B]/50 to-transparent mb-6" />
                 
                 <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">
-                  {isDe ? "Sanota beginnt damit, Ihre Betriebsabläufe zu verstehen, einschließlich:" : isEs ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
+                  {isJa ? "サノタは、以下を含む顧客の業務の理解から始めます：" : isDe ? "Sanota beginnt damit, Ihre Betriebsabläufe zu verstehen, einschließlich:" : isEs ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
@@ -372,7 +374,9 @@ export default function IndustriesPage() {
                     className="text-white text-base lg:text-lg font-normal leading-relaxed relative z-10"
                     style={{ color: '#FFFFFF' }}
                   >
-                    {isDe ? (
+                    {isJa ? (
+                      <>その後、適切なエンジニアリングおよび技術力を結集し、<span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>実用的で拡張性のあるソリューションを開発します。</span></>
+                    ) : isDe ? (
                       <>Anschließend bündeln wir die passenden Engineering- und Technologiekompetenzen, um eine <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>praktische und skalierbare Lösung zu entwickeln.</span></>
                     ) : isEs ? (
                       <>Luego combinamos las capacidades adecuadas de ingeniería y tecnología para desarrollar una <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>solución práctica y escalable.</span></>
@@ -420,7 +424,8 @@ export default function IndustriesPage() {
               {priorityIndustries.map((item, idx) => {
                 const esShortTitles = ["Fabricación", "Agricultura", "Alimentos", "Té"];
                 const deShortTitles = ["Fertigung", "Landwirtschaft", "Lebensmittel", "Tee"];
-                const titleText = isDe ? deShortTitles[idx] || item.shortTitle : isEs ? esShortTitles[idx] || item.shortTitle : item.shortTitle;
+                const jaShortTitles = ["製造業", "スマート農業", "食品・飲料", "茶葉"];
+                const titleText = isJa ? jaShortTitles[idx] || item.shortTitle : isDe ? deShortTitles[idx] || item.shortTitle : isEs ? esShortTitles[idx] || item.shortTitle : item.shortTitle;
                 return (
                   <button 
                     key={idx} 
@@ -470,7 +475,7 @@ export default function IndustriesPage() {
                   </p>
                   
                   <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
-                    {isDe ? "Unsere Unterstützung umfasst:" : isEs ? "Nuestro apoyo puede incluir:" : "Our support can include:"}
+                    {isJa ? "当社のサポート内容：" : isDe ? "Unsere Unterstützung umfasst:" : isEs ? "Nuestro apoyo puede incluir:" : "Our support can include:"}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10 max-w-3xl">
                     {(ind && ind.prioritySectors[activeIndex]
@@ -507,10 +512,10 @@ export default function IndustriesPage() {
                 {ind ? ind.additionalIndustries.heading : "Additional Industries"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {isDe ? "Umfassende betriebliche Unterstützung" : isEs ? "Amplio apoyo operativo" : "Broad Operational Support"}
+                {isJa ? "広範な運用サポート" : isDe ? "Umfassende betriebliche Unterstützung" : isEs ? "Amplio apoyo operativo" : "Broad Operational Support"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-[15px] max-w-2xl mx-auto leading-relaxed">
-                {isDe ? "Über unsere Kernbereiche hinaus bietet Sanota hochspezialisierte Ingenieurleistungen und digitale Integration für eine Vielzahl anspruchsvoller Betriebsumgebungen." : isEs ? "Más allá de nuestros sectores principales, Sanota proporciona ingeniería altamente especializada e integración digital para una variedad de entornos operativos exigentes." : "Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments."}
+                {isJa ? "中核となる分野以外にも、サノタは要求の厳しい多様な運用環境に対して高度に専門化されたエンジニアリングとデジタル統合を提供します。" : isDe ? "Über unsere Kernbereiche hinaus bietet Sanota hochspezialisierte Ingenieurleistungen und digitale Integration für eine Vielzahl anspruchsvoller Betriebsumgebungen." : isEs ? "Más allá de nuestros sectores principales, Sanota proporciona ingeniería altamente especializada e integración digital para una variedad de entornos operativos exigentes." : "Beyond our core sectors, Sanota provides highly specialized engineering and digital integration for a variety of demanding operational environments."}
               </p>
             </div>
 
@@ -519,6 +524,7 @@ export default function IndustriesPage() {
                 const isActive = activeAdditional === idx;
                 const localizedItem = ind && ind.additionalIndustries.sectors[idx] ? ind.additionalIndustries.sectors[idx] : null;
                 const title = localizedItem ? localizedItem.title : item.title;
+                const subtitle = (localizedItem && 'subtitle' in localizedItem && localizedItem.subtitle) ? (localizedItem as any).subtitle : item.subtitle;
                 const desc = localizedItem ? localizedItem.desc : item.desc;
                 const buttonText = localizedItem ? localizedItem.linkText : item.button;
                 
@@ -565,7 +571,7 @@ export default function IndustriesPage() {
                           className="overflow-hidden"
                         >
                           <div className="pl-24 pr-4 pb-8 pt-2">
-                            <p className="text-[#2E5EAA] font-bold text-sm mb-4 uppercase tracking-wide">{item.subtitle}</p>
+                            <p className="text-[#2E5EAA] font-bold text-sm mb-4 uppercase tracking-wide">{subtitle}</p>
                             <p className="text-slate-500 dark:text-slate-400 text-[15px] leading-relaxed mb-6 max-w-3xl">
                               {desc}
                             </p>
@@ -598,7 +604,7 @@ export default function IndustriesPage() {
                 {ind ? ind.lifecycle.subheading : "Support Across the Complete Engineering Journey"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                {isDe ? "Die Unterstützung durch Sanota beschränkt sich nicht auf die Lieferung einer Maschine oder einzelner Technologien. Je nach Anforderung unterstützen wir über den gesamten Lebenszyklus der Lösung." : isEs ? "El soporte de Sanota no se limita al suministro de una máquina o tecnología individual. Según los requisitos, ayudamos a lo largo de todo el ciclo de vida de la solución." : "Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle."}
+                {isJa ? "サノタのサポートは、単一の機械や個別の技術の提供にとどまりません。要件に応じて、ソリューションのライフサイクル全体を通じて支援します。" : isDe ? "Die Unterstützung durch Sanota beschränkt sich nicht auf die Lieferung einer Maschine oder einzelner Technologien. Je nach Anforderung unterstützen wir über den gesamten Lebenszyklus der Lösung." : isEs ? "El soporte de Sanota no se limita al suministro de una máquina o tecnología individual. Según los requisitos, ayudamos a lo largo de todo el ciclo de vida de la solución." : "Sanota’s support is not limited to supplying a machine or individual technology. Depending on the requirement, we can assist across the complete solution lifecycle."}
               </p>
             </div>
 
@@ -632,7 +638,7 @@ export default function IndustriesPage() {
                       
                       {/* Elegant Step Indicator */}
                       <div className="absolute -top-6 text-[11px] font-black tracking-[0.2em] text-[#2E5EAA] opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
-                        {isDe ? `PHASE 0${idx + 1}` : isEs ? `FASE 0${idx + 1}` : `PHASE 0${idx + 1}`}
+                        {isJa ? `フェーズ 0${idx + 1}` : isDe ? `PHASE 0${idx + 1}` : isEs ? `FASE 0${idx + 1}` : `PHASE 0${idx + 1}`}
                       </div>
 
                       {/* Diamond Node with Spinning Border Light */}
@@ -692,13 +698,13 @@ export default function IndustriesPage() {
             {/* Header Text */}
             <div className="mb-10 max-w-4xl">
                <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
-                 {isDe ? "Engineering & Digitale Integration" : isEs ? "Integración digital y de ingeniería" : "Engineering & Digital Integration"}
+                 {isJa ? "エンジニアリングとデジタル統合" : isDe ? "Engineering & Digitale Integration" : isEs ? "Integración digital y de ingeniería" : "Engineering & Digital Integration"}
                </h2>
                <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-4 leading-tight">
-                 {isDe ? "Physische Systeme, vernetzt mit intelligenter Technologie" : isEs ? "Sistemas físicos conectados con tecnología inteligente" : "Physical Systems Connected with Intelligent Technology"}
+                 {isJa ? "インテリジェント技術と連携した物理システム" : isDe ? "Physische Systeme, vernetzt mit intelligenter Technologie" : isEs ? "Sistemas físicos conectados con tecnología inteligente" : "Physical Systems Connected with Intelligent Technology"}
                </h3>
                <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-3xl">
-                 {isDe ? "Moderne Industrien erfordern zunehmend, dass Maschinen, Automatisierung und digitale Systeme koordiniert zusammenarbeiten. Sanota kombiniert seine Engineering-Kompetenz mit dem Software- und Digitalwissen von Knoweb, um nahtlos integrierte Systeme zu entwickeln." : isEs ? "Las industrias modernas requieren cada vez más que la maquinaria, la automatización y los sistemas digitales trabajen de forma coordinada. Sanota combina su experiencia en ingeniería con el conocimiento digital de Knoweb para desarrollar sistemas integrados y conectados." : "Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly."}
+                 {isJa ? "現代の産業では、機械、自動化、デジタルシステムが協調して動作することがますます求められています。サノタはエンジニアリング機能とKnowebのソフトウェア・デジタル専門知識を組み合わせ、シームレスに統合されたシステムを開発します。" : isDe ? "Moderne Industrien erfordern zunehmend, dass Maschinen, Automatisierung und digitale Systeme koordiniert zusammenarbeiten. Sanota kombiniert seine Engineering-Kompetenz mit dem Software- und Digitalwissen von Knoweb, um nahtlos integrierte Systeme zu entwickeln." : isEs ? "Las industrias modernas requieren cada vez más que la maquinaria, la automatización y los sistemas digitales trabajen de forma coordinada. Sanota combina su experiencia en ingeniería con el conocimiento digital de Knoweb para desarrollar sistemas integrados y conectados." : "Modern industries increasingly require machinery, automation and digital systems to work together. Sanota combines its engineering capabilities with the software and digital expertise of Knoweb, enabling us to develop integrated systems seamlessly."}
                </p>
             </div>
 
@@ -721,7 +727,7 @@ export default function IndustriesPage() {
                 <div className="absolute top-8 left-8 bg-[#0B1220]/80 backdrop-blur-md border border-[#E8B84B]/30 rounded-xl px-4 py-2 flex items-center shadow-lg">
                   <div className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse mr-3" />
                   <span className="text-white text-xs font-bold tracking-widest uppercase">
-                    {isDe ? "System online" : isEs ? "Sistema en línea" : "System Online"}
+                    {isJa ? "システム稼働中" : isDe ? "System online" : isEs ? "Sistema en línea" : "System Online"}
                   </span>
                 </div>
               </div>
@@ -731,7 +737,9 @@ export default function IndustriesPage() {
                 <div className="bg-white dark:bg-[#131C2E]/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-700/80 rounded-[30px] p-8 lg:p-10 shadow-lg dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                   
                   <p className="text-[#17135B] dark:text-white text-xl font-bold leading-relaxed mb-6">
-                    {isDe ? (
+                    {isJa ? (
+                      <>この組み合わせにより、顧客は孤立した機械や手動記録から、より<span className="text-[#C59B27] dark:text-[#E8B84B]">接続され可視化された運用へと移行できます。</span></>
+                    ) : isDe ? (
                       <>Diese Kombination hilft Kunden, von isolierten Maschinen und manuellen Aufzeichnungen zu <span className="text-[#C59B27] dark:text-[#E8B84B]">vernetzten und transparenten Abläufen überzugehen.</span></>
                     ) : isEs ? (
                       <>Esta combinación ayuda a los clientes a pasar de maquinaria aislada y registros manuales a <span className="text-[#C59B27] dark:text-[#E8B84B]">operaciones más conectadas y visibles.</span></>
@@ -743,11 +751,16 @@ export default function IndustriesPage() {
                   <div className="h-px w-full bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent mb-6" />
                   
                   <p className="text-[#2E5EAA] font-bold uppercase tracking-widest text-xs mb-5">
-                    {isDe ? "Vernetzte Lösungen, die Folgendes beinhalten:" : isEs ? "Soluciones conectadas que incorporan:" : "Connected Solutions Incorporating:"}
+                    {isJa ? "以下を組み込んだコネクテッドソリューション：" : isDe ? "Vernetzte Lösungen, die Folgendes beinhalten:" : isEs ? "Soluciones conectadas que incorporan:" : "Connected Solutions Incorporating:"}
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
-                    {(isDe ? [
+                    {(isJa ? [
+                      "産業機械", "PLCおよびHMI制御", "センサーと計測機器", 
+                      "IoT接続", "クラウドプラットフォーム", "Webおよびモバイルアプリ", 
+                      "運用ダッシュボード", "追跡およびトレーサビリティ", "アラートとレポート", 
+                      "遠隔監視・制御", "エンタープライズシステムとの統合"
+                    ] : isDe ? [
                       "Industriemaschinen", "SPS- und HMI-Steuerung", "Sensoren und Instrumentierung", 
                       "IoT-Konnektivität", "Cloud-Plattformen", "Web- und mobile Anwendungen", 
                       "Betriebs-Dashboards", "Nachverfolgung und Rückverfolgbarkeit", "Warnungen und Berichte", 
@@ -768,7 +781,7 @@ export default function IndustriesPage() {
                   </div>
                   
                   <Link href="/services" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(232,184,75,0.2)] hover:shadow-[0_15px_30px_rgba(232,184,75,0.4)] hover:-translate-y-1">
-                    {isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar la automatización e IoT" : "Explore Automation & IoT"} <ArrowRight className="ml-2 w-5 h-5" />
+                    {isJa ? "自動化・IoTを探求する" : isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar la automatización e IoT" : "Explore Automation & IoT"} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
 
                 </div>
@@ -783,13 +796,13 @@ export default function IndustriesPage() {
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isDe ? "Lebenszyklus- & Betriebsunterstützung" : isEs ? "Soporte de ciclo de vida y operaciones" : "Lifecycle & Operations Support"}
+                {isJa ? "ライフサイクルおよび運用サポート" : isDe ? "Lebenszyklus- & Betriebsunterstützung" : isEs ? "Soporte de ciclo de vida y operaciones" : "Lifecycle & Operations Support"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {isDe ? "Erhalt und Optimierung kritischer Systeme" : isEs ? "Mantenimiento y mejora de sistemas críticos" : "Sustaining and Improving Critical Systems"}
+                {isJa ? "重要システムの維持と改善" : isDe ? "Erhalt und Optimierung kritischer Systeme" : isEs ? "Mantenimiento y mejora de sistemas críticos" : "Sustaining and Improving Critical Systems"}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                {isDe ? "Über die Entwicklung neuer Systeme hinaus stellt Sanota sicher, dass Ihre vorhandenen Maschinen und Ihre Infrastruktur weiterhin zuverlässig und effizient arbeiten." : isEs ? "Más allá del desarrollo de nuevos sistemas, Sanota garantiza que su maquinaria e infraestructura existentes continúen funcionando de manera confiable y eficiente." : "Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently."}
+                {isJa ? "新しいシステム開発にとどまらず、サノタは既存の機械設備やインフラが信頼性と効率性を維持しながら稼働し続けることを保証します。" : isDe ? "Über die Entwicklung neuer Systeme hinaus stellt Sanota sicher, dass Ihre vorhandenen Maschinen und Ihre Infrastruktur weiterhin zuverlässig und effizient arbeiten." : isEs ? "Más allá del desarrollo de nuevos sistemas, Sanota garantiza que su maquinaria e infraestructura existentes continúen funcionando de manera confiable y eficiente." : "Beyond new system development, Sanota ensures your existing machinery and infrastructure continue to operate reliably and efficiently."}
               </p>
             </div>
 
@@ -800,13 +813,13 @@ export default function IndustriesPage() {
                   onClick={() => setActiveSupportTab('modernization')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'modernization' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> {isDe ? "Modernisierung" : isEs ? "Modernización" : "Modernization"}
+                  <RefreshCw className="w-4 h-4 mr-2 hidden sm:block" /> {isJa ? "近代化" : isDe ? "Modernisierung" : isEs ? "Modernización" : "Modernization"}
                 </button>
                 <button
                   onClick={() => setActiveSupportTab('amc')}
                   className={`relative z-10 w-1/2 py-3.5 rounded-xl font-bold transition-colors duration-300 flex items-center justify-center ${activeSupportTab === 'amc' ? 'text-[#0B1220]' : 'text-slate-500 dark:text-slate-400 hover:text-[#17135B] dark:hover:text-white'}`}
                 >
-                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> {isDe ? "AMC & Support" : isEs ? "AMC y soporte" : "AMC & Support"}
+                  <ShieldCheck className="w-4 h-4 mr-2 hidden sm:block" /> {isJa ? "AMC・サポート" : isDe ? "AMC & Support" : isEs ? "AMC y soporte" : "AMC & Support"}
                 </button>
                 
                 {/* Active Tab Background indicator */}
@@ -847,10 +860,21 @@ export default function IndustriesPage() {
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
                         <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
-                          {isDe ? "Modernisierungsansätze umfassen:" : isEs ? "Los enfoques de modernización incluyen:" : "Modernization approaches include:"}
+                          {isJa ? "近代化のアプローチ内容：" : isDe ? "Modernisierungsansätze umfassen:" : isEs ? "Los enfoques de modernización incluyen:" : "Modernization approaches include:"}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {(isDe ? [
+                          {(isJa ? [
+                            "機械的オーバーホール",
+                            "電気系統の修理と再配線",
+                            "コントローラーの交換",
+                            "センサーおよび計装のアップグレード",
+                            "PLCおよびHMIの統合",
+                            "自動化の改善",
+                            "安全性のアップグレード",
+                            "ソフトウェアおよび監視の統合",
+                            "エネルギーとパフォーマンスの最適化",
+                            "オペレーターおよびメンテナンスのトレーニング"
+                          ] : isDe ? [
                             "Mechanische Überholung",
                             "Elektrische Reparaturen und Neuverkabelung",
                             "Austausch von Steuerungen",
@@ -881,7 +905,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            {isDe ? "Dieser Ansatz kann die Lebensdauer der Ausrüstung verlängern, die Zuverlässigkeit verbessern und die Kosten sowie Betriebsunterbrechungen eines kompletten Austauschs reduzieren." : isEs ? "Este enfoque puede extender la vida útil de los equipos, mejorar la confiabilidad y reducir el costo e interrupción de un reemplazo total." : "This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement."}
+                            {isJa ? "このアプローチにより、機器の寿命を延ばし、信頼性を高め、完全な交換に伴うコストや業務の中断を軽減できます。" : isDe ? "Dieser Ansatz kann die Lebensdauer der Ausrüstung verlängern, die Zuverlässigkeit verbessern und die Kosten sowie Betriebsunterbrechungen eines kompletten Austauschs reduzieren." : isEs ? "Este enfoque puede extender la vida útil de los equipos, mejorar la confiabilidad y reducir el costo e interrupción de un reemplazo total." : "This approach can extend equipment life, improve reliability and reduce the cost and disruption of complete replacement."}
                           </p>
                         </div>
                       </div>
@@ -904,22 +928,32 @@ export default function IndustriesPage() {
                       <div className="w-full lg:w-5/12 flex flex-col">
                         <ShieldCheck className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mb-6 opacity-90" />
                         <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-                          {isDe ? "Kritische Systeme zuverlässig in Betrieb halten" : isEs ? "Mantenga los sistemas críticos funcionando de manera confiable" : "Keep Critical Systems Operating Reliably"}
+                          {isJa ? "重要システムの信頼性の高い稼働を維持" : isDe ? "Kritische Systeme zuverlässig in Betrieb halten" : isEs ? "Mantenga los sistemas críticos funcionando de manera confiable" : "Keep Critical Systems Operating Reliably"}
                         </h3>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                          {isDe ? "Sanota bietet jährliche Wartungsverträge (AMC) und technischen Support für Sanota-Systeme. Nach einer technischen Zustandsbewertung unterstützen wir auch geeignete Drittsysteme." : isEs ? "Sanota proporciona contratos de mantenimiento anual y soporte técnico para sistemas construidos por Sanota. También admitimos equipos de terceros elegibles tras una evaluación técnica inicial." : "Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment."}
+                          {isJa ? "サノタは、当社が構築したシステムに対して年間保守契約（AMC）および技術サポートを提供します。また、事前の技術評価を経て、対象となるサードパーティ製機器もサポートします。" : isDe ? "Sanota bietet jährliche Wartungsverträge (AMC) und technischen Support für Sanota-Systeme. Nach einer technischen Zustandsbewertung unterstützen wir auch geeignete Drittsysteme." : isEs ? "Sanota proporciona contratos de mantenimiento anual y soporte técnico para sistemas construidos por Sanota. También admitimos equipos de terceros elegibles tras una evaluación técnica inicial." : "Sanota provides Annual Maintenance Contracts and technical support for Sanota-built systems. We also support eligible third-party equipment following an initial technical and condition assessment."}
                         </p>
                         <Link href="/contact" className="inline-flex items-center px-6 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors mt-auto self-start shadow-[0_5px_20px_rgba(232,184,75,0.2)]">
-                          {isDe ? "AMC-Informationen anfordern" : isEs ? "Solicitar información de AMC" : "Request AMC Info"} <ArrowRight className="ml-2 w-4 h-4" />
+                          {isJa ? "AMC情報をリクエストする" : isDe ? "AMC-Informationen anfordern" : isEs ? "Solicitar información de AMC" : "Request AMC Info"} <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                       </div>
                       
                       <div className="w-full lg:w-7/12 lg:border-l border-slate-200 dark:border-slate-700/50 lg:pl-12">
                         <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold uppercase tracking-widest text-xs mb-6">
-                          {isDe ? "AMC-Programme können abdecken:" : isEs ? "Los programas de AMC pueden cubrir:" : "AMC programmes may cover:"}
+                          {isJa ? "AMCプログラムの対象範囲：" : isDe ? "AMC-Programme können abdecken:" : isEs ? "Los programas de AMC pueden cubrir:" : "AMC programmes may cover:"}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-8">
-                          {(isDe ? [
+                          {(isJa ? [
+                            "機械および加工機器",
+                            "電気パネルおよび制御システム",
+                            "PLC、HMI、産業用ドライブ",
+                            "センサーおよび計装機器",
+                            "コンベアおよびマテリアルハンドリングシステム",
+                            "農業および環境制御",
+                            "IoTデバイスおよび監視プラットフォーム",
+                            "ソフトウェアおよび運用ダッシュボード",
+                            "統合生産・加工システム"
+                          ] : isDe ? [
                             "Maschinen und Verarbeitungsanlagen",
                             "Schaltschränke und Steuerungssysteme",
                             "SPS, HMIs und Industrieantriebe",
@@ -948,7 +982,7 @@ export default function IndustriesPage() {
                         </div>
                         <div className="bg-slate-50 dark:bg-[#0B1220]/50 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mt-auto">
                           <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed italic">
-                            {isDe ? "Jeder AMC-Vertrag wird individuell auf Ausrüstung, Betriebsumgebung, Kritikalität und Supportanforderungen des Kunden abgestimmt." : isEs ? "Cada AMC se desarrolla según el equipo, el entorno operativo, la criticidad y los requisitos de soporte del cliente." : "Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer."}
+                            {isJa ? "各AMC契約は、顧客の機器、動作環境、重要度、およびサポート要件に合わせて個別に策定されます。" : isDe ? "Jeder AMC-Vertrag wird individuell auf Ausrüstung, Betriebsumgebung, Kritikalität und Supportanforderungen des Kunden abgestimmt." : isEs ? "Cada AMC se desarrolla según el equipo, el entorno operativo, la criticidad y los requisitos de soporte del cliente." : "Each AMC is developed according to the equipment, operating environment, criticality and support requirements of the customer."}
                           </p>
                         </div>
                       </div>
@@ -1009,27 +1043,38 @@ export default function IndustriesPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-8">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-3">
-                {isDe ? "Kollaborative Innovation" : isEs ? "Innovación colaborativa" : "Collaborative Innovation"}
+                {isJa ? "協創によるイノベーション" : isDe ? "Kollaborative Innovation" : isEs ? "Innovación colaborativa" : "Collaborative Innovation"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isDe ? "Ein Partner für etablierte und aufstrebende Branchen" : isEs ? "Un socio para industrias establecidas y emergentes" : "A Partner for Established and Emerging Industries"}
+                {isJa ? "既存産業と新興産業のパートナー" : isDe ? "Ein Partner für etablierte und aufstrebende Branchen" : isEs ? "Un socio para industrias establecidas y emergentes" : "A Partner for Established and Emerging Industries"}
               </h3>
               <div className="bg-white/80 dark:bg-[#131C2E]/40 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-6 shadow-sm dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] inline-block relative overflow-hidden">
                 <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-[#C59B27]/10 dark:via-white/5 to-transparent skew-x-12 animate-[runRight_8s_linear_infinite]" />
                 
                 <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl relative z-10">
-                  {isDe ? "Ob es sich um ein komplett neues System, eine einzelne Maschine, ein Automatisierungs-Upgrade, eine digitale Plattform oder kontinuierlichen technischen Support handelt – Sanota hilft Ihnen, den passenden Weg nach vorn zu entwickeln." : isEs ? "Ya sea que el requisito implique un sistema completamente nuevo, una máquina individual, una actualización de automatización, una plataforma digital o soporte técnico continuo, Sanota puede ayudar a desarrollar el camino más adecuado." : "Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward."}
+                  {isJa ? "完全な新システム、単体の機械、自動化のアップグレード、デジタルプラットフォーム、あるいは継続的な技術サポートなど、どのような要件であっても、サノタは最適な前進の道を切り拓くお手伝いをします。" : isDe ? "Ob es sich um ein komplett neues System, eine einzelne Maschine, ein Automatisierungs-Upgrade, eine digitale Plattform oder kontinuierlichen technischen Support handelt – Sanota hilft Ihnen, den passenden Weg nach vorn zu entwickeln." : isEs ? "Ya sea que el requisito implique un sistema completamente nuevo, una máquina individual, una actualización de automatización, una plataforma digital o soporte técnico continuo, Sanota puede ayudar a desarrollar el camino más adecuado." : "Whether the requirement involves a complete new system, an individual machine, an automation upgrade, a digital platform or ongoing technical support, Sanota can help develop an appropriate path forward."}
                 </p>
               </div>
             </div>
 
             <p className="text-center text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest text-xs mb-6">
-              {isDe ? "Wir arbeiten mit Organisationen in allen Phasen:" : isEs ? "Trabajamos con organizaciones en todas las etapas:" : "We work with organizations across all stages:"}
+              {isJa ? "私たちはあらゆるステージの組織と協働します：" : isDe ? "Wir arbeiten mit Organisationen in allen Phasen:" : isEs ? "Trabajamos con organizaciones en todas las etapas:" : "We work with organizations across all stages:"}
             </p>
 
             {/* Floating Badges Grid */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {(isDe ? [
+              {(isJa ? [
+                "確立された産業企業",
+                "中小企業（SME）",
+                "輸出志向の製造業者",
+                "農業事業者",
+                "茶園および製茶工場",
+                "食品加工業者",
+                "政府および公的機関",
+                "大学および研究機関",
+                "発明家およびスタートアップ",
+                "国際的な技術・ビジネスパートナー"
+              ] : isDe ? [
                 "Etablierte Industrieunternehmen",
                 "Kleine und mittlere Unternehmen",
                 "Exportorientierte Hersteller",
@@ -1104,7 +1149,7 @@ export default function IndustriesPage() {
               animate={{ x: [0, -1000] }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
-              {isDe ? "HANDELN • INNOVATION • MODERNISIERUNG • HANDELN • INNOVATION • MODERNISIERUNG" : isEs ? "ACTÚE • INNOVE • MODERNISE • ACTÚE • INNOVE • MODERNISE" : "TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE"}
+              {isJa ? "行動 • 革新 • 近代化 • 行動 • 革新 • 近代化" : isDe ? "HANDELN • INNOVATION • MODERNISIERUNG • HANDELN • INNOVATION • MODERNISIERUNG" : isEs ? "ACTÚE • INNOVE • MODERNISE • ACTÚE • INNOVE • MODERNISE" : "TAKE ACTION • INNOVATE • MODERNIZE • TAKE ACTION • INNOVATE • MODERNIZE"}
             </motion.h2>
           </div>
 
@@ -1116,7 +1161,11 @@ export default function IndustriesPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h3 className="text-5xl md:text-7xl font-black text-[#17135B] dark:text-white mb-6 leading-tight tracking-tight">
-                {isDe ? (
+                {isJa ? (
+                  <>
+                    貴社の業界で何を <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">改善する必要がありますか？</span>
+                  </>
+                ) : isDe ? (
                   <>
                     Was muss Ihre Branche <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#F1D08A]">verbessern?</span>
                   </>
@@ -1157,10 +1206,16 @@ export default function IndustriesPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-slate-500 dark:text-slate-600 font-bold text-xs uppercase tracking-widest mb-8">
-                {isDe ? "Zusätzliche Anfrageoptionen" : isEs ? "Opciones de consulta adicionales" : "Additional Enquiry Options"}
+                {isJa ? "その他の問い合わせオプション" : isDe ? "Zusätzliche Anfrageoptionen" : isEs ? "Opciones de consulta adicionales" : "Additional Enquiry Options"}
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
-                {(isDe ? [
+                {(isJa ? [
+                  "産業評価", 
+                  "近代化評価", 
+                  "AMC評価", 
+                  "製品情報", 
+                  "開発パートナーシップ"
+                ] : isDe ? [
                   "Industriebewertung", 
                   "Modernisierungsbewertung", 
                   "AMC-Bewertung", 

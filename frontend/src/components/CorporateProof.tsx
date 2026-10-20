@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const defaultProofPoints = [
   { 
@@ -26,7 +27,9 @@ const defaultProofPoints = [
 
 export default function CorporateProof() {
   const { language } = useLanguage();
-  const proofPoints = language === "de" 
+  const proofPoints = language === "ja"
+    ? homeJA.corporateProof.points
+    : language === "de" 
     ? homeDE.corporateProof.points 
     : language === "es" 
     ? homeES.corporateProof.points 

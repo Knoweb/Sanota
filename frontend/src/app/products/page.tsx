@@ -9,6 +9,7 @@ import { ArrowRight, Settings, Coffee, Sprout, Activity, Truck, Zap, Trash2, Lig
 import { useLanguage } from "@/context/LanguageContext";
 import { productsES } from "@/locales/es/products";
 import { productsDE } from "@/locales/de/products";
+import { productsJA } from "@/locales/ja/products";
 
 const productCategories = [
   {
@@ -515,11 +516,91 @@ const industriesDE = [
   "Forschung, Innovation und Produktentwicklung"
 ];
 
+const selectedSolutionsJA = [
+  "自動化機械",
+  "特殊用途機器",
+  "加工機械",
+  "生産・搬送システム",
+  "スマート温室ソリューション",
+  "灌漑・施肥システム",
+  "環境制御システム",
+  "産業オートメーションシステム",
+  "PLCおよびHMIソリューション",
+  "IoT監視プラットフォーム",
+  "遠隔制御システム",
+  "ダッシュボードとレポートツール",
+  "資産および位置追跡システム",
+  "資材運搬機器",
+  "コンベアシステム",
+  "自動誘導車両（AGV）",
+  "エネルギーおよびユーティリティ監視",
+  "廃棄物処理装置",
+  "センサー搭載製品",
+  "カスタムプロトタイプ",
+  "統合型産業・施設システム"
+];
+
+const existingEquipmentsJA = [
+  "機械的な改良",
+  "電気系統のアップグレード",
+  "制御装置の交換",
+  "自動化",
+  "センサー統合",
+  "IoT接続",
+  "ソフトウェア監視",
+  "安全性向上",
+  "能力向上",
+  "陳腐化管理",
+  "予防保守",
+  "長期的なライフサイクルサポート"
+];
+
+const knowebItemsJA = [
+  "IoTプラットフォーム",
+  "クラウド接続",
+  "Webアプリケーション",
+  "モバイルアプリケーション",
+  "ダッシュボード",
+  "アラートと通知",
+  "自動レポート作成",
+  "データ管理",
+  "ユーザー管理システム",
+  "既存ソフトウェアとの統合"
+];
+
+const supportItemsJA = [
+  "予防保守",
+  "定期点検",
+  "故障時のサポート体制",
+  "機械および電気の整備",
+  "自動化および制御のサポート",
+  "IoTとソフトウェアのサポート",
+  "業績評価",
+  "部品交換計画",
+  "近代化に関する提言",
+  "オペレーターおよび保守トレーニング",
+  "年間保守契約（AMC）"
+];
+
+const industriesJA = [
+  "製造業および産業オートメーション",
+  "スマート農業および農業技術",
+  "食品および飲料加工",
+  "お茶",
+  "物流、倉庫管理、資材管理",
+  "エネルギーおよび資源効率",
+  "環境および廃棄物管理",
+  "インフラおよびスマート施設",
+  "ヘルスケアおよび生物医学工学",
+  "研究、イノベーション、製品開発"
+];
+
 export default function ProductsPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const p = isDe ? productsDE : isEs ? productsES : null;
+  const isJa = language === "ja";
+  const p = isJa ? productsJA : isDe ? productsDE : isEs ? productsES : null;
 
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -559,7 +640,7 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isDe ? "Engineering-Produkte & Integrierte Systeme" : isEs ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
+              {isJa ? "エンジニアリング製品および統合システム" : isDe ? "Engineering-Produkte & Integrierte Systeme" : isEs ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -637,7 +718,12 @@ export default function ProductsPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight"
             >
-              {isDe ? (
+              {isJa ? (
+                <>
+                  個々の機器から <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">完全な統合ソリューションまで</span>
+                </>
+              ) : isDe ? (
                 <>
                   Von Einzelgeräten bis hin zu <br className="hidden md:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">kompletten integrierten Lösungen</span>
@@ -662,7 +748,11 @@ export default function ProductsPage() {
               transition={{ delay: 0.1 }}
               className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium max-w-3xl mx-auto"
             >
-              {isDe ? (
+              {isJa ? (
+                <>
+                  顧客によっては、特定の機械や製品を必要とする場合もあれば、機器、制御装置、センサー、ソフトウェア、そして実装を含む完全な運用システムを必要とする場合もあります。<strong className="text-[#17135B] dark:text-white">サノタは両方をサポートしています。</strong>
+                </>
+              ) : isDe ? (
                 <>
                   Manche Kunden benötigen eine bestimmte Maschine oder ein bestimmtes Produkt. Andere benötigen ein komplettes Betriebssystem, bestehend aus Ausrüstung, Steuerungen, Sensoren, Software und Implementierung. <strong className="text-[#17135B] dark:text-white">Sanota unterstützt beides.</strong>
                 </>
@@ -684,7 +774,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.15 }}
               className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10"
             >
-              {isDe ? "Abhängig von den Anforderungen kann Sanota folgendes bereitstellen:" : isEs ? "En función de los requisitos, Sanota puede suministrar:" : "Depending on the requirement, Sanota can provide:"}
+              {isJa ? "ご要望に応じて、サノタは以下のサービスを提供できます：" : isDe ? "Abhängig von den Anforderungen kann Sanota folgendes bereitstellen:" : isEs ? "En función de los requisitos, Sanota puede suministrar:" : "Depending on the requirement, Sanota can provide:"}
             </motion.p>
             
             <div className="relative max-w-4xl mx-auto mb-14 mt-8 group">
@@ -733,7 +823,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.6 }}
               className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm"
             >
-              {isDe ? "Der passende Ansatz wird nach gründlicher Prüfung der Kundenanwendung, der Betriebsumgebung und des gewünschten Ergebnisses festgelegt." : isEs ? "El enfoque adecuado se determina después de comprender la aplicación, el entorno operativo y el resultado esperado del cliente." : "The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome."}
+              {isJa ? "適切なアプローチは、顧客の用途、動作環境、および期待される成果を理解した上で決定されます。" : isDe ? "Der passende Ansatz wird nach gründlicher Prüfung der Kundenanwendung, der Betriebsumgebung und des gewünschten Ergebnisses festgelegt." : isEs ? "El enfoque adecuado se determina después de comprender la aplicación, el entorno operativo y el resultado esperado del cliente." : "The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome."}
             </motion.p>
           </div>
         </section>
@@ -745,10 +835,10 @@ export default function ProductsPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isDe ? "Produkt- und Systemkategorien" : isEs ? "Categorías de productos y sistemas" : "Product and System Categories"}
+                {isJa ? "製品およびシステムカテゴリ" : isDe ? "Produkt- und Systemkategorien" : isEs ? "Categorías de productos y sistemas" : "Product and System Categories"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {isDe ? "Entdecken Sie Sanotas Produkt- und Systemkompetenzen" : isEs ? "Explore los productos y capacidades de sistemas de Sanota" : "Explore Sanota’s Product and System Capabilities"}
+                {isJa ? "サノタの製品とシステムの機能をご覧ください" : isDe ? "Entdecken Sie Sanotas Produkt- und Systemkompetenzen" : isEs ? "Explore los productos y capacidades de sistemas de Sanota" : "Explore Sanota’s Product and System Capabilities"}
               </h3>
             </div>
 
@@ -809,7 +899,7 @@ export default function ProductsPage() {
                           <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
                             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-slate-400 to-[#17135B] dark:to-slate-700" />
                             <p className="text-[#17135B] dark:text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">
-                              {isDe ? "Geeignet für Organisationen, die Folgendes anstreben:" : isEs ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
+                              {isJa ? "以下のような組織に適しています：" : isDe ? "Geeignet für Organisationen, die Folgendes anstreben:" : isEs ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
                             </p>
                             <div className="space-y-4 ml-2">
                               {catNeeds.map((need, nIdx) => (
@@ -826,7 +916,7 @@ export default function ProductsPage() {
                           <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
                             <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-sm flex items-center">
                               <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-white/50 mr-3 animate-pulse" />
-                              {isDe ? "Lösungen können umfassen" : isEs ? "Las soluciones pueden incluir" : "Solutions may include"}
+                              {isJa ? "ソリューションには以下が含まれる場合があります" : isDe ? "Lösungen können umfassen" : isEs ? "Las soluciones pueden incluir" : "Solutions may include"}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                               {catSolutions.map((item, itemIdx) => (
@@ -957,7 +1047,7 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm">
-                {isDe ? "Sanota hilft Ihnen nach Prüfung der Anforderungen, die am besten geeignete Vorgehensweise zu bestimmen." : isEs ? "Sanota le ayudará a determinar qué enfoque es el más adecuado después de revisar el requisito." : "Sanota will help determine which approach is most appropriate after reviewing the requirement."}
+                {isJa ? "サノタは、要件を検討した上で、どの方法が最も適切かを判断するお手伝いをします。" : isDe ? "Sanota hilft Ihnen nach Prüfung der Anforderungen, die am besten geeignete Vorgehensweise zu bestimmen." : isEs ? "Sanota le ayudará a determinar qué enfoque es el más adecuado después de revisar el requisito." : "Sanota will help determine which approach is most appropriate after reviewing the requirement."}
               </p>
             </motion.div>
           </div>
@@ -972,11 +1062,16 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isDe ? "Ausgewählte Lösungsbereiche" : isEs ? "Áreas de Soluciones Seleccionadas" : "Selected Solution Areas"}
+                {isJa ? "選択されたソリューション分野" : isDe ? "Ausgewählte Lösungsbereiche" : isEs ? "Áreas de Soluciones Seleccionadas" : "Selected Solution Areas"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isDe ? (
+                {isJa ? (
+                  <>
+                    サノタが開発・統合できるものの例 <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">エンジニアリングの適用実績</span>
+                  </>
+                ) : isDe ? (
                   <>
                     Beispiele für das, was Sanota <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">entwickeln und integrieren kann</span>
@@ -1006,7 +1101,7 @@ export default function ProductsPage() {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay" />
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 relative z-10">
-                  {(isDe ? selectedSolutionsDE : isEs ? selectedSolutionsES : selectedSolutions).map((sol, idx) => (
+                  {(isJa ? selectedSolutionsJA : isDe ? selectedSolutionsDE : isEs ? selectedSolutionsES : selectedSolutions).map((sol, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 10 }}
@@ -1031,7 +1126,7 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold italic max-w-3xl mx-auto leading-relaxed shadow-sm">
-                {isDe ? "Die endgültige Konfiguration, Spezifikationen und der Umfang hängen von der Anwendung und technischen Prüfung beim Kunden ab." : isEs ? "La configuración final, especificaciones y alcance dependerán de la aplicación y evaluación técnica del cliente." : "The final configuration, specifications and scope will depend on the client’s application and technical assessment."}
+                {isJa ? "最終的な構成、仕様、および範囲は、顧客の用途と技術的な評価によって決定されます。" : isDe ? "Die endgültige Konfiguration, Spezifikationen und der Umfang hängen von der Anwendung und technischen Prüfung beim Kunden ab." : isEs ? "La configuración final, especificaciones y alcance dependerán de la aplicación y evaluación técnica del cliente." : "The final configuration, specifications and scope will depend on the client’s application and technical assessment."}
               </p>
             </motion.div>
           </div>
@@ -1051,10 +1146,15 @@ export default function ProductsPage() {
               >
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                  {isDe ? "Neuanlagen und bestehende Ausrüstung" : isEs ? "Nuevos Sistemas y Equipos Existentes" : "New Systems and Existing Equipment"}
+                  {isJa ? "新システムと既存設備" : isDe ? "Neuanlagen und bestehende Ausrüstung" : isEs ? "Nuevos Sistemas y Equipos Existentes" : "New Systems and Existing Equipment"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-                  {isDe ? (
+                  {isJa ? (
+                    <>
+                      新しいものを開発する。既存のものを改善する。 <br className="hidden xl:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">すでに機能しているものを接続する。</span>
+                    </>
+                  ) : isDe ? (
                     <>
                       Neues entwickeln. Bestehendes verbessern. <br className="hidden xl:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">Funktionierendes vernetzen.</span>
@@ -1072,14 +1172,14 @@ export default function ProductsPage() {
                   )}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium">
-                  {isDe ? "Sanotas Rolle beschränkt sich nicht nur auf die Entwicklung neuer Maschinen und Systeme." : isEs ? "El papel de Sanota no se limita al desarrollo de maquinaria y sistemas nuevos." : "Sanota’s role is not limited to developing new machinery and systems."}
+                  {isJa ? "サノタの役割は、新しい機械やシステムの開発だけにとどまりません。" : isDe ? "Sanotas Rolle beschränkt sich nicht nur auf die Entwicklung neuer Maschinen und Systeme." : isEs ? "El papel de Sanota no se limita al desarrollo de maquinaria y sistemas nuevos." : "Sanota’s role is not limited to developing new machinery and systems."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10">
-                  {isDe ? "Bestehende Anlagen besitzen oft einen erheblichen operativen Wert, benötigen jedoch modernisierte Steuerungen, neue Komponenten, Automatisierung, digitale Überwachung oder strukturierte Wartung." : isEs ? "Los equipos existentes pueden conservar un gran valor operativo pero requerir controles actualizados, nuevos componentes, automatización, monitorización digital o mantenimiento estructurado." : "Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance."}
+                  {isJa ? "既存の設備は依然として高い運用価値を有している可能性がありますが、制御の改善、新しいコンポーネント、自動化、デジタル監視、または体系的な保守が必要な場合があります。" : isDe ? "Bestehende Anlagen besitzen oft einen erheblichen operativen Wert, benötigen jedoch modernisierte Steuerungen, neue Komponenten, Automatisierung, digitale Überwachung oder strukturierte Wartung." : isEs ? "Los equipos existentes pueden conservar un gran valor operativo pero requerir controles actualizados, nuevos componentes, automatización, monitorización digital o mantenimiento estructurado." : "Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance."}
                 </p>
                 
                 <Link href="/services" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0B1220]/80 backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                  {isDe ? "Nachrüstung und Modernisierung erkunden" : isEs ? "Explorar Modernización y Reacondicionamiento" : "Explore Retrofit & Modernization"} 
+                  {isJa ? "改修・近代化について調べる" : isDe ? "Nachrüstung und Modernisierung erkunden" : isEs ? "Explorar Modernización y Reacondicionamiento" : "Explore Retrofit & Modernization"} 
                   <ArrowRight className="ml-3 w-5 h-5 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
                 </Link>
               </motion.div>
@@ -1111,10 +1211,10 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-8 text-lg drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       {isDe ? "Sanota kann vorhandene Maschinen und Systeme evaluieren, um Optimierungspotenziale zu ermitteln für:" : isEs ? "Sanota puede evaluar la maquinaria y sistemas existentes para identificar oportunidades de:" : "Sanota can assess existing machinery and systems to identify opportunities for:"}
+                       {isJa ? "サノタは既存の機械やシステムを評価し、以下の機会を特定できます：" : isDe ? "Sanota kann vorhandene Maschinen und Systeme evaluieren, um Optimierungspotenziale zu ermitteln für:" : isEs ? "Sanota puede evaluar la maquinaria y sistemas existentes para identificar oportunidades de:" : "Sanota can assess existing machinery and systems to identify opportunities for:"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                      {(isDe ? existingEquipmentsDE : isEs ? existingEquipmentsES : existingEquipments).map((eq, idx) => (
+                      {(isJa ? existingEquipmentsJA : isDe ? existingEquipmentsDE : isEs ? existingEquipmentsES : existingEquipments).map((eq, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, y: 15 }}
@@ -1160,7 +1260,12 @@ export default function ProductsPage() {
                   </div>
                   
                   <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                    {isDe ? (
+                    {isJa ? (
+                      <>
+                        デジタル技術で <br className="hidden md:block" />
+                        つながった<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">エンジニアリング製品</span>
+                      </>
+                    ) : isDe ? (
                       <>
                         Technische Produkte, <br className="hidden md:block" />
                         verbunden durch <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">digitale Technologie</span>
@@ -1180,10 +1285,14 @@ export default function ProductsPage() {
                   
                   <div className="space-y-6 mb-10 max-w-3xl mx-auto text-center">
                     <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
-                      {isDe ? "Moderne technische Produkte hängen zunehmend von Software, Konnektivität und dem Zugriff auf Betriebsdaten ab. Durch Knoweb, ein verbundenes IT-Unternehmen unter gemeinsamem Besitz, kann Sanota technische Produkte und Systeme stärken." : isEs ? "Los productos de ingeniería modernos dependen cada vez más del software, la conectividad y el acceso a información operativa. A través de Knoweb, empresa de TI afiliada bajo propiedad común, Sanota fortalece productos y sistemas de ingeniería." : "Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems."}
+                      {isJa ? "現代のエンジニアリング製品は、ソフトウェア、接続性、および運用情報へのアクセスにますます依存するようになっています。サノタは、同一グループ傘下の関連IT企業であるKnowebを通じて、エンジニアリング製品およびシステムを強化できます。" : isDe ? "Moderne technische Produkte hängen zunehmend von Software, Konnektivität und dem Zugriff auf Betriebsdaten ab. Durch Knoweb, ein verbundenes IT-Unternehmen unter gemeinsamem Besitz, kann Sanota technische Produkte und Systeme stärken." : isEs ? "Los productos de ingeniería modernos dependen cada vez más del software, la conectividad y el acceso a información operativa. A través de Knoweb, empresa de TI afiliada bajo propiedad común, Sanota fortalece productos y sistemas de ingeniería." : "Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems."}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-                      {isDe ? (
+                      {isJa ? (
+                        <>
+                          <strong className="text-[#17135B] dark:text-white">サノタ</strong>がエンジニアリング要件全体を統括し、必要に応じて<strong className="text-[#17135B] dark:text-white">Knoweb</strong>が特化したソフトウェアとデジタル機能を提供します。
+                        </>
+                      ) : isDe ? (
                         <>
                           <strong className="text-[#17135B] dark:text-white">Sanota</strong> koordiniert die gesamten technischen Anforderungen, während <strong className="text-[#17135B] dark:text-white">Knoweb</strong> spezialisierte Software und digitale Kompetenzen beisteuert, wo immer erforderlich.
                         </>
@@ -1202,7 +1311,7 @@ export default function ProductsPage() {
                   <Link href="#automation-iot" className="relative inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] overflow-hidden rounded-xl group border border-slate-300 dark:border-slate-700 transition-all hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] shadow-sm">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#E8B84B]/10 to-cyan-500/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                     <span className="relative z-10 text-[#17135B] dark:text-white font-bold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#C59B27] dark:group-hover:from-[#E8B84B] group-hover:to-cyan-500 dark:group-hover:to-cyan-400 transition-all duration-300">
-                      {isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar Automatización e IoT" : "Explore Automation & IoT"}
+                      {isJa ? "自動化・IoTを探求する" : isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar Automatización e IoT" : "Explore Automation & IoT"}
                     </span>
                     <div className="relative z-10 ml-4 w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors">
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
@@ -1235,12 +1344,12 @@ export default function ProductsPage() {
                          <Activity className="w-10 h-10 text-cyan-500 dark:text-cyan-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors" />
                        </motion.div>
                        <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-300 dark:to-blue-500 tracking-wide mb-2">
-                         {isDe ? "Digitale Kompetenzen" : isEs ? "Capacidades Digitales" : "Digital Capabilities"}
+                         {isJa ? "デジタル機能" : isDe ? "Digitale Kompetenzen" : isEs ? "Capacidades Digitales" : "Digital Capabilities"}
                        </h4>
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {(isDe ? knowebItemsDE : isEs ? knowebItemsES : knowebItems).map((item, idx) => (
+                      {(isJa ? knowebItemsJA : isDe ? knowebItemsDE : isEs ? knowebItemsES : knowebItems).map((item, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -1277,11 +1386,15 @@ export default function ProductsPage() {
             <div className="text-center mb-10 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isDe ? "Wie eine Lösung entwickelt wird" : isEs ? "Cómo se Desarrolla una Solución" : "How a Solution is Developed"}
+                {isJa ? "ソリューションの開発プロセス" : isDe ? "Wie eine Lösung entwickelt wird" : isEs ? "Cómo se Desarrolla una Solución" : "How a Solution is Developed"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isDe ? (
+                {isJa ? (
+                  <>
+                    要件定義から <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">稼働システムへ</span>
+                  </>
+                ) : isDe ? (
                   <>
                     Von der Anforderung zum <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">funktionierenden System</span>
                   </>
@@ -1302,7 +1415,15 @@ export default function ProductsPage() {
               <div className="hidden md:block absolute left-1/2 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-[#C59B27]/40 dark:via-[#E8B84B]/30 to-transparent -translate-x-1/2" />
               
               <div className="space-y-6 md:space-y-0 relative z-10">
-                {(isDe ? [
+                {(isJa ? [
+                  { n: "1", title: "要件の理解", desc: "サノタは、運用の課題、期待される成果、および作業環境を調査・分析します。" },
+                  { n: "2", title: "用途の評価", desc: "既存の機器、プロセス、制約事項、リスク、および統合要件を詳細に検討します。" },
+                  { n: "3", title: "ソリューションの定義", desc: "適切な製品、システム、またはカスタム開発のアプローチを特定します。" },
+                  { n: "4", title: "設計と開発", desc: "必要に応じて、機械、電気、自動化、IoT、およびソフトウェアの各要素を開発します。" },
+                  { n: "5", title: "統合とテスト", desc: "コンポーネントとテクノロジーを組み立て、プログラミングし、接続して徹底的にテストします。" },
+                  { n: "6", title: "設置と試運転", desc: "想定される実際の運用環境においてソリューションを実装し、動作を検証します。" },
+                  { n: "7", title: "トレーニングとサポート", desc: "オペレーター向けガイダンス、技術文書、メンテナンス、およびAMCサポートを提供します。" }
+                ] : isDe ? [
                   { n: "1", title: "Anforderung verstehen", desc: "Sanota analysiert die betriebliche Herausforderung, das beabsichtigte Ergebnis und die Arbeitsumgebung." },
                   { n: "2", title: "Anwendung bewerten", desc: "Vorhandene Ausrüstung, Prozesse, Einschränkungen, Risiken und Integrationsanforderungen werden geprüft." },
                   { n: "3", title: "Lösung definieren", desc: "Das geeignete Produkt, System oder der maßgeschneiderte Entwicklungsansatz wird identifiziert." },
@@ -1363,7 +1484,7 @@ export default function ProductsPage() {
             >
               <Link href="/tell-us-your-challenge" className="relative inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl overflow-hidden group transition-all hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-1 shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10">{isDe ? "Teilen Sie uns Ihre Anforderungen mit" : isEs ? "Cuéntenos sus requisitos" : "Tell Us Your Requirement"}</span>
+                <span className="relative z-10">{isJa ? "ご要望をお聞かせください" : isDe ? "Teilen Sie uns Ihre Anforderungen mit" : isEs ? "Cuéntenos sus requisitos" : "Tell Us Your Requirement"}</span>
                 <div className="relative z-10 ml-3 w-8 h-8 rounded-full bg-[#0B1220]/10 flex items-center justify-center group-hover:bg-[#0B1220]/20 transition-colors">
                   <ArrowRight className="w-4 h-4 text-[#0B1220] group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -1446,7 +1567,7 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-6 text-xs uppercase tracking-widest drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       {isDe ? "Umfassende Supportabdeckung" : isEs ? "Cobertura de Soporte Integral" : "Comprehensive Support Cover"}
+                       {isJa ? "包括的なサポート範囲" : isDe ? "Umfassende Supportabdeckung" : isEs ? "Cobertura de Soporte Integral" : "Comprehensive Support Cover"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       {(() => {
@@ -1454,7 +1575,7 @@ export default function ProductsPage() {
                           ShieldCheck, PackageSearch, Wrench, Zap, Settings, Layers,
                           Activity, Layers, Lightbulb, Activity, ShieldCheck
                         ];
-                        const list = isDe ? supportItemsDE : isEs ? supportItemsES : [
+                        const list = isJa ? supportItemsJA : isDe ? supportItemsDE : isEs ? supportItemsES : [
                           "Preventive maintenance",
                           "Periodic inspections",
                           "Breakdown-support",
@@ -1502,11 +1623,16 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isDe ? "Bediente Branchen" : isEs ? "Industrias Atendidas" : "Industries Served"}
+                {isJa ? "対応産業分野" : isDe ? "Bediente Branchen" : isEs ? "Industrias Atendidas" : "Industries Served"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
-                {isDe ? (
+                {isJa ? (
+                  <>
+                    多様な運用環境に対応する <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">製品およびシステム</span>
+                  </>
+                ) : isDe ? (
                   <>
                     Produkte und Systeme für <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">unterschiedliche Betriebsumgebungen</span>
@@ -1610,7 +1736,7 @@ export default function ProductsPage() {
                       
                       {/* Text */}
                       <span className="text-slate-700 dark:text-slate-300 text-[14px] leading-snug font-medium group-hover:text-[#17135B] dark:group-hover:text-white transition-colors duration-300 relative z-10">
-                        {isDe ? industriesDE[idx] : isEs ? industriesES[idx] : ind.name}
+                        {isJa ? industriesJA[idx] : isDe ? industriesDE[idx] : isEs ? industriesES[idx] : ind.name}
                       </span>
                     </div>
                   </motion.div>
@@ -1620,7 +1746,7 @@ export default function ProductsPage() {
             
             <div className="text-center">
               <Link href="/industries" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm">
-                {isDe ? "Branchen erkunden" : isEs ? "Explorar Industrias" : "Explore Industries"} <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
+                {isJa ? "産業分野を探索する" : isDe ? "Branchen erkunden" : isEs ? "Explorar Industrias" : "Explore Industries"} <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </div>
@@ -1637,14 +1763,14 @@ export default function ProductsPage() {
             <div className="text-center">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos Completados" : "Completed Work"}
+                {isJa ? "完了した実績" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos Completados" : "Completed Work"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
-                {isDe ? "Erleben Sie Sanota Produkte und Systeme im Einsatz" : isEs ? "Vea los productos y sistemas de Sanota en funcionamiento" : "See Sanota Products and Systems in Operation"}
+                {isJa ? "サノタの製品とシステムの実稼働をご覧ください" : isDe ? "Erleben Sie Sanota Produkte und Systeme im Einsatz" : isEs ? "Vea los productos y sistemas de Sanota en funcionamiento" : "See Sanota Products and Systems in Operation"}
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
-                {isDe ? "Erkunden Sie Maschinen, Automatisierung, Smart-Farming-Systeme, IoT-Plattformen, Modernisierungsprojekte und kundenspezifische Engineering-Lösungen für reale Betriebsumgebungen." : isEs ? "Explore maquinaria, automatización, sistemas de agricultura inteligente, plataformas de IoT, proyectos de modernización y soluciones de ingeniería desarrolladas para entornos reales." : "Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments."}
+                {isJa ? "実環境向けに開発された機械、自動化、スマート農業システム、IoTプラットフォーム、近代化プロジェクト、カスタムエンジニアリングをご覧ください。" : isDe ? "Erkunden Sie Maschinen, Automatisierung, Smart-Farming-Systeme, IoT-Plattformen, Modernisierungsprojekte und kundenspezifische Engineering-Lösungen für reale Betriebsumgebungen." : isEs ? "Explore maquinaria, automatización, sistemas de agricultura inteligente, plataformas de IoT, proyectos de modernización y soluciones de ingeniería desarrolladas para entornos reales." : "Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments."}
               </p>
               
               {/* Premium 5-Step Case Study Flow */}
@@ -1662,7 +1788,13 @@ export default function ProductsPage() {
                 />
                 
                 <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4 relative z-10">
-                  {(isDe ? [
+                  {(isJa ? [
+                    "クライアントの課題",
+                    "必要とされる製品またはシステム",
+                    "組み合わせた技術",
+                    "サノタの役割",
+                    "実装された成果"
+                  ] : isDe ? [
                     "Die Herausforderung des Kunden",
                     "Das erforderliche Produkt oder System",
                     "Die zusammengeführten Technologien",
@@ -1717,10 +1849,10 @@ export default function ProductsPage() {
               
               <div className="flex flex-col sm:flex-row justify-center gap-5">
                 <Link href="/media" className="px-8 py-4 bg-gradient-to-r from-[#E8B84B] to-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all hover:shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:-translate-y-1 flex items-center justify-center group shadow-sm">
-                  {isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver Trabajos Completados" : "View Completed Work"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {isJa ? "完了した実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver Trabajos Completados" : "View Completed Work"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="/media" className="px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:-translate-y-1 flex items-center justify-center shadow-sm">
-                  {isDe ? "Medienzentrum besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
+                  {isJa ? "メディアセンターへ" : isDe ? "Medienzentrum besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
                 </Link>
               </div>
             </div>
@@ -1738,7 +1870,12 @@ export default function ProductsPage() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#E8B84B]/10 to-transparent rounded-[100%] blur-3xl pointer-events-none" />
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 relative z-10">
-                  {isDe ? (
+                  {isJa ? (
+                    <>
+                      どの製品やシステムが必要か <br className="hidden sm:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">お分かりになりませんか？</span>
+                    </>
+                  ) : isDe ? (
                     <>
                       Sie sind sich nicht sicher, welches Produkt <br className="hidden sm:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">oder System Sie benötigen?</span>
@@ -1757,11 +1894,17 @@ export default function ProductsPage() {
                 </h2>
                 
                 <p className="text-lg text-white font-semibold mb-8 relative z-10">
-                  {isDe ? "Sie müssen nicht mit einem Produktnamen oder einer technischen Spezifikation beginnen. Sagen Sie uns:" : isEs ? "No necesita comenzar con un nombre de producto o especificación técnica. Cuéntenos:" : "You do not need to begin with a product name or technical specification. Tell us:"}
+                  {isJa ? "製品名や技術仕様から始める必要はありません。以下についてお聞かせください：" : isDe ? "Sie müssen nicht mit einem Produktnamen oder einer technischen Spezifikation beginnen. Sagen Sie uns:" : isEs ? "No necesita comenzar con un nombre de producto o especificación técnica. Cuéntenos:" : "You do not need to begin with a product name or technical specification. Tell us:"}
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 max-w-4xl mx-auto relative z-10">
-                  {(isDe ? [
+                  {(isJa ? [
+                    "現在何が起きているか",
+                    "何を改善する必要があるか",
+                    "何を開発したいか",
+                    "ソリューションが稼働する場所",
+                    "どのような結果を期待しているか"
+                  ] : isDe ? [
                     "Was aktuell geschieht",
                     "Was besser funktionieren muss",
                     "Was Sie entwickeln möchten",
@@ -1791,7 +1934,7 @@ export default function ProductsPage() {
                 </div>
 
                 <p className="text-[16px] text-slate-200 dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed relative z-10">
-                  {isDe ? "Sanota prüft die Anforderungen und führt Sie zum passenden Produkt, System oder individuellen Entwicklungspfad." : isEs ? "Sanota revisará el requisito y le guiará hacia el producto, sistema o ruta de ingeniería personalizada más adecuada." : "Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway."}
+                  {isJa ? "サノタが要件を検討し、適切な製品、システム、またはカスタムエンジニアリングの道筋をご案内します。" : isDe ? "Sanota prüft die Anforderungen und führt Sie zum passenden Produkt, System oder individuellen Entwicklungspfad." : isEs ? "Sanota revisará el requisito y le guiará hacia el producto, sistema o ruta de ingeniería personalizada más adecuada." : "Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway."}
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10">
@@ -1799,13 +1942,13 @@ export default function ProductsPage() {
                     href="/tell-us-your-challenge"
                     className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
                   >
-                    {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {isJa ? "あなたの課題を教えてください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/contact"
                     className="inline-flex justify-center items-center px-10 py-4 border border-white/30 dark:border-slate-700 text-[14px] font-bold rounded-lg text-white hover:bg-white/10 dark:hover:bg-slate-800 transition-all w-full sm:w-auto"
                   >
-                    {isDe ? "Engineering-Beratung anfragen" : isEs ? "Solicitar Consulta de Ingeniería" : "Request Engineering Consultation"}
+                    {isJa ? "エンジニアリング相談を依頼する" : isDe ? "Engineering-Beratung anfragen" : isEs ? "Solicitar Consulta de Ingeniería" : "Request Engineering Consultation"}
                   </Link>
                 </div>
               </div>
@@ -1820,7 +1963,12 @@ export default function ProductsPage() {
               className="relative mt-16 text-center"
             >
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-6">
-                {isDe ? (
+                {isJa ? (
+                  <>
+                    何を構築、改善、自動化、 <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">または接続する必要がありますか？</span>
+                  </>
+                ) : isDe ? (
                   <>
                     Was müssen Sie entwickeln, <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">verbessern, automatisieren oder verbinden?</span>

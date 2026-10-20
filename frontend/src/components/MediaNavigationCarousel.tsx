@@ -9,6 +9,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { mediaES } from "@/locales/es/media";
 import { mediaDE } from "@/locales/de/media";
+import { mediaJA } from "@/locales/ja/media";
 
 const mediaNavigation = [
   { 
@@ -60,6 +61,7 @@ export default function MediaNavigationCarousel() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
+  const isJa = language === "ja";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -83,13 +85,13 @@ export default function MediaNavigationCarousel() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-6">
           <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-black tracking-widest uppercase text-sm mb-2">
-            {isEs ? "Navegación de Medios" : "Media Navigation"}
+            {isJa ? "メディアナビゲーション" : isDe ? "Mediennavigation" : isEs ? "Navegación de Medios" : "Media Navigation"}
           </h2>
           <h3 
             className="text-3xl md:text-5xl font-black transition-colors duration-300"
             style={{ color: isDark ? '#FFFFFF' : '#17135B' }}
           >
-            {isEs ? mediaES.navigation.heading : "What Would You Like to Explore?"}
+            {isJa ? mediaJA.navigation.heading : isDe ? mediaDE.navigation.heading : isEs ? mediaES.navigation.heading : "What Would You Like to Explore?"}
           </h3>
         </div>
       </div>
@@ -248,7 +250,7 @@ export default function MediaNavigationCarousel() {
                 {/* Lower Card Body */}
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-10 bg-white dark:bg-[#131C2E] justify-between">
                   {(() => {
-                    const transNav = isDe ? mediaDE.navigation.sections[idx] : isEs ? mediaES.navigation.sections[idx] : null;
+                    const transNav = isJa ? mediaJA.navigation.sections[idx] : isDe ? mediaDE.navigation.sections[idx] : isEs ? mediaES.navigation.sections[idx] : null;
                     const title = transNav ? transNav.title : nav.title;
                     const desc = transNav ? transNav.desc : nav.desc;
                     const buttonText = transNav ? transNav.button : nav.button;

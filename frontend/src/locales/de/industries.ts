@@ -108,31 +108,37 @@ export const industriesDE = {
     sectors: [
       {
         title: "Logistik, Lagerhaltung & Materialfluss",
+        subtitle: "Materialien sicher, intelligent und sichtbar bewegen",
         desc: "Materialien sicher, intelligent und transparent bewegen. Fahrerlose Transportsysteme, Förderbänder, Entladesysteme, RFID-Tracking und operative Dashboards.",
         linkText: "Logistik- und Lagerlösungen entdecken"
       },
       {
         title: "Energie- und Ressourceneffizienz",
+        subtitle: "Ressourcen messen, steuern und optimieren",
         desc: "Messen, kontrollieren und optimieren. Energiemonitoring, intelligente Steuerungssysteme, Solarthermieanlagen und Betriebsanalysen.",
         linkText: "Energie- und Ressourcenlösungen erkunden"
       },
       {
         title: "Umwelt- und Abfalllösungen",
+        subtitle: "Praxisnahes Engineering für sauberere und widerstandsfähigere Abläufe",
         desc: "Praktische Ingenieurskunst für einen saubereren Betrieb. Ballenpressen, Verarbeitung organischer Abfälle, Abflussüberwachung und Umweltsensoren.",
         linkText: "Umwelt- und Abfalllösungen entdecken"
       },
       {
         title: "Infrastruktur und intelligente Einrichtungen",
+        subtitle: "Infrastruktur mit intelligenter Überwachung und Steuerung vernetzen",
         desc: "Infrastruktur mit intelligenter Überwachung und Steuerung verbinden. Verkehrsleitsysteme, Anlagenautomatisierung und zentrale Steuerungsplattformen.",
         linkText: "Infrastruktur und intelligente Einrichtungen erkunden"
       },
       {
         title: "Gesundheitswesen & Biomedizintechnik",
+        subtitle: "Engineering-Unterstützung für Innovationen im Gesundheitswesen",
         desc: "Technische Unterstützung für Innovationen im Gesundheitswesen. Mechanische Ausrüstung, elektronische Geräte, Steuerungssysteme und Prototypen.",
         linkText: "Gesundheitswesen & Biomedizintechnik entdecken"
       },
       {
         title: "Forschung, Innovation & kundenspezifische Produktentwicklung",
+        subtitle: "Von der Idee und Forschungsaufgabe zum fertigen Produkt",
         desc: "Von der Idee und Forschungsherausforderung zum entwickelten Produkt. Machbarkeitsstudien, Prototypenbau, IoT, Software und Produktion.",
         linkText: "Innovation & Kundenspezifische Entwicklung entdecken"
       }

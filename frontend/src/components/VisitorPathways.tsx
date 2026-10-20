@@ -6,12 +6,14 @@ import { ArrowRight, CheckCircle2, Wrench, Compass } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 export default function VisitorPathways() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const vp = isDe ? homeDE.visitorPathways : isEs ? homeES.visitorPathways : null;
+  const isJa = language === "ja";
+  const vp = isJa ? homeJA.visitorPathways : isDe ? homeDE.visitorPathways : isEs ? homeES.visitorPathways : null;
 
   const defaultSolveList = [
     "Improve a production process", "Automate a manual operation", "Modernize an existing machine",

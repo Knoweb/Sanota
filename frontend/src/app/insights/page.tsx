@@ -8,6 +8,7 @@ import { ArrowRight, Settings, Cpu, Activity, Sprout, Zap, ShieldCheck, Lightbul
 import { useLanguage } from "@/context/LanguageContext";
 import { insightsES } from "@/locales/es/insights";
 import { insightsDE } from "@/locales/de/insights";
+import { insightsJA } from "@/locales/ja/insights";
 
 const defaultCategories = [
   {
@@ -236,9 +237,92 @@ export default function InsightsPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const ins = isDe ? insightsDE : isEs ? insightsES : null;
+  const isJa = language === "ja";
+  const ins = isJa ? insightsJA : isDe ? insightsDE : isEs ? insightsES : null;
 
   const getTopics = (idx: number) => {
+    if (isJa) {
+      const jaTopics = [
+        [
+          "自動化に適したプロセスの特定",
+          "生産品質・精度の安定化",
+          "制御技術の選定",
+          "機械と自動化技術の統合",
+          "機械の安全性の向上",
+          "産業用自動化プロジェクトの計画",
+          "自動化プロジェクトにおける典型的な失敗の防止"
+        ],
+        [
+          "産業用IoTの基礎理解",
+          "機械設備とダッシュボードの連携",
+          "有用な運用データの選定",
+          "遠隔監視とアラート通知",
+          "センサーとソフトウェアの統合",
+          "クラウド連携型エンジニアリングシステム",
+          "現場運用のためのWebおよびモバイルアプリ",
+          "運用データのセキュリティと保護"
+        ],
+        [
+          "設備更新ではなく近代化（リプレイス vs レトロフィット）を選択すべき時期",
+          "老朽化した制御部品・陳腐化への対処",
+          "既存機械への自動化の追加",
+          "機械の信頼性の向上",
+          "センサーと監視機能の導入",
+          "制御システムアップグレードの計画",
+          "設備の耐用年数の延長"
+        ],
+        [
+          "環境制御型農業（CEA）",
+          "スマート温室システム",
+          "灌漑・液肥施用（養液土耕）の自動化",
+          "環境モニタリング",
+          "水利用の可視化と最適化",
+          "遠隔営農監視",
+          "実践的な農業技術の選定",
+          "農業用IoTプロジェクトの準備"
+        ],
+        [
+          "資源の消費実態の把握",
+          "エネルギーおよびユーティリティの監視",
+          "ポンプとモーターの最適制御",
+          "水位および流量の監視",
+          "異常運転状態の早期検知",
+          "資源管理の意思決定のためのダッシュボード活用",
+          "資源効率と保全メンテナンスの連携"
+        ],
+        [
+          "予防保全 vs 事後保全",
+          "年間保守契約（AMC）の策定準備",
+          "他社製機械設備のAMC適合性評価",
+          "保守記録の作成と報告",
+          "部品の供給終了・陳腐化管理",
+          "設備の近代化機会の特定",
+          "統合システムのライフサイクル計画",
+          "導入後の自動化・IoT・ソフトウェアサポート"
+        ],
+        [
+          "製品要件の定義",
+          "エンジニアリング設計への準備",
+          "実用的なプロトタイプの開発",
+          "機械・電子・ソフトウェアの統合",
+          "コンセプトの試験と検証",
+          "既存製品の改良",
+          "パイロット導入の計画",
+          "開発パートナーとの協業"
+        ],
+        [
+          "プロジェクト要件定義書の作成",
+          "プロジェクトスコープの定義",
+          "複数技術分野の連携調整",
+          "据付および試運転の計画",
+          "現場および運用上の制約管理",
+          "システム引き渡しに向けたチーム準備",
+          "オペレーターおよび保守要員の教育訓練",
+          "プロジェクト完了後のサポート計画"
+        ]
+      ];
+      return jaTopics[idx] || defaultCategories[idx].topics;
+    }
     if (isDe) {
       const deTopics = [
         [
@@ -406,7 +490,18 @@ export default function InsightsPage() {
     return defaultCategories[idx].topics;
   };
 
-  const filters = isDe ? [
+  const filters = isJa ? [
+    insightsJA.filters.all,
+    insightsJA.filters.engineering,
+    insightsJA.filters.automation,
+    insightsJA.filters.iot,
+    insightsJA.filters.modernization,
+    insightsJA.filters.agri,
+    insightsJA.filters.energy,
+    insightsJA.filters.maintenance,
+    insightsJA.filters.product,
+    insightsJA.filters.projects
+  ] : isDe ? [
     insightsDE.filters.all,
     insightsDE.filters.engineering,
     insightsDE.filters.automation,
@@ -430,7 +525,16 @@ export default function InsightsPage() {
     insightsES.filters.projects
   ] : filterLabels;
 
-  const articleSections = isDe ? [
+  const articleSections = isJa ? [
+    { title: "はじめに", desc: "記事で取り上げる運用上または技術的な課題について簡潔に説明します。" },
+    { title: "なぜ重要なのか", desc: "対象となる業界や意思決定者にとって、なぜこの課題が重要なのかを明確にします。" },
+    { title: "重要な検討事項", desc: "重要なエンジニアリング、運用、財務、または導入に関する要素を提示します。" },
+    { title: "実践的なアプローチ", desc: "組織が要件を評価し、次のステップに備えるための実践的なアプローチを説明します。" },
+    { title: "よくある課題と落とし穴", desc: "頻繁に直面する制約、リスク、または誤解を特定します。" },
+    { title: "検討すべき主要な質問", desc: "意思決定を下す前に読者が考慮すべき簡潔な質問リストを提供します。" },
+    { title: "Sanotaによる支援内容", desc: "関連するSanotaのサービス、製品、システム、または評価プロセスと課題を結びつけます。" },
+    { title: "関連コンテンツ", desc: "関連する業界、サービス、製品、プロジェクト実績、および関連する洞察記事へのリンク。" }
+  ] : isDe ? [
     { title: "Einführung", desc: "Erklären Sie kurz das im Artikel behandelte betriebliche oder technische Problem." },
     { title: "Warum es wichtig ist", desc: "Erläutern Sie, warum das Thema für die betreffende Branche oder den Entscheidungsträger relevant ist." },
     { title: "Wichtige Überlegungen", desc: "Stellen Sie die relevanten technischen, betrieblichen, finanziellen oder umsetzungsbezogenen Faktoren dar." },
@@ -459,7 +563,18 @@ export default function InsightsPage() {
     { title: "Related Content", desc: "Link to relevant industries, services, products, project stories and other insights." }
   ];
 
-  const industriesList = isDe ? [
+  const industriesList = isJa ? [
+    "製造業＆産業オートメーション",
+    "スマート農業＆アグリテック",
+    "食品・飲料加工",
+    "製茶業界",
+    "物流・倉庫管理・マテリアルハンドリング",
+    "エネルギー・資源効率化",
+    "環境・廃棄物管理",
+    "インフラ＆スマート施設",
+    "医療・バイオメディカル工学",
+    "研究・イノベーション＆製品開発"
+  ] : isDe ? [
     "Fertigung & Industrieautomation",
     "Intelligente Landwirtschaft & Agrartechnologie",
     "Lebensmittel- und Getränkeverarbeitung",
@@ -483,7 +598,15 @@ export default function InsightsPage() {
     "Investigación, innovación y desarrollo de productos"
   ] : browseIndustries;
 
-  const knowebList = isDe ? [
+  const knowebList = isJa ? [
+    "産業機械とソフトウェアの連携",
+    "実践的な運用ダッシュボードの設計・開発",
+    "最適なセンサーと通信プロトコルの選定",
+    "Webおよびモバイルインターフェースの開発",
+    "アラート管理と自動レポート生成",
+    "IoTプラットフォームと既存運用システムの統合",
+    "コネクテッドシステムのライフサイクル全体にわたるサポート"
+  ] : isDe ? [
     "Maschinen mit Software verbinden",
     "Entwicklung nützlicher operativer Dashboards",
     "Auswahl von Sensoren und Kommunikationsmethoden",
@@ -501,7 +624,16 @@ export default function InsightsPage() {
     "Soporte de sistemas conectados a lo largo de su ciclo de vida"
   ] : knowebTopics;
 
-  const practicalPrinciples = isDe ? [
+  const practicalPrinciples = isJa ? [
+    "現場の実際の運用課題に答える",
+    "複雑な技術的テーマを分かりやすく解説する",
+    "読者がより良い意思決定を行えるよう支援する",
+    "不要な専門用語の羅列を避ける",
+    "技術の限界や重要な留意点を明確に示す",
+    "知識を現場の実践的な行動へとつなげる",
+    "高い正確性とエンジニアリングの責任感を維持する",
+    "クライアントの機密情報と知的財産を厳格に保護する"
+  ] : isDe ? [
     "Eine echte betriebliche Frage beantworten",
     "Technische Themen verständlich erklären",
     "Lesern helfen, bessere Entscheidungen zu treffen",
@@ -521,7 +653,11 @@ export default function InsightsPage() {
     "Proteger la confidencialidad de los clientes"
   ] : practicalExperience;
 
-  const newsletterIndustries = isDe ? [
+  const newsletterIndustries = isJa ? [
+    "製造業", "農業", "食品・飲料", "製茶", 
+    "物流", "エネルギー・環境", "インフラ・施設", 
+    "製品開発", "一般エンジニアリング"
+  ] : isDe ? [
     "Fertigung", "Landwirtschaft", "Lebensmittel und Getränke", "Tee", 
     "Logistik", "Energie und Umwelt", "Infrastruktur und Anlagen", 
     "Produktentwicklung", "Allgemeines Ingenieurwesen"
@@ -555,7 +691,7 @@ export default function InsightsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isDe ? "Einblicke in Engineering & Technologie" : isEs ? "Perspectivas de Ingeniería y Tecnología" : "Engineering & Technology Insights"}
+              {isJa ? "エンジニアリング＆テクノロジーの知見" : isDe ? "Einblicke in Engineering & Technologie" : isEs ? "Perspectivas de Ingeniería y Tecnología" : "Engineering & Technology Insights"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -563,7 +699,9 @@ export default function InsightsPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
-              {isDe ? (
+              {isJa ? (
+                <>進化を続ける産業のための<span className="text-[#2E5EAA]">実践的エンジニアリングインサイト</span></>
+              ) : isDe ? (
                 <>Praktische Einblicke in die Ingenieurwissenschaften für <span className="text-[#2E5EAA]">sich entwickelnde Branchen</span></>
               ) : isEs ? (
                 <>Ideas prácticas de ingeniería para <span className="text-[#2E5EAA]">industrias en evolución</span></>
@@ -617,10 +755,10 @@ export default function InsightsPage() {
               {ins ? ins.intro.title : "Turning Technical Knowledge into Practical Understanding"}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
-              {isDe ? "Die Technologie verändert ständig die Art und Weise, wie Maschinen, Produktionsprozesse, landwirtschaftliche Betriebe, Anlagen und Ressourcen verwaltet werden." : isEs ? "La tecnología sigue cambiando la forma en que se gestionan la maquinaria, los procesos de producción, las operaciones agrícolas, las instalaciones y los recursos." : "Technology continues to change how machinery, production processes, agricultural operations, facilities and resources are managed."}
+              {isJa ? "テクノロジーは、機械、製造工程、農業現場、施設、および各種資源の管理方法を急速に革新し続けています。" : isDe ? "Die Technologie verändert ständig die Art und Weise, wie Maschinen, Produktionsprozesse, landwirtschaftliche Betriebe, Anlagen und Ressourcen verwaltet werden." : isEs ? "La tecnología sigue cambiando la forma en que se gestionan la maquinaria, los procesos de producción, las operaciones agrícolas, las instalaciones y los recursos." : "Technology continues to change how machinery, production processes, agricultural operations, facilities and resources are managed."}
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
-              {isDe ? "Die Einführung neuer Technologien sollte jedoch mit einem klaren betrieblichen Bedarf beginnen – und nicht mit der Technologie allein." : isEs ? "Sin embargo, la adopción de tecnología debe comenzar con una necesidad operativa clara, no solo con la tecnología en sí." : "However, adopting technology should begin with a clear operational need—not with technology alone."}
+              {isJa ? "しかし、新技術の導入はツール自体にとらわれることなく、明確な現場運用の課題と目的から始まるべきです。" : isDe ? "Die Einführung neuer Technologien sollte jedoch mit einem klaren betrieblichen Bedarf beginnen – und nicht mit der Technologie allein." : isEs ? "Sin embargo, la adopción de tecnología debe comenzar con una necesidad operativa clara, no solo con la tecnología en sí." : "However, adopting technology should begin with a clear operational need—not with technology alone."}
             </p>
             <p className="text-slate-800 dark:text-slate-300 font-bold text-lg leading-relaxed border-l-4 border-[#C59B27] dark:border-[#E8B84B] pl-6 text-left max-w-3xl mx-auto">
               {ins ? ins.intro.description : "Sanota Insights provides practical information to help decision-makers, engineers, technical teams and business leaders better understand operational challenges, evaluate improvement opportunities and prepare for engineering and technology projects."}
@@ -633,10 +771,10 @@ export default function InsightsPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isDe ? "Kategorien von Einblicken" : isEs ? "Categorías de Perspectivas" : "Insight Categories"}
+                {isJa ? "カテゴリー別インサイト" : isDe ? "Kategorien von Einblicken" : isEs ? "Categorías de Perspectivas" : "Insight Categories"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {isDe ? "Nach Themen entdecken" : isEs ? "Explorar por Tema" : "Explore by Topic"}
+                {isJa ? "テーマから探す" : isDe ? "Nach Themen entdecken" : isEs ? "Explorar por Tema" : "Explore by Topic"}
               </h3>
             </div>
             
@@ -656,7 +794,7 @@ export default function InsightsPage() {
                     
                     <div className="glowing-card bg-slate-50 dark:bg-[#0B1220]/60 border border-slate-200 dark:border-slate-800/60 rounded-xl p-6 mb-8 flex-grow">
                       <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-4">
-                        {isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
+                        {isJa ? "主なトピック：" : isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
                       </p>
                       <div className="space-y-3">
                         {topics.map((topic, tIdx) => (
@@ -683,7 +821,7 @@ export default function InsightsPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isDe ? "Ausgewählte Einblicke" : isEs ? "Perspectivas Destacadas" : "Featured Insights"}
+                {isJa ? "注目のインサイト" : isDe ? "Ausgewählte Einblicke" : isEs ? "Perspectivas Destacadas" : "Featured Insights"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
                 {ins ? ins.featured.heading : "Recommended Reading"}
@@ -697,7 +835,7 @@ export default function InsightsPage() {
                   <h4 className="text-xl font-bold text-[#17135B] dark:text-white mb-4 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{insight.title}</h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">{insight.desc || insight.summary}</p>
                   <Link href="/tell-us-your-challenge" className="inline-flex items-center text-sm font-bold text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white transition-colors mt-auto">
-                    {insight.linkText || (isDe ? "Artikel lesen" : isEs ? "Leer artículo" : "Read Article")} <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    {insight.linkText || (isJa ? "記事を読む" : isDe ? "Artikel lesen" : isEs ? "Leer artículo" : "Read Article")} <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               ))}
@@ -711,10 +849,10 @@ export default function InsightsPage() {
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div>
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Neueste Einblicke" : isEs ? "Últimas Perspectivas" : "Latest Insights"}
+                  {isJa ? "最新のインサイト" : isDe ? "Neueste Einblicke" : isEs ? "Últimas Perspectivas" : "Latest Insights"}
                 </h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                  {isDe ? "Neueste Artikel und technische Updates" : isEs ? "Últimos artículos y actualizaciones técnicas" : "Latest Articles and Technical Updates"}
+                  {isJa ? "最新の技術記事とアップデート" : isDe ? "Neueste Artikel und technische Updates" : isEs ? "Últimos artículos y actualizaciones técnicas" : "Latest Articles and Technical Updates"}
                 </h3>
               </div>
               <div className="w-full lg:w-1/3">
@@ -738,10 +876,10 @@ export default function InsightsPage() {
             <div className="bg-slate-50 dark:bg-[#0B1220] border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-16 text-center mb-10">
               <BookOpen className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
               <p className="text-slate-700 dark:text-slate-400 font-medium">
-                {isDe ? "Der Artikel-Feed wird hier angezeigt." : isEs ? "El feed de artículos se mostrará aquí." : "Article feed will be populated here."}
+                {isJa ? "記事フィードがここに表示されます。" : isDe ? "Der Artikel-Feed wird hier angezeigt." : isEs ? "El feed de artículos se mostrará aquí." : "Article feed will be populated here."}
               </p>
               <p className="text-slate-500 text-sm mt-2">
-                {isDe ? "Jede Karte enthält: Titel, Kategorie, Datum, Lesezeit, Zusammenfassung, Bild und Link." : isEs ? "Cada tarjeta contendrá: Título, Categoría, Fecha, Tiempo de lectura, Resumen, Imagen y Enlace." : "Each card will contain: Title, Category, Date, Reading time, Summary, Image, and Link."}
+                {isJa ? "各カードにはタイトル、カテゴリー、公開日、読了時間、要約、画像、リンクが含まれます。" : isDe ? "Jede Karte enthält: Titel, Kategorie, Datum, Lesezeit, Zusammenfassung, Bild und Link." : isEs ? "Cada tarjeta contendrá: Título, Categoría, Fecha, Tiempo de lectura, Resumen, Imagen y Enlace." : "Each card will contain: Title, Category, Date, Reading time, Summary, Image, and Link."}
               </p>
             </div>
 
@@ -758,19 +896,21 @@ export default function InsightsPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isDe ? "Vorlage" : isEs ? "Plantilla" : "Template"}
+                {isJa ? "テンプレート" : isDe ? "Vorlage" : isEs ? "Plantilla" : "Template"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {isDe ? "Aufbau der einzelnen Artikel" : isEs ? "Estructura del Artículo Individual" : "Individual Article Structure"}
+                {isJa ? "個別記事の構成" : isDe ? "Aufbau der einzelnen Artikel" : isEs ? "Estructura del Artículo Individual" : "Individual Article Structure"}
               </h3>
             </div>
             
             <div className="glowing-card bg-white dark:bg-[#131C2E]/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
               <h4 className="text-2xl font-bold text-[#17135B] dark:text-white mb-2">
-                {isDe ? "[Artikeltitel]" : isEs ? "[Título del Artículo]" : "[Article Title]"}
+                {isJa ? "【記事タイトル】" : isDe ? "[Artikeltitel]" : isEs ? "[Título del Artículo]" : "[Article Title]"}
               </h4>
               <p className="text-slate-500 text-sm mb-8 border-b border-slate-200 dark:border-slate-700 pb-6">
-                {isDe 
+                {isJa
+                  ? "カテゴリー：[カテゴリー名] • 公開日：[発行日] • 読了目安：[所要時間]"
+                  : isDe 
                   ? "Kategorie: [Kategorie] • Veröffentlicht: [Veröffentlichungsdatum] • Lesezeit: [Geschätzte Zeit]" 
                   : isEs 
                   ? "Categoría: [Categoría de análisis] • Publicado: [Fecha de publicación] • Tiempo de lectura: [Tiempo estimado]" 
@@ -788,10 +928,10 @@ export default function InsightsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
                 <Link href="/contact" className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors shadow-md text-center">
-                  {isDe ? "Diese Anforderung besprechen" : isEs ? "Comentar esta necesidad" : "Discuss This Requirement"}
+                  {isJa ? "この要件について相談する" : isDe ? "Diese Anforderung besprechen" : isEs ? "Comentar esta necesidad" : "Discuss This Requirement"}
                 </Link>
                 <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-slate-100 dark:bg-[#0B1220] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors text-center">
-                  {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"}
+                  {isJa ? "課題・ご要望をお聞かせください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"}
                 </Link>
               </div>
             </div>
@@ -806,13 +946,13 @@ export default function InsightsPage() {
               {/* Insights by Industry */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Einblicke nach Branchen" : isEs ? "Perspectivas por Industria" : "Insights by Industry"}
+                  {isJa ? "業界別インサイト" : isDe ? "Einblicke nach Branchen" : isEs ? "Perspectivas por Industria" : "Insights by Industry"}
                 </h2>
                 <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">
-                  {isDe ? "Wissen, das für Ihr Betriebsumfeld relevant ist" : isEs ? "Conocimiento relevante para su entorno operativo" : "Knowledge Relevant to Your Operating Environment"}
+                  {isJa ? "お客様の運用環境に特化した実践知" : isDe ? "Wissen, das für Ihr Betriebsumfeld relevant ist" : isEs ? "Conocimiento relevante para su entorno operativo" : "Knowledge Relevant to Your Operating Environment"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-8">
-                  {isDe ? "Entdecken Sie Einblicke für:" : isEs ? "Explore perspectivas desarrolladas para:" : "Explore insights developed for:"}
+                  {isJa ? "業界別インサイトを見る：" : isDe ? "Entdecken Sie Einblicke für:" : isEs ? "Explore perspectivas desarrolladas para:" : "Explore insights developed for:"}
                 </p>
                 <div className="space-y-3 mb-10">
                   {industriesList.map((ind, idx) => (
@@ -823,14 +963,14 @@ export default function InsightsPage() {
                   ))}
                 </div>
                 <Link href="/industries" className="inline-flex items-center px-6 py-3 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                  {isDe ? "Einblicke nach Branchen durchsuchen" : isEs ? "Explorar perspectivas por industria" : "Browse Insights by Industry"} <ArrowRight className="ml-2 w-4 h-4" />
+                  {isJa ? "業界別にすべての記事を見る" : isDe ? "Einblicke nach Branchen durchsuchen" : isEs ? "Explorar perspectivas por industria" : "Browse Insights by Industry"} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
 
               {/* Technical Guides */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Technische Leitfäden" : isEs ? "Guías Técnicas" : "Technical Guides"}
+                  {isJa ? "実践技術ガイド" : isDe ? "Technische Leitfäden" : isEs ? "Guías Técnicas" : "Technical Guides"}
                 </h2>
                 <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-4">
                   {ins ? ins.technicalGuides.heading : "Practical Guides and Checklists"}
@@ -850,7 +990,9 @@ export default function InsightsPage() {
                   {ins ? ins.technicalGuides.button : "Explore Technical Guides"} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
                 <p className="text-slate-500 text-xs italic">
-                  {isDe 
+                  {isJa
+                    ? "注記：フォローアップ支援をご希望の場合、ダウンロード時に基本的な連絡先情報の入力をお願いする場合があります。送信前に利用目的を明示いたします。"
+                    : isDe 
                     ? "Hinweis: Für Downloads können grundlegende Kontaktdaten erforderlich sein, wenn eine weiterführende Unterstützung angeboten wird. Besucher werden vor der Übermittlung ihrer Daten transparent informiert." 
                     : isEs 
                     ? "Nota: Las descargas pueden requerir datos de contacto básicos cuando se ofrezca asistencia de seguimiento. Se informará con total transparencia a los visitantes antes de enviar sus datos." 
@@ -870,7 +1012,7 @@ export default function InsightsPage() {
               {/* Engineering Questions */}
               <div>
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Technische Fragen" : isEs ? "Preguntas de Ingeniería" : "Engineering Questions"}
+                  {isJa ? "エンジニアリングQ&A" : isDe ? "Technische Fragen" : isEs ? "Preguntas de Ingeniería" : "Engineering Questions"}
                 </h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-10">
                   {ins ? ins.faqs.heading : "Questions We Frequently Help Clients Answer"}
@@ -891,16 +1033,16 @@ export default function InsightsPage() {
               {/* Sanota + Knoweb */}
               <div>
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Sanota + Knoweb Einblicke" : isEs ? "Perspectivas Sanota + Knoweb" : "Sanota + Knoweb Insights"}
+                  {isJa ? "Sanota + Knoweb 共同インサイト" : isDe ? "Sanota + Knoweb Einblicke" : isEs ? "Perspectivas Sanota + Knoweb" : "Sanota + Knoweb Insights"}
                 </h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                  {isDe ? "Wo Ingenieurwesen auf digitale Technologie trifft" : isEs ? "Donde la ingeniería se une a la tecnología digital" : "Where Engineering Meets Digital Technology"}
+                  {isJa ? "エンジニアリングとデジタル技術の融合" : isDe ? "Wo Ingenieurwesen auf digitale Technologie trifft" : isEs ? "Donde la ingeniería se une a la tecnología digital" : "Where Engineering Meets Digital Technology"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                  {isDe ? "Durch die Zusammenarbeit mit Knoweb kann Sanota Perspektiven bieten, die sowohl physische Engineering-Systeme als auch deren digitale Komponenten umfassen." : isEs ? "A través de su colaboración con Knoweb, Sanota aporta perspectivas que abarcan tanto los sistemas físicos de ingeniería como sus componentes digitales." : "Through its collaboration with Knoweb, Sanota can provide perspectives covering both physical engineering systems and their digital components."}
+                  {isJa ? "Knowebとの協業により、Sanotaは物理的な機械・工学システムとその上位デジタル構成要素の双方を網羅した包括的な知見を提供します。" : isDe ? "Durch die Zusammenarbeit mit Knoweb kann Sanota Perspektiven bieten, die sowohl physische Engineering-Systeme als auch deren digitale Komponenten umfassen." : isEs ? "A través de su colaboración con Knoweb, Sanota aporta perspectivas que abarcan tanto los sistemas físicos de ingeniería como sus componentes digitales." : "Through its collaboration with Knoweb, Sanota can provide perspectives covering both physical engineering systems and their digital components."}
                 </p>
                 <p className="text-[#17135B] dark:text-white font-bold mb-6">
-                  {isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
+                  {isJa ? "主なトピック：" : isDe ? "Themen können sein:" : isEs ? "Los temas pueden incluir:" : "Topics may include:"}
                 </p>
                 <div className="space-y-3 mb-10">
                   {knowebList.map((topic, idx) => (
@@ -911,7 +1053,7 @@ export default function InsightsPage() {
                   ))}
                 </div>
                 <Link href="/tell-us-your-challenge" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors shadow-sm">
-                  {isDe ? "Engineering- & digitale Einblicke entdecken" : isEs ? "Explorar perspectivas digitales y de ingeniería" : "Explore Engineering & Digital Insights"} <ArrowRight className="ml-2 w-5 h-5" />
+                  {isJa ? "エンジニアリング＆デジタルの知見を見る" : isDe ? "Engineering- & digitale Einblicke entdecken" : isEs ? "Explorar perspectivas digitales y de ingeniería" : "Explore Engineering & Digital Insights"} <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
 
@@ -927,13 +1069,13 @@ export default function InsightsPage() {
               {/* Practical Experience */}
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-sm dark:shadow-none">
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Wissen aus praktischer Erfahrung" : isEs ? "Conocimiento de la Experiencia Práctica" : "Knowledge from Practical Experience"}
+                  {isJa ? "現場の実践経験から得た知見" : isDe ? "Wissen aus praktischer Erfahrung" : isEs ? "Conocimiento de la Experiencia Práctica" : "Knowledge from Practical Experience"}
                 </h2>
                 <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">
-                  {isDe ? "Einblicke basierend auf echten Betriebsanforderungen" : isEs ? "Perspectivas fundamentadas en requisitos reales de operación" : "Insights Informed by Real Operating Requirements"}
+                  {isJa ? "実際の運用ニーズに裏打ちされた洞察" : isDe ? "Einblicke basierend auf echten Betriebsanforderungen" : isEs ? "Perspectivas fundamentadas en requisitos reales de operation" : "Insights Informed by Real Operating Requirements"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-8">
-                  {isDe ? "Die Inhalte von Sanota werden auf der Grundlage praktischer Erfahrungen, Erkenntnissen aus Projekten und relevantem Branchenwissen erstellt. Jeder Artikel zielt darauf ab:" : isEs ? "El contenido de Sanota se desarrolla a partir de experiencia práctica en ingeniería, aprendizajes de proyectos y conocimiento sectorial. Cada artículo persigue:" : "Sanota’s insight content should be developed using practical engineering experience, project learning and relevant industry knowledge. Every article should aim to:"}
+                  {isJa ? "Sanotaのインサイトは、実際のエンジニアリング経験、プロジェクトでの学び、および業界の深い知見に基づいて作成されています。すべての記事は以下の原則を追求しています：" : isDe ? "Die Inhalte von Sanota werden auf der Grundlage praktischer Erfahrungen, Erkenntnissen aus Projekten und relevantem Branchenwissen erstellt. Jeder Artikel zielt darauf ab:" : isEs ? "El contenido de Sanota se desarrolla a partir de experiencia práctica en ingeniería, aprendizajes de proyectos y conocimiento sectorial. Cada artículo persigue:" : "Sanota’s insight content should be developed using practical engineering experience, project learning and relevant industry knowledge. Every article should aim to:"}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-left">
                   {practicalPrinciples.map((principle, idx) => (
@@ -945,7 +1087,9 @@ export default function InsightsPage() {
                 </div>
                 <div className="bg-slate-50 dark:bg-[#0B1220] p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <p className="text-slate-600 dark:text-slate-400 text-xs italic">
-                    {isDe 
+                    {isJa
+                      ? "記事が業界規格、法規制、性能数値、または外部研究に言及する場合、公開前に厳密に事実確認を行い、適切な出典を明記しています。"
+                      : isDe 
                       ? "Wenn sich ein Artikel auf Normen, Vorschriften, Leistungsdaten oder externe Forschung bezieht, werden die Angaben vor der Veröffentlichung geprüft und entsprechend belegt." 
                       : isEs 
                       ? "Cuando un artículo haga referencia a normas, reglamentos, cifras de rendimiento o investigaciones externas, la información debe verificarse y citarse adecuadamente antes de su publicación." 
@@ -958,27 +1102,33 @@ export default function InsightsPage() {
               <div className="glowing-card bg-white dark:bg-[#131C2E]/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 flex flex-col justify-center shadow-sm dark:shadow-none">
                 <AlertTriangle className="w-10 h-10 text-[#C59B27] dark:text-[#E8B84B] mb-6" />
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Haftungsausschluss" : isEs ? "Descargo de Responsabilidad" : "Content Disclaimer"}
+                  {isJa ? "免責事項" : isDe ? "Haftungsausschluss" : isEs ? "Descargo de Responsabilidad" : "Content Disclaimer"}
                 </h2>
                 <h3 className="text-2xl font-bold text-[#17135B] dark:text-white mb-6">
-                  {isDe ? "Wichtige Information" : isEs ? "Información Importante" : "Important Information"}
+                  {isJa ? "重要なお知らせ" : isDe ? "Wichtige Information" : isEs ? "Información Importante" : "Important Information"}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                  {isDe 
+                  {isJa
+                    ? "Sanota Insightsは、教育および計画検討のための一般的な情報を提供しています。具体的な工学的要件は、機器、稼働環境、設置場所、用途、適用される安全規格によって異なります。"
+                    : isDe 
                     ? "Sanota Insights bietet allgemeine Informationen zu Bildungs- und Planungszwecken. Die technischen Anforderungen variieren je nach Ausrüstung, Betriebsbedingungen, Standort, Anwendung und geltenden Normen." 
                     : isEs 
                     ? "Sanota Insights ofrece información general con fines educativos y de planificación. Los requisitos técnicos varían según el equipo, las condiciones operativas, la ubicación, la aplicación y las normas aplicables." 
                     : "Sanota Insights provides general information for educational and planning purposes. Engineering requirements differ according to equipment, operating conditions, location, application and applicable standards."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                  {isDe 
+                  {isJa
+                    ? "本記事に含まれる情報は、個別の現地技術診断、専門的設計、または承認された安全手順に代わるものではありません。"
+                    : isDe 
                     ? "In einem Artikel veröffentlichte Informationen sollten nicht als Ersatz für eine standortspezifische technische Bewertung, fachgerechte Konstruktion oder anerkannte Sicherheitsverfahren verstanden werden." 
                     : isEs 
                     ? "La información contenida en un artículo no debe considerarse un sustituto de una evaluación técnica específica para el emplazamiento, un diseño profesional o procedimientos de seguridad aprobados." 
                     : "Information published in an article should not be treated as a substitute for a site-specific technical assessment, professional design or approved safety procedure."}
                 </p>
                 <Link href="/contact" className="inline-flex text-[#2E5EAA] font-bold hover:text-[#17135B] dark:hover:text-white transition-colors">
-                  {isDe 
+                  {isJa
+                    ? "特定の課題・要件についてSanotaに相談する"
+                    : isDe 
                     ? "Sanota für Beratung zu einer spezifischen Anforderung kontaktieren" 
                     : isEs 
                     ? "Contactar a Sanota para asesoramiento sobre una necesidad específica" 
@@ -995,7 +1145,7 @@ export default function InsightsPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Mail className="w-12 h-12 text-[#C59B27] dark:text-[#E8B84B] mx-auto mb-6" />
             <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-              {isDe ? "Neue Einblicke erhalten" : isEs ? "Recibir Nuevas Perspectivas" : "Receive New Insights"}
+              {isJa ? "最新のインサイトを受け取る" : isDe ? "Neue Einblicke erhalten" : isEs ? "Recibir Nuevas Perspectivas" : "Receive New Insights"}
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
               {ins ? ins.newsletter.heading : "Stay Informed"}
@@ -1016,7 +1166,7 @@ export default function InsightsPage() {
               
               <div className="mb-8">
                 <p className="text-[#17135B] dark:text-white font-bold mb-4 text-sm">
-                  {isDe ? "Brancheninteresse:" : isEs ? "Interés del sector:" : "Industry interest:"}
+                  {isJa ? "関心のある業界・分野：" : isDe ? "Brancheninteresse:" : isEs ? "Interés del sector:" : "Industry interest:"}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {newsletterIndustries.map((interest, idx) => (
@@ -1037,7 +1187,7 @@ export default function InsightsPage() {
                   <span className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
                     {ins ? ins.newsletter.consent : "I agree to receive relevant updates from Sanota. I understand that I may unsubscribe at any time."}{" "}
                     <Link href="/privacy" className="text-[#2E5EAA] hover:text-[#17135B] dark:hover:text-white">
-                      {isDe ? "Datenschutzhinweise ansehen" : isEs ? "Ver aviso de privacidad" : "View Privacy Notice"}
+                      {isJa ? "プライバシーポリシーを見る" : isDe ? "Datenschutzhinweise ansehen" : isEs ? "Ver aviso de privacidad" : "View Privacy Notice"}
                     </Link>
                   </span>
                 </label>
@@ -1053,23 +1203,23 @@ export default function InsightsPage() {
               
               <div>
                 <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                  {isDe ? "Benötigen Sie Hilfe bei einer ähnlichen Anforderung?" : isEs ? "¿Necesita ayuda con un requerimiento similar?" : "Need Help With a Similar Requirement?"}
+                  {isJa ? "同様の課題でお困りですか？" : isDe ? "Benötigen Sie Hilfe bei einer ähnlichen Anforderung?" : isEs ? "¿Necesita ayuda con un requerimiento similar?" : "Need Help With a Similar Requirement?"}
                 </h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                  {isDe ? "Informationen in Handeln verwandeln" : isEs ? "Convierta la información en acción" : "Turn Information into Action"}
+                  {isJa ? "情報を現場の実践へとつなげる" : isDe ? "Informationen in Handeln verwandeln" : isEs ? "Convierta la información en acción" : "Turn Information into Action"}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6">
-                  {isDe ? "Wenn sich ein Einblick auf eine Herausforderung in Ihrer Organisation bezieht, beschreiben Sie uns die aktuelle Situation und was Sie erreichen möchten." : isEs ? "Si un análisis se relaciona con un desafío de su organización, cuéntenos la situación actual y lo que desea lograr." : "If an insight relates to a challenge in your organization, tell us about the current situation and what you want to achieve."}
+                  {isJa ? "記事で取り上げた内容が貴社の課題に関連している場合は、現在の状況と達成したい目標についてぜひお聞かせください。" : isDe ? "Wenn sich ein Einblick auf eine Herausforderung in Ihrer Organisation bezieht, beschreiben Sie uns die aktuelle Situation und was Sie erreichen möchten." : isEs ? "Si un análisis se relaciona con un desafío de su organización, cuéntenos la situación actual y lo que desea lograr." : "If an insight relates to a challenge in your organization, tell us about the current situation and what you want to achieve."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                  {isDe ? "Sanota unterstützt Sie bei der Auswahl des passenden Weges in den Bereichen Engineering, Automatisierung, IoT, Software, Modernisierung oder Wartung." : isEs ? "Sanota le ayudará a identificar la vía más adecuada en ingeniería, automatización, IoT, software, modernización o mantenimiento." : "Sanota will help identify the appropriate engineering, automation, IoT, software, modernization or maintenance pathway."}
+                  {isJa ? "Sanotaは、機械設計、自動化、IoT、ソフトウェア、近代化、保守などの分野から、最も適切なソリューションの道筋を導き出します。" : isDe ? "Sanota unterstützt Sie bei der Auswahl des passenden Weges in den Bereichen Engineering, Automatisierung, IoT, Software, Modernisierung oder Wartung." : isEs ? "Sanota le ayudará a identificar la vía más adecuada en ingeniería, automatización, IoT, software, modernización o mantenimiento." : "Sanota will help identify the appropriate engineering, automation, IoT, software, modernization or maintenance pathway."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
-                    {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
+                    {isJa ? "課題・ご要望をお聞かせください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                   <Link href="/contact" className="px-6 py-3 bg-white dark:bg-[#0B1220] hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm">
-                    {isDe ? "Ingenieurberatung anfordern" : isEs ? "Solicitar consulta de ingeniería" : "Request Engineering Consultation"}
+                    {isJa ? "エンジニアリング相談を依頼する" : isDe ? "Ingenieurberatung anfordern" : isEs ? "Solicitar consulta de ingeniería" : "Request Engineering Consultation"}
                   </Link>
                 </div>
               </div>

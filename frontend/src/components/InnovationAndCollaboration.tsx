@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, Lightbulb, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
+import { homeJA } from "@/locales/ja/home";
 
 const defaultCapabilities = [
   "Feasibility assessment",
@@ -25,7 +26,8 @@ export default function InnovationAndCollaboration() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
-  const ic = isDe ? homeDE.innovationAndCollaboration : isEs ? homeES.innovationAndCollaboration : null;
+  const isJa = language === "ja";
+  const ic = isJa ? homeJA.innovationAndCollaboration : isDe ? homeDE.innovationAndCollaboration : isEs ? homeES.innovationAndCollaboration : null;
   const capabilities = ic ? ic.capabilities : defaultCapabilities;
 
   return (
@@ -55,7 +57,11 @@ export default function InnovationAndCollaboration() {
               </div>
               
               <h3 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#17135B] dark:text-white tracking-tight mb-8 leading-[1.1]">
-                {ic ? (
+                {isJa ? (
+                  <>アイデアから <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">実践的エンジニアリングへ</span></>
+                ) : isDe ? (
+                  <>Von Ideen zu <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Praktischer Ingenieurkunst</span></>
+                ) : isEs ? (
                   <>De las Ideas a la <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Ingeniería Práctica</span></>
                 ) : (
                   <>From Ideas to <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Practical Engineering</span></>
