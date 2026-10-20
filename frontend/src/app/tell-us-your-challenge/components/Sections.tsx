@@ -4,13 +4,15 @@ import { useLanguage } from "@/context/LanguageContext";
 import { challengeES } from "@/locales/es/challenge";
 import { challengeDE } from "@/locales/de/challenge";
 import { challengeJA } from "@/locales/ja/challenge";
+import { challengeAR } from "@/locales/ar/challenge";
 
 export function WhatHappensNext() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const ch = isJa ? challengeJA : isDe ? challengeDE : isEs ? challengeES : null;
+  const isAr = language === "ar";
+  const ch = isAr ? challengeAR : isJa ? challengeJA : isDe ? challengeDE : isEs ? challengeES : null;
 
   const defaultSteps = [
     {
@@ -35,7 +37,7 @@ export function WhatHappensNext() {
     }
   ];
 
-  const steps = (isJa || isEs || isDe) && ch ? ch.whatHappensNext.steps.map(s => ({
+  const steps = (isAr || isJa || isEs || isDe) && ch ? ch.whatHappensNext.steps.map(s => ({
     title: `${s.num}. ${s.title}`,
     desc: s.desc
   })) : defaultSteps;
@@ -70,7 +72,12 @@ export function WhatHappensNext() {
 
         <div className="mt-12 bg-blue-50 dark:bg-[#2E5EAA]/10 border border-blue-200 dark:border-[#2E5EAA]/20 rounded-2xl p-6 text-center shadow-sm">
           <p className="text-slate-700 dark:text-slate-300">
-            {isJa ? (
+            {isAr ? (
+              <>
+                <span className="font-bold text-[#17135B] dark:text-white mr-2">تختلف كل متطلبات شركة عن الأخرى.</span>
+                لن توصي شركة سانوتا بحل قياسي معلب قبل فهم التحدي التشغيلي الفعلي بعمق.
+              </>
+            ) : isJa ? (
               <>
                 <span className="font-bold text-[#17135B] dark:text-white mr-2">すべての要件はそれぞれ異なります。</span>
                 サノタは、運用上の課題を十分に理解する前に画一的な標準ソリューションを推奨することはありません。
@@ -103,20 +110,25 @@ export function AlternativeContact() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const ch = isJa ? challengeJA : isDe ? challengeDE : isEs ? challengeES : null;
+  const isAr = language === "ar";
+  const ch = isAr ? challengeAR : isJa ? challengeJA : isDe ? challengeDE : isEs ? challengeES : null;
 
   return (
     <section className="py-12 lg:py-16 bg-transparent relative z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-          {isJa ? "その他のお問い合わせ方法" : isDe ? "Alternative Kontaktmöglichkeiten" : isEs ? "Opciones Alternativas de Contacto" : "Alternative Contact Options"}
+          {isAr ? "خيارات اتصال بديلة" : isJa ? "その他のお問い合わせ方法" : isDe ? "Alternative Kontaktmöglichkeiten" : isEs ? "Opciones Alternativas de Contacto" : "Alternative Contact Options"}
         </h2>
         <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-12">
           {ch ? ch.alternativeContact.heading : "Prefer to Speak to Someone Directly?"}
         </h3>
         
         <p className="text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
-          {isJa ? (
+          {isAr ? (
+            <>
+              يمكنك الاتصال بشركة سانوتا باستخدام الطريقة الأنسب لك. للمسائل التشغيلية العاجلة، يرجى تحديد الاستفسار على أنه <strong className="text-[#17135B] dark:text-white font-semibold">دعم فني عاجل</strong> عند الاتصال بنا.
+            </>
+          ) : isJa ? (
             <>
               お客様にとって最も便利な方法でサノタにご連絡いただけます。緊急の運用上の問題については、ご連絡時に<strong className="text-[#17135B] dark:text-white font-semibold">緊急技術サポート</strong>とお伝えください。
             </>
@@ -167,7 +179,7 @@ export function AlternativeContact() {
               {ch ? ch.alternativeContact.contactButton : "Contact Sanota"}
             </span>
             <span className="text-slate-500 dark:text-slate-400 text-sm relative z-10">
-              {isJa ? "拠点案内を見る" : isDe ? "Standorte ansehen" : isEs ? "Ver Ubicaciones" : "View Locations"}
+              {isAr ? "عرض المواقع" : isJa ? "拠点案内を見る" : isDe ? "Standorte ansehen" : isEs ? "Ver Ubicaciones" : "View Locations"}
             </span>
           </Link>
         </div>
@@ -181,6 +193,7 @@ export function FinalCTA() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
+  const isAr = language === "ar";
 
   return (
     <section className="py-12 lg:py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/30 relative z-10">
@@ -188,7 +201,12 @@ export function FinalCTA() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-[#C59B27]/5 dark:bg-[#E8B84B]/5 blur-[100px] pointer-events-none" />
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-            {isJa ? (
+            {isAr ? (
+              <>
+                ابدأ بإخبارنا بالتحدي الذي تواجهه. <br className="hidden md:block"/>
+                <span className="text-[#C59B27] dark:text-[#E8B84B]">وسنساعدك في تحديد الحل الهندسي الأمثل.</span>
+              </>
+            ) : isJa ? (
               <>
                 まずは課題をお聞かせください。<br className="hidden md:block"/>
                 <span className="text-[#C59B27] dark:text-[#E8B84B]">私たちが最適なソリューションの定義をサポートします。</span>
@@ -211,20 +229,20 @@ export function FinalCTA() {
             )}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg mb-12 leading-relaxed max-w-3xl mx-auto">
-            {isJa ? "機械工学や自動化から、IoT、ソフトウェア、導入実装、ライフサイクルサポートに至るまで、サノタはお客様の要件に合わせて必要なすべての能力を結集します。" : isDe ? "Von Maschinenbau und Automatisierung bis hin zu IoT, Software, Implementierung und Lebenszyklusbetreuung bündelt Sanota alle erforderlichen Kompetenzen für Ihre Anforderungen." : isEs ? "Desde maquinaria y automatización hasta IoT, software, implementación y soporte durante todo el ciclo de vida, Sanota reúne las capacidades necesarias en torno a sus requisitos." : "From machinery and automation to IoT, software, implementation and lifecycle support, Sanota brings the necessary capabilities together around your requirement."}
+            {isAr ? "من الآلات والأتمتة إلى إنترنت الأشياء والبرمجيات والتنفيذ ودعم دورة الحياة، تجمع سانوتا كافة القدرات الهندسية اللازمة حول متطلباتك." : isJa ? "機械工学や自動化から、IoT、ソフトウェア、導入実装、ライフサイクルサポートに至るまで、サノタはお客様の要件に合わせて必要なすべての能力を結集します。" : isDe ? "Von Maschinenbau und Automatisierung bis hin zu IoT, Software, Implementierung und Lebenszyklusbetreuung bündelt Sanota alle erforderlichen Kompetenzen für Ihre Anforderungen." : isEs ? "Desde maquinaria y automatización hasta IoT, software, implementación y soporte durante todo el ciclo de vida, Sanota reúne las capacidades necesarias en torno a sus requisitos." : "From machinery and automation to IoT, software, implementation and lifecycle support, Sanota brings the necessary capabilities together around your requirement."}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:-translate-y-1"
             >
-              {isJa ? "課題を相談する" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
+              {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "課題を相談する" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5" />
             </button>
             <Link 
               href="/services" 
               className="px-8 py-4 bg-slate-100 dark:bg-[#050B14] hover:bg-slate-200 dark:hover:bg-[#0A101A] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700/60 hover:border-slate-400 dark:hover:border-slate-500/60 transition-all duration-300 flex items-center justify-center shadow-sm"
             >
-              {isJa ? "サノタの強みを見る" : isDe ? "Sanota-Kompetenzen erkunden" : isEs ? "Explorar Capacidades de Sanota" : "Explore Sanota's Capabilities"}
+              {isAr ? "استكشف قدرات سانوتا" : isJa ? "サノタの強みを見る" : isDe ? "Sanota-Kompetenzen erkunden" : isEs ? "Explorar Capacidades de Sanota" : "Explore Sanota's Capabilities"}
             </Link>
           </div>
         </div>
