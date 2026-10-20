@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const options = [
   {
@@ -93,7 +94,8 @@ export default function SolutionNavigator() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const sn = isJa ? homeJA.solutionNavigator : isDe ? homeDE.solutionNavigator : isEs ? homeES.solutionNavigator : null;
+  const isAr = language === "ar";
+  const sn = isAr ? homeAR.solutionNavigator : isJa ? homeJA.solutionNavigator : isDe ? homeDE.solutionNavigator : isEs ? homeES.solutionNavigator : null;
 
   const displayOptions = options.map((opt, idx) => {
     if (sn && sn.items[idx]) {

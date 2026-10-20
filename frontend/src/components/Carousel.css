@@ -4,6 +4,7 @@
   padding: 16px 0;
   --outer-r: 24px;
   --p-distance: 0px; /* changed to 0 for full width content */
+  direction: ltr !important;
 }
 
 .carousel-track {

@@ -9,6 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const images = [
   "/hero_image.jpg",
@@ -22,7 +23,8 @@ export default function Hero() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const h = isJa ? homeJA.hero : isDe ? homeDE.hero : isEs ? homeES.hero : null;
+  const isAr = language === "ar";
+  const h = isAr ? homeAR.hero : isJa ? homeJA.hero : isDe ? homeDE.hero : isEs ? homeES.hero : null;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -42,21 +44,21 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 pr-0 lg:pr-8"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#131C2E] border border-[#1e293b] mb-6 shadow-md">
+            <div className={`inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#131C2E] border border-[#1e293b] ${isDe ? "mb-4" : "mb-6"} shadow-md`}>
               <span className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse" />
               <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">
                 {h ? h.badge : "Integrated Engineering Solutions"}
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-white mb-5 leading-[1.15]">
+            <h1 className={`font-extrabold tracking-tight text-white leading-[1.15] ${isDe ? "text-3xl sm:text-4xl lg:text-[2.95rem] xl:text-[3.15rem] mb-4" : "text-4xl sm:text-5xl lg:text-[3.5rem] mb-5"}`}>
               {h ? h.titleLine1 : "One Challenge."} <br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">
                 {h ? h.titleLine2 : "One Integrated Engineering Solution."}
               </span>
             </h1>
 
-            <div className="text-md text-slate-300 mb-8 max-w-2xl leading-relaxed space-y-4">
+            <div className={`text-slate-300 max-w-2xl leading-relaxed ${isDe ? "text-[15px] lg:text-[15.5px] mb-5 space-y-3" : "text-md mb-8 space-y-4"}`}>
               <p>
                 {h ? h.description1 : "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team."}
               </p>
@@ -65,7 +67,7 @@ export default function Hero() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <div className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${isDe ? "mb-5" : "mb-8"}`}>
               <Link
                 href="/tell-us-your-challenge"
                 className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md shadow-[#E5A93C]/25 group"
@@ -82,18 +84,18 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="mb-8">
+            <div className={isDe ? "mb-5" : "mb-8"}>
               <p className="text-[13px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 {h ? h.capabilityLine : "Engineering • Automation • IoT • Software • Implementation • Support"}
               </p>
             </div>
 
             {/* Chat Prompt */}
-            <div className="p-4 rounded-xl bg-white/90 dark:bg-[#131C2E]/40 border border-[#ECE7DD] dark:border-slate-700/50 max-w-xl backdrop-blur-md shadow-sm dark:shadow-lg">
-              <h3 className="text-[#17135B] dark:text-white font-bold text-sm mb-1.5">
+            <div className={`${isDe ? "p-3.5" : "p-4"} rounded-xl bg-white/90 dark:bg-[#131C2E]/40 border border-[#ECE7DD] dark:border-slate-700/50 max-w-xl backdrop-blur-md shadow-sm dark:shadow-lg`}>
+              <h3 className="text-[#17135B] dark:text-white font-bold text-sm mb-1">
                 {h ? h.chatBox.title : "Not sure where to begin?"}
               </h3>
-              <p className="text-[#555E75] dark:text-slate-400 text-xs mb-3">
+              <p className="text-[#555E75] dark:text-slate-400 text-xs mb-2.5">
                 {h ? h.chatBox.description : "Tell us what is not working—or what you want to achieve. We will help direct your enquiry to the appropriate engineering team."}
               </p>
               <Link href="/tell-us-your-challenge" className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline flex items-center transition-colors">

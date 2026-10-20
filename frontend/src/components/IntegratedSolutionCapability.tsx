@@ -9,6 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const capabilities = [
   { 
@@ -62,7 +63,8 @@ export default function IntegratedSolutionCapability() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const isc = isJa ? homeJA.integratedSolution : isDe ? homeDE.integratedSolution : isEs ? homeES.integratedSolution : null;
+  const isAr = language === "ar";
+  const isc = isAr ? homeAR.integratedSolution : isJa ? homeJA.integratedSolution : isDe ? homeDE.integratedSolution : isEs ? homeES.integratedSolution : null;
 
   const displayCaps = capabilities.map((cap, idx) => {
     if (isc && isc.capabilities[idx]) {

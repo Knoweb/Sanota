@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const industriesLinksEN = [
   { name: 'Manufacturing & Industrial Automation', href: '/industries' },
@@ -144,17 +145,52 @@ const exploreLinksJA = [
   { name: 'サノタについて', href: '/about' }
 ];
 
+const industriesLinksAR = [
+  { name: 'التصنيع والأتمتة الصناعية', href: '/industries' },
+  { name: 'الزراعة الذكية', href: '/industries' },
+  { name: 'معالجة الأغذية والمشروبات', href: '/industries' },
+  { name: 'حلول صناعة الشاي', href: '/industries' },
+  { name: 'الخدمات اللوجستية والتخزين', href: '/industries' },
+  { name: 'كفاءة الطاقة والموارد', href: '/industries' },
+  { name: 'حلول بيئية وإدارة النفايات', href: '/industries' },
+  { name: 'البنية التحتية والمرافق الذكية', href: '/industries' },
+  { name: 'الرعاية الصحية والهندسة الطبية الحيوية', href: '/industries' },
+  { name: 'البحث وتطوير المنتجات المخصصة', href: '/industries' }
+];
+
+const servicesLinksAR = [
+  { name: 'الاستشارات الهندسية', href: '/services' },
+  { name: 'تصميم الأنظمة والمنتجات', href: '/services' },
+  { name: 'تطوير الآلات المخصصة', href: '/services' },
+  { name: 'الأتمتة وإنترنت الأشياء والتكامل الرقمي', href: '/services' },
+  { name: 'التعديل التحديثي والتطوير', href: '/services' },
+  { name: 'تنفيذ المشاريع وتشغيلها', href: '/services' },
+  { name: 'عقود الصيانة ودعم دورة الحياة', href: '/services' },
+  { name: 'التدريب الفني', href: '/services' }
+];
+
+const exploreLinksAR = [
+  { name: 'المنتجات والأنظمة', href: '/products' },
+  { name: 'الأعمال المنجزة', href: '/media' },
+  { name: 'قصص المشاريع', href: '/media' },
+  { name: 'مقاطع الفيديو والعروض التوضيحية', href: '/media' },
+  { name: 'معرض الصور', href: '/media' },
+  { name: 'الابتكار والشراكات', href: '/contact' },
+  { name: 'عن سانوتا', href: '/about' }
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const f = isJa ? homeJA.footer : isDe ? homeDE.footer : isEs ? homeES.footer : null;
+  const isAr = language === "ar";
+  const f = isAr ? homeAR.footer : isJa ? homeJA.footer : isDe ? homeDE.footer : isEs ? homeES.footer : null;
 
-  const currentIndustries = isJa ? industriesLinksJA : isDe ? industriesLinksDE : isEs ? industriesLinksES : industriesLinksEN;
-  const currentServices = isJa ? servicesLinksJA : isDe ? servicesLinksDE : isEs ? servicesLinksES : servicesLinksEN;
-  const currentExplore = isJa ? exploreLinksJA : isDe ? exploreLinksDE : isEs ? exploreLinksES : exploreLinksEN;
+  const currentIndustries = isAr ? industriesLinksAR : isJa ? industriesLinksJA : isDe ? industriesLinksDE : isEs ? industriesLinksES : industriesLinksEN;
+  const currentServices = isAr ? servicesLinksAR : isJa ? servicesLinksJA : isDe ? servicesLinksDE : isEs ? servicesLinksES : servicesLinksEN;
+  const currentExplore = isAr ? exploreLinksAR : isJa ? exploreLinksJA : isDe ? exploreLinksDE : isEs ? exploreLinksES : exploreLinksEN;
 
   return (
     <footer className="relative z-10 bg-white dark:bg-[#050B14] border-t border-[#ECE7DD] dark:border-slate-800/80 pt-8 pb-4">
@@ -278,7 +314,7 @@ export default function Footer() {
             </div>
 
             <h4 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
-              {isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
+              {isAr ? "روابط التواصل الاجتماعي" : isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
             </h4>
             <div className="flex space-x-3">
               <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
@@ -309,7 +345,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-slate-500 text-xs flex items-center">
-            {isJa ? "開発元：" : isDe ? "Entwickelt von:" : isEs ? "Desarrollado por:" : "Built by:"} <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
+            {isAr ? "تم التطوير بواسطة:" : isJa ? "開発元：" : isDe ? "Entwickelt von:" : isEs ? "Desarrollado por:" : "Built by:"} <a href="https://www.knowebsolutions.com/" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white font-semibold transition-colors">Knoweb</a>
           </p>
         </div>
 

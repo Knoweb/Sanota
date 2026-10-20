@@ -8,6 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const defaultOptions = [
   "Start Guided Chat",
@@ -23,7 +24,8 @@ export default function FinalCTA() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const cta = isJa ? homeJA.finalCTA : isDe ? homeDE.finalCTA : isEs ? homeES.finalCTA : null;
+  const isAr = language === "ar";
+  const cta = isAr ? homeAR.finalCTA : isJa ? homeJA.finalCTA : isDe ? homeDE.finalCTA : isEs ? homeES.finalCTA : null;
   const options = cta ? cta.alternatives : defaultOptions;
   return (
     <section id="contact" className="relative pt-16 pb-24 bg-transparent overflow-hidden">

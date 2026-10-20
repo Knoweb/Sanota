@@ -235,6 +235,7 @@ export default function Carousel({
   return (
     <div
       ref={containerRef}
+      dir="ltr"
       className={`carousel-container ${round ? 'round' : ''} mx-auto`}
       style={{
         width: `${currentBaseWidth}px`,

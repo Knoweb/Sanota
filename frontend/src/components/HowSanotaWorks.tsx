@@ -9,6 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const steps = [
   {
@@ -62,7 +63,8 @@ export default function HowSanotaWorks() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const hsw = isJa ? homeJA.howSanotaWorks : isDe ? homeDE.howSanotaWorks : isEs ? homeES.howSanotaWorks : null;
+  const isAr = language === "ar";
+  const hsw = isAr ? homeAR.howSanotaWorks : isJa ? homeJA.howSanotaWorks : isDe ? homeDE.howSanotaWorks : isEs ? homeES.howSanotaWorks : null;
 
   const displaySteps = steps.map((s, idx) => {
     if (hsw && hsw.steps[idx]) {

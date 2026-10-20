@@ -8,6 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const projects = [
   {
@@ -53,7 +54,8 @@ export default function CompletedWork() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const cw = isJa ? homeJA.completedWork : isDe ? homeDE.completedWork : isEs ? homeES.completedWork : null;
+  const isAr = language === "ar";
+  const cw = isAr ? homeAR.completedWork : isJa ? homeJA.completedWork : isDe ? homeDE.completedWork : isEs ? homeES.completedWork : null;
 
   const displayProjects = projects.map((p, idx) => {
     if (cw && cw.categories[idx]) {

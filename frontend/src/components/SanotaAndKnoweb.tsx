@@ -9,6 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const defaultCapabilities = [
   "Sensors and data acquisition",
@@ -27,7 +28,8 @@ export default function SanotaAndKnoweb() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const sk = isJa ? homeJA.sanotaAndKnoweb : isDe ? homeDE.sanotaAndKnoweb : isEs ? homeES.sanotaAndKnoweb : null;
+  const isAr = language === "ar";
+  const sk = isAr ? homeAR.sanotaAndKnoweb : isJa ? homeJA.sanotaAndKnoweb : isDe ? homeDE.sanotaAndKnoweb : isEs ? homeES.sanotaAndKnoweb : null;
   const capabilities = sk ? sk.features : defaultCapabilities;
 
   return (
@@ -57,7 +59,9 @@ export default function SanotaAndKnoweb() {
                 </div>
                 
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
-                  {isJa ? (
+                  {isAr ? (
+                    <>الهندسة المتصلة <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">بالتكنولوجيا الرقمية والبرمجيات</span></>
+                  ) : isJa ? (
                     <>デジタル技術と融合する <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">コネクテッドエンジニアリング</span></>
                   ) : isDe ? (
                     <>Durch digitale Technologie vernetzte <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">Ingenieurtechnik</span></>

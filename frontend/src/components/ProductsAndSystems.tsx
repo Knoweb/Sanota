@@ -8,6 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
+import { homeAR } from "@/locales/ar/home";
 
 const products = [
   {
@@ -53,7 +54,8 @@ export default function ProductsAndSystems() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const ps = isJa ? homeJA.productsAndSystems : isDe ? homeDE.productsAndSystems : isEs ? homeES.productsAndSystems : null;
+  const isAr = language === "ar";
+  const ps = isAr ? homeAR.productsAndSystems : isJa ? homeJA.productsAndSystems : isDe ? homeDE.productsAndSystems : isEs ? homeES.productsAndSystems : null;
 
   const displayProducts = products.map((item, idx) => {
     if (ps && ps.categories[idx]) {
@@ -81,7 +83,7 @@ export default function ProductsAndSystems() {
             viewport={{ once: true }}
           >
             <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
-              {isJa ? "製品・システム" : isDe ? "Produkte & Systeme" : isEs ? "Productos y Sistemas" : "Products and Systems"}
+              {isAr ? "المنتجات والأنظمة" : isJa ? "製品・システム" : isDe ? "Produkte & Systeme" : isEs ? "Productos y Sistemas" : "Products and Systems"}
             </h2>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white leading-tight mb-6">
               {ps ? ps.heading : (
@@ -140,7 +142,7 @@ export default function ProductsAndSystems() {
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center text-[#E5A93C] dark:text-[#E8B84B] text-[10px] md:text-[12px] font-bold uppercase tracking-wider hover:!text-white transition-colors group/link mt-1 md:mt-0"
                     >
-                      {isJa ? "ソリューションを見る" : isDe ? "Lösung entdecken" : isEs ? "Explorar Solución" : "Explore Solution"} <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
+                      {isAr ? "استكشف الحل" : isJa ? "ソリューションを見る" : isDe ? "Lösung entdecken" : isEs ? "Explorar Solución" : "Explore Solution"} <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
 
