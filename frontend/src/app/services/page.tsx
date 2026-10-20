@@ -12,6 +12,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { servicesES } from "@/locales/es/services";
 import { servicesDE } from "@/locales/de/services";
 import { servicesJA } from "@/locales/ja/services";
+import { servicesAR } from "@/locales/ar/services";
 
 const services = [
   {
@@ -247,7 +248,8 @@ export default function ServicesPage() {
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const s = isJa ? servicesJA : isDe ? servicesDE : isEs ? servicesES : null;
+  const isAr = language === "ar";
+  const s = isAr ? servicesAR : isJa ? servicesJA : isDe ? servicesDE : isEs ? servicesES : null;
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
@@ -269,7 +271,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isJa ? "エンジニアリングサービス" : isDe ? "Ingenieurdienstleistungen" : isEs ? "Servicios de ingeniería" : "Engineering Services"}
+              {isAr ? "الخدمات الهندسية" : isJa ? "エンジニアリングサービス" : isDe ? "Ingenieurdienstleistungen" : isEs ? "Servicios de ingeniería" : "Engineering Services"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -413,16 +415,16 @@ export default function ServicesPage() {
                   <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/30 mb-5 relative z-10 shadow-[0_0_15px_rgba(232,184,75,0.15)]">
                     <span className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse" />
                     <span className="text-[11px] font-bold tracking-widest uppercase text-[#E8B84B]">
-                      {isJa ? "統合エンジニアリングの提供" : isDe ? "Integrierte Engineering-Bereitstellung" : isEs ? "Entrega de ingeniería integrada" : "Integrated Engineering Delivery"}
+                      {isAr ? "تقديم حلول هندسية متكاملة" : isJa ? "統合エンジニアリングの提供" : isDe ? "Integrierte Engineering-Bereitstellung" : isEs ? "Entrega de ingeniería integrada" : "Integrated Engineering Delivery"}
                     </span>
                   </div>
 
                   {/* High Impact Lead Typography */}
                   <h3 className="text-xl sm:text-2xl font-bold !text-white mb-3 leading-snug relative z-10 max-w-2xl">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] via-[#F3D78A] to-[#E8B84B] font-extrabold">
-                      {isJa ? "Sanotaは必要な能力を統合します" : isDe ? "Sanota bündelt die erforderlichen Kompetenzen" : isEs ? "Sanota reúne las capacidades necesarias" : "Sanota brings the required capabilities together"}
+                      {isAr ? "سانوتا تجمع بين جميع الإمكانات المطلوبة" : isJa ? "Sanotaは必要な能力を統合します" : isDe ? "Sanota bündelt die erforderlichen Kompetenzen" : isEs ? "Sanota reúne las capacidades necesarias" : "Sanota brings the required capabilities together"}
                     </span>{" "}
-                    {isJa ? "お客様の運用上のニーズに合わせて。" : isDe ? "für Ihre betrieblichen Anforderungen." : isEs ? "en torno a sus necesidades operativas." : "around your operational need."}
+                    {isAr ? "لتلبية متطلباتكم التشغيلية بدقة." : isJa ? "お客様の運用上のニーズに合わせて。" : isDe ? "für Ihre betrieblichen Anforderungen." : isEs ? "en torno a sus necesidades operativas." : "around your operational need."}
                   </h3>
 
                   {/* Supporting Narrative */}
@@ -441,10 +443,10 @@ export default function ServicesPage() {
 
             <div className="text-center mb-8">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isJa ? "サービスピラー" : isDe ? "Servicesäulen" : isEs ? "Pilares de servicio" : "Service Pillars"}
+                {isAr ? "ركائز الخدمات" : isJa ? "サービスピラー" : isDe ? "Servicesäulen" : isEs ? "Pilares de servicio" : "Service Pillars"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {isJa ? "Sanotaの包括的な支援体制" : isDe ? "Wie Sanota Sie unterstützen kann" : isEs ? "Cómo Sanota puede apoyarle" : "How Sanota Can Support You"}
+                {isAr ? "كيف يمكن لسانوتا دعم أعمالكم" : isJa ? "Sanotaの包括的な支援体制" : isDe ? "Wie Sanota Sie unterstützen kann" : isEs ? "Cómo Sanota puede apoyarle" : "How Sanota Can Support You"}
               </h3>
             </div>
 
@@ -471,15 +473,18 @@ export default function ServicesPage() {
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#C59B27_360deg)] dark:bg-[conic-gradient(from_0deg,transparent_0_280deg,#E8B84B_360deg)] animate-[spin_6s_linear_infinite] opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
                         
                         {/* Inner content box */}
-                        <div className="relative bg-white dark:bg-[#0F1523] border border-slate-200 dark:border-transparent w-full h-full p-5 lg:p-8 rounded-[calc(1.5rem-1px)] flex flex-col z-10 shadow-sm">
+                        <div 
+                          dir={isAr ? "rtl" : "ltr"}
+                          className="relative bg-white dark:bg-[#0F1523] border border-slate-200 dark:border-transparent w-full h-full p-5 lg:p-8 rounded-[calc(1.5rem-1px)] flex flex-col z-10 shadow-sm"
+                        >
                           <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 relative z-10 h-full">
 
                           {/* Left: Header + Description */}
-                          <div className="lg:w-1/2 flex flex-col pr-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800/50 pb-5 lg:pb-0 mb-5 lg:mb-0">
+                          <div className={`lg:w-1/2 flex flex-col pb-5 lg:pb-0 mb-5 lg:mb-0 ${isAr ? "pl-0 lg:pl-6 border-b lg:border-b-0 lg:border-l border-slate-200 dark:border-slate-800/50" : "pr-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800/50"}`}>
                             
                             <div className="flex items-start mb-5">
                               {/* Colorful Glowing Icon */}
-                              <div className="relative mr-5 shrink-0">
+                              <div className={`relative shrink-0 ${isAr ? "ml-5" : "mr-5"}`}>
                                 <div className={`absolute -inset-2 bg-gradient-to-br ${service.color} rounded-2xl blur-xl opacity-20 dark:opacity-30 group-hover:opacity-40 transition-opacity duration-500`} />
                                 <div className={`relative w-12 h-12 rounded-xl p-[1px] bg-gradient-to-br ${service.color}`}>
                                   <div className="w-full h-full bg-[#FAF8F5] dark:bg-[#0F1523] rounded-[11px] flex items-center justify-center">
@@ -512,13 +517,13 @@ export default function ServicesPage() {
                             <div className="bg-[#FAF8F5] dark:bg-[#050B14] rounded-xl p-4 lg:p-5 border border-slate-200 dark:border-slate-800/80 relative overflow-hidden group/box mt-auto">
                               <div className="absolute inset-0 bg-gradient-to-br from-[#C59B27]/5 to-transparent opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
                               <h4 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] uppercase tracking-widest mb-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-2 shadow-[0_0_8px_rgba(197,155,39,0.8)]" />
-                                {isJa ? "代表的なお客様のご要望" : isDe ? "Typische Kundenanforderungen" : isEs ? "Necesidades típicas del cliente" : "Typical Client Needs"}
+                                <span className={`w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] shadow-[0_0_8px_rgba(197,155,39,0.8)] ${isAr ? "ml-2" : "mr-2"}`} />
+                                {isAr ? "احتياجات العميل النموذجية" : isJa ? "代表的なお客様のご要望" : isDe ? "Typische Kundenanforderungen" : isEs ? "Necesidades típicas del cliente" : "Typical Client Needs"}
                               </h4>
                               <div className="grid grid-cols-1 gap-2.5">
                                 {clientNeeds.map((need, nIdx) => (
                                   <div key={nIdx} className="flex items-start">
-                                     <span className="text-slate-400 dark:text-slate-600 font-serif text-2xl leading-none mr-2.5 mt-0.5">"</span>
+                                     <span className={`text-slate-400 dark:text-slate-600 font-serif text-2xl leading-none mt-0.5 ${isAr ? "ml-2.5" : "mr-2.5"}`}>"</span>
                                      <p className="text-[#555E75] dark:text-slate-300 text-[13px] italic leading-relaxed">
                                        {need.replace(/["“”]/g, '')}
                                      </p>
@@ -532,12 +537,12 @@ export default function ServicesPage() {
                           {/* Right: Services list */}
                           <div className="lg:w-1/2 flex flex-col h-full">
                             <p className="text-[#17135B] dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest mb-3">
-                              {sp?.servicesTitle || (isJa ? "提供サービス内容：" : isDe ? "Leistungen können umfassen:" : isEs ? "Los servicios pueden incluir:" : "Services may include")}
+                              {sp?.servicesTitle || (isAr ? "قد تشمل الخدمات ما يلي:" : isJa ? "提供サービス内容：" : isDe ? "Leistungen können umfassen:" : isEs ? "Los servicios pueden incluir:" : "Services may include")}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
                               {items.map((item, itemIdx) => (
                                 <div key={itemIdx} className="flex items-center bg-[#FAF8F5] dark:bg-[#151D2F] rounded-lg px-4 py-3 border border-slate-200 dark:border-transparent hover:border-[#C59B27] dark:hover:border-slate-700 transition-colors shadow-sm dark:shadow-none">
-                                  <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${service.color} mr-3 shrink-0 shadow-lg`} />
+                                  <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${service.color} shrink-0 shadow-lg ${isAr ? "ml-3" : "mr-3"}`} />
                                   <span className="text-[#17135B] dark:text-slate-200 text-[13.5px] font-semibold leading-snug">{item}</span>
                                 </div>
                               ))}
@@ -546,8 +551,8 @@ export default function ServicesPage() {
                             <div className="mt-auto flex justify-end">
                               <a href={service.link} className="inline-flex items-center text-[#17135B] dark:text-[#3B82F6] hover:text-[#C59B27] dark:hover:text-blue-400 text-[14px] font-bold transition-all duration-300 group/link bg-[#17135B]/8 dark:bg-[#3B82F6]/10 px-5 py-2.5 rounded-full hover:bg-[#17135B]/15">
                                 {linkText}
-                                <span className="ml-2 w-6 h-6 rounded-full bg-[#17135B]/10 dark:bg-blue-500/20 flex items-center justify-center transition-colors duration-300">
-                                  <ArrowRight className="w-3 h-3 text-[#17135B] dark:text-[#3B82F6] group-hover/link:translate-x-0.5 transition-all" />
+                                <span className={`${isAr ? "mr-2" : "ml-2"} w-6 h-6 rounded-full bg-[#17135B]/10 dark:bg-blue-500/20 flex items-center justify-center transition-colors duration-300`}>
+                                  <ArrowRight className={`w-3 h-3 text-[#17135B] dark:text-[#3B82F6] transition-all duration-300 ${isAr ? "rotate-180 group-hover/link:-translate-x-0.5" : "group-hover/link:translate-x-0.5"}`} />
                                 </span>
                               </a>
                             </div>
@@ -570,7 +575,7 @@ export default function ServicesPage() {
                 {s ? s.integratedModel.heading : "Integrated Service Model"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {isJa ? "1つの要件に対して複数のSanotaサービスを組み合わせ可能" : isDe ? "Eine Anforderung kann mehrere Sanota-Services erfordern" : isEs ? "Un requisito puede requerir varios servicios de Sanota" : "One Requirement May Use Several Sanota Services"}
+                {isAr ? "متطلب تشغيلي واحد قد يستفيد من عدة خدمات من سانوتا" : isJa ? "1つの要件に対して複数のSanotaサービスを組み合わせ可能" : isDe ? "Eine Anforderung kann mehrere Sanota-Services erfordern" : isEs ? "Un requisito puede requerir varios servicios de Sanota" : "One Requirement May Use Several Sanota Services"}
               </h3>
               <p className="text-[#555E75] dark:text-slate-400 text-lg max-w-2xl mx-auto">
                 {s ? s.integratedModel.description : "A client does not need to decide which technical departments should be involved. Sanota first studies the requirement and then identifies the appropriate combination of services."}
@@ -671,11 +676,16 @@ export default function ServicesPage() {
                 
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-                  {isJa ? "対応産業分野" : isDe ? "Unterstützte Branchen" : isEs ? "Sectores a los que apoyamos" : "Industries Supported"}
+                  {isAr ? "القطاعات المدعومة" : isJa ? "対応産業分野" : isDe ? "Unterstützte Branchen" : isEs ? "Sectores a los que apoyamos" : "Industries Supported"}
                 </h2>
                 
                 <h3 className="text-4xl md:text-5xl lg:text-[44px] font-black text-[#17135B] dark:text-white mb-8 leading-[1.15]">
-                  {isJa ? (
+                  {isAr ? (
+                    <>
+                      خدمات مصممة لتلائم <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">بيئات التشغيل المختلفة</span>
+                    </>
+                  ) : isJa ? (
                     <>
                       多様な運用環境に <br className="hidden md:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">最適化されたサービス</span>
@@ -699,14 +709,14 @@ export default function ServicesPage() {
                 </h3>
                 
                 <p className="text-[#555E75] dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
-                  {isJa ? "Sanotaのサービスは多岐にわたる産業分野のニーズに対応します。最終的なソリューションは、お客様の実際の稼働環境、技術要件、およびビジネスの優先事項に合わせて構築されます。" : isDe ? "Die Dienstleistungen von Sanota decken Anforderungen in einer Vielzahl von Branchen ab. Die endgültige Lösung wird auf der Grundlage der tatsächlichen Betriebsumgebung, der technischen Anforderungen und der geschäftlichen Prioritäten des Kunden entwickelt." : isEs ? "Los servicios de Sanota cubren requisitos en una amplia gama de industrias. La solución final se desarrolla en función del entorno operativo real del cliente, los requisitos técnicos y las prioridades comerciales." : "Sanota's services can support requirements across a wide range of industries. The final solution is developed around the client's actual operating environment, technical requirements and business priorities."}
+                  {isAr ? "تغطي خدمات سانوتا المتطلبات عبر مجموعة واسعة من القطاعات الصناعية. يتم تطوير الحل النهائي وفقاً لبيئة التشغيل الفعلية للعميل والمتطلبات الفنية والأولويات التجارية." : isJa ? "Sanotaのサービスは多岐にわたる産業分野のニーズに対応します。最終的なソリューションは、お客様の実際の稼働環境、技術要件、およびビジネスの優先事項に合わせて構築されます。" : isDe ? "Die Dienstleistungen von Sanota decken Anforderungen in einer Vielzahl von Branchen ab. Die endgültige Lösung wird auf der Grundlage der tatsächlichen Betriebsumgebung, der technischen Anforderungen und der geschäftlichen Prioritäten des Kunden entwickelt." : isEs ? "Los servicios de Sanota cubren requisitos en una amplia gama de industrias. La solución final se desarrolla en función del entorno operativo real del cliente, los requisitos técnicos y las prioridades comerciales." : "Sanota's services can support requirements across a wide range of industries. The final solution is developed around the client's actual operating environment, technical requirements and business priorities."}
                 </p>
                 
                 <Link 
                   href="/industries" 
                   className="inline-flex items-center px-8 py-4 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group"
                 >
-                  {isJa ? "産業分野を見る" : isDe ? "Branchen entdecken" : isEs ? "Explorar industrias" : "Explore Industries"} 
+                  {isAr ? "استكشف الصناعات" : isJa ? "産業分野を見る" : isDe ? "Branchen entdecken" : isEs ? "Explorar industrias" : "Explore Industries"} 
                   <span className="ml-3 w-8 h-8 rounded-full bg-[#111424]/10 flex items-center justify-center group-hover:bg-[#111424]/20 transition-colors">
                     <ArrowRight className="w-4 h-4 text-[#111424] group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -716,7 +726,18 @@ export default function ServicesPage() {
               {/* Right Column: Industry Cards */}
               <div className="lg:col-span-7">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                  {(isJa ? [
+                  {(isAr ? [
+                    "التصنيع والأتمتة الصناعية", 
+                    "الزراعة الذكية والتكنولوجيا الزراعية", 
+                    "معالجة الأغذية والمشروبات", 
+                    "حلول صناعة الشاي", 
+                    "الخدمات اللوجستية والتخزين ومناولة المواد", 
+                    "كفاءة الطاقة والموارد", 
+                    "الإدارة البيئية ومعالجة النفايات", 
+                    "البنية التحتية والمرافق الذكية", 
+                    "الرعاية الصحية والهندسة الطبية الحيوية", 
+                    "البحث والابتكار وتطوير المنتجات"
+                  ] : isJa ? [
                     "製造および産業オートメーション", 
                     "スマート農業およびアグリテック", 
                     "食品および飲料加工", 
@@ -821,7 +842,12 @@ export default function ServicesPage() {
                 </h2>
                 
                 <h3 className="text-4xl md:text-5xl lg:text-[52px] font-black text-[#17135B] dark:text-white mb-10 leading-tight">
-                  {isJa ? (
+                  {isAr ? (
+                    <>
+                      قدرات هندسية معززة <br className="hidden md:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#3B82F6] dark:to-cyan-400">بالبرمجيات والحلول الرقمية</span>
+                    </>
+                  ) : isJa ? (
                     <>
                       ソフトウェアとデジタル技術で強化された <br className="hidden md:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#3B82F6] dark:to-cyan-400">エンジニアリング能力</span>
@@ -847,7 +873,7 @@ export default function ServicesPage() {
                 <div className="space-y-6 text-[#555E75] dark:text-slate-300 text-[17px] leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
                   <p>{s ? s.knowebCollab.description : "Through its collaboration with Knoweb, Sanota can integrate engineering solutions with software, cloud platforms, IoT applications, web and mobile systems, dashboards and enterprise technologies."}</p>
                   <p className="text-[#646C82] dark:text-slate-400">
-                    {isJa ? "この提携により、クライアントは単一の協調環境を通じてエンジニアリングとデジタル機能にアクセスできます。Sanotaは全体的な要件の把握と統括を担当し、Knowebは必要に応じて専門的なITおよびソフトウェア機能を提供します。" : isDe ? "Diese Beziehung ermöglicht es Kunden, über eine einzige koordinierte Umgebung auf Ingenieur- und Digitalkapazitäten zuzugreifen. Sanota bleibt für das Verständnis und die Koordination der Gesamtanforderungen verantwortlich, während Knoweb bei Bedarf spezialisierte IT- und Softwarekompetenz beisteuert." : isEs ? "Esta relación permite a los clientes acceder a ingeniería y capacidades digitales a través de un único entorno coordinado. Sanota es responsable de comprender el requerimiento global, mientras que Knoweb aporta experiencia de software e IT especializada." : "This relationship allows clients to access engineering and digital capability through one coordinated solution environment. Sanota remains responsible for understanding and coordinating the overall engineering requirement, while Knoweb contributes specialized IT and software capability where required."}
+                    {isAr ? "تتيح هذه الشراكة للعملاء الوصول إلى القدرات الهندسية والرقمية من خلال بيئة عمل موحدة ومنسقة. تظل سانوتا مسؤولة عن فهم وتنسيق المتطلبات الهندسية الشاملة، بينما تساهم Knoweb بالخبرة المتخصصة في تكنولوجيا المعلومات والبرمجيات عند الحاجة." : isJa ? "この提携により、クライアントは単一の協調環境を通じてエンジニアリングとデジタル機能にアクセスできます。Sanotaは全体的な要件の把握と統括を担当し、Knowebは必要に応じて専門的なITおよびソフトウェア機能を提供します。" : isDe ? "Diese Beziehung ermöglicht es Kunden, über eine einzige koordinierte Umgebung auf Ingenieur- und Digitalkapazitäten zuzugreifen. Sanota bleibt für das Verständnis und die Koordination der Gesamtanforderungen verantwortlich, während Knoweb bei Bedarf spezialisierte IT- und Softwarekompetenz beisteuert." : isEs ? "Esta relación permite a los clientes acceder a ingeniería y capacidades digitales a través de un único entorno coordinado. Sanota es responsable de comprender el requerimiento global, mientras que Knoweb aporta experiencia de software e IT especializada." : "This relationship allows clients to access engineering and digital capability through one coordinated solution environment. Sanota remains responsible for understanding and coordinating the overall engineering requirement, while Knoweb contributes specialized IT and software capability where required."}
                   </p>
                 </div>
                 
@@ -875,7 +901,12 @@ export default function ServicesPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    قدرة عملية تنفيذية عبر <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">كامل دورة حياة الحلول الهندسية</span>
+                  </>
+                ) : isJa ? (
                   <>
                     ソリューションのライフサイクル全体にわたる <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">実践的な実行能力</span>
@@ -937,11 +968,16 @@ export default function ServicesPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-              {isJa ? "納入実績・プロジェクト事例" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos completados" : "Completed Work"}
+              {isAr ? "المشاريع المنجزة" : isJa ? "納入実績・プロジェクト事例" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos completados" : "Completed Work"}
               <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
             </h2>
             <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-              {isJa ? (
+              {isAr ? (
+                <>
+                  تعرف على كيفية تطبيق سانوتا <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">لهذه الخدمات الهندسية</span>
+                </>
+              ) : isJa ? (
                 <>
                   Sanotaのサービスがどのように <br className="hidden md:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">適用されるかをご覧ください</span>
@@ -964,7 +1000,12 @@ export default function ServicesPage() {
               )}
             </h3>
             <div className="space-y-4 text-[#555E75] dark:text-slate-400 text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-              {isJa ? (
+              {isAr ? (
+                <>
+                  <p>استكشف أمثلة لتطوير الآلات، والأتمتة الصناعية، والزراعة الذكية، وتكامل إنترنت الأشياء، وتحسين العمليات، والتحديث، والدعم الفني.</p>
+                  <p>توضح قصة كل مشروع التحدي المطروح، والخدمات المنسقة، والحل العملي النهائي الذي تم تحقيقه.</p>
+                </>
+              ) : isJa ? (
                 <>
                   <p>機械開発、産業オートメーション、スマート農業、IoT統合、プロセス改善、近代化、および技術サポートの事例をご覧ください。</p>
                   <p>各プロジェクトストーリーでは、課題、結集されたサービス、そして実現した機能的なソリューションを紹介しています。</p>
@@ -991,7 +1032,7 @@ export default function ServicesPage() {
                 href="/media" 
                 className="inline-flex items-center px-8 py-4 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group w-full sm:w-auto justify-center"
               >
-                {isJa ? "納入実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver trabajos completados" : "View Completed Work"} 
+                {isAr ? "عرض المشاريع المنجزة" : isJa ? "納入実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver trabajos completados" : "View Completed Work"} 
                 <span className="ml-3 w-8 h-8 rounded-full bg-[#111424]/10 flex items-center justify-center group-hover:bg-[#111424]/20 transition-colors">
                   <ArrowRight className="w-4 h-4 text-[#111424] group-hover:translate-x-0.5 transition-transform" />
                 </span>
@@ -1000,7 +1041,7 @@ export default function ServicesPage() {
                 href="/media" 
                 className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0F1523]/80 backdrop-blur-md border border-[#17135B]/20 dark:border-slate-700 text-[#17135B] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 text-[15px] font-bold rounded-xl transition-all duration-300 shadow-sm w-full sm:w-auto justify-center"
               >
-                {isJa ? "メディアセンターを見る" : isDe ? "Medienbereich besuchen" : isEs ? "Visitar centro de medios" : "Visit the Media Centre"}
+                {isAr ? "زيارة المركز الإعلامي" : isJa ? "メディアセンターを見る" : isDe ? "Medienbereich besuchen" : isEs ? "Visitar centro de medios" : "Visit the Media Centre"}
               </Link>
             </div>
           </div>
@@ -1020,12 +1061,17 @@ export default function ServicesPage() {
             >
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
-                {isJa ? "始める準備はできましたか？" : isDe ? "Bereit zu starten?" : isEs ? "¿Listo para empezar?" : "Ready To Start?"}
+                {isAr ? "هل أنت مستعد للبدء؟" : isJa ? "始める準備はできましたか？" : isDe ? "Bereit zu starten?" : isEs ? "¿Listo para empezar?" : "Ready To Start?"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(197,155,39,0.8)]" />
               </h2>
               
               <h2 className="text-4xl md:text-5xl lg:text-[52px] font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    ما هو التحدي الذي يمكننا <br className="hidden sm:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">مساعدتكم في حله؟</span>
+                  </>
+                ) : isJa ? (
                   <>
                     どのような課題の解決を <br className="hidden sm:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] to-[#17135B] dark:from-[#E8B84B] dark:to-amber-600">サポートできますか？</span>

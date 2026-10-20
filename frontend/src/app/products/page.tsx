@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { productsES } from "@/locales/es/products";
 import { productsDE } from "@/locales/de/products";
 import { productsJA } from "@/locales/ja/products";
+import { productsAR } from "@/locales/ar/products";
 
 const productCategories = [
   {
@@ -595,12 +596,92 @@ const industriesJA = [
   "研究、イノベーション、製品開発"
 ];
 
+const selectedSolutionsAR = [
+  "الآلات المؤتمتة",
+  "المعدات ذات الأغراض الخاصة",
+  "آلات المعالجة",
+  "أنظمة الإنتاج والمناولة",
+  "حلول البيوت الزجاجية الذكية",
+  "أنظمة الري والتسميد",
+  "أنظمة التحكم البيئي",
+  "أنظمة الأتمتة الصناعية",
+  "حلول PLC و HMI",
+  "منصات مراقبة إنترنت الأشياء",
+  "أنظمة التحكم عن بعد",
+  "لوحات المعلومات وأدوات إعداد التقارير",
+  "أنظمة تتبع الأصول والمواقع",
+  "معدات مناولة المواد",
+  "أنظمة النقل والسيور",
+  "المركبات الموجهة آلياً (AGV)",
+  "مراقبة الطاقة والمرافق",
+  "معدات معالجة النفايات",
+  "منتجات مزودة بأجهزة استشعار",
+  "نماذج أولية مصممة حسب الطلب",
+  "أنظمة صناعية ومنشآت متكاملة"
+];
+
+const existingEquipmentsAR = [
+  "تحسينات ميكانيكية",
+  "تحديثات للأنظمة الكهربائية",
+  "استبدال أنظمة التحكم",
+  "الأتمتة",
+  "دمج أجهزة الاستشعار",
+  "اتصال إنترنت الأشياء",
+  "مراقبة البرمجيات",
+  "تحسين السلامة",
+  "تحسين السعة والإنتاجية",
+  "إدارة التقادم",
+  "الصيانة الوقائية",
+  "دعم دورة الحياة على المدى الطويل"
+];
+
+const knowebItemsAR = [
+  "منصات إنترنت الأشياء",
+  "الاتصال السحابي",
+  "تطبيقات الويب",
+  "تطبيقات الهاتف المحمول",
+  "لوحات المعلومات التشغيلية",
+  "التنبيهات والإشعارات",
+  "إعداد التقارير الآلي",
+  "إدارة البيانات",
+  "أنظمة إدارة المستخدمين",
+  "التكامل مع البرامج الحالية"
+];
+
+const supportItemsAR = [
+  "الصيانة الوقائية",
+  "عمليات تفتيش دورية",
+  "ترتيبات دعم الأعطال",
+  "خدمات الصيانة الميكانيكية والكهربائية",
+  "دعم الأتمتة والتحكم",
+  "دعم إنترنت الأشياء والبرمجيات",
+  "تقييمات الأداء",
+  "تخطيط استبدال المكونات",
+  "توصيات التحديث والتطوير",
+  "تدريب المشغلين والصيانة",
+  "عقود الصيانة السنوية (AMC)"
+];
+
+const industriesAR = [
+  "التصنيع والأتمتة الصناعية",
+  "الزراعة الذكية والتكنولوجيا الزراعية",
+  "معالجة الأغذية والمشروبات",
+  "حلول صناعة الشاي",
+  "الخدمات اللوجستية والتخزين ومناولة المواد",
+  "كفاءة الطاقة والموارد",
+  "إدارة البيئة والنفايات",
+  "البنية التحتية والمرافق الذكية",
+  "الرعاية الصحية والهندسة الطبية الحيوية",
+  "البحث والابتكار وتطوير المنتجات"
+];
+
 export default function ProductsPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const p = isJa ? productsJA : isDe ? productsDE : isEs ? productsES : null;
+  const isAr = language === "ar";
+  const p = isAr ? productsAR : isJa ? productsJA : isDe ? productsDE : isEs ? productsES : null;
 
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -640,7 +721,7 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isJa ? "エンジニアリング製品および統合システム" : isDe ? "Engineering-Produkte & Integrierte Systeme" : isEs ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
+              {isAr ? "المنتجات الهندسية والأنظمة المتكاملة" : isJa ? "エンジニアリング製品および統合システム" : isDe ? "Engineering-Produkte & Integrierte Systeme" : isEs ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -718,7 +799,12 @@ export default function ProductsPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight"
             >
-              {isJa ? (
+              {isAr ? (
+                <>
+                  من المعدات الفردية إلى <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">الحلول المتكاملة الكاملة</span>
+                </>
+              ) : isJa ? (
                 <>
                   個々の機器から <br className="hidden md:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">完全な統合ソリューションまで</span>
@@ -748,7 +834,11 @@ export default function ProductsPage() {
               transition={{ delay: 0.1 }}
               className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium max-w-3xl mx-auto"
             >
-              {isJa ? (
+              {isAr ? (
+                <>
+                  يحتاج بعض العملاء إلى آلة أو منتج محدد. بينما يحتاج آخرون إلى نظام تشغيل متكامل يشمل المعدات، وأجهزة التحكم، وأجهزة الاستشعار، والبرمجيات، والتنفيذ. <strong className="text-[#17135B] dark:text-white">سانوتا تدعم كلا الأمرين.</strong>
+                </>
+              ) : isJa ? (
                 <>
                   顧客によっては、特定の機械や製品を必要とする場合もあれば、機器、制御装置、センサー、ソフトウェア、そして実装を含む完全な運用システムを必要とする場合もあります。<strong className="text-[#17135B] dark:text-white">サノタは両方をサポートしています。</strong>
                 </>
@@ -774,7 +864,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.15 }}
               className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10"
             >
-              {isJa ? "ご要望に応じて、サノタは以下のサービスを提供できます：" : isDe ? "Abhängig von den Anforderungen kann Sanota folgendes bereitstellen:" : isEs ? "En función de los requisitos, Sanota puede suministrar:" : "Depending on the requirement, Sanota can provide:"}
+              {isAr ? "بحسب المتطلبات، يمكن لشركة سانوتا أن توفر ما يلي:" : isJa ? "ご要望に応じて、サノタは以下のサービスを提供できます：" : isDe ? "Abhängig von den Anforderungen kann Sanota folgendes bereitstellen:" : isEs ? "En función de los requisitos, Sanota puede suministrar:" : "Depending on the requirement, Sanota can provide:"}
             </motion.p>
             
             <div className="relative max-w-4xl mx-auto mb-14 mt-8 group">
@@ -823,7 +913,7 @@ export default function ProductsPage() {
               transition={{ delay: 0.6 }}
               className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm"
             >
-              {isJa ? "適切なアプローチは、顧客の用途、動作環境、および期待される成果を理解した上で決定されます。" : isDe ? "Der passende Ansatz wird nach gründlicher Prüfung der Kundenanwendung, der Betriebsumgebung und des gewünschten Ergebnisses festgelegt." : isEs ? "El enfoque adecuado se determina después de comprender la aplicación, el entorno operativo y el resultado esperado del cliente." : "The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome."}
+              {isAr ? "يتم تحديد النهج المناسب بعد فهم تطبيق العميل وبيئة التشغيل والنتيجة المتوقعة." : isJa ? "適切なアプローチは、顧客の用途、動作環境、および期待される成果を理解した上で決定されます。" : isDe ? "Der passende Ansatz wird nach gründlicher Prüfung der Kundenanwendung, der Betriebsumgebung und des gewünschten Ergebnisses festgelegt." : isEs ? "El enfoque adecuado se determina después de comprender la aplicación, el entorno operativo y el resultado esperado del cliente." : "The appropriate approach is determined after understanding the client’s application, operating environment and expected outcome."}
             </motion.p>
           </div>
         </section>
@@ -835,10 +925,10 @@ export default function ProductsPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">
-                {isJa ? "製品およびシステムカテゴリ" : isDe ? "Produkt- und Systemkategorien" : isEs ? "Categorías de productos y sistemas" : "Product and System Categories"}
+                {isAr ? "فئات المنتجات والأنظمة" : isJa ? "製品およびシステムカテゴリ" : isDe ? "Produkt- und Systemkategorien" : isEs ? "Categorías de productos y sistemas" : "Product and System Categories"}
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white">
-                {isJa ? "サノタの製品とシステムの機能をご覧ください" : isDe ? "Entdecken Sie Sanotas Produkt- und Systemkompetenzen" : isEs ? "Explore los productos y capacidades de sistemas de Sanota" : "Explore Sanota’s Product and System Capabilities"}
+                {isAr ? "استكشف إمكانيات منتجات وأنظمة سانوتا" : isJa ? "サノタの製品とシステムの機能をご覧ください" : isDe ? "Entdecken Sie Sanotas Produkt- und Systemkompetenzen" : isEs ? "Explore los productos y capacidades de sistemas de Sanota" : "Explore Sanota’s Product and System Capabilities"}
               </h3>
             </div>
 
@@ -899,7 +989,7 @@ export default function ProductsPage() {
                           <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
                             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-slate-400 to-[#17135B] dark:to-slate-700" />
                             <p className="text-[#17135B] dark:text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">
-                              {isJa ? "以下のような組織に適しています：" : isDe ? "Geeignet für Organisationen, die Folgendes anstreben:" : isEs ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
+                              {isAr ? "مناسب للمؤسسات التي تسعى إلى:" : isJa ? "以下のような組織に適しています：" : isDe ? "Geeignet für Organisationen, die Folgendes anstreben:" : isEs ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
                             </p>
                             <div className="space-y-4 ml-2">
                               {catNeeds.map((need, nIdx) => (
@@ -916,7 +1006,7 @@ export default function ProductsPage() {
                           <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
                             <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-sm flex items-center">
                               <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-white/50 mr-3 animate-pulse" />
-                              {isJa ? "ソリューションには以下が含まれる場合があります" : isDe ? "Lösungen können umfassen" : isEs ? "Las soluciones pueden incluir" : "Solutions may include"}
+                              {isAr ? "قد تشمل الحلول ما يلي:" : isJa ? "ソリューションには以下が含まれる場合があります" : isDe ? "Lösungen können umfassen" : isEs ? "Las soluciones pueden incluir" : "Solutions may include"}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                               {catSolutions.map((item, itemIdx) => (
@@ -1047,7 +1137,7 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold max-w-3xl mx-auto leading-relaxed shadow-sm">
-                {isJa ? "サノタは、要件を検討した上で、どの方法が最も適切かを判断するお手伝いをします。" : isDe ? "Sanota hilft Ihnen nach Prüfung der Anforderungen, die am besten geeignete Vorgehensweise zu bestimmen." : isEs ? "Sanota le ayudará a determinar qué enfoque es el más adecuado después de revisar el requisito." : "Sanota will help determine which approach is most appropriate after reviewing the requirement."}
+                {isAr ? "ستساعد شركة سانوتا في تحديد النهج الأنسب بعد مراجعة المتطلبات." : isJa ? "サノタは、要件を検討した上で、どの方法が最も適切かを判断するお手伝いをします。" : isDe ? "Sanota hilft Ihnen nach Prüfung der Anforderungen, die am besten geeignete Vorgehensweise zu bestimmen." : isEs ? "Sanota le ayudará a determinar qué enfoque es el más adecuado después de revisar el requisito." : "Sanota will help determine which approach is most appropriate after reviewing the requirement."}
               </p>
             </motion.div>
           </div>
@@ -1062,11 +1152,16 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isJa ? "選択されたソリューション分野" : isDe ? "Ausgewählte Lösungsbereiche" : isEs ? "Áreas de Soluciones Seleccionadas" : "Selected Solution Areas"}
+                {isAr ? "مجالات الحلول المختارة" : isJa ? "選択されたソリューション分野" : isDe ? "Ausgewählte Lösungsbereiche" : isEs ? "Áreas de Soluciones Seleccionadas" : "Selected Solution Areas"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    أمثلة على ما يمكن لشركة سانوتا <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">تطويره ودمجه</span>
+                  </>
+                ) : isJa ? (
                   <>
                     サノタが開発・統合できるものの例 <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600">エンジニアリングの適用実績</span>
@@ -1101,13 +1196,13 @@ export default function ProductsPage() {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay" />
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 relative z-10">
-                  {(isJa ? selectedSolutionsJA : isDe ? selectedSolutionsDE : isEs ? selectedSolutionsES : selectedSolutions).map((sol, idx) => (
+                  {(isAr ? selectedSolutionsAR : isJa ? selectedSolutionsJA : isDe ? selectedSolutionsDE : isEs ? selectedSolutionsES : selectedSolutions).map((sol, idx) => (
                     <motion.div 
                       key={idx} 
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ delay: (idx % 3) * 0.05, duration: 0.4 }}
+                      initial={{ opacity: 0, y: 10 }} 
+                      whileInView={{ opacity: 1, y: 0 }} 
+                      viewport={{ once: true, margin: "-50px" }} 
+                      transition={{ delay: (idx % 3) * 0.05, duration: 0.4 }} 
                       className="flex items-start group/item cursor-default p-2 hover:bg-slate-50 dark:hover:bg-slate-800/40 rounded-lg transition-colors"
                     >
                       <div className="mt-1.5 mr-4 w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] opacity-60 group-hover/item:opacity-100 group-hover/item:shadow-[0_0_10px_rgba(232,184,75,0.8)] transition-all shrink-0" />
@@ -1126,7 +1221,7 @@ export default function ProductsPage() {
               className="text-center"
             >
               <p className="inline-flex items-center px-6 py-3 bg-[#F5F3EF] dark:bg-[#0B1220]/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 text-slate-600 dark:text-slate-400 text-sm font-semibold italic max-w-3xl mx-auto leading-relaxed shadow-sm">
-                {isJa ? "最終的な構成、仕様、および範囲は、顧客の用途と技術的な評価によって決定されます。" : isDe ? "Die endgültige Konfiguration, Spezifikationen und der Umfang hängen von der Anwendung und technischen Prüfung beim Kunden ab." : isEs ? "La configuración final, especificaciones y alcance dependerán de la aplicación y evaluación técnica del cliente." : "The final configuration, specifications and scope will depend on the client’s application and technical assessment."}
+                {isAr ? "ستعتمد التكوينات والمواصفات والنطاق النهائي على تطبيق العميل وتقييمه الفني." : isJa ? "最終的な構成、仕様、および範囲は、顧客の用途と技術的な評価によって決定されます。" : isDe ? "Die endgültige Konfiguration, Spezifikationen und der Umfang hängen von der Anwendung und technischen Prüfung beim Kunden ab." : isEs ? "La configuración final, especificaciones y alcance dependerán de la aplicación y evaluación técnica del cliente." : "The final configuration, specifications and scope will depend on the client’s application and technical assessment."}
               </p>
             </motion.div>
           </div>
@@ -1146,10 +1241,15 @@ export default function ProductsPage() {
               >
                 <h2 className="flex items-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                  {isJa ? "新システムと既存設備" : isDe ? "Neuanlagen und bestehende Ausrüstung" : isEs ? "Nuevos Sistemas y Equipos Existentes" : "New Systems and Existing Equipment"}
+                  {isAr ? "الأنظمة الجديدة والمعدات الحالية" : isJa ? "新システムと既存設備" : isDe ? "Neuanlagen und bestehende Ausrüstung" : isEs ? "Nuevos Sistemas y Equipos Existentes" : "New Systems and Existing Equipment"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-8 leading-tight">
-                  {isJa ? (
+                  {isAr ? (
+                    <>
+                      تطوير الجديد. تحسين الموجود. <br className="hidden xl:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">ربط ما يعمل بالفعل.</span>
+                    </>
+                  ) : isJa ? (
                     <>
                       新しいものを開発する。既存のものを改善する。 <br className="hidden xl:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">すでに機能しているものを接続する。</span>
@@ -1172,14 +1272,14 @@ export default function ProductsPage() {
                   )}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium">
-                  {isJa ? "サノタの役割は、新しい機械やシステムの開発だけにとどまりません。" : isDe ? "Sanotas Rolle beschränkt sich nicht nur auf die Entwicklung neuer Maschinen und Systeme." : isEs ? "El papel de Sanota no se limita al desarrollo de maquinaria y sistemas nuevos." : "Sanota’s role is not limited to developing new machinery and systems."}
+                  {isAr ? "لا يقتصر دور شركة سانوتا على تطوير الآلات والأنظمة الجديدة." : isJa ? "サノタの役割は、新しい機械やシステムの開発だけにとどまりません。" : isDe ? "Sanotas Rolle beschränkt sich nicht nur auf die Entwicklung neuer Maschinen und Systeme." : isEs ? "El papel de Sanota no se limita al desarrollo de maquinaria y sistemas nuevos." : "Sanota’s role is not limited to developing new machinery and systems."}
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10">
-                  {isJa ? "既存の設備は依然として高い運用価値を有している可能性がありますが、制御の改善、新しいコンポーネント、自動化、デジタル監視、または体系的な保守が必要な場合があります。" : isDe ? "Bestehende Anlagen besitzen oft einen erheblichen operativen Wert, benötigen jedoch modernisierte Steuerungen, neue Komponenten, Automatisierung, digitale Überwachung oder strukturierte Wartung." : isEs ? "Los equipos existentes pueden conservar un gran valor operativo pero requerir controles actualizados, nuevos componentes, automatización, monitorización digital o mantenimiento estructurado." : "Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance."}
+                  {isAr ? "قد تظل المعدات الحالية ذات قيمة تشغيلية كبيرة ولكنها تتطلب ضوابط محسنة، ومكونات جديدة، وأتمتة، ومراقبة رقمية أو صيانة منظمة." : isJa ? "既存の設備は依然として高い運用価値を有している可能性がありますが、制御の改善、新しいコンポーネント、自動化、デジタル監視、または体系的な保守が必要な場合があります。" : isDe ? "Bestehende Anlagen besitzen oft einen erheblichen operativen Wert, benötigen jedoch modernisierte Steuerungen, neue Komponenten, Automatisierung, digitale Überwachung oder strukturierte Wartung." : isEs ? "Los equipos existentes pueden conservar un gran valor operativo pero requerir controles actualizados, nuevos componentes, automatización, monitorización digital o mantenimiento estructurado." : "Existing equipment may still have significant operational value but require improved controls, new components, automation, digital monitoring or structured maintenance."}
                 </p>
                 
                 <Link href="/services" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0B1220]/80 backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                  {isJa ? "改修・近代化について調べる" : isDe ? "Nachrüstung und Modernisierung erkunden" : isEs ? "Explorar Modernización y Reacondicionamiento" : "Explore Retrofit & Modernization"} 
+                  {isAr ? "استكشف التحديث والتطوير" : isJa ? "改修・近代化について調べる" : isDe ? "Nachrüstung und Modernisierung erkunden" : isEs ? "Explorar Modernización y Reacondicionamiento" : "Explore Retrofit & Modernization"} 
                   <ArrowRight className="ml-3 w-5 h-5 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
                 </Link>
               </motion.div>
@@ -1211,10 +1311,10 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-8 text-lg drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       {isJa ? "サノタは既存の機械やシステムを評価し、以下の機会を特定できます：" : isDe ? "Sanota kann vorhandene Maschinen und Systeme evaluieren, um Optimierungspotenziale zu ermitteln für:" : isEs ? "Sanota puede evaluar la maquinaria y sistemas existentes para identificar oportunidades de:" : "Sanota can assess existing machinery and systems to identify opportunities for:"}
+                       {isAr ? "بإمكان شركة سانوتا تقييم الآلات والأنظمة الحالية لتحديد الفرص المتاحة لما يلي:" : isJa ? "サノタは既存の機械やシステムを評価し、以下の機会を特定できます：" : isDe ? "Sanota kann vorhandene Maschinen und Systeme evaluieren, um Optimierungspotenziale zu ermitteln für:" : isEs ? "Sanota puede evaluar la maquinaria y sistemas existentes para identificar oportunidades de:" : "Sanota can assess existing machinery and systems to identify opportunities for:"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                      {(isJa ? existingEquipmentsJA : isDe ? existingEquipmentsDE : isEs ? existingEquipmentsES : existingEquipments).map((eq, idx) => (
+                      {(isAr ? existingEquipmentsAR : isJa ? existingEquipmentsJA : isDe ? existingEquipmentsDE : isEs ? existingEquipmentsES : existingEquipments).map((eq, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, y: 15 }}
@@ -1260,7 +1360,12 @@ export default function ProductsPage() {
                   </div>
                   
                   <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                    {isJa ? (
+                    {isAr ? (
+                      <>
+                        منتجات هندسية <br className="hidden md:block" />
+                        متصلة بالـ<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">تكنولوجيا الرقمية</span>
+                      </>
+                    ) : isJa ? (
                       <>
                         デジタル技術で <br className="hidden md:block" />
                         つながった<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">エンジニアリング製品</span>
@@ -1285,10 +1390,14 @@ export default function ProductsPage() {
                   
                   <div className="space-y-6 mb-10 max-w-3xl mx-auto text-center">
                     <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
-                      {isJa ? "現代のエンジニアリング製品は、ソフトウェア、接続性、および運用情報へのアクセスにますます依存するようになっています。サノタは、同一グループ傘下の関連IT企業であるKnowebを通じて、エンジニアリング製品およびシステムを強化できます。" : isDe ? "Moderne technische Produkte hängen zunehmend von Software, Konnektivität und dem Zugriff auf Betriebsdaten ab. Durch Knoweb, ein verbundenes IT-Unternehmen unter gemeinsamem Besitz, kann Sanota technische Produkte und Systeme stärken." : isEs ? "Los productos de ingeniería modernos dependen cada vez más del software, la conectividad y el acceso a información operativa. A través de Knoweb, empresa de TI afiliada bajo propiedad común, Sanota fortalece productos y sistemas de ingeniería." : "Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems."}
+                      {isAr ? "تعتمد المنتجات الهندسية الحديثة بشكل متزايد على البرمجيات والاتصال والوصول إلى المعلومات التشغيلية. من خلال شركة Knoweb، وهي شركة تكنولوجيا معلومات تابعة لها وتخضع لملكية مشتركة، تستطيع شركة سانوتا تعزيز منتجاتها وأنظمتها الهندسية." : isJa ? "現代のエンジニアリング製品は、ソフトウェア、接続性、および運用情報へのアクセスにますます依存するようになっています。サノタは、同一グループ傘下の関連IT企業であるKnowebを通じて、エンジニアリング製品およびシステムを強化できます。" : isDe ? "Moderne technische Produkte hängen zunehmend von Software, Konnektivität und dem Zugriff auf Betriebsdaten ab. Durch Knoweb, ein verbundenes IT-Unternehmen unter gemeinsamem Besitz, kann Sanota technische Produkte und Systeme stärken." : isEs ? "Los productos de ingeniería modernos dependen cada vez más del software, la conectividad y el acceso a información operativa. A través de Knoweb, empresa de TI afiliada bajo propiedad común, Sanota fortalece productos y sistemas de ingeniería." : "Modern engineering products increasingly depend on software, connectivity and access to operational information. Through Knoweb, an affiliated IT company under common ownership, Sanota can strengthen engineering products and systems."}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-                      {isJa ? (
+                      {isAr ? (
+                        <>
+                          تتولى <strong className="text-[#17135B] dark:text-white">سانوتا</strong> تنسيق المتطلبات الهندسية العامة، بينما تساهم شركة <strong className="text-[#17135B] dark:text-white">Knoweb</strong> بالبرمجيات المتخصصة والقدرات الرقمية عند الحاجة.
+                        </>
+                      ) : isJa ? (
                         <>
                           <strong className="text-[#17135B] dark:text-white">サノタ</strong>がエンジニアリング要件全体を統括し、必要に応じて<strong className="text-[#17135B] dark:text-white">Knoweb</strong>が特化したソフトウェアとデジタル機能を提供します。
                         </>
@@ -1311,7 +1420,7 @@ export default function ProductsPage() {
                   <Link href="#automation-iot" className="relative inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] overflow-hidden rounded-xl group border border-slate-300 dark:border-slate-700 transition-all hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] shadow-sm">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#E8B84B]/10 to-cyan-500/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                     <span className="relative z-10 text-[#17135B] dark:text-white font-bold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#C59B27] dark:group-hover:from-[#E8B84B] group-hover:to-cyan-500 dark:group-hover:to-cyan-400 transition-all duration-300">
-                      {isJa ? "自動化・IoTを探求する" : isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar Automatización e IoT" : "Explore Automation & IoT"}
+                      {isAr ? "استكشف الأتمتة وإنترنت الأشياء" : isJa ? "自動化・IoTを探求する" : isDe ? "Automatisierung & IoT erkunden" : isEs ? "Explorar Automatización e IoT" : "Explore Automation & IoT"}
                     </span>
                     <div className="relative z-10 ml-4 w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors">
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
@@ -1344,12 +1453,12 @@ export default function ProductsPage() {
                          <Activity className="w-10 h-10 text-cyan-500 dark:text-cyan-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors" />
                        </motion.div>
                        <h4 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-300 dark:to-blue-500 tracking-wide mb-2">
-                         {isJa ? "デジタル機能" : isDe ? "Digitale Kompetenzen" : isEs ? "Capacidades Digitales" : "Digital Capabilities"}
+                         {isAr ? "القدرات الرقمية" : isJa ? "デジタル機能" : isDe ? "Digitale Kompetenzen" : isEs ? "Capacidades Digitales" : "Digital Capabilities"}
                        </h4>
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {(isJa ? knowebItemsJA : isDe ? knowebItemsDE : isEs ? knowebItemsES : knowebItems).map((item, idx) => (
+                      {(isAr ? knowebItemsAR : isJa ? knowebItemsJA : isDe ? knowebItemsDE : isEs ? knowebItemsES : knowebItems).map((item, idx) => (
                         <motion.div 
                           key={idx} 
                           initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -1386,11 +1495,15 @@ export default function ProductsPage() {
             <div className="text-center mb-10 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isJa ? "ソリューションの開発プロセス" : isDe ? "Wie eine Lösung entwickelt wird" : isEs ? "Cómo se Desarrolla una Solución" : "How a Solution is Developed"}
+                {isAr ? "كيفية تطوير الحل" : isJa ? "ソリューションの開発プロセス" : isDe ? "Wie eine Lösung entwickelt wird" : isEs ? "Cómo se Desarrolla una Solución" : "How a Solution is Developed"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    من المتطلبات إلى <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">النظام العامل</span>
+                  </>
+                ) : isJa ? (
                   <>
                     要件定義から <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">稼働システムへ</span>
                   </>
@@ -1415,7 +1528,15 @@ export default function ProductsPage() {
               <div className="hidden md:block absolute left-1/2 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-[#C59B27]/40 dark:via-[#E8B84B]/30 to-transparent -translate-x-1/2" />
               
               <div className="space-y-6 md:space-y-0 relative z-10">
-                {(isJa ? [
+                {(isAr ? [
+                  { n: "1", title: "فهم المتطلبات", desc: "تقوم شركة سانوتا بدراسة التحدي التشغيلي والنتيجة المرجوة وبيئة العمل." },
+                  { n: "2", title: "تقييم التطبيق", desc: "تتم مراجعة المعدات والعمليات والقيود والمخاطر ومتطلبات التكامل الحالية." },
+                  { n: "3", title: "تحديد الحل", desc: "يتم تحديد المنتج أو النظام أو نهج التطوير المخصص المناسب." },
+                  { n: "4", title: "التصميم والتطوير", desc: "يتم تطوير العناصر الميكانيكية والكهربائية والأتمتة وإنترنت الأشياء والبرمجيات حسب الحاجة." },
+                  { n: "5", title: "دمج واختبار المكونات", desc: "يتم تجميع المكونات والتقنيات وبرمجتها وتوصيلها واختبارها." },
+                  { n: "6", title: "التركيب والتشغيل", desc: "يتم تطبيق الحل والتحقق منه في بيئة التشغيل المقصودة." },
+                  { n: "7", title: "التدريب والدعم", desc: "يمكن توفير إرشادات المشغلين والوثائق الفنية والصيانة ودعم عقود الصيانة السنوية (AMC)." }
+                ] : isJa ? [
                   { n: "1", title: "要件の理解", desc: "サノタは、運用の課題、期待される成果、および作業環境を調査・分析します。" },
                   { n: "2", title: "用途の評価", desc: "既存の機器、プロセス、制約事項、リスク、および統合要件を詳細に検討します。" },
                   { n: "3", title: "ソリューションの定義", desc: "適切な製品、システム、またはカスタム開発のアプローチを特定します。" },
@@ -1484,7 +1605,7 @@ export default function ProductsPage() {
             >
               <Link href="/tell-us-your-challenge" className="relative inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl overflow-hidden group transition-all hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-1 shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10">{isJa ? "ご要望をお聞かせください" : isDe ? "Teilen Sie uns Ihre Anforderungen mit" : isEs ? "Cuéntenos sus requisitos" : "Tell Us Your Requirement"}</span>
+                <span className="relative z-10">{isAr ? "أخبرنا بمتطلباتك" : isJa ? "ご要望をお聞かせください" : isDe ? "Teilen Sie uns Ihre Anforderungen mit" : isEs ? "Cuéntenos sus requisitos" : "Tell Us Your Requirement"}</span>
                 <div className="relative z-10 ml-3 w-8 h-8 rounded-full bg-[#0B1220]/10 flex items-center justify-center group-hover:bg-[#0B1220]/20 transition-colors">
                   <ArrowRight className="w-4 h-4 text-[#0B1220] group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -1567,7 +1688,7 @@ export default function ProductsPage() {
                   <div className="bg-[#0A101A]/80 group-hover/card:bg-[#0A101A]/70 transition-all duration-700 rounded-3xl p-6 lg:p-8 border border-white/20 backdrop-blur-xl group-hover/card:-translate-y-2 group-hover/card:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <p className="!text-white font-bold mb-6 text-xs uppercase tracking-widest drop-shadow-md flex items-center">
                        <span className="w-2.5 h-2.5 rounded-full bg-[#E8B84B] mr-3 shadow-[0_0_10px_rgba(232,184,75,0.8)] animate-pulse" />
-                       {isJa ? "包括的なサポート範囲" : isDe ? "Umfassende Supportabdeckung" : isEs ? "Cobertura de Soporte Integral" : "Comprehensive Support Cover"}
+                       {isAr ? "تغطية دعم شاملة" : isJa ? "包括的なサポート範囲" : isDe ? "Umfassende Supportabdeckung" : isEs ? "Cobertura de Soporte Integral" : "Comprehensive Support Cover"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       {(() => {
@@ -1575,7 +1696,7 @@ export default function ProductsPage() {
                           ShieldCheck, PackageSearch, Wrench, Zap, Settings, Layers,
                           Activity, Layers, Lightbulb, Activity, ShieldCheck
                         ];
-                        const list = isJa ? supportItemsJA : isDe ? supportItemsDE : isEs ? supportItemsES : [
+                        const list = isAr ? supportItemsAR : isJa ? supportItemsJA : isDe ? supportItemsDE : isEs ? supportItemsES : [
                           "Preventive maintenance",
                           "Periodic inspections",
                           "Breakdown-support",
@@ -1623,11 +1744,16 @@ export default function ProductsPage() {
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isJa ? "対応産業分野" : isDe ? "Bediente Branchen" : isEs ? "Industrias Atendidas" : "Industries Served"}
+                {isAr ? "القطاعات التي نخدمها" : isJa ? "対応産業分野" : isDe ? "Bediente Branchen" : isEs ? "Industrias Atendidas" : "Industries Served"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    منتجات وأنظمة <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">لبيئات تشغيل متنوعة</span>
+                  </>
+                ) : isJa ? (
                   <>
                     多様な運用環境に対応する <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500">製品およびシステム</span>
@@ -1719,16 +1845,16 @@ export default function ProductsPage() {
                          
                          {/* Continuous Pulse Background */}
                          <motion.div 
-                           animate={{ opacity: [0, 0.3, 0] }}
-                           transition={{ 
-                             duration: 10, 
-                             repeat: Infinity, 
-                             delay: idx * 1, 
-                             times: [0, 0.05, 1], 
-                             ease: "easeOut" 
-                           }}
-                           className="absolute inset-0 pointer-events-none" 
-                           style={{ backgroundColor: ind.color }}
+                            animate={{ opacity: [0, 0.3, 0] }}
+                            transition={{ 
+                              duration: 10, 
+                              repeat: Infinity, 
+                              delay: idx * 1, 
+                              times: [0, 0.05, 1], 
+                              ease: "easeOut" 
+                            }}
+                            className="absolute inset-0 pointer-events-none" 
+                            style={{ backgroundColor: ind.color }}
                          />
                          
                          <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110 relative z-10" style={{ color: ind.color }} />
@@ -1736,7 +1862,7 @@ export default function ProductsPage() {
                       
                       {/* Text */}
                       <span className="text-slate-700 dark:text-slate-300 text-[14px] leading-snug font-medium group-hover:text-[#17135B] dark:group-hover:text-white transition-colors duration-300 relative z-10">
-                        {isJa ? industriesJA[idx] : isDe ? industriesDE[idx] : isEs ? industriesES[idx] : ind.name}
+                        {isAr ? industriesAR[idx] : isJa ? industriesJA[idx] : isDe ? industriesDE[idx] : isEs ? industriesES[idx] : ind.name}
                       </span>
                     </div>
                   </motion.div>
@@ -1746,7 +1872,7 @@ export default function ProductsPage() {
             
             <div className="text-center">
               <Link href="/industries" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-[#131C2E] hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-1 group shadow-sm">
-                {isJa ? "産業分野を探索する" : isDe ? "Branchen erkunden" : isEs ? "Explorar Industrias" : "Explore Industries"} <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
+                {isAr ? "استكشف جميع الصناعات" : isJa ? "産業分野を探索する" : isDe ? "Branchen erkunden" : isEs ? "Explorar Industrias" : "Explore Industries"} <ArrowRight className="ml-3 w-4 h-4 text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </div>
@@ -1763,14 +1889,14 @@ export default function ProductsPage() {
             <div className="text-center">
               <h2 className="flex items-center justify-center text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-[0.2em] uppercase text-xs mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] mr-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
-                {isJa ? "完了した実績" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos Completados" : "Completed Work"}
+                {isAr ? "العمل المنجز" : isJa ? "完了した実績" : isDe ? "Abgeschlossene Arbeiten" : isEs ? "Trabajos Completados" : "Completed Work"}
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] ml-3 animate-pulse shadow-[0_0_10px_rgba(232,184,75,0.8)]" />
               </h2>
               <h3 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6">
-                {isJa ? "サノタの製品とシステムの実稼働をご覧ください" : isDe ? "Erleben Sie Sanota Produkte und Systeme im Einsatz" : isEs ? "Vea los productos y sistemas de Sanota en funcionamiento" : "See Sanota Products and Systems in Operation"}
+                {isAr ? "اطلع على منتجات وأنظمة سانوتا قيد التشغيل" : isJa ? "サノタの製品とシステムの実稼働をご覧ください" : isDe ? "Erleben Sie Sanota Produkte und Systeme im Einsatz" : isEs ? "Vea los productos y sistemas de Sanota en funcionamiento" : "See Sanota Products and Systems in Operation"}
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
-                {isJa ? "実環境向けに開発された機械、自動化、スマート農業システム、IoTプラットフォーム、近代化プロジェクト、カスタムエンジニアリングをご覧ください。" : isDe ? "Erkunden Sie Maschinen, Automatisierung, Smart-Farming-Systeme, IoT-Plattformen, Modernisierungsprojekte und kundenspezifische Engineering-Lösungen für reale Betriebsumgebungen." : isEs ? "Explore maquinaria, automatización, sistemas de agricultura inteligente, plataformas de IoT, proyectos de modernización y soluciones de ingeniería desarrolladas para entornos reales." : "Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments."}
+                {isAr ? "استكشف الآلات، والأتمتة، وأنظمة الزراعة الذكية، ومنصات إنترنت الأشياء، ومشاريع التحديث، والحلول الهندسية المخصصة المصممة لبيئات التشغيل الحقيقية." : isJa ? "実環境向けに開発された機械、自動化、スマート農業システム、IoTプラットフォーム、近代化プロジェクト、カスタムエンジニアリングをご覧ください。" : isDe ? "Erkunden Sie Maschinen, Automatisierung, Smart-Farming-Systeme, IoT-Plattformen, Modernisierungsprojekte und kundenspezifische Engineering-Lösungen für reale Betriebsumgebungen." : isEs ? "Explore maquinaria, automatización, sistemas de agricultura inteligente, plataformas de IoT, proyectos de modernización y soluciones de ingeniería desarrolladas para entornos reales." : "Explore machinery, automation, smart-agriculture systems, IoT platforms, modernization projects and custom engineering solutions developed for real operating environments."}
               </p>
               
               {/* Premium 5-Step Case Study Flow */}
@@ -1788,7 +1914,13 @@ export default function ProductsPage() {
                 />
                 
                 <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4 relative z-10">
-                  {(isJa ? [
+                  {(isAr ? [
+                    "تحدي العميل",
+                    "المنتج أو النظام المطلوب",
+                    "التقنيات المستخدمة",
+                    "دور سانوتا",
+                    "النتيجة النهائية"
+                  ] : isJa ? [
                     "クライアントの課題",
                     "必要とされる製品またはシステム",
                     "組み合わせた技術",
@@ -1817,7 +1949,7 @@ export default function ProductsPage() {
                       key={idx} 
                       initial={{ opacity: 0, scale: 0.5, y: 30 }} 
                       whileInView={{ opacity: 1, scale: 1, y: 0 }} 
-                      whileHover={{ y: -10, scale: 1.05 }}
+                      whileHover={{ y: -10, scale: 1.05 }} 
                       viewport={{ once: true, margin: "-50px" }} 
                       transition={{ delay: idx * 0.25, duration: 0.6, type: "spring", bounce: 0.5 }}
                       className="group flex flex-col items-center flex-1 w-full cursor-pointer"
@@ -1849,10 +1981,10 @@ export default function ProductsPage() {
               
               <div className="flex flex-col sm:flex-row justify-center gap-5">
                 <Link href="/media" className="px-8 py-4 bg-gradient-to-r from-[#E8B84B] to-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all hover:shadow-[0_0_20px_rgba(232,184,75,0.3)] hover:-translate-y-1 flex items-center justify-center group shadow-sm">
-                  {isJa ? "完了した実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver Trabajos Completados" : "View Completed Work"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {isAr ? "عرض العمل المنجز" : isJa ? "完了した実績を見る" : isDe ? "Abgeschlossene Arbeiten ansehen" : isEs ? "Ver Trabajos Completados" : "View Completed Work"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="/media" className="px-8 py-4 bg-white dark:bg-[#0A101A] backdrop-blur-md border border-slate-300 dark:border-slate-700 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl transition-all hover:-translate-y-1 flex items-center justify-center shadow-sm">
-                  {isJa ? "メディアセンターへ" : isDe ? "Medienzentrum besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
+                  {isAr ? "زيارة المركز الإعلامي" : isJa ? "メディアセンターへ" : isDe ? "Medienzentrum besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
                 </Link>
               </div>
             </div>
@@ -1870,7 +2002,12 @@ export default function ProductsPage() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#E8B84B]/10 to-transparent rounded-[100%] blur-3xl pointer-events-none" />
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 relative z-10">
-                  {isJa ? (
+                  {isAr ? (
+                    <>
+                      لست متأكداً من المنتج أو <br className="hidden sm:block" />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">النظام الذي تحتاجه؟</span>
+                    </>
+                  ) : isJa ? (
                     <>
                       どの製品やシステムが必要か <br className="hidden sm:block" />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">お分かりになりませんか？</span>
@@ -1894,11 +2031,17 @@ export default function ProductsPage() {
                 </h2>
                 
                 <p className="text-lg text-white font-semibold mb-8 relative z-10">
-                  {isJa ? "製品名や技術仕様から始める必要はありません。以下についてお聞かせください：" : isDe ? "Sie müssen nicht mit einem Produktnamen oder einer technischen Spezifikation beginnen. Sagen Sie uns:" : isEs ? "No necesita comenzar con un nombre de producto o especificación técnica. Cuéntenos:" : "You do not need to begin with a product name or technical specification. Tell us:"}
+                  {isAr ? "لا تحتاج إلى البدء باسم المنتج أو المواصفات الفنية. أخبرنا بما يلي:" : isJa ? "製品名や技術仕様から始める必要はありません。以下についてお聞かせください：" : isDe ? "Sie müssen nicht mit einem Produktnamen oder einer technischen Spezifikation beginnen. Sagen Sie uns:" : isEs ? "No necesita comenzar con un nombre de producto o especificación técnica. Cuéntenos:" : "You do not need to begin with a product name or technical specification. Tell us:"}
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 max-w-4xl mx-auto relative z-10">
-                  {(isJa ? [
+                  {(isAr ? [
+                    "ما الذي يحدث الآن",
+                    "ما الذي يحتاج إلى تحسين",
+                    "ما الذي تريد تطويره",
+                    "أين سيعمل الحل",
+                    "ما هي النتيجة التي تتوقعها؟"
+                  ] : isJa ? [
                     "現在何が起きているか",
                     "何を改善する必要があるか",
                     "何を開発したいか",
@@ -1934,7 +2077,7 @@ export default function ProductsPage() {
                 </div>
 
                 <p className="text-[16px] text-slate-200 dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed relative z-10">
-                  {isJa ? "サノタが要件を検討し、適切な製品、システム、またはカスタムエンジニアリングの道筋をご案内します。" : isDe ? "Sanota prüft die Anforderungen und führt Sie zum passenden Produkt, System oder individuellen Entwicklungspfad." : isEs ? "Sanota revisará el requisito y le guiará hacia el producto, sistema o ruta de ingeniería personalizada más adecuada." : "Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway."}
+                  {isAr ? "ستقوم شركة سانوتا بمراجعة المتطلبات وتوجيهك نحو المنتج أو النظام أو مسار الهندسة المخصصة المناسب." : isJa ? "サノタが要件を検討し、適切な製品、システム、またはカスタムエンジニアリングの道筋をご案内します。" : isDe ? "Sanota prüft die Anforderungen und führt Sie zum passenden Produkt, System oder individuellen Entwicklungspfad." : isEs ? "Sanota revisará el requisito y le guiará hacia el producto, sistema o ruta de ingeniería personalizada más adecuada." : "Sanota will review the requirement and guide you towards the appropriate product, system or custom-engineering pathway."}
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10">
@@ -1942,13 +2085,13 @@ export default function ProductsPage() {
                     href="/tell-us-your-challenge"
                     className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
                   >
-                    {isJa ? "あなたの課題を教えてください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "あなたの課題を教えてください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/contact"
                     className="inline-flex justify-center items-center px-10 py-4 border border-white/30 dark:border-slate-700 text-[14px] font-bold rounded-lg text-white hover:bg-white/10 dark:hover:bg-slate-800 transition-all w-full sm:w-auto"
                   >
-                    {isJa ? "エンジニアリング相談を依頼する" : isDe ? "Engineering-Beratung anfragen" : isEs ? "Solicitar Consulta de Ingeniería" : "Request Engineering Consultation"}
+                    {isAr ? "طلب استشارة هندسية" : isJa ? "エンジニアリング相談を依頼する" : isDe ? "Engineering-Beratung anfragen" : isEs ? "Solicitar Consulta de Ingeniería" : "Request Engineering Consultation"}
                   </Link>
                 </div>
               </div>
@@ -1963,7 +2106,12 @@ export default function ProductsPage() {
               className="relative mt-16 text-center"
             >
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-6">
-                {isJa ? (
+                {isAr ? (
+                  <>
+                    ما الذي تحتاجه للبناء أو التحسين <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">أو الأتمتة أو الربط؟</span>
+                  </>
+                ) : isJa ? (
                   <>
                     何を構築、改善、自動化、 <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-[#2E5EAA]">または接続する必要がありますか？</span>

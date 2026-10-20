@@ -16,6 +16,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { mediaES } from "@/locales/es/media";
 import { mediaDE } from "@/locales/de/media";
 import { mediaJA } from "@/locales/ja/media";
+import { mediaAR } from "@/locales/ar/media";
 
 const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 
@@ -315,12 +316,79 @@ const publicationPrinciplesJA = [
   "安全でプロフェッショナルな作業基準"
 ];
 
+const featuredWorkAR = [
+  { title: "الآلات الصناعية والتحديث", desc: "آلات مصممة حسب الطلب، وتحديثات لأنظمة التحكم، وتطوير أنظمة الأتمتة، وتحسينات للمعدات الصناعية القائمة.", link: "عرض مشاريع التحديث", icon: Settings, image: "/featured_industrial_1789116846117.jpg" },
+  { title: "الزراعة الذكية", desc: "البيوت الزجاجية، والري، والتسميد، والمراقبة البيئية، والأنظمة الزراعية المتصلة.", link: "عرض المشاريع الزراعية", icon: Sprout, image: "/featured_agriculture_1789116860132.jpg" },
+  { title: "معالجة الأغذية والمشروبات والشاي", desc: "معدات معالجة الأغذية والمشروبات والشاي، وأنظمة الإنتاج، وأنظمة التحكم البيئي، والأتمتة الخاصة بالصناعة.", link: "عرض مشاريع تصنيع الأغذية", icon: Coffee, image: "/featured_food_1789116878789.jpg" },
+  { title: "إنترنت الأشياء والتكامل الرقمي", desc: "الآلات المتصلة، وأجهزة الاستشعار، ولوحات المعلومات، والتنبيهات، وأنظمة التتبع، والبرامج التشغيلية.", link: "عرض مشاريع إنترنت الأشياء", icon: Monitor, image: "/featured_iot_1789116892994.jpg" },
+  { title: "معدات مناولة المواد والخدمات اللوجستية", desc: "سيور النقل، وأنظمة الحركة، والحلول الآلية الموجهة، ومعدات التتبع والمناولة المخصصة.", link: "عرض مشاريع الخدمات اللوجستية", icon: Truck, image: "/featured_logistics_1789116908842.jpg" },
+  { title: "مراقبة موارد الطاقة والبيئة والمرافق", desc: "الأنظمة البيئية، والحلول المتعلقة بالنفايات، وتقنيات المرافق المتصلة ومراقبة الموارد.", link: "عرض مشاريع الطاقة والبيئة", icon: Zap, image: "/featured_energy_1789116922913.jpg" }
+];
+
+const galleryCollectionsAR = [
+  { title: "المشاريع المنجزة", desc: "الآلات والأنظمة والحلول العاملة في بيئات العملاء.", image: "/gallery/completed.jpg" },
+  { title: "المنتجات والمعدات", desc: "معدات مطورة حسب الطلب، وتفاصيل المنتج، ومكونات النظام.", image: "/gallery/equipment.jpg" },
+  { title: "ورشة العمل والتطوير", desc: "أنشطة التصميم والتصنيع والتجميع والتكامل والاختبار.", image: "/gallery/workshop.jpg" },
+  { title: "التركيب والتشغيل", desc: "التنفيذ والاختبار والتسليم التشغيلي في الموقع.", image: "/gallery/installation.jpg" },
+  { title: "الأتمتة والتكنولوجيا الرقمية", desc: "أنظمة التحكم في الأتمتة، وأجهزة الاستشعار، ولوحات المعلومات، والمعدات المتصلة، وواجهات البرامج.", image: "/gallery/automation.jpg" },
+  { title: "عقود الصيانة السنوية والدعم الفني", desc: "أنشطة الفحص والصيانة والخدمة والدعم الفني لعقود الصيانة السنوية.", image: "/gallery/amc.jpg" },
+  { title: "الفعاليات والمعارض", desc: "معارض الصناعة، والعروض التوضيحية، والشراكات، ومشاركة الشركات.", image: "/gallery/events.jpg" },
+  { title: "الفرق والتدريب", desc: "الفرق الفنية، تدريب العملاء، تطوير القدرات والأنشطة الداخلية.", image: "/gallery/team.jpg" }
+];
+
+const browseIndustriesAR = [
+  "التصنيع والأتمتة الصناعية",
+  "الزراعة الذكية والتكنولوجيا الزراعية",
+  "معالجة الأغذية والمشروبات",
+  "حلول صناعة الشاي",
+  "الخدمات اللوجستية والتخزين ومناولة المواد",
+  "كفاءة الطاقة والموارد",
+  "حلول بيئية وإدارة النفايات",
+  "البنية التحتية والمرافق الذكية",
+  "الرعاية الصحية والهندسة الطبية الحيوية",
+  "البحث والابتكار وتطوير المنتجات"
+];
+
+const browseCapabilitiesAR = [
+  "الاستشارات الهندسية وتحليل المشكلات",
+  "تصميم الأنظمة والمنتجات",
+  "تطوير الآلات والمنتجات حسب الطلب",
+  "الأتمتة وإنترنت الأشياء والتكامل الرقمي",
+  "التحديث والتطوير والتجديد",
+  "تنفيذ المشاريع والتركيب والتشغيل",
+  "عقود الصيانة السنوية والصيانة ودعم دورة حياة المنتج",
+  "التدريب وتطوير القدرات التقنية"
+];
+
+const knowebStoriesAR = [
+  "الآلات المتصلة",
+  "أنظمة إنترنت الأشياء الصناعية",
+  "المراقبة عن بعد",
+  "لوحات معلومات التشغيل",
+  "تطبيقات الهاتف المحمول والويب",
+  "أنظمة التنبيه والإبلاغ",
+  "تقنيات التتبع",
+  "حلول هندسية متصلة بالسحابة"
+];
+
+const publicationPrinciplesAR = [
+  "صور حقيقية للمشاريع والمنتجات",
+  "أنشطة هندسية وتنفيذية واقعية",
+  "شرح واضح لمتطلبات العميل ودور سانوتا",
+  "أوصاف فنية دقيقة ومفصلة",
+  "نتائج عملية قابلة للملاحظة والقياس",
+  "الحصول على الموافقات اللازمة من العملاء والشركاء",
+  "حماية تامة للمعلومات السرية",
+  "ممارسات عمل آمنة واحترافية"
+];
+
 export default function MediaPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const m = isJa ? mediaJA : isDe ? mediaDE : isEs ? mediaES : null;
+  const isAr = language === "ar";
+  const m = isAr ? mediaAR : isJa ? mediaJA : isDe ? mediaDE : isEs ? mediaES : null;
 
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
@@ -355,7 +423,7 @@ export default function MediaPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
-              {isJa ? "メディア、プロジェクト、エンジニアリングストーリー" : isDe ? "Medien, Projekte & Ingenieurgeschichten" : isEs ? "Historias de medios, proyectos e ingeniería" : "Media, Projects & Engineering Stories"}
+              {isAr ? "قصص إعلامية ومشاريع وهندسية" : isJa ? "メディア、プロジェクト、エンジニアリングストーリー" : isDe ? "Medien, Projekte & Ingenieurgeschichten" : isEs ? "Historias de medios, proyectos e ingeniería" : "Media, Projects & Engineering Stories"}
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -363,7 +431,11 @@ export default function MediaPage() {
               transition={{ delay: 0.05 }}
               className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
             >
-              {isJa ? (
+              {isAr ? (
+                <>
+                  الهندسة في <span className="text-[#2E5EAA]">الممارسة</span>
+                </>
+              ) : isJa ? (
                 <>
                   エンジニアリングの<span className="text-[#2E5EAA]">実践</span>
                 </>
@@ -422,7 +494,9 @@ export default function MediaPage() {
               transition={{ delay: 0.3 }}
               className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
             >
-              {isJa ? (
+              {isAr ? (
+                <>الأعمال المنجزة <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> قصص المشاريع <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> الفيديوهات <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> معرض الصور <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> الأخبار والأنشطة</>
+              ) : isJa ? (
                 <>完了プロジェクト <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> プロジェクトストーリー <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> 動画 <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> フォトギャラリー <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> ニュース＆活動</>
               ) : isDe ? (
                 <>Abgeschlossene Arbeiten <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Projektgeschichten <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Videos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Fotogalerie <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Neuigkeiten & Aktivitäten</>
@@ -480,7 +554,9 @@ export default function MediaPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">
-                {isJa ? (
+                {isAr ? (
+                  <>انظر ماذا <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">تفعل سانوتا</span></>
+                ) : isJa ? (
                   <>サノタの<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">取り組み</span>を見る</>
                 ) : isDe ? (
                   <>Sehen Sie, was <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-[#F1D08A]">Sanota</span> tut</>
@@ -501,7 +577,7 @@ export default function MediaPage() {
               />
 
               <p className="text-slate-700 dark:text-slate-300 text-lg md:text-xl font-medium leading-relaxed mb-6">
-                {isJa ? "エンジニアリング能力は、実践的な応用を通して最もよく理解できます。" : isDe ? "Ingenieurleistungen lassen sich am besten durch praktische Anwendung verstehen." : isEs ? "Las capacidades de ingeniería se comprenden mejor mediante la aplicación práctica." : "Engineering capabilities are best understood through practical application."}
+                {isAr ? "تُفهم القدرات الهندسية على أفضل وجه من خلال التطبيق العملي." : isJa ? "エンジニアリング能力は、実践的な応用を通して最もよく理解できます。" : isDe ? "Ingenieurleistungen lassen sich am besten durch praktische Anwendung verstehen." : isEs ? "Las capacidades de ingeniería se comprenden mejor mediante la aplicación práctica." : "Engineering capabilities are best understood through practical application."}
               </p>
               <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
                 {m ? m.intro.description : "The Sanota Media Centre brings together completed work, project stories, videos, photographs and company activities to show how challenges are assessed, solutions are developed and systems are implemented."}
@@ -509,7 +585,7 @@ export default function MediaPage() {
               
               <div className="inline-block px-6 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1220] shadow-md">
                 <p className="text-[#17135B] dark:text-white font-bold text-sm tracking-wide">
-                  {isJa ? "業界、ソリューション、またはメディアタイプ別にサノタの実績をご覧ください。" : isDe ? "Erkunden Sie die Arbeit von Sanota nach Branche, Lösung oder Medientyp." : isEs ? "Explore el trabajo de Sanota por industria, solución o tipo de medio." : "Explore Sanota’s work by industry, solution or media type."}
+                  {isAr ? "استكشف أعمال شركة سانوتا حسب القطاع أو الحل أو نوع الوسائط." : isJa ? "業界、ソリューション、またはメディアタイプ別にサノタの実績をご覧ください。" : isDe ? "Erkunden Sie die Arbeit von Sanota nach Branche, Lösung oder Medientyp." : isEs ? "Explore el trabajo de Sanota por industria, solución o tipo de medio." : "Explore Sanota’s work by industry, solution or media type."}
                 </p>
               </div>
             </motion.div>
@@ -523,13 +599,13 @@ export default function MediaPage() {
         <section id="featured-work" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isJa ? "注目の実績" : isDe ? "Ausgewählte Arbeiten" : isEs ? "Trabajo Destacado" : "Featured Work"}</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">{isJa ? "サノタの実践を見る" : isDe ? "Sanota in Aktion erleben" : isEs ? "Vea a Sanota en Acción" : "See Sanota in Action"}</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto">{isJa ? "実際の運用ニーズに応じて、サノタが多様なエンジニアリングおよび技術力をどのように統合しているかの厳選された事例をご覧ください。" : isDe ? "Erkunden Sie ausgewählte Beispiele dafür, wie Sanota verschiedene Ingenieur- und Technologiekompetenzen rund um reale betriebliche Anforderungen kombiniert." : isEs ? "Explore ejemplos seleccionados de cómo Sanota combina diferentes capacidades de ingeniería y tecnología en función de necesidades operativas reales." : "Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs."}</p>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "أعمال مميزة" : isJa ? "注目の実績" : isDe ? "Ausgewählte Arbeiten" : isEs ? "Trabajo Destacado" : "Featured Work"}</h2>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">{isAr ? "شاهدوا سانوتا عملياً" : isJa ? "サノタの実践を見る" : isDe ? "Sanota in Aktion erleben" : isEs ? "Vea a Sanota en Acción" : "See Sanota in Action"}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto">{isAr ? "استكشف أمثلة مختارة لكيفية قيام شركة سانوتا بدمج قدرات هندسية وتكنولوجية مختلفة لتلبية الاحتياجات التشغيلية الحقيقية." : isJa ? "実際の運用ニーズに応じて、サノタが多様なエンジニアリングおよび技術力をどのように統合しているかの厳選された事例をご覧ください。" : isDe ? "Erkunden Sie ausgewählte Beispiele dafür, wie Sanota verschiedene Ingenieur- und Technologiekompetenzen rund um reale betriebliche Anforderungen kombiniert." : isEs ? "Explore ejemplos seleccionados de cómo Sanota combina diferentes capacidades de ingeniería y tecnología en función de necesidades operativas reales." : "Explore selected examples of how Sanota combines different engineering and technology capabilities around real operational needs."}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {(isJa ? featuredWorkJA : isDe ? featuredWorkDE : isEs ? featuredWorkES : featuredWork).map((work, idx) => (
+              {(isAr ? featuredWorkAR : isJa ? featuredWorkJA : isDe ? featuredWorkDE : isEs ? featuredWorkES : featuredWork).map((work, idx) => (
                 <Link key={idx} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block shadow-lg dark:shadow-none">
                   {/* Background Image */}
                   <Image 
@@ -560,7 +636,7 @@ export default function MediaPage() {
 
             <div className="text-center">
               <Link href="#completed-work" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
-                {isJa ? "すべての完了実績を見る" : isDe ? "Alle abgeschlossenen Arbeiten ansehen" : isEs ? "Ver Todos los Trabajos Completados" : "View All Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
+                {isAr ? "عرض جميع الأعمال المنجزة" : isJa ? "すべての完了実績を見る" : isDe ? "Alle abgeschlossenen Arbeiten ansehen" : isEs ? "Ver Todos los Trabajos Completados" : "View All Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -573,7 +649,7 @@ export default function MediaPage() {
         <section id="project-stories" className="py-12 md:py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">{isJa ? "プロジェクトストーリー" : isDe ? "Projektgeschichten" : isEs ? "Historias de Proyectos" : "Project Stories"}</h2>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs mb-3">{isAr ? "قصص المشاريع" : isJa ? "プロジェクトストーリー" : isDe ? "Projektgeschichten" : isEs ? "Historias de Proyectos" : "Project Stories"}</h2>
               <h3 className="text-2xl md:text-3xl font-bold text-[#17135B] dark:text-white mb-4">{m ? m.projectStories.heading : "From Challenge to Working Solution"}</h3>
               <p className="text-slate-600 dark:text-slate-400 text-base max-w-3xl mx-auto">{m ? m.projectStories.subheading : "Project Stories provide a closer look at how Sanota approaches complex operational requirements."}</p>
             </div>
@@ -630,13 +706,13 @@ export default function MediaPage() {
         <section id="photo-gallery" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isJa ? "フォトギャラリー" : isDe ? "Fotogalerie" : isEs ? "Galería de Fotos" : "Photo Gallery"}</h2>
+              <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "معرض الصور" : isJa ? "フォトギャラリー" : isDe ? "Fotogalerie" : isEs ? "Galería de Fotos" : "Photo Gallery"}</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-[#17135B] dark:text-white mb-6">{m ? m.photoGallery.heading : "Projects, Products and People"}</h3>
               <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto mb-10">{m ? m.photoGallery.subheading : "The Sanota Photo Gallery provides a visual record of engineering work across project and company environments."}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14">
-              {(isJa ? galleryCollectionsJA : isDe ? galleryCollectionsDE : isEs ? galleryCollectionsES : galleryCollections).map((col, idx) => (
+              {(isAr ? galleryCollectionsAR : isJa ? galleryCollectionsJA : isDe ? galleryCollectionsDE : isEs ? galleryCollectionsES : galleryCollections).map((col, idx) => (
                 <div 
                   key={idx} 
                   className="group relative w-full h-[200px] sm:h-[240px] lg:h-[260px] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
@@ -703,7 +779,7 @@ export default function MediaPage() {
               <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1220] relative z-20">
                 <div className="flex items-center">
                   <Camera className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B] mr-3" />
-                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">{isJa ? "サノタ エンジニアリングギャラリー" : isDe ? "Sanota Ingenieurgalerie" : isEs ? "Galería de Ingeniería de Sanota" : "Sanota Engineering Gallery"}</h3>
+                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">{isAr ? "معرض سانوتا الهندسي" : isJa ? "サノタ エンジニアリングギャラリー" : isDe ? "Sanota Ingenieurgalerie" : isEs ? "Galería de Ingeniería de Sanota" : "Sanota Engineering Gallery"}</h3>
                 </div>
                 <button 
                   onClick={() => setIsGalleryOpen(false)}
@@ -770,7 +846,7 @@ export default function MediaPage() {
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
                        <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                          <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "作成者:" : isDe ? "von:" : isEs ? "por:" : "by:"} {article.author}</span>
+                          <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "بواسطة:" : isJa ? "作成者:" : isDe ? "von:" : isEs ? "por:" : "by:"} {article.author}</span>
                           <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {article.category}</span>
                        </div>
                        <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
@@ -792,11 +868,11 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "IoTソリューション" : isDe ? "IoT-Lösungen" : isEs ? "Soluciones IoT" : "IoT Solutions"}</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "حلول إنترنت الأشياء" : isJa ? "IoTソリューション" : isDe ? "IoT-Lösungen" : isEs ? "Soluciones IoT" : "IoT Solutions"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isJa ? "スマート排水システム：テクノロジーで洪水対策に取り組む" : isDe ? "Intelligentes Entwässerungssystem: Hochwasserschutz durch Technologie" : isEs ? "Sistema de Drenaje Inteligente: Combatiendo Inundaciones con Tecnología" : "Smart Drainage System: Tackling Floods with Technology"}
+                           {isAr ? "نظام الصرف الذكي: مكافحة الفيضانات بالتكنولوجيا" : isJa ? "スマート排水システム：テクノロジーで洪水対策に取り組む" : isDe ? "Intelligentes Entwässerungssystem: Hochwasserschutz durch Technologie" : isEs ? "Sistema de Drenaje Inteligente: Combatiendo Inundaciones con Tecnología" : "Smart Drainage System: Tackling Floods with Technology"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
@@ -813,11 +889,11 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "ヘルスケア技術" : isDe ? "Gesundheitstechnologie" : isEs ? "Tecnología de la Salud" : "Health Tech"}</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "تكنولوجيا الرعاية الصحية" : isJa ? "ヘルスケア技術" : isDe ? "Gesundheitstechnologie" : isEs ? "Tecnología de la Salud" : "Health Tech"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isJa ? "イノベーションによるリハビリテーションの進歩：サノタの神経刺激装置" : isDe ? "Fortschritte in der Rehabilitation durch Innovation: Nervenstimulator von Sanota" : isEs ? "Avanzando en la Rehabilitación Mediante la Innovación: Estimulador Nervioso de Sanota" : "Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator"}
+                           {isAr ? "تطوير إعادة التأهيل من خلال الابتكار: محفز الأعصاب من سانوتا" : isJa ? "イノベーションによるリハビリテーションの進歩：サノタの神経刺激装置" : isDe ? "Fortschritte in der Rehabilitation durch Innovation: Nervenstimulator von Sanota" : isEs ? "Avanzando en la Rehabilitación Mediante la Innovación: Estimulador Nervioso de Sanota" : "Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
@@ -834,11 +910,11 @@ export default function MediaPage() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                          <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isJa ? "産業ソリューション" : isDe ? "Industrielösungen" : isEs ? "Soluciones Industriales" : "Industrial Solutions"}</span>
+                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
+                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "حلول صناعية" : isJa ? "産業ソリューション" : isDe ? "Industrielösungen" : isEs ? "Soluciones Industriales" : "Industrial Solutions"}</span>
                          </div>
                          <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isJa ? "スリランカの農村クラスターを支援するスマート食品加工システム（ASMP）" : isDe ? "Intelligentes Lebensmittelverarbeitungssystem stärkt ländliche Betriebe in Sri Lanka (ASMP)" : isEs ? "Sistema Inteligente de Procesamiento de Alimentos para Grupos Rurales de Sri Lanka (ASMP)" : "Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)"}
+                           {isAr ? "نظام معالجة الأغذية الذكي لدعم التجمعات الريفية في سريلانكا (ASMP)" : isJa ? "スリランカの農村クラスターを支援するスマート食品加工システム（ASMP）" : isDe ? "Intelligentes Lebensmittelverarbeitungssystem stärkt ländliche Betriebe in Sri Lanka (ASMP)" : isEs ? "Sistema Inteligente de Procesamiento de Alimentos para Grupos Rurales de Sri Lanka (ASMP)" : "Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)"}
                          </h3>
                          <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
                             <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/7/2025</span>
@@ -859,15 +935,15 @@ export default function MediaPage() {
               <Play className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B] ml-1" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6">{m ? m.videoSection.heading : "See How Integrated Engineering Comes Together"}</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">{isJa ? "サノタのソリューションには、機械、制御、センサー、ソフトウェア、設置、および継続的なサポートが含まれる場合があります。" : isDe ? "Eine Sanota-Lösung kann Maschinenbau, Steuerungen, Sensoren, Software, Installation und kontinuierlichen Support umfassen." : isEs ? "Una solución Sanota puede implicar maquinaria, controles, sensores, software, instalación y soporte continuo." : "A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support."}</p>
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">{isAr ? "قد يشمل حل سانوتا الآلات، وأجهزة التحكم، وأجهزة الاستشعار، والبرمجيات، والتركيب، والدعم المستمر." : isJa ? "サノタのソリューションには、機械、制御、センサー、ソフトウェア、設置、および継続的なサポートが含まれる場合があります。" : isDe ? "Eine Sanota-Lösung kann Maschinenbau, Steuerungen, Sensoren, Software, Installation und kontinuierlichen Support umfassen." : isEs ? "Una solución Sanota puede implicar maquinaria, controles, sensores, software, instalación y soporte continuo." : "A Sanota solution may involve machinery, controls, sensors, software, installation and ongoing support."}</p>
             <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-10">{m ? m.videoSection.subheading : "Watch how these capabilities connect around a real operational requirement."}</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-md">
-                {isJa ? "おすすめ動画を再生" : isDe ? "Ausgewähltes Video abspielen" : isEs ? "Reproducir Vídeo Destacado" : "Play Featured Video"} <Play className="ml-2 w-5 h-5" />
+                {isAr ? "تشغيل الفيديو المميز" : isJa ? "おすすめ動画を再生" : isDe ? "Ausgewähltes Video abspielen" : isEs ? "Reproducir Vídeo Destacado" : "Play Featured Video"} <Play className="ml-2 w-5 h-5" />
               </button>
               <Link href="/services" className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center">
-                {isJa ? "統合ソリューションを見る" : isDe ? "Integrierte Lösungen erkunden" : isEs ? "Explorar Soluciones Integradas" : "Explore Integrated Solutions"}
+                {isAr ? "استكشف الحلول المتكاملة" : isJa ? "統合ソリューションを見る" : isDe ? "Integrierte Lösungen erkunden" : isEs ? "Explorar Soluciones Integradas" : "Explore Integrated Solutions"}
               </Link>
             </div>
           </div>
@@ -884,19 +960,19 @@ export default function MediaPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
                   <div className="absolute bottom-5 left-6 right-6 z-10">
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#2E5EAA] text-white font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
-                      {isJa ? "業界別に探す" : isDe ? "Nach Branche durchsuchen" : isEs ? "Buscar por Industria" : "Browse By Industry"}
+                      {isAr ? "تصفح حسب القطاع" : isJa ? "業界別に探す" : isDe ? "Nach Branche durchsuchen" : isEs ? "Buscar por Industria" : "Browse By Industry"}
                     </div>
                     <h3 
                       className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
                       style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
                     >
-                      {isJa ? "貴社の業界に関連する実績を見る" : isDe ? "Arbeiten für Ihren Sektor entdecken" : isEs ? "Explore Trabajos Relevantes para su Sector" : "Explore Work Relevant to Your Sector"}
+                      {isAr ? "استكشف فرص العمل ذات الصلة بقطاعك" : isJa ? "貴社の業界に関連する実績を見る" : isDe ? "Arbeiten für Ihren Sektor entdecken" : isEs ? "Explore Trabajos Relevantes para su Sector" : "Explore Work Relevant to Your Sector"}
                     </h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
-                    {(isJa ? browseIndustriesJA : isDe ? browseIndustriesDE : isEs ? browseIndustriesES : browseIndustries).map((ind, idx) => (
+                    {(isAr ? browseIndustriesAR : isJa ? browseIndustriesJA : isDe ? browseIndustriesDE : isEs ? browseIndustriesES : browseIndustries).map((ind, idx) => (
                       <Link href="/industries" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#2E5EAA]/50 rounded-xl transition-all duration-300">
                          <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#2E5EAA]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
                            <ChevronRight className="w-4 h-4 text-[#2E5EAA] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
@@ -907,7 +983,7 @@ export default function MediaPage() {
                   </div>
                   <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
                     <Link href="/industries" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#2E5EAA] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#2E5EAA] dark:text-white font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#2E5EAA] transition-all duration-300 group/link">
-                      {isJa ? "すべての業界を見る" : isDe ? "Alle Branchen erkunden" : isEs ? "Explorar Todas las Industrias" : "Explore All Industries"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      {isAr ? "استكشف جميع الصناعات" : isJa ? "すべての業界を見る" : isDe ? "Alle Branchen erkunden" : isEs ? "Explorar Todas las Industrias" : "Explore All Industries"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -921,19 +997,19 @@ export default function MediaPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/75 to-black/20" />
                   <div className="absolute bottom-5 left-6 right-6 z-10">
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] text-[#0B1220] font-bold text-xs uppercase tracking-wider mb-2 shadow-sm">
-                      {isJa ? "機能・能力別に探す" : isDe ? "Nach Kompetenz durchsuchen" : isEs ? "Buscar por Capacidad" : "Browse By Capability"}
+                      {isAr ? "تصفح حسب الإمكانيات" : isJa ? "機能・能力別に探す" : isDe ? "Nach Kompetenz durchsuchen" : isEs ? "Buscar por Capacidad" : "Browse By Capability"}
                     </div>
                     <h3 
                       className="text-xl sm:text-2xl font-bold !text-white drop-shadow-md leading-snug"
                       style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.85)' }}
                     >
-                      {isJa ? "サノタがどのようにソリューションを提供するかを見る" : isDe ? "Entdecken Sie, wie Sanota Lösungen liefert" : isEs ? "Descubra Cómo Sanota Entrega Soluciones" : "Explore How Sanota Delivers Solutions"}
+                      {isAr ? "اكتشف كيف تقدم سانوتا الحلول" : isJa ? "サノタがどのようにソリューションを提供するかを見る" : isDe ? "Entdecken Sie, wie Sanota Lösungen liefert" : isEs ? "Descubra Cómo Sanota Entrega Soluciones" : "Explore How Sanota Delivers Solutions"}
                     </h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 flex-grow">
-                    {(isJa ? browseCapabilitiesJA : isDe ? browseCapabilitiesDE : isEs ? browseCapabilitiesES : browseCapabilities).map((cap, idx) => (
+                    {(isAr ? browseCapabilitiesAR : isJa ? browseCapabilitiesJA : isDe ? browseCapabilitiesDE : isEs ? browseCapabilitiesES : browseCapabilities).map((cap, idx) => (
                       <Link href="/services" key={idx} className="group/btn flex items-center p-2.5 sm:p-3 bg-slate-50 dark:bg-[#131C2E]/50 hover:bg-slate-100 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-800 hover:border-[#C59B27]/50 rounded-xl transition-all duration-300">
                          <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white dark:bg-[#0B1220] group-hover/btn:bg-[#C59B27]/20 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm">
                            <ChevronRight className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B] transition-transform duration-300 group-hover/btn:translate-x-0.5" />
@@ -944,7 +1020,7 @@ export default function MediaPage() {
                   </div>
                   <div className="mt-auto border-t border-slate-200 dark:border-slate-800/80 pt-5">
                     <Link href="/services" className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-100 hover:bg-[#C59B27] text-[#17135B] hover:text-white dark:bg-[#131C2E] dark:hover:bg-[#E8B84B] dark:text-white dark:hover:text-[#0B1220] font-bold text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#C59B27] transition-all duration-300 group/link">
-                      {isJa ? "すべてのサービスを見る" : isDe ? "Alle Dienstleistungen erkunden" : isEs ? "Explorar Todos los Servicios" : "Explore All Services"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      {isAr ? "استكشف جميع الخدمات" : isJa ? "すべてのサービスを見る" : isDe ? "Alle Dienstleistungen erkunden" : isEs ? "Explorar Todos los Servicios" : "Explore All Services"} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -964,7 +1040,9 @@ export default function MediaPage() {
                     <Zap className="w-4 h-4 mr-2" /> Sanota + Knoweb
                   </h2>
                   <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-                    {isJa ? (
+                    {isAr ? (
+                      <>الهندسة المتصلة <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">بالتكنولوجيا الرقمية</span></>
+                    ) : isJa ? (
                       <><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">デジタル技術</span>でつながるエンジニアリング</>
                     ) : isDe ? (
                       <>Ingenieurwesen Verbunden durch <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#4C84E0]">Digitale Technologie</span></>
@@ -975,16 +1053,16 @@ export default function MediaPage() {
                     )}
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                    {isJa ? "注目のメディア事例は、サノタがKnowebとの協業を通じて、エンジニアリング能力とソフトウェアおよびデジタル技術をどのように融合させているかを示しています。" : isDe ? "Ausgewählte Medienberichte zeigen, wie Sanota durch die Partnerschaft mit Knoweb Ingenieurskompetenz mit Software und digitaler Technologie verbindet." : isEs ? "Las historias de medios seleccionadas demostrarán cómo Sanota combina capacidad de ingeniería con software y tecnología digital a través de su colaboración con Knoweb." : "Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb."}
+                    {isAr ? "ستوضح قصص إعلامية مختارة كيف تجمع شركة سانوتا بين القدرات الهندسية والبرمجيات والتكنولوجيا الرقمية من خلال تعاونها مع شركة نويب." : isJa ? "注目のメディア事例は、サノタがKnowebとの協業を通じて、エンジニアリング能力とソフトウェアおよびデジタル技術をどのように融合させているかを示しています。" : isDe ? "Ausgewählte Medienberichte zeigen, wie Sanota durch die Partnerschaft mit Knoweb Ingenieurskompetenz mit Software und digitaler Technologie verbindet." : isEs ? "Las historias de medios seleccionadas demostrarán cómo Sanota combina capacidad de ingeniería con software y tecnología digital a través de su colaboración con Knoweb." : "Selected media stories will demonstrate how Sanota combines engineering capability with software and digital technology through its collaboration with Knoweb."}
                   </p>
                   <Link href="#" className="group inline-flex items-center px-7 py-4 bg-[#17135B] hover:bg-[#2E5EAA] dark:bg-gradient-to-r dark:from-[#131C2E] dark:to-[#0B1220] dark:hover:from-[#2E5EAA] dark:hover:to-[#1a4185] text-white font-bold rounded-xl border border-slate-300 dark:border-[#2E5EAA]/30 hover:border-[#2E5EAA] transition-all duration-500 shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.15)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.4)]">
-                    {isJa ? "IoT・デジタルプロジェクトを見る" : isDe ? "IoT- & Digitalprojekte erkunden" : isEs ? "Explorar Proyectos Digitales y de IoT" : "Explore IoT & Digital Projects"} <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                    {isAr ? "استكشف مشاريع إنترنت الأشياء والمشاريع الرقمية" : isJa ? "IoT・デジタルプロジェクトを見る" : isDe ? "IoT- & Digitalprojekte erkunden" : isEs ? "Explorar Proyectos Digitales y de IoT" : "Explore IoT & Digital Projects"} <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
                   </Link>
                 </motion.div>
               </div>
               <div className="lg:col-span-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {(isJa ? knowebStoriesJA : isDe ? knowebStoriesDE : isEs ? knowebStoriesES : knowebStories).map((story, idx) => (
+                  {(isAr ? knowebStoriesAR : isJa ? knowebStoriesJA : isDe ? knowebStoriesDE : isEs ? knowebStoriesES : knowebStories).map((story, idx) => (
                     <motion.div 
                       key={idx} 
                       initial={{ opacity: 0, y: 20 }}
@@ -1013,10 +1091,12 @@ export default function MediaPage() {
             <div className="text-center mb-8 lg:mb-12">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="inline-flex items-center justify-center px-4 py-2 bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 text-[#C59B27] dark:text-[#E8B84B] rounded-full font-bold tracking-widest uppercase text-xs mb-6 border border-[#C59B27]/20 dark:border-[#E8B84B]/20">
-                  <Shield className="w-4 h-4 mr-2" /> {isJa ? "メディア公開の原則" : isDe ? "Grundsätze für Medienpublikationen" : isEs ? "Principios de Publicación en Medios" : "Media Publication Principles"}
+                  <Shield className="w-4 h-4 mr-2" /> {isAr ? "مبادئ النشر الإعلامي" : isJa ? "メディア公開の原則" : isDe ? "Grundsätze für Medienpublikationen" : isEs ? "Principios de Publicación en Medios" : "Media Publication Principles"}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-bold text-[#17135B] dark:text-white leading-tight">
-                  {isJa ? (
+                  {isAr ? (
+                    <>عمل أصيل. معلومات واضحة.<br/><span className="text-slate-500 dark:text-slate-400">نشر مسؤول.</span></>
+                  ) : isJa ? (
                     <>確かな実績。明確な情報。<br/><span className="text-slate-500 dark:text-slate-400">責任ある公開姿勢。</span></>
                   ) : isDe ? (
                     <>Authentische Arbeit. Klare Informationen.<br/><span className="text-slate-500 dark:text-slate-400">Verantwortungsvolle Veröffentlichung.</span></>
@@ -1030,7 +1110,7 @@ export default function MediaPage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {(isJa ? publicationPrinciplesJA : isDe ? publicationPrinciplesDE : isEs ? publicationPrinciplesES : publicationPrinciples).map((principle, idx) => (
+              {(isAr ? publicationPrinciplesAR : isJa ? publicationPrinciplesJA : isDe ? publicationPrinciplesDE : isEs ? publicationPrinciplesES : publicationPrinciples).map((principle, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -1057,7 +1137,7 @@ export default function MediaPage() {
             >
               <p className="text-slate-600 dark:text-slate-400 text-sm italic flex items-center justify-center text-left sm:text-center">
                 <AlertCircle className="w-5 h-5 mr-3 text-[#C59B27] dark:text-[#E8B84B] shrink-0" />
-                {isJa ? "一般的なストック画像は、サノタの実際の画像が一時的に利用できない場合にのみ使用され、サノタの完成実績として提示されることはありません。" : isDe ? "Allgemeine Archivbilder sollten nur verwendet werden, wenn authentisches Sanota-Material vorübergehend nicht verfügbar ist, und dürfen nicht als fertige Sanota-Arbeiten dargestellt werden." : isEs ? "Las imágenes genéricas de catálogo solo deben usarse cuando el material auténtico de Sanota no esté disponible temporalmente y no deben presentarse como trabajo terminado de Sanota." : "Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work."}
+                {isAr ? "ينبغي استخدام الصور العامة فقط عندما تكون مواد سانوتا الأصلية غير متوفرة مؤقتاً ولا ينبغي تقديمها على أنها أعمال سانوتا مكتملة." : isJa ? "一般的なストック画像は、サノタの実際の画像が一時的に利用できない場合にのみ使用され、サノタの完成実績として提示されることはありません。" : isDe ? "Allgemeine Archivbilder sollten nur verwendet werden, wenn authentisches Sanota-Material vorübergehend nicht verfügbar ist, und dürfen nicht als fertige Sanota-Arbeiten dargestellt werden." : isEs ? "Las imágenes genéricas de catálogo solo deben usarse cuando el material auténtico de Sanota no esté disponible temporalmente y no deben presentarse como trabajo terminado de Sanota." : "Generic stock imagery should only be used where authentic Sanota material is temporarily unavailable and should not be presented as completed Sanota work."}
               </p>
             </motion.div>
           </div>
@@ -1115,12 +1195,17 @@ export default function MediaPage() {
                   <div className="w-16 h-16 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
                     <Wrench className="w-8 h-8 text-[#2E5EAA] dark:text-[#4C84E0]" />
                   </div>
-                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">{isJa ? "同様の要件について相談する" : isDe ? "Ähnliche Anforderung besprechen" : isEs ? "Comentar un Requisito Similar" : "Discuss a Similar Requirement"}</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isJa ? "貴社の事業に関連するプロジェクトは見つかりましたか？" : isDe ? "Haben Sie ein Projekt gesehen, das für Ihren Betrieb relevant ist?" : isEs ? "¿Ha visto un proyecto relevante para su operación?" : "Have You Seen a Project Relevant to Your Operation?"}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">{isJa ? "まったく同じ要件である必要はありません。サノタのエンジニアリング能力はお客様の用途に合わせて柔軟に適応可能です。以下をお聞かせください：" : isDe ? "Ihre Anforderungen müssen nicht identisch sein – unsere Ingenieurkompetenzen lassen sich an Ihre Anwendung anpassen. Teilen Sie Sanota mit:" : isEs ? "Es posible que su requisito no sea idéntico, pero las capacidades de ingeniería se pueden adaptar a su aplicación. Cuéntele a Sanota:" : "Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:"}</p>
+                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "ناقش متطلبات مماثلة" : isJa ? "同様の要件について相談する" : isDe ? "Ähnliche Anforderung besprechen" : isEs ? "Comentar un Requisito Similar" : "Discuss a Similar Requirement"}</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isAr ? "هل رأيت مشروعاً ذا صلة بعملياتك؟" : isJa ? "貴社の事業に関連するプロジェクトは見つかりましたか？" : isDe ? "Haben Sie ein Projekt gesehen, das für Ihren Betrieb relevant ist?" : isEs ? "¿Ha visto un proyecto relevante para su operación?" : "Have You Seen a Project Relevant to Your Operation?"}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">{isAr ? "قد لا تكون متطلباتك مطابقة تماماً، ولكن قد تكون القدرات الهندسية قابلة للتكيف مع تطبيقك. أخبر سانوتا بما يلي:" : isJa ? "まったく同じ要件である必要はありません。サノタのエンジニアリング能力はお客様の用途に合わせて柔軟に適応可能です。以下をお聞かせください：" : isDe ? "Ihre Anforderungen müssen nicht identisch sein – unsere Ingenieurkompetenzen lassen sich an Ihre Anwendung anpassen. Teilen Sie Sanota mit:" : isEs ? "Es posible que su requisito no sea idéntico, pero las capacidades de ingeniería se pueden adaptar a su aplicación. Cuéntele a Sanota:" : "Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:"}</p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 pointer-events-auto">
-                    {(isJa ? [
+                    {(isAr ? [
+                      "ما هو المشروع أو الحل الذي أثار اهتمامك",
+                      "ما الذي تقوم بتشغيله حالياً في منشأتك",
+                      "ما الذي ترغب في تحسينه أو تطويره",
+                      "ما النتيجة التشغيلية التي تسعى لتحقيقها"
+                    ] : isJa ? [
                       "関心を持たれたプロジェクトやソリューション",
                       "現在稼働している設備や工程",
                       "改善または開発したい内容",
@@ -1150,10 +1235,10 @@ export default function MediaPage() {
 
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
                     <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.3)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
-                      {isJa ? "要件を相談する" : isDe ? "Anforderung besprechen" : isEs ? "Comentar Requisito" : "Discuss Requirement"}
+                      {isAr ? "مناقشة متطلبات مماثلة" : isJa ? "要件を相談する" : isDe ? "Anforderung besprechen" : isEs ? "Comentar Requisito" : "Discuss Requirement"}
                     </Link>
                     <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
-                      {isJa ? "課題を相談する" : isDe ? "Schildern Sie Ihre Herausforderung" : isEs ? "Cuéntanos tu Desafío" : "Tell Us Your Challenge"}
+                      {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "課題を相談する" : isDe ? "Schildern Sie Ihre Herausforderung" : isEs ? "Cuéntanos tu Desafío" : "Tell Us Your Challenge"}
                     </Link>
                   </div>
                 </div>
@@ -1206,16 +1291,16 @@ export default function MediaPage() {
                   <div className="w-16 h-16 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#C59B27]/30 dark:border-[#E8B84B]/30">
                     <MessageSquare className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B]" />
                   </div>
-                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isJa ? "メディア・報道関係のお問い合わせ" : isDe ? "Medienanfragen" : isEs ? "Consultas de Medios" : "Media Enquiries"}</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isJa ? "取材・協業・メディア掲載に関するお問い合わせ" : isDe ? "Medien-, Partnerschafts- oder Publikationsanfrage" : isEs ? "Consulta de Medios, Asociaciones o Publicaciones" : "Media, Partnership or Publication Enquiry"}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">{isJa ? "プロジェクトの取材、技術記事、展示会、パートナーシップ、インタビュー、またはサノタのメディア素材の使用許可に関するお問い合わせは、サノタチームまでご連絡ください。" : isDe ? "Für Anfragen zu Projektberichten, Fachartikeln, Ausstellungen, Partnerschaften, Interviews oder zur Verwendung von Sanota-Medienmaterial wenden Sie sich bitte an das Sanota-Team." : isEs ? "Para consultas relacionadas con reportajes de proyectos, artículos técnicos, exposiciones, colaboraciones, entrevistas o permisos para utilizar el material de Sanota, póngase en contacto con el equipo de Sanota." : "For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team."}</p>
+                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "استفسارات وسائل الإعلام" : isJa ? "メディア・報道関係のお問い合わせ" : isDe ? "Medienanfragen" : isEs ? "Consultas de Medios" : "Media Enquiries"}</h2>
+                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isAr ? "استفسار إعلامي أو شراكة أو نشر" : isJa ? "取材・協業・メディア掲載に関するお問い合わせ" : isDe ? "Medien-, Partnerschafts- oder Publikationsanfrage" : isEs ? "Consulta de Medios, Asociaciones o Publicaciones" : "Media, Partnership or Publication Enquiry"}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">{isAr ? "للاستفسارات المتعلقة بميزات المشروع، أو المقالات التقنية، أو المعارض، أو الشراكات، أو المقابلات، أو الحصول على إذن باستخدام وسائل الإعلام الخاصة بسانوتا، يرجى الاتصال بفريق سانوتا." : isJa ? "プロジェクトの取材、技術記事、展示会、パートナーシップ、インタビュー、またはサノタのメディア素材の使用許可に関するお問い合わせは、サノタチームまでご連絡ください。" : isDe ? "Für Anfragen zu Projektberichten, Fachartikeln, Ausstellungen, Partnerschaften, Interviews oder zur Verwendung von Sanota-Medienmaterial wenden Sie sich bitte an das Sanota-Team." : isEs ? "Para consultas relacionadas con reportajes de proyectos, artículos técnicos, exposiciones, colaboraciones, entrevistas o permisos para utilizar el material de Sanota, póngase en contacto con el equipo de Sanota." : "For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team."}</p>
                   
                   <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
                     <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(232,184,75,0.3)] dark:hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
-                      {isJa ? "メディア問い合わせを送信" : isDe ? "Medienanfrage senden" : isEs ? "Enviar Consulta de Medios" : "Submit Media Enquiry"}
+                      {isAr ? "إرسال استفسار إعلامي" : isJa ? "メディア問い合わせを送信" : isDe ? "Medienanfrage senden" : isEs ? "Enviar Consulta de Medios" : "Submit Media Enquiry"}
                     </Link>
                     <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
-                      {isJa ? "サノタに問い合わせる" : isDe ? "Sanota kontaktieren" : isEs ? "Contactar a Sanota" : "Contact Sanota"}
+                      {isAr ? "اتصل بسانوتا" : isJa ? "サノタに問い合わせる" : isDe ? "Sanota kontaktieren" : isEs ? "Contactar a Sanota" : "Contact Sanota"}
                     </Link>
                   </div>
                 </div>
@@ -1229,7 +1314,12 @@ export default function MediaPage() {
         <section className="py-16 border-t border-slate-200 dark:border-slate-800 bg-transparent">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-[#17135B] dark:text-white mb-6 leading-tight">
-              {isJa ? (
+              {isAr ? (
+                <>
+                  انظر إلى ما أنجزته شركة سانوتا.<br className="hidden md:block" />
+                  <span className="text-[#C59B27] dark:text-[#E8B84B]">تخيل ما يمكننا تطويره معك.</span>
+                </>
+              ) : isJa ? (
                 <>
                   サノタのこれまでの実績をご覧ください。<br className="hidden md:block" />
                   <span className="text-[#C59B27] dark:text-[#E8B84B]">私たちが貴社と共に何を開発できるか、ぜひ想像してみてください。</span>

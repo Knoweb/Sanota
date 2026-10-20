@@ -15,6 +15,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { contactES } from "@/locales/es/contact";
 import { contactDE } from "@/locales/de/contact";
 import { contactJA } from "@/locales/ja/contact";
+import { contactAR } from "@/locales/ar/contact";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 const contactOptions = [
@@ -158,16 +159,45 @@ const whatHappensNextJA = [
   { step: "5", title: "進め方を決定", desc: "協議、図面・書類確認、オンライン面談、または現地視察へと進みます。" },
 ];
 
+const contactOptionsAR = [
+  { title: "استفسارات هندسية ومشاريع", desc: "تواصلوا معنا بخصوص الآلات، والأتمتة، والأنظمة الجديدة، والتصميم الهندسي، وتطوير المنتجات، والتحديث، أو متطلبات المشاريع المتكاملة.", button: "إرسال استفسار هندسي", icon: Cog },
+  { title: "عقود الصيانة السنوية ودعم الصيانة", desc: "اطلب تقييماً للصيانة الوقائية أو الدعم الفني أو عقد الصيانة السنوي (AMC) لأنظمة سانوتا أو معدات الطرف الثالث المؤهلة.", button: "طلب تقييم AMC", icon: Briefcase },
+  { title: "استفسارات عامة", desc: "اتصل بشركة سانوتا بخصوص معلومات الشركة أو الإدارة أو الاستفسارات التي لا تتعلق بمتطلبات فنية محددة.", button: "إرسال استفسار عام", icon: Globe },
+  { title: "استفسارات الشراكة والموردين", desc: "تواصلوا معنا بخصوص الشراكات التقنية، والتطوير المشترك، وفرص التوريد، والتوزيع، أو التعاون في المشاريع.", button: "إرسال استفسار عن الشراكة", icon: MessageSquare },
+  { title: "استفسارات وسائل الإعلام والنشر", desc: "تواصلوا معنا بخصوص المعارض، والمقابلات، والمقالات التقنية، وميزات المشاريع، والاستخدام الإعلامي، أو أنشطة الشركة.", button: "إرسال استفسار إعلامي", icon: Info },
+];
+
+const directContactAR = {
+  telephone: [
+    { label: "المكتب الرئيسي والاستفسارات الفنية", value: "+94 740 70 99 89" },
+  ],
+  email: [
+    { label: "استفسارات عامة", value: "info@sanotaglobal.com" },
+    { label: "استفسارات هندسية ومشاريع", value: "engineering@sanotaglobal.com" },
+    { label: "عقود الصيانة والإصلاح (AMC)", value: "support@sanotaglobal.com" },
+    { label: "استفسارات الشراكة والإعلام", value: "partners@sanotaglobal.com" },
+  ],
+};
+
+const whatHappensNextAR = [
+  { step: "1", title: "نتلقى استفسارك", desc: "يتم تسجيل رسالتك وتخصيص رقم مرجعي رسمي لها." },
+  { step: "2", title: "نقوم بمراجعة المتطلبات", desc: "تتم مراجعة الاستفسار لتحديد الصناعة والخدمة والقدرة التقنية ذات الصلة." },
+  { step: "3", title: "نوجهها إلى الفريق المناسب", desc: "يتم إسناد المتطلبات إلى الفريق المناسب في مجالات الهندسة، أو الأتمتة، أو إنترنت الأشياء، أو البرمجيات، أو الصيانة." },
+  { step: "4", title: "نتصل بك", desc: "سيتصل بك أحد الممثلين لتوضيح المتطلبات والاتفاق على الخطوة التالية." },
+  { step: "5", title: "نحدد الطريق للمضي قدماً", desc: "قد تتضمن الخطوة التالية مناقشة فنية، أو مراجعة للوثائق، أو اجتماعاً عبر الإنترنت، أو زيارة للموقع." },
+];
+
 export default function ContactPage() {
   const { language } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
-  const c = isJa ? contactJA : isDe ? contactDE : isEs ? contactES : null;
+  const isAr = language === "ar";
+  const c = isAr ? contactAR : isJa ? contactJA : isDe ? contactDE : isEs ? contactES : null;
 
-  const currentContactOptions = isJa ? contactOptionsJA : isDe ? contactOptionsDE : isEs ? contactOptionsES : contactOptions;
-  const currentDirectContact = isJa ? directContactJA : isDe ? directContactDE : isEs ? directContactES : directContact;
-  const currentWhatHappensNext = isJa ? whatHappensNextJA : isDe ? whatHappensNextDE : isEs ? whatHappensNextES : whatHappensNext;
+  const currentContactOptions = isAr ? contactOptionsAR : isJa ? contactOptionsJA : isDe ? contactOptionsDE : isEs ? contactOptionsES : contactOptions;
+  const currentDirectContact = isAr ? directContactAR : isJa ? directContactJA : isDe ? directContactDE : isEs ? directContactES : directContact;
+  const currentWhatHappensNext = isAr ? whatHappensNextAR : isJa ? whatHappensNextJA : isDe ? whatHappensNextDE : isEs ? whatHappensNextES : whatHappensNext;
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -237,7 +267,19 @@ export default function ContactPage() {
     }
   };
 
-  const enquiryTypes = isJa ? (c?.form.fields.queryTypes || [
+  const enquiryTypes = isAr ? (c?.form.fields.queryTypes || [
+    "متطلبات هندسية أو متطلبات المشروع",
+    "الآلات أو الأتمتة",
+    "إنترنت الأشياء أو البرمجيات",
+    "تطوير المنتجات",
+    "التحديث أو التعديل",
+    "عقد صيانة سنوي أو عقد صيانة",
+    "تدريب فني",
+    "استفسار عن الشراكة أو الموردين",
+    "استفسارات وسائل الإعلام",
+    "استفسارات عامة",
+    "أخرى"
+  ]) : isJa ? (c?.form.fields.queryTypes || [
     "エンジニアリングまたはプロジェクト要件",
     "機械または自動化",
     "IoTまたはソフトウェア",
@@ -287,7 +329,12 @@ export default function ContactPage() {
     "Other"
   ];
 
-  const responseMethods = isJa ? [
+  const responseMethods = isAr ? [
+    { label: "مكالمة هاتفية", value: "Telephone call" },
+    { label: "بريد إلكتروني", value: "Email" },
+    { label: "اجتماع عبر الإنترنت", value: "Online meeting" },
+    { label: "لا تفضيل محدد", value: "No preference" }
+  ] : isJa ? [
     { label: "電話", value: "Telephone call" },
     { label: "メール", value: "Email" },
     { label: "オンライン面談", value: "Online meeting" },
@@ -309,7 +356,11 @@ export default function ContactPage() {
     { label: "No preference", value: "No preference" }
   ];
 
-  const contactTimes = isJa ? [
+  const contactTimes = isAr ? [
+    { label: "صباحاً (8:30 – 12:00)", value: "Morning" },
+    { label: "بعد الظهر (12:00 – 17:30)", value: "Afternoon" },
+    { label: "في أي وقت خلال ساعات العمل", value: "Any time during business hours" }
+  ] : isJa ? [
     { label: "午前 (8:30 – 12:00)", value: "Morning" },
     { label: "午後 (12:00 – 17:30)", value: "Afternoon" },
     { label: "営業時間内ならいつでも", value: "Any time during business hours" }
@@ -366,7 +417,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-5"
             >
-              {isJa ? "サノタへのお問い合わせ" : isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
+              {isAr ? "اتصل بسانوتا" : isJa ? "サノタへのお問い合わせ" : isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -452,11 +503,13 @@ export default function ContactPage() {
                   <div className="inline-flex items-center space-x-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-3 py-1 mb-5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] animate-pulse shadow-[0_0_6px_#E8B84B]" />
                     <span className="text-slate-600 dark:text-slate-300 text-[10px] font-bold tracking-[0.2em] uppercase">
-                      {isJa ? "ガイド付きプロセス" : isDe ? "Geführter Prozess" : isEs ? "Proceso Guiado" : "Guided Process"}
+                      {isAr ? "مسار استفسار موجه" : isJa ? "ガイド付きプロセス" : isDe ? "Geführter Prozess" : isEs ? "Proceso Guiado" : "Guided Process"}
                     </span>
                   </div>
                   <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white mb-4 leading-tight">
-                    {isJa ? (
+                    {isAr ? (
+                      <>هل تواجه تحدياً فنياً أو <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">تشغيلياً؟</span></>
+                    ) : isJa ? (
                       <>技術的または<br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">運用上の課題をお持ちですか？</span></>
                     ) : isDe ? (
                       <>Haben Sie eine technische oder <br className="hidden xl:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-600 dark:to-amber-500">betriebliche Herausforderung?</span></>
@@ -467,7 +520,9 @@ export default function ContactPage() {
                     )}
                   </h3>
                   <p className="text-slate-600 dark:text-slate-300 text-[15px] leading-relaxed mb-6 max-w-2xl">
-                    {isJa ? (
+                    {isAr ? (
+                      <>بالنسبة للمتطلبات الهندسية، فإن أسرع طريقة لتقديم المعلومات اللازمة هي من خلال نموذج <strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">أخبرنا عن التحدي</strong> الموجه. سيساعدك هذا على شرح ما يلي بدقة:</>
+                    ) : isJa ? (
                       <>エンジニアリング要件の場合、必要な情報を最も迅速に提供できるのは、ガイド付きフォーム<strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">課題を相談する</strong>です。以下の内容を正確に説明できます：</>
                     ) : isDe ? (
                       <>Für Engineering-Anforderungen ist der schnellste Weg, die erforderlichen Informationen bereitzustellen, unser geführtes Formular <strong className="text-[#17135B] dark:text-white font-bold bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/10 mx-1">Schildern Sie uns Ihre Herausforderung</strong>. Es hilft Ihnen, Folgendes genau zu beschreiben:</>
@@ -479,7 +534,7 @@ export default function ContactPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    {(isJa ? ["現在何が起こっているか", "何が意図通りに動作していないか", "何を改善したいか"] : isDe ? ["Was aktuell passiert", "Was nicht wie vorgesehen funktioniert", "Was Sie verbessern möchten"] : isEs ? ["Qué está sucediendo actualmente", "Qué no está funcionando", "Qué desea mejorar"] : ["What is happening now", "What is not working", "What you want to improve"]).map((item, i) => (
+                    {(isAr ? ["الوضع الحالي وما يحدث الآن", "ما لا يعمل بالشكل المطلوب", "ما ترغب في تحسينه أو تطويره"] : isJa ? ["現在何が起こっているか", "何が意図通りに動作していないか", "何を改善したいか"] : isDe ? ["Was aktuell passiert", "Was nicht wie vorgesehen funktioniert", "Was Sie verbessern möchten"] : isEs ? ["Qué está sucediendo actualmente", "Qué no está funcionando", "Qué desea mejorar"] : ["What is happening now", "What is not working", "What you want to improve"]).map((item, i) => (
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -504,7 +559,7 @@ export default function ContactPage() {
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center text-sm uppercase tracking-wider">
-                      {isJa ? "課題を相談する" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"}
+                      {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "課題を相談する" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntenos su desafío" : "Tell Us Your Challenge"}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </span>
                   </Link>
@@ -519,7 +574,7 @@ export default function ContactPage() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 lg:mb-12">
               <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-                {isJa ? "お問い合わせ方法" : isDe ? "Kontaktwege" : isEs ? "Opciones de Contacto" : "Contact Options"}
+                {isAr ? "خيارات الاتصال" : isJa ? "お問い合わせ方法" : isDe ? "Kontaktwege" : isEs ? "Opciones de Contacto" : "Contact Options"}
               </p>
               <h2 className="text-3xl md:text-5xl font-black text-[#17135B] dark:text-white">
                 {c ? c.routes.heading : "Choose the Right Contact Route"}
@@ -604,7 +659,7 @@ export default function ContactPage() {
                 {c ? c.directInfo.title : "Direct Contact"}
               </p>
               <h2 className="text-3xl md:text-5xl font-black text-[#17135B] dark:text-white">
-                {isJa ? "サノタに直接問い合わせる" : isDe ? "Sanota direkt kontaktieren" : isEs ? "Contacte con Sanota Directamente" : "Contact Sanota Directly"}
+                {isAr ? "تواصل مع سانوتا مباشرة" : isJa ? "サノタに直接問い合わせる" : isDe ? "Sanota direkt kontaktieren" : isEs ? "Contacte con Sanota Directamente" : "Contact Sanota Directly"}
               </h2>
             </div>
 
@@ -618,7 +673,7 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-[#C59B27] dark:text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
                   </div>
                   <h4 className="text-2xl font-black text-[#17135B] dark:text-white transition-all duration-500">
-                    {isJa ? "お電話" : isDe ? "Telefon" : isEs ? "Teléfono" : "Telephone"}
+                    {isAr ? "الهاتف" : isJa ? "お電話" : isDe ? "Telefon" : isEs ? "Teléfono" : "Telephone"}
                   </h4>
                 </div>
 
@@ -641,7 +696,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-[#C59B27] dark:text-slate-400 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] group-hover:scale-110 transition-all duration-500" />
                   </div>
                   <h4 className="text-2xl font-black text-[#17135B] dark:text-white transition-all duration-500">
-                    {isJa ? "メール" : isDe ? "E-Mail" : isEs ? "Correo Electrónico" : "Email"}
+                    {isAr ? "البريد الإلكتروني" : isJa ? "メール" : isDe ? "E-Mail" : isEs ? "Correo Electrónico" : "Email"}
                   </h4>
                 </div>
 
@@ -679,10 +734,10 @@ export default function ContactPage() {
 
                 <div className="transform group-hover:translate-x-2 transition-transform duration-500 delay-100 mb-10">
                   <span className="block text-slate-400 dark:text-slate-500 text-[11px] font-bold uppercase tracking-widest mb-1.5">
-                    {isJa ? "営業時間" : isDe ? "Geschäftszeiten" : isEs ? "Horario de Atención" : "Business Hours"}
+                    {isAr ? "ساعات العمل" : isJa ? "営業時間" : isDe ? "Geschäftszeiten" : isEs ? "Horario de Atención" : "Business Hours"}
                   </span>
                   <p className="text-[#17135B] dark:text-white text-[15px] font-semibold tracking-wide">
-                    {isJa ? "月〜金: 8:30 – 17:30" : isDe ? "Mo–Fr: 8:30 – 17:30 Uhr" : isEs ? "Lun–Vie: 8:30 AM – 5:30 PM" : "Mon–Fri: 8:30 AM – 5:30 PM"}
+                    {isAr ? "الإثنين – الجمعة: 8:30 صباحاً – 5:30 مساءً" : isJa ? "月〜金: 8:30 – 17:30" : isDe ? "Mo–Fr: 8:30 – 17:30 Uhr" : isEs ? "Lun–Vie: 8:30 AM – 5:30 PM" : "Mon–Fri: 8:30 AM – 5:30 PM"}
                   </p>
                 </div>
 
@@ -690,7 +745,7 @@ export default function ContactPage() {
                   <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="flex-1 py-3 px-4 bg-transparent border border-[#C59B27] dark:border-[#E8B84B]/50 hover:bg-[#C59B27] dark:hover:bg-[#E8B84B] hover:border-[#C59B27] dark:hover:border-[#E8B84B] text-[#C59B27] dark:text-[#E8B84B] hover:text-white dark:hover:text-[#0A101A] font-black rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.getDirections : "Get Directions"}
                   </a>
-                  <button onClick={() => alert(isJa ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\n電話: +94 740 70 99 89\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTelefon: +94 740 70 99 89\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTeléfono: +94 740 70 99 89\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle.\nPhone: +94 740 70 99 89\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
+                  <button onClick={() => alert(isAr ? "شركة سانوتا (الخاصة) المحدودة\nرقم 16، طريق ويويلوالا، باتاغانويلا، غالي، سريلانكا.\nالهاتف: +94 740 70 99 89\nالبريد الإلكتروني: info@sanotaglobal.com" : isJa ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\n電話: +94 740 70 99 89\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTelefon: +94 740 70 99 89\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTeléfono: +94 740 70 99 89\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle.\nPhone: +94 740 70 99 89\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.saveContact : "Save Details"}
                   </button>
                 </div>
@@ -720,7 +775,7 @@ export default function ContactPage() {
 
                 <div className="flex-grow">
                   <p className="text-emerald-700 dark:text-emerald-400 font-black text-[11px] uppercase tracking-[0.3em] mb-4 flex items-center">
-                    {isJa ? "優先サポート窓口" : isDe ? "Prioritärer Supportkanal" : isEs ? "Canal de Soporte Prioritario" : "Priority Support Channel"}
+                    {isAr ? "قناة الدعم الفني العاجل" : isJa ? "優先サポート窓口" : isDe ? "Prioritärer Supportkanal" : isEs ? "Canal de Soporte Prioritario" : "Priority Support Channel"}
                   </p>
 
                   <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white mb-4 tracking-tight">
@@ -728,7 +783,9 @@ export default function ContactPage() {
                   </h3>
 
                   <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8 max-w-4xl">
-                    {isJa ? (
+                    {isAr ? (
+                      <>إذا كان استفسارك يتعلق بتوقف حالي للآلات، أو انقطاع في الإنتاج، أو مشكلة فنية عاجلة، فضع علامة واضحة عليه كـ <strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">دعم فني عاجل</strong>.</>
+                    ) : isJa ? (
                       <>現在発生している機械の停止、生産の中断、または緊急の技術的トラブルに関するお問い合わせの場合は、明確に<strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">緊急技術サポート</strong>と指定してください。</>
                     ) : isDe ? (
                       <>Wenn sich Ihre Anfrage auf einen aktuellen Maschinenstillstand, eine Produktionsunterbrechung oder ein zeitkritisches technisches Problem bezieht, kennzeichnen Sie sie bitte deutlich als <strong className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/30 ml-1">Dringender technischer Support</strong>.</>
@@ -741,10 +798,18 @@ export default function ContactPage() {
 
                   <div className="mb-10">
                     <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[11px] mb-5">
-                      {isJa ? "以下の情報をご用意ください：" : isDe ? "Bitte halten Sie folgende Informationen bereit:" : isEs ? "Por favor tenga a mano la siguiente información:" : "Please have this information ready:"}
+                      {isAr ? "يرجى تقديم المعلومات التالية:" : isJa ? "以下の情報をご用意ください：" : isDe ? "Bitte halten Sie folgende Informationen bereit:" : isEs ? "Por favor tenga a mano la siguiente información:" : "Please have this information ready:"}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8">
-                      {(isJa ? [
+                      {(isAr ? [
+                        "الاسم الكامل واسم الشركة",
+                        "رقم هاتف صالح للتواصل",
+                        "موقع المنشأة أو المشروع",
+                        "المعدات أو النظام المعني",
+                        "وصف موجز للمشكلة",
+                        "هل المعدات تعمل حالياً أم متوقفة",
+                        "صور الخطأ أو تقارير الأعطال ذات الصلة"
+                      ] : isJa ? [
                         "お名前と会社名",
                         "ご連絡先電話番号",
                         "設備の設置場所",
@@ -798,9 +863,9 @@ export default function ContactPage() {
                   <div className="bg-white/80 dark:bg-[#050B14]/50 border-l-2 border-emerald-500/40 py-3.5 px-5 rounded-r-xl shadow-sm">
                     <p className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed mb-1.5 tracking-wide">
                       <strong className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-[10px] mr-2">
-                        {isJa ? "重要なお知らせ:" : isDe ? "Wichtiger Hinweis:" : isEs ? "Aviso importante:" : "Important notice:"}
+                        {isAr ? "إشعار هام:" : isJa ? "重要なお知らせ:" : isDe ? "Wichtiger Hinweis:" : isEs ? "Aviso importante:" : "Important notice:"}
                       </strong>
-                      {isJa ? "緊急の問い合わせを送信しても、事前の保守契約がない場合、即時の駆けつけや特定の対応時間は保証されません。" : isDe ? "Das Absenden einer dringenden Anfrage garantiert kein sofortiges Erscheinen oder feste Reaktionszeiten ohne vorherigen Wartungsvertrag." : isEs ? "El envío de una consulta urgente no garantiza la asistencia presencial inmediata ni un tiempo de respuesta específico sin un contrato previo de servicio." : "Urgent-enquiry submission does not guarantee immediate attendance or a specific response time."}
+                      {isAr ? "لا يضمن تقديم الاستفسار العاجل حضوراً فورياً أو وقت استجابة محدداً دون وجود ترتيب مسبق لعقد الصيانة." : isJa ? "緊急の問い合わせを送信しても、事前の保守契約がない場合、即時の駆けつけや特定の対応時間は保証されません。" : isDe ? "Das Absenden einer dringenden Anfrage garantiert kein sofortiges Erscheinen oder feste Reaktionszeiten ohne vorherigen Wartungsvertrag." : isEs ? "El envío de una consulta urgente no garantiza la asistencia presencial inmediata ni un tiempo de respuesta específico sin un contrato previo de servicio." : "Urgent-enquiry submission does not guarantee immediate attendance or a specific response time."}
                     </p>
                     <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed tracking-wide">
                       {c ? c.urgentSupport.notice : "For safety-related situations, follow your organization's approved safety, isolation and emergency procedures before seeking technical assistance."}
@@ -821,7 +886,7 @@ export default function ContactPage() {
               <div className="lg:col-span-2">
                 <div className="mb-10">
                   <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-                    {isJa ? "お問い合わせフォーム" : isDe ? "Kontaktformular" : isEs ? "Formulario de Contacto" : "Contact Form"}
+                    {isAr ? "نموذج الاتصال" : isJa ? "お問い合わせフォーム" : isDe ? "Kontaktformular" : isEs ? "Formulario de Contacto" : "Contact Form"}
                   </p>
                   <h2 className="text-3xl md:text-4xl font-black text-[#17135B] dark:text-white mb-4">
                     {c ? c.form.heading : "Send Us a Message"}
@@ -845,7 +910,7 @@ export default function ContactPage() {
                         {c ? c.confirmation.heading : "Thank You for Contacting Sanota"}
                       </h3>
                       <p className="text-slate-700 dark:text-slate-300 text-lg mb-3">
-                        {isJa ? "お問い合わせを正常に受け付けました。" : isDe ? "Ihre Anfrage ist erfolgreich bei uns eingegangen." : isEs ? "Su consulta ha sido recibida correctamente." : "Your enquiry has been received successfully."}
+                        {isAr ? "تم استلام استفسارك بنجاح." : isJa ? "お問い合わせを正常に受け付けました。" : isDe ? "Ihre Anfrage ist erfolgreich bei uns eingegangen." : isEs ? "Su consulta ha sido recibida correctamente." : "Your enquiry has been received successfully."}
                       </p>
                       <p className="text-[#C59B27] dark:text-[#E8B84B] font-mono font-bold mb-8">
                         {c ? c.confirmation.refText : "Reference:"} {enquiryRef}
@@ -872,26 +937,26 @@ export default function ContactPage() {
                       {/* Your Details */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isJa ? "お客様情報" : isDe ? "Ihre Angaben" : isEs ? "Sus Datos" : "Your Details"}
+                          {isAr ? "بياناتك الشخصية" : isJa ? "お客様情報" : isDe ? "Ihre Angaben" : isEs ? "Sus Datos" : "Your Details"}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.fullName : "Full name"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isJa ? "お名前" : isDe ? "Ihr vollständiger Name" : isEs ? "Su nombre completo" : "Your full name"} value={formData.name} onChange={e => updateData({ name: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isAr ? "الاسم الكامل" : isJa ? "お名前" : isDe ? "Ihr vollständiger Name" : isEs ? "Su nombre completo" : "Your full name"} value={formData.name} onChange={e => updateData({ name: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.company : "Company or organization"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isJa ? "貴社名・組織名" : isDe ? "Ihr Unternehmen" : isEs ? "Su empresa u organización" : "Your company"} value={formData.company} onChange={e => updateData({ company: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isAr ? "الشركة أو المنظمة" : isJa ? "貴社名・組織名" : isDe ? "Ihr Unternehmen" : isEs ? "Su empresa u organización" : "Your company"} value={formData.company} onChange={e => updateData({ company: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.jobTitle : "Job title"}
                             </label>
-                            <input type="text" className={inputClass} placeholder={isJa ? "お役職・専門分野" : isDe ? "Ihre Position / Funktion" : isEs ? "Su puesto o especialidad" : "Your role"} value={formData.jobTitle} onChange={e => updateData({ jobTitle: e.target.value })} />
+                            <input type="text" className={inputClass} placeholder={isAr ? "المسمى الوظيفي" : isJa ? "お役職・専門分野" : isDe ? "Ihre Position / Funktion" : isEs ? "Su puesto o especialidad" : "Your role"} value={formData.jobTitle} onChange={e => updateData({ jobTitle: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -917,7 +982,7 @@ export default function ContactPage() {
                       {/* Enquiry Details */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isJa ? "お問い合わせ内容" : isDe ? "Details zur Anfrage" : isEs ? "Detalles de la Consulta" : "Enquiry Details"}
+                          {isAr ? "تفاصيل الاستفسار" : isJa ? "お問い合わせ内容" : isDe ? "Details zur Anfrage" : isEs ? "Detalles de la Consulta" : "Enquiry Details"}
                         </h4>
                         <div className="space-y-5 mt-6">
                           <div className="space-y-2">
@@ -925,7 +990,7 @@ export default function ContactPage() {
                               {c ? c.form.fields.queryType : "Type of enquiry"} <span className="text-red-500">*</span>
                             </label>
                             <select required className={inputClass + " appearance-none cursor-pointer"} value={formData.enquiryType} onChange={e => updateData({ enquiryType: e.target.value })}>
-                              <option value="">{isJa ? "選択してください" : isDe ? "Bitte auswählen" : isEs ? "Seleccione una opción" : "Select an option"}</option>
+                              <option value="">{isAr ? "اختر نوع الاستفسار" : isJa ? "選択してください" : isDe ? "Bitte auswählen" : isEs ? "Seleccione una opción" : "Select an option"}</option>
                               {enquiryTypes.map((type, idx) => (
                                 <option key={idx} value={type}>{type}</option>
                               ))}
@@ -935,7 +1000,7 @@ export default function ContactPage() {
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
                               {c ? c.form.fields.subject : "Subject"} <span className="text-red-500">*</span>
                             </label>
-                            <input required type="text" className={inputClass} placeholder={isJa ? "お問い合わせの件名" : isDe ? "Kurzer Betreff Ihrer Anfrage" : isEs ? "Breve asunto de su consulta" : "Brief subject of your enquiry"} value={formData.subject} onChange={e => updateData({ subject: e.target.value })} />
+                            <input required type="text" className={inputClass} placeholder={isAr ? "موضوع الاستفسار بإيجاز" : isJa ? "お問い合わせの件名" : isDe ? "Kurzer Betreff Ihrer Anfrage" : isEs ? "Breve asunto de su consulta" : "Brief subject of your enquiry"} value={formData.subject} onChange={e => updateData({ subject: e.target.value })} />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -959,7 +1024,7 @@ export default function ContactPage() {
                         </h4>
                         <div className="mt-6">
                           <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
-                            {isJa ? "写真、図面、機器の仕様書、その他の関連書類を添付してください。" : isDe ? "Fügen Sie Fotos, Zeichnungen, Gerätedaten oder sonstige Unterlagen bei." : isEs ? "Adjunte fotografías, planos, especificaciones de equipos u otros documentos relevantes." : "Attach photographs, videos, drawings, equipment details or other relevant documents."}
+                            {isAr ? "يمكنك إرفاق الصور الفوتوغرافية، أو مقاطع الفيديو، أو الرسومات، أو تفاصيل المعدات، أو المستندات ذات الصلة." : isJa ? "写真、図面、機器の仕様書、その他の関連書類を添付してください。" : isDe ? "Fügen Sie Fotos, Zeichnungen, Gerätedaten oder sonstige Unterlagen bei." : isEs ? "Adjunte fotografías, planos, especificaciones de equipos u otros documentos relevantes." : "Attach photographs, videos, drawings, equipment details or other relevant documents."}
                           </p>
                           <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors cursor-pointer bg-slate-50 dark:bg-[#050B14]" onClick={() => fileInputRef.current?.click()}>
                             <input
@@ -977,11 +1042,11 @@ export default function ContactPage() {
                             <Upload className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto mb-3" />
                             <p className="text-[#17135B] dark:text-white font-bold mb-1">
                               {formData.supportingFiles && formData.supportingFiles.length > 0
-                                ? (isJa ? `${formData.supportingFiles.length} 件のファイルを選択済み` : isDe ? `${formData.supportingFiles.length} Datei(en) ausgewählt` : isEs ? `${formData.supportingFiles.length} archivo(s) seleccionado(s)` : `${formData.supportingFiles.length} File(s) Selected`)
-                                : (isJa ? "クリックしてファイルを追加" : isDe ? "Hier klicken, um Dateien hinzuzufügen" : isEs ? "Haga clic para agregar archivos" : "Click to Add Files")}
+                                ? (isAr ? `${formData.supportingFiles.length} ملف(ات) محددة` : isJa ? `${formData.supportingFiles.length} 件のファイルを選択済み` : isDe ? `${formData.supportingFiles.length} Datei(en) ausgewählt` : isEs ? `${formData.supportingFiles.length} archivo(s) seleccionado(s)` : `${formData.supportingFiles.length} File(s) Selected`)
+                                : (isAr ? "انقر لإضافة ملفات" : isJa ? "クリックしてファイルを追加" : isDe ? "Hier klicken, um Dateien hinzuzufügen" : isEs ? "Haga clic para agregar archivos" : "Click to Add Files")}
                             </p>
                             <p className="text-slate-500 text-xs">
-                              {isJa ? "最大ファイルサイズ: 20MB" : isDe ? "Maximale Dateigröße: 20 MB" : isEs ? "Tamaño máximo de archivo: 20 MB" : "Maximum file size: 20MB"}
+                              {isAr ? "الحد الأقصى لحجم الملف: 20 ميجابايت" : isJa ? "最大ファイルサイズ: 20MB" : isDe ? "Maximale Dateigröße: 20 MB" : isEs ? "Tamaño máximo de archivo: 20 MB" : "Maximum file size: 20MB"}
                             </p>
                           </div>
                           <div className="flex items-start mt-4 bg-slate-50 dark:bg-[#050B14] p-3 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -996,7 +1061,7 @@ export default function ContactPage() {
                       {/* Preferences */}
                       <div>
                         <h4 className="text-lg font-black text-[#17135B] dark:text-white mb-1 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-                          {isJa ? "ご希望の連絡方法" : isDe ? "Präferenzen" : isEs ? "Preferencias" : "Preferences"}
+                          {isAr ? "تفضيلات الاتصال" : isJa ? "ご希望の連絡方法" : isDe ? "Präferenzen" : isEs ? "Preferencias" : "Preferences"}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
                           <div>
@@ -1039,7 +1104,7 @@ export default function ContactPage() {
                         <label className="flex items-start space-x-3 cursor-pointer group">
                           <input required type="checkbox" className="w-4 h-4 mt-0.5 accent-[#C59B27] dark:accent-[#E8B84B] shrink-0" checked={formData.consentNoObligation} onChange={e => updateData({ consentNoObligation: e.target.checked })} />
                           <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">
-                            {isJa ? "この問い合わせを送信しても契約上の義務が発生しないことを理解します。サノタは、推奨事項を提示する前に追加情報を要求する場合があります。" : isDe ? "Ich verstehe, dass das Absenden dieser Anfrage keine vertragliche Verpflichtung begründet. Sanota kann weitere Informationen anfordern, bevor eine Empfehlung ausgesprochen wird." : isEs ? "Entiendo que el envío de esta consulta no crea una obligación contractual. Sanota puede solicitar información adicional antes de recomendar una solución." : "I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution."}
+                            {isAr ? "أدرك أن تقديم هذا الاستفسار لا ينشئ التزاماً تعاقدياً. قد تطلب شركة سانوتا معلومات إضافية أو تقييماً قبل التوصية بحل." : isJa ? "この問い合わせを送信しても契約上の義務が発生しないことを理解します。サノタは、推奨事項を提示する前に追加情報を要求する場合があります。" : isDe ? "Ich verstehe, dass das Absenden dieser Anfrage keine vertragliche Verpflichtung begründet. Sanota kann weitere Informationen anfordern, bevor eine Empfehlung ausgesprochen wird." : isEs ? "Entiendo que el envío de esta consulta no crea una obligación contractual. Sanota puede solicitar información adicional antes de recomendar una solución." : "I understand that submitting this enquiry does not create a contractual obligation. Sanota may request further information before recommending a solution."}
                           </span>
                         </label>
                       </div>
@@ -1057,7 +1122,7 @@ export default function ContactPage() {
                           className="w-full sm:w-auto px-10 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center disabled:opacity-60 shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group"
                         >
                           {formStatus === 'submitting'
-                            ? (isJa ? '送信中…' : isDe ? 'Wird gesendet…' : isEs ? 'Enviando…' : 'Submitting…')
+                            ? (isAr ? 'جارٍ الإرسال…' : isJa ? '送信中…' : isDe ? 'Wird gesendet…' : isEs ? 'Enviando…' : 'Submitting…')
                             : (c ? c.form.fields.submitButton : 'Submit Enquiry')}
                           {formStatus !== 'submitting' && <Send className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />}
                         </button>
@@ -1095,30 +1160,30 @@ export default function ContactPage() {
                     <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-6 text-center shadow-sm">
                       <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400 mx-auto mb-3" />
                       <p className="text-[#17135B] dark:text-white font-bold mb-1">
-                        {isJa ? "リクエストを受領しました" : isDe ? "Anfrage eingegangen" : isEs ? "Solicitud Recibida" : "Request Received"}
+                        {isAr ? "تم استلام طلبك بنجاح" : isJa ? "リクエストを受領しました" : isDe ? "Anfrage eingegangen" : isEs ? "Solicitud Recibida" : "Request Received"}
                       </p>
                       <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
-                        {isJa ? "担当者よりまもなくご連絡いたします。" : isDe ? "Wir werden uns in Kürze mit Ihnen in Verbindung setzen." : isEs ? "Nos comunicaremos con usted a la brevedad." : "We will contact you shortly."}
+                        {isAr ? "سيتصل بك أحد ممثلينا قريباً." : isJa ? "担当者よりまもなくご連絡いたします。" : isDe ? "Wir werden uns in Kürze mit Ihnen in Verbindung setzen." : isEs ? "Nos comunicaremos con usted a la brevedad." : "We will contact you shortly."}
                       </p>
                       <p className="text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold tracking-wider">Ref: {callRef}</p>
                     </div>
                   ) : (
                     <form className="space-y-3.5 relative z-10" onSubmit={handleCallSubmit}>
-                      <input required type="text" placeholder={isJa ? "お名前" : isDe ? "Vollständiger Name" : isEs ? "Nombre completo" : "Full name"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
-                      <input required type="text" placeholder={isJa ? "貴社名" : isDe ? "Unternehmen" : isEs ? "Empresa" : "Company"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
+                      <input required type="text" placeholder={isAr ? "الاسم الكامل" : isJa ? "お名前" : isDe ? "Vollständiger Name" : isEs ? "Nombre completo" : "Full name"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
+                      <input required type="text" placeholder={isAr ? "الشركة" : isJa ? "貴社名" : isDe ? "Unternehmen" : isEs ? "Empresa" : "Company"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
                       <div className="grid grid-cols-2 gap-3">
-                        <input required type="tel" placeholder={isJa ? "電話番号" : isDe ? "Telefonnummer" : isEs ? "Teléfono" : "Phone"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
-                        <input required type="email" placeholder={isJa ? "メールアドレス" : isDe ? "E-Mail" : isEs ? "Correo" : "Email"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
+                        <input required type="tel" placeholder={isAr ? "رقم الهاتف" : isJa ? "電話番号" : isDe ? "Telefonnummer" : isEs ? "Teléfono" : "Phone"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
+                        <input required type="email" placeholder={isAr ? "البريد الإلكتروني" : isJa ? "メールアドレス" : isDe ? "E-Mail" : isEs ? "Correo" : "Email"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
                       </div>
                       <select required className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm appearance-none cursor-pointer" value={callData.preferredContactTime} onChange={e => updateCallData({ preferredContactTime: e.target.value })}>
                         <option value="" className="text-slate-400 dark:text-slate-500">
-                          {isJa ? "希望する連絡時間帯" : isDe ? "Bevorzugte Kontaktzeit" : isEs ? "Horario de contacto preferido" : "Preferred contact time"}
+                          {isAr ? "الوقت المفضل للاتصال" : isJa ? "希望する連絡時間帯" : isDe ? "Bevorzugte Kontaktzeit" : isEs ? "Horario de contacto preferido" : "Preferred contact time"}
                         </option>
-                        <option value="Morning (8:30 AM - 12:00 PM)">{isJa ? "午前 (8:30 – 12:00)" : isDe ? "Vormittags (8:30 – 12:00 Uhr)" : isEs ? "Mañana (8:30 AM - 12:00 PM)" : "Morning (8:30 AM - 12:00 PM)"}</option>
-                        <option value="Afternoon (12:00 PM - 5:30 PM)">{isJa ? "午後 (12:00 – 17:30)" : isDe ? "Nachmittags (12:00 – 17:30 Uhr)" : isEs ? "Tarde (12:00 PM - 5:30 PM)" : "Afternoon (12:00 PM - 5:30 PM)"}</option>
-                        <option value="Any time during business hours">{isJa ? "営業時間内であればいつでも" : isDe ? "Jederzeit während der Geschäftszeiten" : isEs ? "Cualquier momento en horario laboral" : "Any time during business hours"}</option>
+                        <option value="Morning (8:30 AM - 12:00 PM)">{isAr ? "صباحاً (8:30 – 12:00)" : isJa ? "午前 (8:30 – 12:00)" : isDe ? "Vormittags (8:30 – 12:00 Uhr)" : isEs ? "Mañana (8:30 AM - 12:00 PM)" : "Morning (8:30 AM - 12:00 PM)"}</option>
+                        <option value="Afternoon (12:00 PM - 5:30 PM)">{isAr ? "بعد الظهر (12:00 – 17:30)" : isJa ? "午後 (12:00 – 17:30)" : isDe ? "Nachmittags (12:00 – 17:30 Uhr)" : isEs ? "Tarde (12:00 PM - 5:30 PM)" : "Afternoon (12:00 PM - 5:30 PM)"}</option>
+                        <option value="Any time during business hours">{isAr ? "في أي وقت خلال ساعات العمل" : isJa ? "営業時間内であればいつでも" : isDe ? "Jederzeit während der Geschäftszeiten" : isEs ? "Cualquier momento en horario laboral" : "Any time during business hours"}</option>
                       </select>
-                      <input type="text" placeholder={isJa ? "ご用件の簡単な概要" : isDe ? "Kurzer Grund des Anrufs" : isEs ? "Breve motivo de la llamada" : "Brief reason for the call"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.reason} onChange={e => updateCallData({ reason: e.target.value })} />
+                      <input type="text" placeholder={isAr ? "سبب موجز للاتصال" : isJa ? "ご用件の簡単な概要" : isDe ? "Kurzer Grund des Anrufs" : isEs ? "Breve motivo de la llamada" : "Brief reason for the call"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.reason} onChange={e => updateCallData({ reason: e.target.value })} />
 
                       {callStatus === 'error' && (
                         <p className="text-red-500 dark:text-red-400 text-xs mt-2 bg-red-100 dark:bg-red-950/30 p-2 rounded-lg">{callError}</p>
@@ -1126,7 +1191,7 @@ export default function ContactPage() {
 
                       <button disabled={callStatus === 'submitting'} type="submit" className="w-full py-3.5 bg-gradient-to-r from-[#C59B27] dark:from-[#E8B84B] to-amber-500 text-white dark:text-[#0A101A] font-black rounded-xl transition-all duration-300 text-sm shadow-[0_0_15px_rgba(232,184,75,0.2)] hover:shadow-[0_0_25px_rgba(232,184,75,0.4)] mt-4 disabled:opacity-60 flex items-center justify-center group">
                         {callStatus === 'submitting'
-                          ? (isJa ? '送信中...' : isDe ? 'Wird gesendet...' : isEs ? 'Enviando...' : 'Submitting...')
+                          ? (isAr ? 'جارٍ الإرسال...' : isJa ? '送信中...' : isDe ? 'Wird gesendet...' : isEs ? 'Enviando...' : 'Submitting...')
                           : (c ? c.requestCall.button : 'Request Call Back')}
                         {callStatus !== 'submitting' && <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />}
                       </button>
@@ -1140,7 +1205,7 @@ export default function ContactPage() {
                     {c ? c.whatHappensNext.heading : "What Happens Next?"}
                   </h3>
                   <p className="text-slate-500 text-xs mb-6 uppercase tracking-widest font-bold">
-                    {isJa ? "明確な実行ステップ" : isDe ? "Ein klarer Weg zum Handeln" : isEs ? "Una ruta de acción clara" : "A clear route to action"}
+                    {isAr ? "مسار واضح من الاستفسار إلى التنفيذ" : isJa ? "明確な実行ステップ" : isDe ? "Ein klarer Weg zum Handeln" : isEs ? "Una ruta de acción clara" : "A clear route to action"}
                   </p>
                   <div className="relative">
                     {/* Animated vertical line */}
@@ -1195,7 +1260,7 @@ export default function ContactPage() {
                 <div className="bg-white dark:bg-[#050B14]/80 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 rounded-2xl p-7 shadow-lg">
                   <h3 className="text-lg font-black text-[#17135B] dark:text-white mb-5 flex items-center">
                     <MapPin className="w-5 h-5 text-[#C59B27] dark:text-slate-400 mr-2" />
-                    {isJa ? "サノタへのアクセス" : isDe ? "Sanota besuchen" : isEs ? "Visitar Sanota" : "Visit Sanota"}
+                    {isAr ? "زيارة سانوتا" : isJa ? "サノタへのアクセス" : isDe ? "Sanota besuchen" : isEs ? "Visitar Sanota" : "Visit Sanota"}
                   </h3>
                   <div className="bg-slate-100 dark:bg-[#131C2E] h-40 rounded-xl border border-slate-200 dark:border-slate-700/60 mb-5 overflow-hidden relative group">
                     <iframe
@@ -1214,10 +1279,10 @@ export default function ContactPage() {
 
                   <div className="space-y-3">
                     <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="w-full py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#17135B] dark:text-white font-bold rounded-xl transition-colors text-xs flex items-center justify-center shadow-sm">
-                      {isJa ? "Googleマップで開く" : isDe ? "In Google Maps öffnen" : isEs ? "Abrir en Google Maps" : "Open in Google Maps"}
+                      {isAr ? "فتح في خرائط Google" : isJa ? "Googleマップで開く" : isDe ? "In Google Maps öffnen" : isEs ? "Abrir en Google Maps" : "Open in Google Maps"}
                     </a>
                     <p className="text-slate-500 text-[10px] uppercase tracking-wider text-center mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
-                      {isJa ? "ご来訪は事前にご予約ください" : isDe ? "Besuche sollten im Voraus vereinbart werden" : isEs ? "Las visitas deben coordinarse con antelación" : "Visits should be arranged in advance"}
+                      {isAr ? "يرجى ترتيب الزيارات مسبقاً" : isJa ? "ご来訪は事前にご予約ください" : isDe ? "Besuche sollten im Voraus vereinbart werden" : isEs ? "Las visitas deben coordinarse con antelación" : "Visits should be arranged in advance"}
                     </p>
                   </div>
                 </div>
@@ -1232,13 +1297,13 @@ export default function ContactPage() {
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <p className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-4">
-              {isJa ? "サノタとつながる" : isDe ? "Mit Sanota verbinden" : isEs ? "Conéctese con Sanota" : "Connect With Sanota"}
+              {isAr ? "تواصل مع سانوتا" : isJa ? "サノタとつながる" : isDe ? "Mit Sanota verbinden" : isEs ? "Conéctese con Sanota" : "Connect With Sanota"}
             </p>
             <h2 className="text-4xl md:text-5xl font-black text-[#17135B] dark:text-white mb-5 tracking-tight">
-              {isJa ? "活動・最新情報をフォロー" : isDe ? "Verfolgen Sie unsere Arbeit" : isEs ? "Siga Nuestro Trabajo" : "Follow Our Work"}
+              {isAr ? "تابع أعمالنا وآخر التطورات" : isJa ? "活動・最新情報をフォロー" : isDe ? "Verfolgen Sie unsere Arbeit" : isEs ? "Siga Nuestro Trabajo" : "Follow Our Work"}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-              {isJa ? "プロジェクトストーリー、製品開発、エンジニアリング動画、企業ニュースの最新情報をお届けします。" : isDe ? "Bleiben Sie auf dem Laufenden über Projektberichte, Technologie-Entwicklungen, Engineering-Videos und Unternehmensneuigkeiten." : isEs ? "Manténgase al día sobre proyectos, desarrollos tecnológicos, videos de ingeniería y novedades corporativas." : "Stay connected for project stories, product developments, engineering videos and company news."}
+              {isAr ? "تابعونا للاطلاع على قصص المشاريع، وتطوير المنتجات، ومقاطع الفيديو الهندسية، وأخبار الشركة." : isJa ? "プロジェクトストーリー、製品開発、エンジニアリング動画、企業ニュースの最新情報をお届けします。" : isDe ? "Bleiben Sie auf dem Laufenden über Projektberichte, Technologie-Entwicklungen, Engineering-Videos und Unternehmensneuigkeiten." : isEs ? "Manténgase al día sobre proyectos, desarrollos tecnológicos, videos de ingeniería y novedades corporativas." : "Stay connected for project stories, product developments, engineering videos and company news."}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto mb-12">
@@ -1282,7 +1347,7 @@ export default function ContactPage() {
             >
               <Link href="/media" className="inline-flex items-center px-8 py-4 bg-white dark:bg-[#0A101A] hover:bg-slate-50 dark:hover:bg-[#131C2E] border border-slate-200 dark:border-slate-700 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/40 text-[#17135B] dark:text-white font-black rounded-2xl transition-all duration-500 group shadow-lg hover:shadow-[0_0_30px_rgba(232,184,75,0.15)]">
                 <span className="text-[#C59B27] dark:text-[#E8B84B] mr-3 group-hover:text-amber-500 transition-colors">
-                  {isJa ? "メディアセンターを見る" : isDe ? "Mediathek besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
+                  {isAr ? "زيارة المركز الإعلامي" : isJa ? "メディアセンターを見る" : isDe ? "Mediathek besuchen" : isEs ? "Visitar el Centro de Medios" : "Visit the Media Centre"}
                 </span>
                 <ArrowRight className="w-4 h-4 text-[#17135B] dark:text-white group-hover:translate-x-1.5 transition-transform" />
               </Link>
@@ -1294,7 +1359,9 @@ export default function ContactPage() {
         <section className="py-10 lg:py-14 bg-transparent relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-white dark:bg-[#131C2E]/20 backdrop-blur-sm border border-slate-200 dark:border-slate-800/40 rounded-3xl p-10 md:p-14 shadow-xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white mb-4 tracking-tight">
-              {isJa ? (
+              {isAr ? (
+                <>ابدأ <span className="text-[#C59B27] dark:text-[#E8B84B]">بالمتطلبات</span></>
+              ) : isJa ? (
                 <>まずは<span className="text-[#C59B27] dark:text-[#E8B84B]">ご要件のご相談</span>から</>
               ) : isDe ? (
                 <>Starten Sie mit der <span className="text-[#C59B27] dark:text-[#E8B84B]">Anforderung</span></>
@@ -1305,18 +1372,18 @@ export default function ContactPage() {
               )}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base mb-10 leading-relaxed max-w-2xl mx-auto">
-              {isJa ? "機械のトラブル解決、プロセスの自動化、新しいシステムの開発、または継続的な技術サポートの手配など、どのようなご要望でもサノタはお伺いする準備ができています。" : isDe ? "Ganz gleich, ob Sie ein Maschinenproblem lösen, einen Prozess automatisieren, ein neues System entwickeln oder kontinuierlichen technischen Support vereinbaren möchten — Sanota ist bereit, Ihre Anforderungen zu verstehen." : isEs ? "Ya sea que necesite resolver un problema de maquinaria, automatizar un proceso, desarrollar un nuevo sistema o coordinar soporte técnico continuo — Sanota está lista para comprender sus necesidades." : "Whether you need to solve a machinery problem, automate a process, develop a new system or arrange ongoing technical support — Sanota is ready to understand your requirement."}
+              {isAr ? "سواء كنت بحاجة إلى حل مشكلة في الآلات، أو أتمتة عملية ما، أو تطوير نظام جديد، أو ترتيب الدعم الفني المستمر — فإن شركة سانوتا مستعدة لفهم متطلباتك." : isJa ? "機械のトラブル解決、プロセスの自動化、新しいシステムの開発、または継続的な技術サポートの手配など、どのようなご要望でもサノタはお伺いする準備ができています。" : isDe ? "Ganz gleich, ob Sie ein Maschinenproblem lösen, einen Prozess automatisieren, ein neues System entwickeln oder kontinuierlichen technischen Support vereinbaren möchten — Sanota ist bereit, Ihre Anforderungen zu verstehen." : isEs ? "Ya sea que necesite resolver un problema de maquinaria, automatizar un proceso, desarrollar un nuevo sistema o coordinar soporte técnico continuo — Sanota está lista para comprender sus necesidades." : "Whether you need to solve a machinery problem, automate a process, develop a new system or arrange ongoing technical support — Sanota is ready to understand your requirement."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
               <Link href="/tell-us-your-challenge" className="w-full sm:w-auto px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-[0_0_20px_rgba(232,184,75,0.15)] hover:shadow-[0_0_30px_rgba(232,184,75,0.3)] hover:-translate-y-0.5 group text-sm">
-                {isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "課題・ご相談をお聞かせください" : isDe ? "Schildern Sie uns Ihre Herausforderung" : isEs ? "Cuéntanos tu desafío" : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
               <a href="#contact-form" className="w-full sm:w-auto px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#050B14] dark:hover:bg-[#0A101A] text-[#17135B] dark:text-slate-300 dark:hover:text-white font-black rounded-xl border border-slate-300 dark:border-slate-700/60 hover:border-slate-400 dark:hover:border-slate-500/60 transition-all duration-300 flex items-center justify-center shadow-sm text-sm">
-                {isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
+                {isAr ? "اتصل بسانوتا" : isJa ? "Sanotaへ問い合わせる" : isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
               </a>
             </div>
             <p className="text-slate-500 dark:text-slate-600 text-xs italic tracking-wide">
-              {isJa ? "運用上の課題から、統合されたエンジニアリングソリューションへ。" : isDe ? "Von der betrieblichen Herausforderung zur integrierten Engineering-Lösung." : isEs ? "Desde el desafío operativo hasta la solución de ingeniería integrada." : "From operational challenge to integrated engineering solution."}
+              {isAr ? "من التحديات التشغيلية إلى الحلول الهندسية المتكاملة." : isJa ? "運用上の課題から、統合されたエンジニアリングソリューションへ。" : isDe ? "Von der betrieblichen Herausforderung zur integrierten Engineering-Lösung." : isEs ? "Desde el desafío operativo hasta la solución de ingeniería integrada." : "From operational challenge to integrated engineering solution."}
             </p>
           </div>
         </section>
