@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Check, ChevronDown } from "lucide-react";
 import { useLanguage, LanguageCode } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import CountryFlag from "@/components/CountryFlag";
 
 interface LanguageSelectorProps {
   className?: string;
@@ -46,13 +47,13 @@ export default function LanguageSelector({ className = "", showFullLabel = false
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="Select Language"
-        className={`relative inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#C59B27]/50 ${
+        className={`relative inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#C59B27]/50 ${
           isDark
             ? "bg-[#131C2E] border border-slate-700/80 text-slate-200 hover:border-[#E8B84B]/70 hover:bg-[#1A263D] hover:shadow-[0_0_12px_rgba(232,184,75,0.2)]"
             : "bg-white border border-[#E5E7EB] text-[#17135B] hover:border-[#C59B27]/70 hover:bg-amber-50/50 shadow-xs hover:shadow-[0_2px_8px_rgba(197,155,39,0.15)]"
         }`}
       >
-        <span className="text-sm leading-none select-none">{currentLanguage.flag}</span>
+        <CountryFlag code={currentLanguage.code} className="w-4 h-3 rounded-[2px] shadow-xs" />
         <span className="text-[11px] font-bold uppercase tracking-wider">
           {showFullLabel ? currentLanguage.nativeName : currentLanguage.code.toUpperCase()}
         </span>
@@ -110,8 +111,8 @@ export default function LanguageSelector({ className = "", showFullLabel = false
                         : "text-[#555E75] hover:bg-[#FAF8F5] hover:text-[#17135B]"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-lg leading-none select-none">{lang.flag}</span>
+                    <div className="flex items-center gap-3">
+                      <CountryFlag code={lang.code} className="w-5 h-3.5 rounded-[2px] shadow-xs" />
                       <div className="flex flex-col">
                         <span className="text-xs font-bold leading-tight group-hover:translate-x-0.5 transition-transform duration-150">
                           {lang.nativeName}
