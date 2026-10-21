@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Check, ChevronDown } from "lucide-react";
 import { useLanguage, LanguageCode } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import CountryFlag from "@/components/CountryFlag";
+import { getLocalizedPath } from "@/utils/routes";
 
 interface LanguageSelectorProps {
   className?: string;
@@ -18,6 +20,8 @@ export default function LanguageSelector({ className = "", showFullLabel = false
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const isDark = theme === "dark";
 
@@ -98,8 +102,12 @@ export default function LanguageSelector({ className = "", showFullLabel = false
                     key={lang.code}
                     type="button"
                     onClick={() => {
+                      const targetPath = getLocalizedPath(pathname, lang.code);
                       setLanguage(lang.code);
                       setIsOpen(false);
+                      if (targetPath && targetPath !== pathname) {
+                        router.push(targetPath);
+                      }
                     }}
                     className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-all duration-200 group ${
                       isSelected

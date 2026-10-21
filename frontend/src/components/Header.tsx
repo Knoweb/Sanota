@@ -15,17 +15,17 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { theme } = useTheme();
-  const { t } = useLanguage();
+  const { t, localizedHref } = useLanguage();
   const isDark = theme === "dark";
 
   const navLinks = [
-    { name: t.nav.home, href: "/" },
-    { name: t.nav.industries, href: "/industries" },
-    { name: t.nav.services, href: "/services" },
-    { name: t.nav.products, href: "/products" },
-    { name: t.nav.media, href: "/media" },
-    { name: t.nav.about, href: "/about" },
-    { name: t.nav.contact, href: "/contact" },
+    { name: t.nav.home, href: localizedHref("/") },
+    { name: t.nav.industries, href: localizedHref("/industries") },
+    { name: t.nav.services, href: localizedHref("/services") },
+    { name: t.nav.products, href: localizedHref("/products") },
+    { name: t.nav.media, href: localizedHref("/media") },
+    { name: t.nav.about, href: localizedHref("/about") },
+    { name: t.nav.contact, href: localizedHref("/contact") },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function Header() {
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center shrink-0">
-            <Link href="/" className="relative flex items-center justify-center mr-3 xl:mr-5 group transition-opacity hover:opacity-80">
+            <Link href={localizedHref("/")} className="relative flex items-center justify-center mr-3 xl:mr-5 group transition-opacity hover:opacity-80">
               <Image
                 src="/lg.png"
                 alt="Sanota Logo"
@@ -52,7 +52,10 @@ export default function Header() {
 
           <nav className="hidden xl:flex items-center justify-center gap-2 xl:gap-2.5 2xl:gap-5 flex-1 mx-2 2xl:mx-4 min-w-0">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== "/");
+              const decodedPath = decodeURIComponent(pathname || "");
+              const decodedHref = decodeURIComponent(link.href || "");
+              const isHome = ["/", "/es", "/de", "/ja", "/ar", "/en", "/inicio", "/startseite", "/ホーム", "/الرئيسية"].includes(decodedHref);
+              const isActive = decodedPath === decodedHref || (!isHome && decodedPath.startsWith(decodedHref));
               return (
                 <Link
                   key={link.href}
@@ -82,7 +85,7 @@ export default function Header() {
 
           <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
             <Link
-              href="/tell-us-your-challenge"
+              href={localizedHref("/tell-us-your-challenge")}
               className="inline-flex items-center px-3.5 py-2 2xl:px-5 2xl:py-2.5 border border-transparent text-[11.5px] 2xl:text-[13px] font-bold rounded-full text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all uppercase tracking-wider shadow-md hover:shadow-lg whitespace-nowrap"
             >
               {t.nav.tellUsYourChallenge}
@@ -124,7 +127,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/tell-us-your-challenge"
+              href={localizedHref("/tell-us-your-challenge")}
               onClick={() => setIsOpen(false)}
               className="block mt-6 text-center px-4 py-4 border border-transparent text-[14px] font-bold rounded-md text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] uppercase tracking-wider shadow-md"
             >

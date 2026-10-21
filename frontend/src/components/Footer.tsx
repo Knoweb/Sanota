@@ -181,7 +181,7 @@ const exploreLinksAR = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { language } = useLanguage();
+  const { language, localizedHref } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
@@ -198,7 +198,7 @@ export default function Footer() {
         
         {/* Brand Info */}
         <div className="mb-6">
-          <Link href="/" className="inline-block mb-3">
+          <Link href={localizedHref("/")} className="inline-block mb-3">
             <Image 
               src="/lg.png" 
               alt="Sanota Logo" 
@@ -229,7 +229,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               {currentIndustries.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -245,7 +245,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               {currentServices.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -261,7 +261,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               {currentExplore.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>

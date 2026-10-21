@@ -3,6 +3,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { translations, LanguageCode, Translations } from "@/locales/translations";
 
+import { usePathname } from "next/navigation";
+import { detectLanguageFromPath, getLocalizedHref } from "@/utils/routes";
+
 export type { LanguageCode };
 
 export interface Language {
@@ -28,6 +31,7 @@ interface LanguageContextType {
   isRTL: boolean;
   t: Translations;
   languages: Language[];
+  localizedHref: (canonicalPath: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -35,6 +39,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageCode>("en");
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   const applyLanguage = (code: LanguageCode) => {
     const langObj = LANGUAGES.find((l) => l.code === code) || LANGUAGES[0];
@@ -49,18 +54,28 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    // 1. Detect language from current URL pathname
+    const detected = detectLanguageFromPath(pathname);
+    if (detected) {
+      setLanguageState(detected);
+      localStorage.setItem("sanota-lang", detected);
+      applyLanguage(detected);
+      setMounted(true);
+      return;
+    }
+
+    // 2. Fallback to saved preference in localStorage or default to English
     const saved = localStorage.getItem("sanota-lang") as LanguageCode | null;
     const validCodes: LanguageCode[] = ["en", "es", "ja", "de", "ar"];
     if (saved && validCodes.includes(saved)) {
       setLanguageState(saved);
       applyLanguage(saved);
     } else {
-      // Default to English
       setLanguageState("en");
       applyLanguage("en");
     }
     setMounted(true);
-  }, []);
+  }, [pathname]);
 
   const setLanguage = (code: LanguageCode) => {
     setLanguageState(code);
@@ -71,6 +86,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const currentLanguage = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0];
   const isRTL = currentLanguage.dir === "rtl";
   const t = translations[language] || translations.en;
+  const localizedHref = (canonicalPath: string) => getLocalizedHref(canonicalPath, language);
 
   return (
     <LanguageContext.Provider
@@ -81,6 +97,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         isRTL,
         t,
         languages: LANGUAGES,
+        localizedHref,
       }}
     >
       {children}
