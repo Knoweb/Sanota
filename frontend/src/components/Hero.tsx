@@ -12,14 +12,14 @@ import { homeJA } from "@/locales/ja/home";
 import { homeAR } from "@/locales/ar/home";
 
 const images = [
-  "/hero_image.jpg",
-  "/hero_agri.jpg",
-  "/hero_food.jpg"
+  "/hero_image.webp",
+  "/hero_agri.webp",
+  "/hero_food.webp"
 ];
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { language } = useLanguage();
+  const { language, localizedHref } = useLanguage();
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
@@ -69,14 +69,14 @@ export default function Hero() {
 
             <div className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${isDe ? "mb-5" : "mb-8"}`}>
               <Link
-                href="/tell-us-your-challenge"
+                href={localizedHref("/tell-us-your-challenge")}
                 className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md shadow-[#E5A93C]/25 group"
               >
                 {h ? h.ctaPrimary : "Tell Us Your Challenge"}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/media"
+                href={localizedHref("/media")}
                 className="inline-flex justify-center items-center px-6 py-3 border border-slate-700 dark:border-[#2E5EAA] text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#2E5EAA]/10 transition-colors group shadow-sm dark:shadow-none"
               >
                 {h ? h.ctaSecondary : "See Sanota in Action"}
@@ -85,20 +85,20 @@ export default function Hero() {
             </div>
 
             <div className={isDe ? "mb-5" : "mb-8"}>
-              <p className="text-[13px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              <p className="text-[13px] font-bold text-slate-400 dark:text-slate-300 uppercase tracking-widest">
                 {h ? h.capabilityLine : "Engineering • Automation • IoT • Software • Implementation • Support"}
               </p>
             </div>
 
             {/* Chat Prompt */}
             <div className={`${isDe ? "p-3.5" : "p-4"} rounded-xl bg-white/90 dark:bg-[#131C2E]/40 border border-[#ECE7DD] dark:border-slate-700/50 max-w-xl backdrop-blur-md shadow-sm dark:shadow-lg`}>
-              <h3 className="text-[#17135B] dark:text-white font-bold text-sm mb-1">
+              <h2 className="text-[#17135B] dark:text-white font-bold text-sm mb-1">
                 {h ? h.chatBox.title : "Not sure where to begin?"}
-              </h3>
-              <p className="text-[#555E75] dark:text-slate-400 text-xs mb-2.5">
+              </h2>
+              <p className="text-[#555E75] dark:text-slate-300 text-xs mb-2.5">
                 {h ? h.chatBox.description : "Tell us what is not working—or what you want to achieve. We will help direct your enquiry to the appropriate engineering team."}
               </p>
-              <Link href="/tell-us-your-challenge" className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline flex items-center transition-colors">
+              <Link href={localizedHref("/tell-us-your-challenge")} className="text-xs font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline flex items-center transition-colors">
                 {h ? h.chatBox.button : "Start Guided Chat"}
                 <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
