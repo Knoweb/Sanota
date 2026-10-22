@@ -710,11 +710,10 @@ export default function ProductsPage() {
         {/* Hero Section */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            className="page-hero-bg"
             style={{ backgroundImage: "url('/products_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-white/70 dark:bg-[#050B14]/60 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 dark:via-[#050B14]/20 to-[#FAF8F5] dark:to-[#050B14]/90 z-0" />
+          <div className="page-hero-overlay" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}

@@ -410,6 +410,11 @@ export default function ContactPage() {
 
         {/* ── Hero ── */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800/60 min-h-[65vh] flex flex-col justify-center">
+          <div
+            className="page-hero-bg"
+            style={{ backgroundImage: "url('/contact_hero_bg.jpg')" }}
+          />
+          <div className="page-hero-overlay" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
@@ -438,7 +443,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
               {c ? c.hero.subheading : "Contact Sanota about an operational challenge, engineering project, new system, modernization requirement or long-term technical support."}
             </motion.p>
@@ -446,7 +451,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-base text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="text-base text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
               {c ? c.hero.description : "You do not need to prepare a complete technical specification. Tell us what is happening, what needs improvement or what you want to develop."}
             </motion.p>
@@ -465,7 +470,7 @@ export default function ContactPage() {
               </Link>
               <a
                 href="#contact-form"
-                className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
+                className="px-8 py-4 bg-white/90 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-sm"
               >
                 {c ? c.hero.secondaryButton : "Request a Call"} <PhoneCall className="ml-2 w-5 h-5" />
               </a>

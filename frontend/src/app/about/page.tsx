@@ -472,17 +472,16 @@ export default function AboutPage() {
         {/* 1. Page Hero */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            className="page-hero-bg"
             style={{ backgroundImage: "url('/about_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
+          <div className="page-hero-overlay" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
+              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
             >
               {ab ? ab.hero.heading : "About Sanota"}
             </motion.p>
@@ -490,13 +489,13 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-8 leading-tight max-w-5xl mx-auto"
+              className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-8 leading-tight max-w-5xl mx-auto"
             >
               {ab ? (
                 ab.hero.subheading
               ) : (
                 <>
-                  Practical Engineering. Connected Technology. <span className="text-[#E8B84B]">Lasting Operational Value.</span>
+                  Practical Engineering. Connected Technology. <span className="text-[#C59B27] dark:text-[#E8B84B]">Lasting Operational Value.</span>
                 </>
               )}
             </motion.h1>
@@ -504,7 +503,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-slate-300 max-w-4xl mx-auto mb-6 font-medium leading-relaxed"
+              className="text-xl text-slate-700 dark:text-slate-300 max-w-4xl mx-auto mb-6 font-medium leading-relaxed"
             >
               {ab ? ab.hero.description : "Sanota is an integrated engineering and technology solutions company that helps industries design, develop, automate, modernize, maintain and improve machinery, products, processes and operational systems."}
             </motion.p>
@@ -512,7 +511,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-lg text-slate-400 max-w-4xl mx-auto mb-6 leading-relaxed"
+              className="text-lg text-slate-600 dark:text-slate-400 max-w-4xl mx-auto mb-6 leading-relaxed"
             >
               {ab ? ab.hero.footnote : "Established in Sri Lanka in 2010, we combine engineering experience, practical implementation and digital technology to develop solutions around real operational requirements."}
             </motion.p>
@@ -523,10 +522,10 @@ export default function AboutPage() {
               transition={{ delay: 0.2 }}
               className="flex flex-col sm:flex-row justify-center gap-4"
             >
-              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center">
+              <Link href="/tell-us-your-challenge" className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm">
                 {ab ? ab.hero.primaryButton : "Discuss Your Requirement"} <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link href="/media" className="px-8 py-4 bg-[#131C2E]/80 hover:bg-slate-800 text-white dark:text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center">
+              <Link href="/media" className="px-8 py-4 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-white dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm">
                 {ab ? ab.hero.secondaryButton : "Explore Our Projects"}
               </Link>
             </motion.div>

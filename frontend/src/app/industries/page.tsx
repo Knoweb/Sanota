@@ -9,7 +9,6 @@ import VideosAndDemonstrations from "@/components/VideosAndDemonstrations";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
-const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { industriesES } from "@/locales/es/industries";
@@ -192,11 +191,10 @@ export default function IndustriesPage() {
         {/* 1. Page Hero */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            className="page-hero-bg"
             style={{ backgroundImage: "url('/industries_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-[#050B14]/60 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B14]/20 to-[#050B14]/90 z-0" />
+          <div className="page-hero-overlay" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -253,144 +251,121 @@ export default function IndustriesPage() {
         </section>
 
         {/* 2. Industry-Focused Engineering */}
-        <section className="relative py-12 lg:py-16 bg-[#0B1220] aero-dark-section overflow-hidden border-t border-slate-800/60">
-          {/* Slowly moving AeroShards Background */}
-          <div className="absolute inset-0 overflow-hidden z-0">
-            <AeroShards
-              backgroundColor="#0B1220"
-              shardColor="#1A1813"
-              accentColor="#E8B84B"
-              placement="full"
-              flow="stream"
-              material="pearl"
-              detail="low"
-              effect="none"
-              scale={1}
-              spread={1.2}
-              depth={1}
-              speed={0.3}
-              spin={0.2}
-              interaction="none"
-              density={0.5}
-              shardSize={0.8}
-              stretch={1}
-              turbulence={0.5}
-              glow={0.3}
-              edgeSoftness={2}
-              bloom={0}
-              grain={0}
-              chromaticAberration={0}
-              transitionDuration={2}
-              interactionRadius={0}
-              interactionStrength={0}
-              rippleIntensity={0}
-              holdToGather={false}
-              paused={false}
-            />
-          </div>
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/60 to-transparent opacity-60 pointer-events-none z-0" />
+        <section className="relative py-16 lg:py-24 bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] dark:from-[#0B1220] dark:via-[#080E1A] dark:to-[#050B14] overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
+          {/* Subtle Ambient Glows - pure CSS, zero canvas overhead */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 dark:bg-[#2E5EAA]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/5 dark:bg-[#E8B84B]/8 rounded-full blur-[120px] pointer-events-none -z-0" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               
               <div className="lg:col-span-7 pr-0 lg:pr-4">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4 backdrop-blur-sm shadow-[0_0_15px_rgba(232,184,75,0.15)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E8B84B] mr-2 animate-pulse" />
-                  <h2 className="!text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">
+                <div className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-[#2E5EAA]/20 dark:border-[#E8B84B]/30 bg-blue-500/10 dark:bg-[#E8B84B]/10 mb-4 backdrop-blur-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#2E5EAA] dark:bg-[#E8B84B] mr-2" />
+                  <p className="text-[#2E5EAA] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-[10px] lg:text-xs">
                     {ind ? ind.approach.heading : "Industry-Focused Engineering"}
-                  </h2>
+                  </p>
                 </div>
                 
-                <h3 className="text-3xl lg:text-4xl font-extrabold !text-white mb-4 leading-tight drop-shadow-sm">
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-[#17135B] dark:text-white mb-4 leading-tight tracking-tight">
                   {ind ? (
                     ind.approach.subheading
                   ) : (
                     <>
-                      Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Your Industry Operates</span>
+                      Solutions Developed Around How <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] via-[#17135B] to-[#C59B27] dark:from-[#4C84E0] dark:via-white dark:to-[#E8B84B]">Your Industry Operates</span>
                     </>
                   )}
-                </h3>
+                </h2>
                 
-                <p className="!text-slate-300 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl font-light">
+                <p className="text-[#555E75] dark:text-slate-300 text-base lg:text-lg leading-relaxed mb-6 max-w-2xl font-normal">
                   {ind ? ind.approach.description : "Every industry has different processes, operating conditions and technical priorities. A solution that works in one environment may not be suitable for another."}
                 </p>
                 
-                <div className="h-px w-full max-w-md bg-gradient-to-r from-slate-700 via-[#E8B84B]/50 to-transparent mb-6" />
+                <div className="h-px w-full max-w-md bg-gradient-to-r from-[#2E5EAA]/40 via-amber-400/40 to-transparent mb-6" />
                 
-                <p className="!text-slate-200 text-base lg:text-lg font-semibold mb-4">
+                <p className="text-[#17135B] dark:text-white text-base lg:text-lg font-bold mb-4">
                   {isAr ? "تبدأ سانوتا بفهم عملياتك التشغيلية بعمق، بما في ذلك:" : isJa ? "サノタは、以下を含む顧客の業務の理解から始めます：" : isDe ? "Sanota beginnt damit, Ihre Betriebsabläufe zu verstehen, einschließlich:" : isEs ? "Sanota comienza por comprender su operación, incluyendo:" : "Sanota begins by understanding your operation, including:"}
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
-                  {(ind ? ind.approach.evaluationPoints : operationalUnderstanding).map((item, idx) => (
-                    <div 
-                      key={idx} 
-                      className="flex items-center p-3.5 rounded-xl group transition-all duration-300 shadow-lg hover:-translate-y-0.5 cursor-default"
-                      style={{
-                        backgroundColor: 'rgba(15, 23, 42, 0.85)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        backdropFilter: 'blur(12px)'
-                      }}
-                    >
-                      <div 
-                        className="flex items-center justify-center w-6 h-6 rounded-full shrink-0 mr-3 transition-colors"
-                        style={{
-                          backgroundColor: 'rgba(11, 18, 32, 0.95)',
-                          border: '1px solid rgba(232, 184, 75, 0.4)'
-                        }}
-                      >
-                        <div className="w-2 h-2 rounded-full bg-[#E8B84B] shadow-[0_0_8px_rgba(232,184,75,0.9)]" />
-                      </div>
-                      <span 
-                        className="text-white text-xs sm:text-sm font-semibold group-hover:text-[#E8B84B] transition-colors leading-snug"
-                        style={{ color: '#FFFFFF' }}
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+                  {(() => {
+                    const items = ind ? ind.approach.evaluationPoints : operationalUnderstanding;
+                    return items.map((item, idx) => {
+                      const isLastOdd = idx === items.length - 1 && items.length % 2 !== 0;
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`flex items-center gap-3.5 p-3.5 rounded-2xl bg-white dark:bg-[#131C2E]/60 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md hover:border-[#2E5EAA]/40 dark:hover:border-[#E8B84B]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-default ${
+                            isLastOdd ? "sm:col-span-2" : ""
+                          }`}
+                        >
+                          <div className="flex items-center justify-center w-7 h-7 rounded-xl bg-blue-50 dark:bg-[#0B1220] border border-blue-200/80 dark:border-[#E8B84B]/30 group-hover:border-[#2E5EAA] dark:group-hover:border-[#E8B84B] shrink-0 transition-colors">
+                            <CheckCircle2 className="w-4 h-4 text-[#2E5EAA] dark:text-[#E8B84B]" />
+                          </div>
+                          <span className="text-[#17135B] dark:text-slate-200 text-xs sm:text-[13.5px] font-semibold leading-snug group-hover:text-[#2E5EAA] dark:group-hover:text-[#E8B84B] transition-colors">
+                            {item}
+                          </span>
+                        </div>
+                      );
+                    });
+                  })()}
                 </div>
               </div>
 
               <div className="lg:col-span-5 mt-8 lg:mt-0 relative z-10">
-                <div 
-                  className="rounded-2xl p-6 lg:p-8 overflow-hidden group transition-all duration-500 shadow-2xl relative"
-                  style={{
-                    backgroundColor: 'rgba(15, 23, 42, 0.85)',
-                    border: '1px solid rgba(255, 255, 255, 0.14)',
-                    backdropFilter: 'blur(16px)'
-                  }}
-                >
-                  {/* Subtle top highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8B84B]/60 to-transparent" />
+                <div className="rounded-3xl p-8 lg:p-10 overflow-hidden group transition-all duration-300 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131C2E]/70 backdrop-blur-md flex flex-col justify-between">
+                  {/* Subtle top accent gradient */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2E5EAA] via-[#E8B84B] to-[#2E5EAA]" />
                   
-                  {/* Elegant Quote Icon */}
-                  <div className="mb-4 text-[#E8B84B] transition-colors duration-500">
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
+                  {/* Badge & Icon */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[11px] font-bold tracking-widest uppercase text-[#9A7210] dark:text-[#E8B84B] bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                      Engineering Principle
+                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-[#2E5EAA]/10 dark:bg-[#2E5EAA]/20 flex items-center justify-center border border-[#2E5EAA]/20 text-[#2E5EAA] dark:text-[#4C84E0]">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+                    </div>
                   </div>
                   
-                  <p 
-                    className="text-white text-base lg:text-lg font-normal leading-relaxed relative z-10"
-                    style={{ color: '#FFFFFF' }}
-                  >
+                  <blockquote className="text-[#17135B] dark:text-white text-lg lg:text-xl font-bold leading-relaxed mb-6">
                     {isAr ? (
-                      <>ثم نجمع بين القدرات الهندسية والتكنولوجية المناسبة لتطوير <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>حل عملي وقابل للتوسع.</span></>
+                      <>ثم نجمع بين القدرات الهندسية والتكنولوجية المناسبة لتطوير <span className="text-[#9A7210] dark:text-[#E8B84B]">حل عملي وقابل للتوسع.</span></>
                     ) : isJa ? (
-                      <>その後、適切なエンジニアリングおよび技術力を結集し、<span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>実用的で拡張性のあるソリューションを開発します。</span></>
+                      <>その後、適切なエンジニアリングおよび技術力を結集し、<span className="text-[#9A7210] dark:text-[#E8B84B]">実用的で拡張性のあるソリューションを開発します。</span></>
                     ) : isDe ? (
-                      <>Anschließend bündeln wir die passenden Engineering- und Technologiekompetenzen, um eine <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>praktische und skalierbare Lösung zu entwickeln.</span></>
+                      <>Anschließend bündeln wir die passenden Engineering- und Technologiekompetenzen, um eine <span className="text-[#9A7210] dark:text-[#E8B84B]">praktische und skalierbare Lösung zu entwickeln.</span></>
                     ) : isEs ? (
-                      <>Luego combinamos las capacidades adecuadas de ingeniería y tecnología para desarrollar una <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>solución práctica y escalable.</span></>
+                      <>Luego combinamos las capacidades adecuadas de ingeniería y tecnología para desarrollar una <span className="text-[#9A7210] dark:text-[#E8B84B]">solución práctica y escalable.</span></>
                     ) : (
-                      <>We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#E8B84B] font-bold" style={{ color: '#E8B84B' }}>practical and scalable solution.</span></>
+                      <>We then combine the appropriate engineering and technology capabilities to develop a <span className="text-[#9A7210] dark:text-[#E8B84B]">practical and scalable solution.</span></>
                     )}
-                  </p>
-                  
-                  {/* Subtle corner glow */}
-                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#E8B84B]/15 blur-3xl rounded-full pointer-events-none" />
+                  </blockquote>
+
+                  {/* 3 Value Pillars */}
+                  <div className="pt-5 border-t border-slate-100 dark:border-slate-800 space-y-2.5 mb-6">
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#2E5EAA]" />
+                      Customized to specific site and operating constraints
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8B84B]" />
+                      Multi-disciplinary team coordination under one roof
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#2E5EAA]" />
+                      Full lifecycle support from design through AMC
+                    </div>
+                  </div>
+
+                  <Link 
+                    href="/tell-us-your-challenge" 
+                    className="inline-flex justify-center items-center w-full px-6 py-3.5 bg-[#2E5EAA] hover:bg-[#1f427d] text-white font-bold text-sm rounded-xl transition-all shadow-md hover:shadow-lg gap-2"
+                  >
+                    <span>Tell Us Your Challenge</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
 

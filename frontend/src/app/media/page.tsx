@@ -18,7 +18,6 @@ import { mediaDE } from "@/locales/de/media";
 import { mediaJA } from "@/locales/ja/media";
 import { mediaAR } from "@/locales/ar/media";
 
-const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 
 const mediaNavigation = [
   { title: "Completed Work", desc: "View selected machinery, automation, IoT, modernization and integrated engineering projects delivered by Sanota.", button: "View Completed Work", icon: Briefcase },
@@ -412,11 +411,10 @@ export default function MediaPage() {
         {/* Hero Section */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            className="page-hero-bg"
             style={{ backgroundImage: "url('/media_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-white/75 dark:bg-[#050B14]/60 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 dark:via-[#050B14]/20 to-[#FAF8F5] dark:to-[#050B14]/90 z-0" />
+          <div className="page-hero-overlay" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -433,21 +431,21 @@ export default function MediaPage() {
             >
               {isAr ? (
                 <>
-                  الهندسة في <span className="text-[#2E5EAA]">الممارسة</span>
+                  الهندسة في <span className="text-[#C59B27] dark:text-[#E8B84B]">الممارسة</span>
                 </>
               ) : isJa ? (
                 <>
-                  エンジニアリングの<span className="text-[#2E5EAA]">実践</span>
+                  エンジニアリングの<span className="text-[#C59B27] dark:text-[#E8B84B]">実践</span>
                 </>
               ) : isDe ? (
                 <>
-                  Ingenieurwesen in <span className="text-[#2E5EAA]">Aktion</span>
+                  Ingenieurwesen in <span className="text-[#C59B27] dark:text-[#E8B84B]">Aktion</span>
                 </>
               ) : isEs ? (
                 m?.hero?.heading || "Ingeniería en Acción"
               ) : (
                 <>
-                  Engineering in <span className="text-[#2E5EAA]">Action</span>
+                  Engineering in <span className="text-[#C59B27] dark:text-[#E8B84B]">Action</span>
                 </>
               )}
             </motion.h1>
@@ -455,7 +453,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
             >
               {m ? m.hero.subheading : "Explore the projects, products, people and technologies behind Sanota’s integrated engineering solutions."}
             </motion.p>
@@ -463,7 +461,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-lg text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
               {m ? m.hero.description : "See how Sanota applies engineering, automation, IoT, software and technical expertise to real operational requirements across industries."}
             </motion.p>
@@ -476,13 +474,13 @@ export default function MediaPage() {
             >
               <a
                 href="#completed-work"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-lg"
+                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm"
               >
                 {m ? m.hero.primaryButton : "Explore Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <Link
                 href="#videos"
-                className="px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center"
+                className="px-8 py-4 bg-white/90 hover:bg-white dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
               >
                 {m ? m.hero.secondaryButton : "Watch Our Videos"} <Play className="ml-2 w-5 h-5" />
               </Link>
@@ -510,41 +508,10 @@ export default function MediaPage() {
         </section>
 
         {/* Media Introduction */}
-        <section className="py-16 relative overflow-hidden bg-transparent border-b border-slate-200 dark:border-slate-800/50">
-          {/* AeroShards Background and Animated Middle Shade */}
-          <div className="absolute inset-0 overflow-hidden z-0 dark:block hidden">
-            <AeroShards
-              backgroundColor="#050B14"
-              shardColor="#1A1813"
-              accentColor="#E8B84B"
-              placement="full"
-              flow="stream"
-              material="pearl"
-              detail="low"
-              effect="none"
-              scale={1.2}
-              spread={1}
-              depth={1}
-              speed={0.2}
-              spin={0.5}
-              interaction="none"
-              density={0.5}
-              shardSize={1.1}
-              stretch={1}
-              turbulence={1}
-              glow={0.6}
-              edgeSoftness={2}
-              bloom={0}
-              grain={0}
-              chromaticAberration={0}
-              transitionDuration={1}
-              interactionRadius={1.5}
-              interactionStrength={0.5}
-              rippleIntensity={1}
-              holdToGather
-              paused={false}
-            />
-          </div>
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] dark:from-[#0B1220] dark:via-[#080E1A] dark:to-[#050B14] border-b border-slate-200 dark:border-slate-800/50">
+          {/* Subtle Ambient Glows - pure CSS */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 dark:bg-[#2E5EAA]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/5 dark:bg-[#E8B84B]/8 rounded-full blur-[120px] pointer-events-none -z-0" />
           
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.div
@@ -1146,60 +1113,37 @@ export default function MediaPage() {
         {/* Contact Grids */}
         <section className="py-16 relative overflow-hidden bg-transparent">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch">
               
               {/* Discuss Similar Requirement */}
               <motion.div 
-                initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                className="border border-slate-200 dark:border-slate-800 rounded-3xl p-10 sm:p-12 shadow-xl relative overflow-hidden group hover:border-[#2E5EAA]/50 transition-colors duration-500 bg-white/50 dark:bg-transparent backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.5 }}
+                className="relative rounded-3xl p-8 sm:p-10 lg:p-12 border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0B1220] shadow-[0_4px_24px_rgba(23,19,91,0.04)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.35)] flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-[#2E5EAA]/40 dark:hover:border-[#2E5EAA]/50 group"
               >
-                {/* AeroShards Background */}
-                <div className="absolute inset-0 z-0">
-                  <AeroShards
-                    backgroundColor="#0B1220"
-                    shardColor="#131C2E"
-                    accentColor="#4C84E0"
-                    placement="full"
-                    flow="stream"
-                    material="pearl"
-                    detail="balanced"
-                    effect="none"
-                    scale={1.2}
-                    spread={1}
-                    depth={1}
-                    speed={1}
-                    spin={1}
-                    interaction="repel"
-                    density={1.5}
-                    shardSize={1.1}
-                    stretch={1}
-                    turbulence={1}
-                    glow={0.5}
-                    edgeSoftness={2}
-                    bloom={0.3}
-                    grain={0.05}
-                    chromaticAberration={0.0075}
-                    transitionDuration={1}
-                    interactionRadius={1.5}
-                    interactionStrength={0.5}
-                    rippleIntensity={1}
-                    holdToGather
-                    paused={false}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-slate-50/90 to-blue-50/80 dark:from-[#131C2E]/60 dark:to-[#0B1220]/80 pointer-events-none" />
-                </div>
+                {/* Clean Top Subtle Accent Stripe */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2E5EAA] via-[#4C84E0] to-[#2E5EAA]" />
                 
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
-                
-                <div className="relative z-10 flex flex-col h-full pointer-events-none">
-                  <div className="w-16 h-16 bg-[#2E5EAA]/15 dark:bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#2E5EAA]/30">
-                    <Wrench className="w-8 h-8 text-[#2E5EAA] dark:text-[#4C84E0]" />
+                {/* Soft ambient corner tint */}
+                <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 dark:bg-[#2E5EAA]/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 bg-[#2E5EAA]/10 dark:bg-[#2E5EAA]/20 rounded-2xl flex items-center justify-center border border-[#2E5EAA]/20 shadow-sm shrink-0">
+                      <Wrench className="w-7 h-7 text-[#2E5EAA] dark:text-[#4C84E0]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-[#2E5EAA] dark:text-[#4C84E0]">{isAr ? "ناقش متطلبات مماثلة" : isJa ? "同様の要件について相談する" : isDe ? "Ähnliche Anforderung besprechen" : isEs ? "Comentar un Requisito Similar" : "Discuss a Similar Requirement"}</p>
+                      <span className="text-[11px] text-slate-400 font-medium">Sanota Engineering Assessment</span>
+                    </div>
                   </div>
-                  <h2 className="text-[#2E5EAA] dark:text-[#4C84E0] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "ناقش متطلبات مماثلة" : isJa ? "同様の要件について相談する" : isDe ? "Ähnliche Anforderung besprechen" : isEs ? "Comentar un Requisito Similar" : "Discuss a Similar Requirement"}</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isAr ? "هل رأيت مشروعاً ذا صلة بعملياتك؟" : isJa ? "貴社の事業に関連するプロジェクトは見つかりましたか？" : isDe ? "Haben Sie ein Projekt gesehen, das für Ihren Betrieb relevant ist?" : isEs ? "¿Ha visto un proyecto relevante para su operación?" : "Have You Seen a Project Relevant to Your Operation?"}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">{isAr ? "قد لا تكون متطلباتك مطابقة تماماً، ولكن قد تكون القدرات الهندسية قابلة للتكيف مع تطبيقك. أخبر سانوتا بما يلي:" : isJa ? "まったく同じ要件である必要はありません。サノタのエンジニアリング能力はお客様の用途に合わせて柔軟に適応可能です。以下をお聞かせください：" : isDe ? "Ihre Anforderungen müssen nicht identisch sein – unsere Ingenieurkompetenzen lassen sich an Ihre Anwendung anpassen. Teilen Sie Sanota mit:" : isEs ? "Es posible que su requisito no sea idéntico, pero las capacidades de ingeniería se pueden adaptar a su aplicación. Cuéntele a Sanota:" : "Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:"}</p>
+
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white mb-4 leading-snug">{isAr ? "هل رأيت مشروعاً ذا صلة بعملياتك؟" : isJa ? "貴社の事業に関連するプロジェクトは見つかりましたか？" : isDe ? "Haben Sie ein Projekt gesehen, das für Ihren Betrieb relevant ist?" : isEs ? "¿Ha visto un proyecto relevante para su operación?" : "Have You Seen a Project Relevant to Your Operation?"}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-relaxed mb-8">{isAr ? "قد لا تكون متطلباتك مطابقة تماماً، ولكن قد تكون القدرات الهندسية قابلة للتكيف مع تطبيقك. أخبر سانوتا بما يلي:" : isJa ? "まったく同じ要件である必要はありません。サノタのエンジニアリング能力はお客様の用途に合わせて柔軟に適応可能です。以下をお聞かせください：" : isDe ? "Ihre Anforderungen müssen nicht identisch sein – unsere Ingenieurkompetenzen lassen sich an Ihre Anwendung anpassen. Teilen Sie Sanota mit:" : isEs ? "Es posible que su requisito no sea idéntico, pero las capacidades de ingeniería se pueden adaptar a su aplicación. Cuéntele a Sanota:" : "Your requirement may not be identical, but the engineering capabilities may be adaptable to your application. Tell Sanota:"}</p>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 pointer-events-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
                     {(isAr ? [
                       "ما هو المشروع أو الحل الذي أثار اهتمامك",
                       "ما الذي تقوم بتشغيله حالياً في منشأتك",
@@ -1226,18 +1170,18 @@ export default function MediaPage() {
                       "What you want to improve or develop",
                       "Which result you are trying to achieve"
                     ]).map((item, idx) => (
-                      <div key={idx} className="flex items-start bg-white/90 dark:bg-[#0B1220]/70 p-4 rounded-xl border border-slate-200 dark:border-slate-800/50 backdrop-blur-sm shadow-sm dark:shadow-none">
-                        <div className="w-2 h-2 mt-1.5 rounded-full bg-[#2E5EAA] dark:bg-[#4C84E0] mr-3 shrink-0" />
-                        <span className="text-slate-700 dark:text-slate-300 text-sm leading-snug">{item}</span>
+                      <div key={idx} className="flex items-start gap-3 bg-slate-50 dark:bg-[#131C2E]/60 p-3.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 text-[#2E5EAA] dark:text-[#4C84E0] shrink-0" />
+                        <span className="text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] leading-snug font-medium">{item}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
-                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-[#2E5EAA] hover:bg-[#1a4185] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(46,94,170,0.3)] dark:hover:shadow-[0_0_30px_rgba(46,94,170,0.5)]">
+                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row gap-3">
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-6 py-3.5 bg-[#2E5EAA] hover:bg-[#1f427d] text-white font-bold text-sm rounded-xl transition-all shadow-md hover:shadow-lg">
                       {isAr ? "مناقشة متطلبات مماثلة" : isJa ? "要件を相談する" : isDe ? "Anforderung besprechen" : isEs ? "Comentar Requisito" : "Discuss Requirement"}
                     </Link>
-                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
+                    <Link href="/tell-us-your-challenge" className="inline-flex justify-center items-center px-6 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-[#1a263d] text-[#17135B] dark:text-white font-bold text-sm rounded-xl border border-slate-200 dark:border-slate-700 transition-all">
                       {isAr ? "أخبرنا عن التحدي الذي تواجهه" : isJa ? "課題を相談する" : isDe ? "Schildern Sie Ihre Herausforderung" : isEs ? "Cuéntanos tu Desafío" : "Tell Us Your Challenge"}
                     </Link>
                   </div>
@@ -1246,60 +1190,71 @@ export default function MediaPage() {
 
               {/* Media Enquiries */}
               <motion.div 
-                initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                className="border border-slate-200 dark:border-slate-800 rounded-3xl p-10 sm:p-12 shadow-xl relative overflow-hidden group hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 transition-colors duration-500 bg-white/50 dark:bg-transparent backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative rounded-3xl p-8 sm:p-10 lg:p-12 border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0B1220] shadow-[0_4px_24px_rgba(23,19,91,0.04)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.35)] flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-[#C59B27]/40 dark:hover:border-[#E8B84B]/50 group"
               >
-                {/* AeroShards Background */}
-                <div className="absolute inset-0 z-0">
-                  <AeroShards
-                    backgroundColor="#0B1220"
-                    shardColor="#1A1813"
-                    accentColor="#E8B84B"
-                    placement="full"
-                    flow="stream"
-                    material="pearl"
-                    detail="balanced"
-                    effect="none"
-                    scale={1.2}
-                    spread={1}
-                    depth={1}
-                    speed={1}
-                    spin={1}
-                    interaction="repel"
-                    density={1.5}
-                    shardSize={1.1}
-                    stretch={1}
-                    turbulence={1}
-                    glow={0.6}
-                    edgeSoftness={2}
-                    bloom={0.4}
-                    grain={0.05}
-                    chromaticAberration={0.0075}
-                    transitionDuration={1}
-                    interactionRadius={1.5}
-                    interactionStrength={0.5}
-                    rippleIntensity={1}
-                    holdToGather
-                    paused={false}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-bl from-white/95 via-amber-50/50 to-slate-50/90 dark:from-[#131C2E]/60 dark:to-[#0B1220]/80 pointer-events-none" />
-                </div>
-
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-30 z-0" />
+                {/* Clean Top Subtle Accent Stripe */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#C59B27] via-[#E8B84B] to-[#C59B27]" />
                 
-                <div className="relative z-10 flex flex-col h-full pointer-events-none">
-                  <div className="w-16 h-16 bg-[#C59B27]/15 dark:bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center mb-8 border border-[#C59B27]/30 dark:border-[#E8B84B]/30">
-                    <MessageSquare className="w-8 h-8 text-[#C59B27] dark:text-[#E8B84B]" />
+                {/* Soft ambient corner tint */}
+                <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/5 dark:bg-[#E8B84B]/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 bg-[#C59B27]/10 dark:bg-[#E8B84B]/20 rounded-2xl flex items-center justify-center border border-[#C59B27]/20 dark:border-[#E8B84B]/30 shadow-sm shrink-0">
+                      <MessageSquare className="w-7 h-7 text-[#C59B27] dark:text-[#E8B84B]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-[#9A7210] dark:text-[#E8B84B]">{isAr ? "استفسارات وسائل الإعلام" : isJa ? "メディア・報道関係のお問い合わせ" : isDe ? "Medienanfragen" : isEs ? "Consultas de Medios" : "Media Enquiries"}</p>
+                      <span className="text-[11px] text-slate-400 font-medium">Press & Partnership Relations</span>
+                    </div>
                   </div>
-                  <h2 className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-4">{isAr ? "استفسارات وسائل الإعلام" : isJa ? "メディア・報道関係のお問い合わせ" : isDe ? "Medienanfragen" : isEs ? "Consultas de Medios" : "Media Enquiries"}</h2>
-                  <h3 className="text-3xl font-bold text-[#17135B] dark:text-white mb-6">{isAr ? "استفسار إعلامي أو شراكة أو نشر" : isJa ? "取材・協業・メディア掲載に関するお問い合わせ" : isDe ? "Medien-, Partnerschafts- oder Publikationsanfrage" : isEs ? "Consulta de Medios, Asociaciones o Publicaciones" : "Media, Partnership or Publication Enquiry"}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-12">{isAr ? "للاستفسارات المتعلقة بميزات المشروع، أو المقالات التقنية، أو المعارض، أو الشراكات، أو المقابلات، أو الحصول على إذن باستخدام وسائل الإعلام الخاصة بسانوتا، يرجى الاتصال بفريق سانوتا." : isJa ? "プロジェクトの取材、技術記事、展示会、パートナーシップ、インタビュー、またはサノタのメディア素材の使用許可に関するお問い合わせは、サノタチームまでご連絡ください。" : isDe ? "Für Anfragen zu Projektberichten, Fachartikeln, Ausstellungen, Partnerschaften, Interviews oder zur Verwendung von Sanota-Medienmaterial wenden Sie sich bitte an das Sanota-Team." : isEs ? "Para consultas relacionadas con reportajes de proyectos, artículos técnicos, exposiciones, colaboraciones, entrevistas o permisos para utilizar el material de Sanota, póngase en contacto con el equipo de Sanota." : "For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team."}</p>
+
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white mb-4 leading-snug">{isAr ? "استفسار إعلامي أو شراكة أو نشر" : isJa ? "取材・協業・メディア掲載に関するお問い合わせ" : isDe ? "Medien-, Partnerschafts- oder Publikationsanfrage" : isEs ? "Consulta de Medios, Asociaciones o Publicaciones" : "Media, Partnership or Publication Enquiry"}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-[14.5px] leading-relaxed mb-8">{isAr ? "للاستفسارات المتعلقة بميزات المشروع، أو المقالات التقنية، أو المعارض، أو الشراكات، أو المقابلات، أو الحصول على إذن باستخدام وسائل الإعلام الخاصة بسانوتا، يرجى الاتصال بفريق سانوتا." : isJa ? "プロジェクトの取材、技術記事、展示会、パートナーシップ、インタビュー、またはサノタのメディア素材の使用許可に関するお問い合わせは、サノタチームまでご連絡ください。" : isDe ? "Für Anfragen zu Projektberichten, Fachartikeln, Ausstellungen, Partnerschaften, Interviews oder zur Verwendung von Sanota-Medienmaterial wenden Sie sich bitte an das Sanota-Team." : isEs ? "Para consultas relacionadas con reportajes de proyectos, artículos técnicos, exposiciones, colaboraciones, entrevistas o permisos para utilizar el material de Sanota, póngase en contacto con el equipo de Sanota." : "For enquiries relating to project features, technical articles, exhibitions, partnerships, interviews or permission to use Sanota media, please contact the Sanota team."}</p>
                   
-                  <div className="mt-auto flex flex-col sm:flex-row gap-4 pointer-events-auto">
-                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(232,184,75,0.3)] dark:hover:shadow-[0_0_30px_rgba(232,184,75,0.5)]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+                    {(isAr ? [
+                      "ميزات المشروع ودراسات الحالة الهندسية",
+                      "تصاريح استخدام وسائط الصور والفيديو",
+                      "المعارض الصناعية والمؤتمرات التقنية",
+                      "المقابلات الصحفية والشراكات الإعلامية"
+                    ] : isJa ? [
+                      "プロジェクト事例とエンジニアリング記事",
+                      "高解像度写真・動画メディアの使用許諾",
+                      "展示会・業界イベント・登壇のご依頼",
+                      "取材・インタビュー・広報パートナーシップ"
+                    ] : isDe ? [
+                      "Projektberichte & technische Fallstudien",
+                      "Nutzungsrechte für Fotos & Videos",
+                      "Branchenmessen & Fachbeiträge",
+                      "Presseinterviews & Medienkooperationen"
+                    ] : isEs ? [
+                      "Reportajes de proyectos y estudios de casos",
+                      "Permisos de uso de imágenes y videos",
+                      "Exposiciones industriales y conferencias técnicas",
+                      "Entrevistas de prensa y colaboraciones editoriales"
+                    ] : [
+                      "Project features & technical case studies",
+                      "High-resolution photo & video usage permissions",
+                      "Industry exhibitions & technical panels",
+                      "Press interviews & publication partnerships"
+                    ]).map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3 bg-slate-50 dark:bg-[#131C2E]/60 p-3.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 text-[#C59B27] dark:text-[#E8B84B] shrink-0" />
+                        <span className="text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] leading-snug font-medium">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row gap-3">
+                    <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3.5 bg-[#E5A93C] hover:bg-[#F0B74C] text-[#111424] font-bold text-sm rounded-xl transition-all shadow-md hover:shadow-lg">
                       {isAr ? "إرسال استفسار إعلامي" : isJa ? "メディア問い合わせを送信" : isDe ? "Medienanfrage senden" : isEs ? "Enviar Consulta de Medios" : "Submit Media Enquiry"}
                     </Link>
-                    <Link href="/contact" className="inline-flex justify-center items-center px-8 py-4 bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#131C2E] text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-all backdrop-blur-sm">
+                    <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-[#1a263d] text-[#17135B] dark:text-white font-bold text-sm rounded-xl border border-slate-200 dark:border-slate-700 transition-all">
                       {isAr ? "اتصل بسانوتا" : isJa ? "サノタに問い合わせる" : isDe ? "Sanota kontaktieren" : isEs ? "Contactar a Sanota" : "Contact Sanota"}
                     </Link>
                   </div>

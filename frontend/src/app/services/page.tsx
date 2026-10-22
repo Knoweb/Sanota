@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import dynamic from 'next/dynamic';
-const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
 import Carousel from "@/components/Carousel";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -259,11 +257,10 @@ export default function ServicesPage() {
         {/* Hero Section */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="page-hero-bg"
             style={{ backgroundImage: "url('/services_hero_bg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-white/80 dark:bg-[#050B14]/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-[#FAF8F5] dark:via-[#050B14]/20 dark:to-[#050B14]/90" />
+          <div className="page-hero-overlay" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
@@ -337,43 +334,10 @@ export default function ServicesPage() {
         </section>
 
         {/* Introduction */}
-        <section className="relative py-12 lg:py-16 bg-[#0B1220] aero-dark-section overflow-hidden border-t border-slate-800/60">
-          {/* Slowly moving AeroShards Background */}
-          <div className="absolute inset-0 overflow-hidden z-0">
-            <AeroShards
-              backgroundColor="#0B1220"
-              shardColor="#1A1813"
-              accentColor="#E8B84B"
-              placement="full"
-              flow="stream"
-              material="pearl"
-              detail="low"
-              effect="none"
-              scale={1}
-              spread={1.2}
-              depth={1}
-              speed={0.3}
-              spin={0.2}
-              interaction="none"
-              density={0.5}
-              shardSize={0.8}
-              stretch={1}
-              turbulence={0.5}
-              glow={0.3}
-              edgeSoftness={2}
-              bloom={0}
-              grain={0}
-              chromaticAberration={0}
-              transitionDuration={2}
-              interactionRadius={0}
-              interactionStrength={0}
-              rippleIntensity={0}
-              holdToGather={false}
-              paused={false}
-            />
-          </div>
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#131C2E]/60 to-transparent opacity-60 pointer-events-none z-0" />
+        <section className="relative py-16 lg:py-24 bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] dark:from-[#0B1220] dark:via-[#080E1A] dark:to-[#050B14] overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
+          {/* Subtle Ambient Glows - pure CSS */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 dark:bg-[#2E5EAA]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/5 dark:bg-[#E8B84B]/8 rounded-full blur-[120px] pointer-events-none -z-0" />
 
           <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.div
@@ -382,53 +346,47 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-3xl md:text-5xl font-black !text-white mb-6 leading-tight drop-shadow-sm">
+              <h2 className="text-3xl md:text-5xl font-black text-[#17135B] dark:text-white mb-6 leading-tight tracking-tight">
                 {s ? s.intro.title : (
                   <>
-                    More Than a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-[#F1D08A]">Single Service</span>
+                    More Than a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C59B27] via-[#E8B84B] to-[#9A7210] dark:from-[#E8B84B] dark:via-[#F1D08A] dark:to-[#E8B84B]">Single Service</span>
                   </>
                 )}
               </h2>
 
-              <p className="!text-slate-100 text-lg md:text-xl leading-relaxed mb-6 font-semibold">
+              <p className="text-[#17135B] dark:text-slate-100 text-lg md:text-xl leading-relaxed mb-4 font-semibold max-w-2xl mx-auto">
                 {s ? s.intro.description1 : "Industrial challenges rarely belong to only one technical discipline."}
               </p>
 
-              <p className="!text-slate-300 text-base md:text-lg leading-relaxed mb-6 font-light">
+              <p className="text-[#555E75] dark:text-slate-300 text-base md:text-lg leading-relaxed mb-8 font-normal max-w-3xl mx-auto">
                 {s ? s.intro.description2 : "A machinery problem may require mechanical modifications, new electrical controls, automation, software monitoring and ongoing maintenance. A new product may require concept development, engineering design, prototyping, testing and production support."}
               </p>
 
               {/* Redesigned Executive Highlight Card */}
-              <div className="mt-10 relative max-w-3xl mx-auto rounded-3xl p-[1px] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.6)] bg-gradient-to-r from-[#E8B84B]/50 via-slate-600/30 to-[#E8B84B]/50 group">
-                <div 
-                  className="relative rounded-[calc(1.5rem-1px)] p-7 sm:p-10 overflow-hidden text-center flex flex-col items-center"
-                  style={{ 
-                    backgroundColor: 'rgba(15, 23, 42, 0.92)', 
-                    backdropFilter: 'blur(24px)' 
-                  }}
-                >
+              <div className="mt-8 relative max-w-3xl mx-auto rounded-3xl p-[1px] overflow-hidden shadow-xl dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] bg-gradient-to-r from-[#2E5EAA]/30 via-[#E8B84B]/40 to-[#2E5EAA]/30 dark:from-[#E8B84B]/40 dark:via-slate-700/40 dark:to-[#E8B84B]/40 group transition-all duration-300 hover:shadow-2xl">
+                <div className="relative rounded-[calc(1.5rem-1px)] p-7 sm:p-10 overflow-hidden text-center flex flex-col items-center bg-white/95 dark:bg-[#131C2E]/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800">
                   {/* Internal ambient corner glows */}
-                  <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#E8B84B]/15 rounded-full blur-3xl pointer-events-none group-hover:bg-[#E8B84B]/25 transition-all duration-700" />
-                  <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#2E5EAA]/20 rounded-full blur-3xl pointer-events-none group-hover:bg-[#2E5EAA]/30 transition-all duration-700" />
+                  <div className="absolute -top-16 -right-16 w-48 h-48 bg-amber-500/10 dark:bg-[#E8B84B]/15 rounded-full blur-3xl pointer-events-none group-hover:bg-amber-500/15 dark:group-hover:bg-[#E8B84B]/25 transition-all duration-700" />
+                  <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-500/10 dark:bg-[#2E5EAA]/20 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/15 dark:group-hover:bg-[#2E5EAA]/30 transition-all duration-700" />
                   
                   {/* Top Badge */}
-                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#E8B84B]/10 border border-[#E8B84B]/30 mb-5 relative z-10 shadow-[0_0_15px_rgba(232,184,75,0.15)]">
-                    <span className="w-2 h-2 rounded-full bg-[#E8B84B] animate-pulse" />
-                    <span className="text-[11px] font-bold tracking-widest uppercase text-[#E8B84B]">
+                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-5 relative z-10">
+                    <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-[#E8B84B] animate-pulse" />
+                    <span className="text-[11px] font-bold tracking-widest uppercase text-[#9A7210] dark:text-[#E8B84B]">
                       {isAr ? "تقديم حلول هندسية متكاملة" : isJa ? "統合エンジニアリングの提供" : isDe ? "Integrierte Engineering-Bereitstellung" : isEs ? "Entrega de ingeniería integrada" : "Integrated Engineering Delivery"}
                     </span>
                   </div>
 
                   {/* High Impact Lead Typography */}
-                  <h3 className="text-xl sm:text-2xl font-bold !text-white mb-3 leading-snug relative z-10 max-w-2xl">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] via-[#F3D78A] to-[#E8B84B] font-extrabold">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#17135B] dark:text-white mb-3 leading-snug relative z-10 max-w-2xl">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] via-[#17135B] to-[#C59B27] dark:from-[#E8B84B] dark:via-[#F3D78A] dark:to-[#E8B84B] font-extrabold">
                       {isAr ? "سانوتا تجمع بين جميع الإمكانات المطلوبة" : isJa ? "Sanotaは必要な能力を統合します" : isDe ? "Sanota bündelt die erforderlichen Kompetenzen" : isEs ? "Sanota reúne las capacidades necesarias" : "Sanota brings the required capabilities together"}
                     </span>{" "}
                     {isAr ? "لتلبية متطلباتكم التشغيلية بدقة." : isJa ? "お客様の運用上のニーズに合わせて。" : isDe ? "für Ihre betrieblichen Anforderungen." : isEs ? "en torno a sus necesidades operativas." : "around your operational need."}
                   </h3>
 
                   {/* Supporting Narrative */}
-                  <p className="!text-slate-200 text-base sm:text-lg leading-relaxed font-normal relative z-10 max-w-2xl">
+                  <p className="text-[#555E75] dark:text-slate-200 text-base sm:text-lg leading-relaxed font-normal relative z-10 max-w-2xl">
                     {s ? s.intro.description3 : "This provides clients with a more coordinated path from initial requirement to a practical, scalable and reliable working solution."}
                   </p>
                 </div>
