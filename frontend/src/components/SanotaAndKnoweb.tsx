@@ -95,7 +95,7 @@ export default function SanotaAndKnoweb() {
             </div>
 
             {/* Right Image & Floating List Area */}
-            <div className="relative min-h-[500px] lg:min-h-full">
+            <div className="relative min-h-[500px] lg:min-h-full overflow-hidden rounded-b-[2.5rem] lg:rounded-b-none lg:rounded-r-[2.5rem]">
               {/* Feature Image */}
               <Image 
                 src="/images/capabilities/cap_iot_1789018334030.jpg" 
@@ -110,12 +110,12 @@ export default function SanotaAndKnoweb() {
               <div className="absolute inset-0 bg-[#17135B]/10 dark:bg-[#2E5EAA]/20 mix-blend-overlay" />
 
               {/* Floating Capabilities List */}
-              <div className="absolute inset-0 p-8 sm:p-12 lg:p-16 flex items-center justify-end">
+              <div className="absolute inset-0 p-6 sm:p-10 lg:p-12 flex items-center justify-end z-10">
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="w-full lg:w-[95%] bg-white/95 dark:bg-[#0B1220]/75 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 p-8 sm:p-10 lg:p-12 rounded-[2rem] shadow-xl dark:shadow-2xl"
+                  className="w-full lg:w-[95%] bg-white/95 dark:bg-[#0B1220]/85 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 p-6 sm:p-8 lg:p-10 rounded-[2rem] shadow-xl dark:shadow-2xl"
                 >
                   <div className="grid grid-cols-2 sm:grid-cols-2 gap-y-4 gap-x-3 sm:gap-y-8 sm:gap-x-8">
                     {capabilities.map((item, idx) => (
