@@ -145,7 +145,7 @@ export default function SolutionNavigator() {
           >
             {sn ? sn.heading : "What Are You Trying to Achieve?"}
           </motion.h2>
-          <p className={`${isDark ? "text-slate-500" : "text-[#646C82]"} text-sm font-medium`}>
+          <p className={`${isDark ? "text-slate-400" : "text-[#555E75]"} text-sm font-medium`}>
             {sn ? sn.subheading : "Hover over a card to pause"}
           </p>
         </div>

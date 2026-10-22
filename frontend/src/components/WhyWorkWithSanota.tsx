@@ -78,15 +78,15 @@ export default function WhyWorkWithSanota() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <motion.h2 
+          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3"
           >
             {ws ? ws.heading : "Why Sanota"}
-          </motion.h2>
-          <motion.h3 
+          </motion.p>
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -94,7 +94,7 @@ export default function WhyWorkWithSanota() {
             className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight"
           >
             {ws ? ws.subheading : "One Accountable Engineering Partner"}
-          </motion.h3>
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
@@ -126,9 +126,9 @@ export default function WhyWorkWithSanota() {
 
               {/* Content */}
               <div className="p-6 pt-5 flex flex-col flex-grow">
-                <h4 className="text-[17.5px] font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors leading-tight">
+                <h3 className="text-[17.5px] font-bold text-[#17135B] dark:text-white mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors leading-tight">
                   {reason.title}
-                </h4>
+                </h3>
                 <p className="text-[#555E75] dark:text-slate-400 leading-relaxed text-[13.5px] flex-grow">
                   {reason.description}
                 </p>

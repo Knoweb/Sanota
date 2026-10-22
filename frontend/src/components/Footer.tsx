@@ -210,7 +210,7 @@ export default function Footer() {
           <p className="text-[#555E75] dark:text-slate-400 text-[13px] leading-relaxed max-w-2xl">
             {f ? f.tagline : "Integrated engineering solutions developed around real operational requirements."}
           </p>
-          <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mt-2">
+          <p className="text-[#9A7210] dark:text-[#E8B84B] font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mt-2">
             {f ? f.capabilityPills : (
               <>
                 Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support
@@ -223,13 +223,13 @@ export default function Footer() {
           
           {/* Column 1: Industries */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+            <h3 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
               {f ? f.headings.industries : "Industries"}
-            </h4>
+            </h3>
             <ul className="space-y-1.5">
               {currentIndustries.map((item) => (
                 <li key={item.name}>
-                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -239,13 +239,13 @@ export default function Footer() {
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+            <h3 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
               {f ? f.headings.services : "Services"}
-            </h4>
+            </h3>
             <ul className="space-y-1.5">
               {currentServices.map((item) => (
                 <li key={item.name}>
-                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -255,13 +255,13 @@ export default function Footer() {
 
           {/* Column 3: Explore */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+            <h3 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
               {f ? f.headings.explore : "Explore"}
-            </h4>
+            </h3>
             <ul className="space-y-1.5">
               {currentExplore.map((item) => (
                 <li key={item.name}>
-                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
+                  <Link href={localizedHref(item.href)} className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] text-[12px] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -271,37 +271,37 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div>
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
+            <h3 className="text-[#17135B] dark:text-white font-bold mb-3 tracking-wider text-[13px]">
               {f ? f.headings.contact : "Contact"}
-            </h4>
+            </h3>
             <ul className="space-y-2.5 mb-5">
               <li className="flex items-start">
-                <Globe className="w-5 h-5 text-[#C59B27] dark:text-[#2E5EAA] mr-4 shrink-0 mt-0.5" />
-                <a href="https://www.sanotaglobal.com" target="_blank" rel="noopener noreferrer" className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">
+                <Globe className="w-5 h-5 text-[#9A7210] dark:text-[#2E5EAA] mr-4 shrink-0 mt-0.5" />
+                <a href="https://www.sanotaglobal.com" target="_blank" rel="noopener noreferrer" className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">
                   www.sanotaglobal.com
                 </a>
               </li>
               <li className="flex items-center">
-                <Mail className="w-3.5 h-3.5 text-[#C59B27] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
-                <a href="mailto:info@sanotaglobal.com" className="text-[#555E75] hover:text-[#C59B27] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">
+                <Mail className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
+                <a href="mailto:info@sanotaglobal.com" className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">
                   info@sanotaglobal.com
                 </a>
               </li>
               <li className="flex items-center">
-                <Phone className="w-3.5 h-3.5 text-[#C59B27] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
                 <span className="text-[#555E75] dark:text-slate-400 text-[12px]">+94 740 70 99 89</span>
               </li>
               <li className="flex items-start">
-                <MapPin className="w-3.5 h-3.5 text-[#C59B27] dark:text-[#2E5EAA] mr-2.5 shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0 mt-0.5" />
                 <span className="text-[#555E75] dark:text-slate-400 text-[12px]">{f ? f.location : "Sri Lanka"}</span>
               </li>
             </ul>
 
             {/* Challenge Callout Card - with explicit high contrast styling for light & dark mode */}
             <div className="dark-overlay bg-gradient-to-br from-[#0F0C3B] to-[#1A1658] border border-[#D4AF37]/50 rounded-xl p-4 mb-5 shadow-lg shadow-[#17135B]/20">
-              <h5 className="!text-white font-bold text-[12.5px] mb-1.5 leading-snug" style={{ color: '#FFFFFF' }}>
+              <h4 className="!text-white font-bold text-[12.5px] mb-1.5 leading-snug" style={{ color: '#FFFFFF' }}>
                 {f ? f.callToActionText : "Have an engineering challenge?"}
-              </h5>
+              </h4>
               <p className="!text-slate-200 text-[11px] leading-relaxed mb-3.5 opacity-90" style={{ color: '#E2E8F0' }}>
                 {f ? f.closingLine : "Tell us what you need to achieve."}
               </p>
@@ -313,9 +313,9 @@ export default function Footer() {
               </Link>
             </div>
 
-            <h4 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
+            <h3 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
               {isAr ? "روابط التواصل الاجتماعي" : isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
-            </h4>
+            </h3>
             <div className="flex space-x-3">
               <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>

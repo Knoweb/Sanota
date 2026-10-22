@@ -58,7 +58,7 @@ export default function InnovationAndCollaboration() {
                 </span>
               </div>
               
-              <h3 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#17135B] dark:text-white tracking-tight mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#17135B] dark:text-white tracking-tight mb-8 leading-[1.1]">
                 {isAr ? (
                   <>من الأفكار إلى <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">الهندسة العملية الميدانية</span></>
                 ) : isJa ? (
@@ -70,7 +70,7 @@ export default function InnovationAndCollaboration() {
                 ) : (
                   <>From Ideas to <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E5EAA] to-[#60A5FA] drop-shadow-sm">Practical Engineering</span></>
                 )}
-              </h3>
+              </h2>
               
               <div className="space-y-5 text-[16px] text-slate-600 dark:text-slate-300 leading-relaxed mb-12 border-l-2 border-slate-300 dark:border-slate-700/50 pl-6">
                 {ic ? (
@@ -116,7 +116,7 @@ export default function InnovationAndCollaboration() {
                     <Lightbulb className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight">Collaborative Capabilities</h4>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight">Collaborative Capabilities</h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">End-to-end support for innovation pipelines</p>
                   </div>
                 </div>

@@ -277,6 +277,7 @@ export default function Carousel({
         {/* Navigation Arrows - New Sleek Style */}
         <button
           onClick={handlePrev}
+          aria-label="Previous slide"
           disabled={!loop && position === 0}
           className="absolute left-0 lg:-left-10 top-1/2 -translate-y-1/2 z-20 p-2 text-slate-500 hover:text-[#E8B84B] transition-all disabled:opacity-0 disabled:pointer-events-none hidden md:block group"
         >
@@ -285,6 +286,7 @@ export default function Carousel({
 
         <button
           onClick={handleNext}
+          aria-label="Next slide"
           disabled={!loop && position === itemsForRender.length - 1}
           className="absolute right-0 lg:-right-10 top-1/2 -translate-y-1/2 z-20 p-2 text-slate-500 hover:text-[#E8B84B] transition-all disabled:opacity-0 disabled:pointer-events-none hidden md:block group"
         >

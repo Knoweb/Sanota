@@ -80,7 +80,7 @@ export default function CompletedWork() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
               {cw ? cw.heading : "See Sanota in Action"}
             </h2>
             <p className="text-[15.5px] text-slate-400 leading-relaxed">
@@ -133,7 +133,7 @@ export default function CompletedWork() {
                 </div>
 
                 <div className="flex flex-col flex-grow p-8 relative z-10 -mt-10">
-                  <h4 className="text-[20px] font-bold text-[#17135B] dark:text-white leading-tight mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{project.title}</h4>
+                  <h3 className="text-[20px] font-bold text-[#17135B] dark:text-white leading-tight mb-3 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">{project.title}</h3>
                   <p className="text-[#555E75] dark:text-slate-400 text-[13.5px] leading-relaxed mb-6 flex-grow">
                     {project.description}
                   </p>

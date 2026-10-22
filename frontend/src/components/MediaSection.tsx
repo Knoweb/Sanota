@@ -141,12 +141,12 @@ export default function MediaSection() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
+            <p className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
               {isAr ? "قسم الإعلام والوسائط" : isJa ? "メディアセクション" : isDe ? "Medienbereich" : isEs ? "Sección de Medios" : "Media Section"}
-            </h2>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6">
               {ms ? ms.heading : "Inside Sanota"}
-            </h3>
+            </h2>
             <p className="text-[15.5px] text-slate-400 leading-relaxed">
               {ms ? ms.subheading : "See the people, processes and engineering work behind Sanota’s solutions."}
             </p>
@@ -199,9 +199,9 @@ export default function MediaSection() {
                   <div className="w-12 h-12 rounded-xl bg-[#E8B84B]/10 backdrop-blur-md border border-[#E8B84B]/30 flex items-center justify-center mr-4 shadow-lg shadow-[#E8B84B]/10">
                     <cat.icon className="w-6 h-6 text-[#E8B84B]" />
                   </div>
-                  <h4 className="text-xl sm:text-2xl font-bold !text-white group-hover:text-[#E8B84B] transition-colors drop-shadow-md">
+                  <h3 className="text-xl sm:text-2xl font-bold !text-white group-hover:text-[#E8B84B] transition-colors drop-shadow-md">
                     {cat.title}
-                  </h4>
+                  </h3>
                 </div>
                 
                 <div className="overflow-hidden h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">

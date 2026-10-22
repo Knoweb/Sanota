@@ -260,6 +260,7 @@ export default function AMCAndLifecycle() {
                 <div className="flex justify-center py-2 shrink-0 z-10">
                   <button 
                     onClick={() => scroll('up')} 
+                    aria-label="Scroll scope list up"
                     className="pointer-events-auto text-slate-400 dark:text-slate-500 hover:text-[#C59B27] dark:hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md"
                   >
                     <ChevronUp className="w-8 h-8" strokeWidth={1.5} />
@@ -312,6 +313,7 @@ export default function AMCAndLifecycle() {
                 <div className="flex justify-center py-2 shrink-0 z-10">
                   <button 
                     onClick={() => scroll('down')} 
+                    aria-label="Scroll scope list down"
                     className="pointer-events-auto text-slate-400 dark:text-slate-500 hover:text-[#C59B27] dark:hover:text-[#E8B84B] hover:scale-125 transition-all duration-300 drop-shadow-md animate-pulse"
                   >
                     <ChevronDown className="w-8 h-8" strokeWidth={1.5} />

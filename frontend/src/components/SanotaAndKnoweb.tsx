@@ -58,7 +58,7 @@ export default function SanotaAndKnoweb() {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight">
                   {isAr ? (
                     <>الهندسة المتصلة <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">بالتكنولوجيا الرقمية والبرمجيات</span></>
                   ) : isJa ? (
@@ -70,7 +70,7 @@ export default function SanotaAndKnoweb() {
                   ) : (
                     <>Engineering Connected by <br/><span className="text-[#C59B27] dark:text-[#E8B84B] drop-shadow-[0_0_15px_rgba(197,155,39,0.2)] dark:drop-shadow-[0_0_15px_rgba(232,184,75,0.3)]">Digital Technology</span></>
                   )}
-                </h3>
+                </h2>
                 
                 <div className="space-y-4 text-[15px] text-[#555E75] dark:text-slate-300 leading-relaxed mb-10">
                   <p>

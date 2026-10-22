@@ -106,11 +106,11 @@ export default function FinalCTA() {
               {/* Shimmer effect line */}
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C59B27]/60 dark:via-[#E8B84B]/60 to-transparent opacity-70 z-10" />
               
-              <h4 className="relative z-10 text-[#17135B] dark:text-white font-bold mb-8 text-center text-[16px] tracking-widest uppercase flex items-center justify-center">
+              <h3 className="relative z-10 text-[#17135B] dark:text-white font-bold mb-8 text-center text-[16px] tracking-widest uppercase flex items-center justify-center">
                 <span className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700 mr-4"></span>
                 {cta ? cta.alternativeTitle : "Alternative Enquiry Options"}
                 <span className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700 ml-4"></span>
-              </h4>
+              </h3>
               
               <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 {options.map((opt, idx) => (

@@ -74,9 +74,9 @@ export default function VisitorPathways() {
                  <div className="w-10 h-10 rounded-xl bg-[#E8B84B]/10 flex items-center justify-center mr-4 shrink-0 border border-[#E8B84B]/20">
                    <Wrench className="w-5 h-5 text-[#E8B84B]" />
                  </div>
-                 <h3 className="text-xl sm:text-2xl font-black text-white">
+                 <h2 className="text-xl sm:text-2xl font-black text-white">
                    {vp ? vp.solveCard.title : "I Need to Solve a Problem"}
-                 </h3>
+                 </h2>
               </div>
               
               <div className="inline-flex w-max px-3 py-1 rounded-full border border-[#E8B84B]/30 bg-[#E8B84B]/10 mb-4">
@@ -85,19 +85,19 @@ export default function VisitorPathways() {
                  </span>
               </div>
               
-              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-80 min-h-[44px]">
+              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-90 min-h-[44px]">
                 <p>{vp ? vp.solveCard.description : "You do not need to arrive with a completed technical specification. Tell us about the present situation, what is not working and what you need to achieve."}</p>
               </div>
               
-              <h4 className="text-white font-bold text-sm sm:text-base mb-4">
+              <h3 className="text-white font-bold text-sm sm:text-base mb-4">
                 {vp ? vp.solveCard.weCanHelpTitle : "We can help when you need to:"}
-              </h4>
+              </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {solveList.map((item, idx) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E8B84B] mr-2 mt-0.5 shrink-0 opacity-80" />
-                    <span className="text-slate-400 text-[13px] font-medium leading-tight">{item}</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E8B84B] mr-2 mt-0.5 shrink-0 opacity-90" />
+                    <span className="text-slate-300 text-[13px] font-medium leading-tight">{item}</span>
                   </div>
                 ))}
               </div>
@@ -127,9 +127,9 @@ export default function VisitorPathways() {
                  <div className="w-10 h-10 rounded-xl bg-[#2E5EAA]/10 flex items-center justify-center mr-4 shrink-0 border border-[#2E5EAA]/30">
                    <Compass className="w-5 h-5 text-[#2E5EAA]" />
                  </div>
-                 <h3 className="text-xl sm:text-2xl font-black text-white">
+                 <h2 className="text-xl sm:text-2xl font-black text-white">
                    {vp ? vp.exploreCard.title : "I Want to Explore Sanota"}
-                 </h3>
+                 </h2>
               </div>
               
               <div className="inline-flex w-max px-3 py-1 rounded-full border border-[#2E5EAA]/30 bg-[#2E5EAA]/10 mb-4">
@@ -138,19 +138,19 @@ export default function VisitorPathways() {
                  </span>
               </div>
               
-              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-80 min-h-[44px]">
+              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-90 min-h-[44px]">
                 <p>{vp ? vp.exploreCard.description : "Discover the machinery, systems, products and integrated solutions Sanota has developed across a diverse range of industries and environments."}</p>
               </div>
               
-              <h4 className="text-white font-bold text-sm sm:text-base mb-4">
+              <h3 className="text-white font-bold text-sm sm:text-base mb-4">
                 {vp ? vp.exploreCard.weCanHelpTitle : "Explore our world:"}
-              </h4>
+              </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {exploreList.map((item, idx) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2E5EAA] mr-2 mt-0.5 shrink-0 opacity-80" />
-                    <span className="text-slate-400 text-[13px] font-medium leading-tight">{item}</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2E5EAA] mr-2 mt-0.5 shrink-0 opacity-90" />
+                    <span className="text-slate-300 text-[13px] font-medium leading-tight">{item}</span>
                   </div>
                 ))}
               </div>

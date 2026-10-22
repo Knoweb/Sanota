@@ -134,6 +134,8 @@ export default function IndustriesWeSupport() {
         >
           {/* Floating Glowing Navigation Arrows */}
           <motion.button 
+            type="button"
+            aria-label="Previous industry"
             onClick={() => setActiveIndex((prev) => (prev - 1 + industries.length) % industries.length)}
             className="absolute left-2 sm:left-6 lg:left-16 z-40 p-3.5 rounded-full border backdrop-blur-sm"
             style={{ 
@@ -154,6 +156,8 @@ export default function IndustriesWeSupport() {
           </motion.button>
           
           <motion.button 
+            type="button"
+            aria-label="Next industry"
             onClick={() => setActiveIndex((prev) => (prev + 1) % industries.length)}
             className="absolute right-2 sm:right-6 lg:right-16 z-40 p-3.5 rounded-full border backdrop-blur-sm"
             style={{ 

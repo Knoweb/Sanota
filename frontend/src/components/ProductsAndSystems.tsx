@@ -82,14 +82,14 @@ export default function ProductsAndSystems() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
+            <p className="text-sm font-bold text-[#E8B84B] uppercase tracking-widest mb-3">
               {isAr ? "المنتجات والأنظمة" : isJa ? "製品・システム" : isDe ? "Produkte & Systeme" : isEs ? "Productos y Sistemas" : "Products and Systems"}
-            </h2>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white leading-tight mb-6">
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17135B] dark:text-white leading-tight mb-6">
               {ps ? ps.heading : (
                 <>Developed Around Real <br className="hidden sm:block" />Operational Requirements</>
               )}
-            </h3>
+            </h2>
             <p className="text-[15.5px] text-[#555E75] dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
               {ps ? `${ps.subheading} ${ps.supportNote}` : "Sanota develops standard, configurable and custom-engineered products and systems for specific industrial applications. Supported through consultation, customization, installation, and AMC services."}
             </p>
@@ -128,9 +128,9 @@ export default function ProductsAndSystems() {
                     <product.icon className="w-4 h-4 md:w-6 md:h-6 text-white group-hover:text-[#E8B84B] transition-colors duration-500" />
                   </div>
 
-                  <h4 className="text-[12px] md:text-[18px] font-bold !text-white leading-tight mb-1 md:mb-3 drop-shadow-md">
+                  <h3 className="text-[12px] md:text-[18px] font-bold !text-white leading-tight mb-1 md:mb-3 drop-shadow-md">
                     {product.title}
-                  </h4>
+                  </h3>
 
                   {/* Description and Link (Visible by Default) */}
                   <div>
