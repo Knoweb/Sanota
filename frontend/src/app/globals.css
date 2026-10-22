@@ -60,6 +60,114 @@ body {
 }
 
 /* ==========================================================================
+   Page Hero Background & Overlay System
+   Provides vivid background image visibility with a soft center scrim for 
+   crystal-clear typography in both Light and Dark themes.
+   ========================================================================== */
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Light mode: vivid 85% opacity so industrial imagery is prominently and clearly visible */
+html.light .page-hero-bg,
+html[data-theme="light"] .page-hero-bg {
+  opacity: 0.85;
+  filter: saturate(100%) contrast(102%);
+}
+
+/* Dark mode: deep atmospheric background */
+html.dark .page-hero-bg,
+:root:not(.light) .page-hero-bg {
+  opacity: 0.75;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Light Mode Overlay: 
+   - Light translucent center scrim maintains text contrast without washing out the photo
+   - Sides and top remain transparent so 85% background imagery shines clearly
+   - Smooth bottom transition into canvas #FAF8F5 */
+html.light .page-hero-overlay,
+html[data-theme="light"] .page-hero-overlay {
+  background: 
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(250, 248, 245, 0.75) 0%, rgba(250, 248, 245, 0.40) 55%, transparent 100%),
+    linear-gradient(to bottom, rgba(250, 248, 245, 0.15) 0%, transparent 20%, rgba(250, 248, 245, 0.95) 100%) !important;
+}
+
+/* Dark Mode Overlay */
+html.dark .page-hero-overlay,
+:root:not(.light) .page-hero-overlay {
+  background: 
+    radial-gradient(ellipse at center, rgba(5, 11, 20, 0.55) 0%, rgba(5, 11, 20, 0.35) 55%, transparent 100%),
+    linear-gradient(to bottom, rgba(5, 11, 20, 0.45) 0%, rgba(5, 11, 20, 0.2) 40%, #050B14 100%) !important;
+}
+
+/* ==========================================================================
+   SUBPAGE HERO TYPOGRAPHY IN LIGHT MODE
+   High-contrast, razor-sharp readable text
+   ========================================================================== */
+
+/* Kicker Tag Pill Badge */
+html.light section:has(.page-hero-bg) p.uppercase.tracking-widest {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 5px 18px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(197, 155, 39, 0.16) !important;
+  border: 1px solid rgba(180, 130, 20, 0.4) !important;
+  color: #8C6514 !important;
+  font-weight: 800 !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.12em !important;
+  box-shadow: 0 1px 4px rgba(23, 19, 91, 0.04) !important;
+}
+
+/* Main Hero Headlines */
+html.light section:has(.page-hero-bg) h1 {
+  color: #0A0732 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 12px rgba(250, 248, 245, 0.8) !important;
+}
+
+/* Accent Highlight Span in Headline (amber-800 for strong contrast against ivory canvas) */
+html.light section:has(.page-hero-bg) h1 span,
+html.light section:has(.page-hero-bg) h1 .text-\[\#E8B84B\],
+html.light section:has(.page-hero-bg) h1 .text-\[\#C59B27\],
+html.light section:has(.page-hero-bg) h1 .text-\[\#2E5EAA\] {
+  color: #92400E !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Hero Description Paragraphs */
+html.light section:has(.page-hero-bg) p:not(.uppercase) {
+  color: #1E293B !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(250, 248, 245, 0.8) !important;
+}
+
+/* Hero Secondary Buttons in Light Mode */
+html.light section:has(.page-hero-bg) a[class*="bg-[#131C2E]"],
+html.light section:has(.page-hero-bg) a.border-slate-700 {
+  background-color: #FFFFFF !important;
+  color: #0E0A3C !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+
+/* ==========================================================================
    SANOTA GLOBAL - EXECUTIVE LIGHT MODE THEME
    Directly matching Sanota Brand Guidelines & Showcase CSS Specifications
    Colors:
@@ -374,61 +482,7 @@ html.light button.border-slate-700:hover {
   color: #17135B !important;
 }
 
-/* ==========================================================================
-   CRITICAL: SUBPAGE HERO BANNERS IN LIGHT MODE
-   Transforms subpage hero headers into elegant ivory architectural showcases
-   ========================================================================== */
-
-html.light section:has([style*="_hero_bg.jpg"]) {
-  background-color: #FAF8F5 !important;
-  border-bottom-color: #ECE7DD !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) [style*="_hero_bg.jpg"] {
-  opacity: 0.18 !important;
-  filter: grayscale(35%) contrast(115%) !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) .bg-\[\#050B14\]\/60 {
-  background: linear-gradient(180deg, rgba(250, 248, 245, 0.72) 0%, rgba(250, 248, 245, 0.94) 100%) !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) .bg-gradient-to-b {
-  background: linear-gradient(180deg, transparent 0%, rgba(250, 248, 245, 0.96) 100%) !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) h1,
-html.light section:has([style*="_hero_bg.jpg"]) h2 {
-  color: #17135B !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) h1 span,
-html.light section:has([style*="_hero_bg.jpg"]) .text-\[\#E8B84B\],
-html.light section:has([style*="_hero_bg.jpg"]) .text-\[\#2E5EAA\] {
-  color: #C59B27 !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) p.text-slate-300 {
-  color: #17135B !important;
-  font-weight: 600 !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) p.text-slate-400 {
-  color: #555E75 !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) a[class*="bg-[#131C2E]"] {
-  background-color: #FFFFFF !important;
-  color: #17135B !important;
-  border-color: #ECE7DD !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
-}
-
-html.light section:has([style*="_hero_bg.jpg"]) a[class*="bg-[#131C2E]"]:hover {
-  background-color: #FAF8F5 !important;
-  border-color: #C59B27 !important;
-  color: #C59B27 !important;
-}
+/* Subpage hero styling handled cleanly by .page-hero-bg & .page-hero-overlay */
 
 /* ==========================================================================
    CRITICAL: FULL-BLEED PHOTO CARDS & PHOTO OVERLAYS
