@@ -1,6 +1,6 @@
 export const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'EngineeringService',
+  '@type': 'Organization',
   '@id': 'https://www.sanotaglobal.com/#organization',
   name: 'Sanota Global',
   alternateName: 'Sanota',
@@ -83,6 +83,8 @@ export const websiteSchema = {
   name: 'Sanota Global',
   description: 'Integrated Engineering for Evolving Industries',
   publisher: {
+    '@type': 'Organization',
     '@id': 'https://www.sanotaglobal.com/#organization',
+    name: 'Sanota Global',
   },
 };
