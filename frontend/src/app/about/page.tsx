@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from 'next/dynamic';
 const Antigravity = dynamic(() => import("@/components/Antigravity"), { ssr: false });
 import PixelCard from "@/components/PixelCard";
@@ -471,10 +472,17 @@ export default function AboutPage() {
         
         {/* 1. Page Hero */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
-          <div
-            className="page-hero-bg"
-            style={{ backgroundImage: "url('/about_hero_bg.jpg')" }}
-          />
+          <div className="page-hero-bg">
+            <Image
+              src="/about_hero_bg.webp"
+              alt="About Sanota Background"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
+            />
+          </div>
           <div className="page-hero-overlay" />
           
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -256,10 +257,17 @@ export default function ServicesPage() {
 
         {/* Hero Section */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
-          <div
-            className="page-hero-bg"
-            style={{ backgroundImage: "url('/services_hero_bg.jpg')" }}
-          />
+          <div className="page-hero-bg">
+            <Image
+              src="/services_hero_bg.webp"
+              alt="Engineering Services Background"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
+            />
+          </div>
           <div className="page-hero-overlay" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

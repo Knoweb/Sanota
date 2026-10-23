@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Settings, Cpu, Activity, Sprout, Zap, ShieldCheck, Lightbulb, ClipboardList, BookOpen, ChevronRight, Download, HelpCircle, Mail, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { insightsES } from "@/locales/es/insights";
@@ -679,10 +680,17 @@ export default function InsightsPage() {
         
         {/* Hero Section */}
         <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-16 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center">
-          <div
-            className="page-hero-bg"
-            style={{ backgroundImage: "url('/insights_hero_bg.jpg')" }}
-          />
+          <div className="page-hero-bg">
+            <Image
+              src="/insights_hero_bg.webp"
+              alt="Engineering & Technology Insights Background"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
+            />
+          </div>
           <div className="page-hero-overlay" />
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <motion.p
