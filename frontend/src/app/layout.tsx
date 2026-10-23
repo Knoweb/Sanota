@@ -59,7 +59,10 @@ export const metadata: Metadata = {
     title: "Sanota | Integrated Engineering for Evolving Industries",
     description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support.",
     images: ["/sanota.png"],
-  }
+  },
+  verification: {
+    google: "NtCpFHq8U9fApwEEfNixiwDhDkazjMdedT11ciHSAY8",
+  },
 };
 
 import AnimatedBackground from "@/components/AnimatedBackground";
