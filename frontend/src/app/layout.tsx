@@ -9,6 +9,8 @@ const inter = Inter({
   display: "swap",
 });
 
+import { organizationSchema, websiteSchema } from "@/lib/schema";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sanotaglobal.com'),
   title: {
@@ -16,7 +18,26 @@ export const metadata: Metadata = {
     template: "%s | Sanota Global",
   },
   description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team. Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward.",
-  keywords: ["Engineering Solutions Sri Lanka", "Industrial Automation", "Mechanical Engineering", "IoT", "sanota"],
+  keywords: [
+    "Industrial automation system integrator sri lanka",
+    "automated tea trough withering humidity control system",
+    "fluidized bed tea dryer temperature controller retrofit",
+    "smart tea factory automation system vendor",
+    "tea processing plant IoT data logging solution",
+    "automated greenhouse climate control system cost",
+    "commercial smart fertigation dosing system integration",
+    "IoT soil moisture and EC monitoring platform for farms",
+    "obsolete plc panel replacement service for factories",
+    "custom industrial machinery retrofitting contractor",
+    "legacy factory machine electrical upgrade and modernization",
+    "custom PLC SCADA control panel assembly",
+    "factory IIoT predictive maintenance sensors integration",
+    "industrial motor speed and conveyor automation controller",
+    "smart manufacturing data acquisition dashboard development",
+    "Engineering Solutions Sri Lanka",
+    "Industrial Automation",
+    "Sanota Global"
+  ],
   openGraph: {
     title: "Sanota | Integrated Engineering for Evolving Industries",
     description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team.",
@@ -93,6 +114,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-0DFYHW9ETK');
           `}
         </Script>
+        {/* Schema.org Structured Data for SEO & GEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body className="min-h-full flex flex-col relative text-slate-300">
         <LanguageProvider>

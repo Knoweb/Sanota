@@ -4,22 +4,22 @@ import { getArticles } from '@/lib/api';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.sanotaglobal.com';
   
-  // Static routes
+  // High-value Money Pages & Static routes
   const routes = [
-    '',
-    '/about',
-    '/services',
-    '/products',
-    '/industries',
-    '/insights',
-    '/media',
-    '/contact',
-    '/tell-us-your-challenge'
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    { route: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { route: '/services', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/industries', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/contact', priority: 0.85, changeFrequency: 'monthly' as const },
+    { route: '/tell-us-your-challenge', priority: 0.85, changeFrequency: 'monthly' as const },
+    { route: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
+    { route: '/insights', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/media', priority: 0.7, changeFrequency: 'weekly' as const },
+  ].map((item) => ({
+    url: `${baseUrl}${item.route}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
+    changeFrequency: item.changeFrequency,
+    priority: item.priority,
   }));
 
   // Dynamic routes for articles
