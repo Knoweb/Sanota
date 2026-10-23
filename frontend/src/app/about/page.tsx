@@ -15,6 +15,7 @@ import { aboutES } from "@/locales/es/about";
 import { aboutDE } from "@/locales/de/about";
 import { aboutJA } from "@/locales/ja/about";
 import { aboutAR } from "@/locales/ar/about";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 // Data Structures
 const technicalDisciplines = [
@@ -478,8 +479,9 @@ export default function AboutPage() {
               alt="About Sanota Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.about_hero_bg}
               className="object-cover"
             />
           </div>

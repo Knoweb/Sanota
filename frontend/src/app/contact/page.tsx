@@ -17,6 +17,7 @@ import { contactES } from "@/locales/es/contact";
 import { contactDE } from "@/locales/de/contact";
 import { contactJA } from "@/locales/ja/contact";
 import { contactAR } from "@/locales/ar/contact";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 const GradientWaves = dynamic(() => import("@/components/GradientWaves"), { ssr: false });
 
 const contactOptions = [
@@ -417,8 +418,9 @@ export default function ContactPage() {
               alt="Contact Sanota Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.contact_hero_bg}
               className="object-cover"
             />
           </div>

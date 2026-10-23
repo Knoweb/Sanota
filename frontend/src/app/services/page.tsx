@@ -12,6 +12,7 @@ import { servicesES } from "@/locales/es/services";
 import { servicesDE } from "@/locales/de/services";
 import { servicesJA } from "@/locales/ja/services";
 import { servicesAR } from "@/locales/ar/services";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 const services = [
   {
@@ -263,8 +264,9 @@ export default function ServicesPage() {
               alt="Engineering Services Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.services_hero_bg}
               className="object-cover"
             />
           </div>

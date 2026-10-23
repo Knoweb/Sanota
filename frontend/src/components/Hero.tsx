@@ -10,6 +10,9 @@ import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
 import { homeJA } from "@/locales/ja/home";
 import { homeAR } from "@/locales/ar/home";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
+
+const heroKeys = ["hero_image", "hero_agri", "hero_food"] as const;
 
 const images = [
   "/hero_image.webp",
@@ -129,9 +132,13 @@ export default function Hero() {
                   <Image
                     src={images[currentImageIndex]}
                     alt="Industrial Automation"
-                    fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover opacity-100"
                     priority
+                    unoptimized
+                    placeholder="blur"
+                    blurDataURL={HERO_BLUR_DATA[heroKeys[currentImageIndex]]}
                   />
                 </motion.div>
               </AnimatePresence>

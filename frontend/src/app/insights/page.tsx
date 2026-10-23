@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { insightsES } from "@/locales/es/insights";
 import { insightsDE } from "@/locales/de/insights";
 import { insightsJA } from "@/locales/ja/insights";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 const defaultCategories = [
   {
@@ -686,8 +687,9 @@ export default function InsightsPage() {
               alt="Engineering & Technology Insights Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.insights_hero_bg}
               className="object-cover"
             />
           </div>

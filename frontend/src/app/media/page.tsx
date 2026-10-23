@@ -17,6 +17,7 @@ import { mediaES } from "@/locales/es/media";
 import { mediaDE } from "@/locales/de/media";
 import { mediaJA } from "@/locales/ja/media";
 import { mediaAR } from "@/locales/ar/media";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 
 const mediaNavigation = [
@@ -416,8 +417,9 @@ export default function MediaPage() {
               alt="Media, Projects and Engineering Stories Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.media_hero_bg}
               className="object-cover"
             />
           </div>

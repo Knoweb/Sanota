@@ -15,6 +15,7 @@ import { industriesES } from "@/locales/es/industries";
 import { industriesDE } from "@/locales/de/industries";
 import { industriesJA } from "@/locales/ja/industries";
 import { industriesAR } from "@/locales/ar/industries";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 // Data Structures
 
@@ -196,8 +197,9 @@ export default function IndustriesPage() {
               alt="Industries We Support Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.industries_hero_bg}
               className="object-cover"
             />
           </div>

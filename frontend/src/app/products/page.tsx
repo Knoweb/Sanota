@@ -12,6 +12,7 @@ import { productsES } from "@/locales/es/products";
 import { productsDE } from "@/locales/de/products";
 import { productsJA } from "@/locales/ja/products";
 import { productsAR } from "@/locales/ar/products";
+import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
 
 const productCategories = [
   {
@@ -716,8 +717,9 @@ export default function ProductsPage() {
               alt="Engineering Products Background"
               fill
               priority
-              sizes="100vw"
-              quality={75}
+              unoptimized
+              placeholder="blur"
+              blurDataURL={HERO_BLUR_DATA.products_hero_bg}
               className="object-cover"
             />
           </div>
