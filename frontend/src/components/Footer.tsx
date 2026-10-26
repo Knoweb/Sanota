@@ -85,13 +85,13 @@ const servicesLinksES = [
 
 const servicesLinksDE = [
   { name: 'Ingenieurberatung', href: '/services' },
-  { name: 'System- und Produktentwicklung', href: '/services' },
+  { name: 'System- und Produktentwicklung', href: '/de/produktentwicklung' },
   { name: 'Sondermaschinenbau', href: '/services' },
-  { name: 'Automatisierung, IoT und digitale Integration', href: '/services' },
+  { name: 'Industrieautomatisierung & IIoT', href: '/de/industrieautomatisierung-iiot' },
+  { name: 'Didaktische Ausbildungssysteme', href: '/de/ausbildungssysteme' },
+  { name: 'Smarte Landwirtschaft & AgriTech', href: '/de/smarte-landwirtschaft' },
   { name: 'Nachrüstung und Modernisierung', href: '/services' },
-  { name: 'Projektabwicklung und Inbetriebnahme', href: '/services' },
-  { name: 'Wartungsverträge und Lebenszyklusbetreuung', href: '/services' },
-  { name: 'Technische Schulungen', href: '/services' }
+  { name: 'Wartungsverträge und Lebenszyklusbetreuung', href: '/services' }
 ];
 
 const servicesLinksJA = [
