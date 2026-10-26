@@ -175,8 +175,8 @@ export default function IndustrieautomatisierungPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div className="absolute inset-0 z-0">
+      <section className="relative pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[72vh] flex flex-col justify-center">
+        <div className="page-hero-bg">
           <Image
             src="/services_hero_bg.webp"
             alt="Industrieautomatisierung & IIoT-Lösungen Sanota Global"
@@ -185,20 +185,19 @@ export default function IndustrieautomatisierungPage() {
             unoptimized={true}
             placeholder="blur"
             blurDataURL={HERO_BLUR_DATA["services_hero_bg"]}
-            className="object-cover object-center"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-[#0B1120]/85 dark:bg-[#060A12]/90 backdrop-blur-[1px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-80" />
         </div>
+        <div className="page-hero-overlay" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5A93C]/15 border border-[#E5A93C]/30 text-[#E5A93C] text-xs sm:text-sm font-semibold mb-6 tracking-wide"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5A93C]/15 border border-[#E5A93C]/30 text-[#92400E] dark:text-[#E5A93C] text-xs sm:text-sm font-bold mb-6 tracking-wide"
           >
-            <Globe2 className="w-4 h-4" />
+            <Globe2 className="w-4 h-4 text-[#92400E] dark:text-[#E5A93C]" />
             <span>Engineering Partner für die DACH-Region (DE | AT | CH)</span>
           </motion.div>
 
@@ -206,16 +205,16 @@ export default function IndustrieautomatisierungPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6 max-w-5xl mx-auto"
+            className="text-4xl sm:text-6xl font-black text-[#0A0732] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
           >
-            Intelligente Industrieautomatisierung & Industrielles IoT (IIoT)
+            Intelligente Industrieautomatisierung & <span className="text-[#C59B27] dark:text-[#2E5EAA]">Industrielles IoT (IIoT)</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-normal"
+            className="text-base sm:text-xl text-[#1E293B] dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-medium"
           >
             Effiziente Steuerungstechnik, lückenlose Vernetzung und datengestützte Prozessoptimierung für den modernen Maschinenbau und Fertigungsbetrieb.
           </motion.p>
@@ -235,7 +234,7 @@ export default function IndustrieautomatisierungPage() {
             </Link>
             <a
               href="#leistungen"
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-lg border border-white/20 transition-all hover:scale-[1.02]"
+              className="w-full sm:w-auto px-8 py-4 bg-white/90 dark:bg-white/10 hover:bg-white text-slate-800 dark:text-white font-semibold rounded-lg border border-slate-300 dark:border-white/20 transition-all hover:scale-[1.02]"
             >
               Lösungen entdecken
             </a>

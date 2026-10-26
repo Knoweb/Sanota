@@ -90,8 +90,8 @@ export default function SmarteLandwirtschaftPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div className="absolute inset-0 z-0">
+      <section className="relative pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-transparent min-h-[60vh] lg:min-h-[72vh] flex flex-col justify-center">
+        <div className="page-hero-bg">
           <Image
             src="/hero_agri.webp"
             alt="Smarte Landwirtschaft Sanota Global"
@@ -100,23 +100,22 @@ export default function SmarteLandwirtschaftPage() {
             unoptimized={true}
             placeholder="blur"
             blurDataURL={HERO_BLUR_DATA["hero_agri"]}
-            className="object-cover object-center"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-[#0B1120]/85 dark:bg-[#060A12]/90 backdrop-blur-[1px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-80" />
         </div>
+        <div className="page-hero-overlay" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5A93C]/15 border border-[#E5A93C]/30 text-[#E5A93C] text-xs sm:text-sm font-semibold mb-6">
-            <Sprout className="w-4 h-4" />
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5A93C]/15 border border-[#E5A93C]/30 text-[#92400E] dark:text-[#E5A93C] text-xs sm:text-sm font-bold mb-6">
+            <Sprout className="w-4 h-4 text-[#92400E] dark:text-[#E5A93C]" />
             <span>Gewächshausbetreiber | Agrarbetriebe | Vertical Farming</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Smart Agriculture & Gewächshaus-Automatisierung
+          <h1 className="text-4xl sm:text-6xl font-black text-[#0A0732] dark:text-white tracking-tight leading-tight mb-6 max-w-5xl mx-auto">
+            Smart Agriculture & <span className="text-[#C59B27] dark:text-[#2E5EAA]">Gewächshaus-Automatisierung</span>
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
+          <p className="text-base sm:text-xl text-[#1E293B] dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-medium">
             Smarte Sensorik, automatische Bewässerung, exakte Fertigation und IoT-Umweltmonitoring für die moderne gewerbliche Präzisionslandwirtschaft.
           </p>
 
