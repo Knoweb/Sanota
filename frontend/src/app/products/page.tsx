@@ -13,6 +13,7 @@ import { productsDE } from "@/locales/de/products";
 import { productsJA } from "@/locales/ja/products";
 import { productsAR } from "@/locales/ar/products";
 import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
+import { productsFaqData } from "@/lib/faqData";
 
 const productCategories = [
   {
@@ -2115,44 +2116,19 @@ export default function ProductsPage() {
                   <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
                     <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
-                      Technical Capabilities FAQ
+                      {(productsFaqData[language] || productsFaqData.en).badge}
                     </span>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
-                    Machinery, SCADA & Automation FAQ
+                    {(productsFaqData[language] || productsFaqData.en).heading}
                   </h2>
                   <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
-                    Direct technical information on custom control panel assemblies, conveyor motor automation, data acquisition dashboards, and predictive maintenance sensors.
+                    {(productsFaqData[language] || productsFaqData.en).description}
                   </p>
                 </div>
 
                 <div className="space-y-4 max-w-4xl mx-auto text-left">
-                  {[
-                    {
-                      q: "What PLC brands and fieldbus protocols does Sanota support for custom control panel assembly?",
-                      a: "Sanota builds custom PLC SCADA control panel assemblies using leading global automation brands including Siemens, Allen-Bradley (Rockwell), Mitsubishi, Schneider Electric, and Omron. We support industrial communications including Profinet, Modbus TCP/RTU, EtherNet/IP, and MQTT for cloud IIoT.",
-                      link: "/tell-us-your-challenge",
-                      linkText: "Request custom control panel specifications"
-                    },
-                    {
-                      q: "How do industrial motor speed and conveyor automation controllers improve throughput?",
-                      a: "Our conveyor controllers integrate variable frequency drives (VFDs) and optical/proximity sensors to dynamically adjust line speeds, synchronize multi-stage transfer points, eliminate product bottlenecks, and reduce mechanical shock on conveyor belts and gearboxes.",
-                      link: "/tell-us-your-challenge",
-                      linkText: "Discuss conveyor line automation"
-                    },
-                    {
-                      q: "What data is gathered by smart manufacturing data acquisition dashboards?",
-                      a: "Sanota’s data acquisition dashboards collect real-time machine run-time, overall equipment effectiveness (OEE), cycle counts, downtime root causes, ambient temperature, humidity, and energy consumption, presented on responsive web and mobile displays with exportable audit reports.",
-                      link: "/contact",
-                      linkText: "Request a data acquisition demo"
-                    },
-                    {
-                      q: "Can Sanota manufacture special-purpose machinery tailored to custom factory footprints?",
-                      a: "Yes. Every special-purpose machine and automation station is engineered to fit your specific factory layout, throughput targets, and worker safety requirements, from 3D CAD modeling and precision machining to electrical wiring and on-site commissioning.",
-                      link: "/contact",
-                      linkText: "Consult with a machinery engineer"
-                    }
-                  ].map((faq, idx) => {
+                  {(productsFaqData[language] || productsFaqData.en).items.map((faq, idx) => {
                     const isOpen = openFaq === idx;
                     return (
                       <div

@@ -16,6 +16,7 @@ import { industriesDE } from "@/locales/de/industries";
 import { industriesJA } from "@/locales/ja/industries";
 import { industriesAR } from "@/locales/ar/industries";
 import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
+import { industriesFaqData } from "@/lib/faqData";
 
 // Data Structures
 
@@ -1174,44 +1175,19 @@ export default function IndustriesPage() {
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
                 <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
-                  Technical FAQ & Implementation Details
+                  {(industriesFaqData[language] || industriesFaqData.en).badge}
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
-                Tea Automation & Smart Agriculture FAQ
+                {(industriesFaqData[language] || industriesFaqData.en).heading}
               </h2>
               <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
-                Practical answers to questions regarding tea withering controls, dryer retrofits, commercial fertigation, and greenhouse climate automation.
+                {(industriesFaqData[language] || industriesFaqData.en).description}
               </p>
             </div>
 
             <div className="space-y-4 max-w-4xl mx-auto">
-              {[
-                {
-                  q: "How does an automated tea trough withering humidity control system improve leaf quality?",
-                  a: "Sanota’s automated tea trough withering system monitors real-time ambient temperature and humidity, modulating automated louvers and variable-speed fan airflow. This ensures uniform moisture loss across the entire trough bed, preventing overwithered or underwithered leaves regardless of unpredictable weather conditions.",
-                  link: "/tell-us-your-challenge",
-                  linkText: "Request a tea withering automation audit"
-                },
-                {
-                  q: "Can existing fluidized bed tea dryers be retrofitted with smart temperature controllers?",
-                  a: "Yes. Sanota provides complete fluidized bed tea dryer retrofit solutions. We install high-precision PID temperature controllers, automated damper actuators, and exhaust humidity sensors directly onto legacy tea dryers to stabilize drying temperatures, reduce firewood/energy waste, and eliminate burnt particles.",
-                  link: "/tell-us-your-challenge",
-                  linkText: "Evaluate tea dryer retrofitting"
-                },
-                {
-                  q: "What components are included in a commercial smart fertigation dosing system integration?",
-                  a: "Our commercial fertigation integration combines multi-channel venturi dosing injectors, real-time electrical conductivity (EC) and pH sensors, automated solenoid manifold valves, and PLC automation. Growers can deliver precise nutrient recipes automatically based on soil demand.",
-                  link: "/contact",
-                  linkText: "Inquire about fertigation systems"
-                },
-                {
-                  q: "What is the typical ROI and cost justification for an automated greenhouse climate control system?",
-                  a: "Automated greenhouse climate control optimizes temperature, humidity, and venting through sensor-driven motor drives. Commercial growers typically achieve ROI within 12 to 18 months through 25-35% water savings, reduced crop disease, and consistent year-round yields.",
-                  link: "/contact",
-                  linkText: "Discuss greenhouse automation"
-                }
-              ].map((faq, idx) => {
+              {(industriesFaqData[language] || industriesFaqData.en).items.map((faq, idx) => {
                 const isOpen = openFaq === idx;
                 return (
                   <div

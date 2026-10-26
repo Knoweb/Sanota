@@ -14,6 +14,7 @@ import { servicesDE } from "@/locales/de/services";
 import { servicesJA } from "@/locales/ja/services";
 import { servicesAR } from "@/locales/ar/services";
 import { HERO_BLUR_DATA } from "@/lib/heroBlurData";
+import { servicesFaqData } from "@/lib/faqData";
 
 const services = [
   {
@@ -1024,44 +1025,19 @@ export default function ServicesPage() {
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
                 <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
-                  Technical Questions & Answers
+                  {(servicesFaqData[language] || servicesFaqData.en).badge}
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
-                Industrial Engineering & Retrofitting FAQ
+                {(servicesFaqData[language] || servicesFaqData.en).heading}
               </h2>
               <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
-                Direct answers to common questions asked by plant managers, maintenance heads, and operational directors before commissioning machinery retrofits and automation projects.
+                {(servicesFaqData[language] || servicesFaqData.en).description}
               </p>
             </div>
 
             <div className="space-y-4 max-w-4xl mx-auto">
-              {[
-                {
-                  q: "Can Sanota replace obsolete PLC panels without replacing mechanical machinery?",
-                  a: "Yes. Sanota specializes in obsolete PLC panel replacement service for factories. We upgrade legacy, discontinued, or failing PLCs (such as older Siemens S5/S7-300, Omron, Mitsubishi, and Allen-Bradley units) with modern controllers and touch HMIs while preserving your existing mechanical machinery, saving up to 70% compared to purchasing new machines.",
-                  link: "/tell-us-your-challenge",
-                  linkText: "Request an obsolete PLC assessment"
-                },
-                {
-                  q: "What does a custom industrial machinery retrofitting contractor do?",
-                  a: "As an industrial machinery retrofitting contractor, Sanota modernizes existing factory production lines by replacing obsolete electrical controls, rewiring power panels, integrating modern variable frequency drives (VFDs), adding automated safety interlocks, and installing IIoT monitoring sensors to extend operational life and boost productivity.",
-                  link: "/tell-us-your-challenge",
-                  linkText: "Discuss machinery retrofitting"
-                },
-                {
-                  q: "Can Sanota assemble custom PLC SCADA control panels for international standards?",
-                  a: "Yes. Sanota designs, fabricates, and rigorously tests custom PLC and SCADA control panels built to international electrical standards, featuring intuitive HMI touchscreen interfaces, industrial fieldbus protocols (Modbus, Profinet, EtherNet/IP), and cloud IoT integration for remote monitoring.",
-                  link: "/contact",
-                  linkText: "Inquire about control panel assembly"
-                },
-                {
-                  q: "How does predictive maintenance IIoT sensor integration prevent factory downtime?",
-                  a: "By retrofitting industrial vibration, temperature, current, and pressure sensors directly onto existing rotating assets and production lines, Sanota's IIoT platforms detect mechanical degradation and electrical anomalies before catastrophic failure occurs, reducing unplanned downtime by up to 45%.",
-                  link: "/contact",
-                  linkText: "Schedule an IIoT site review"
-                }
-              ].map((faq, idx) => {
+              {(servicesFaqData[language] || servicesFaqData.en).items.map((faq, idx) => {
                 const isOpen = openFaq === idx;
                 return (
                   <div
