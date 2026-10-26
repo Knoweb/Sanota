@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://www.sanotaglobal.com/services',
+    languages: {
+      'en': 'https://www.sanotaglobal.com/services',
+      'de': 'https://www.sanotaglobal.com/de/industrieautomatisierung-iiot',
+      'x-default': 'https://www.sanotaglobal.com/services',
+    },
   },
   openGraph: {
     title: 'Engineering Services & Machinery Retrofitting | Sanota Global',

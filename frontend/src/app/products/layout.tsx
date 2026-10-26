@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://www.sanotaglobal.com/products',
+    languages: {
+      'en': 'https://www.sanotaglobal.com/products',
+      'de': 'https://www.sanotaglobal.com/de/ausbildungssysteme',
+      'x-default': 'https://www.sanotaglobal.com/products',
+    },
   },
   openGraph: {
     title: 'Industrial Machinery & Automation Systems | Sanota Global',

@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://www.sanotaglobal.com/industries',
+    languages: {
+      'en': 'https://www.sanotaglobal.com/industries',
+      'de': 'https://www.sanotaglobal.com/de/smarte-landwirtschaft',
+      'x-default': 'https://www.sanotaglobal.com/industries',
+    },
   },
   openGraph: {
     title: 'Industries | Tea Automation & Smart Agriculture Solutions | Sanota Global',
