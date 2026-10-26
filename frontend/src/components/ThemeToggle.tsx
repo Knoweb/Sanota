@@ -21,7 +21,7 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
   if (!mounted) {
     // Render placeholder to avoid layout shift before mount
     return (
-      <div className={`w-10 h-10 rounded-full border border-slate-700/50 bg-[#131C2E]/60 ${className}`} />
+      <div className={`w-10 h-10 rounded-full border border-[#E5E7EB] dark:border-slate-700/50 bg-white/80 dark:bg-[#131C2E]/60 ${className}`} />
     );
   }
 

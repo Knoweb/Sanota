@@ -38,7 +38,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14] relative transition-colors duration-500">
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#050B14] relative transition-colors duration-500">
       {isDark && isDesktop && (
         <div className="fixed inset-0 z-0 hidden md:block pointer-events-none">
           <GradientWaves

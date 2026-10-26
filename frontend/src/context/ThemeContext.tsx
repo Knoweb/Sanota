@@ -17,15 +17,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check saved theme preference in localStorage
-    const savedTheme = localStorage.getItem("sanota-theme") as Theme | null;
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setThemeState(savedTheme);
-      applyTheme(savedTheme);
+    // Check saved theme preference in localStorage (v2 prevents legacy auto-dark default)
+    const savedTheme = localStorage.getItem("sanota-theme-v2") as Theme | null;
+    if (savedTheme === "dark") {
+      setThemeState("dark");
+      applyTheme("dark");
     } else {
-      // Default to light mode as requested
+      // Default to light mode
       setThemeState("light");
       applyTheme("light");
+      localStorage.setItem("sanota-theme-v2", "light");
+      localStorage.setItem("sanota-theme", "light");
     }
     setMounted(true);
   }, []);
@@ -45,6 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
+    localStorage.setItem("sanota-theme-v2", newTheme);
     localStorage.setItem("sanota-theme", newTheme);
     applyTheme(newTheme);
   };

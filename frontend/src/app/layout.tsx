@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('sanota-theme');
+                  var saved = localStorage.getItem('sanota-theme-v2');
                   if (saved === 'dark') {
                     document.documentElement.classList.add('dark');
                     document.documentElement.classList.remove('light');
@@ -89,6 +89,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     document.documentElement.classList.remove('dark');
                     document.documentElement.classList.add('light');
                     document.documentElement.setAttribute('data-theme', 'light');
+                    if (!saved) {
+                      localStorage.setItem('sanota-theme-v2', 'light');
+                      localStorage.setItem('sanota-theme', 'light');
+                    }
                   }
                   
                   var savedLang = localStorage.getItem('sanota-lang') || 'en';

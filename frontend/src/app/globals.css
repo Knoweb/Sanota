@@ -3,12 +3,25 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  --background: #FAF8F5;
+  --foreground: #111424;
+  --primary: #17135B;
+  --accent: #C59B27;
+  --card-bg: #FFFFFF;
+  --border-color: #ECE7DD;
+  color-scheme: light;
+}
+
+:root.dark,
+html.dark,
+html[data-theme="dark"] {
   --background: #0B1220;
   --foreground: #f8fafc;
   --primary: #2E5EAA;
   --accent: #E8B84B;
   --card-bg: #131C2E;
   --border-color: #1e293b;
+  color-scheme: dark;
 }
 
 @theme inline {

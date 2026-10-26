@@ -59,7 +59,7 @@ export default async function BlogDetails({ params }: { params: Promise<{ slug: 
 
   if (!data) {
     return (
-      <div className="flex flex-col min-h-screen bg-[#050B14]">
+      <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#050B14]">
         <Header />
         <main className="flex-grow pt-32 pb-16 flex items-center justify-center">
           <div className="text-center">
@@ -76,7 +76,7 @@ export default async function BlogDetails({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050B14]">
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#050B14]">
       <Header />
       <main className="flex-grow pt-24 lg:pt-32 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
