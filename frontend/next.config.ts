@@ -28,7 +28,6 @@ const nextConfig: NextConfig = {
       { source: '/es', destination: '/inicio', permanent: false },
       { source: '/es/:path*', destination: '/:path*', permanent: false },
       { source: '/de', destination: '/startseite', permanent: false },
-      { source: '/de/:path*', destination: '/:path*', permanent: false },
       { source: '/ja', destination: '/ホーム', permanent: false },
       { source: '/ja/:path*', destination: '/:path*', permanent: false },
       { source: '/ar', destination: '/الرئيسية', permanent: false },
@@ -39,6 +38,14 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
+      // German landing page direct access aliases (works both with and without /de/ prefix)
+      { source: '/industrieautomatisierung-iiot', destination: '/de/industrieautomatisierung-iiot' },
+      { source: '/industrieautomatisierung', destination: '/de/industrieautomatisierung' },
+      { source: '/iiot-loesungen', destination: '/de/iiot-loesungen' },
+      { source: '/ausbildungssysteme', destination: '/de/ausbildungssysteme' },
+      { source: '/produktentwicklung', destination: '/de/produktentwicklung' },
+      { source: '/smarte-landwirtschaft', destination: '/de/smarte-landwirtschaft' },
+
       // 1. Spanish direct routes (no /es/ prefix)
       { source: '/inicio', destination: '/' },
       { source: '/industrias', destination: '/industries' },
