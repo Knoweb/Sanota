@@ -1,0 +1,27 @@
+# Sanota Global (Sanota Pvt Ltd)
+
+> Sanota is an integrated multidisciplinary engineering technology partner delivering industrial machinery retrofitting, industrial automation, tea processing automation, smart agriculture systems, and IoT solutions.
+
+## Core Capabilities & Services
+- **Industrial Automation & PLC/SCADA**: Turnkey industrial control panel design, assembly, PLC retrofitting (Siemens, Schneider, Omron, Delta), SCADA and HMI integration, motor speed control, variable frequency drives (VFD), and conveyor automation.
+- **Machinery Modernization & Retrofitting**: Mechanical fabrication, obsolete control panel replacement, hydraulic/pneumatic retrofitting, and extending equipment lifespan without the high cost of replacement.
+- **Tea Process Automation**: Automated tea trough withering humidity and temperature control, fluidized bed tea dryer retrofits, tea factory SCADA monitoring, and leaf handling conveyors.
+- **Smart Agriculture & AgTech**: Commercial greenhouse climate control, automated fertigation and precision dosing systems, EC/pH monitoring, and remote IoT farm dashboards.
+- **Industrial IoT & Digital Transformation**: Factory telemetry, remote machinery monitoring, predictive maintenance sensors, and custom operational web/mobile dashboards.
+- **Annual Maintenance Contracts (AMC)**: Preventive and corrective maintenance, calibration, emergency troubleshooting, and technical SLA support.
+
+## Key Links & Resources
+- Homepage: https://www.sanotaglobal.com/
+- Engineering Services: https://www.sanotaglobal.com/services
+- Industrial Products & Panels: https://www.sanotaglobal.com/products
+- Target Industries: https://www.sanotaglobal.com/industries
+- Technical Insights: https://www.sanotaglobal.com/insights
+- Project Portfolio & Media: https://www.sanotaglobal.com/media
+- Engineering Assessment Form: https://www.sanotaglobal.com/tell-us-your-challenge
+- Contact Engineering Team: https://www.sanotaglobal.com/contact
+
+## Contact Information
+- Location: Colombo, Sri Lanka
+- Telephone: +94 740 70 99 89
+- Email: info@sanotaglobal.com
+- Website: https://www.sanotaglobal.com
