@@ -9,7 +9,7 @@ import VideosAndDemonstrations from "@/components/VideosAndDemonstrations";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
-import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, PlayCircle, Plus, Minus, CheckCircle2, ChevronDown, HelpCircle, Factory, Sprout, Coffee, Leaf, Truck, Zap, Recycle, Building2, Stethoscope, Lightbulb, Search, PenTool, Wrench, Network, Play, RefreshCw, ShieldCheck, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { industriesES } from "@/locales/es/industries";
 import { industriesDE } from "@/locales/de/industries";
@@ -48,9 +48,16 @@ const priorityIndustries = [
     icon: Sprout,
     bgImage: "/ind_agri_1788515181352.jpg",
     points: [
-      "Greenhouse engineering and automation", "Irrigation and fertigation systems", "Hydroponic and aquaponic systems",
-      "Soil and coir-based cultivation systems", "Climate and environmental control", "Plant and soil monitoring",
-      "Automated dosing and pumping", "Web and mobile dashboards", "Alerts and remote control", "Maintenance and system support"
+      "Automated greenhouse climate control systems",
+      "Commercial smart fertigation dosing system integration",
+      "IoT soil moisture and EC monitoring platform for farms",
+      "Hydroponic and controlled-environment cultivation",
+      "Climate, humidity and environmental ventilation control",
+      "Plant and soil sensor analytics",
+      "Automated dosing, valve and pumping manifolds",
+      "Web and mobile telemetry dashboards",
+      "Alerts and remote supervisory control",
+      "Preventive maintenance and ongoing system support"
     ],
     buttonText: "Explore Smart Agriculture"
   },
@@ -76,9 +83,16 @@ const priorityIndustries = [
     icon: Leaf,
     bgImage: "/ind_tea_1788515252795.jpg",
     points: [
-      "Withering systems", "Tea rollers", "Green and black tea dryers", "Mini tea-factory systems",
-      "Specialty tea-processing machinery", "Airflow and environmental control", "Automated louver control",
-      "Energy and process monitoring", "Plantation and smallholder software", "Machinery modernization and AMC support"
+      "Automated tea trough withering humidity control system",
+      "Fluidized bed tea dryer temperature controller retrofit",
+      "Smart tea factory automation system vendor solutions",
+      "Tea processing plant IoT data logging solution",
+      "Automated louver and withering trough airflow automation",
+      "Tea rolling and CTC automation controls",
+      "Green and black tea dryer thermal regulation",
+      "Mini tea-factory and specialty tea processing equipment",
+      "Factory-wide energy, humidity and process monitoring",
+      "Machinery modernization and AMC support"
     ],
     buttonText: "Explore Tea Industry Solutions"
   }
@@ -176,6 +190,7 @@ export default function IndustriesPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeAdditional, setActiveAdditional] = useState<number | null>(0);
   const [activeSupportTab, setActiveSupportTab] = useState<'modernization' | 'amc'>('modernization');
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -1148,6 +1163,101 @@ export default function IndustriesPage() {
                   <span className="text-slate-600 dark:text-slate-300 group-hover:text-[#17135B] dark:group-hover:text-white font-medium text-sm sm:text-[15px] transition-colors">{partner}</span>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Technical FAQ & Solutions Architecture Section (GEO & Intent Optimization) */}
+        <section id="faq" className="py-16 bg-white/40 dark:bg-[#0B1220]/40 border-t border-slate-200 dark:border-slate-800/60">
+          <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
+                <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
+                  Technical FAQ & Implementation Details
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
+                Tea Automation & Smart Agriculture FAQ
+              </h2>
+              <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
+                Practical answers to questions regarding tea withering controls, dryer retrofits, commercial fertigation, and greenhouse climate automation.
+              </p>
+            </div>
+
+            <div className="space-y-4 max-w-4xl mx-auto">
+              {[
+                {
+                  q: "How does an automated tea trough withering humidity control system improve leaf quality?",
+                  a: "Sanota’s automated tea trough withering system monitors real-time ambient temperature and humidity, modulating automated louvers and variable-speed fan airflow. This ensures uniform moisture loss across the entire trough bed, preventing overwithered or underwithered leaves regardless of unpredictable weather conditions.",
+                  link: "/tell-us-your-challenge",
+                  linkText: "Request a tea withering automation audit"
+                },
+                {
+                  q: "Can existing fluidized bed tea dryers be retrofitted with smart temperature controllers?",
+                  a: "Yes. Sanota provides complete fluidized bed tea dryer retrofit solutions. We install high-precision PID temperature controllers, automated damper actuators, and exhaust humidity sensors directly onto legacy tea dryers to stabilize drying temperatures, reduce firewood/energy waste, and eliminate burnt particles.",
+                  link: "/tell-us-your-challenge",
+                  linkText: "Evaluate tea dryer retrofitting"
+                },
+                {
+                  q: "What components are included in a commercial smart fertigation dosing system integration?",
+                  a: "Our commercial fertigation integration combines multi-channel venturi dosing injectors, real-time electrical conductivity (EC) and pH sensors, automated solenoid manifold valves, and PLC automation. Growers can deliver precise nutrient recipes automatically based on soil demand.",
+                  link: "/contact",
+                  linkText: "Inquire about fertigation systems"
+                },
+                {
+                  q: "What is the typical ROI and cost justification for an automated greenhouse climate control system?",
+                  a: "Automated greenhouse climate control optimizes temperature, humidity, and venting through sensor-driven motor drives. Commercial growers typically achieve ROI within 12 to 18 months through 25-35% water savings, reduced crop disease, and consistent year-round yields.",
+                  link: "/contact",
+                  linkText: "Discuss greenhouse automation"
+                }
+              ].map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-[#131C2E]/80 backdrop-blur-md transition-all shadow-sm hover:shadow-md"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-bold text-lg text-[#17135B] dark:text-white"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-full bg-amber-500/10 text-[#C59B27] dark:text-[#E8B84B] flex items-center justify-center text-xs font-black shrink-0">
+                          0{idx + 1}
+                        </span>
+                        {faq.q}
+                      </span>
+                      <ChevronDown
+                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C59B27] dark:text-[#E8B84B]" : ""}`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-1 text-slate-600 dark:text-slate-300 text-base leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                            <p className="mb-3">{faq.a}</p>
+                            <Link
+                              href={faq.link}
+                              className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline"
+                            >
+                              <CheckCircle2 className="w-4 h-4 mr-1.5" />
+                              {faq.linkText} &rarr;
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
