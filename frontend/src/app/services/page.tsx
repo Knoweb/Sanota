@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
-import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers } from "lucide-react";
+import { ArrowRight, Search, PenTool, Wrench, Cpu, RefreshCw, Rocket, Shield, GraduationCap, Layers, ChevronDown, HelpCircle, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { servicesES } from "@/locales/es/services";
 import { servicesDE } from "@/locales/de/services";
@@ -73,10 +74,10 @@ const services = [
     intro: "When standard equipment does not fully address an operational requirement, Sanota can develop machinery, equipment and products around the client's specific need.",
     description: "The service can cover the journey from initial concept and engineering design to fabrication, assembly, testing, installation and improvement.",
     items: [
-      "Custom machinery development",
-      "Special-purpose equipment",
+      "Custom industrial machinery retrofitting and fabrication",
+      "Special-purpose equipment development",
       "Production and processing equipment",
-      "Product and prototype development",
+      "Product and prototype engineering",
       "Mechanical and electrical integration",
       "Control and automation integration",
       "Fabrication and assembly",
@@ -100,10 +101,10 @@ const services = [
     intro: "Sanota helps clients automate operations, connect equipment and gain better visibility over performance.",
     description: "Solutions can combine industrial automation, sensors, control systems, connectivity, cloud platforms, dashboards, alerts, reports and software applications. Where software and advanced digital capability are required, Sanota works with Knoweb, an affiliated IT company under common ownership.",
     items: [
-      "Industrial automation",
-      "PLC and control-system development",
+      "Industrial automation & SCADA integration",
+      "Custom PLC SCADA control panel assembly",
       "HMI and operator interfaces",
-      "Sensor and instrumentation integration",
+      "Factory IIoT predictive maintenance sensors integration",
       "Machine and process monitoring",
       "IoT system development",
       "Cloud-connected platforms",
@@ -132,8 +133,8 @@ const services = [
     items: [
       "Machinery condition assessment",
       "Mechanical refurbishment",
-      "Electrical-system improvement",
-      "Control-system replacement",
+      "Legacy factory machine electrical upgrade and modernization",
+      "Obsolete PLC panel replacement service for factories",
       "PLC and HMI upgrades",
       "Automation retrofits",
       "Obsolete-component replacement",
@@ -245,6 +246,7 @@ const services = [
 
 export default function ServicesPage() {
   const { language } = useLanguage();
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const isEs = language === "es";
   const isDe = language === "de";
   const isJa = language === "ja";
@@ -1011,6 +1013,101 @@ export default function ServicesPage() {
               >
                 {isAr ? "زيارة المركز الإعلامي" : isJa ? "メディアセンターを見る" : isDe ? "Medienbereich besuchen" : isEs ? "Visitar centro de medios" : "Visit the Media Centre"}
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Engineering FAQ & Technical Capabilities Section (Answer-First GEO & Search Engine Optimization) */}
+        <section id="faq" className="py-16 bg-white/40 dark:bg-[#0B1220]/40 border-t border-slate-200 dark:border-slate-800/60">
+          <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
+                <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
+                  Technical Questions & Answers
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
+                Industrial Engineering & Retrofitting FAQ
+              </h2>
+              <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
+                Direct answers to common questions asked by plant managers, maintenance heads, and operational directors before commissioning machinery retrofits and automation projects.
+              </p>
+            </div>
+
+            <div className="space-y-4 max-w-4xl mx-auto">
+              {[
+                {
+                  q: "Can Sanota replace obsolete PLC panels without replacing mechanical machinery?",
+                  a: "Yes. Sanota specializes in obsolete PLC panel replacement service for factories. We upgrade legacy, discontinued, or failing PLCs (such as older Siemens S5/S7-300, Omron, Mitsubishi, and Allen-Bradley units) with modern controllers and touch HMIs while preserving your existing mechanical machinery, saving up to 70% compared to purchasing new machines.",
+                  link: "/tell-us-your-challenge",
+                  linkText: "Request an obsolete PLC assessment"
+                },
+                {
+                  q: "What does a custom industrial machinery retrofitting contractor do?",
+                  a: "As an industrial machinery retrofitting contractor, Sanota modernizes existing factory production lines by replacing obsolete electrical controls, rewiring power panels, integrating modern variable frequency drives (VFDs), adding automated safety interlocks, and installing IIoT monitoring sensors to extend operational life and boost productivity.",
+                  link: "/tell-us-your-challenge",
+                  linkText: "Discuss machinery retrofitting"
+                },
+                {
+                  q: "Can Sanota assemble custom PLC SCADA control panels for international standards?",
+                  a: "Yes. Sanota designs, fabricates, and rigorously tests custom PLC and SCADA control panels built to international electrical standards, featuring intuitive HMI touchscreen interfaces, industrial fieldbus protocols (Modbus, Profinet, EtherNet/IP), and cloud IoT integration for remote monitoring.",
+                  link: "/contact",
+                  linkText: "Inquire about control panel assembly"
+                },
+                {
+                  q: "How does predictive maintenance IIoT sensor integration prevent factory downtime?",
+                  a: "By retrofitting industrial vibration, temperature, current, and pressure sensors directly onto existing rotating assets and production lines, Sanota's IIoT platforms detect mechanical degradation and electrical anomalies before catastrophic failure occurs, reducing unplanned downtime by up to 45%.",
+                  link: "/contact",
+                  linkText: "Schedule an IIoT site review"
+                }
+              ].map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-[#131C2E]/80 backdrop-blur-md transition-all shadow-sm hover:shadow-md"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-bold text-lg text-[#17135B] dark:text-white"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-full bg-amber-500/10 text-[#C59B27] dark:text-[#E8B84B] flex items-center justify-center text-xs font-black shrink-0">
+                          0{idx + 1}
+                        </span>
+                        {faq.q}
+                      </span>
+                      <ChevronDown
+                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C59B27] dark:text-[#E8B84B]" : ""}`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-1 text-slate-600 dark:text-slate-300 text-base leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                            <p className="mb-3">{faq.a}</p>
+                            <Link
+                              href={faq.link}
+                              className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline"
+                            >
+                              <CheckCircle2 className="w-4 h-4 mr-1.5" />
+                              {faq.linkText} &rarr;
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
