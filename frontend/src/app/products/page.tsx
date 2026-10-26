@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Settings, Coffee, Sprout, Activity, Truck, Zap, Trash2, Lightbulb, PackageSearch, Layers, Wrench, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Settings, Coffee, Sprout, Activity, Truck, Zap, Trash2, Lightbulb, PackageSearch, Layers, Wrench, ShieldCheck, ChevronLeft, ChevronRight, ChevronDown, HelpCircle, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { productsES } from "@/locales/es/products";
 import { productsDE } from "@/locales/de/products";
@@ -23,19 +23,19 @@ const productCategories = [
     icon: Settings,
     image: "/images/products/industrial_automation.jpg",
     items: [
-      "Custom industrial machinery",
-      "Special-purpose machines",
+      "Custom industrial machinery retrofitting and fabrication",
+      "Special-purpose machines development",
+      "Custom PLC SCADA control panel assembly",
+      "Industrial motor speed and conveyor automation controller",
+      "Smart manufacturing data acquisition dashboard development",
+      "Factory IIoT predictive maintenance sensors integration",
       "Automated production equipment",
       "Assembly and handling stations",
       "Machine-control systems",
-      "PLC-based automation",
       "HMI and operator-control interfaces",
-      "Sensor and instrumentation systems",
-      "Motor and drive-control systems",
-      "Production monitoring",
+      "Production and OEE monitoring",
       "Machine safety improvements",
       "Existing-machine automation",
-      "Control-panel development",
       "Machinery retrofit and modernization"
     ],
     clientNeeds: [
@@ -699,6 +699,8 @@ export default function ProductsPage() {
   const nextSlide = () => {
     setActiveCategoryIndex((prev) => (prev + 1) % productCategories.length);
   };
+
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const prevSlide = () => {
     setActiveCategoryIndex((prev) => (prev - 1 + productCategories.length) % productCategories.length);
@@ -2105,6 +2107,101 @@ export default function ProductsPage() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Industrial Machinery & SCADA Systems Technical FAQ (GEO & Search Intent Optimization) */}
+            <section id="faq" className="py-16 mt-8 border-t border-slate-200 dark:border-slate-800/60">
+              <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
+                    <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
+                      Technical Capabilities FAQ
+                    </span>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
+                    Machinery, SCADA & Automation FAQ
+                  </h2>
+                  <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
+                    Direct technical information on custom control panel assemblies, conveyor motor automation, data acquisition dashboards, and predictive maintenance sensors.
+                  </p>
+                </div>
+
+                <div className="space-y-4 max-w-4xl mx-auto text-left">
+                  {[
+                    {
+                      q: "What PLC brands and fieldbus protocols does Sanota support for custom control panel assembly?",
+                      a: "Sanota builds custom PLC SCADA control panel assemblies using leading global automation brands including Siemens, Allen-Bradley (Rockwell), Mitsubishi, Schneider Electric, and Omron. We support industrial communications including Profinet, Modbus TCP/RTU, EtherNet/IP, and MQTT for cloud IIoT.",
+                      link: "/tell-us-your-challenge",
+                      linkText: "Request custom control panel specifications"
+                    },
+                    {
+                      q: "How do industrial motor speed and conveyor automation controllers improve throughput?",
+                      a: "Our conveyor controllers integrate variable frequency drives (VFDs) and optical/proximity sensors to dynamically adjust line speeds, synchronize multi-stage transfer points, eliminate product bottlenecks, and reduce mechanical shock on conveyor belts and gearboxes.",
+                      link: "/tell-us-your-challenge",
+                      linkText: "Discuss conveyor line automation"
+                    },
+                    {
+                      q: "What data is gathered by smart manufacturing data acquisition dashboards?",
+                      a: "Sanota’s data acquisition dashboards collect real-time machine run-time, overall equipment effectiveness (OEE), cycle counts, downtime root causes, ambient temperature, humidity, and energy consumption, presented on responsive web and mobile displays with exportable audit reports.",
+                      link: "/contact",
+                      linkText: "Request a data acquisition demo"
+                    },
+                    {
+                      q: "Can Sanota manufacture special-purpose machinery tailored to custom factory footprints?",
+                      a: "Yes. Every special-purpose machine and automation station is engineered to fit your specific factory layout, throughput targets, and worker safety requirements, from 3D CAD modeling and precision machining to electrical wiring and on-site commissioning.",
+                      link: "/contact",
+                      linkText: "Consult with a machinery engineer"
+                    }
+                  ].map((faq, idx) => {
+                    const isOpen = openFaq === idx;
+                    return (
+                      <div
+                        key={idx}
+                        className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-[#131C2E]/80 backdrop-blur-md transition-all shadow-sm hover:shadow-md"
+                      >
+                        <button
+                          onClick={() => setOpenFaq(isOpen ? null : idx)}
+                          className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-bold text-lg text-[#17135B] dark:text-white"
+                          aria-expanded={isOpen}
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className="w-7 h-7 rounded-full bg-amber-500/10 text-[#C59B27] dark:text-[#E8B84B] flex items-center justify-center text-xs font-black shrink-0">
+                              0{idx + 1}
+                            </span>
+                            {faq.q}
+                          </span>
+                          <ChevronDown
+                            className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C59B27] dark:text-[#E8B84B]" : ""}`}
+                          />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-6 pb-6 pt-1 text-slate-600 dark:text-slate-300 text-base leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                                <p className="mb-3">{faq.a}</p>
+                                <Link
+                                  href={faq.link}
+                                  className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline"
+                                >
+                                  <CheckCircle2 className="w-4 h-4 mr-1.5" />
+                                  {faq.linkText} &rarr;
+                                </Link>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
 
             {/* Final CTA in Home Page Style */}
             <motion.div 
