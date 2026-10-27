@@ -40,7 +40,7 @@ const services = [
       "\"We have an idea that requires engineering evaluation.\"",
     ],
     color: "from-blue-600 to-cyan-500",
-    link: "#",
+    link: "/tell-us-your-challenge",
   },
   {
     number: "02",
@@ -66,7 +66,7 @@ const services = [
       "\"Several technologies must work together as one system.\"",
     ],
     color: "from-amber-500 to-orange-500",
-    link: "#",
+    link: "/tell-us-your-challenge",
   },
   {
     number: "03",
@@ -93,7 +93,7 @@ const services = [
       "\"We need to improve or localize an existing machine.\"",
     ],
     color: "from-emerald-500 to-teal-500",
-    link: "#",
+    link: "/services/custom-machinery-manufacturing",
   },
   {
     number: "04",
@@ -123,7 +123,7 @@ const services = [
       "\"Our engineering system requires a software component.\"",
     ],
     color: "from-purple-600 to-pink-500",
-    link: "#",
+    link: "/services/plc-hmi-iot-integration",
   },
   {
     number: "05",
@@ -153,7 +153,7 @@ const services = [
       "\"We want to add monitoring to existing equipment.\"",
     ],
     color: "from-sky-500 to-indigo-500",
-    link: "#",
+    link: "/services/machine-retrofit-modernization",
   },
   {
     number: "06",
@@ -182,7 +182,7 @@ const services = [
       "\"We need support from design through to working operation.\"",
     ],
     color: "from-rose-500 to-red-500",
-    link: "#",
+    link: "/case-studies/smart-drain-iot-flood-monitoring",
   },
   {
     number: "07",
@@ -213,7 +213,7 @@ const services = [
       "\"We want to reduce breakdown risk and plan future upgrades.\"",
     ],
     color: "from-[#E8B84B] to-amber-600",
-    link: "#",
+    link: "/services/amc-preventive-maintenance",
     primaryAction: { label: "Request an AMC Assessment", href: "/tell-us-your-challenge" },
   },
   {
@@ -241,7 +241,7 @@ const services = [
       "\"We want to strengthen our internal technical capability.\"",
     ],
     color: "from-violet-600 to-purple-500",
-    link: "#",
+    link: "/tell-us-your-challenge",
   },
 ];
 
