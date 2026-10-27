@@ -39,7 +39,8 @@ const priorityIndustries = [
       "Automated testing and inspection systems", "Machine monitoring and data collection", "Material-handling systems",
       "Machinery refurbishment", "Control-system replacement", "Preventive maintenance and AMC support"
     ],
-    buttonText: "Explore Manufacturing & Industrial Automation"
+    buttonText: "Explore Manufacturing & Industrial Automation",
+    href: "/industries/manufacturing-automation"
   },
   {
     title: "Smart Agriculture & Agri-Technology",
@@ -60,7 +61,8 @@ const priorityIndustries = [
       "Alerts and remote supervisory control",
       "Preventive maintenance and ongoing system support"
     ],
-    buttonText: "Explore Smart Agriculture"
+    buttonText: "Explore Smart Agriculture",
+    href: "/industries/greenhouse-smart-agriculture"
   },
   {
     title: "Food & Beverage Processing",
@@ -74,7 +76,8 @@ const priorityIndustries = [
       "Cooking and incubation equipment", "Conveyors and product handling", "Processing-line integration",
       "Automation and safety controls", "Temperature and humidity monitoring", "Packaging-flow support", "Maintenance and AMC services"
     ],
-    buttonText: "Explore Food & Beverage Processing"
+    buttonText: "Explore Food & Beverage Processing",
+    href: "/industries/food-processing-machinery"
   },
   {
     title: "Tea Industry Solutions",
@@ -95,7 +98,8 @@ const priorityIndustries = [
       "Factory-wide energy, humidity and process monitoring",
       "Machinery modernization and AMC support"
     ],
-    buttonText: "Explore Tea Industry Solutions"
+    buttonText: "Explore Tea Industry Solutions",
+    href: "/industries/tea-factory-automation"
   }
 ];
 
@@ -494,7 +498,7 @@ export default function IndustriesPage() {
                     ))}
                   </div>
                   
-                  <Link href="#" className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors text-sm shadow-lg shadow-[#E8B84B]/20">
+                  <Link href={priorityIndustries[activeIndex].href || "/tell-us-your-challenge"} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors text-sm shadow-lg shadow-[#E8B84B]/20">
                     {ind && ind.prioritySectors[activeIndex] 
                       ? ind.prioritySectors[activeIndex].button 
                       : priorityIndustries[activeIndex].buttonText} <ArrowRight className="ml-2 w-5 h-5" />
@@ -581,7 +585,7 @@ export default function IndustriesPage() {
                               {desc}
                             </p>
                             <Link 
-                              href="#" 
+                              href="/tell-us-your-challenge" 
                               className="inline-flex items-center text-[13px] font-bold uppercase tracking-widest text-[#E8B84B] hover:text-white transition-colors group/link"
                             >
                               {buttonText} <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
