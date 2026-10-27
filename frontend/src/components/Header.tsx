@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -84,6 +84,15 @@ export default function Header() {
           </nav>
 
           <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
+            <a
+              href="tel:+94740709989"
+              aria-label="Call Sanota Engineering"
+              className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 dark:border-slate-700/80 bg-white/80 dark:bg-[#131C2E] text-[12px] font-bold text-[#17135B] dark:text-slate-200 hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors shadow-xs"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#C59B27] dark:text-[#E8B84B]" />
+              <span>+94 74 070 9989</span>
+            </a>
+
             <Link
               href={localizedHref("/tell-us-your-challenge")}
               className="inline-flex items-center px-3.5 py-2 2xl:px-5 2xl:py-2.5 border border-transparent text-[11.5px] 2xl:text-[13px] font-bold rounded-full text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all uppercase tracking-wider shadow-md hover:shadow-lg whitespace-nowrap"
@@ -126,10 +135,17 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="tel:+94740709989"
+              className="flex items-center justify-center gap-2 mt-4 px-4 py-3 rounded-md border border-[#C59B27]/40 dark:border-[#E8B84B]/40 text-[#17135B] dark:text-slate-100 font-bold text-[14px] bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 hover:bg-[#C59B27]/20 transition-colors"
+            >
+              <Phone className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
+              <span>Call: +94 74 070 9989</span>
+            </a>
             <Link
               href={localizedHref("/tell-us-your-challenge")}
               onClick={() => setIsOpen(false)}
-              className="block mt-6 text-center px-4 py-4 border border-transparent text-[14px] font-bold rounded-md text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] uppercase tracking-wider shadow-md"
+              className="block mt-2 text-center px-4 py-3.5 border border-transparent text-[14px] font-bold rounded-md text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] uppercase tracking-wider shadow-md"
             >
               {t.nav.tellUsYourChallenge}
             </Link>

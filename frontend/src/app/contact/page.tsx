@@ -740,10 +740,10 @@ export default function ContactPage() {
 
                 <div className="transform group-hover:translate-x-2 transition-transform duration-500 mb-8">
                   <p className="text-slate-700 dark:text-slate-200 text-[15px] leading-relaxed font-medium tracking-wide">
-                    Sanota (Pvt) Ltd<br />
-                    No 16, Wewelwala Road<br />
-                    Bataganwila, Galle.<br />
-                    Sri Lanka
+                    Sanota (Private) Limited (PV 74540)<br />
+                    441/2C Wackwella Road<br />
+                    Galle 80000, Sri Lanka<br />
+                    <span className="text-xs text-slate-500">Workshop: Bataganwila, Galle</span>
                   </p>
                 </div>
 

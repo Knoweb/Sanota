@@ -10,10 +10,10 @@ import { homeJA } from "@/locales/ja/home";
 import { homeAR } from "@/locales/ar/home";
 
 const industriesLinksEN = [
-  { name: 'Manufacturing & Industrial Automation', href: '/industries' },
-  { name: 'Smart Agriculture', href: '/industries' },
-  { name: 'Food & Beverage Processing', href: '/industries' },
-  { name: 'Tea Industry Solutions', href: '/industries' },
+  { name: 'Manufacturing Automation', href: '/industries/manufacturing-automation' },
+  { name: 'Greenhouse & Smart Agriculture', href: '/industries/greenhouse-smart-agriculture' },
+  { name: 'Food & Spice Machinery', href: '/industries/food-processing-machinery' },
+  { name: 'Tea Factory Automation', href: '/industries/tea-factory-automation' },
   { name: 'Logistics & Warehousing', href: '/industries' },
   { name: 'Energy & Resource Efficiency', href: '/industries' },
   { name: 'Environmental & Waste Solutions', href: '/industries' },
@@ -62,13 +62,13 @@ const industriesLinksJA = [
 ];
 
 const servicesLinksEN = [
-  { name: 'Engineering Consultation', href: '/services' },
+  { name: 'Engineering Consultation', href: '/tell-us-your-challenge' },
   { name: 'System & Product Design', href: '/services' },
-  { name: 'Custom Machinery Development', href: '/services' },
-  { name: 'Automation, IoT & Digital Integration', href: '/services' },
-  { name: 'Retrofit & Modernization', href: '/services' },
-  { name: 'Project Execution & Commissioning', href: '/services' },
-  { name: 'AMC & Lifecycle Support', href: '/services' },
+  { name: 'Custom Machinery Development', href: '/services/custom-machinery-manufacturing' },
+  { name: 'PLC, HMI & IoT Integration', href: '/services/plc-hmi-iot-integration' },
+  { name: 'Machine Retrofit & Modernization', href: '/services/machine-retrofit-modernization' },
+  { name: 'Project Execution & Commissioning', href: '/case-studies/smart-drain-iot-flood-monitoring' },
+  { name: 'Machinery AMC & Maintenance', href: '/services/amc-preventive-maintenance' },
   { name: 'Technical Training', href: '/services' }
 ];
 
@@ -107,10 +107,10 @@ const servicesLinksJA = [
 
 const exploreLinksEN = [
   { name: 'Products & Systems', href: '/products' },
-  { name: 'Completed Work', href: '/media' },
-  { name: 'Project Stories', href: '/media' },
-  { name: 'Videos', href: '/media' },
-  { name: 'Photo Gallery', href: '/media' },
+  { name: 'Smart Drain Case Study (WIPO 2025)', href: '/case-studies/smart-drain-iot-flood-monitoring' },
+  { name: 'Galle Engineering Workshop', href: '/locations/galle' },
+  { name: 'Completed Work & Media', href: '/media' },
+  { name: 'Engineering Insights', href: '/insights' },
   { name: 'Innovation & Partnerships', href: '/contact' },
   { name: 'About Sanota', href: '/about' }
 ];
@@ -289,11 +289,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
-                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">+94 740 70 99 89</span>
+                <a href="tel:+94740709989" className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">+94 74 070 9989</a>
               </li>
               <li className="flex items-start">
                 <MapPin className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0 mt-0.5" />
-                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">{f ? f.location : "Sri Lanka"}</span>
+                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">441/2C Wackwella Road, Galle 80000, Sri Lanka</span>
               </li>
             </ul>
 
@@ -317,13 +317,13 @@ export default function Footer() {
               {isAr ? "روابط التواصل الاجتماعي" : isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
             </h3>
             <div className="flex space-x-3">
-              <a href="https://www.linkedin.com/company/sanotalk/?originalSubdomain=lk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
+              <a href="https://www.linkedin.com/company/sanotalk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
               <a href="https://www.instagram.com/sanota_lk/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#E1306C] hover:border-[#E1306C] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
               </a>
-              <a href="https://web.facebook.com/SanotaPrivateLimited/?_rdc=1&_rdr#" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all">
+              <a href="https://www.facebook.com/SanotaPrivateLimited" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </a>
             </div>
@@ -334,13 +334,13 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <p className="text-slate-500 text-xs">
-            {f ? f.rights : `© ${currentYear} Sanota (Pvt) Ltd. All rights reserved.`}
+            {f ? f.rights : `© ${currentYear} Sanota (Private) Limited (PV 74540). All rights reserved.`}
           </p>
           <div className="flex space-x-6 text-slate-500 text-xs">
-            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
               {f ? f.privacyPolicy : "Privacy Policy"}
             </Link>
-            <Link href="#" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
+            <Link href="/terms" className="hover:text-[#17135B] dark:hover:text-slate-300 transition-colors">
               {f ? f.terms : "Terms and Conditions"}
             </Link>
           </div>
