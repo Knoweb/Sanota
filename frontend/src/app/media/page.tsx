@@ -668,8 +668,8 @@ export default function MediaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="#" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm shadow-md">
-                {m ? m.projectStories.primaryButton : "Read Project Stories"} <ArrowRight className="ml-2 w-4 h-4" />
+              <Link href="/case-studies/smart-drain-iot-flood-monitoring" className="px-6 py-3 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center text-sm shadow-md">
+                {m ? m.projectStories.primaryButton : "Read Smart Drain Case Study"} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
               <Link href="/tell-us-your-challenge" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-[#131C2E] dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center text-sm">
                 {m ? m.projectStories.secondaryButton : "Discuss a Similar Requirement"}
