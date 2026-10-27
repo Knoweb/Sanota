@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Industrial Machinery & Automation Systems | Sanota Global',
+  title: 'Industrial Machinery & Automation Systems',
   description:
     'Custom PLC SCADA control panel assembly, industrial motor speed and conveyor automation controller, smart manufacturing data acquisition dashboards, and precision machinery.',
   keywords: [

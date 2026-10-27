@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Industries | Tea Automation & Smart Agriculture Solutions | Sanota Global',
+  title: 'Industrial Automation & Smart Engineering Solutions',
   description:
     'Advanced tea process automation, automated tea trough withering humidity control, fluidized bed tea dryer retrofits, automated greenhouse climate control, and smart fertigation systems.',
   keywords: [

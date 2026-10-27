@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Engineering Insights & Technical Knowledge Base | Sanota Global',
+  title: 'Engineering Insights & Technical Knowledge Base',
   description:
     'Explore technical guides, engineering insights, and practical frameworks on industrial automation, tea process optimization, machinery retrofitting, and smart agriculture IoT.',
   keywords: [

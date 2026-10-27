@@ -1,41 +1,49 @@
+# robots.txt — https://www.sanotaglobal.com
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /api
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /*?*utm_
+
+# --- AI search & user-triggered agents (allowed for AI Overviews, Citations & Copilot) ---
+User-agent: OAI-SearchBot
+Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /admin
-Disallow: /api
 
-User-agent: GPTBot
+User-agent: Claude-SearchBot
 Allow: /
-Disallow: /admin
-Disallow: /api
+
+User-agent: Claude-User
+Allow: /
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /admin
-Disallow: /api
 
-User-agent: ClaudeBot
+User-agent: Perplexity-User
 Allow: /
-Disallow: /admin
-Disallow: /api
 
-User-agent: Google-Extended
+User-agent: Applebot
 Allow: /
-Disallow: /admin
-Disallow: /api
 
 User-agent: Bingbot
 Allow: /
-Disallow: /admin
-Disallow: /api
+
+User-agent: Googlebot
+Allow: /
+
+# --- AI training crawlers (allowed for model familiarity & B2B entity citation) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /admin
-Disallow: /api
 
 Sitemap: https://www.sanotaglobal.com/sitemap.xml

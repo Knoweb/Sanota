@@ -2,23 +2,24 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'About Sanota Global | Integrated Engineering & Industrial Automation Partner',
+  title: 'About Sanota: Sri Lankan Engineering Company Since 2010',
   description:
-    'Learn about Sanota Global, a multidisciplinary engineering technology partner delivering custom machinery, industrial automation, tea process automation, and smart agriculture systems.',
+    'Sanota (Pvt) Ltd, founded in 2010 by engineer Sahan C. Ranasinghe, designs, automates and maintains machinery and smart systems for Sri Lankan industry.',
   keywords: [
-    'about Sanota Global',
+    'about Sanota',
+    'sanota engineering company',
+    'sanota pvt ltd',
+    'engineering company galle',
+    'Sahan C Ranasinghe',
     'industrial automation engineering company',
-    'custom machinery manufacturer sri lanka',
-    'tea factory automation engineering',
-    'smart agriculture technology partner'
   ],
   alternates: {
     canonical: 'https://www.sanotaglobal.com/about',
   },
   openGraph: {
-    title: 'About Sanota Global | Integrated Engineering & Industrial Automation Partner',
+    title: 'About Sanota: Sri Lankan Engineering Company Since 2010',
     description:
-      'Sanota combines mechanical engineering, automation, embedded systems, and industrial software to modernize manufacturing and agriculture.',
+      'Sanota (Pvt) Ltd, founded in 2010 by engineer Sahan C. Ranasinghe, designs, automates and maintains machinery and smart systems for Sri Lankan industry.',
     url: 'https://www.sanotaglobal.com/about',
     type: 'website',
   },
@@ -27,19 +28,26 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'About Sanota Global',
+  name: 'About Sanota (Private) Limited',
   url: 'https://www.sanotaglobal.com/about',
   description:
-    'Sanota is an integrated engineering technology partner providing industrial automation, machinery modernization, smart agriculture, and IoT solutions.',
+    'Sanota (Private) Limited (PV 74540) is a Sri Lankan industrial engineering and automation company founded in 2010 by engineer Sahan C. Ranasinghe.',
   mainEntity: {
     '@type': 'Organization',
-    name: 'Sanota Global',
+    '@id': 'https://www.sanotaglobal.com/#org',
+    name: 'Sanota',
+    legalName: 'Sanota (Private) Limited',
     url: 'https://www.sanotaglobal.com',
-    logo: 'https://www.sanotaglobal.com/sanota.png',
+    logo: 'https://www.sanotaglobal.com/lg.png',
+    founder: {
+      '@type': 'Person',
+      name: 'Sahan C. Ranasinghe',
+      alumniOf: 'University of Moratuwa',
+    },
     sameAs: [
-      'https://www.linkedin.com/company/sanotalk/',
-      'https://web.facebook.com/SanotaPrivateLimited/',
-      'https://www.instagram.com/sanota_lk/'
+      'https://www.facebook.com/SanotaPrivateLimited',
+      'https://www.linkedin.com/company/sanotalk',
+      'https://www.instagram.com/sanota_lk/',
     ],
   },
 };

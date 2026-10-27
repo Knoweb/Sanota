@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Media, Completed Work & Project Stories | Sanota Global',
+  title: 'Completed Work, Case Studies & Project Stories',
   description:
     'Explore completed engineering projects, industrial automation case studies, machinery installations, video demonstrations, and company updates from Sanota Global.',
   keywords: [

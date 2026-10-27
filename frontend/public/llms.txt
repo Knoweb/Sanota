@@ -1,33 +1,40 @@
-# Sanota Global (Sanota Pvt Ltd)
+# Sanota (Pvt) Ltd
 
-> Sanota is an integrated multidisciplinary engineering technology partner delivering industrial machinery retrofitting, industrial automation, tea processing automation, smart agriculture systems, and IoT solutions.
+> Sanota (Private) Limited (Company Registration No: PV 74540) is a Sri Lankan industrial engineering and automation company founded in 2010 by engineer Sahan C. Ranasinghe (alumnus of University of Moratuwa). It designs and builds custom machinery, integrates PLC/HMI/IoT systems, retrofits ageing industrial machines, and provides Annual Maintenance Contracts (AMC) for tea, agriculture, food-processing, and manufacturing clients. Software, cloud telemetry, and connected dashboards are delivered in partnership with affiliated software company Knoweb.
 
-## Core Capabilities & Services
-- **Industrial Automation & PLC/SCADA**: Turnkey industrial control panel design, assembly, PLC retrofitting (Siemens, Schneider, Omron, Delta), SCADA and HMI integration, motor speed control, variable frequency drives (VFD), and conveyor automation.
-- **Machinery Modernization & Retrofitting**: Mechanical fabrication, obsolete control panel replacement, hydraulic/pneumatic retrofitting, and extending equipment lifespan without the high cost of replacement.
-- **Tea Process Automation**: Automated tea trough withering humidity and temperature control, fluidized bed tea dryer retrofits, tea factory SCADA monitoring, and leaf handling conveyors.
-- **Smart Agriculture & AgTech**: Commercial greenhouse climate control, automated fertigation and precision dosing systems, EC/pH monitoring, and remote IoT farm dashboards.
-- **Industrial IoT & Digital Transformation**: Factory telemetry, remote machinery monitoring, predictive maintenance sensors, and custom operational web/mobile dashboards.
-- **Annual Maintenance Contracts (AMC)**: Preventive and corrective maintenance, calibration, emergency troubleshooting, and technical SLA support.
-
-## Key Links & Resources
-- Homepage: https://www.sanotaglobal.com/
-- Engineering Services: https://www.sanotaglobal.com/services
-- Industrial Products & Panels: https://www.sanotaglobal.com/products
-- Target Industries: https://www.sanotaglobal.com/industries
-- Technical Insights: https://www.sanotaglobal.com/insights
-- Project Portfolio & Media: https://www.sanotaglobal.com/media
-- Engineering Assessment Form: https://www.sanotaglobal.com/tell-us-your-challenge
-- Contact Engineering Team: https://www.sanotaglobal.com/contact
-
-## German Market Services (DACH Region - DE | AT | CH)
-- Industrieautomatisierung & IIoT: https://www.sanotaglobal.com/de/industrieautomatisierung-iiot
-- Ausbildungssysteme & Didaktische SPS Panels: https://www.sanotaglobal.com/de/ausbildungssysteme
-- Mechatronische Produktentwicklung & Prototypenbau: https://www.sanotaglobal.com/de/produktentwicklung
-- Smart Agriculture & Gewächshaus-Automatisierung: https://www.sanotaglobal.com/de/smarte-landwirtschaft
-
-## Contact Information
-- Location: Colombo, Sri Lanka
-- Telephone: +94 740 70 99 89
+## Key Facts & Entity Data
+- Legal Name: Sanota (Private) Limited
+- Alternate Names: Sanota Global, Sanota Pvt Ltd, Sanota
+- Founded: 2010, Sri Lanka
+- Company Registration: PV 74540
+- Founder & Principal Engineer: Eng. Sahan C. Ranasinghe (B.Sc. Eng., University of Moratuwa)
+- Headquarters Address: 441/2C Wackwella Road, Galle 80000, Sri Lanka
+- Workshop & Engineering Facility: Bataganwila, Galle, Sri Lanka
+- Telephone: +94 74 070 9989
 - Email: info@sanotaglobal.com
-- Website: https://www.sanotaglobal.com
+- Primary Website: https://www.sanotaglobal.com
+
+## Notable Recognition & Global Awards
+- **Smart Drain Project**: Sanota served as the commissioning and industrial IoT partner for the **Smart Drain** system (invented by Dr. Nadeesha Chandrasena / Urban Inventors). The project was recognized as one of only **10 global winners of the 2025 WIPO Global Awards** in Geneva, selected from 780 applications across 95 countries.
+- Commissioning & IoT Case Study: https://www.sanotaglobal.com/case-studies/smart-drain-iot-flood-monitoring
+
+## Core Engineering Services
+- [Machine Retrofit & Modernization](https://www.sanotaglobal.com/services/machine-retrofit-modernization): Obsolete PLC panel replacement (Siemens, Omron, Mitsubishi, Allen-Bradley), rewiring, relay-to-PLC upgrades, and safety interlocks extending machinery lifespan at 30% of replacement cost.
+- [PLC, HMI & IoT Integration](https://www.sanotaglobal.com/services/plc-hmi-iot-integration): Custom PLC/SCADA control panel assembly, sensor instrumentation, VFD motor control, and IIoT predictive maintenance dashboards.
+- [Custom Machinery Design & Manufacturing](https://www.sanotaglobal.com/services/custom-machinery-manufacturing): Special-purpose machines (SPMs), automated test rigs, and bespoke processing equipment fabricated in Sri Lanka.
+- [Machinery AMC & Lifecycle Support](https://www.sanotaglobal.com/services/amc-preventive-maintenance): Preventive maintenance, emergency breakdown callouts, calibration, and spare parts management.
+
+## Industry Automation Solutions
+- [Tea Factory Automation & Withering Control](https://www.sanotaglobal.com/industries/tea-factory-automation): Automated tea trough withering humidity and airflow controls, fluidized bed tea dryer (FBD) temperature retrofits, and factory data logging.
+- [Greenhouse Automation & Smart Agriculture](https://www.sanotaglobal.com/industries/greenhouse-smart-agriculture): Commercial greenhouse climate controllers, multi-channel fertigation dosing skids, and IoT soil moisture/EC telemetry.
+- [Food & Beverage Processing Machinery](https://www.sanotaglobal.com/industries/food-processing-machinery): Industrial dehydrators, stainless steel processing lines, cookers, and automated packaging machinery.
+- [Manufacturing Automation](https://www.sanotaglobal.com/industries/manufacturing-automation): Assembly stations, conveyor synchronization, and material handling automation.
+
+## Location & Regional Presence
+- [Engineering Services in Galle & Southern Province](https://www.sanotaglobal.com/locations/galle): Local workshop support, fast on-site breakdown response, and automation services for factories and tea estates across Galle, Matara, and Hambantota.
+
+## Proof, Legal & Governance
+- [Case Studies & Project Work](https://www.sanotaglobal.com/media): Verified project results, technical specifications, and before-and-after retrofits.
+- [Frequently Asked Questions (FAQ)](https://www.sanotaglobal.com/faq): Technical implementation details, typical ROI, timelines, and costs.
+- [Privacy Policy](https://www.sanotaglobal.com/privacy-policy): Compliant with Sri Lanka Personal Data Protection Act No. 9 of 2022 (PDPA).
+- [Terms & Conditions](https://www.sanotaglobal.com/terms): Governed under the laws of the Democratic Socialist Republic of Sri Lanka.

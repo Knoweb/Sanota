@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Tell Us Your Challenge | Engineering Assessment & Consultation | Sanota Global',
+  title: 'Tell Us Your Challenge | Engineering Assessment & Consultation',
   description:
     'Submit your machinery, automation, process control, or modernization requirement. Sanota provides technical evaluation, concept feasibility, and engineering proposals.',
   keywords: [

@@ -14,10 +14,10 @@ import { organizationSchema, websiteSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sanotaglobal.com'),
   title: {
-    default: "Sanota | Integrated Engineering for Evolving Industries",
-    template: "%s | Sanota Global",
+    default: "Industrial Automation, Custom Machinery & Smart Systems in Sri Lanka | Sanota",
+    template: "%s | Sanota",
   },
-  description: "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team. Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward.",
+  description: "Custom machinery, PLC & IoT automation, machine retrofits and AMC from one Sri Lankan engineering team since 2010. Tell us your challenge today.",
   keywords: [
     "Industrial automation system integrator sri lanka",
     "automated tea trough withering humidity control system",
@@ -68,6 +68,7 @@ export const metadata: Metadata = {
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AmbientGlow from "@/components/AmbientGlow";
 import GlobalGlow from "@/components/GlobalGlow";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -137,6 +138,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AnimatedBackground />
             <AmbientGlow />
             <GlobalGlow />
+            <FloatingWhatsApp />
             {children}
           </ThemeProvider>
         </LanguageProvider>

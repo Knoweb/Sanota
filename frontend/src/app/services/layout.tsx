@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Engineering Services & Machinery Retrofitting | Sanota Global',
+  title: 'Engineering Services & Machinery Retrofitting',
   description:
     'Custom industrial machinery retrofitting contractor, obsolete PLC panel replacement service, custom PLC SCADA control panel assembly, and electrical modernization for global factories.',
   keywords: [
