@@ -1,3 +1,12 @@
+export function getStrapiBaseUrl(): string {
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname.includes('sanotaglobal.com')) {
+      return window.location.origin;
+    }
+  }
+  return process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://127.0.0.1:1337';
+}
+
 import { ChallengeFormData } from "@/app/tell-us-your-challenge/types";
 
 export interface SubmitChallengeResponse {
@@ -7,7 +16,7 @@ export interface SubmitChallengeResponse {
 }
 
 export async function submitChallengeEnquiry(data: ChallengeFormData): Promise<SubmitChallengeResponse> {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/challenge-enquiries/submit`;
+  const url = `${getStrapiBaseUrl()}/api/challenge-enquiries/submit`;
 
   const payload = {
     coreRequirements: data.coreRequirements,
@@ -138,7 +147,7 @@ export interface CallRequestData {
 }
 
 export async function submitContactEnquiry(data: ContactFormData): Promise<{ success: boolean; referenceNumber: string; message: string }> {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/contact-enquiries/submit`;
+  const url = `${getStrapiBaseUrl()}/api/contact-enquiries/submit`;
 
   const payload = {
     name: data.name,
@@ -185,7 +194,7 @@ export async function submitContactEnquiry(data: ContactFormData): Promise<{ suc
 }
 
 export async function submitCallRequest(data: CallRequestData): Promise<{ success: boolean; referenceNumber: string; message: string }> {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/call-requests/submit`;
+  const url = `${getStrapiBaseUrl()}/api/call-requests/submit`;
 
   const response = await fetch(url, {
     method: 'POST',
@@ -224,7 +233,7 @@ export interface Article {
 
 export async function getArticles(limit: number = 3): Promise<Article[]> {
   try {
-    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+    const strapiUrl = getStrapiBaseUrl();
     if (!strapiUrl) return [];
     const url = `${strapiUrl}/api/articles?populate=*&sort=date:desc&pagination[limit]=${limit}`;
     const res = await fetch(url, { 
@@ -248,7 +257,7 @@ export async function getArticles(limit: number = 3): Promise<Article[]> {
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
-    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+    const strapiUrl = getStrapiBaseUrl();
     if (!strapiUrl) return null;
     const url = `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&populate=*`;
     const res = await fetch(url, { 
