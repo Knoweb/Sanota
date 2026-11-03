@@ -6,22 +6,28 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/api'],
+        disallow: ['/api/', '/thank-you'],
       },
-      // Explicitly allow AI and Generative Search Crawlers (GEO Optimization)
+      // Explicitly allow AI and Generative Search Crawlers (GEO & AEO Optimization)
       {
         userAgent: [
+          'OAI-SearchBot',
           'ChatGPT-User',
-          'GPTBot',
+          'Claude-SearchBot',
+          'Claude-User',
           'PerplexityBot',
+          'Perplexity-User',
+          'Applebot',
+          'Bingbot',
+          'Googlebot',
+          'GPTBot',
           'ClaudeBot',
           'Google-Extended',
-          'Bingbot',
-          'Applebot-Extended'
+          'Applebot-Extended',
         ],
         allow: '/',
-        disallow: ['/admin', '/api'],
-      }
+        disallow: ['/api/', '/thank-you'],
+      },
     ],
     sitemap: 'https://www.sanotaglobal.com/sitemap.xml',
   };
