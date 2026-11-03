@@ -50,10 +50,10 @@ export default function CorporateProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glowing-card group flex flex-col p-6 rounded-3xl bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(232,184,75,0.15)] transition-all duration-300 cursor-default"
+              className="glowing-card group flex flex-col p-6 rounded-3xl bg-white dark:bg-[#131C2E]/40 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 hover:border-[#C59B27]/50 dark:hover:border-[#E8B84B]/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(232,184,75,0.15)] transition-all duration-300 cursor-default shadow-sm"
             >
-              <h2 className="text-lg font-black text-[#E8B84B] mb-3 group-hover:text-[#f3c65c] group-hover:translate-x-1 transition-all duration-300">{point.title}</h2>
-              <p className="text-sm font-medium text-slate-300 leading-relaxed group-hover:text-white transition-colors duration-300">{point.description}</p>
+              <h2 className="text-lg font-black text-[#8A6508] dark:text-[#E8B84B] mb-3 group-hover:text-[#17135B] dark:group-hover:text-[#f3c65c] group-hover:translate-x-1 transition-all duration-300">{point.title}</h2>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-300">{point.description}</p>
             </motion.div>
           ))}
         </div>

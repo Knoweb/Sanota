@@ -131,12 +131,17 @@ export default function Hero() {
                 >
                   <Image
                     src={images[currentImageIndex]}
-                    alt="Industrial Automation"
+                    alt={
+                      currentImageIndex === 0
+                        ? "Industrial Automation Engineering Machinery"
+                        : currentImageIndex === 1
+                        ? "Smart Greenhouse Agriculture IoT Control"
+                        : "Food Processing Machinery and Conveyor Systems"
+                    }
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
                     className="object-cover opacity-100"
-                    priority
-                    unoptimized
+                    priority={currentImageIndex === 0}
                     placeholder="blur"
                     blurDataURL={HERO_BLUR_DATA[heroKeys[currentImageIndex]]}
                   />
