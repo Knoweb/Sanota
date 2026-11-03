@@ -583,12 +583,14 @@ html.light section#priority-industries button.text-white {
 }
 
 /* Ensure forced white text utility always works */
-html.light .\!text-white {
+html.light .\!text-white,
+html.light .floating-whatsapp-tooltip,
+html.light .floating-whatsapp-tooltip * {
   color: #FFFFFF !important;
 }
 
 /* General text-white on regular light containers turns to deep navy */
-html.light .text-white:not(button):not(button *):not(a[class*="bg-"]):not(a[class*="bg-"] *):not(.\!text-white):not([class*="bg-[#17135B]"] *):not([class*="bg-[#0F1E36]"] *):not([class*="bg-[#2E5EAA]"] *):not(.group.relative:has(img) .absolute *):not([class*="overflow-hidden"]:has(img) .absolute *):not(section#priority-industries *):not(.aero-dark-section *) {
+html.light .text-white:not(button):not(button *):not(a[class*="bg-"]):not(a[class*="bg-"] *):not(.\!text-white):not(.floating-whatsapp-tooltip):not(.floating-whatsapp-tooltip *):not([class*="bg-[#17135B]"]):not([class*="bg-[#17135B]"] *):not([class*="bg-[#0F1E36]"] *):not([class*="bg-[#2E5EAA]"] *):not(.group.relative:has(img) .absolute *):not([class*="overflow-hidden"]:has(img) .absolute *):not(section#priority-industries *):not(.aero-dark-section *) {
   color: #17135B !important;
 }
 

@@ -35,11 +35,11 @@ const contactPageSchema = {
     '@type': 'Organization',
     name: 'Sanota Global',
     url: 'https://www.sanotaglobal.com',
-    telephone: '+94 740 70 99 89',
+    telephone: '+94 74 070 9989',
     email: 'info@sanotaglobal.com',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Colombo',
+      addressLocality: 'Galle',
       addressCountry: 'LK',
     },
   },

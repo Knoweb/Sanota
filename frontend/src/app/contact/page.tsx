@@ -46,7 +46,7 @@ const contactOptionsDE = [
 
 const directContact = {
   telephone: [
-    { label: "Main office & Technical enquiries", value: "+94 740 70 99 89" },
+    { label: "Main office & Technical enquiries", value: "+94 74 070 9989" },
   ],
   email: [
     { label: "General enquiries", value: "info@sanotaglobal.com" },
@@ -58,7 +58,7 @@ const directContact = {
 
 const directContactES = {
   telephone: [
-    { label: "Oficina principal y consultas técnicas", value: "+94 740 70 99 89" },
+    { label: "Oficina principal y consultas técnicas", value: "+94 74 070 9989" },
   ],
   email: [
     { label: "Consultas generales", value: "info@sanotaglobal.com" },
@@ -70,7 +70,7 @@ const directContactES = {
 
 const directContactDE = {
   telephone: [
-    { label: "Hauptbüro & Technische Anfragen", value: "+94 740 70 99 89" },
+    { label: "Hauptbüro & Technische Anfragen", value: "+94 74 070 9989" },
   ],
   email: [
     { label: "Allgemeine Anfragen", value: "info@sanotaglobal.com" },
@@ -143,7 +143,7 @@ const contactOptionsJA = [
 
 const directContactJA = {
   telephone: [
-    { label: "代表窓口＆技術相談", value: "+94 740 70 99 89" },
+    { label: "代表窓口＆技術相談", value: "+94 74 070 9989" },
   ],
   email: [
     { label: "一般的なお問い合わせ", value: "info@sanotaglobal.com" },
@@ -171,7 +171,7 @@ const contactOptionsAR = [
 
 const directContactAR = {
   telephone: [
-    { label: "المكتب الرئيسي والاستفسارات الفنية", value: "+94 740 70 99 89" },
+    { label: "المكتب الرئيسي والاستفسارات الفنية", value: "+94 74 070 9989" },
   ],
   email: [
     { label: "استفسارات عامة", value: "info@sanotaglobal.com" },
@@ -427,6 +427,7 @@ export default function ContactPage() {
           <div className="page-hero-overlay" />
 
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -470,17 +471,17 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-10"
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10"
             >
               <Link
                 href="/tell-us-your-challenge"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group"
+                className="w-full sm:w-auto px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group"
               >
                 {c ? c.hero.primaryButton : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="#contact-form"
-                className="px-8 py-4 bg-white/90 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-sm"
+                className="w-full sm:w-auto px-8 py-4 bg-white/90 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-sm"
               >
                 {c ? c.hero.secondaryButton : "Request a Call"} <PhoneCall className="ml-2 w-5 h-5" />
               </a>
@@ -498,6 +499,47 @@ export default function ContactPage() {
             </motion.p>
           </div>
         </section>
+
+        {/* ── Quick Direct Contact Strip ── */}
+        <div className="relative z-20 -mt-8 max-w-[1100px] mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white/95 dark:bg-[#131C2E]/95 backdrop-blur-md border border-slate-200 dark:border-slate-700/60 rounded-2xl p-4 sm:p-5 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 flex items-center justify-center shrink-0 border border-[#C59B27]/20">
+                <Phone className="w-5 h-5 text-[#C59B27] dark:text-[#E8B84B]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  {isAr ? "الخط الهاتفي المباشر والمكتب الرئيسي" : isJa ? "代表電話＆技術窓口" : isDe ? "Direktwahl & Technische Anfragen" : isEs ? "Línea Telefónica & Consultas Técnicas" : "Direct Phone & Technical Enquiries"}
+                </p>
+                <a href="tel:+94740709989" className="text-lg sm:text-xl font-black text-[#17135B] dark:text-white hover:text-[#C59B27] dark:hover:text-[#E8B84B] transition-colors">
+                  +94 74 070 9989
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <a
+                href="tel:+94740709989"
+                className="flex-1 sm:flex-none px-6 py-3 bg-[#C59B27] dark:bg-[#E8B84B] hover:bg-[#b0881e] text-white dark:text-[#0B1220] font-black rounded-xl text-xs uppercase tracking-wider transition-all duration-200 text-center shadow-md flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span>{isAr ? "اتصل الآن" : isJa ? "今すぐ電話" : isDe ? "Jetzt anrufen" : isEs ? "Llamar ahora" : "Call Now"}</span>
+              </a>
+              <a
+                href="https://wa.me/94740709989"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 sm:flex-none px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-xs uppercase tracking-wider transition-all duration-200 text-center shadow-md flex items-center justify-center gap-2"
+              >
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
 
         {/* ── Technical Enquiry Callout ── */}
         <section className="py-14 relative z-10">
@@ -760,7 +802,7 @@ export default function ContactPage() {
                   <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="flex-1 py-3 px-4 bg-transparent border border-[#C59B27] dark:border-[#E8B84B]/50 hover:bg-[#C59B27] dark:hover:bg-[#E8B84B] hover:border-[#C59B27] dark:hover:border-[#E8B84B] text-[#C59B27] dark:text-[#E8B84B] hover:text-white dark:hover:text-[#0A101A] font-black rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.getDirections : "Get Directions"}
                   </a>
-                  <button onClick={() => alert(isAr ? "شركة سانوتا (الخاصة) المحدودة\nرقم 16، طريق ويويلوالا، باتاغانويلا، غالي، سريلانكا.\nالهاتف: +94 740 70 99 89\nالبريد الإلكتروني: info@sanotaglobal.com" : isJa ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\n電話: +94 740 70 99 89\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTelefon: +94 740 70 99 89\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle, Sri Lanka.\nTeléfono: +94 740 70 99 89\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo 16, Wewelwala Road, Bataganwila, Galle.\nPhone: +94 740 70 99 89\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
+                  <button onClick={() => alert(isAr ? "شركة سانوتا (الخاصة) المحدودة\n441/2C طريق واكويلا، غالي، سريلانكا.\nالهاتف: +94 74 070 9989\nالبريد الإلكتروني: info@sanotaglobal.com" : isJa ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\n電話: +94 74 070 9989\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\nTelefon: +94 74 070 9989\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\nTeléfono: +94 74 070 9989\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle.\nPhone: +94 74 070 9989\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.saveContact : "Save Details"}
                   </button>
                 </div>
