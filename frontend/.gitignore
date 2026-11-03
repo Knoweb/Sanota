@@ -39,3 +39,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore unused uploads in real-projects, track only active webp assets
+public/real-projects/*
+!public/real-projects/agv-unloading-conveyor.webp
+!public/real-projects/bale-machine.webp
+!public/real-projects/boiler.webp
+!public/real-projects/box-making-machine-1.webp
+!public/real-projects/drain-sensor-2.webp
+!public/real-projects/eraser-cutter.webp
+!public/real-projects/food-processing-line.webp
+!public/real-projects/green-tea-dryer.webp
+!public/real-projects/nerve-stimulator.webp
+!public/real-projects/plc-panel-2.webp
+!public/real-projects/plc-panel.webp
+!public/real-projects/smart-weighing.webp
+!public/real-projects/solar-hot-water-system.webp
+!public/real-projects/stopper-tester.webp
+!public/real-projects/tea-coin-machine.webp
+!public/real-projects/tea-tablet-machine.webp
+!public/real-projects/ten-tray-dryer.webp
+
