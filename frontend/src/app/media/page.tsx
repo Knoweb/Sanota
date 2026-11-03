@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MediaNavigationCarousel from "@/components/MediaNavigationCarousel";
 import CompletedWorkSection from "@/components/CompletedWorkSection";
-import DriftWall from "@/components/DriftWall";
+import PhotoGalleryModal from "@/components/PhotoGalleryModal";
 import NewsTagCloud from "@/components/NewsTagCloud";
 import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield, User, Tag, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -391,6 +391,7 @@ export default function MediaPage() {
   const m = isAr ? mediaAR : isJa ? mediaJA : isDe ? mediaDE : isEs ? mediaES : null;
 
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [selectedGalleryCategory, setSelectedGalleryCategory] = useState<string>("All");
   const [articles, setArticles] = useState<Article[]>([]);
   
   const getImageForSlug = (slug: string) => {
@@ -692,7 +693,17 @@ export default function MediaPage() {
                 <div 
                   key={idx} 
                   className="group relative w-full h-[200px] sm:h-[240px] lg:h-[260px] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
-                  onClick={() => setIsGalleryOpen(true)}
+                  onClick={() => {
+                    const cat = col.title.toLowerCase().includes("automation") || col.title.toLowerCase().includes("digital") 
+                      ? "Automation & IoT" 
+                      : col.title.toLowerCase().includes("equipment") || col.title.toLowerCase().includes("product") || col.title.toLowerCase().includes("workshop")
+                      ? "Machinery"
+                      : col.title.toLowerCase().includes("event") || col.title.toLowerCase().includes("team") || col.title.toLowerCase().includes("training")
+                      ? "Awards & Training"
+                      : "All";
+                    setSelectedGalleryCategory(cat);
+                    setIsGalleryOpen(true);
+                  }}
                 >
                   
                   {/* Background Image */}
@@ -728,83 +739,25 @@ export default function MediaPage() {
             </div>
 
             <div className="text-center">
-              <button onClick={() => setIsGalleryOpen(true)} className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md">
+              <button 
+                onClick={() => {
+                  setSelectedGalleryCategory("All");
+                  setIsGalleryOpen(true);
+                }} 
+                className="inline-flex items-center px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors shadow-md cursor-pointer"
+              >
                 {m ? m.photoGallery.button : "Open Photo Gallery"} <Camera className="ml-2 w-5 h-5" />
               </button>
             </div>
           </div>
         </section>
 
-        {/* Gallery Popup Modal */}
-        {isGalleryOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-12">
-            {/* Backdrop */}
-            <div 
-              className="absolute inset-0 bg-black/80 dark:bg-[#050B14]/90 backdrop-blur-md" 
-              onClick={() => setIsGalleryOpen(false)}
-            />
-            
-            {/* Modal Content */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-7xl h-full max-h-[800px] bg-white dark:bg-[#03060a] border border-slate-200 dark:border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1220] relative z-20">
-                <div className="flex items-center">
-                  <Camera className="w-6 h-6 text-[#C59B27] dark:text-[#E8B84B] mr-3" />
-                  <h3 className="text-xl font-bold text-[#17135B] dark:text-white">{isAr ? "معرض سانوتا الهندسي" : isJa ? "サノタ エンジニアリングギャラリー" : isDe ? "Sanota Ingenieurgalerie" : isEs ? "Galería de Ingeniería de Sanota" : "Sanota Engineering Gallery"}</h3>
-                </div>
-                <button 
-                  onClick={() => setIsGalleryOpen(false)}
-                  className="w-10 h-10 rounded-full bg-slate-200 dark:bg-[#131C2E] hover:bg-slate-300 dark:hover:bg-slate-700 flex items-center justify-center transition-colors group"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-600 dark:text-slate-400 group-hover:text-black dark:group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* DriftWall Container */}
-              <div className="relative flex-grow overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#E8B84B]/10 blur-[120px] rounded-full pointer-events-none" />
-                <DriftWall
-                  items={[
-                    { image: '/food-processing.webp', title: 'Food Processing Line' },
-                    { image: '/mini tea college.webp', title: 'Mini Tea Factory' },
-                    { image: '/plc-2.webp', title: 'PLC Educational Panels' },
-                    { image: '/sola-hotwater.webp', title: 'Solar Water Heater' },
-                    { image: '/bale machines.webp', title: 'Hydraulic Baling Press' },
-                    { image: '/dehydrator2.webp', title: 'Industrial Ovens' },
-                    { image: '/gold award best automated 2023.webp', title: 'Awards & Recognition' },
-                  ]}
-                  columns={5}
-                  tileWidth={240}
-                  tileHeight={160}
-                  gap={20}
-                  tilt={12}
-                  turn={-15}
-                  perspective={1000}
-                  depth={150}
-                  speed={35}
-                  direction="up"
-                  variance={0.4}
-                  parallax={0.2}
-                  lift={30}
-                  fade={0.5}
-                  dim={0.6}
-                  overlayColor="#050B14"
-                  radius={16}
-                  roll={0}
-                  pauseOnHover={true}
-                  grayscale={false}
-                />
-              </div>
-            </motion.div>
-          </div>
-        )}
+        {/* Photo Gallery Modal */}
+        <PhotoGalleryModal
+          isOpen={isGalleryOpen}
+          onClose={() => setIsGalleryOpen(false)}
+          initialCategory={selectedGalleryCategory}
+        />
 
         {/* Latest News Feeds */}
         <section id="latest-news" className="py-16 bg-transparent border-t border-slate-200 dark:border-slate-800/50">
