@@ -5,6 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { getStrapiBaseUrl } from "@/lib/api";
 
 const industryFilters = ["All Projects", "Manufacturing", "Agriculture", "Food & Beverage", "Tea", "Logistics", "Energy", "Environment", "Infrastructure", "Healthcare", "Research & Development"];
 const solutionFilters = ["All Solutions", "Machinery", "Automation", "IoT", "Software", "Modernization", "Product Development", "Project Execution", "AMC"];
@@ -127,72 +128,226 @@ const projectCriteriaAR = [
   "الصور أو مقاطع الفيديو ذات الصلة"
 ];
 
-// Dummy data injected if database is empty so the client can preview the design
+// Real completed projects matching Sanota's actual equipment and systems portfolio
 const dummyProjects: any = [
   {
     id: 1,
     attributes: {
-      title: 'Food Processing Line',
-      description: 'High-efficiency food processing line with integrated conveyor system from washing to packaging.',
+      title: 'Integrated Food Processing & Conveyor Line',
+      description: 'Continuous food preparation and packaging conveyor system built with food-grade stainless steel and automated washdown controls.',
       industry: 'Food & Beverage',
       solution: 'Machinery',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/food-processing.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/food-processing-line.webp', isLocal: true } } }
     }
   },
   {
     id: 2,
     attributes: {
-      title: 'Mini Tea Factory',
-      description: 'Compact, affordable tea processing solution for small to medium-scale producers.',
-      industry: 'Tea',
+      title: 'Carton Box Making & Packaging Machine',
+      description: 'High-speed precision carton box folding and gluing machinery with integrated PLC controls and automated sheet feeding.',
+      industry: 'Manufacturing',
       solution: 'Machinery',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/mini tea college.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/box-making-machine-1.webp', isLocal: true } } }
     }
   },
   {
     id: 3,
     attributes: {
-      title: 'PLC Educational Panels',
-      description: 'Advanced PLC-based training systems for technical education in automation and control.',
-      industry: 'Research & Development',
-      solution: 'Automation',
+      title: 'Compressed Tea Coin & Tablet Press',
+      description: 'High-pressure hydraulic compression machinery engineered for specialty tea coin production with uniform density.',
+      industry: 'Tea, Food & Beverage',
+      solution: 'Machinery, Product Development',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/plc-2.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/tea-coin-machine.webp', isLocal: true } } }
     }
   },
   {
     id: 4,
     attributes: {
-      title: 'Solar Water Heater',
-      description: 'Efficient solar water heating systems for residential and industrial applications.',
-      industry: 'Energy',
-      solution: 'Machinery',
+      title: 'Smart Drainage IoT Flood Monitoring Sensor',
+      description: 'Solar-powered IoT ultrasonic drainage water level sensor network transmitting real-time flood alerts to cloud dashboard.',
+      industry: 'Environment, Infrastructure',
+      solution: 'IoT, Software',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/sola-hotwater.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/drain-sensor-2.webp', isLocal: true } } }
     }
   },
   {
     id: 5,
     attributes: {
-      title: 'Hydraulic Baling Press',
-      description: 'Heavy-duty hydraulic baling press for recycling and waste management.',
-      industry: 'Environment',
-      solution: 'Machinery',
+      title: 'Automated Guided Vehicle (AGV) & Conveyor',
+      description: 'Autonomous guided internal transport vehicle integrated with automated unloading roller conveyor for warehouse logistics.',
+      industry: 'Logistics, Manufacturing',
+      solution: 'Automation, Machinery',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/bale machines.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/agv-unloading-conveyor.webp', isLocal: true } } }
     }
   },
   {
     id: 6,
     attributes: {
-      title: 'Industrial Ovens',
-      description: 'Precision industrial ovens for baking, curing, and drying processes.',
-      industry: 'Manufacturing',
+      title: 'Ten Tray Agricultural Dehydrator',
+      description: 'Controlled hot air dehydration chamber with precision digital airflow and temperature controls for agricultural produce.',
+      industry: 'Agriculture, Food & Beverage',
       solution: 'Machinery',
       linkText: 'Explore Project',
-      coverImage: { data: { attributes: { url: '/dehydrator2.webp', isLocal: true } } }
+      coverImage: { data: { attributes: { url: '/real-projects/ten-tray-dryer.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 7,
+    attributes: {
+      title: 'Commercial Solar Thermal Hot Water System',
+      description: 'High-capacity industrial solar thermal hot water heating installation delivering clean, energy-efficient thermal utility.',
+      industry: 'Energy',
+      solution: 'Project Execution, Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/solar-hot-water-system.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 8,
+    attributes: {
+      title: 'Hydraulic Scrap & Waste Baling Press',
+      description: 'Heavy-duty hydraulic compaction baling press for recycling facilities and waste volume reduction with automated cycle controls.',
+      industry: 'Environment, Manufacturing',
+      solution: 'Machinery, Modernization',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/bale-machine.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 9,
+    attributes: {
+      title: 'Precision Stopper Torque Testing Unit',
+      description: 'Custom laboratory testing instrument measuring container closure torque with PC curve visualization and data logging.',
+      industry: 'Research & Development',
+      solution: 'Product Development',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/stopper-tester.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 10,
+    attributes: {
+      title: 'Rotary Cutter Machine Modernization',
+      description: 'Complete mechanical overhaul and obsolete control panel modernization, tripling jar-seal cutting output with servo precision.',
+      industry: 'Manufacturing',
+      solution: 'Modernization, Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/eraser-cutter.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 11,
+    attributes: {
+      title: 'Smart Weighing & Cloud Inventory Station',
+      description: 'Digital scale station integrated with barcode scanner, touchscreen operator terminal, and cloud ERP inventory logging.',
+      industry: 'Logistics',
+      solution: 'Software, IoT',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/smart-weighing.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 12,
+    attributes: {
+      title: 'Clinical Electronic Nerve Stimulator Device',
+      description: 'Medical electrotherapy device developed from electronic concept through prototyping to clinical electrical safety standards.',
+      industry: 'Healthcare',
+      solution: 'Product Development',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/nerve-stimulator.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 13,
+    attributes: {
+      title: 'Industrial Steam Boiler Automation & AMC',
+      description: 'Steam boiler electrical control panel assembly, burner calibration, and scheduled preventive maintenance and AMC.',
+      industry: 'Energy, Manufacturing',
+      solution: 'AMC, Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/boiler.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 14,
+    attributes: {
+      title: 'Custom Industrial PLC Control Panels',
+      description: 'Engineered electrical switchboards, PLC racks, HMI operator screens, and servo motor drives for factory automation lines.',
+      industry: 'Manufacturing, Research & Development',
+      solution: 'Automation, AMC',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/plc-panel.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 15,
+    attributes: {
+      title: 'Automated Tea Trough Withering Control',
+      description: 'Automated climate regulation retrofitted onto tea withering troughs with digital humidity and airflow modulation.',
+      industry: 'Tea, Agriculture',
+      solution: 'Automation, Modernization',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/green-tea-dryer.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 16,
+    attributes: {
+      title: 'River Solid Waste Containment Boom',
+      description: 'Heavy-duty engineered waterway debris barrier intercepting floating plastic waste in municipal canals and waterways.',
+      industry: 'Infrastructure, Environment',
+      solution: 'Project Execution',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/trash-boom.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 17,
+    attributes: {
+      title: 'Municipal Smart Traffic Signal Controller',
+      description: 'Microcontroller traffic signal timing and sequencing hardware for high-congestion municipal road intersections.',
+      industry: 'Infrastructure',
+      solution: 'Software, Automation',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/traffic-light-system-kadawatha.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 18,
+    attributes: {
+      title: 'Electronic Multi-Axis ICU Hospital Bed',
+      description: 'Motorized hospital bed actuation system with emergency CPR positioning and ergonomic patient controller.',
+      industry: 'Healthcare',
+      solution: 'Machinery, Product Development',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/icu-bed.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 19,
+    attributes: {
+      title: 'Automated Yogurt Incubation Chamber',
+      description: 'Controlled temperature and fermentation chamber designed for commercial dairy culture setting and incubation.',
+      industry: 'Food & Beverage',
+      solution: 'Product Development, Machinery',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/yogurt-incubator.webp', isLocal: true } } }
+    }
+  },
+  {
+    id: 20,
+    attributes: {
+      title: 'Kaastu Technical Training & Mechanism Bench',
+      description: 'Modular engineering training bench for hands-on technician instruction in electro-mechanical machinery assembly.',
+      industry: 'Research & Development',
+      solution: 'AMC, Automation',
+      linkText: 'Explore Project',
+      coverImage: { data: { attributes: { url: '/real-projects/kaastu-training-unit.webp', isLocal: true } } }
     }
   }
 ];
@@ -230,12 +385,12 @@ export default function CompletedWorkSection() {
   const [loading, setLoading] = useState(true);
   const [activeIndustry, setActiveIndustry] = useState("All Projects");
   const [activeSolution, setActiveSolution] = useState("All Solutions");
-  const [showProjects, setShowProjects] = useState(false);
+  const [showProjects, setShowProjects] = useState(true);
 
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+        const strapiUrl = getStrapiBaseUrl();
         if (!strapiUrl) {
           setProjects(dummyProjects);
           setLoading(false);
@@ -274,7 +429,7 @@ export default function CompletedWorkSection() {
     gridProjects.length > 0 ? (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
         {gridProjects.map((project) => (
-          <Link key={project.id} href="#" className="group relative h-[320px] rounded-[2rem] overflow-hidden block border border-slate-800">
+          <Link key={project.id} href="#" className="photo-overlay group relative h-[320px] rounded-[2rem] overflow-hidden block border border-slate-700/60 shadow-xl hover:border-[#E8B84B]/60 transition-all duration-500">
             {/* Background Image */}
             {(() => {
               const imgUrl = project.attributes.coverImage?.data?.attributes?.url;
@@ -300,15 +455,39 @@ export default function CompletedWorkSection() {
               <h4 className="text-xl font-bold !text-white mb-2 group-hover:text-[#E8B84B] transition-colors duration-500" style={{ color: '#FFFFFF' }}>{project.attributes.title}</h4>
               <p className="text-slate-200 text-sm leading-relaxed mb-4 line-clamp-2 group-hover:text-white transition-colors duration-500" style={{ color: '#CBD5E1' }}>{project.attributes.description}</p>
               
-              <div className="flex gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.attributes.industry && (
-                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-slate-300 uppercase tracking-wider">
-                    {isAr && industryFiltersAR[project.attributes.industry] ? industryFiltersAR[project.attributes.industry] : isJa && industryFiltersJA[project.attributes.industry] ? industryFiltersJA[project.attributes.industry] : isEs && industryFiltersES[project.attributes.industry] ? industryFiltersES[project.attributes.industry] : project.attributes.industry}
+                  <span
+                    className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-lg backdrop-blur-md"
+                    style={{
+                      backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                      borderColor: 'rgba(255, 255, 255, 0.35)',
+                      borderWidth: '1px',
+                      borderStyle: 'solid',
+                      color: '#FFFFFF'
+                    }}
+                  >
+                    {(() => {
+                      const primaryInd = project.attributes.industry.split(',')[0].trim();
+                      return isAr && industryFiltersAR[primaryInd] ? industryFiltersAR[primaryInd] : isJa && industryFiltersJA[primaryInd] ? industryFiltersJA[primaryInd] : isEs && industryFiltersES[primaryInd] ? industryFiltersES[primaryInd] : primaryInd;
+                    })()}
                   </span>
                 )}
                 {project.attributes.solution && (
-                  <span className="px-2 py-1 bg-[#131C2E]/80 border border-slate-700 rounded text-[10px] text-[#E8B84B] uppercase tracking-wider">
-                    {isAr && solutionFiltersAR[project.attributes.solution] ? solutionFiltersAR[project.attributes.solution] : isJa && solutionFiltersJA[project.attributes.solution] ? solutionFiltersJA[project.attributes.solution] : isEs && solutionFiltersES[project.attributes.solution] ? solutionFiltersES[project.attributes.solution] : project.attributes.solution}
+                  <span
+                    className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-lg backdrop-blur-md"
+                    style={{
+                      backgroundColor: 'rgba(232, 184, 75, 0.22)',
+                      borderColor: '#E8B84B',
+                      borderWidth: '1px',
+                      borderStyle: 'solid',
+                      color: '#F5C24E'
+                    }}
+                  >
+                    {(() => {
+                      const primarySol = project.attributes.solution.split(',')[0].trim();
+                      return isAr && solutionFiltersAR[primarySol] ? solutionFiltersAR[primarySol] : isJa && solutionFiltersJA[primarySol] ? solutionFiltersJA[primarySol] : isEs && solutionFiltersES[primarySol] ? solutionFiltersES[primarySol] : primarySol;
+                    })()}
                   </span>
                 )}
               </div>
@@ -387,7 +566,7 @@ export default function CompletedWorkSection() {
               {industryFilters.map((filter, idx) => (
                 <button 
                   key={idx} 
-                  onClick={() => setActiveIndustry(filter)}
+                  onClick={() => { setActiveIndustry(filter); setShowProjects(true); }}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeIndustry === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
                   {isAr ? (industryFiltersAR[filter] || filter) : isJa ? (industryFiltersJA[filter] || filter) : isEs ? (industryFiltersES[filter] || filter) : filter}
@@ -407,7 +586,7 @@ export default function CompletedWorkSection() {
               {solutionFilters.map((filter, idx) => (
                 <button 
                   key={idx} 
-                  onClick={() => setActiveSolution(filter)}
+                  onClick={() => { setActiveSolution(filter); setShowProjects(true); }}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeSolution === filter ? 'bg-[#E8B84B] text-[#0B1220]' : 'bg-[#131C2E] border border-slate-700 text-slate-300 hover:text-white'}`}
                 >
                   {isAr ? (solutionFiltersAR[filter] || filter) : isJa ? (solutionFiltersJA[filter] || filter) : isEs ? (solutionFiltersES[filter] || filter) : filter}
