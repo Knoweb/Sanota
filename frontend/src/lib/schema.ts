@@ -22,7 +22,7 @@ export const organizationSchema = {
   email: 'info@sanotaglobal.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '441/2C Wackwella Road',
+    streetAddress: 'No. 11/1/2, Udugama Road, Makuluwa',
     addressLocality: 'Galle',
     postalCode: '80000',
     addressRegion: 'Southern Province',

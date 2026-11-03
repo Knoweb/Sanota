@@ -31,7 +31,7 @@ const locationSchema = {
       email: "info@sanotaglobal.com",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "441/2C Wackwella Road",
+        streetAddress: "No. 11/1/2, Udugama Road, Makuluwa",
         addressLocality: "Galle",
         postalCode: "80000",
         addressCountry: "LK",
@@ -82,7 +82,7 @@ const locationSchema = {
           name: "Where is Sanota’s engineering workshop located in Galle?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Sanota’s registered office is at 441/2C Wackwella Road, Galle 80000, with our specialized machinery fabrication and testing workshop located in Bataganwila, Galle, Sri Lanka.",
+            text: "Sanota’s registered office is at No. 11/1/2, Udugama Road, Makuluwa, Galle, with our specialized machinery fabrication and testing workshop located in Bataganwila, Galle, Sri Lanka.",
           },
         },
         {

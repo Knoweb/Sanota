@@ -783,8 +783,8 @@ export default function ContactPage() {
                 <div className="transform group-hover:translate-x-2 transition-transform duration-500 mb-8">
                   <p className="text-slate-700 dark:text-slate-200 text-[15px] leading-relaxed font-medium tracking-wide">
                     Sanota (Private) Limited (PV 74540)<br />
-                    441/2C Wackwella Road<br />
-                    Galle 80000, Sri Lanka<br />
+                    No. 11/1/2, Udugama Road<br />
+                    Makuluwa, Galle, Sri Lanka<br />
                     <span className="text-xs text-slate-500">Workshop: Bataganwila, Galle</span>
                   </p>
                 </div>
@@ -802,7 +802,7 @@ export default function ContactPage() {
                   <a href="https://maps.google.com/?q=Sanota+Pvt+Ltd+Galle" target="_blank" rel="noreferrer" className="flex-1 py-3 px-4 bg-transparent border border-[#C59B27] dark:border-[#E8B84B]/50 hover:bg-[#C59B27] dark:hover:bg-[#E8B84B] hover:border-[#C59B27] dark:hover:border-[#E8B84B] text-[#C59B27] dark:text-[#E8B84B] hover:text-white dark:hover:text-[#0A101A] font-black rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.getDirections : "Get Directions"}
                   </a>
-                  <button onClick={() => alert(isAr ? "شركة سانوتا (الخاصة) المحدودة\n441/2C طريق واكويلا، غالي، سريلانكا.\nالهاتف: +94 74 070 9989\nالبريد الإلكتروني: info@sanotaglobal.com" : isJa ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\n電話: +94 74 070 9989\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\nTelefon: +94 74 070 9989\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle, Sri Lanka.\nTeléfono: +94 74 070 9989\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\n441/2C Wackwella Road, Galle.\nPhone: +94 74 070 9989\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
+                  <button onClick={() => alert(isAr ? "شركة سانوتا (الخاصة) المحدودة\nNo. 11/1/2, طريق أودوغاما، ماكولوا، غالي، سريلانكا.\nالهاتف: +94 74 070 9989\nالبريد الإلكتروني: info@sanotaglobal.com" : isJa ? "Sanota (Pvt) Ltd\nNo. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka.\n電話: +94 74 070 9989\nメール: info@sanotaglobal.com" : isDe ? "Sanota (Pvt) Ltd\nNo. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka.\nTelefon: +94 74 070 9989\nE-Mail: info@sanotaglobal.com" : isEs ? "Sanota (Pvt) Ltd\nNo. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka.\nTeléfono: +94 74 070 9989\nEmail: info@sanotaglobal.com" : "Sanota (Pvt) Ltd\nNo. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka.\nPhone: +94 74 070 9989\nEmail: info@sanotaglobal.com")} className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold rounded-lg transition-all duration-300 text-xs uppercase tracking-widest text-center">
                     {c ? c.directInfo.actions.saveContact : "Save Details"}
                   </button>
                 </div>

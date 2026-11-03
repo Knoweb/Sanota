@@ -71,7 +71,7 @@ const coverageAreas = [
 const faqs = [
   {
     q: "Where is Sanota’s engineering workshop located in Galle?",
-    a: "Sanota’s registered office is at 441/2C Wackwella Road, Galle 80000, with our specialized machinery fabrication and testing workshop located in Bataganwila, Galle, Sri Lanka.",
+    a: "Sanota’s registered office is at No. 11/1/2, Udugama Road, Makuluwa, Galle, with our specialized machinery fabrication and testing workshop located in Bataganwila, Galle, Sri Lanka.",
   },
   {
     q: "What Southern Province regions do your engineers service on-site?",
@@ -128,7 +128,7 @@ export default function GalleLocationClient() {
           {/* 50-Word Direct Answer Box */}
           <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-blue-500/30 shadow-lg shadow-blue-500/5 mb-8">
             <p className="text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-              <strong className="text-blue-600 dark:text-blue-400 font-semibold">Direct Answer:</strong> Sanota operates a dedicated industrial automation and machinery fabrication workshop in Bataganwila, Galle, with head offices at 441/2C Wackwella Road. Serving tea factories, Koggala BOI manufacturers, and industrial processors across the Southern Province, we provide custom machine manufacturing, PLC panel retrofits, and 2–4 hour emergency breakdown response.
+              <strong className="text-blue-600 dark:text-blue-400 font-semibold">Direct Answer:</strong> Sanota operates a dedicated industrial automation and machinery fabrication workshop in Bataganwila, Galle, with head offices at No. 11/1/2, Udugama Road, Makuluwa. Serving tea factories, Koggala BOI manufacturers, and industrial processors across the Southern Province, we provide custom machine manufacturing, PLC panel retrofits, and 2–4 hour emergency breakdown response.
             </p>
           </div>
 
@@ -167,8 +167,8 @@ export default function GalleLocationClient() {
                   <dt className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Registered Office Address</dt>
                   <dd className="font-medium text-slate-800 dark:text-slate-200 mt-0.5">
                     Sanota (Private) Limited<br />
-                    441/2C Wackwella Road,<br />
-                    Galle 80000, Sri Lanka
+                    No. 11/1/2, Udugama Road,<br />
+                    Makuluwa, Galle, Sri Lanka
                   </dd>
                 </div>
                 <div className="pt-3">

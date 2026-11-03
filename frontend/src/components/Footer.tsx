@@ -275,8 +275,8 @@ export default function Footer() {
               {f ? f.headings.contact : "Contact"}
             </h3>
             <ul className="space-y-2.5 mb-5">
-              <li className="flex items-start">
-                <Globe className="w-5 h-5 text-[#9A7210] dark:text-[#2E5EAA] mr-4 shrink-0 mt-0.5" />
+              <li className="flex items-center">
+                <Globe className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0" />
                 <a href="https://www.sanotaglobal.com" target="_blank" rel="noopener noreferrer" className="text-[#555E75] hover:text-[#9A7210] dark:text-slate-400 dark:hover:text-[#E8B84B] transition-colors text-[12px]">
                   www.sanotaglobal.com
                 </a>
@@ -293,7 +293,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start">
                 <MapPin className="w-3.5 h-3.5 text-[#9A7210] dark:text-[#2E5EAA] mr-2.5 shrink-0 mt-0.5" />
-                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">441/2C Wackwella Road, Galle 80000, Sri Lanka</span>
+                <span className="text-[#555E75] dark:text-slate-400 text-[12px]">No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka</span>
               </li>
             </ul>
 

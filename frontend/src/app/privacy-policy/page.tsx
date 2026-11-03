@@ -103,7 +103,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="space-y-2 text-sm">
                 <p className="font-bold text-[#17135B] dark:text-white">Sanota (Private) Limited (PV 74540)</p>
-                <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#C59B27]" /> 441/2C Wackwella Road, Galle 80000, Sri Lanka</p>
+                <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#C59B27]" /> No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka</p>
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#C59B27]" /> +94 74 070 9989</p>
                 <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#C59B27]" /> <a href="mailto:info@sanotaglobal.com" className="hover:underline">info@sanotaglobal.com</a></p>
               </div>
