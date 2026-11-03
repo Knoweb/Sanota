@@ -16,42 +16,42 @@ const capabilities = [
     name: "Mechanical Engineering", 
     description: "Machinery, mechanisms, structures, processing equipment and special-purpose systems.",
     icon: Wrench,
-    bgImage: "/cap/cap_mechanical.jpg",
+    bgImage: "/real-projects/box-making-machine-1.webp",
     color: "#E8B84B"
   },
   { 
     name: "Electrical Engineering", 
     description: "Control panels, electrical systems, embedded electronics, and device integration.",
     icon: Cpu,
-    bgImage: "/cap/cap_electrical.jpg",
+    bgImage: "/real-projects/plc-panel.webp",
     color: "#06b6d4"
   },
   { 
     name: "Automation & Control", 
     description: "PLCs, HMIs, sensors, actuators, motor controls, and servo systems.",
     icon: Activity,
-    bgImage: "/cap/cap_automation.jpg",
+    bgImage: "/real-projects/plc-panel-2.webp",
     color: "#10b981"
   },
   { 
     name: "IoT & Software", 
     description: "Connected monitoring, cloud platforms, dashboards, alerts, and reporting.",
     icon: Network,
-    bgImage: "/cap/cap_iot.jpg",
+    bgImage: "/real-projects/drain-sensor-2.webp",
     color: "#3b82f6"
   },
   { 
     name: "Fabrication & Assembly", 
     description: "Procurement, fabrication, assembly, installation, and commissioning.",
     icon: PenTool,
-    bgImage: "/cap/cap_fabrication.jpg",
+    bgImage: "/real-projects/bale-machine.webp",
     color: "#ec4899"
   },
   { 
     name: "Lifecycle Support", 
     description: "Preventive maintenance, breakdown support, training, and continuous upgrades.",
     icon: LifeBuoy,
-    bgImage: "/cap/cap_amc.jpg",
+    bgImage: "/real-projects/boiler.webp",
     color: "#f97316"
   },
 ];

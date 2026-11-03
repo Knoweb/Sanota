@@ -19,7 +19,7 @@ const options = [
     linkText: "Request a Modernization Assessment",
     href: "/tell-us-your-challenge",
     icon: Settings,
-    bgImage: "/nav/nav_modernize.jpg",
+    bgImage: "/real-projects/box-making-machine-1.webp",
     color: "#E8B84B" // Gold
   },
   {
@@ -28,7 +28,7 @@ const options = [
     linkText: "Explore Industrial Automation",
     href: "/services",
     icon: Zap,
-    bgImage: "/nav/nav_automate.jpg",
+    bgImage: "/real-projects/plc-panel.webp",
     color: "#06b6d4" // Cyan
   },
   {
@@ -37,7 +37,7 @@ const options = [
     linkText: "Explore Custom Machinery Development",
     href: "/services",
     icon: Cpu,
-    bgImage: "/nav/nav_develop_machine.jpg",
+    bgImage: "/real-projects/bale-machine.webp",
     color: "#10b981" // Emerald
   },
   {
@@ -46,7 +46,7 @@ const options = [
     linkText: "Explore IoT & Digital Integration",
     href: "/services",
     icon: Network,
-    bgImage: "/nav/nav_monitor.jpg",
+    bgImage: "/real-projects/drain-sensor-2.webp",
     color: "#3b82f6" // Blue
   },
   {
@@ -55,7 +55,7 @@ const options = [
     linkText: "Explore Project Execution",
     href: "/services",
     icon: Building2,
-    bgImage: "/nav/nav_build_system.jpg",
+    bgImage: "/real-projects/food-processing-line.webp",
     color: "#8b5cf6" // Violet
   },
   {
@@ -64,7 +64,7 @@ const options = [
     linkText: "Explore Product Development",
     href: "/services",
     icon: PackageSearch,
-    bgImage: "/nav/nav_develop_product.jpg",
+    bgImage: "/real-projects/nerve-stimulator.webp",
     color: "#ec4899" // Pink
   },
   {
@@ -73,7 +73,7 @@ const options = [
     linkText: "Request an AMC Assessment",
     href: "/tell-us-your-challenge",
     icon: Wrench,
-    bgImage: "/nav/nav_maintain.jpg",
+    bgImage: "/real-projects/boiler.webp",
     color: "#f97316" // Orange
   },
   {
@@ -82,7 +82,7 @@ const options = [
     linkText: "Request a Technical Consultation",
     href: "/tell-us-your-challenge",
     icon: Link2,
-    bgImage: "/nav/nav_unsure.jpg",
+    bgImage: "/real-projects/smart-weighing.webp",
     color: "#14b8a6" // Teal
   },
 ];
@@ -112,12 +112,12 @@ export default function SolutionNavigator() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Auto-cycle through cards every 1.8 seconds unless user hovers
+  // Auto-cycle through cards every 4.5 seconds unless user hovers
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % options.length);
-    }, 1000);
+    }, 4500);
     return () => clearInterval(timer);
   }, [paused]);
 
@@ -260,7 +260,7 @@ export default function SolutionNavigator() {
                     style={{
                       color: isDark
                         ? (isActive ? option.color : `${option.color}b3`)
-                        : (isActive ? "#C59B27" : "#17135B"),
+                        : (isActive ? "#8A6508" : "#17135B"),
                     }}
                   >
                     {option.linkText}

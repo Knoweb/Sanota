@@ -15,37 +15,37 @@ const products = [
     title: "Industrial Machinery & Automation",
     desc: "Custom machinery, machine controls, testing equipment and special-purpose production systems.",
     icon: Settings2,
-    image: "/images/products/industrial_machinery.jpg"
+    image: "/real-projects/bale-machine.webp"
   },
   {
     title: "Food & Tea Processing",
     desc: "Dryers, processing equipment, handling systems and integrated production solutions.",
     icon: Flame,
-    image: "/images/products/food_tea.jpg"
+    image: "/real-projects/tea-tablet-machine.webp"
   },
   {
     title: "Smart Agriculture Systems",
     desc: "Greenhouse, irrigation, fertigation, cultivation and environmental-monitoring systems.",
     icon: Sprout,
-    image: "/images/products/smart_agri.jpg"
+    image: "/real-projects/ten-tray-dryer.webp"
   },
   {
     title: "IoT, Tracking & Digital Platforms",
     desc: "Asset tracking, machine monitoring, inspection systems, smart weighing, dashboards and alerts.",
     icon: Network,
-    image: "/images/products/iot_tracking.jpg"
+    image: "/real-projects/drain-sensor-2.webp"
   },
   {
     title: "Material-Handling Systems",
     desc: "Automated guided vehicles, conveyors, unloading equipment and customized internal logistics solutions.",
     icon: Truck,
-    image: "/images/products/material_handling.jpg"
+    image: "/real-projects/agv-unloading-conveyor.webp"
   },
   {
     title: "Energy & Environmental Systems",
     desc: "Smart energy, solar thermal, waste processing, drainage monitoring and environmental solutions.",
     icon: Droplets,
-    image: "/images/products/energy_environment.jpg"
+    image: "/real-projects/solar-hot-water-system.webp"
   },
 ];
 

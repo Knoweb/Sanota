@@ -15,37 +15,37 @@ const projects = [
     title: "Industrial Machinery Modernization",
     description: "Restoring ageing or non-operational machinery through mechanical improvements, electrical upgrades and modern control systems.",
     linkText: "View Modernization Projects",
-    image: "/proj_mod_1788515440738.jpg",
+    image: "/real-projects/box-making-machine-1.webp",
   },
   {
     title: "Smart Agriculture",
     description: "Combining environmental monitoring, irrigation, fertigation and digital control to support more efficient cultivation.",
     linkText: "View Agriculture Projects",
-    image: "/proj_greenhouse_1788515615060.jpg",
+    image: "/real-projects/ten-tray-dryer.webp",
   },
   {
     title: "Tea Process Automation",
     description: "Improving tea-processing operations through machinery, environmental monitoring, airflow management and automation.",
     linkText: "View Tea Industry Projects",
-    image: "/proj_tea_1788515615060.jpg",
+    image: "/real-projects/tea-coin-machine.webp",
   },
   {
     title: "Food-Processing Systems",
     description: "Developing machinery and integrated processing systems for preparation, preservation, handling and value addition.",
     linkText: "View Food-Processing Projects",
-    image: "/hero_food.jpg",
+    image: "/real-projects/food-processing-line.webp",
   },
   {
     title: "IoT & Operational Visibility",
     description: "Connecting machines, assets and processes with tracking, dashboards, alerts and digital reporting.",
     linkText: "View IoT Projects",
-    image: "/proj_rfid_1788515670964.jpg",
+    image: "/real-projects/drain-sensor-2.webp",
   },
   {
     title: "Custom Engineering",
     description: "Developing specialized machinery, testing equipment, prototypes and products where standard solutions are unsuitable.",
     linkText: "View Custom Engineering Projects",
-    image: "/proj_testing_1788515821950.jpg",
+    image: "/real-projects/stopper-tester.webp",
   },
 ];
 

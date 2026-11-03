@@ -97,7 +97,7 @@ export default function FinalCTA() {
               
               {/* Internal Background Image */}
               <Image 
-                src="/images/products/industrial_machinery.jpg" 
+                src="/real-projects/box-making-machine-1.webp" 
                 alt="Engineering Background" 
                 fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                 className="object-cover opacity-10 dark:opacity-20 mix-blend-overlay pointer-events-none"
