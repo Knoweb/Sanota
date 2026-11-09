@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Globe, QrCode, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { homeES } from "@/locales/es/home";
 import { homeDE } from "@/locales/de/home";
@@ -180,6 +181,7 @@ const exploreLinksAR = [
 ];
 
 export default function Footer() {
+  const [isQrExpanded, setIsQrExpanded] = useState(false);
   const currentYear = new Date().getFullYear();
   const { language, localizedHref } = useLanguage();
   const isEs = language === "es";
@@ -313,19 +315,45 @@ export default function Footer() {
               </Link>
             </div>
 
-            <h3 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
-              {isAr ? "روابط التواصل الاجتماعي" : isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
-            </h3>
-            <div className="flex space-x-3">
-              <a href="https://www.linkedin.com/company/sanotalk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-              <a href="https://www.instagram.com/sanota_lk/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#E1306C] hover:border-[#E1306C] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-              </a>
-              <a href="https://www.facebook.com/SanotaPrivateLimited" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </a>
+            <div className="pt-2">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-[#17135B] dark:text-white font-bold mb-2.5 tracking-wider text-[13px]">
+                    {isAr ? "روابط التواصل" : isJa ? "ソーシャルリンク" : isDe ? "Soziale Netzwerke" : isEs ? "Redes Sociales" : "Social Links"}
+                  </h3>
+                  <div className="flex space-x-2.5">
+                    <a href="https://www.linkedin.com/company/sanotalk" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/sanota_lk/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#E1306C] hover:border-[#E1306C] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/SanotaPrivateLimited" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#131C2E] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                  </div>
+                </div>
+
+                {/* QR Code */}
+                <div 
+                  onClick={() => setIsQrExpanded(true)}
+                  className="flex flex-col items-center cursor-pointer group"
+                  title="Click to enlarge QR code"
+                >
+                  <div className="relative w-[70px] h-[70px] bg-white p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group-hover:border-[#E8B84B] group-hover:shadow-md transition-all duration-300">
+                    <Image 
+                      src="/sanota-qr.png" 
+                      alt="Sanota Official QR Code" 
+                      width={70} 
+                      height={70} 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 group-hover:text-[#9A7210] dark:group-hover:text-[#E8B84B] mt-1 transition-colors">
+                    {isAr ? "امسح الرمز" : isJa ? "QRスキャン" : isDe ? "QR scannen" : isEs ? "Escanear QR" : "Scan QR"}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -349,6 +377,52 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* QR Code Enlarged Modal */}
+        {isQrExpanded && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn"
+            onClick={() => setIsQrExpanded(false)}
+          >
+            <div 
+              className="relative bg-white dark:bg-[#0B1322] border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setIsQrExpanded(false)}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="w-10 h-10 rounded-xl bg-[#E8B84B]/15 border border-[#E8B84B]/30 flex items-center justify-center text-[#E8B84B] mb-3 shadow-sm">
+                <QrCode className="w-5 h-5" />
+              </div>
+
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                {isAr ? "رمز استجابة سانوتا الرسمي" : isJa ? "サノタ公式QRコード" : isDe ? "Offizieller Sanota QR-Code" : isEs ? "Código QR Oficial de Sanota" : "Sanota Official QR"}
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-5 max-w-xs leading-relaxed">
+                {isAr ? "امسح بكاميرا هاتفك لفتح الموقع والتواصل فوراً" : isJa ? "スマートフォンでスキャンして素早くアクセス" : isDe ? "Mit dem Smartphone scannen für direkten Zugriff" : isEs ? "Escanee con su móvil para acceso rápido" : "Scan with your smartphone camera for instant mobile access"}
+              </p>
+
+              <div className="relative w-56 h-56 bg-white p-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg">
+                <Image 
+                  src="/sanota-qr.png" 
+                  alt="Sanota Official QR Code" 
+                  width={224} 
+                  height={224} 
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
+
+              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mt-4">
+                sanotaglobal.com/qr
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   );
