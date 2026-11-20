@@ -731,7 +731,7 @@ export default function ProductsPage() {
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
+              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-5"
             >
               {isAr ? "المنتجات الهندسية والأنظمة المتكاملة" : isJa ? "エンジニアリング製品および統合システム" : isDe ? "Engineering-Produkte & Integrierte Systeme" : isEs ? "Productos de ingeniería y sistemas integrados" : "Engineering Products & Integrated Systems"}
             </motion.p>
@@ -739,7 +739,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
+              className="text-2xl sm:text-4xl lg:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-3 sm:mb-6 leading-tight max-w-5xl mx-auto break-words"
             >
               {p ? (
                 p.hero.heading
@@ -753,7 +753,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-sm sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-2 sm:mb-4 font-medium leading-relaxed"
             >
               {p ? p.hero.subheading : "Machinery, automation, connected technologies and integrated systems designed to solve practical industry needs."}
             </motion.p>
@@ -761,7 +761,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="hidden sm:block text-base lg:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-6 lg:mb-10 leading-relaxed"
             >
               {p ? p.hero.description : "Sanota develops, integrates and supports engineering products and systems for industrial, agricultural, commercial and infrastructure applications. Our solutions can combine mechanical engineering, electrical and electronic systems, automation, IoT, software, fabrication, installation and lifecycle support."}
             </motion.p>
@@ -770,32 +770,38 @@ export default function ProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full max-w-md mx-auto sm:max-w-none"
             >
               <a
                 href="#categories"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors flex items-center justify-center shadow-sm text-sm sm:text-base"
               >
                 {p ? p.hero.primaryButton : "Explore Products & Systems"}
               </a>
               <Link
                 href="/tell-us-your-challenge"
-                className="px-8 py-4 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-white dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-white dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm text-sm sm:text-base"
               >
-                {p ? p.hero.secondaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-2 w-5 h-5" />
+                {p ? p.hero.secondaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
             </motion.div>
             
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
+              className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-xs tracking-wider uppercase px-4 max-w-2xl mx-auto"
             >
               {p ? p.hero.supportLine : (
-                <>Machinery <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Integrated Systems</>
+                <>
+                  <span>Machinery</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Automation</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>IoT</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Software</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Integrated Systems</span>
+                </>
               )}
-            </motion.p>
+            </motion.div>
           </div>
         </section>
 
@@ -980,32 +986,32 @@ export default function ProductsPage() {
                     const catSolutions = cp ? cp.solutions : productCategories[activeCategoryIndex].items;
 
                     return (
-                      <div className="p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row gap-10 lg:gap-16 relative z-10 h-full">
+                      <div className="p-4 sm:p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row gap-6 sm:gap-10 lg:gap-16 relative z-10 h-full">
                         <div className="lg:w-5/12 flex flex-col justify-center">
-                          <div className="flex items-start mb-6">
-                            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${productCategories[activeCategoryIndex].color} p-0.5 mr-5 flex-shrink-0 shadow-lg`}>
+                          <div className="flex items-start mb-4 sm:mb-6">
+                            <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${productCategories[activeCategoryIndex].color} p-0.5 mr-3 sm:mr-5 flex-shrink-0 shadow-lg`}>
                               <div className="w-full h-full bg-[#17135B] dark:bg-[#0D1829] rounded-[14px] flex items-center justify-center">
                                 {(() => {
                                   const IconComponent = productCategories[activeCategoryIndex].icon;
-                                  return <IconComponent className="w-7 h-7 text-white" />;
+                                  return <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />;
                                 })()}
                               </div>
                             </div>
                             <div>
-                              <span className="text-slate-500 dark:text-slate-400 font-bold text-xs tracking-widest uppercase block mb-1">{productCategories[activeCategoryIndex].number}</span>
-                              <h3 className="text-2xl md:text-3xl font-black text-[#17135B] dark:text-white leading-tight drop-shadow-sm">{catTitle}</h3>
+                              <span className="text-slate-500 dark:text-slate-400 font-bold text-[10px] sm:text-xs tracking-widest uppercase block mb-0.5 sm:mb-1">{productCategories[activeCategoryIndex].number}</span>
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#17135B] dark:text-white leading-tight drop-shadow-sm">{catTitle}</h3>
                             </div>
                           </div>
-                          <p className="text-slate-600 dark:text-slate-300 text-[15px] leading-relaxed mb-8 drop-shadow-sm">{catIntro}</p>
+                          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-[15px] leading-relaxed mb-4 sm:mb-8 drop-shadow-sm">{catIntro}</p>
                           
-                          <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
+                          <div className="bg-[#FAF8F5] dark:bg-[#050B14]/80 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-xl p-3.5 sm:p-5 lg:p-6 shadow-sm dark:shadow-2xl relative overflow-hidden group/box hover:border-[#C59B27]/40 dark:hover:border-slate-500/50 transition-colors">
                             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C59B27] dark:from-slate-400 to-[#17135B] dark:to-slate-700" />
-                            <p className="text-[#17135B] dark:text-slate-300 font-bold text-[11px] uppercase tracking-widest mb-4 ml-2">
+                            <p className="text-[#17135B] dark:text-slate-300 font-bold text-[10px] sm:text-[11px] uppercase tracking-widest mb-2.5 sm:mb-4 ml-2">
                               {isAr ? "مناسب للمؤسسات التي تسعى إلى:" : isJa ? "以下のような組織に適しています：" : isDe ? "Geeignet für Organisationen, die Folgendes anstreben:" : isEs ? "Adecuado para organizaciones que buscan:" : "Suitable for organizations seeking to:"}
                             </p>
-                            <div className="space-y-4 ml-2">
+                            <div className="space-y-2 sm:space-y-4 ml-2">
                               {catNeeds.map((need, nIdx) => (
-                                <p key={nIdx} className="text-slate-600 dark:text-slate-400 text-sm italic leading-relaxed flex items-start">
+                                <p key={nIdx} className={`text-slate-600 dark:text-slate-400 text-xs sm:text-sm italic leading-relaxed items-start ${nIdx >= 3 ? "hidden sm:flex" : "flex"}`}>
                                   <span className="mr-2 text-[#C59B27] dark:text-slate-500 font-serif">"</span>
                                   {need.replace(/["“”]/g, '')}
                                 </p>
@@ -1015,19 +1021,19 @@ export default function ProductsPage() {
                         </div>
 
                         <div className="lg:w-7/12 flex flex-col justify-center">
-                          <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-3xl p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
-                            <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-6 drop-shadow-sm flex items-center">
+                          <div className="bg-slate-50/80 dark:bg-[#0A101A]/30 group-hover:bg-white/80 dark:group-hover:bg-[#0A101A]/10 transition-colors duration-700 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 border border-slate-200 dark:border-white/5 backdrop-blur-sm">
+                            <p className="text-[#17135B] dark:text-white/80 font-bold text-xs uppercase tracking-[0.2em] mb-4 sm:mb-6 drop-shadow-sm flex items-center">
                               <span className="w-2 h-2 rounded-full bg-[#C59B27] dark:bg-white/50 mr-3 animate-pulse" />
                               {isAr ? "قد تشمل الحلول ما يلي:" : isJa ? "ソリューションには以下が含まれる場合があります" : isDe ? "Lösungen können umfassen" : isEs ? "Las soluciones pueden incluir" : "Solutions may include"}
                             </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 md:gap-5">
                               {catSolutions.map((item, itemIdx) => (
                                 <div 
                                   key={itemIdx} 
-                                  className="flex items-start bg-white dark:bg-[#050B14]/70 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/60 hover:border-[#C59B27]/40 dark:hover:border-white/30 rounded-xl px-5 py-4 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item"
+                                  className={`items-start bg-white dark:bg-[#050B14]/70 hover:bg-[#FAF8F5] dark:hover:bg-[#131C2E]/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/60 hover:border-[#C59B27]/40 dark:hover:border-white/30 rounded-xl px-3.5 sm:px-5 py-2.5 sm:py-4 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] cursor-default group/item ${itemIdx >= 6 ? "hidden sm:flex" : "flex"}`}
                                 >
-                                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${productCategories[activeCategoryIndex].color} mt-1.5 mr-3 shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/item:scale-150 transition-transform`} />
-                                  <span className="text-slate-700 dark:text-slate-200 text-sm font-medium leading-snug group-hover/item:text-[#17135B] dark:group-hover/item:text-white transition-colors">{item}</span>
+                                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${productCategories[activeCategoryIndex].color} mt-1.5 mr-2.5 sm:mr-3 shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/item:scale-150 transition-transform`} />
+                                  <span className="text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium leading-snug group-hover/item:text-[#17135B] dark:group-hover/item:text-white transition-colors">{item}</span>
                                 </div>
                               ))}
                             </div>
@@ -2112,42 +2118,42 @@ export default function ProductsPage() {
             {/* Industrial Machinery & SCADA Systems Technical FAQ (GEO & Search Intent Optimization) */}
             <section id="faq" className="py-16 mt-8 border-t border-slate-200 dark:border-slate-800/60">
               <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-4">
+                <div className="text-center mb-8 sm:mb-12">
+                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-[#E8B84B]/10 border border-amber-500/30 dark:border-[#E8B84B]/30 mb-3 sm:mb-4">
                     <HelpCircle className="w-4 h-4 text-[#C59B27] dark:text-[#E8B84B]" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
+                    <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#9A7210] dark:text-[#E8B84B]">
                       {(productsFaqData[language] || productsFaqData.en).badge}
                     </span>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#17135B] dark:text-white tracking-tight mb-2 sm:mb-4">
                     {(productsFaqData[language] || productsFaqData.en).heading}
                   </h2>
-                  <p className="text-[#555E75] dark:text-slate-300 text-base max-w-2xl mx-auto">
+                  <p className="text-[#555E75] dark:text-slate-300 text-xs sm:text-base max-w-2xl mx-auto">
                     {(productsFaqData[language] || productsFaqData.en).description}
                   </p>
                 </div>
 
-                <div className="space-y-4 max-w-4xl mx-auto text-left">
+                <div className="space-y-3 sm:space-y-4 max-w-4xl mx-auto text-left">
                   {(productsFaqData[language] || productsFaqData.en).items.map((faq, idx) => {
                     const isOpen = openFaq === idx;
                     return (
                       <div
                         key={idx}
-                        className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-[#131C2E]/80 backdrop-blur-md transition-all shadow-sm hover:shadow-md"
+                        className="border border-slate-200 dark:border-slate-800 rounded-xl sm:rounded-2xl overflow-hidden bg-white dark:bg-[#131C2E]/80 backdrop-blur-md transition-all shadow-sm hover:shadow-md"
                       >
                         <button
                           onClick={() => setOpenFaq(isOpen ? null : idx)}
-                          className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-bold text-lg text-[#17135B] dark:text-white"
+                          className="w-full text-left px-4 sm:px-6 py-3.5 sm:py-5 flex items-center justify-between gap-3 font-bold text-sm sm:text-lg text-[#17135B] dark:text-white"
                           aria-expanded={isOpen}
                         >
-                          <span className="flex items-center gap-3">
-                            <span className="w-7 h-7 rounded-full bg-amber-500/10 text-[#C59B27] dark:text-[#E8B84B] flex items-center justify-center text-xs font-black shrink-0">
+                          <span className="flex items-center gap-2.5 sm:gap-3">
+                            <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-amber-500/10 text-[#C59B27] dark:text-[#E8B84B] flex items-center justify-center text-[10px] sm:text-xs font-black shrink-0">
                               0{idx + 1}
                             </span>
-                            {faq.q}
+                            <span>{faq.q}</span>
                           </span>
                           <ChevronDown
-                            className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C59B27] dark:text-[#E8B84B]" : ""}`}
+                            className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C59B27] dark:text-[#E8B84B]" : ""}`}
                           />
                         </button>
                         <AnimatePresence initial={false}>
@@ -2159,13 +2165,13 @@ export default function ProductsPage() {
                               transition={{ duration: 0.25 }}
                               className="overflow-hidden"
                             >
-                              <div className="px-6 pb-6 pt-1 text-slate-600 dark:text-slate-300 text-base leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                              <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-1 text-slate-600 dark:text-slate-300 text-xs sm:text-base leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
                                 <p className="mb-3">{faq.a}</p>
                                 <Link
                                   href={faq.link}
-                                  className="inline-flex items-center text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline"
+                                  className="inline-flex items-center text-xs sm:text-sm font-bold text-[#C59B27] dark:text-[#E8B84B] hover:underline"
                                 >
-                                  <CheckCircle2 className="w-4 h-4 mr-1.5" />
+                                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5" />
                                   {faq.linkText} &rarr;
                                 </Link>
                               </div>
@@ -2185,9 +2191,9 @@ export default function ProductsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative mt-16 text-center"
+              className="relative mt-12 sm:mt-16 text-center"
             >
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-6">
+              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#17135B] dark:text-white tracking-tight mb-4 sm:mb-6 leading-tight">
                 {isAr ? (
                   <>
                     ما الذي تحتاجه للبناء أو التحسين <br className="hidden md:block" />
@@ -2215,26 +2221,26 @@ export default function ProductsPage() {
                   </>
                 )}
               </h3>
-              <p className="text-[16px] text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xs sm:text-[16px] text-slate-600 dark:text-slate-400 mb-6 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
                 {p ? p.cta.description : "From individual machinery and products to complete integrated systems, Sanota brings together the engineering and technology capabilities required to move from concept to working solution."}
               </p>
               
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 lg:mb-12">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-0 sm:space-x-6 mb-6 sm:mb-8 lg:mb-12">
                 <Link
                   href="/tell-us-your-challenge"
-                  className="inline-flex justify-center items-center px-10 py-4 border border-transparent text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
+                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3.5 sm:py-4 border border-transparent text-sm sm:text-[14px] font-bold rounded-lg text-[#0B1220] bg-[#E8B84B] hover:bg-[#d4a643] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(232,184,75,0.3)] w-full sm:w-auto group"
                 >
-                  {p ? p.cta.primaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {p ? p.cta.primaryButton : "Tell Us Your Requirement"} <ArrowRight className="ml-2 sm:ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex justify-center items-center px-10 py-4 border border-slate-300 dark:border-slate-700 text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 transition-all w-full sm:w-auto shadow-sm dark:shadow-none"
+                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3.5 sm:py-4 border border-slate-300 dark:border-slate-700 text-sm sm:text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 transition-all w-full sm:w-auto shadow-sm dark:shadow-none"
                 >
                   {p ? p.cta.secondaryButton : "Contact Sanota"}
                 </Link>
               </div>
 
-              <p className="text-[#C59B27] dark:text-[#E8B84B] text-[11px] font-bold tracking-[0.2em] uppercase">
+              <p className="text-[#C59B27] dark:text-[#E8B84B] text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-4">
                 {p ? p.cta.closingLine : "Designed around the requirement. Integrated for the operation. Supported throughout the lifecycle."}
               </p>
             </motion.div>

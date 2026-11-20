@@ -299,7 +299,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-4xl mx-auto"
+              className="text-2xl sm:text-5xl lg:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-3 sm:mb-6 leading-tight max-w-4xl mx-auto break-words"
             >
               {isJa ? (
                 <>産業の進化を支える<span className="text-[#2E5EAA]">実践的エンジニアリング知見</span></>
@@ -316,7 +316,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-8 font-normal leading-relaxed"
+              className="text-sm sm:text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-6 sm:mb-8 font-normal leading-relaxed"
             >
               {ins ? ins.hero.subheading : "Concise engineering perspectives, technical blueprints, and field insights to help organizations make confident operational decisions."}
             </motion.p>
@@ -326,18 +326,18 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="flex flex-wrap justify-center gap-4"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto sm:max-w-none"
             >
               <a
                 href="#domain-explorer"
-                className="px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold text-sm rounded-lg transition-colors flex items-center justify-center shadow-md hover:shadow-lg"
+                className="w-full sm:w-auto px-6 py-3.5 sm:py-3 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold text-sm rounded-xl sm:rounded-lg transition-colors flex items-center justify-center shadow-md hover:shadow-lg"
               >
                 {isJa ? "テーマ別ステップで見る" : isDe ? "Nach Themen entdecken" : isEs ? "Explorar por Temas" : "Explore Domains Step-by-Step"}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
               <a
                 href="#articles-grid"
-                className="px-6 py-3 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold text-sm rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
+                className="w-full sm:w-auto px-6 py-3.5 sm:py-3 bg-white/90 dark:bg-[#131C2E]/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold text-sm rounded-xl sm:rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
               >
                 {isJa ? "最新の記事を読む" : isDe ? "Neueste Artikel lesen" : isEs ? "Ver Artículos" : "Browse Latest Articles"}
               </a>

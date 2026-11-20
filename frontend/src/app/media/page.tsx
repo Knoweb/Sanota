@@ -459,7 +459,7 @@ export default function MediaPage() {
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-sm mb-5"
+              className="text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-5"
             >
               {isAr ? "قصص إعلامية ومشاريع وهندسية" : isJa ? "メディア、プロジェクト、エンジニアリングストーリー" : isDe ? "Medien, Projekte & Ingenieurgeschichten" : isEs ? "Historias de medios, proyectos e ingeniería" : "Media, Projects & Engineering Stories"}
             </motion.p>
@@ -467,7 +467,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
+              className="text-2xl sm:text-4xl lg:text-6xl font-black text-[#17135B] dark:text-white tracking-tight mb-3 sm:mb-6 leading-tight max-w-5xl mx-auto break-words"
             >
               {isAr ? (
                 <>
@@ -493,7 +493,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-sm sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-2 sm:mb-4 font-medium leading-relaxed"
             >
               {m ? m.hero.subheading : "Explore the projects, products, people and technologies behind Sanota’s integrated engineering solutions."}
             </motion.p>
@@ -501,7 +501,7 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="hidden sm:block text-base lg:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-6 lg:mb-10 leading-relaxed"
             >
               {m ? m.hero.description : "See how Sanota applies engineering, automation, IoT, software and technical expertise to real operational requirements across industries."}
             </motion.p>
@@ -510,40 +510,40 @@ export default function MediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full max-w-md mx-auto sm:max-w-none"
             >
               <a
                 href="#completed-work"
-                className="px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-lg transition-colors flex items-center justify-center shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-bold rounded-xl transition-colors flex items-center justify-center shadow-sm text-sm sm:text-base"
               >
-                {m ? m.hero.primaryButton : "Explore Completed Work"} <ArrowRight className="ml-2 w-5 h-5" />
+                {m ? m.hero.primaryButton : "Explore Completed Work"} <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <Link
                 href="#videos"
-                className="px-8 py-4 bg-white/90 hover:bg-white dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/90 hover:bg-white dark:bg-[#131C2E]/80 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 transition-colors flex items-center justify-center shadow-sm text-sm sm:text-base"
               >
-                {m ? m.hero.secondaryButton : "Watch Our Videos"} <Play className="ml-2 w-5 h-5" />
+                {m ? m.hero.secondaryButton : "Watch Our Videos"} <Play className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
             </motion.div>
             
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs tracking-widest uppercase"
+              className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-xs tracking-wider uppercase px-4 max-w-2xl mx-auto"
             >
               {isAr ? (
-                <>الأعمال المنجزة <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> قصص المشاريع <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> الفيديوهات <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> معرض الصور <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> الأخبار والأنشطة</>
+                <><span>الأعمال المنجزة</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>قصص المشاريع</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>الفيديوهات</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>معرض الصور</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>الأخبار والأنشطة</span></>
               ) : isJa ? (
-                <>完了プロジェクト <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> プロジェクトストーリー <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> 動画 <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> フォトギャラリー <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> ニュース＆活動</>
+                <><span>完了プロジェクト</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>プロジェクトストーリー</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>動画</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>フォトギャラリー</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>ニュース＆活動</span></>
               ) : isDe ? (
-                <>Abgeschlossene Arbeiten <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Projektgeschichten <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Videos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Fotogalerie <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Neuigkeiten & Aktivitäten</>
+                <><span>Abgeschlossene Arbeiten</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Projektgeschichten</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Videos</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Fotogalerie</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Neuigkeiten & Aktivitäten</span></>
               ) : isEs ? (
-                <>Trabajos Completados <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Historias de Proyectos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Vídeos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Galería de Fotos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Noticias y Actividades</>
+                <><span>Trabajos Completados</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Historias de Proyectos</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Vídeos</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Galería de Fotos</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Noticias y Actividades</span></>
               ) : (
-                <>Completed Work <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Project Stories <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Videos <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Photo Gallery <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> News & Activities</>
+                <><span>Completed Work</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Project Stories</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Videos</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>Photo Gallery</span> <span className="text-slate-400 dark:text-slate-600">•</span> <span>News & Activities</span></>
               )}
-            </motion.p>
+            </motion.div>
           </div>
         </section>
 
