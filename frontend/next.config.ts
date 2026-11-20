@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sanotaglobal.com',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.sanotaglobal.com',
+        pathname: '/uploads/**',
+      },
     ],
   },
   async redirects() {

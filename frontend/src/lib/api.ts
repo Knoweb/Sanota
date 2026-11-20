@@ -231,25 +231,44 @@ export interface Article {
   };
 }
 
-export async function getArticles(limit: number = 3): Promise<Article[]> {
+function normalizeStrapiArticle(item: any, strapiUrl: string): Article {
+  const data = item.attributes ? { id: item.id, ...item.attributes } : item;
+  let coverImageUrl: string | undefined = undefined;
+
+  if (data.coverImage) {
+    const rawUrl = data.coverImage.url || data.coverImage.data?.attributes?.url;
+    if (rawUrl) {
+      coverImageUrl = rawUrl.startsWith('http') ? rawUrl : `${strapiUrl}${rawUrl}`;
+    }
+  }
+
+  return {
+    id: data.id || item.id,
+    documentId: data.documentId || String(data.id),
+    title: data.title || '',
+    slug: data.slug || '',
+    category: data.category || 'General',
+    date: data.date || new Date().toISOString(),
+    author: data.author || 'Sanota Team',
+    content: data.content || '',
+    coverImage: coverImageUrl ? { url: coverImageUrl } : undefined
+  };
+}
+
+export async function getArticles(limit: number = 24): Promise<Article[]> {
   try {
     const strapiUrl = getStrapiBaseUrl();
     if (!strapiUrl) return [];
     const url = `${strapiUrl}/api/articles?populate=*&sort=date:desc&pagination[limit]=${limit}`;
     const res = await fetch(url, { 
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(3000)
+      next: { revalidate: 15 },
+      signal: AbortSignal.timeout(4000)
     }).catch(() => null);
 
     if (!res || !res.ok) return [];
     const json = await res.json();
-    return json.data.map((item: any) => ({
-      ...item,
-      coverImage: item.coverImage ? {
-        url: `${strapiUrl}${item.coverImage.url}`,
-        alternativeText: item.coverImage.alternativeText,
-      } : undefined
-    }));
+    if (!json.data || !Array.isArray(json.data)) return [];
+    return json.data.map((item: any) => normalizeStrapiArticle(item, strapiUrl));
   } catch {
     return [];
   }
@@ -261,21 +280,14 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     if (!strapiUrl) return null;
     const url = `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&populate=*`;
     const res = await fetch(url, { 
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(3000)
+      next: { revalidate: 15 },
+      signal: AbortSignal.timeout(4000)
     }).catch(() => null);
 
     if (!res || !res.ok) return null;
     const json = await res.json();
     if (!json.data || json.data.length === 0) return null;
-    const item = json.data[0];
-    return {
-      ...item,
-      coverImage: item.coverImage ? {
-        url: `${strapiUrl}${item.coverImage.url}`,
-        alternativeText: item.coverImage.alternativeText,
-      } : undefined
-    };
+    return normalizeStrapiArticle(json.data[0], strapiUrl);
   } catch {
     return null;
   }

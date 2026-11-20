@@ -24,6 +24,7 @@ export default function Header() {
     { name: t.nav.services, href: localizedHref("/services") },
     { name: t.nav.products, href: localizedHref("/products") },
     { name: t.nav.media, href: localizedHref("/media") },
+    { name: t.nav.insights, href: localizedHref("/insights") },
     { name: t.nav.about, href: localizedHref("/about") },
     { name: t.nav.contact, href: localizedHref("/contact") },
   ];
