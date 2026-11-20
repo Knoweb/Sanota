@@ -1,5 +1,7 @@
+// @ts-nocheck
 import { factories } from '@strapi/strapi';
 import crypto from 'crypto';
+import { sendChallengeEnquiryNotification } from '../../../services/emailService';
 
 export default factories.createCoreController('api::challenge-enquiry.challenge-enquiry', ({ strapi }) => ({
   async submit(ctx) {
@@ -222,6 +224,11 @@ export default factories.createCoreController('api::challenge-enquiry.challenge-
 
       const entry = await strapi.documents('api::challenge-enquiry.challenge-enquiry').create({
         data: payload
+      });
+
+      // Send email notification to info@sanotaglobal.com asynchronously
+      sendChallengeEnquiryNotification(payload).catch((err) => {
+        strapi.log.error('[challenge-enquiry] Email notification error:', err);
       });
 
       return ctx.send({

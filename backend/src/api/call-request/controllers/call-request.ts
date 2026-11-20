@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { factories } from '@strapi/strapi';
 import crypto from 'crypto';
+import { sendCallRequestNotification } from '../../../services/emailService';
 
 export default factories.createCoreController('api::call-request.call-request', ({ strapi }) => ({
   async submit(ctx) {
@@ -86,6 +87,11 @@ export default factories.createCoreController('api::call-request.call-request', 
 
       const entry = await strapi.documents('api::call-request.call-request').create({
         data: payload
+      });
+
+      // Send email notification to info@sanotaglobal.com asynchronously
+      sendCallRequestNotification(payload).catch((err) => {
+        strapi.log.error('[call-request] Email notification error:', err);
       });
 
       return ctx.send({

@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { factories } from '@strapi/strapi';
 import crypto from 'crypto';
+import { sendContactEnquiryNotification } from '../../../services/emailService';
 
 export default factories.createCoreController('api::contact-enquiry.contact-enquiry', ({ strapi }) => ({
   async submit(ctx) {
@@ -159,6 +160,14 @@ export default factories.createCoreController('api::contact-enquiry.contact-enqu
 
       const entry = await strapi.documents('api::contact-enquiry.contact-enquiry').create({
         data: payload
+      });
+
+      // Send email notification to info@sanotaglobal.com asynchronously
+      sendContactEnquiryNotification({
+        ...payload,
+        supportingFiles: uploadedFileIds
+      }).catch((err) => {
+        strapi.log.error('[contact-enquiry] Email notification error:', err);
       });
 
       return ctx.send({
