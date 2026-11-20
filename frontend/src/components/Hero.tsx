@@ -54,41 +54,41 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className={`font-extrabold tracking-tight text-white leading-[1.15] ${isDe ? "text-3xl sm:text-4xl lg:text-[2.95rem] xl:text-[3.15rem] mb-4" : "text-4xl sm:text-5xl lg:text-[3.5rem] mb-5"}`}>
+            <h1 className={`font-extrabold tracking-tight text-white leading-[1.15] break-words ${isDe ? "text-2xl sm:text-4xl lg:text-[2.95rem] xl:text-[3.15rem] mb-4" : "text-3xl sm:text-5xl lg:text-[3.5rem] mb-4 sm:mb-5"}`}>
               {h ? h.titleLine1 : "One Challenge."} <br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B84B] to-yellow-200">
                 {h ? h.titleLine2 : "One Integrated Engineering Solution."}
               </span>
             </h1>
 
-            <div className={`text-slate-300 max-w-2xl leading-relaxed ${isDe ? "text-[15px] lg:text-[15.5px] mb-5 space-y-3" : "text-md mb-8 space-y-4"}`}>
+            <div className={`text-slate-300 max-w-2xl leading-relaxed ${isDe ? "text-xs sm:text-[15px] lg:text-[15.5px] mb-4 sm:mb-5 space-y-2 sm:space-y-3" : "text-sm sm:text-base mb-6 sm:mb-8 space-y-3 sm:space-y-4"}`}>
               <p>
                 {h ? h.description1 : "Sanota helps industries solve operational challenges by bringing together mechanical engineering, electrical systems, automation, IoT, software, implementation and technical support through one coordinated team."}
               </p>
-              <p>
+              <p className="hidden sm:block">
                 {h ? h.description2 : "Whether the requirement involves a machine, process, product, digital platform or complete operational system, we help develop a practical way forward."}
               </p>
             </div>
 
-            <div className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${isDe ? "mb-5" : "mb-8"}`}>
+            <div className={`flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 ${isDe ? "mb-5" : "mb-6 sm:mb-8"}`}>
               <Link
                 href={localizedHref("/tell-us-your-challenge")}
-                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-[14px] font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md shadow-[#E5A93C]/25 group"
+                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-sm font-bold rounded-lg text-[#111424] bg-[#E5A93C] hover:bg-[#F0B74C] transition-all shadow-md shadow-[#E5A93C]/25 group w-full sm:w-auto text-center"
               >
                 {h ? h.ctaPrimary : "Tell Us Your Challenge"}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href={localizedHref("/media")}
-                className="inline-flex justify-center items-center px-6 py-3 border border-slate-700 dark:border-[#2E5EAA] text-[14px] font-bold rounded-lg text-[#17135B] dark:text-white bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#2E5EAA]/10 transition-colors group shadow-sm dark:shadow-none"
+                className="inline-flex justify-center items-center px-6 py-3 border border-slate-700 dark:border-[#2E5EAA] text-sm font-bold rounded-lg text-[#17135B] dark:text-white bg-white/80 dark:bg-transparent hover:bg-slate-100 dark:hover:bg-[#2E5EAA]/10 transition-colors group shadow-sm dark:shadow-none w-full sm:w-auto text-center"
               >
                 {h ? h.ctaSecondary : "See Sanota in Action"}
                 <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform text-[#C59B27] dark:text-[#2E5EAA]" />
               </Link>
             </div>
 
-            <div className={isDe ? "mb-5" : "mb-8"}>
-              <p className="text-[13px] font-bold text-slate-400 dark:text-slate-300 uppercase tracking-widest">
+            <div className={isDe ? "mb-4 sm:mb-5" : "mb-5 sm:mb-8"}>
+              <p className="text-[11px] sm:text-[13px] font-bold text-slate-400 dark:text-slate-300 uppercase tracking-wider sm:tracking-widest">
                 {h ? h.capabilityLine : "Engineering • Automation • IoT • Software • Implementation • Support"}
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function Hero() {
                 borderColor: ["rgba(212,175,55,0.3)", "rgba(212,175,55,0.9)", "rgba(212,175,55,0.3)"]
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden flex items-center justify-center bg-[#0B1220] z-10 border-2"
+              className="relative h-[320px] sm:h-[450px] lg:h-[550px] rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center bg-[#0B1220] z-10 border-2"
             >
               <AnimatePresence mode="wait">
                 <motion.div

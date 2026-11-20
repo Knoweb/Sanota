@@ -65,7 +65,7 @@ export default function VisitorPathways() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
+            className="relative group p-5 sm:p-8 rounded-2xl sm:rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#E8B84B]/50 hover:shadow-[0_0_30px_rgba(232,184,75,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-[#E8B84B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
@@ -85,17 +85,17 @@ export default function VisitorPathways() {
                  </span>
               </div>
               
-              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-90 min-h-[44px]">
+              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-4 sm:mb-6 opacity-90">
                 <p>{vp ? vp.solveCard.description : "You do not need to arrive with a completed technical specification. Tell us about the present situation, what is not working and what you need to achieve."}</p>
               </div>
               
-              <h3 className="text-white font-bold text-sm sm:text-base mb-4">
+              <h3 className="text-white font-bold text-sm sm:text-base mb-3 sm:mb-4">
                 {vp ? vp.solveCard.weCanHelpTitle : "We can help when you need to:"}
               </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {solveList.map((item, idx) => (
-                  <div key={idx} className="flex items-start">
+                  <div key={idx} className={`items-start ${idx >= 4 ? "hidden sm:flex" : "flex"}`}>
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#E8B84B] mr-2 mt-0.5 shrink-0 opacity-90" />
                     <span className="text-slate-300 text-[13px] font-medium leading-tight">{item}</span>
                   </div>
@@ -118,7 +118,7 @@ export default function VisitorPathways() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="relative group p-6 sm:p-8 rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
+            className="relative group p-5 sm:p-8 rounded-2xl sm:rounded-[1.5rem] bg-[#131C2E]/40 backdrop-blur-md border border-slate-700/50 hover:border-[#2E5EAA]/50 hover:shadow-[0_0_30px_rgba(46,94,170,0.15)] transition-all duration-500 overflow-hidden flex flex-col"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-[#2E5EAA]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
@@ -138,17 +138,17 @@ export default function VisitorPathways() {
                  </span>
               </div>
               
-              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-6 opacity-90 min-h-[44px]">
+              <div className="text-slate-300 text-[14px] sm:text-[15px] leading-relaxed space-y-2 mb-4 sm:mb-6 opacity-90">
                 <p>{vp ? vp.exploreCard.description : "Discover the machinery, systems, products and integrated solutions Sanota has developed across a diverse range of industries and environments."}</p>
               </div>
               
-              <h3 className="text-white font-bold text-sm sm:text-base mb-4">
+              <h3 className="text-white font-bold text-sm sm:text-base mb-3 sm:mb-4">
                 {vp ? vp.exploreCard.weCanHelpTitle : "Explore our world:"}
               </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 flex-grow">
                 {exploreList.map((item, idx) => (
-                  <div key={idx} className="flex items-start">
+                  <div key={idx} className={`items-start ${idx >= 4 ? "hidden sm:flex" : "flex"}`}>
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#2E5EAA] mr-2 mt-0.5 shrink-0 opacity-90" />
                     <span className="text-slate-300 text-[13px] font-medium leading-tight">{item}</span>
                   </div>

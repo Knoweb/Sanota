@@ -8,18 +8,11 @@ import Footer from "@/components/Footer";
 import { useTheme } from "@/context/ThemeContext";
 
 // Code-split below-the-fold components to minimize main thread blocking time (TBT) and speed up LCP
-const VisitorPathways = dynamic(() => import("@/components/VisitorPathways"), { ssr: true });
-const SolutionNavigator = dynamic(() => import("@/components/SolutionNavigator"), { ssr: true });
 const IntegratedSolutionCapability = dynamic(() => import("@/components/IntegratedSolutionCapability"), { ssr: true });
-const CompletedWork = dynamic(() => import("@/components/CompletedWork"), { ssr: true });
 const IndustriesWeSupport = dynamic(() => import("@/components/IndustriesWeSupport"), { ssr: true });
 const ProductsAndSystems = dynamic(() => import("@/components/ProductsAndSystems"), { ssr: true });
+const CompletedWork = dynamic(() => import("@/components/CompletedWork"), { ssr: true });
 const HowSanotaWorks = dynamic(() => import("@/components/HowSanotaWorks"), { ssr: true });
-const WhyWorkWithSanota = dynamic(() => import("@/components/WhyWorkWithSanota"), { ssr: true });
-const AMCAndLifecycle = dynamic(() => import("@/components/AMCAndLifecycle"), { ssr: true });
-const SanotaAndKnoweb = dynamic(() => import("@/components/SanotaAndKnoweb"), { ssr: true });
-const MediaSection = dynamic(() => import("@/components/MediaSection"), { ssr: true });
-const InnovationAndCollaboration = dynamic(() => import("@/components/InnovationAndCollaboration"), { ssr: true });
 const FinalCTA = dynamic(() => import("@/components/FinalCTA"), { ssr: true });
 
 // Defer heavy WebGL shaders to desktop only, without blocking mobile main thread
@@ -71,18 +64,11 @@ export default function Home() {
         <main className="flex-grow pt-24">
           <Hero />
           <CorporateProof />
-          <VisitorPathways />
-          <SolutionNavigator />
           <IntegratedSolutionCapability />
-          <CompletedWork />
           <IndustriesWeSupport />
           <ProductsAndSystems />
+          <CompletedWork />
           <HowSanotaWorks />
-          <WhyWorkWithSanota />
-          <AMCAndLifecycle />
-          <SanotaAndKnoweb />
-          <MediaSection />
-          <InnovationAndCollaboration />
           <FinalCTA />
         </main>
         <Footer />

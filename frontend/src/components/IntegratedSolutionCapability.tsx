@@ -91,7 +91,7 @@ export default function IntegratedSolutionCapability() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="xl:col-span-6 sticky top-24 xl:pr-6"
+            className="xl:col-span-6 relative xl:sticky xl:top-24 xl:pr-6 mb-6 xl:mb-0"
           >
             <h2 className={`text-2xl sm:text-3xl lg:text-5xl font-black mb-6 leading-tight ${isDark ? "text-white" : "text-[#17135B]"}`}>
               {isc ? isc.titleLine1 : "More Than One Technology."} <br/>
