@@ -745,24 +745,26 @@ export default function InsightsPage() {
         {/* ========================================================= */}
         {/* FOCUSED HIGH-IMPACT CALL TO ACTION                        */}
         {/* ========================================================= */}
-        <section className="py-14 bg-gradient-to-br from-[#17135B] to-[#0d0a3d] text-white">
-          <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
+        <section className="aero-dark-section py-16 bg-gradient-to-br from-[#17135B] via-[#100D47] to-[#09072B] relative overflow-hidden border-t border-slate-800">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#2E5EAA]/25 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 className="text-2xl sm:text-4xl font-black mb-4 tracking-tight !text-white">
               Have an Engineering Challenge or Automation Need?
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+            <p className="!text-slate-200 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
               You do not need an exhaustive engineering specification to get started. Describe your current setup, operating constraints, and desired outcome — our engineering team will identify the right pathway.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/tell-us-your-challenge"
-                className="w-full sm:w-auto px-8 py-3.5 bg-[#C59B27] hover:bg-[#B38A22] text-white font-bold text-sm rounded-xl transition-colors shadow-lg flex items-center justify-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-[#C59B27] hover:bg-[#B38A22] !text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-[#C59B27]/20 flex items-center justify-center hover:scale-105"
               >
                 Tell Us Your Challenge <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link
                 href="/contact"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm rounded-xl transition-colors flex items-center justify-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 !text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center hover:scale-105"
               >
                 Contact Engineering Office
               </Link>

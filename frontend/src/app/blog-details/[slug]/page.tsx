@@ -211,7 +211,7 @@ export default async function BlogDetails({ params }: { params: Promise<{ slug: 
             
             <Link
               href="/tell-us-your-challenge"
-              className="inline-flex items-center px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-md"
+              className="inline-flex items-center px-6 py-3 bg-[#C59B27] hover:bg-[#B38A22] !text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-md"
             >
               Discuss a Similar Project <ArrowRight className="w-4 h-4 ml-1.5" />
             </Link>
