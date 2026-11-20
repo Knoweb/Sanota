@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,6 +12,7 @@ import NewsTagCloud from "@/components/NewsTagCloud";
 import { ArrowRight, Play, Briefcase, Newspaper, Video, Camera, Radio, CheckCircle2, ChevronRight, MessageSquare, Image as ImageIcon, MapPin, Zap, Monitor, Truck, Coffee, Sprout, Settings, AlertCircle, Search, Cpu, Wrench, TrendingUp, Shield, User, Tag, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
 import { getArticles, Article } from "@/lib/api";
+import { staticArticles } from "@/data/articlesData";
 import { useLanguage } from "@/context/LanguageContext";
 import { mediaES } from "@/locales/es/media";
 import { mediaDE } from "@/locales/de/media";
@@ -395,15 +396,44 @@ export default function MediaPage() {
   const [articles, setArticles] = useState<Article[]>([]);
   
   const getImageForSlug = (slug: string) => {
+    if (slug === 'role-of-piezoelectric-technology-modern-society') return '/piezoelectric-technology.jpg';
+    if (slug === 'thermal-imaging-electrical-faults') return '/thermal-camera-inspection.jpg';
+    if (slug === 'cnc-machining-vs-3d-printing') return '/cnc-vs-3d-printing.jpg';
+    if (slug === 'smart-manufacturing-sri-lankan-smes') return '/smart-manufacturing-smes.jpg';
+    if (slug === 'microgreen-greenhouse-monitoring') return '/microgreen-monitoring.jpg';
     if (slug === 'smart-drainage-system') return '/completed work/drain-water.webp';
     if (slug === 'nerve-stimulator') return '/nerve-stimulator.png';
     if (slug === 'asmp-food-processing') return '/asmp-blog.jpg';
-    return '/placeholder-image.jpg';
+    return '/sanota.png';
   };
 
   useEffect(() => {
-    getArticles(3).then(setArticles);
+    getArticles(10).then((res) => {
+      if (res && res.length > 0) {
+        const valid = res.filter(a => !['smart-drainage-system', 'nerve-stimulator', 'asmp-food-processing'].includes(a.slug));
+        setArticles(valid);
+      }
+    });
   }, []);
+
+  const displayArticles = useMemo(() => {
+    if (articles.length > 0) {
+      return articles.slice(0, 3);
+    }
+    return staticArticles
+      .filter(a => !['smart-drainage-system', 'nerve-stimulator', 'asmp-food-processing'].includes(a.slug))
+      .slice(0, 3)
+      .map(art => ({
+        id: art.id,
+        slug: art.slug,
+        title: art.title,
+        content: art.content,
+        category: art.category,
+        author: art.author,
+        date: art.date,
+        coverImage: { url: art.coverImage }
+      }));
+  }, [articles]);
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent">
@@ -767,10 +797,16 @@ export default function MediaPage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {articles.length > 0 ? articles.map((article) => (
+               {displayArticles.map((article) => (
                  <div key={article.id} className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
-                    <div className="relative h-56 w-full overflow-hidden">
-                       <Image src={article.coverImage?.url || getImageForSlug(article.slug)} alt={article.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="relative h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
+                       <Image 
+                         src={article.coverImage?.url || getImageForSlug(article.slug)} 
+                         alt={article.title} 
+                         fill 
+                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+                         className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                       />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
@@ -782,77 +818,15 @@ export default function MediaPage() {
                          {article.title}
                        </h3>
                        <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
-                          <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> {new Date(article.date).toLocaleDateString()}</span>
+                          <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium">
+                            <Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 
+                            {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })}
+                          </span>
                           <Link href={`/blog-details/${article.slug}`} className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
                        </div>
                     </div>
                  </div>
-               )) : (
-                 <>
-                   {/* Card 1 */}
-                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
-                      <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/completed work/drain-water.webp" alt="Smart Drainage System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                      <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "حلول إنترنت الأشياء" : isJa ? "IoTソリューション" : isDe ? "IoT-Lösungen" : isEs ? "Soluciones IoT" : "IoT Solutions"}</span>
-                         </div>
-                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isAr ? "نظام الصرف الذكي: مكافحة الفيضانات بالتكنولوجيا" : isJa ? "スマート排水システム：テクノロジーで洪水対策に取り組む" : isDe ? "Intelligentes Entwässerungssystem: Hochwasserschutz durch Technologie" : isEs ? "Sistema de Drenaje Inteligente: Combatiendo Inundaciones con Tecnología" : "Smart Drainage System: Tackling Floods with Technology"}
-                         </h3>
-                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/smart-drainage-system" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
-                         </div>
-                      </div>
-                   </div>
-
-                   {/* Card 2 */}
-                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
-                      <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/nerve-stimulator.png" alt="Nerve Stimulator" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                      <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "تكنولوجيا الرعاية الصحية" : isJa ? "ヘルスケア技術" : isDe ? "Gesundheitstechnologie" : isEs ? "Tecnología de la Salud" : "Health Tech"}</span>
-                         </div>
-                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isAr ? "تطوير إعادة التأهيل من خلال الابتكار: محفز الأعصاب من سانوتا" : isJa ? "イノベーションによるリハビリテーションの進歩：サノタの神経刺激装置" : isDe ? "Fortschritte in der Rehabilitation durch Innovation: Nervenstimulator von Sanota" : isEs ? "Avanzando en la Rehabilitación Mediante la Innovación: Estimulador Nervioso de Sanota" : "Advancing Rehabilitation Through Innovation: Sanota's Nerve Stimulator"}
-                         </h3>
-                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/6/2025</span>
-                            <Link href="/blog-details/nerve-stimulator" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
-                         </div>
-                      </div>
-                   </div>
-
-                   {/* Card 3 */}
-                   <div className="bg-white dark:bg-[#131C2E]/60 rounded-xl overflow-hidden flex flex-col h-full group border border-slate-200 dark:border-slate-800 hover:border-[#C59B27] dark:hover:border-[#E8B84B]/50 transition-colors shadow-lg hover:shadow-2xl hover:-translate-y-1 duration-500">
-                      <div className="relative h-56 w-full overflow-hidden">
-                         <Image src="/asmp-blog.jpg" alt="Food Processing System" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                      <div className="p-8 flex flex-col flex-grow">
-                         <div className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 mb-5 gap-5">
-                            <span className="flex items-center"><User className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "فريق سانوتا" : isJa ? "サノタチーム" : isDe ? "von: Sanota Team" : isEs ? "por: Equipo Sanota" : "by: Sanota Team"}</span>
-                            <span className="flex items-center"><Tag className="w-4 h-4 mr-1.5 text-[#2E5EAA]" /> {isAr ? "حلول صناعية" : isJa ? "産業ソリューション" : isDe ? "Industrielösungen" : isEs ? "Soluciones Industriales" : "Industrial Solutions"}</span>
-                         </div>
-                         <h3 className="text-xl font-bold text-[#17135B] dark:text-white leading-snug mb-8 group-hover:text-[#C59B27] dark:group-hover:text-[#E8B84B] transition-colors">
-                           {isAr ? "نظام معالجة الأغذية الذكي لدعم التجمعات الريفية في سريلانكا (ASMP)" : isJa ? "スリランカの農村クラスターを支援するスマート食品加工システム（ASMP）" : isDe ? "Intelligentes Lebensmittelverarbeitungssystem stärkt ländliche Betriebe in Sri Lanka (ASMP)" : isEs ? "Sistema Inteligente de Procesamiento de Alimentos para Grupos Rurales de Sri Lanka (ASMP)" : "Smart Food Processing System Empowering Sri Lanka's Rural Clusters (ASMP)"}
-                         </h3>
-                         <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-5 flex items-center justify-between">
-                            <span className="flex items-center text-[13px] text-slate-500 dark:text-slate-400 font-medium"><Calendar className="w-4 h-4 mr-2 text-slate-400 dark:text-slate-500" /> 7/7/2025</span>
-                            <Link href="/blog-details/asmp-food-processing" className="text-[13px] font-bold text-[#C59B27] dark:text-[#E8B84B] hover:text-[#17135B] dark:hover:text-white tracking-wide transition-colors">{m ? m.news.readMore : "READ MORE"}</Link>
-                         </div>
-                      </div>
-                   </div>
-                 </>
-               )}
+               ))}
             </div>
           </div>
         </section>
