@@ -431,7 +431,7 @@ export default function ContactPage() {
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-xs font-black text-[#C59B27] dark:text-[#E8B84B] uppercase tracking-[0.3em] mb-5"
+              className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#C59B27]/10 dark:bg-[#E8B84B]/10 border border-[#C59B27]/30 dark:border-[#E8B84B]/30 text-[#C59B27] dark:text-[#E8B84B] font-bold tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-5"
             >
               {isAr ? "اتصل بسانوتا" : isJa ? "サノタへのお問い合わせ" : isDe ? "Kontakt zu Sanota" : isEs ? "Contactar con Sanota" : "Contact Sanota"}
             </motion.p>
@@ -439,13 +439,13 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#17135B] dark:text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
+              className="text-2xl sm:text-5xl lg:text-7xl font-black text-[#17135B] dark:text-white tracking-tight mb-3 sm:mb-6 leading-tight max-w-5xl mx-auto break-words"
             >
               {c ? (
                 c.hero.heading
               ) : (
                 <>
-                  Let&apos;s Discuss Your{" "}
+                  Let&apos;s Discuss Your <br className="hidden sm:block" />
                   <span className="text-[#C59B27] dark:text-[#E8B84B]">Requirement</span>
                 </>
               )}
@@ -454,7 +454,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-4 font-medium leading-relaxed"
+              className="text-sm sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-2 sm:mb-4 font-medium leading-relaxed"
             >
               {c ? c.hero.subheading : "Contact Sanota about an operational challenge, engineering project, new system, modernization requirement or long-term technical support."}
             </motion.p>
@@ -462,7 +462,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-base text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+              className="hidden sm:block text-base text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-6 lg:mb-10 leading-relaxed"
             >
               {c ? c.hero.description : "You do not need to prepare a complete technical specification. Tell us what is happening, what needs improvement or what you want to develop."}
             </motion.p>
@@ -471,37 +471,44 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10"
+              className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full max-w-md mx-auto sm:max-w-none"
             >
               <Link
                 href="/tell-us-your-challenge"
-                className="w-full sm:w-auto px-8 py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#E8B84B] hover:bg-[#d4a643] text-[#0B1220] font-black rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#E8B84B]/20 hover:shadow-[#E8B84B]/40 hover:-translate-y-0.5 group text-sm sm:text-base"
               >
-                {c ? c.hero.primaryButton : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {c ? c.hero.primaryButton : "Tell Us Your Challenge"} <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="#contact-form"
-                className="w-full sm:w-auto px-8 py-4 bg-white/90 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/90 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 text-[#17135B] dark:text-white font-black rounded-xl border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-sm text-sm sm:text-base"
               >
-                {c ? c.hero.secondaryButton : "Request a Call"} <PhoneCall className="ml-2 w-5 h-5" />
+                {c ? c.hero.secondaryButton : "Request a Call"} <PhoneCall className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
-              className="text-[#C59B27]/80 dark:text-[#E8B84B]/70 font-bold text-xs tracking-widest uppercase"
+              className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-xs tracking-wider uppercase px-4 max-w-2xl mx-auto"
             >
               {c ? c.hero.supportLine : (
-                <>Engineering <span className="mx-2 text-slate-300 dark:text-slate-700">•</span> Automation <span className="mx-2 text-slate-300 dark:text-slate-700">•</span> IoT <span className="mx-2 text-slate-300 dark:text-slate-700">•</span> Software <span className="mx-2 text-slate-300 dark:text-slate-700">•</span> Project Execution <span className="mx-2 text-slate-300 dark:text-slate-700">•</span> AMC</>
+                <>
+                  <span>Engineering</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Automation</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>IoT</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Software</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Project Execution</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>AMC</span>
+                </>
               )}
-            </motion.p>
+            </motion.div>
           </div>
         </section>
 
         {/* ── Quick Direct Contact Strip ── */}
-        <div className="relative z-20 -mt-8 max-w-[1100px] mx-auto px-4 sm:px-6">
+        <div className="relative z-20 -mt-4 sm:-mt-8 max-w-[1100px] mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1228,7 +1235,7 @@ export default function ContactPage() {
                     <form className="space-y-3.5 relative z-10" onSubmit={handleCallSubmit}>
                       <input required type="text" placeholder={isAr ? "الاسم الكامل" : isJa ? "お名前" : isDe ? "Vollständiger Name" : isEs ? "Nombre completo" : "Full name"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.name} onChange={e => updateCallData({ name: e.target.value })} />
                       <input required type="text" placeholder={isAr ? "الشركة" : isJa ? "貴社名" : isDe ? "Unternehmen" : isEs ? "Empresa" : "Company"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.company} onChange={e => updateCallData({ company: e.target.value })} />
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <input required type="tel" placeholder={isAr ? "رقم الهاتف" : isJa ? "電話番号" : isDe ? "Telefonnummer" : isEs ? "Teléfono" : "Phone"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.phone} onChange={e => updateCallData({ phone: e.target.value })} />
                         <input required type="email" placeholder={isAr ? "البريد الإلكتروني" : isJa ? "メールアドレス" : isDe ? "E-Mail" : isEs ? "Correo" : "Email"} className="w-full bg-slate-50 dark:bg-[#131C2E]/50 border border-slate-300 dark:border-slate-700/60 rounded-xl px-4 py-3 text-[#17135B] dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#C59B27] dark:focus:border-[#E8B84B]/50 transition-colors text-sm" value={callData.email} onChange={e => updateCallData({ email: e.target.value })} />
                       </div>

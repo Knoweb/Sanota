@@ -163,36 +163,43 @@ export default function ChallengePage() {
         <main className="flex-grow">
           
           {/* HERO SECTION */}
-          <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800/50 bg-transparent">
+          <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800/50 bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#17135B] dark:text-white mb-6">
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-[#17135B] dark:text-white mb-3 sm:mb-6 break-words">
               {ch ? ch.hero.heading : "Tell Us Your Challenge"}
             </h1>
-            <p className="text-xl text-slate-700 dark:text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 mb-2 sm:mb-4 max-w-3xl mx-auto font-medium leading-relaxed">
               {ch ? ch.hero.subheading : "You do not need to know the technical solution. Start by telling us what you need to achieve."}
             </p>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="hidden sm:block text-base text-slate-600 dark:text-slate-400 mb-6 lg:mb-10 max-w-3xl mx-auto leading-relaxed">
               {ch ? ch.hero.description : "Whether you need to improve a machine, automate a process, develop a new system, introduce IoT and software, or arrange long-term maintenance support, Sanota can help you identify the right way forward. Our team will review your requirement and connect the necessary engineering, automation, digital and technical-support capabilities around it."}
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full max-w-md mx-auto sm:max-w-none">
               <button 
                 onClick={() => document.getElementById('form-container')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-lg transition-colors text-[15px] shadow-md"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#C59B27] hover:bg-[#B38A22] dark:bg-[#E8B84B] dark:hover:bg-[#d4a643] text-white dark:text-[#0B1220] font-bold rounded-xl transition-colors text-sm sm:text-[15px] shadow-md"
               >
                 {ch ? ch.hero.primaryButton : "Start Your Enquiry"}
               </button>
               <Link 
                 href="/contact" 
-                className="px-8 py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-lg border border-slate-300 dark:border-slate-700 transition-colors text-[15px] shadow-sm"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white dark:bg-[#131C2E] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#17135B] dark:text-white font-bold rounded-xl border border-slate-300 dark:border-slate-700 transition-colors text-sm sm:text-[15px] shadow-sm"
               >
                 {ch ? ch.hero.secondaryButton : "Speak to Sanota"}
               </Link>
             </div>
-            <p className="text-[#C59B27] dark:text-[#E8B84B] font-bold text-xs sm:text-sm tracking-widest uppercase">
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[#C59B27] dark:text-[#E8B84B] font-bold text-[10px] sm:text-xs tracking-wider uppercase px-4 max-w-2xl mx-auto">
               {ch ? ch.hero.supportLine : (
-                <>Engineering <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Automation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> IoT <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Software <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Implementation <span className="mx-2 text-slate-400 dark:text-slate-600">•</span> Lifecycle Support</>
+                <>
+                  <span>Engineering</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Automation</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>IoT</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Software</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Implementation</span> <span className="text-slate-400 dark:text-slate-600">•</span>
+                  <span>Lifecycle Support</span>
+                </>
               )}
-            </p>
+            </div>
           </div>
         </section>
 

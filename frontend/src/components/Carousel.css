@@ -1,9 +1,10 @@
 .carousel-container {
   position: relative;
-  overflow: visible; /* changed from hidden to allow 3D effect popout if needed, or keep hidden */
+  overflow: hidden;
+  max-width: 100%;
   padding: 16px 0;
   --outer-r: 24px;
-  --p-distance: 0px; /* changed to 0 for full width content */
+  --p-distance: 0px;
   direction: ltr !important;
 }
 

@@ -236,9 +236,10 @@ export default function Carousel({
     <div
       ref={containerRef}
       dir="ltr"
-      className={`carousel-container ${round ? 'round' : ''} mx-auto`}
+      className={`carousel-container ${round ? 'round' : ''} mx-auto max-w-full overflow-hidden`}
       style={{
         width: `${currentBaseWidth}px`,
+        maxWidth: '100%',
         ...(round && { height: `${currentBaseWidth}px`, borderRadius: '50%' })
       }}
     >

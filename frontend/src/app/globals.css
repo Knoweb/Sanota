@@ -34,11 +34,18 @@ html[data-theme="dark"] {
   --font-sans: var(--font-inter);
 }
 
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Glowing Card Utilities */
@@ -132,8 +139,8 @@ html.dark .page-hero-overlay,
    High-contrast, razor-sharp readable text
    ========================================================================== */
 
-/* Kicker Tag Pill Badge */
-html.light section:has(.page-hero-bg) p.uppercase.tracking-widest {
+/* Kicker Tag Pill Badge - Target only the first kicker tag */
+html.light section:has(.page-hero-bg) p.uppercase.tracking-widest:first-of-type {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
